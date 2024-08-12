@@ -1,12 +1,17 @@
 using System;
 using Godot;
+using Godot.Collections;
 using untitledplantgame.Plants;
 
-public abstract class APlant : Node2D, IPlantable
+public abstract partial class APlant : Node2D, IPlantable
 {
     private string Nickname { get; set; }
 
     private GrowthStage stage { get; set; }
+
+    private Dictionary<string, int> Requirements;
+
+    //private APlant[] neighboringPlants; //companion planting
 
     private void setStage()
     {
@@ -18,12 +23,15 @@ public abstract class APlant : Node2D, IPlantable
 
     public void PlantOnTile()
     {
-        throw new NotImplementedException();
+        //set tile
     }
 
     public void Hydrate()
     {
-        throw new NotImplementedException();
+        //check tile
+        //get hydration from tile
+        //
+        //SoilTile.reduceHydration(amount);
     }
 }
 

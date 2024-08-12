@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmdaspy4pwg4a"]
+
+[ext_resource type="PackedScene" uid="uid://8nufvcxxorv0" path="res://Plants/SoilTile.tscn" id="1_w0qkr"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="SoilTile" parent="." instance=ExtResource("1_w0qkr")]
+position = Vector2(249, 114)

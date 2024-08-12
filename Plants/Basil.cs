@@ -1,6 +1,6 @@
 ﻿namespace untitledplantgame.Plants;
 
-public class Basil : APlant
+public partial class Basil : APlant
 {
     
 }

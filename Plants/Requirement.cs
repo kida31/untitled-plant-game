@@ -1,7 +1,8 @@
 ﻿namespace untitledplantgame.Plants;
 
-public abstract class ARequirement
+public class Requirement
 {
+    
     private int maxLevel;
     private int minimumLevel;
     
