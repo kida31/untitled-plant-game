@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2gm0eivif2t5"]
+[gd_scene load_steps=13 format=3 uid="uid://b2gm0eivif2t5"]
 
 [ext_resource type="Script" path="res://Player/Scripts/lea_player.cs" id="1_4gu56"]
 [ext_resource type="Texture2D" uid="uid://c56tki1f3gj2q" path="res://Player/Sprites/michael_dude/ExamplePlayerSprite.png" id="1_73yy0"]
+[ext_resource type="Script" path="res://Player/Scripts/PlayerStateMachine.cs" id="3_nkfqs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k3s8l"]
 
@@ -149,3 +150,10 @@ hframes = 21
 libraries = {
 "": SubResource("AnimationLibrary_p1nig")
 }
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_nkfqs")
+
+[node name="idle" type="Node" parent="StateMachine"]
+
+[node name="walk" type="Node" parent="StateMachine"]
