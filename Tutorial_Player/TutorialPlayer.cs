@@ -1,28 +1,29 @@
-using Godot;
 using System;
+using Godot;
+
+namespace untitledplantgame.Tutorial_Player;
 
 public partial class TutorialPlayer : CharacterBody2D
 {
-    private float MoveSpeed = 100.0f;
-    Vector2 CardinalDirection = Vector2.Down;
-    private Vector2 direction = Vector2.Zero;
-    private String State = "idle";
+    Vector2 _cardinalDirection = Vector2.Down;
+    private Vector2 _direction = Vector2.Zero;
     
     private AnimatedSprite2D _animatedSprite2D;
+    private PlayerStateMachine _stateMachine;
     
     public override void _Ready()
     {
+        _stateMachine = GetNode<PlayerStateMachine>("StateMachine");
         _animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        _stateMachine.Initialize(this);
     }
 
     public override void _Process(double delta)
     {
-        direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
-        direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
+        _direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
+        _direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
 
-        Velocity = direction * MoveSpeed;
-
-        if(SetState() || SetDirection()) UpdateAnimation();
+        //Velocity = direction * MoveSpeed;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -32,56 +33,42 @@ public partial class TutorialPlayer : CharacterBody2D
 
     bool SetDirection()
     {
-        Vector2 new_direction = CardinalDirection;
+        Vector2 newDirection = _cardinalDirection;
 
-        if (direction == Vector2.Zero) return false;
+        if (_direction == Vector2.Zero) return false;
 
-        if (direction.Y == 0)
+        if (_direction.Y == 0)
         {
-            if (direction.X < 0) new_direction = Vector2.Left;
-            else new_direction = Vector2.Right;
+            if (_direction.X < 0) newDirection = Vector2.Left;
+            else newDirection = Vector2.Right;
         }
 
-        if (direction.X == 0)
+        if (_direction.X == 0)
         {
-            if (direction.Y > 0) new_direction = Vector2.Down;
-            else new_direction = Vector2.Up;
+            if (_direction.Y > 0) newDirection = Vector2.Down;
+            else newDirection = Vector2.Up;
         }
 
-        CardinalDirection = new_direction;
+        _cardinalDirection = newDirection;
         return true;
     }
 
-    bool SetState()
+    public void UpdateAnimation(string state)
     {
-        String new_state;
-        if (direction == Vector2.Zero)
-        {
-            new_state = "idle";
-        }
-        else new_state = "walk";
-        if(State == new_state) return false;
-
-        State = new_state;
-        return true;
-    }
-
-    void UpdateAnimation()
-    {
-        String animationState = State + "_" + AnimationDirection();
+        var animationState = state + "_" + AnimationDirection();
         _animatedSprite2D.Play(animationState);
         GD.Print(animationState);
     }
 
-    String AnimationDirection()
+    string AnimationDirection()
     {
-        if (CardinalDirection == Vector2.Down)
+        if (_cardinalDirection == Vector2.Down)
             return "down";
-        if (CardinalDirection == Vector2.Up)
+        if (_cardinalDirection == Vector2.Up)
             return "up";
-        if (CardinalDirection == Vector2.Left)
+        if (_cardinalDirection == Vector2.Left)
             return "left";
-        if (CardinalDirection == Vector2.Right)
+        if (_cardinalDirection == Vector2.Right)
             return "right";
         
         else return "err";
