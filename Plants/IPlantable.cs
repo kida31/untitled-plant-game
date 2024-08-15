@@ -9,7 +9,7 @@ public interface IPlantable
     }
     
     //designate tile it's on
-    void PlantOnTile();
+    void PlantOnTile(SoilTile soilTile);
 
     //hydrates based on how much water is on soil tile
     void Hydrate();

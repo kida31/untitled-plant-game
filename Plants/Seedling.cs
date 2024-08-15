@@ -3,16 +3,11 @@ using Godot;
 using System.Collections.Generic;
 
 namespace untitledplantgame.Plants;
-public abstract partial class APlant : Node2D, IPlantable
+public abstract partial class Seedling : Node2D, IPlantable
 {
     private string Nickname { get; set; }
 
-    private GrowthStage stage { get; set; }
-
-    private Dictionary<GrowthStage, Dictionary<string, Requirement>> Requirements; //should be a dictionary with requirements
-
-    private Dictionary<string, Requirement> currentRequirements => Requirements.GetValueOrDefault(stage, null);
-    //private APlant[] neighboringPlants; //companion planting
+    private Dictionary<string, Requirement> requirements;
 
     private void setStage(GrowthStage growthStage)
     {
