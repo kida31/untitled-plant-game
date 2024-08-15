@@ -40,13 +40,14 @@ public partial class PlayerStateMachine : Node
         {
             if (child.GetType().IsSubclassOf(typeof(State)))
             {
+                var state = (State)child;
+                state.Player = player;
                 _states.Add((State)child);
             }
         }
 
         if (_states.Count > 0)
         {
-            _states[0].Player = player;
             ChangeState(_states[0]);
             ProcessMode = ProcessModeEnum.Inherit;
         }

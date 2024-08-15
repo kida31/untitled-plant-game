@@ -6,7 +6,7 @@ namespace untitledplantgame.Tutorial_Player;
 public partial class TutorialPlayer : CharacterBody2D
 {
     Vector2 _cardinalDirection = Vector2.Down;
-    private Vector2 _direction = Vector2.Zero;
+    public Vector2 _direction = Vector2.Zero;
     
     private AnimatedSprite2D _animatedSprite2D;
     private PlayerStateMachine _stateMachine;
@@ -31,7 +31,7 @@ public partial class TutorialPlayer : CharacterBody2D
         MoveAndSlide();
     }
 
-    bool SetDirection()
+    public bool SetDirection()
     {
         Vector2 newDirection = _cardinalDirection;
 
@@ -57,7 +57,6 @@ public partial class TutorialPlayer : CharacterBody2D
     {
         var animationState = state + "_" + AnimationDirection();
         _animatedSprite2D.Play(animationState);
-        GD.Print(animationState);
     }
 
     string AnimationDirection()
