@@ -1,9 +1,9 @@
 using System;
 using Godot;
 
-namespace untitledplantgame.Tutorial_Player;
+namespace untitledplantgame.Player;
 
-public partial class TutorialPlayer : CharacterBody2D
+public partial class Player : CharacterBody2D
 {
     private Vector2 _cardinalDirection = Vector2.Down;
     public Vector2 Direction = Vector2.Zero;

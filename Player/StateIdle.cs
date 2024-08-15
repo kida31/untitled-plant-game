@@ -1,6 +1,6 @@
 using Godot;
 
-namespace untitledplantgame.Tutorial_Player;
+namespace untitledplantgame.Player;
 
 public partial class StateIdle : State
 {

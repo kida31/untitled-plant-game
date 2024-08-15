@@ -1,7 +1,6 @@
 using Godot;
-using System;
 
-namespace untitledplantgame.Tutorial_Player;
+namespace untitledplantgame.Player;
 
 public partial class StateWalk : State
 {

@@ -1,10 +1,10 @@
 using Godot;
 
-namespace untitledplantgame.Tutorial_Player;
+namespace untitledplantgame.Player;
 
-public abstract class State : Node
+public partial class State : Node
 {
-    public TutorialPlayer Player;
+    public Player Player;
 
     public virtual void Enter() { }
 

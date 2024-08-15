@@ -1,10 +1,7 @@
 using Godot;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace untitledplantgame.Tutorial_Player; 
+namespace untitledplantgame.Player; 
 
 public partial class PlayerStateMachine : Node
 {
@@ -32,7 +29,7 @@ public partial class PlayerStateMachine : Node
         ChangeState(_currState.HandleInput(@event));
     }
 
-    public void Initialize(TutorialPlayer player)
+    public void Initialize(Player player)
     {
         _states = new List<State>();
 
@@ -54,7 +51,7 @@ public partial class PlayerStateMachine : Node
         
     }
 
-    void ChangeState(untitledplantgame.Tutorial_Player.State newState)
+    void ChangeState(State newState)
     {
         if (newState == null || newState == _currState) return;
 
