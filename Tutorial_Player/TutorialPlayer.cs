@@ -5,8 +5,8 @@ namespace untitledplantgame.Tutorial_Player;
 
 public partial class TutorialPlayer : CharacterBody2D
 {
-    Vector2 _cardinalDirection = Vector2.Down;
-    public Vector2 _direction = Vector2.Zero;
+    private Vector2 _cardinalDirection = Vector2.Down;
+    public Vector2 Direction = Vector2.Zero;
     
     private AnimatedSprite2D _animatedSprite2D;
     private PlayerStateMachine _stateMachine;
@@ -20,8 +20,8 @@ public partial class TutorialPlayer : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        _direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
-        _direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
+        Direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
+        Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
 
         //Velocity = direction * MoveSpeed;
     }
@@ -35,17 +35,17 @@ public partial class TutorialPlayer : CharacterBody2D
     {
         Vector2 newDirection = _cardinalDirection;
 
-        if (_direction == Vector2.Zero) return false;
+        if (Direction == Vector2.Zero) return false;
 
-        if (_direction.Y == 0)
+        if (Direction.Y == 0)
         {
-            if (_direction.X < 0) newDirection = Vector2.Left;
+            if (Direction.X < 0) newDirection = Vector2.Left;
             else newDirection = Vector2.Right;
         }
 
-        if (_direction.X == 0)
+        if (Direction.X == 0)
         {
-            if (_direction.Y > 0) newDirection = Vector2.Down;
+            if (Direction.Y > 0) newDirection = Vector2.Down;
             else newDirection = Vector2.Up;
         }
 
@@ -69,7 +69,8 @@ public partial class TutorialPlayer : CharacterBody2D
             return "left";
         if (_cardinalDirection == Vector2.Right)
             return "right";
-        
-        else return "err";
-        
-    }}
+
+        throw new InvalidOperationException("Invalid direction; Unreachable Code");
+    }
+    
+}

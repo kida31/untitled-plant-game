@@ -4,12 +4,12 @@ namespace untitledplantgame.Tutorial_Player;
 
 public partial class StateIdle : State
 {
-    private State walkState;
+    private State _walkState;
     
     public override void _Ready()
     {
-        walkState = GetNode<State>("../Walk");
-        GD.Print(walkState);
+        _walkState = GetNode<State>("../Walk");
+        GD.Print(_walkState);
     }
 
     public override void Enter()
@@ -19,7 +19,7 @@ public partial class StateIdle : State
 
     public override State Process(double delta)
     {
-        if (Player._direction != Vector2.Zero) return walkState;
+        if (Player.Direction != Vector2.Zero) return _walkState;
         
         Player.Velocity = Vector2.Zero;
         return null;

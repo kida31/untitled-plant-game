@@ -21,10 +21,10 @@ public partial class StateWalk : State
 
     public override State Process(double delta)
     {
-        if (Player._direction == Vector2.Zero)
+        if (Player.Direction == Vector2.Zero)
             return idleState;
 
-        Player.Velocity = Player._direction * _movespeed;
+        Player.Velocity = Player.Direction * _movespeed;
         if(Player.SetDirection())
             Player.UpdateAnimation("walk");
         return null;
