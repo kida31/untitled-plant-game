@@ -9,7 +9,6 @@ public partial class StateIdle : State
     public override void _Ready()
     {
         _walkState = GetNode<State>("../Walk");
-        GD.Print(_walkState);
     }
 
     public override void Enter()
