@@ -10,7 +10,7 @@ namespace untitledplantgame.MagicBoxForData;
 
 public partial class ResourceManager : Node
 {
-    public static ResourceManager Instance;
+    public static ResourceManager Instance { get; private set; }
 
     private string _plantDataPath = "res://ResourceData/Resources/";
     private PlantData[] _plantDatas;
