@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://TestScenes/APlanr/TestAPlant.cs" id="1_5umc6"]
 [ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://TestScenes/APlanr/APlantPrefab.tscn" id="2_64co2"]
-[ext_resource type="Script" path="res://Plants/SoilTile.cs" id="3_pgupv"]
+[ext_resource type="Script" path="res://Plants/Soil/SoilTile.cs" id="3_pgupv"]
 
 [node name="TestAPlant" type="Node2D" node_paths=PackedStringArray("_sunButton", "_waterButton", "_growButton", "_label", "_plant", "_soilTile")]
 script = ExtResource("1_5umc6")

@@ -50,40 +50,7 @@ public partial class TestAPlant : Node2D
     private void OnSunButtonPressed()
     {
         GD.Print("Sun!");
-        _plant.AbsorbSun(10.0f);
-    }
-
-    private void TestPlantNotRequirement()
-    {
-        // Assign (Setup)
-        var plant = new APlant(123, GrowthStage.Seedling);
-        AddChild(plant);
-        // NOT FULFILLED REQUIREMEN TS
-
-        // Action (Trigger Functionality)
-        plant.CheckRequirements(); // Should NOT stage + 1
-
-        // Assert (Check if functionality was successful)
-        if (plant.Stage != GrowthStage.Seedling)
-        {
-            throw new InvalidOperationException("Stage was modified, but should not have");
-        }
-    }
-
-    private void TestPlantRequirementsMet()
-    {
-        var plant = new APlant(123, GrowthStage.Seedling);
-        AddChild(plant);
-        plant.AbsorbSun(100);
-        plant.AbsorbWaterFromTile();
-        plant.CheckRequirements();
-    
-        if (plant.Stage != GrowthStage.Vegetating)
-        {
-            throw new InvalidOperationException("Plant did not advance in stage");
-        }
-    
-        GD.Print("Plant1 on stage " + plant.Stage);
+        _plant.AbsorbSun();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

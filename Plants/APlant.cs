@@ -12,7 +12,9 @@ public partial class APlant : Node2D
 
     private int _plantId;
 
-    private float _absorptionRate = 10.0f;
+    private float _absorptionRate = 50.0f;
+
+    private AnimatedSprite2D _sprite2D;
 
     [Export] public GrowthStage Stage { get; private set; } = GrowthStage.Seedling;
 
@@ -20,6 +22,7 @@ public partial class APlant : Node2D
 
     public override void _Ready()
     {
+        _sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         UpdateRequirements();
     }
 
@@ -36,6 +39,7 @@ public partial class APlant : Node2D
     void UpdateRequirements()
     {
         _currentRequirements = MagicConch.Instance.GetRequirements(_plantId, Stage);
+        _sprite2D.Play(Stage.ToString());
     }
     
     public void CheckRequirements()
@@ -65,9 +69,9 @@ public partial class APlant : Node2D
         GD.Print(_currentRequirements.GetValueOrDefault("water"));
     }
 
-    public void AbsorbSun(float sunLevel)
+    public void AbsorbSun()
     {
-        _currentRequirements.GetValueOrDefault("sun").CurrentLevel += sunLevel;
+        _currentRequirements.GetValueOrDefault("sun").CurrentLevel += _absorptionRate;
         GD.Print(_currentRequirements.GetValueOrDefault("sun"));
     }
 }
