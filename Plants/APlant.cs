@@ -2,6 +2,7 @@ using System;
 using Godot;
 using System.Collections.Generic;
 using System.Linq;
+using untitledplantgame.MagicBoxForData;
 
 namespace untitledplantgame.Plants;
 public partial class APlant : Node2D
@@ -38,15 +39,12 @@ public partial class APlant : Node2D
     
     void UpdateRequirements()
     {
-        _currentRequirements = MagicConch.Instance.GetRequirements(_plantId, Stage);
+        _currentRequirements = ResourceManager.Instance.GetRequirements(0, Stage);
         _sprite2D.Play(Stage.ToString());
     }
     
     public void CheckRequirements()
     {
-        GD.Print("Water Level: " + _currentRequirements.GetValueOrDefault("water"));
-        GD.Print("Sun Level: " + _currentRequirements.GetValueOrDefault("sun"));
-        
         var fulfilled = _currentRequirements.All(req => req.Value.IsFulfilled());
 
         if (!fulfilled || Stage == GrowthStage.Ripening) return;

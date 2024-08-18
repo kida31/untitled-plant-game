@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=5 format=3 uid="uid://64fu3eke5bhr"]
+
+[ext_resource type="Script" path="res://ResourceData/RequirementData.cs" id="1_sehgl"]
+[ext_resource type="Script" path="res://ResourceData/PlantData.cs" id="2_5hpi2"]
+
+[sub_resource type="Resource" id="Resource_082ku"]
+script = ExtResource("1_sehgl")
+Name = "water"
+CurrentLevel = 0.0
+MinLevel = 100.0
+MaxLevel = 200.0
+
+[sub_resource type="Resource" id="Resource_xcj2s"]
+script = ExtResource("1_sehgl")
+Name = "sun"
+CurrentLevel = 0.0
+MinLevel = 100.0
+MaxLevel = 200.0
+
+[resource]
+script = ExtResource("2_5hpi2")
+_plantId = 0
+_plantName = "Basil"
+_growthStage = 3
+RequirementData = Array[Resource]([SubResource("Resource_082ku"), SubResource("Resource_xcj2s")])
