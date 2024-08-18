@@ -1,20 +1,28 @@
-﻿namespace untitledplantgame.Plants;
+﻿using System;
+
+namespace untitledplantgame.Plants;
 
 public class Requirement
 {
     public Requirement(float maxLevel, float minimumLevel, float currentLevel)
     {
-        this.maxLevel = maxLevel;
-        this.minimumLevel = minimumLevel;
-        this.currentLevel = currentLevel;
+        MaxLevel = maxLevel;
+        MinimumLevel = minimumLevel;
+        CurrentLevel = currentLevel;
     }
-    private float maxLevel;
-    private float minimumLevel;
+    public float MaxLevel { get; private set; }
+    public float MinimumLevel { get; private set; }
     
-    public float currentLevel { get; set; }
+    public float CurrentLevel { get; set; }
 
-    public bool isFullfilled()
+    public bool IsFulfilled()
     {
-        return currentLevel >= minimumLevel;
+        return CurrentLevel >= MinimumLevel;
+    }
+
+    public override string ToString()
+    {
+        return string.Format($"The current level reached {CurrentLevel}." +
+                             $" The minimum level should be {MinimumLevel} to advance");
     }
 }

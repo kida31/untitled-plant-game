@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace untitledplantgame.Plants;
 public partial class APlant : Node2D
@@ -10,60 +11,64 @@ public partial class APlant : Node2D
     private string PlantName { get; set; }
 
     private int _plantId;
-    public GrowthStage Stage { get; private set; }
+
+    private float _absorptionRate = 10.0f;
+
+    [Export] public GrowthStage Stage { get; private set; } = GrowthStage.Seedling;
 
     private Dictionary<string, Requirement> _currentRequirements;
+
+    public override void _Ready()
+    {
+        UpdateRequirements();
+    }
+
+    public APlant()
+    {
+    }
 
     public APlant(int plantId,GrowthStage stage)
     {
         _plantId = plantId;
         Stage = stage;
-        _currentRequirements = MagicConch.Instance.GetRequirements(plantId, stage);
     }
     
-    public void UpdateRequirements()
+    void UpdateRequirements()
     {
-       // TheMagicConch.GetRequirements();
+        _currentRequirements = MagicConch.Instance.GetRequirements(_plantId, Stage);
     }
     
     public void CheckRequirements()
     {
-        //nachts aufgerufen
-        bool allFullfilled = true;
-        foreach (var req in _currentRequirements)
-        {
-            if (!req.Value.isFullfilled())
-            {
-                allFullfilled = false;
-                break;
-            }
-        }
+        GD.Print("Water Level: " + _currentRequirements.GetValueOrDefault("water"));
+        GD.Print("Sun Level: " + _currentRequirements.GetValueOrDefault("sun"));
+        
+        var fulfilled = _currentRequirements.All(req => req.Value.IsFulfilled());
 
-        if (allFullfilled && Stage != GrowthStage.Ripening)
-        {
-            Stage += 1;
-        }
+        if (!fulfilled || Stage == GrowthStage.Ripening) return;
+
+        Stage += 1;
+        UpdateRequirements();
     }
 
     public SoilTile Tile { get; set; }
 
     public void PlantOnTile(SoilTile soilTile)
     {
-        //set tile
         Tile = soilTile;
     }
 
-    public void Hydrate()
+    public void AbsorbWaterFromTile()
     {
-        //check tile
-        //get hydration from tile
-        //
-        //SoilTile.reduceHydration(amount);
+        var waterAbsorbed = Tile.WithdrawHydration(_absorptionRate);
+        _currentRequirements.GetValueOrDefault("water").CurrentLevel += waterAbsorbed;
+        GD.Print(_currentRequirements.GetValueOrDefault("water"));
     }
 
-    public void AbsorbSun(float SunLevel)
+    public void AbsorbSun(float sunLevel)
     {
-        _currentRequirements.GetValueOrDefault("sun").currentLevel += SunLevel;
+        _currentRequirements.GetValueOrDefault("sun").CurrentLevel += sunLevel;
+        GD.Print(_currentRequirements.GetValueOrDefault("sun"));
     }
 }
 

@@ -10,10 +10,12 @@ public partial class MagicConch
     {
         //get specific Requirements based on id and stage
 
+        Requirement waterRequirement = MakeSomeRandomRequirement();
         Requirement sunRequirement = MakeSomeRandomRequirement();
 
         Dictionary<string, Requirement> requirements = new Dictionary<string, Requirement>();
         requirements["sun"] = sunRequirement;
+        requirements["water"] = waterRequirement;
         return requirements;
     }
 

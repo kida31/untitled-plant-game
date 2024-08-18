@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://f7it4seve2en"]
+
+[ext_resource type="Script" path="res://Plants/APlant.cs" id="1_14phw"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_c37ly"]
+
+[node name="APlantPrefab" type="Node2D"]
+script = ExtResource("1_14phw")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("2_c37ly")

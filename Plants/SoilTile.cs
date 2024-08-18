@@ -1,11 +1,15 @@
-﻿namespace untitledplantgame.Plants;
+﻿using System;
+using Godot;
 
-public abstract class SoilTile
+namespace untitledplantgame.Plants;
+
+public partial class SoilTile : Node2D
 {
-    private float Hydration
+    [Export]
+    public float Hydration
     {
         get;
-        set;
+        private set;
     }
 
     private float Fertilization
@@ -14,13 +18,21 @@ public abstract class SoilTile
         set;
     }
 
-    void reduceHydration(float reductionValue)
+    public float WithdrawHydration(float reductionValue)
     {
-        //minus hydration by value
+        var prevHydration = Hydration;
+        Hydration = Math.Clamp(Hydration - reductionValue, 0, Hydration);
+        
+        return prevHydration - Hydration;
     }
 
-    void reduceFertilization(float amount)
+    public void WaterTile(float addedWater)
     {
-        
+        Hydration += addedWater;
+    }
+
+    public void EvaporateWater()
+    {
+        Hydration--;
     }
 }
