@@ -19,11 +19,11 @@ offset_bottom = 40.0
 
 [node name="Sun" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Sun!"
+text = "Take in Sun!"
 
 [node name="Water" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Water Plant"
+text = "Absorb Water"
 
 [node name="MaybeGrow" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -31,13 +31,15 @@ text = "Check Growth"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Water Soil"
+text = "Water Soil Tile"
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="APlantPrefab" parent="." instance=ExtResource("2_64co2")]
+texture_filter = 1
 position = Vector2(276, 175)
+scale = Vector2(4, 4)
 
 [node name="Soil" type="Node2D" parent="."]
 position = Vector2(276, 175)
