@@ -2,9 +2,19 @@
 
 public class Requirement
 {
+    public Requirement(float maxLevel, float minimumLevel, float currentLevel)
+    {
+        this.maxLevel = maxLevel;
+        this.minimumLevel = minimumLevel;
+        this.currentLevel = currentLevel;
+    }
+    private float maxLevel;
+    private float minimumLevel;
     
-    private int maxLevel;
-    private int minimumLevel;
-    
-    private int currentLevel;
+    public float currentLevel { get; set; }
+
+    public bool isFullfilled()
+    {
+        return currentLevel >= minimumLevel;
+    }
 }

@@ -3,37 +3,54 @@ using Godot;
 using System.Collections.Generic;
 
 namespace untitledplantgame.Plants;
-public abstract partial class APlant : Node2D, IPlantable
+public partial class APlant : Node2D
 {
     private string Nickname { get; set; }
 
-    private GrowthStage stage { get; set; }
+    private string PlantName { get; set; }
 
-    private Dictionary<GrowthStage, Dictionary<string, Requirement>> Requirements; //should be a dictionary with requirements
+    private int _plantId;
+    public GrowthStage Stage { get; private set; }
 
-    private Dictionary<string, Requirement> currentRequirements => Requirements.GetValueOrDefault(stage, null);
-    //private APlant[] neighboringPlants; //companion planting
+    private Dictionary<string, Requirement> _currentRequirements;
 
-    private void setStage(GrowthStage growthStage)
+    public APlant(int plantId,GrowthStage stage)
     {
-        //set asset
-        stage = growthStage;
+        _plantId = plantId;
+        Stage = stage;
+        _currentRequirements = MagicConch.Instance.GetRequirements(plantId, stage);
     }
-
-    void checkRequirements()
+    
+    public void UpdateRequirements()
+    {
+       // TheMagicConch.GetRequirements();
+    }
+    
+    public void CheckRequirements()
     {
         //nachts aufgerufen
-        //if requirements all at max
-        //setStage(stage.Next());
+        bool allFullfilled = true;
+        foreach (var req in _currentRequirements)
+        {
+            if (!req.Value.isFullfilled())
+            {
+                allFullfilled = false;
+                break;
+            }
+        }
+
+        if (allFullfilled && Stage != GrowthStage.Ripening)
+        {
+            Stage += 1;
+        }
     }
 
-    public SoilTile tile { get; set; }
+    public SoilTile Tile { get; set; }
 
     public void PlantOnTile(SoilTile soilTile)
     {
         //set tile
-        tile = soilTile;
-        setStage(GrowthStage.Seedling); //first stage is set
+        Tile = soilTile;
     }
 
     public void Hydrate()
@@ -43,9 +60,14 @@ public abstract partial class APlant : Node2D, IPlantable
         //
         //SoilTile.reduceHydration(amount);
     }
+
+    public void AbsorbSun(float SunLevel)
+    {
+        _currentRequirements.GetValueOrDefault("sun").currentLevel += SunLevel;
+    }
 }
 
-enum GrowthStage
+public enum GrowthStage
 {
     Seedling,
     Vegetating,
