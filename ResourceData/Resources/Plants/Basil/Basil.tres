@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=10 format=3 uid="uid://di4c2sf57q2qw"]
+
+[ext_resource type="Script" path="res://ResourceData/RequirementData.cs" id="1_gwn8v"]
+[ext_resource type="Script" path="res://ResourceData/PlantData.cs" id="1_path2"]
+[ext_resource type="Script" path="res://ResourceData/RequirementDataForGrowthStage.cs" id="2_akt1g"]
+
+[sub_resource type="Resource" id="Resource_8q17h"]
+script = ExtResource("1_gwn8v")
+Name = "water"
+CurrentLevel = 0.0
+MinLevel = 100.0
+MaxLevel = 100.0
+
+[sub_resource type="Resource" id="Resource_5pigg"]
+script = ExtResource("1_gwn8v")
+Name = "sun"
+CurrentLevel = 0.0
+MinLevel = 200.0
+MaxLevel = 200.0
+
+[sub_resource type="Resource" id="Resource_emow1"]
+script = ExtResource("2_akt1g")
+GrowthRequirements = Array[Object]([SubResource("Resource_8q17h"), SubResource("Resource_5pigg")])
+
+[sub_resource type="Resource" id="Resource_sjwfd"]
+script = ExtResource("1_gwn8v")
+Name = "water"
+CurrentLevel = 0.0
+MinLevel = 150.0
+MaxLevel = 200.0
+
+[sub_resource type="Resource" id="Resource_aevbj"]
+script = ExtResource("1_gwn8v")
+Name = "sun"
+CurrentLevel = 0.0
+MinLevel = 180.0
+MaxLevel = 200.0
+
+[sub_resource type="Resource" id="Resource_vs071"]
+script = ExtResource("2_akt1g")
+GrowthRequirements = Array[Object]([SubResource("Resource_sjwfd"), SubResource("Resource_aevbj")])
+
+[resource]
+script = ExtResource("1_path2")
+_plantId = 0
+_plantName = "Basil"
+DataForGrowthStages = Array[Object]([SubResource("Resource_emow1"), SubResource("Resource_vs071")])
