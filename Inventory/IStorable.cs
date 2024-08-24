@@ -9,7 +9,7 @@ public interface IStorable
         get;
     }
     
-    Image Icon
+    Texture2D Icon
     {
         get;
     }
