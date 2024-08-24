@@ -5,11 +5,10 @@ using System.Linq;
 using untitledplantgame.MagicBoxForData;
 
 namespace untitledplantgame.Plants;
-public partial class APlant : Node2D
-{
-    private string Nickname { get; set; }
 
-    private string PlantName { get; set; }
+public partial class APlant : Node2D, IPlantable
+{
+    public string PlantName { get; private set; }
 
     private int _plantId;
 
@@ -17,32 +16,35 @@ public partial class APlant : Node2D
 
     private AnimatedSprite2D _sprite2D;
 
+    public SoilTile Tile { get; set; }
+
     [Export] public GrowthStage Stage { get; private set; } = GrowthStage.Seedling;
 
     private Dictionary<string, Requirement> _currentRequirements;
-
-    public override void _Ready()
-    {
-        _sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        UpdateRequirements();
-    }
 
     public APlant()
     {
     }
 
-    public APlant(int plantId,GrowthStage stage)
+    public APlant(int plantId, string name, GrowthStage stage)
     {
         _plantId = plantId;
+        PlantName= name;
         Stage = stage;
     }
-    
+
+    public override void _Ready()
+    { 
+        _sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        UpdateRequirements();
+    }
+
     void UpdateRequirements()
     {
         _currentRequirements = ResourceManager.Instance.GetRequirements(0, Stage);
         _sprite2D.Play(Stage.ToString());
     }
-    
+
     public void CheckRequirements()
     {
         var fulfilled = _currentRequirements.All(req => req.Value.IsFulfilled());
@@ -52,8 +54,6 @@ public partial class APlant : Node2D
         Stage += 1;
         UpdateRequirements();
     }
-
-    public SoilTile Tile { get; set; }
 
     public void PlantOnTile(SoilTile soilTile)
     {

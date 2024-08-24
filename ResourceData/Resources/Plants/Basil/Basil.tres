@@ -1,47 +1,14 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=10 format=3 uid="uid://di4c2sf57q2qw"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=7 format=3 uid="uid://di4c2sf57q2qw"]
 
-[ext_resource type="Script" path="res://ResourceData/RequirementData.cs" id="1_gwn8v"]
+[ext_resource type="Resource" uid="uid://1y45rhbgbdkn" path="res://ResourceData/Resources/Plants/Basil/Basil_0.tres" id="1_basii"]
 [ext_resource type="Script" path="res://ResourceData/PlantData.cs" id="1_path2"]
-[ext_resource type="Script" path="res://ResourceData/RequirementDataForGrowthStage.cs" id="2_akt1g"]
-
-[sub_resource type="Resource" id="Resource_8q17h"]
-script = ExtResource("1_gwn8v")
-Name = "water"
-CurrentLevel = 0.0
-MinLevel = 100.0
-MaxLevel = 100.0
-
-[sub_resource type="Resource" id="Resource_5pigg"]
-script = ExtResource("1_gwn8v")
-Name = "sun"
-CurrentLevel = 0.0
-MinLevel = 200.0
-MaxLevel = 200.0
-
-[sub_resource type="Resource" id="Resource_emow1"]
-script = ExtResource("2_akt1g")
-GrowthRequirements = Array[Object]([SubResource("Resource_8q17h"), SubResource("Resource_5pigg")])
-
-[sub_resource type="Resource" id="Resource_sjwfd"]
-script = ExtResource("1_gwn8v")
-Name = "water"
-CurrentLevel = 0.0
-MinLevel = 150.0
-MaxLevel = 200.0
-
-[sub_resource type="Resource" id="Resource_aevbj"]
-script = ExtResource("1_gwn8v")
-Name = "sun"
-CurrentLevel = 0.0
-MinLevel = 180.0
-MaxLevel = 200.0
-
-[sub_resource type="Resource" id="Resource_vs071"]
-script = ExtResource("2_akt1g")
-GrowthRequirements = Array[Object]([SubResource("Resource_sjwfd"), SubResource("Resource_aevbj")])
+[ext_resource type="Resource" uid="uid://d2mhdnorl6ynw" path="res://ResourceData/Resources/Plants/Basil/Basil_1.tres" id="2_g8hcg"]
+[ext_resource type="Resource" uid="uid://bjwo2icm7sxif" path="res://ResourceData/Resources/Plants/Basil/Basil_2.tres" id="3_3ca18"]
+[ext_resource type="Resource" uid="uid://d02f5sxh0f0en" path="res://ResourceData/Resources/Plants/Basil/Basil_3.tres" id="4_bw0gc"]
+[ext_resource type="Resource" uid="uid://3sh7ul4k0fh6" path="res://ResourceData/Resources/Plants/Basil/Basil_4.tres" id="5_a6ywe"]
 
 [resource]
 script = ExtResource("1_path2")
 _plantId = 0
 _plantName = "Basil"
-DataForGrowthStages = Array[Object]([SubResource("Resource_emow1"), SubResource("Resource_vs071")])
+DataForGrowthStages = Array[Object]([ExtResource("1_basii"), ExtResource("2_g8hcg"), ExtResource("3_3ca18"), ExtResource("4_bw0gc"), ExtResource("5_a6ywe")])

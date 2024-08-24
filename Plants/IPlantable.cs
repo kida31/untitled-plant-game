@@ -2,15 +2,9 @@
 
 public interface IPlantable
 {
-    SoilTile tile
-    {
-        get;
-        set;
-    }
-    
-    //designate tile it's on
-    void PlantOnTile(SoilTile soilTile);
+    SoilTile Tile { get; set; }
 
-    //hydrates based on how much water is on soil tile
-    void Hydrate();
+    public void PlantOnTile(SoilTile soilTile);
+
+    public void AbsorbWaterFromTile();
 }
