@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://nyv2tqdcvli1"]
+
+[ext_resource type="Script" path="res://Inventory/BackpackView/ItemView.cs" id="1_84adk"]
+
+[node name="ItemView" type="PanelContainer" node_paths=PackedStringArray("_nameLabel", "_bgContainer", "_deleteButton")]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+tooltip_text = "123"
+script = ExtResource("1_84adk")
+_nameLabel = NodePath("Label")
+_bgContainer = NodePath(".")
+_deleteButton = NodePath("Button")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "NoItemName"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 1
+text = "x"

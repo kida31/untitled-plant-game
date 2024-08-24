@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp3d1clwykgxu"]
+
+[ext_resource type="Script" path="res://Inventory/BackpackView/BackpackView.cs" id="1_0r1at"]
+[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Inventory/BackpackView/ItemView.tscn" id="2_jplhb"]
+
+[node name="BackpackView" type="PanelContainer" node_paths=PackedStringArray("_gridContainer", "_arrangeButton")]
+script = ExtResource("1_0r1at")
+_itemViewScene = ExtResource("2_jplhb")
+_gridContainer = NodePath("HBoxContainer/MarginContainer/GridContainer")
+_arrangeButton = NodePath("HBoxContainer/Button")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 4
+
+[node name="ItemView" parent="HBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_jplhb")]
+layout_mode = 2
+
+[node name="ItemView2" parent="HBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_jplhb")]
+layout_mode = 2
+
+[node name="ItemView3" parent="HBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_jplhb")]
+layout_mode = 2
+
+[node name="ItemView4" parent="HBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_jplhb")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Arrange"
