@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c186pbacifdrr"]
+
+[ext_resource type="Texture2D" uid="uid://dx1gvoqkygl8m" path="res://DayNightCycle/placeholder_BG.jpg" id="1_oq6ma"]
+[ext_resource type="Script" path="res://DayNightCycle/DayNightCycle.cs" id="2_k0o0e"]
+
+[node name="Day-night-cycle" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.5, 328.625)
+scale = Vector2(1.19896, 1.19896)
+texture = ExtResource("1_oq6ma")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Sprite2D"]
+script = ExtResource("2_k0o0e")
