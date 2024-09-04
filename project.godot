@@ -25,17 +25,13 @@ run/main_scene="res://DayNightCycle/day-night-cycle.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[autoload]
-
-ResourceManager="*res://ResourceData/ResourceManager.cs"
-
 [dotnet]
 
 project/assembly_name="untitled-plant-game"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

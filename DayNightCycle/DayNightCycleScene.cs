@@ -20,12 +20,15 @@ public partial class DayNightCycleScene : Node
 		_ui = GetNode<DayNightCycleUi>("Sprite2D/CanvasLayer/DayNightCycleUI");
 
 		_canvasLayer.Visible = true;
+
+		var dayNightCycle = (DayNightCycle) _canvasModulate;
+		dayNightCycle.TimeTick += _ui.SetDaytime; //canvas_modulate.time_tick.connect(ui.set_daytime)
+
 		/*
 		 TODO: figure out how to connect the signal
 		 gd code:
-		 canvas_modulate.time_tick.connect(ui.set_daytime)
 		   canvas_modulate.time_tick.connect(sound_machine.set_daytime)
-		   
+
 		maybe c# code:
 		_ui.SetDaytime(DayNightCycle.TimeTickEventHandler);
 		_canvasModulate.Connect("TimeTick", this, nameof(DayNightCycle.TimeTickEventHandler));

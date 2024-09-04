@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://DayNightCycle/DayNightCycle.cs" id="2_k0o0e"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightCycle/daynightcycle-gradient-texture.tres" id="3_l2k0r"]
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://DayNightCycle/UI/day_night_cycle_ui.tscn" id="4_j46wm"]
-[ext_resource type="Script" path="res://DayNightCycle/UI/day_night_cycle_ui.cs" id="5_l888p"]
+[ext_resource type="Script" path="res://DayNightCycle/UI/DayNightCycleUi.cs" id="5_l888p"]
 
 [node name="Day-night-cycle" type="Node2D"]
 script = ExtResource("1_jquet")
