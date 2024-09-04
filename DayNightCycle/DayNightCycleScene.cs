@@ -22,6 +22,11 @@ public partial class DayNightCycleScene : Node
 		_canvasLayer.Visible = true;
 		/*
 		 TODO: figure out how to connect the signal
+		 gd code:
+		 canvas_modulate.time_tick.connect(ui.set_daytime)
+		   canvas_modulate.time_tick.connect(sound_machine.set_daytime)
+		   
+		maybe c# code:
 		_ui.SetDaytime(DayNightCycle.TimeTickEventHandler);
 		_canvasModulate.Connect("TimeTick", this, nameof(DayNightCycle.TimeTickEventHandler));
 		**/
