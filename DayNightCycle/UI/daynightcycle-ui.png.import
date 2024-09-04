@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://boj71d2pygk12"
-path="res://.godot/imported/daynightcycle-ui.png-f0d82086a30d2619a807f490e69837f5.ctex"
+path="res://.godot/imported/daynightcycle-ui.png-1b308e58e7aa1c3658b33f2cb0786a61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DayNightCycle/daynightcycle-ui.png"
-dest_files=["res://.godot/imported/daynightcycle-ui.png-f0d82086a30d2619a807f490e69837f5.ctex"]
+source_file="res://DayNightCycle/UI/daynightcycle-ui.png"
+dest_files=["res://.godot/imported/daynightcycle-ui.png-1b308e58e7aa1c3658b33f2cb0786a61.ctex"]
 
 [params]
 

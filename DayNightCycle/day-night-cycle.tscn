@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c186pbacifdrr"]
+[gd_scene load_steps=4 format=3 uid="uid://c186pbacifdrr"]
 
 [ext_resource type="Texture2D" uid="uid://dx1gvoqkygl8m" path="res://DayNightCycle/placeholder_BG.jpg" id="1_oq6ma"]
 [ext_resource type="Script" path="res://DayNightCycle/DayNightCycle.cs" id="2_k0o0e"]
+[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightCycle/daynightcycle-gradient-texture.tres" id="3_l2k0r"]
 
 [node name="Day-night-cycle" type="Node2D"]
 
@@ -11,4 +12,6 @@ scale = Vector2(1.19896, 1.19896)
 texture = ExtResource("1_oq6ma")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Sprite2D"]
+position = Vector2(0.834045, 0)
 script = ExtResource("2_k0o0e")
+GradientTexture = ExtResource("3_l2k0r")
