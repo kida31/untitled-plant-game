@@ -20,7 +20,11 @@ public partial class DayNightCycleScene : Node
 		_ui = GetNode<DayNightCycleUi>("Sprite2D/CanvasLayer/DayNightCycleUI");
 
 		_canvasLayer.Visible = true;
-		//_canvasModulate.TimeTick()
+		/*
+		 TODO: figure out how to connect the signal
+		_ui.SetDaytime(DayNightCycle.TimeTickEventHandler);
+		_canvasModulate.Connect("TimeTick", this, nameof(DayNightCycle.TimeTickEventHandler));
+		**/
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

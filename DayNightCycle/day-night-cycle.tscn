@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c186pbacifdrr"]
+[gd_scene load_steps=7 format=3 uid="uid://c186pbacifdrr"]
 
+[ext_resource type="Script" path="res://DayNightCycle/DayNightCycleScene.cs" id="1_jquet"]
 [ext_resource type="Texture2D" uid="uid://dx1gvoqkygl8m" path="res://DayNightCycle/placeholder_BG.jpg" id="1_oq6ma"]
 [ext_resource type="Script" path="res://DayNightCycle/DayNightCycle.cs" id="2_k0o0e"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightCycle/daynightcycle-gradient-texture.tres" id="3_l2k0r"]
+[ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://DayNightCycle/UI/day_night_cycle_ui.tscn" id="4_j46wm"]
+[ext_resource type="Script" path="res://DayNightCycle/UI/day_night_cycle_ui.cs" id="5_l888p"]
 
 [node name="Day-night-cycle" type="Node2D"]
+script = ExtResource("1_jquet")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576.5, 328.625)
@@ -15,3 +19,10 @@ texture = ExtResource("1_oq6ma")
 position = Vector2(0.834045, 0)
 script = ExtResource("2_k0o0e")
 GradientTexture = ExtResource("3_l2k0r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Sprite2D"]
+
+[node name="DayNightCycleUI" parent="Sprite2D/CanvasLayer" instance=ExtResource("4_j46wm")]
+offset_right = 179.0
+offset_bottom = 130.0
+script = ExtResource("5_l888p")
