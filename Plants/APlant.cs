@@ -29,12 +29,12 @@ public partial class APlant : Node2D, IPlantable
     public APlant(int plantId, string name, GrowthStage stage)
     {
         _plantId = plantId;
-        PlantName= name;
+        PlantName = name;
         Stage = stage;
     }
 
     public override void _Ready()
-    { 
+    {
         _sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         UpdateRequirements();
     }

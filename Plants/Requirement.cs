@@ -10,9 +10,10 @@ public class Requirement
         MinimumLevel = minimumLevel;
         CurrentLevel = currentLevel;
     }
+
     public float MaxLevel { get; private set; }
     public float MinimumLevel { get; private set; }
-    
+
     public float CurrentLevel { get; set; }
 
     public bool IsFulfilled()
