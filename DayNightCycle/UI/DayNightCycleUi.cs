@@ -31,7 +31,7 @@ public partial class DayNightCycleUi : Control
 
 	public void SetDaytime(int day, int hour, int minute)
 	{
-		_dayLabel.Text = "Day" + Convert.ToString(day + 1);
+		_dayLabel.Text = "Day " + Convert.ToString(day + 1);
 		_dayLabelBackground.Text = _dayLabel.Text;
 
 		_timeLabel.Text = AmFm(hour) + ":" + SingleOrDoubleDigitMinute(minute) + " " + AmPm(hour);
