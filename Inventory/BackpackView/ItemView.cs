@@ -50,4 +50,33 @@ public partial class ItemView : Control
 
         _deleteButton.Visible = Item != null;
     }
+    
+    public override Variant _GetDragData(Vector2 atPosition)
+    {
+        // This is your custom method generating the preview of the drag data. Can be any Control node.
+        var rect = new TextureRect();
+        rect.Texture = _iconTexture.Texture;
+        SetDragPreview(rect); 
+        
+        // Return data. Can be other dedicated type
+        return this;
+    }
+
+    public override bool _CanDropData(Vector2 atPosition, Variant data)
+    {
+        return data is ItemView;
+    }
+
+    public override void _DropData(Vector2 atPosition, Variant data)
+    {
+        // Swap items
+        var thatItemView = (ItemView) data;
+        var tmp = _item;
+        _item = thatItemView._item;
+        thatItemView._item = tmp;
+        
+        // Force text and sprite update
+        UpdateItemView();
+        thatItemView.UpdateItemView();
+    }
 }
