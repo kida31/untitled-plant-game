@@ -64,7 +64,7 @@ public partial class ItemView : Control
 
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
-        return data is ItemView;
+        return true; // Should not be always true. Please don't drop item into the void.
     }
 
     public override void _DropData(Vector2 atPosition, Variant data)
