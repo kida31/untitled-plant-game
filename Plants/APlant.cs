@@ -15,7 +15,6 @@ public partial class APlant : Node2D, IPlantable
     private float _absorptionRate = 50.0f;
 
     private AnimatedSprite2D _sprite2D;
-
     public SoilTile Tile { get; set; }
 
     [Export] public GrowthStage Stage { get; private set; } = GrowthStage.Seedling;
@@ -47,11 +46,10 @@ public partial class APlant : Node2D, IPlantable
 
     public void CheckRequirements()
     {
-        var fulfilled = _currentRequirements.All(req => req.Value.IsFulfilled());
+        var fulfilled = _currentRequirements.All(req => req.Value.CanAdvanceStage());
 
         if (!fulfilled || Stage == GrowthStage.Ripening) return;
-
-        Stage += 1;
+        
         UpdateRequirements();
     }
 
@@ -62,14 +60,20 @@ public partial class APlant : Node2D, IPlantable
 
     public void AbsorbWaterFromTile()
     {
-        var waterAbsorbed = Tile.WithdrawHydration(_absorptionRate);
-        _currentRequirements.GetValueOrDefault("water").CurrentLevel += waterAbsorbed;
+        var waterReq = _currentRequirements.GetValueOrDefault("water");
+        var waterAbsorbed = Tile.WithdrawHydration(_absorptionRate) + waterReq.CurrentLevel;
+        
+        waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
+        
         GD.Print(_currentRequirements.GetValueOrDefault("water"));
     }
 
     public void AbsorbSun()
     {
-        _currentRequirements.GetValueOrDefault("sun").CurrentLevel += _absorptionRate;
+        var sunReq = _currentRequirements.GetValueOrDefault("sun");
+        
+        sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + _absorptionRate, sunReq.MaxLevel);
+        
         GD.Print(_currentRequirements.GetValueOrDefault("sun"));
     }
 }

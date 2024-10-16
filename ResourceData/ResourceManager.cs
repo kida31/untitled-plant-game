@@ -67,7 +67,7 @@ public partial class ResourceManager : Node
 
         foreach (var data in plantDataRequirementsForStage)
         {
-            plantRequirements[data.Name] = new Requirement(data.MaxLevel, data.MinLevel, data.CurrentLevel);
+            plantRequirements[data.Name] = new Requirement(data.MaxLevel, data.MinLevel, data.CurrentLevel, data.DaysToGrow, data.CurrentGrowthDay);
         }
 
         return plantRequirements;
