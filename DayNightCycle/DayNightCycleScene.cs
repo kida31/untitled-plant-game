@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Diagnostics;
 using untitledplantgame.DayNightCycle.UI;
 
 namespace untitledplantgame.DayNightCycle;
@@ -21,7 +19,7 @@ public partial class DayNightCycleScene : Node
 
 		_canvasLayer.Visible = true;
 
-		var dayNightCycle = (DayNightCycle) _canvasModulate;
+		var dayNightCycle = (TimeController) _canvasModulate;
 		dayNightCycle.TimeTick += _ui.SetDaytime; //canvas_modulate.time_tick.connect(ui.set_daytime)
 
 		/*
