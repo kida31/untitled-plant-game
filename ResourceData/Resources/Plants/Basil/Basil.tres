@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=7 format=3 uid="uid://di4c2sf57q2qw"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=7 format=3 uid="uid://di4c2sf57q2qw"]
 
 [ext_resource type="Resource" uid="uid://1y45rhbgbdkn" path="res://ResourceData/Resources/Plants/Basil/Basil_0.tres" id="1_basii"]
 [ext_resource type="Script" path="res://ResourceData/PlantData.cs" id="1_path2"]

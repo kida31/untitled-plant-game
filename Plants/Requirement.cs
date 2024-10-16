@@ -4,13 +4,11 @@ namespace untitledplantgame.Plants;
 
 public class Requirement
 {
-    public Requirement(float maxLevel, float minimumLevel, float currentLevel, int daysToGrow, int currentGrowthDay)
+    public Requirement(float maxLevel, float minimumLevel)
     {
         MaxLevel = maxLevel;
         MinimumLevel = minimumLevel;
-        CurrentLevel = currentLevel;
-        DaysToGrow = daysToGrow;
-        CurrentGrowthDay = currentGrowthDay;
+        CurrentLevel = 0;
     }
 
     public float MaxLevel { get; private set; }

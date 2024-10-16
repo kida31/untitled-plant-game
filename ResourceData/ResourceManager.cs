@@ -54,6 +54,17 @@ public partial class ResourceManager : Node
         return results.ToArray();
     }
 
+    public PlantData GetPlantData(int plantId, GrowthStage stage)
+    {
+        var plantData = _plantDatas.Find(data => data._plantId == plantId);
+        if (plantData == null)
+        {
+            throw new InvalidDataException($"There was no Data for {plantId}");
+        }
+
+        return plantData;
+    }
+    
     public Dictionary<string, Requirement> GetRequirements(int plantId, GrowthStage stage)
     {
         var plantData = _plantDatas.Find(data => data._plantId == plantId);
@@ -67,7 +78,7 @@ public partial class ResourceManager : Node
 
         foreach (var data in plantDataRequirementsForStage)
         {
-            plantRequirements[data.Name] = new Requirement(data.MaxLevel, data.MinLevel, data.CurrentLevel, data.DaysToGrow, data.CurrentGrowthDay);
+            plantRequirements[data.Name.ToString()] = new Requirement(data.MaxLevel, data.MinLevel);
         }
 
         return plantRequirements;

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://d2mhdnorl6ynw"]
+[gd_resource type="Resource" script_class="RequirementDataForGrowthStage" load_steps=5 format=3 uid="uid://d2mhdnorl6ynw"]
 
 [ext_resource type="Script" path="res://ResourceData/RequirementData.cs" id="1_e5br3"]
 [ext_resource type="Script" path="res://ResourceData/RequirementDataForGrowthStage.cs" id="2_0lae3"]
@@ -9,6 +9,8 @@ Name = "water"
 CurrentLevel = 0.0
 MinLevel = 150.0
 MaxLevel = 200.0
+DaysToGrow = 0
+CurrentGrowthDay = 0
 
 [sub_resource type="Resource" id="Resource_aevbj"]
 script = ExtResource("1_e5br3")
@@ -16,6 +18,8 @@ Name = "sun"
 CurrentLevel = 0.0
 MinLevel = 180.0
 MaxLevel = 200.0
+DaysToGrow = 0
+CurrentGrowthDay = 0
 
 [resource]
 script = ExtResource("2_0lae3")
