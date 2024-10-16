@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c186pbacifdrr"]
+[gd_scene load_steps=16 format=3 uid="uid://c186pbacifdrr"]
 
 [ext_resource type="Script" path="res://DayNightCycle/DayNightCycleScene.cs" id="1_jquet"]
 [ext_resource type="Texture2D" uid="uid://dx1gvoqkygl8m" path="res://DayNightCycle/placeholder_BG.jpg" id="1_oq6ma"]
@@ -6,6 +6,51 @@
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightCycle/daynightcycle-gradient-texture.tres" id="3_l2k0r"]
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://DayNightCycle/UI/day_night_cycle_ui.tscn" id="4_j46wm"]
 [ext_resource type="Script" path="res://DayNightCycle/UI/DayNightCycleUi.cs" id="5_l888p"]
+
+[sub_resource type="Curve" id="Curve_qdeml"]
+max_value = 0.3
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0.146676), 1.15871, 1.15871, 0, 0, Vector2(0.503067, 0.3), 0.0, 0.0, 0, 0, Vector2(0.754601, 0.146676), -0.757327, -0.757327, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_o6dyy"]
+curve = SubResource("Curve_qdeml")
+
+[sub_resource type="Gradient" id="Gradient_6nd00"]
+colors = PackedColorArray(1, 1, 1, 0.0784314, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cn46w"]
+gradient = SubResource("Gradient_6nd00")
+
+[sub_resource type="Curve" id="Curve_r42ly"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_s23k8"]
+max_value = 30.0
+_data = [Vector2(0, 15.0858), 0.0, 0.0, 0, 0, Vector2(0.122699, 22.8217), 55.7001, 55.7001, 0, 0, Vector2(0.25, 30), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_7o5yb"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_snr6y"]
+curve_x = SubResource("Curve_r42ly")
+curve_y = SubResource("Curve_s23k8")
+curve_z = SubResource("Curve_7o5yb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_chsn6"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -300, 0)
+emission_shape = 3
+emission_box_extents = Vector3(350, 1, 1)
+gravity = Vector3(0, 3000, 0)
+scale_min = 0.3
+scale_over_velocity_curve = SubResource("CurveXYZTexture_snr6y")
+color_initial_ramp = SubResource("GradientTexture1D_cn46w")
+alpha_curve = SubResource("CurveTexture_o6dyy")
 
 [node name="Day-night-cycle" type="Node2D"]
 script = ExtResource("1_jquet")
@@ -19,6 +64,8 @@ texture = ExtResource("1_oq6ma")
 position = Vector2(0.834045, 0)
 script = ExtResource("2_k0o0e")
 GradientTexture = ExtResource("3_l2k0r")
+IngameSpeed = null
+InitialHour = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Sprite2D"]
 
@@ -26,3 +73,9 @@ GradientTexture = ExtResource("3_l2k0r")
 offset_right = 179.0
 offset_bottom = 130.0
 script = ExtResource("5_l888p")
+
+[node name="RainParticles" type="GPUParticles2D" parent="Sprite2D"]
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_chsn6")
+lifetime = 0.5
+preprocess = 0.5
