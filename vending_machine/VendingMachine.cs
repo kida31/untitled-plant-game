@@ -1,38 +1,28 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-public partial class VendingMachine : Node
+public class VendingMachine
 {
 	// Magic Numbers
-	private static readonly int MAX_SALES = 100;
-	private static readonly float SALES_PERCENT_PER_INTERVAL = 0.1f;
+	private const int MAX_SALES = 100;
+	private const float SALES_PERCENT_PER_INTERVAL = 0.1f;
 
 	// State
-	private StorableArray<ISellable> _itemContainer;
+	private ItemStack<ISellable>[] _items;
 	private int _gold = 0;
 	private float _priceMultiplier = 1.0f;
 	private float _faithMultiplier = 1.0f;
 	private int _salesRemaining = MAX_SALES;
 
 	// Properties
-	public StorableArray<ISellable> ItemContainer => _itemContainer;
+	public ItemStack<ISellable>[] Items => _items;
 	public float PriceMultiplier => _priceMultiplier;
 	public float FaithMultiplier => _faithMultiplier;
 
-	// GUI and Interaction
-	[Export]
-	private Button WithdrawButton;
-	[Export]
-	
-	private 
-    public override void _Ready()
-    {
-        
-    }
-
-    /// <summary>
+	/// <summary>
     /// Sells a random item from the vending machine's inventory.
     /// </summary>
     /// <remarks>
@@ -47,7 +37,7 @@ public partial class VendingMachine : Node
     /// <item><description>Deducts the actual sell count from the remaining sales and removes the sold items from the inventory.</description></item>
     /// </list>
     /// </remarks>
-    public void SellRandomItem()
+    public void SellRandomItems()
 	{
 		// Check if any sales remaining
 		if (_salesRemaining <= 0) {
@@ -55,23 +45,28 @@ public partial class VendingMachine : Node
 		}
 
 		// Check if any items in supply
-		var totalItemCount = _itemContainer.Items.Select((keyValue) => keyValue.Value).Sum();
+		var totalItemCount = _items.Select((stack) => stack.Quantity).Sum();
 		if (totalItemCount == 0) {
 			return;
 		}
 
 		// Sales count for this transaction is a percent of current supply, but at least one.
-		int totalSellCount = (int) Math.Max(SALES_PERCENT_PER_INTERVAL * totalItemCount, 1);
+		var totalSellCount = (int) Math.Max(SALES_PERCENT_PER_INTERVAL * totalItemCount, 1);
 
 		// Sort by price descending, sell most expensive first.
-		var itemsByPrice = _itemContainer.Items.OrderBy(keyValue => keyValue.Key.Price);
-
-		foreach (var keyValue in itemsByPrice)
+		var itemsByPrice = _items.OrderBy(stack => stack.Item.Price).ToList();
+		
+		for (var index = 0; index < itemsByPrice.Count; index++)
 		{
+			var stack = itemsByPrice[index];
+			
 			// Can stop selling once count has reached zero
 			if (totalSellCount == 0) break;
 
-			var (item, quantity) = keyValue;
+			var item = stack.Item;
+			if (item == null) continue;
+
+			var quantity = stack.Quantity;
 			Debug.Assert(quantity > 0); // Empty item stacks should not be in container
 
 			// Do not sell more than supply
@@ -84,12 +79,18 @@ public partial class VendingMachine : Node
 			_salesRemaining -= itemSellCount;
 
 			// Sold items are no longer in container
-			_itemContainer.RemoveItem(item, itemSellCount);
+			stack.Quantity -= itemSellCount;
+			if (stack.Quantity == 0)
+			{
+				stack.Item = null;
+			}
+			itemsByPrice[index] = stack;
 		}
 	}
 
 	public void SetPriceSlider(float f) {
-
+		_priceMultiplier = f;
+		_faithMultiplier = (float) 1.0 / f;
 	}
 
 	public int WithdrawGold() {
@@ -100,5 +101,10 @@ public partial class VendingMachine : Node
 
 	public void OnEndOfDay() {
 		_salesRemaining = MAX_SALES;
+	}
+
+	public void Test()
+	{
+		ItemStackController.Instance.MoveItem(ref _items[0], ref _items[1]);
 	}
 }
