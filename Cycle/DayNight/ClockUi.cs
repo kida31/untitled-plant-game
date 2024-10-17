@@ -1,9 +1,8 @@
-using Godot;
 using System;
+using Godot;
 using untitledplantgame.Common;
 
-namespace untitledplantgame.Cycle.UI;
-
+namespace untitledplantgame.Cycle.DayNight;
 
 public partial class ClockUi : Control
 {
@@ -12,7 +11,7 @@ public partial class ClockUi : Control
 	private Label _timeLabelBackground;
 	private Label _timeLabel;
 	private TextureRect _arrow;
-	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -24,13 +23,8 @@ public partial class ClockUi : Control
 		
 		TimeController.Instance.TimeTick += SetDaytime;
 	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
-	public void SetDaytime(int day, int hour, int minute)
+	
+	private void SetDaytime(int day, int hour, int minute)
 	{
 		_dayLabel.Text = "Day " + Convert.ToString(day + 1);
 		_dayLabelBackground.Text = _dayLabel.Text;
@@ -40,27 +34,23 @@ public partial class ClockUi : Control
 
 		if (hour <= 12)
 		{
-			_arrow.RotationDegrees = RemapRangeF( hour, 0, 12, -90, 90);
+			_arrow.RotationDegrees = RemapRangeF( hour + minute / 60f, 0, 13, -90, 90);
 		}
 		else
 		{
-			_arrow.RotationDegrees = RemapRangeF( hour, 13, 23, 90, -90);
+			_arrow.RotationDegrees = RemapRangeF( hour + minute / 60f, 13, 24, 90, -90);
 		}
 
 	}
 
 	private static string AmFm(int hour)
 	{
-		if (hour == 0)
+		return hour switch
 		{
-			return Convert.ToString(12);
-		}
-		if (hour > 12)
-		{
-			return Convert.ToString(hour - 12);
-		}
-
-		return Convert.ToString(hour);
+			0 => Convert.ToString(12),
+			> 12 => Convert.ToString(hour - 12),
+			_ => Convert.ToString(hour)
+		};
 	}
 
 	private string SingleOrDoubleDigitMinute(int minute)

@@ -9,6 +9,8 @@ public partial class TimeController : Node
 {
 	/// Singleton instance that's accessible from anywhere
 	public static TimeController Instance { get; private set; }
+	/// Radial time in radians
+	public double Time { get; private set; }
 
 	private readonly Logger _logger = new Logger("Time");
 
@@ -21,8 +23,6 @@ public partial class TimeController : Node
 	/// The hour with which the day starts
 	private const int InitialHour = 7;
 
-	/// Radial time in radians
-	public double Time { get; private set; }
 	private int _pastDay;
 	private int _pastMinute = -1;
 

@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://dx1gvoqkygl8m" path="res://Cycle/placeholder_BG.jpg" id="2_hbbpm"]
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Cycle/UI/ClockUI.tscn" id="3_06hob"]
-[ext_resource type="Script" path="res://Cycle/DayNight/ClockUi.cs" id="4_8s7au"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Cycle/DayNight/daynightcycle-gradient-texture.tres" id="5_5do3g"]
 [ext_resource type="Material" uid="uid://2rf0jb5b024f" path="res://Cycle/Weather/WeatherResources/rain_particle_setting.tres" id="5_etvni"]
+[ext_resource type="Script" path="res://Cycle/Weather/WeatherCycleUi.cs" id="6_8tli7"]
 [ext_resource type="Script" path="res://Cycle/DayNight/NightTint.cs" id="6_gxo7k"]
 
 [node name="Placeholder" type="Node2D"]
@@ -17,7 +17,6 @@ texture = ExtResource("2_hbbpm")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ClockUI" parent="CanvasLayer" instance=ExtResource("3_06hob")]
-script = ExtResource("4_8s7au")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(577.5, 328.625)
@@ -25,7 +24,10 @@ scale = Vector2(1.19896, 1.19896)
 script = ExtResource("6_gxo7k")
 _gradientTexture = ExtResource("5_5do3g")
 
-[node name="RainParticles" type="GPUParticles2D" parent="."]
+[node name="Weahter" type="Node" parent="."]
+script = ExtResource("6_8tli7")
+
+[node name="RainParticles" type="GPUParticles2D" parent="Weahter"]
 position = Vector2(576.5, 328.625)
 scale = Vector2(1.19896, 1.19896)
 amount = 1000
