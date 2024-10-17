@@ -11,7 +11,7 @@ MaxLevel = 500.0
 
 [sub_resource type="Resource" id="Resource_sda7d"]
 script = ExtResource("1_fbi6u")
-Name = 0
+Name = 1
 MinLevel = 300.0
 MaxLevel = 400.0
 

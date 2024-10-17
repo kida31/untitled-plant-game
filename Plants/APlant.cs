@@ -60,6 +60,7 @@ public partial class APlant : Node2D, IPlantable
 
     void AdvanceStage()
     {
+        GD.Print("Current Day is " + _currentDay + " and Days to Grow is " + _daysToGrow);
         if (_currentDay < _daysToGrow) return;
 
         Stage++;

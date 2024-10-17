@@ -11,7 +11,7 @@ MaxLevel = 250.0
 
 [sub_resource type="Resource" id="Resource_wjj6g"]
 script = ExtResource("1_v84ge")
-Name = 0
+Name = 1
 MinLevel = 200.0
 MaxLevel = 300.0
 

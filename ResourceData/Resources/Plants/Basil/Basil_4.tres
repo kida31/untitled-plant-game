@@ -11,7 +11,7 @@ MaxLevel = 540.0
 
 [sub_resource type="Resource" id="Resource_xus6r"]
 script = ExtResource("1_nmpdu")
-Name = 0
+Name = 1
 MinLevel = 500.0
 MaxLevel = 660.0
 

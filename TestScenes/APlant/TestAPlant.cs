@@ -8,7 +8,6 @@ public partial class TestAPlant : Node2D
 {
     [Export] private Button _sunButton;
     [Export] private Button _waterButton;
-    [Export] private Button _growButton;
     [Export] private Label _label;
     
     [Export] private APlant _plant;
@@ -22,7 +21,6 @@ public partial class TestAPlant : Node2D
     {
         _sunButton.Pressed += OnSunButtonPressed;
         _waterButton.Pressed += OnWaterButtonPressed;
-        _growButton.Pressed += OnGrowButtonPressed;
         var waterSoilButton = GetNode<Button>("VBoxContainer/Button");
         waterSoilButton.Pressed += OnWaterSoilButtonPressed;
         

@@ -8,7 +8,7 @@
 script = ExtResource("1_5umc6")
 _sunButton = NodePath("VBoxContainer/Sun")
 _waterButton = NodePath("VBoxContainer/Water")
-_growButton = NodePath("VBoxContainer/MaybeGrow")
+_growButton = NodePath("")
 _label = NodePath("VBoxContainer/Label")
 _plant = NodePath("APlantPrefab")
 _soilTile = NodePath("Soil")
@@ -24,10 +24,6 @@ text = "Take in Sun!"
 [node name="Water" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Absorb Water"
-
-[node name="MaybeGrow" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Check Growth"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
