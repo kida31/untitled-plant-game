@@ -1,7 +1,7 @@
 using Godot;
-using untitledplantgame.DayNightCycle.UI;
+using untitledplantgame.Cycle.UI;
 
-namespace untitledplantgame.DayNightCycle;
+namespace untitledplantgame.Cycle;
 
 public partial class DayNightCycleScene : Node
 {

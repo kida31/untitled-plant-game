@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace untitledplantgame.DayNightCycle.UI;
+namespace untitledplantgame.Cycle.UI;
 
 public partial class WeatherCycleUi : Control
 {

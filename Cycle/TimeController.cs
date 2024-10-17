@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace untitledplantgame.DayNightCycle;
+namespace untitledplantgame.Cycle;
 
 public partial class TimeController : CanvasModulate
 {

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace untitledplantgame.DayNightCycle.UI;
+namespace untitledplantgame.Cycle.UI;
 
 
 public partial class DayNightCycleUi : Control
