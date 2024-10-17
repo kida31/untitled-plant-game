@@ -16,7 +16,7 @@ public class Logger
     private readonly string _logFilePath;
     private readonly string _name;
 
-    public Logger(string name, bool writeToFile = false)
+    public Logger(string name)
     {
         _name = name;
 
@@ -26,8 +26,8 @@ public class Logger
             throw new ArgumentException("Name can only contain letters and numbers");
         }
 
-        // Create log file in temp folder
-        if (writeToFile)
+        // Write logs to file when it's not a debug build
+        if (!OS.IsDebugBuild())
         {
             // Create directory if it doesn't exist
             var dirPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "logs");
