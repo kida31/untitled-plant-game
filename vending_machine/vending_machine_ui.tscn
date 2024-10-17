@@ -1,6 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://c108xawc8eseh"]
+[gd_scene load_steps=3 format=3 uid="uid://c108xawc8eseh"]
 
-[ext_resource type="Script" path="res://vending_machine/VendingMachine.cs" id="1_ggd3j"]
+[ext_resource type="Script" path="res://vending_machine/VendingMachineUI.cs" id="1_eust6"]
+[ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://vending_machine/item_stack.tscn" id="2_q5lnp"]
 
-[node name="VendingMachineUi" type="Node2D"]
-script = ExtResource("1_ggd3j")
+[node name="VendingMachineUi" type="PanelContainer"]
+script = ExtResource("1_eust6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 4
+
+[node name="ItemStack" parent="MarginContainer/GridContainer" instance=ExtResource("2_q5lnp")]
+layout_mode = 2
+
+[node name="ItemStack2" parent="MarginContainer/GridContainer" instance=ExtResource("2_q5lnp")]
+layout_mode = 2
+
+[node name="ItemStack3" parent="MarginContainer/GridContainer" instance=ExtResource("2_q5lnp")]
+layout_mode = 2
+
+[node name="ItemStack4" parent="MarginContainer/GridContainer" instance=ExtResource("2_q5lnp")]
+layout_mode = 2
+
+[node name="ItemStack5" parent="MarginContainer/GridContainer" instance=ExtResource("2_q5lnp")]
+layout_mode = 2
+
+[node name="ItemStack6" parent="MarginContainer/GridContainer" instance=ExtResource("2_q5lnp")]
+layout_mode = 2
+
+[node name="ItemStack7" parent="MarginContainer/GridContainer" instance=ExtResource("2_q5lnp")]
+layout_mode = 2
+
+[node name="ItemStack8" parent="MarginContainer/GridContainer" instance=ExtResource("2_q5lnp")]
+layout_mode = 2

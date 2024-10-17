@@ -1,34 +1,37 @@
 using System.Diagnostics;
 using System.Linq;
 
-public class ItemStackController
+namespace InventoryV0
 {
-    private static ItemStackController _instance;
-
-    public static ItemStackController Instance
+    public class ItemStackController
     {
-        get
+        private static ItemStackController _instance;
+
+        public static ItemStackController Instance
         {
-            if (_instance == null)
+            get
             {
-                _instance = new ItemStackController();
+                if (_instance == null)
+                {
+                    _instance = new ItemStackController();
+                }
+
+                return _instance;
+            }
+        }
+
+        public void MoveItem<T>(ref ItemStack<T> from, ref ItemStack<T> to) where T : class, IStorable
+        {
+            if (to.Item != null && from.Item != to.Item)
+            {
+                throw new System.Exception("Unsupported Operation");
             }
 
-            return _instance;
-        }
-    }
+            to.Item ??= from.Item;
+            to.Quantity += from.Quantity;
 
-    public void MoveItem<T>(ref ItemStack<T> from, ref ItemStack<T> to) where T: class, IStorable
-    {
-        if (to.Item != null && from.Item != to.Item)
-        {
-            throw new System.Exception("Unsupported Operation");
+            from.Quantity = 0;
+            from.Item = null;
         }
-
-        to.Item ??= from.Item;
-        to.Quantity += from.Quantity;
-        
-        from.Quantity = 0;
-        from.Item = null;
     }
 }

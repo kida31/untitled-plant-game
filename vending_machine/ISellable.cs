@@ -1,6 +1,7 @@
-public interface ISellable: IStorable{
-    int Price
+namespace InventoryV0
+{
+    public interface ISellable : IStorable
     {
-       get;
+        int Price { get; }
     }
 }

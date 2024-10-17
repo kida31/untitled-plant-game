@@ -1,28 +1,27 @@
-using Godot;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using InventoryV0;
 
 public class VendingMachine
 {
-	// Magic Numbers
-	private const int MAX_SALES = 100;
-	private const float SALES_PERCENT_PER_INTERVAL = 0.1f;
+    // Magic Numbers
+    private const int MAX_SALES = 100;
+    private const float SALES_PERCENT_PER_INTERVAL = 0.1f;
 
-	// State
-	private ItemStack<ISellable>[] _items;
-	private int _gold = 0;
-	private float _priceMultiplier = 1.0f;
-	private float _faithMultiplier = 1.0f;
-	private int _salesRemaining = MAX_SALES;
+    // State
+    private ItemStack<ISellable>[] _items;
+    private int _gold = 0;
+    private float _priceMultiplier = 1.0f;
+    private float _faithMultiplier = 1.0f;
+    private int _salesRemaining = MAX_SALES;
 
-	// Properties
-	public ItemStack<ISellable>[] Items => _items;
-	public float PriceMultiplier => _priceMultiplier;
-	public float FaithMultiplier => _faithMultiplier;
+    // Properties
+    public ItemStack<ISellable>[] Items => _items;
+    public float PriceMultiplier => _priceMultiplier;
+    public float FaithMultiplier => _faithMultiplier;
 
-	/// <summary>
+    /// <summary>
     /// Sells a random item from the vending machine's inventory.
     /// </summary>
     /// <remarks>
@@ -38,73 +37,79 @@ public class VendingMachine
     /// </list>
     /// </remarks>
     public void SellRandomItems()
-	{
-		// Check if any sales remaining
-		if (_salesRemaining <= 0) {
-			return;
-		}
+    {
+        // Check if any sales remaining
+        if (_salesRemaining <= 0)
+        {
+            return;
+        }
 
-		// Check if any items in supply
-		var totalItemCount = _items.Select((stack) => stack.Quantity).Sum();
-		if (totalItemCount == 0) {
-			return;
-		}
+        // Check if any items in supply
+        var totalItemCount = _items.Select((stack) => stack.Quantity).Sum();
+        if (totalItemCount == 0)
+        {
+            return;
+        }
 
-		// Sales count for this transaction is a percent of current supply, but at least one.
-		var totalSellCount = (int) Math.Max(SALES_PERCENT_PER_INTERVAL * totalItemCount, 1);
+        // Sales count for this transaction is a percent of current supply, but at least one.
+        var totalSellCount = (int) Math.Max(SALES_PERCENT_PER_INTERVAL * totalItemCount, 1);
 
-		// Sort by price descending, sell most expensive first.
-		var itemsByPrice = _items.OrderBy(stack => stack.Item.Price).ToList();
-		
-		for (var index = 0; index < itemsByPrice.Count; index++)
-		{
-			var stack = itemsByPrice[index];
-			
-			// Can stop selling once count has reached zero
-			if (totalSellCount == 0) break;
+        // Sort by price descending, sell most expensive first.
+        var itemsByPrice = _items.OrderBy(stack => stack.Item.Price).ToList();
 
-			var item = stack.Item;
-			if (item == null) continue;
+        for (var index = 0; index < itemsByPrice.Count; index++)
+        {
+            var stack = itemsByPrice[index];
 
-			var quantity = stack.Quantity;
-			Debug.Assert(quantity > 0); // Empty item stacks should not be in container
+            // Can stop selling once count has reached zero
+            if (totalSellCount == 0) break;
 
-			// Do not sell more than supply
-			var itemSellCount = Math.Min(totalSellCount, quantity);
+            var item = stack.Item;
+            if (item == null) continue;
 
-			// Prices after multiplier are rounded up.
-			_gold += (int) Math.Ceiling(item.Price * _priceMultiplier) * itemSellCount;
+            var quantity = stack.Quantity;
+            Debug.Assert(quantity > 0); // Empty item stacks should not be in container
 
-			// Actual sell count has to be deducted from remaining sales
-			_salesRemaining -= itemSellCount;
+            // Do not sell more than supply
+            var itemSellCount = Math.Min(totalSellCount, quantity);
 
-			// Sold items are no longer in container
-			stack.Quantity -= itemSellCount;
-			if (stack.Quantity == 0)
-			{
-				stack.Item = null;
-			}
-			itemsByPrice[index] = stack;
-		}
-	}
+            // Prices after multiplier are rounded up.
+            _gold += (int) Math.Ceiling(item.Price * _priceMultiplier) * itemSellCount;
 
-	public void SetPriceSlider(float f) {
-		_priceMultiplier = f;
-		_faithMultiplier = (float) 1.0 / f;
-	}
+            // Actual sell count has to be deducted from remaining sales
+            _salesRemaining -= itemSellCount;
 
-	public int WithdrawGold() {
-		var deducedGold = _gold;
-		_gold = 0;
-		return deducedGold;
-	}
+            // Sold items are no longer in container
+            stack.Quantity -= itemSellCount;
+            if (stack.Quantity == 0)
+            {
+                stack.Item = null;
+            }
 
-	public void OnEndOfDay() {
-		_salesRemaining = MAX_SALES;
-	}
+            itemsByPrice[index] = stack;
+        }
+    }
 
-	public void Test()
-	{
-		ItemStackController.Instance.MoveItem(ref _items[0], ref _items[1]);
-	}
+    public void SetPriceSlider(float f)
+    {
+        _priceMultiplier = f;
+        _faithMultiplier = (float) 1.0 / f;
+    }
+
+    public int WithdrawGold()
+    {
+        var deducedGold = _gold;
+        _gold = 0;
+        return deducedGold;
+    }
+
+    public void OnEndOfDay()
+    {
+        _salesRemaining = MAX_SALES;
+    }
+
+    public void Test()
+    {
+        ItemStackController.Instance.MoveItem(ref _items[0], ref _items[1]);
+    }
 }

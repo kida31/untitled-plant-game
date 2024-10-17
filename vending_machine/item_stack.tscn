@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://v4q4n4opsed6"]
+
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="1_onwbe"]
+[ext_resource type="Texture2D" uid="uid://21vebptmufut" path="res://black_dot.png" id="2_7wld1"]
+[ext_resource type="Script" path="res://vending_machine/ItemStack.cs" id="2_vlkqn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6swp8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="ItemStack" type="PanelContainer" node_paths=PackedStringArray("_quantityLabel")]
+custom_minimum_size = Vector2(160, 160)
+offset_right = 160.0
+offset_bottom = 160.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6swp8")
+script = ExtResource("2_vlkqn")
+_quantityLabel = NodePath("QuantityLabel")
+_placeholderIcon = ExtResource("1_onwbe")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="EmptyBlob" type="TextureRect" parent="CenterContainer"]
+modulate = Color(1, 1, 1, 0.321569)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_7wld1")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ItemTexture" type="TextureRect" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="QuantityLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
+theme_override_colors/font_shadow_color = Color(0.933333, 0.933333, 0.933333, 1)
+theme_override_constants/shadow_outline_size = 20
+theme_override_font_sizes/font_size = 48
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 2

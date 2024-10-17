@@ -1,4 +1,7 @@
-public interface IStorable
+namespace InventoryV0
 {
+    public interface IStorable
+    {
 
+    }
 }
