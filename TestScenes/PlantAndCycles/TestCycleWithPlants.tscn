@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxnxwjoe7007y"]
 
-[ext_resource type="PackedScene" uid="uid://c186pbacifdrr" path="res://Cycle/day-night-cycle.tscn" id="1_vp5db"]
+[ext_resource type="PackedScene" uid="uid://c186pbacifdrr" path="res://Cycle/placeholder.tscn" id="1_vp5db"]
 [ext_resource type="PackedScene" uid="uid://cc5mcucmbfc65" path="res://TestScenes/APlant/TestAPlant.tscn" id="3_0d3u6"]
 [ext_resource type="Script" path="res://Plants/PlantController.cs" id="4_as062"]
 

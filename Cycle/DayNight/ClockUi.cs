@@ -1,12 +1,12 @@
 using Godot;
 using System;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Cycle.UI;
 
 
-public partial class DayNightCycleUi : Control
+public partial class ClockUi : Control
 {
-
 	private Label _dayLabelBackground;
 	private Label _dayLabel;
 	private Label _timeLabelBackground;
@@ -21,6 +21,8 @@ public partial class DayNightCycleUi : Control
 		_timeLabelBackground = GetNode<Label>("CenterContainerTime/TimeLabelBackground");
 		_timeLabel = GetNode<Label>("CenterContainerTime/TimeLabelBackground/TimeLabel");
 		_arrow = GetNode<TextureRect>("Arrow");
+		
+		TimeController.Instance.TimeTick += SetDaytime;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

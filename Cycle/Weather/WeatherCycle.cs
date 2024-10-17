@@ -1,8 +1,8 @@
 ﻿using System;
 using Godot;
-using untitledplantgame.Cycle.UI;
+using untitledplantgame.Common;
 
-namespace untitledplantgame.Cycle;
+namespace untitledplantgame.Cycle.Weather;
 
 public enum Weather
 {
@@ -18,7 +18,6 @@ public partial class WeatherCycle : Node
     private int _nextChangeAtDay;
     
     private CanvasLayer _canvasLayer;
-    private CanvasModulate _canvasModulate;
     private WeatherCycleUi _ui;
 	
     // Called when the node enters the scene tree for the first time.
@@ -27,12 +26,10 @@ public partial class WeatherCycle : Node
         _lastWeatherChange = 0;
         _nextChangeAtDay = GetRandomNumberOfDays();
         
-        _canvasLayer = GetNode<CanvasLayer>("Sprite2D/CanvasLayer");
-        _canvasModulate = GetNode<CanvasModulate>("Sprite2D/CanvasModulate");
-        _ui = GetNode<WeatherCycleUi>("Sprite2D/CanvasLayer/WeatherCycleUi");
+        _canvasLayer = GetNode<CanvasLayer>("CanvasLayer");
+        _ui = GetNode<WeatherCycleUi>("CanvasLayer/WeatherCycleUi");
 
-        var timeController = (TimeController) _canvasModulate;
-        timeController.Visible = true;
+        var timeController = TimeController.Instance;
         timeController.DayChanged += ChangeWeatherRandomly;
     }
 

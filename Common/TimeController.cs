@@ -2,29 +2,29 @@ using Godot;
 using System;
 using untitledplantgame.Common;
 
-namespace untitledplantgame.Cycle;
+namespace untitledplantgame.Common;
 
-public partial class TimeController : CanvasModulate
+[Singleton]
+public partial class TimeController : Node
 {
+	/// Singleton instance that's accessible from anywhere
+	public static TimeController Instance { get; private set; }
+
 	private readonly Logger _logger = new Logger("Time");
 
+	/// Constants for time calculations
 	private const double MinutesPerDay = 1440;
 	private const double MinutesPerHour = 60;
 	private const double IngameToRealMinuteDuration = (2 * Math.PI) / MinutesPerDay;
+	/// The speed at which in-game time passes
+	private const double TickSpeed = 20.0;
+	/// The hour with which the day starts
+	private const int InitialHour = 7;
 
-	private double _time;
-	private double _colorValue;
-	private int _pastDay = 0;
+	/// Radial time in radians
+	public double Time { get; private set; }
+	private int _pastDay;
 	private int _pastMinute = -1;
-
-	[Export] public GradientTexture1D GradientTexture;
-	[Export] public double IngameSpeed = 20.0;
-
-	private static TimeController _instance;
-	public static TimeController Instance => _instance;
-
-	// The hour with which the day starts
-	[Export] public int InitialHour { get; set; } = 12;
 
 	[Signal]
 	public delegate void DayChangedEventHandler(int day);
@@ -34,14 +34,16 @@ public partial class TimeController : CanvasModulate
 
 	public override void _Ready()
 	{
-		if (_instance != null)
+		if (Instance != null)
 		{
+			_logger.Warn("Multiple instances of TimeController found, deleting the new one");
 			QueueFree();
 			return;
 		}
 
-		_instance = this;
-		_time = IngameToRealMinuteDuration * InitialHour * MinutesPerHour;
+		Instance = this;
+		Time = IngameToRealMinuteDuration * InitialHour * MinutesPerHour;
+		_logger.Debug($"Time initialized with {Time}");
 	}
 
 	/**
@@ -50,10 +52,7 @@ public partial class TimeController : CanvasModulate
 	 */
 	public override void _Process(double delta)
 	{
-		_time += delta * IngameToRealMinuteDuration * IngameSpeed;
-		_colorValue = (Math.Sin(_time - Math.PI / 2) + 1.0) / 2.0;
-		this.Color = GradientTexture.Gradient.Sample((float)_colorValue);
-
+		Time += delta * IngameToRealMinuteDuration * TickSpeed;
 		RecalculateTime();
 	}
 
@@ -63,12 +62,12 @@ public partial class TimeController : CanvasModulate
 	 */
 	private void RecalculateTime()
 	{
-		int totalMinutes = (int)(_time / IngameToRealMinuteDuration);
+		var totalMinutes = (int)(Time / IngameToRealMinuteDuration);
 
-		int day = (int)(totalMinutes / MinutesPerDay);
-		int currentDayMinutes = (int)(totalMinutes % MinutesPerDay);
-		int hour = (int)(currentDayMinutes / MinutesPerHour);
-		int minute = (int)(currentDayMinutes % MinutesPerHour);
+		var day = (int)(totalMinutes / MinutesPerDay);
+		var currentDayMinutes = (int)(totalMinutes % MinutesPerDay);
+		var hour = (int)(currentDayMinutes / MinutesPerHour);
+		var minute = (int)(currentDayMinutes % MinutesPerHour);
 
 		if (_pastDay != day)
 		{

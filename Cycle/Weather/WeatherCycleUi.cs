@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace untitledplantgame.Cycle.UI;
+namespace untitledplantgame.Cycle.Weather;
 
 public partial class WeatherCycleUi : Control
 {
@@ -9,7 +9,7 @@ public partial class WeatherCycleUi : Control
 
     public override void _Ready()
     {
-        _rainOverlay = GetNode<GpuParticles2D>("Sprite2D/RainParticles");
+        _rainOverlay = GetNode<GpuParticles2D>("RainParticles");
         _rainOverlay.Visible = false;
     }
 
