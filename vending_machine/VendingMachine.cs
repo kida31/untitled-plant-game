@@ -10,7 +10,10 @@ public class VendingMachine
     private const float SALES_PERCENT_PER_INTERVAL = 0.1f;
 
     // State
-    private ItemStack<ISellable>[] _items;
+    private ItemStack<ISellable>[] _items = new []
+    {
+        new ItemStack<ISellable>(),
+    };
     private int _gold = 0;
     private float _priceMultiplier = 1.0f;
     private float _faithMultiplier = 1.0f;

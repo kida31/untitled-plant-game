@@ -21,7 +21,6 @@ namespace GUI.VendingMachine
         public override void _Process(double delta)
         {
             // i do not know whether this affects performance
-            GD.Print(_innerItemStack == null);
             _itemTexture.Texture = _innerItemStack.Item != null ? _placeholderIcon : null;
             _quantityLabel.Text = _innerItemStack.Quantity > 0 ? _innerItemStack.Quantity.ToString() : "";
         }
@@ -41,11 +40,5 @@ namespace GUI.VendingMachine
         {
             var that = data.As<ItemStack>();
         }
-    }
-
-    // TODO: this wrapper feels horrible
-    partial class ItemStackWrapper : GodotObject
-    {
-        public ItemStack<IStorable> Item;
     }
 }
