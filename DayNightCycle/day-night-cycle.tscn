@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://DayNightCycle/DayNightCycleScene.cs" id="1_jquet"]
 [ext_resource type="Texture2D" uid="uid://dx1gvoqkygl8m" path="res://DayNightCycle/placeholder_BG.jpg" id="1_oq6ma"]
-[ext_resource type="Script" path="res://DayNightCycle/DayNightCycle.cs" id="2_k0o0e"]
+[ext_resource type="Script" path="res://DayNightCycle/TimeController.cs" id="2_k0o0e"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightCycle/daynightcycle-gradient-texture.tres" id="3_l2k0r"]
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://DayNightCycle/UI/day_night_cycle_ui.tscn" id="4_j46wm"]
 [ext_resource type="Script" path="res://DayNightCycle/UI/DayNightCycleUi.cs" id="5_l888p"]
