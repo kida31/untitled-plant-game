@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfuw3qet6mhnq"]
+
+[ext_resource type="Script" path="res://Cycle/DayNight/ClockUi.cs" id="1_jcn3g"]
+[ext_resource type="Texture2D" uid="uid://boj71d2pygk12" path="res://Cycle/UI/daynightcycle-ui.png" id="1_knyeu"]
+[ext_resource type="FontFile" uid="uid://dt6jbuskqvs7g" path="res://Cycle/UI/fonts/pixelmix/pixelmix.ttf" id="2_piu5q"]
+[ext_resource type="Texture2D" uid="uid://bt0eyuhxpem4u" path="res://Cycle/UI/clock_hand.png" id="3_ewqxd"]
+
+[node name="DayNightCycleUI" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 149.0
+offset_bottom = 86.0
+script = ExtResource("1_jcn3g")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 149.0
+offset_bottom = 109.0
+texture = ExtResource("1_knyeu")
+stretch_mode = 4
+
+[node name="CenterContainerDay" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 83.0
+offset_bottom = 34.0
+
+[node name="DayLabelBackground" type="Label" parent="CenterContainerDay"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.898039, 0.576471, 0.419608, 1)
+theme_override_fonts/font = ExtResource("2_piu5q")
+theme_override_font_sizes/font_size = 14
+text = "Day 12"
+
+[node name="DayLabel" type="Label" parent="CenterContainerDay/DayLabelBackground"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.490196, 0.219608, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_piu5q")
+theme_override_font_sizes/font_size = 14
+text = "Day 12"
+
+[node name="CenterContainerTime" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 54.0
+offset_right = 91.0
+offset_bottom = 81.0
+
+[node name="TimeLabelBackground" type="Label" parent="CenterContainerTime"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.898039, 0.576471, 0.419608, 1)
+theme_override_fonts/font = ExtResource("2_piu5q")
+theme_override_font_sizes/font_size = 14
+text = "12:00 am"
+
+[node name="TimeLabel" type="Label" parent="CenterContainerTime/TimeLabelBackground"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.490196, 0.219608, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_piu5q")
+theme_override_font_sizes/font_size = 14
+text = "12:00 am"
+
+[node name="Arrow" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 99.0
+offset_top = 36.0
+offset_right = 139.0
+offset_bottom = 53.0
+pivot_offset = Vector2(5, 8.5)
+texture = ExtResource("3_ewqxd")

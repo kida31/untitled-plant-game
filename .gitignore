@@ -17,6 +17,9 @@ mono_crash.*.json
 # jetbrains IDE stuff
 .idea/
 
+# Visual Studio IDE https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
+.vs/
+
 # MacOS specifics https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
 .DS_Store
 .AppleDouble
