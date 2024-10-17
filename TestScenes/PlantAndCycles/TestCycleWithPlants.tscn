@@ -1,26 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://f7it4seve2en"]
+[gd_scene load_steps=11 format=3 uid="uid://bxnxwjoe7007y"]
 
-[ext_resource type="Script" path="res://Plants/APlant.cs" id="1_14phw"]
-[ext_resource type="Texture2D" uid="uid://c2uogdsxjcvep" path="res://Plants/Sprites/Basic_Plants.png" id="2_oayfo"]
+[ext_resource type="PackedScene" uid="uid://c186pbacifdrr" path="res://Cycle/day-night-cycle.tscn" id="1_vp5db"]
+[ext_resource type="Script" path="res://Plants/APlant.cs" id="2_22ii3"]
+[ext_resource type="Texture2D" uid="uid://c2uogdsxjcvep" path="res://Plants/Sprites/Basic_Plants.png" id="3_avfdr"]
+[ext_resource type="Script" path="res://Plants/PlantController.cs" id="4_as062"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ydsg4"]
-atlas = ExtResource("2_oayfo")
+atlas = ExtResource("3_avfdr")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cldp"]
-atlas = ExtResource("2_oayfo")
+atlas = ExtResource("3_avfdr")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0joly"]
-atlas = ExtResource("2_oayfo")
+atlas = ExtResource("3_avfdr")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51oe2"]
-atlas = ExtResource("2_oayfo")
+atlas = ExtResource("3_avfdr")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4x32u"]
-atlas = ExtResource("2_oayfo")
+atlas = ExtResource("3_avfdr")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1rej4"]
@@ -66,9 +68,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="APlantPrefab" type="Node2D" groups=["Plant"]]
-script = ExtResource("1_14phw")
+[node name="TestCycleWithPlants" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Day-night-cycle" parent="." instance=ExtResource("1_vp5db")]
+
+[node name="APlantPrefab" type="Node2D" parent="."]
+script = ExtResource("2_22ii3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="APlantPrefab"]
+texture_filter = 1
+position = Vector2(414, 211)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1rej4")
 animation = &"Ripening"
+
+[node name="PlantController" type="Node" parent="."]
+script = ExtResource("4_as062")

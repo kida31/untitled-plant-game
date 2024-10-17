@@ -9,7 +9,7 @@ namespace untitledplantgame.Plants;
 public partial class APlant : Node2D, IPlantable
 {
     public string PlantName { get; private set; }
-
+    [Export]
     private int _plantId;
     
     private float _absorptionRate = 50.0f;
@@ -19,16 +19,10 @@ public partial class APlant : Node2D, IPlantable
 
     [Export] public GrowthStage Stage { get; private set; } = GrowthStage.Seedling;
 
-    [Export] public Dictionary<GrowthStage, int> Stages;
-
     private Dictionary<string, Requirement> _currentRequirements;
 
     private int _daysToGrow;
     private int _currentDay;
-
-    public APlant()
-    {
-    }
 
     public APlant(int plantId, string name, GrowthStage stage)
     {
@@ -42,7 +36,7 @@ public partial class APlant : Node2D, IPlantable
         _sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         UpdateRequirements();
     }
-
+    
     void UpdateRequirements()
     {
         var plantData = ResourceManager.Instance.GetPlantData(_plantId, Stage);
@@ -66,7 +60,16 @@ public partial class APlant : Node2D, IPlantable
         var fulfilled = _currentRequirements.All(req => req.Value.IsFullfilled());
 
         if (!fulfilled || Stage == GrowthStage.Ripening) return;
+
+        _currentDay++;
+        AdvanceStage();
+    }
+
+    void AdvanceStage()
+    {
+        if (_currentDay < _daysToGrow) return;
         
+        Stage++;
         UpdateRequirements();
     }
 

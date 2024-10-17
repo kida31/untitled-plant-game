@@ -5,22 +5,17 @@
 
 [sub_resource type="Resource" id="Resource_drqwp"]
 script = ExtResource("1_v84ge")
-Name = "water"
-CurrentLevel = 0.0
+Name = 0
 MinLevel = 200.0
 MaxLevel = 250.0
-DaysToGrow = 0
-CurrentGrowthDay = 0
 
 [sub_resource type="Resource" id="Resource_wjj6g"]
 script = ExtResource("1_v84ge")
-Name = "sun"
-CurrentLevel = 0.0
+Name = 0
 MinLevel = 200.0
 MaxLevel = 300.0
-DaysToGrow = 0
-CurrentGrowthDay = 0
 
 [resource]
 script = ExtResource("2_0hjud")
 GrowthRequirements = Array[Object]([SubResource("Resource_drqwp"), SubResource("Resource_wjj6g")])
+DaysToGrow = 3

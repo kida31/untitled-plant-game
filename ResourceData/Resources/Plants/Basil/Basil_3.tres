@@ -5,22 +5,17 @@
 
 [sub_resource type="Resource" id="Resource_idemf"]
 script = ExtResource("1_fbi6u")
-Name = "water"
-CurrentLevel = 0.0
+Name = 0
 MinLevel = 210.0
 MaxLevel = 500.0
-DaysToGrow = 0
-CurrentGrowthDay = 0
 
 [sub_resource type="Resource" id="Resource_sda7d"]
 script = ExtResource("1_fbi6u")
-Name = "sun"
-CurrentLevel = 0.0
+Name = 0
 MinLevel = 300.0
 MaxLevel = 400.0
-DaysToGrow = 0
-CurrentGrowthDay = 0
 
 [resource]
 script = ExtResource("2_j152d")
 GrowthRequirements = Array[Object]([SubResource("Resource_idemf"), SubResource("Resource_sda7d")])
+DaysToGrow = 2

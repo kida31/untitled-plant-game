@@ -17,14 +17,27 @@ public partial class TimeController : CanvasModulate
     [Export] public GradientTexture1D GradientTexture;
     [Export] public double IngameSpeed = 20.0;
 
+    private static TimeController _instance;
+    public static TimeController Instance => _instance;
+
     // The hour with which the day starts
     [Export] public int InitialHour { get; set; } = 12;
 
-    [Signal] public delegate void DayChangedEventHandler(int day);
-    [Signal] public delegate void TimeTickEventHandler(int day, int hour, int minute);
+    [Signal]
+    public delegate void DayChangedEventHandler(int day);
+
+    [Signal]
+    public delegate void TimeTickEventHandler(int day, int hour, int minute);
 
     public override void _Ready()
     {
+        if (_instance != null)
+        {
+            QueueFree();
+            return;
+        }
+
+        _instance = this;
         _time = IngameToRealMinuteDuration * InitialHour * MinutesPerHour;
     }
 
@@ -48,7 +61,7 @@ public partial class TimeController : CanvasModulate
     private void RecalculateTime()
     {
         int totalMinutes = (int)(_time / IngameToRealMinuteDuration);
-        
+
         int day = (int)(totalMinutes / MinutesPerDay);
         int currentDayMinutes = (int)(totalMinutes % MinutesPerDay);
         int hour = (int)(currentDayMinutes / MinutesPerHour);
