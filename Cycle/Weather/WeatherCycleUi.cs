@@ -1,48 +1,37 @@
-﻿using Godot;
+using Godot;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Cycle.Weather;
 
-public partial class WeatherCycleUi : Control
+public partial class WeatherCycleUi : Node
 {
-    private Weather _currentWeather = Weather.Sunny;
-    private GpuParticles2D _rainOverlay;
+	private readonly Logger _logger = new("WeatherCycleUi");
+	private GpuParticles2D _rainOverlay;
 
-    public override void _Ready()
-    {
-        _rainOverlay = GetNode<GpuParticles2D>("RainParticles");
-        _rainOverlay.Visible = false;
-    }
+	public override void _Ready()
+	{
+		_rainOverlay = GetNode<GpuParticles2D>("RainParticles");
+		_rainOverlay.Visible = false;
+		_logger.Debug("Starting a sunny day ☀️");
+		
+		WeatherCycle.Instance.WeatherChanged += ChangeWeather;
+	}
 
-    public void ChangeWeather()
-    {
-        switch (_currentWeather)
-        {
-            case Weather.Sunny:
-                MakeItRainy();
-                break;
-            case Weather.Rainy:
-                MakeItSunny();
-                break;
-            default:
-                GD.PrintErr("Weather " + _currentWeather + " is not supported yet");
-                break;
-        }
-    }
-
-    public Weather CurrentWeather()
-    {
-        return _currentWeather;
-    }
-    
-    private void MakeItSunny()
-    {
-        _currentWeather = Weather.Sunny;
-        _rainOverlay.Visible = false;
-    }
-
-    private void MakeItRainy()
-    {
-        _currentWeather = Weather.Rainy;
-        _rainOverlay.Visible = true;
-    }
+	private void ChangeWeather(Weather newWeather)
+	{
+		switch (newWeather)
+		{
+			case Weather.Sunny:
+				_rainOverlay.Visible = false;
+				_logger.Debug("Sunshine ☀️");
+				break;
+			case Weather.Rainy:
+				_rainOverlay.Visible = true;
+				_logger.Debug("It's raining main, hallelujah!");
+				break;
+			default:
+				_logger.Error("Weather isn't supported by the GUI yet");
+				break;
+		}
+	}
 }

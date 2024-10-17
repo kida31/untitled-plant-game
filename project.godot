@@ -29,6 +29,7 @@ config/icon="res://icon.svg"
 
 ResourceManager="*res://ResourceData/ResourceManager.cs"
 TimeController="*res://Common/TimeController.cs"
+WeatherCycle="*res://Cycle/Weather/WeatherCycle.cs"
 
 [display]
 
