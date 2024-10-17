@@ -6,6 +6,15 @@ using untitledplantgame.MagicBoxForData;
 
 namespace untitledplantgame.Plants;
 
+public enum GrowthStage
+{
+    Seedling,
+    Vegetating,
+    Budding,
+    Flowering,
+    Ripening,
+}
+
 public partial class APlant : Node2D, IPlantable
 {
     public string PlantName { get; private set; }
@@ -90,13 +99,4 @@ public partial class APlant : Node2D, IPlantable
 
         GD.Print(_currentRequirements.GetValueOrDefault(RequirementType.sun.ToString()));
     }
-}
-
-public enum GrowthStage
-{
-    Seedling,
-    Vegetating,
-    Budding,
-    Flowering,
-    Ripening,
 }
