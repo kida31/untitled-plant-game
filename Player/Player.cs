@@ -1,10 +1,12 @@
 using System;
 using Godot;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Player;
 
 public partial class Player : CharacterBody2D
 {
+    private readonly Logger _logger = new Logger("Player");
     private Vector2 _cardinalDirection = Vector2.Down;
     public Vector2 Direction = Vector2.Zero;
     
@@ -13,6 +15,7 @@ public partial class Player : CharacterBody2D
     
     public override void _Ready()
     {
+        _logger.Info("! Ready !");
         _stateMachine = GetNode<PlayerStateMachine>("StateMachine");
         _animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         _stateMachine.Initialize(this);
