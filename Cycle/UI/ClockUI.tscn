@@ -6,6 +6,7 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yltcx"]
 
 [node name="DayNightCycleUI" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 149.0
