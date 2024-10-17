@@ -9,9 +9,8 @@ namespace untitledplantgame.Plants;
 public partial class APlant : Node2D, IPlantable
 {
     public string PlantName { get; private set; }
-    [Export]
-    private int _plantId;
-    
+    [Export] private int _plantId;
+
     private float _absorptionRate = 50.0f;
 
     private AnimatedSprite2D _sprite2D;
@@ -24,24 +23,18 @@ public partial class APlant : Node2D, IPlantable
     private int _daysToGrow;
     private int _currentDay;
 
-    public APlant(int plantId, string name, GrowthStage stage)
-    {
-        _plantId = plantId;
-        PlantName = name;
-        Stage = stage;
-    }
-
     public override void _Ready()
     {
         _sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        _plantId = 0;
         UpdateRequirements();
     }
-    
+
     void UpdateRequirements()
     {
         var plantData = ResourceManager.Instance.GetPlantData(_plantId, Stage);
         var plantRequirements = new Dictionary<string, Requirement>();
-        
+
         var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
         foreach (var data in plantDataRequirementsForStage)
@@ -49,9 +42,9 @@ public partial class APlant : Node2D, IPlantable
             plantRequirements[data.Name.ToString()] = new Requirement(data.MaxLevel, data.MinLevel);
         }
 
-        _daysToGrow = plantData.DataForGrowthStages[(int) Stage].DaysToGrow;
+        _daysToGrow = plantData.DataForGrowthStages[(int)Stage].DaysToGrow;
         _currentRequirements = plantRequirements;
-        
+
         _sprite2D.Play(Stage.ToString());
     }
 
@@ -68,7 +61,7 @@ public partial class APlant : Node2D, IPlantable
     void AdvanceStage()
     {
         if (_currentDay < _daysToGrow) return;
-        
+
         Stage++;
         UpdateRequirements();
     }
@@ -82,18 +75,18 @@ public partial class APlant : Node2D, IPlantable
     {
         var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water.ToString());
         var waterAbsorbed = Tile.WithdrawHydration(_absorptionRate) + waterReq.CurrentLevel;
-        
+
         waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
-        
+
         GD.Print(_currentRequirements.GetValueOrDefault(RequirementType.water.ToString()));
     }
 
     public void AbsorbSun()
     {
         var sunReq = _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString());
-        
+
         sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + _absorptionRate, sunReq.MaxLevel);
-        
+
         GD.Print(_currentRequirements.GetValueOrDefault(RequirementType.sun.ToString()));
     }
 }
