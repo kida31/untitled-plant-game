@@ -12,11 +12,13 @@ public partial class VendingMachineUI : Control
 	private List<ItemStack> _itemStacks;
 	public override void _Ready()
 	{
-		_itemStacks = _itemStackContainer.GetChildren().Cast<ItemStack>().ToList(); 
+		_itemStacks = _itemStackContainer.GetChildren().Cast<ItemStack>().ToList();
 	}
 
 	public override void _Process(double delta)
 	{
+		if (_vendingMachine is null) return;
+		
 		// i do not know whether this affects performance
 		for (var index = 0; index < _itemStacks.Count; index++)
 		{

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ffmnb0ywgx2"]
+
+[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://vending_machine/vending_machine_ui.tscn" id="1_sapqf"]
+
+[node name="UiOnly" type="Node2D"]
+
+[node name="VendingMachineUi" parent="." instance=ExtResource("1_sapqf")]
