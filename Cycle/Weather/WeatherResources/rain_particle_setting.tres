@@ -1,11 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c186pbacifdrr"]
-
-[ext_resource type="Script" path="res://DayNightCycle/DayNightCycleScene.cs" id="1_jquet"]
-[ext_resource type="Texture2D" uid="uid://dx1gvoqkygl8m" path="res://DayNightCycle/placeholder_BG.jpg" id="1_oq6ma"]
-[ext_resource type="Script" path="res://DayNightCycle/TimeController.cs" id="2_k0o0e"]
-[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://DayNightCycle/daynightcycle-gradient-texture.tres" id="3_l2k0r"]
-[ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://DayNightCycle/UI/day_night_cycle_ui.tscn" id="4_j46wm"]
-[ext_resource type="Script" path="res://DayNightCycle/UI/DayNightCycleUi.cs" id="5_l888p"]
+[gd_resource type="ParticleProcessMaterial" load_steps=9 format=3 uid="uid://2rf0jb5b024f"]
 
 [sub_resource type="Curve" id="Curve_qdeml"]
 max_value = 0.3
@@ -41,7 +34,7 @@ curve_x = SubResource("Curve_r42ly")
 curve_y = SubResource("Curve_s23k8")
 curve_z = SubResource("Curve_7o5yb")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_chsn6"]
+[resource]
 particle_flag_disable_z = true
 emission_shape_offset = Vector3(0, -300, 0)
 emission_shape = 3
@@ -51,31 +44,3 @@ scale_min = 0.3
 scale_over_velocity_curve = SubResource("CurveXYZTexture_snr6y")
 color_initial_ramp = SubResource("GradientTexture1D_cn46w")
 alpha_curve = SubResource("CurveTexture_o6dyy")
-
-[node name="Day-night-cycle" type="Node2D"]
-script = ExtResource("1_jquet")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(576.5, 328.625)
-scale = Vector2(1.19896, 1.19896)
-texture = ExtResource("1_oq6ma")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="Sprite2D"]
-position = Vector2(0.834045, 0)
-script = ExtResource("2_k0o0e")
-GradientTexture = ExtResource("3_l2k0r")
-IngameSpeed = null
-InitialHour = null
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Sprite2D"]
-
-[node name="DayNightCycleUI" parent="Sprite2D/CanvasLayer" instance=ExtResource("4_j46wm")]
-offset_right = 179.0
-offset_bottom = 130.0
-script = ExtResource("5_l888p")
-
-[node name="RainParticles" type="GPUParticles2D" parent="Sprite2D"]
-amount = 1000
-process_material = SubResource("ParticleProcessMaterial_chsn6")
-lifetime = 0.5
-preprocess = 0.5

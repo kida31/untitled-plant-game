@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://c186pbacifdrr"]
+
+[ext_resource type="Script" path="res://Cycle/DayNight/DayNightCycleScene.cs" id="1_jquet"]
+[ext_resource type="Texture2D" uid="uid://dx1gvoqkygl8m" path="res://Cycle/placeholder_BG.jpg" id="1_oq6ma"]
+[ext_resource type="Script" path="res://Cycle/TimeController.cs" id="2_k0o0e"]
+[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Cycle/DayNight/daynightcycle-gradient-texture.tres" id="3_l2k0r"]
+[ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Cycle/UI/day_night_cycle_ui.tscn" id="4_j46wm"]
+[ext_resource type="Script" path="res://Cycle/UI/DayNightCycleUi.cs" id="5_l888p"]
+[ext_resource type="Material" uid="uid://2rf0jb5b024f" path="res://Cycle/Weather/WeatherResources/rain_particle_setting.tres" id="7_wj738"]
+
+[node name="Day-night-cycle" type="Node2D"]
+script = ExtResource("1_jquet")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.5, 328.625)
+scale = Vector2(1.19896, 1.19896)
+texture = ExtResource("1_oq6ma")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Sprite2D"]
+position = Vector2(0.834045, 0)
+script = ExtResource("2_k0o0e")
+GradientTexture = ExtResource("3_l2k0r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Sprite2D"]
+
+[node name="DayNightCycleUI" parent="Sprite2D/CanvasLayer" instance=ExtResource("4_j46wm")]
+offset_right = 179.0
+offset_bottom = 130.0
+script = ExtResource("5_l888p")
+
+[node name="RainParticles" type="GPUParticles2D" parent="Sprite2D"]
+amount = 1000
+process_material = ExtResource("7_wj738")
+lifetime = 0.5
+preprocess = 0.5

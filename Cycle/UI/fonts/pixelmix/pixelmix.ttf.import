@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dt6jbuskqvs7g"
-path="res://.godot/imported/pixelmix.ttf-e9a75d76eeb6084ee82a697ca509235b.fontdata"
+path="res://.godot/imported/pixelmix.ttf-8fc4aebe305ee656a8dd7bcd7113ef4d.fontdata"
 
 [deps]
 
-source_file="res://DayNightCycle/UI/fonts/pixelmix/pixelmix.ttf"
-dest_files=["res://.godot/imported/pixelmix.ttf-e9a75d76eeb6084ee82a697ca509235b.fontdata"]
+source_file="res://Cycle/UI/fonts/pixelmix/pixelmix.ttf"
+dest_files=["res://.godot/imported/pixelmix.ttf-8fc4aebe305ee656a8dd7bcd7113ef4d.fontdata"]
 
 [params]
 
