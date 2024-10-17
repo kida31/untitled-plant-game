@@ -10,10 +10,7 @@ public class VendingMachine
     private const float SALES_PERCENT_PER_INTERVAL = 0.1f;
 
     // State
-    private ItemStack<ISellable>[] _items = new []
-    {
-        new ItemStack<ISellable>(),
-    };
+    private ItemStack<ISellable>[] _items = new ItemStack<ISellable>[8]; 
     private int _gold = 0;
     private float _priceMultiplier = 1.0f;
     private float _faithMultiplier = 1.0f;
@@ -109,10 +106,5 @@ public class VendingMachine
     public void OnEndOfDay()
     {
         _salesRemaining = MAX_SALES;
-    }
-
-    public void Test()
-    {
-        ItemStackController.Instance.MoveItem(ref _items[0], ref _items[1]);
     }
 }
