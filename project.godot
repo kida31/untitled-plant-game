@@ -25,6 +25,10 @@ run/main_scene="res://Player/Tutorial.tscn"
 config/features=PackedStringArray("4.3", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ResourceManager="*res://ResourceData/ResourceManager.cs"
+
 [display]
 
 window/stretch/mode="viewport"
