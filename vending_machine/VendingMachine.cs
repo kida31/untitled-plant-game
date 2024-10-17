@@ -10,14 +10,14 @@ public partial class VendingMachine : Node
 	private static readonly float SALES_PERCENT_PER_INTERVAL = 0.1f;
 
 	// State
-	private ItemContainer<ISellable> _itemContainer;
+	private StorableArray<ISellable> _itemContainer;
 	private int _gold = 0;
 	private float _priceMultiplier = 1.0f;
 	private float _faithMultiplier = 1.0f;
 	private int _salesRemaining = MAX_SALES;
 
 	// Properties
-	public ItemContainer<ISellable> ItemContainer => _itemContainer;
+	public StorableArray<ISellable> ItemContainer => _itemContainer;
 	public float PriceMultiplier => _priceMultiplier;
 	public float FaithMultiplier => _faithMultiplier;
 

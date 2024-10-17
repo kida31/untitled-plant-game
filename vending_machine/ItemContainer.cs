@@ -1,20 +1,65 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 
-public class ItemContainer<T> where T : class, IStorable
+[Obsolete]
+public class StorableArray<T> : IStorableCollection<T> where T : class, IStorable
 {
-    private Dictionary<T, int> _items;
+    private StorableStack<T>[] _stacks;
 
-    public void AddItemStack(T item) {
-        // Implementation here
+    public T this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+    public int Count => throw new NotImplementedException();
+
+    public bool IsReadOnly => false;
+
+    public void Add(T item)
+    {
+        throw new NotImplementedException();
     }
 
-    public T PopItemStack(T item) {
-        return null;
+    public void Clear()
+    {
+        throw new NotImplementedException();
     }
 
-    public T RemoveItem(T item, int quantity) {
-        return null;
+    public bool Contains(T item)
+    {
+        throw new NotImplementedException();
     }
 
-    public Dictionary<T, int> Items => _items;
+    public void CopyTo(T[] array, int arrayIndex)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerator<T> GetEnumerator()
+    {
+        throw new NotImplementedException();
+    }
+
+    public int IndexOf(T item)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Insert(int index, T item)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Remove(T item)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void RemoveAt(int index)
+    {
+        throw new NotImplementedException();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        throw new NotImplementedException();
+    }
 }
