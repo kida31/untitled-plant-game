@@ -14,19 +14,10 @@ public class Requirement
     public float MaxLevel { get; private set; }
     public float MinimumLevel { get; private set; }
     public float CurrentLevel { get; set; }
-    private int DaysToGrow { get; set; }
-    public int CurrentGrowthDay { get; set; }
 
-    void CheckCurrentRequirement()
+    public bool IsFullfilled()
     {
-        if (CurrentLevel >= MinimumLevel)
-            CurrentGrowthDay++;
-    }
-
-    public bool CanAdvanceStage()
-    {
-        CheckCurrentRequirement();
-        return CurrentGrowthDay >= DaysToGrow;
+        return CurrentLevel >= MinimumLevel;
     }
 
     public override string ToString()

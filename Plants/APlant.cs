@@ -63,7 +63,7 @@ public partial class APlant : Node2D, IPlantable
 
     public void CheckRequirements()
     {
-        var fulfilled = _currentRequirements.All(req => req.Value.CanAdvanceStage());
+        var fulfilled = _currentRequirements.All(req => req.Value.IsFullfilled());
 
         if (!fulfilled || Stage == GrowthStage.Ripening) return;
         
