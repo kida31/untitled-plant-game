@@ -19,6 +19,8 @@ public partial class PlantController : Node
     {
         _logger.Debug($"Updating plants. Day {day}");
         var plantNodes = GetPlantNodes();
+        
+        AbsorbSunlight(plantNodes);
         HydrateAllPlants(plantNodes);
         CheckAllPlants(plantNodes);
     }
@@ -45,7 +47,7 @@ public partial class PlantController : Node
     
     private void CheckAllPlants(Array<Node> plantNodes)
     {
-        _logger.Debug($"Checking {plantNodes.Count} plants");
+        _logger.Debug($"Checking {plantNodes.Count} plant(s)");
         foreach (var node in plantNodes)
         {
             var plant = node as APlant;

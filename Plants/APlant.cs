@@ -65,11 +65,12 @@ public partial class APlant : Node2D, IPlantable
     public void CheckRequirements()
     {
         var fulfilled = _currentRequirements.All(req => req.Value.IsFullfilled());
+        _logger.Debug(
+            $"Requirement {fulfilled} for stage {Stage}, current day count at {_currentDay} of {_daysToGrow}.");
 
         if (!fulfilled || Stage == GrowthStage.Ripening) return;
 
         _currentDay++;
-        _logger.Info($"Checking Requirement for stage {Stage}, current day count at {_currentDay} of {_daysToGrow}.");
         AdvanceStage();
     }
 
@@ -95,6 +96,11 @@ public partial class APlant : Node2D, IPlantable
         waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
 
         _logger.Info(_currentRequirements.GetValueOrDefault(RequirementType.water.ToString()).ToString());
+    }
+
+    private void ConsumeWater()
+    {
+        
     }
 
     public void AbsorbSun()
