@@ -7,6 +7,7 @@ using untitledplantgame.Plants;
 
 namespace untitledplantgame.MagicBoxForData;
 
+[Singleton]
 public partial class ResourceManager : Node
 {
     public static ResourceManager Instance { get; private set; }

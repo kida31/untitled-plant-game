@@ -6,7 +6,7 @@ namespace untitledplantgame.Plants;
 public partial class SoilTile : Node2D
 {
     [Export] public float Hydration { get; private set; }
-
+    private float _maxHydration = 200;
     private float Fertilization { get; set; }
 
     public float WithdrawHydration(float reductionValue)
@@ -19,7 +19,7 @@ public partial class SoilTile : Node2D
 
     public void WaterSoilTile(float addedWater)
     {
-        Hydration += addedWater;
+        Hydration = Math.Min(Hydration + addedWater, _maxHydration);
     }
 
     //Do we want this?

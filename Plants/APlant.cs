@@ -57,6 +57,7 @@ public partial class APlant : Node2D, IPlantable
 
         _daysToGrow = plantData.DataForGrowthStages[(int)Stage].DaysToGrow;
         _currentRequirements = plantRequirements;
+        PlantName = plantData._plantName;
 
         _sprite2D.Play(Stage.ToString());
     }
