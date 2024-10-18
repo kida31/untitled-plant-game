@@ -30,7 +30,9 @@ public class Logger
         if (!OS.IsDebugBuild())
         {
             // Create directory if it doesn't exist
-            var dirPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "logs");
+            var dirPath =
+                System.IO.Path.Combine(
+                    System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "logs");
             System.IO.Directory.CreateDirectory(dirPath);
 
             _logFilePath = System.IO.Path.Combine(dirPath, DateTime.Now.ToString("yyyy-MM-dd"));

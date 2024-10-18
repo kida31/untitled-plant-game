@@ -30,7 +30,7 @@ public partial class TestAPlant : Node2D
 
     private void OnWaterSoilButtonPressed()
     {
-        _soilTile.WaterTile(100);
+        _soilTile.WaterSoilTile(100);
     }
 
     private void OnGrowButtonPressed()

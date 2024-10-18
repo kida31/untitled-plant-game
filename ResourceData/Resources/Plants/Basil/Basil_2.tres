@@ -17,5 +17,5 @@ MaxLevel = 300.0
 
 [resource]
 script = ExtResource("2_0hjud")
-DaysToGrow = 3
 GrowthRequirements = Array[Object]([SubResource("Resource_drqwp"), SubResource("Resource_wjj6g")])
+DaysToGrow = 3

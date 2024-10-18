@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace untitledplantgame.Plants;
+﻿namespace untitledplantgame.Plants;
 
 public class Requirement
 {
@@ -11,8 +9,8 @@ public class Requirement
         CurrentLevel = 0;
     }
 
-    public float MaxLevel { get; private set; }
-    public float MinimumLevel { get; private set; }
+    public float MaxLevel { get; }
+    public float MinimumLevel { get; }
     public float CurrentLevel { get; set; }
 
     public bool IsFullfilled()
@@ -22,7 +20,7 @@ public class Requirement
 
     public override string ToString()
     {
-        return string.Format($"The current level reached {CurrentLevel}." +
-                             $" The minimum level should be {MinimumLevel}.");
+        return string.Format(
+            $"The current level reached {CurrentLevel}, minimum level: {MinimumLevel}, maximum level: {MaxLevel}");
     }
 }

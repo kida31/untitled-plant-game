@@ -17,11 +17,12 @@ public partial class SoilTile : Node2D
         return prevHydration - Hydration;
     }
 
-    public void WaterTile(float addedWater)
+    public void WaterSoilTile(float addedWater)
     {
         Hydration += addedWater;
     }
 
+    //Do we want this?
     public void EvaporateWater()
     {
         Hydration--;
