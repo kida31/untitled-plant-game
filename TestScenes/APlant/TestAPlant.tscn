@@ -4,11 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://TestScenes/APlant/APlantPrefab.tscn" id="2_64co2"]
 [ext_resource type="Script" path="res://Plants/Soil/SoilTile.cs" id="3_pgupv"]
 
-[node name="TestAPlant" type="Node2D" node_paths=PackedStringArray("_sunButton", "_waterButton", "_growButton", "_label", "_plant", "_soilTile")]
+[node name="TestAPlant" type="Node2D" node_paths=PackedStringArray("_sunButton", "_waterButton", "_label", "_plant", "_soilTile")]
 script = ExtResource("1_5umc6")
-_sunButton = NodePath("VBoxContainer/Sun")
-_waterButton = NodePath("VBoxContainer/Water")
-_growButton = NodePath("")
+_sunButton = NodePath("")
+_waterButton = NodePath("")
 _label = NodePath("VBoxContainer/Label")
 _plant = NodePath("APlantPrefab")
 _soilTile = NodePath("Soil")
@@ -16,14 +15,6 @@ _soilTile = NodePath("Soil")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Sun" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Take in Sun!"
-
-[node name="Water" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Absorb Water"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2

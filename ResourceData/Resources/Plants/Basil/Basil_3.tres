@@ -8,12 +8,14 @@ script = ExtResource("1_fbi6u")
 Name = 0
 MinLevel = 210.0
 MaxLevel = 500.0
+Capacity = 0.0
 
 [sub_resource type="Resource" id="Resource_sda7d"]
 script = ExtResource("1_fbi6u")
 Name = 1
 MinLevel = 300.0
 MaxLevel = 400.0
+Capacity = 0.0
 
 [resource]
 script = ExtResource("2_j152d")

@@ -12,12 +12,12 @@ public partial class TimeController : Node
 	/// Radial time in radians
 	public double Time { get; private set; }
 
-	private readonly Logger _logger = new Logger("Time");
+	private readonly Logger _logger = new ("Time");
 
 	/// Constants for time calculations
 	private const double MinutesPerDay = 1440;
 	private const double MinutesPerHour = 60;
-	private const double IngameToRealMinuteDuration = (2 * Math.PI) / MinutesPerDay;
+	private const double InGameToRealMinuteDuration = (2 * Math.PI) / MinutesPerDay;
 	/// The speed at which in-game time passes
 	private const double TickSpeed = 20.0;
 	/// The hour with which the day starts
@@ -42,7 +42,7 @@ public partial class TimeController : Node
 		}
 
 		Instance = this;
-		Time = IngameToRealMinuteDuration * InitialHour * MinutesPerHour;
+		Time = InGameToRealMinuteDuration * InitialHour * MinutesPerHour;
 		_logger.Debug($"Time initialized with {Time}");
 	}
 
@@ -52,7 +52,7 @@ public partial class TimeController : Node
 	 */
 	public override void _Process(double delta)
 	{
-		Time += delta * IngameToRealMinuteDuration * TickSpeed;
+		Time += delta * InGameToRealMinuteDuration * TickSpeed;
 		RecalculateTime();
 	}
 
@@ -62,7 +62,7 @@ public partial class TimeController : Node
 	 */
 	private void RecalculateTime()
 	{
-		var totalMinutes = (int)(Time / IngameToRealMinuteDuration);
+		var totalMinutes = (int)(Time / InGameToRealMinuteDuration);
 
 		var day = (int)(totalMinutes / MinutesPerDay);
 		var currentDayMinutes = (int)(totalMinutes % MinutesPerDay);
@@ -81,5 +81,12 @@ public partial class TimeController : Node
 			_pastMinute = minute;
 			EmitSignal(SignalName.TimeTick, day, hour, minute);
 		}
+	}
+	
+	//Please remove this later
+	public void FastForwardFor(double targetTime)
+	{
+		Time += targetTime;
+		RecalculateTime();
 	}
 }

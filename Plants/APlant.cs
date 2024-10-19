@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using System.Collections.Generic;
-using System.Linq;
 using untitledplantgame.Common;
 using untitledplantgame.MagicBoxForData;
 
@@ -14,14 +13,16 @@ public enum GrowthStage
     Budding,
     Flowering,
     Ripening,
+    Dead,
 }
 
-public partial class APlant : Node2D, IPlantable
+public partial class APlant : Node2D
 {
     public string PlantName { get; private set; }
     [Export] private int _plantId;
 
-    private float _absorptionRate = 50.0f;
+    private float _absorptionRate = 100.0f;
+    private float _consumptionRate = 30.0f;
 
     private AnimatedSprite2D _sprite2D;
     public SoilTile Tile { get; set; }
@@ -62,16 +63,29 @@ public partial class APlant : Node2D, IPlantable
         _sprite2D.Play(Stage.ToString());
     }
 
-    public void CheckRequirements()
+    private void CheckRequirements()
     {
-        var fulfilled = _currentRequirements.All(req => req.Value.IsFullfilled());
+        var fulfilled = false;
+        foreach (var requirement in _currentRequirements)
+        {
+            fulfilled = CheckRequirement(requirement.Key);
+            if (!fulfilled) break;
+        }
+        
         _logger.Debug(
             $"Requirement {fulfilled} for stage {Stage}, current day count at {_currentDay} of {_daysToGrow}.");
 
-        if (!fulfilled || Stage == GrowthStage.Ripening) return;
+        if (!fulfilled || Stage == GrowthStage.Ripening || Stage == GrowthStage.Dead) return;
 
         _currentDay++;
         AdvanceStage();
+    }
+
+    private bool CheckRequirement(string key)
+    {
+        var isFulfilled = _currentRequirements[key].IsFulfilled();
+        _logger.Debug($"Checking requirement {key}. Requirement is {isFulfilled}.");
+        return isFulfilled;
     }
 
     private void AdvanceStage()
@@ -79,7 +93,7 @@ public partial class APlant : Node2D, IPlantable
         if (_currentDay < _daysToGrow) return;
 
         Stage++;
-        _logger.Info($"Advancing stage to {Stage}.");
+        _logger.Info($"Plant {PlantName} advanced to {Stage}.");
         UpdateRequirements();
     }
 
@@ -88,27 +102,53 @@ public partial class APlant : Node2D, IPlantable
         Tile = soilTile;
     }
 
-    public void AbsorbWaterFromTile()
+    private void AbsorbWaterFromTile()
     {
         var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water.ToString());
         var waterAbsorbed = Tile.WithdrawHydration(_absorptionRate) + waterReq.CurrentLevel;
 
         waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
 
-        _logger.Info(_currentRequirements.GetValueOrDefault(RequirementType.water.ToString()).ToString());
+        _logger.Debug(RequirementType.water.ToString() +
+                      _currentRequirements.GetValueOrDefault(RequirementType.water.ToString()));
     }
 
     private void ConsumeWater()
     {
-        
+        var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water.ToString());
+        waterReq.CurrentLevel -= _consumptionRate;
+
+        if (waterReq.CurrentLevel < 0)
+        {
+            DryUp();
+        }
     }
 
-    public void AbsorbSun()
+    private void AbsorbSun()
     {
         var sunReq = _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString());
 
         sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + _absorptionRate, sunReq.MaxLevel);
 
-        _logger.Info(_currentRequirements.GetValueOrDefault(RequirementType.sun.ToString()).ToString());
+        _logger.Info(RequirementType.sun.ToString() +
+                     _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString()));
+    }
+    
+    public void Grow()
+    {
+        if(Stage == GrowthStage.Dead) return;
+        
+        AbsorbWaterFromTile();
+        ConsumeWater();
+        AbsorbSun();
+        
+        CheckRequirements();
+    }
+
+    private void DryUp()
+    {
+        _sprite2D.Play("Dead");
+        Stage = GrowthStage.Dead;
+        _logger.Info($"Plant {PlantName} has died due to lack of water.");
     }
 }

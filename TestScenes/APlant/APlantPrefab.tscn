@@ -33,6 +33,11 @@ animations = [{
 "name": &"Budding",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3cldp")
@@ -71,4 +76,4 @@ script = ExtResource("1_14phw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1rej4")
-animation = &"Ripening"
+animation = &"Dead"

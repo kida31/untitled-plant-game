@@ -20,38 +20,16 @@ public partial class PlantController : Node
         _logger.Debug($"Updating plants. Day {day}");
         var plantNodes = GetPlantNodes();
         
-        AbsorbSunlight(plantNodes);
-        HydrateAllPlants(plantNodes);
-        CheckAllPlants(plantNodes);
+        LetPlantsGrow(plantNodes);
     }
     
-    private void AbsorbSunlight(Array<Node> plantNodes)
-    {
-        _logger.Debug($"Checking {plantNodes.Count} plants");
-        foreach (var node in plantNodes)
-        {
-            var plant = node as APlant;
-            plant?.AbsorbSun();
-        }
-    }
-
-    private void HydrateAllPlants(Array<Node> plantNodes)
-    {
-        _logger.Debug($"Checking {plantNodes.Count} plants");
-        foreach (var node in plantNodes)
-        {
-            var plant = node as APlant;
-            plant?.AbsorbWaterFromTile();
-        }
-    }
-    
-    private void CheckAllPlants(Array<Node> plantNodes)
+    private void LetPlantsGrow(Array<Node> plantNodes)
     {
         _logger.Debug($"Checking {plantNodes.Count} plant(s)");
         foreach (var node in plantNodes)
         {
             var plant = node as APlant;
-            plant?.CheckRequirements();
+            plant?.Grow();
         }
     }
 

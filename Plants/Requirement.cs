@@ -10,12 +10,10 @@ public class Requirement
     }
 
     public float MaxLevel { get; }
-    public float MinimumLevel { get; }
+    private float MinimumLevel { get; }
     public float CurrentLevel { get; set; }
-    
-    public float Capacity { get; set; }
 
-    public bool IsFullfilled()
+    public bool IsFulfilled()
     {
         return CurrentLevel >= MinimumLevel;
     }
