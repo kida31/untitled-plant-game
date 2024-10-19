@@ -43,7 +43,12 @@ public partial class APlant : Node2D
         UpdateRequirements();
         _logger = new Logger(PlantName);
     }
-
+    /// <summary>
+    /// Updates the requirements for the plant to grow at each stage.
+    /// sets the days to grow and the current day count to 0.
+    /// sets the plant name.
+    /// sets the sprite to the current stage.
+    /// </summary>
     private void UpdateRequirements()
     {
         var plantData = ResourceManager.Instance.GetPlantData(_plantId);
@@ -57,13 +62,16 @@ public partial class APlant : Node2D
         }
 
         _daysToGrow = plantData.DataForGrowthStages[(int)Stage].DaysToGrow;
+        _currentDay = 0;
         _currentRequirements = plantRequirements;
         PlantName = plantData._plantName;
 
         _sprite2D.Play(Stage.ToString());
     }
-
-    private void CheckRequirements()
+    /// <summary>
+    /// returns if the current requirements for the plant are fulfilled
+    /// </summary>
+    private bool CheckRequirements()
     {
         var fulfilled = false;
         foreach (var requirement in _currentRequirements)
@@ -75,19 +83,22 @@ public partial class APlant : Node2D
         _logger.Debug(
             $"Requirement {fulfilled} for stage {Stage}, current day count at {_currentDay} of {_daysToGrow}.");
 
-        if (!fulfilled || Stage == GrowthStage.Ripening || Stage == GrowthStage.Dead) return;
-
-        _currentDay++;
-        AdvanceStage();
+        return fulfilled && Stage != GrowthStage.Ripening && Stage != GrowthStage.Dead;
     }
-
+    /// <summary>
+    /// checks if the requirement is fulfilled
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
     private bool CheckRequirement(string key)
     {
         var isFulfilled = _currentRequirements[key].IsFulfilled();
         _logger.Debug($"Checking requirement {key}. Requirement is {isFulfilled}.");
         return isFulfilled;
     }
-
+    /// <summary>
+    /// checks if the plant has grown enough to advance to the next stage
+    /// </summary>
     private void AdvanceStage()
     {
         if (_currentDay < _daysToGrow) return;
@@ -96,12 +107,17 @@ public partial class APlant : Node2D
         _logger.Info($"Plant {PlantName} advanced to {Stage}.");
         UpdateRequirements();
     }
-
+    /// <summary>
+    /// sets the plant on a tile
+    /// </summary>
+    /// <param name="soilTile"></param> the tile the plant is planted on
     public void PlantOnTile(SoilTile soilTile)
     {
         Tile = soilTile;
     }
-
+    /// <summary>
+    /// Absorbs water from the tile the plant is planted on.
+    /// </summary>
     private void AbsorbWaterFromTile()
     {
         var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water.ToString());
@@ -112,7 +128,9 @@ public partial class APlant : Node2D
         _logger.Debug(RequirementType.water.ToString() +
                       _currentRequirements.GetValueOrDefault(RequirementType.water.ToString()));
     }
-
+    /// <summary>
+    /// Consumes water from the current water level needed for the plant to grow and survive.
+    /// </summary>
     private void ConsumeWater()
     {
         var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water.ToString());
@@ -120,10 +138,12 @@ public partial class APlant : Node2D
 
         if (waterReq.CurrentLevel < 0)
         {
-            DryUp();
+            SetUnalive();
         }
     }
-
+    /// <summary>
+    /// Absorbs sun from the environment and updates the current sun level.
+    /// </summary>
     private void AbsorbSun()
     {
         var sunReq = _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString());
@@ -133,19 +153,25 @@ public partial class APlant : Node2D
         _logger.Info(RequirementType.sun.ToString() +
                      _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString()));
     }
-    
-    public void Grow()
+    /// <summary>
+    /// Executes the growth cycle of the plant by absorbing water, consuming water, and absorbing sun.
+    /// Checks if the requirements are fulfilled to advance to the next stage.
+    /// </summary>
+    public void DoGrowthCycle()
     {
         if(Stage == GrowthStage.Dead) return;
         
         AbsorbWaterFromTile();
         ConsumeWater();
         AbsorbSun();
+
+        if (!CheckRequirements()) return;
         
-        CheckRequirements();
+        _currentDay++;
+        AdvanceStage();
     }
 
-    private void DryUp()
+    private void SetUnalive()
     {
         _sprite2D.Play("Dead");
         Stage = GrowthStage.Dead;

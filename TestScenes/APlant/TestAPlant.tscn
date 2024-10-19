@@ -4,10 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://TestScenes/APlant/APlantPrefab.tscn" id="2_64co2"]
 [ext_resource type="Script" path="res://Plants/Soil/SoilTile.cs" id="3_pgupv"]
 
-[node name="TestAPlant" type="Node2D" node_paths=PackedStringArray("_sunButton", "_waterButton", "_label", "_plant", "_soilTile")]
+[node name="TestAPlant" type="Node2D" node_paths=PackedStringArray("_label", "_plant", "_soilTile")]
 script = ExtResource("1_5umc6")
-_sunButton = NodePath("")
-_waterButton = NodePath("")
 _label = NodePath("VBoxContainer/Label")
 _plant = NodePath("APlantPrefab")
 _soilTile = NodePath("Soil")

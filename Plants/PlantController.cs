@@ -29,7 +29,7 @@ public partial class PlantController : Node
         foreach (var node in plantNodes)
         {
             var plant = node as APlant;
-            plant?.Grow();
+            plant?.DoGrowthCycle();
         }
     }
 
