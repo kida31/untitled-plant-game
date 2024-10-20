@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://6m0jv0pp1br6"]
+
+[ext_resource type="Script" path="res://NPC/NPC.cs" id="1_08g4h"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="1_hwhva"]
+[ext_resource type="Script" path="res://NPC/NpcLogic.cs" id="3_mssbl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxak0"]
+
+[node name="NPC" type="Area2D" node_paths=PackedStringArray("_npcLogicNode") groups=["Interactables"]]
+position = Vector2(25, 74)
+script = ExtResource("1_08g4h")
+_npcLogicNode = NodePath("NPC_Logic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_qxak0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.195313, 0.160156)
+texture = ExtResource("1_hwhva")
+
+[node name="NPC_Logic" type="Node" parent="." node_paths=PackedStringArray("_npcSelf")]
+script = ExtResource("3_mssbl")
+_npcSelf = NodePath("..")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
