@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public interface IItem
+public interface IInventoryItem
 {
-    string GetItemName();
+    string GetInventoryItemName();
 
     //ICategory GetCategory();  return seed/herb
 }

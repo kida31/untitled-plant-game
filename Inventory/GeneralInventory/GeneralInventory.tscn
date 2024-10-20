@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cca7okqb2j4c7"]
+[gd_scene load_steps=6 format=3 uid="uid://cca7okqb2j4c7"]
 
 [ext_resource type="Script" path="res://Inventory/GeneralInventory/GeneralInventoryLogic.cs" id="1_rrual"]
-[ext_resource type="Script" path="res://Inventory/GeneralInventory/SeedsTab.cs" id="2_f80sh"]
-[ext_resource type="Script" path="res://Inventory/GeneralInventory/HerbsTab.cs" id="3_kyvoe"]
-[ext_resource type="Script" path="res://Inventory/GeneralInventory/MedicineTab.cs" id="4_3lda1"]
+[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI/SeedsTab.cs" id="2_f80sh"]
+[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI/HerbsTab.cs" id="3_kyvoe"]
+[ext_resource type="Script" path="res://Inventory/GeneralInventory/InventoryItem/InventoryItem.cs" id="3_okfu2"]
+[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI/MedicineTab.cs" id="4_3lda1"]
 
 [node name="GeneralInventory" type="Control"]
 layout_mode = 3
@@ -32,6 +33,14 @@ offset_bottom = 40.0
 
 [node name="SeedsTab" type="Node" parent="GeneralInventoryLogic/Categories"]
 script = ExtResource("2_f80sh")
+
+[node name="SeedItem1" type="Node" parent="GeneralInventoryLogic/Categories/SeedsTab"]
+script = ExtResource("3_okfu2")
+Name = "SeedItem1"
+
+[node name="SeedItem2" type="Node" parent="GeneralInventoryLogic/Categories/SeedsTab"]
+script = ExtResource("3_okfu2")
+Name = "SeedItem2"
 
 [node name="HerbsTab" type="Node" parent="GeneralInventoryLogic/Categories"]
 script = ExtResource("3_kyvoe")
