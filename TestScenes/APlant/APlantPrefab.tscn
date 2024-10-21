@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://f7it4seve2en"]
+
+[ext_resource type="Script" path="res://Plants/APlant.cs" id="1_14phw"]
+[ext_resource type="Texture2D" uid="uid://c2uogdsxjcvep" path="res://Plants/Sprites/Basic_Plants.png" id="2_oayfo"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="3_4yb86"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydsg4"]
+atlas = ExtResource("2_oayfo")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cldp"]
+atlas = ExtResource("2_oayfo")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0joly"]
+atlas = ExtResource("2_oayfo")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51oe2"]
+atlas = ExtResource("2_oayfo")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x32u"]
+atlas = ExtResource("2_oayfo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rej4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydsg4")
+}],
+"loop": true,
+"name": &"Budding",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4yb86")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cldp")
+}],
+"loop": true,
+"name": &"Flowering",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0joly")
+}],
+"loop": true,
+"name": &"Ripening",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51oe2")
+}],
+"loop": true,
+"name": &"Seedling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x32u")
+}],
+"loop": true,
+"name": &"Vegetating",
+"speed": 5.0
+}]
+
+[node name="APlantPrefab" type="Node2D" groups=["Plant"]]
+script = ExtResource("1_14phw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1rej4")
+animation = &"Dead"
