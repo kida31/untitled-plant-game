@@ -7,7 +7,8 @@ namespace untitledplantgame.Cycle.DayNight;
 public partial class NightTint : CanvasModulate
 {
 	/// The gradient texture that represents the day-night cycle
-	[Export] private GradientTexture1D _gradientTexture;
+	[Export]
+	private GradientTexture1D _gradientTexture;
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

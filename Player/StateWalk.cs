@@ -4,28 +4,28 @@ namespace untitledplantgame.Player;
 
 public partial class StateWalk : State
 {
-    [Export] private float _movespeed = 100.0f;
-    private State idleState;
+	[Export]
+	private float _movespeed = 100.0f;
+	private State idleState;
 
+	public override void _Ready()
+	{
+		idleState = GetNode<State>("../Idle");
+	}
 
-    public override void _Ready()
-    {
-        idleState = GetNode<State>("../Idle");
-    }
+	public override void Enter()
+	{
+		Player.UpdateAnimation("walk");
+	}
 
-    public override void Enter()
-    {
-        Player.UpdateAnimation("walk");
-    }
+	public override State Process(double delta)
+	{
+		if (Player.Direction == Vector2.Zero)
+			return idleState;
 
-    public override State Process(double delta)
-    {
-        if (Player.Direction == Vector2.Zero)
-            return idleState;
-
-        Player.Velocity = Player.Direction * _movespeed;
-        if(Player.SetDirection())
-            Player.UpdateAnimation("walk");
-        return null;
-    }
+		Player.Velocity = Player.Direction * _movespeed;
+		if (Player.SetDirection())
+			Player.UpdateAnimation("walk");
+		return null;
+	}
 }

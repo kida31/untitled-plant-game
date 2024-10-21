@@ -20,10 +20,10 @@ public partial class ClockUi : Control
 		_timeLabelBackground = GetNode<Label>("CenterContainerTime/TimeLabelBackground");
 		_timeLabel = GetNode<Label>("CenterContainerTime/TimeLabelBackground/TimeLabel");
 		_arrow = GetNode<TextureRect>("Arrow");
-		
+
 		TimeController.Instance.TimeTick += SetDaytime;
 	}
-	
+
 	private void SetDaytime(int day, int hour, int minute)
 	{
 		_dayLabel.Text = "Day " + Convert.ToString(day + 1);
@@ -34,13 +34,12 @@ public partial class ClockUi : Control
 
 		if (hour <= 12)
 		{
-			_arrow.RotationDegrees = RemapRangeF( hour + minute / 60f, 0, 13, -90, 90);
+			_arrow.RotationDegrees = RemapRangeF(hour + minute / 60f, 0, 13, -90, 90);
 		}
 		else
 		{
-			_arrow.RotationDegrees = RemapRangeF( hour + minute / 60f, 13, 24, 90, -90);
+			_arrow.RotationDegrees = RemapRangeF(hour + minute / 60f, 13, 24, 90, -90);
 		}
-
 	}
 
 	private static string AmFm(int hour)
@@ -49,7 +48,7 @@ public partial class ClockUi : Control
 		{
 			0 => Convert.ToString(12),
 			> 12 => Convert.ToString(hour - 12),
-			_ => Convert.ToString(hour)
+			_ => Convert.ToString(hour),
 		};
 	}
 
@@ -64,12 +63,22 @@ public partial class ClockUi : Control
 
 	private string AmPm(int hour)
 	{
-		if (hour < 12) return "am";
-		else return "pm";
+		if (hour < 12)
+			return "am";
+		else
+			return "pm";
 	}
 
-	private float RemapRangeF(double input, double minInput, double maxInput, double minOutput, double maxOutput)
+	private float RemapRangeF(
+		double input,
+		double minInput,
+		double maxInput,
+		double minOutput,
+		double maxOutput
+	)
 	{
-		return (float)((input - minInput) / (maxInput - minInput) * (maxOutput - minOutput) + minOutput);
+		return (float)(
+			(input - minInput) / (maxInput - minInput) * (maxOutput - minOutput) + minOutput
+		);
 	}
 }
