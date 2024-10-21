@@ -21,7 +21,7 @@ jobs:
 
       - name: Build
         id: build
-        uses: felix-schindler/build-godot-action@v1.6.0
+        uses: felix-schindler/build-godot-action@v1.6.1
         with:
           name: example
           preset: ${{ matrix.platform }}
