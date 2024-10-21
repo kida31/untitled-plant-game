@@ -1,5 +1,5 @@
-using Godot;
 using System;
+using Godot;
 using untitledplantgame.Common;
 
 namespace untitledplantgame.Common;
@@ -9,17 +9,20 @@ public partial class TimeController : Node
 {
 	/// Singleton instance that's accessible from anywhere
 	public static TimeController Instance { get; private set; }
+
 	/// Radial time in radians
 	public double Time { get; private set; }
 
-	private readonly Logger _logger = new ("Time");
+	private readonly Logger _logger = new("Time");
 
 	/// Constants for time calculations
 	private const double MinutesPerDay = 1440;
 	private const double MinutesPerHour = 60;
 	private const double InGameToRealMinuteDuration = (2 * Math.PI) / MinutesPerDay;
+
 	/// The speed at which in-game time passes
 	private const double TickSpeed = 20.0;
+
 	/// The hour with which the day starts
 	private const int InitialHour = 7;
 
@@ -82,7 +85,7 @@ public partial class TimeController : Node
 			EmitSignal(SignalName.TimeTick, day, hour, minute);
 		}
 	}
-	
+
 	//Please remove this later
 	public void FastForwardFor(double targetTime)
 	{

@@ -5,6 +5,4 @@ namespace untitledplantgame.Common;
 /**
  * Attribute to mark a class as a singleton
  */
-public class SingletonAttribute : Attribute
-{
-}
+public class SingletonAttribute : Attribute { }

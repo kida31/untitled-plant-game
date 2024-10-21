@@ -3,9 +3,9 @@
 //unsure if i still need this
 public interface IPlantable
 {
-    SoilTile Tile { get; set; }
+	SoilTile Tile { get; set; }
 
-    public void PlantOnTile(SoilTile soilTile);
+	public void PlantOnTile(SoilTile soilTile);
 
-    public void AbsorbWaterFromTile();
+	public void AbsorbWaterFromTile();
 }

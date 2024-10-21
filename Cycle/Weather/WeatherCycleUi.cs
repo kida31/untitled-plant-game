@@ -13,7 +13,7 @@ public partial class WeatherCycleUi : Node
 		_rainOverlay = GetNode<GpuParticles2D>("RainParticles");
 		_rainOverlay.Visible = false;
 		_logger.Debug("Starting a sunny day ☀️");
-		
+
 		WeatherCycle.Instance.WeatherChanged += ChangeWeather;
 	}
 

@@ -2,5 +2,6 @@
 
 public enum RequirementType
 {
-    water, sun,
+	water,
+	sun,
 }
