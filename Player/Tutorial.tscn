@@ -1,8 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://44xb8xy3m0r4"]
+[gd_scene load_steps=6 format=3 uid="uid://44xb8xy3m0r4"]
 
+[ext_resource type="Script" path="res://Player/tutorial.gd" id="1_1ebg6"]
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Player/Player.tscn" id="1_ubmpe"]
+[ext_resource type="PackedScene" uid="uid://xklrqius2jnp" path="res://interaction/interaction_area.tscn" id="3_7oqi1"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="3_r1tyv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jtwjv"]
+radius = 29.0172
 
 [node name="Tutorial" type="Node2D"]
+script = ExtResource("1_1ebg6")
 
 [node name="Player" parent="." instance=ExtResource("1_ubmpe")]
 position = Vector2(563, 324)
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_7oqi1")]
+position = Vector2(423, 288)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_jtwjv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(424.25, 289)
+scale = Vector2(0.167969, 0.15625)
+texture = ExtResource("3_r1tyv")

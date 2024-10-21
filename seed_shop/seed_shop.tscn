@@ -17,6 +17,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 85.0
+offset_top = 73.0
+offset_right = -127.0
+offset_bottom = -69.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.488352, 0.651003, 0.413614, 1)
@@ -195,32 +199,32 @@ offset_right = 52.0
 offset_bottom = 169.0
 text = "Price: "
 
-[node name="name" type="Label" parent="."]
+[node name="name" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 490.0
-offset_top = 10.0
-offset_right = 614.0
-offset_bottom = 46.0
+offset_left = 405.0
+offset_top = 5.0
+offset_right = 529.0
+offset_bottom = 41.0
 text = "Seed Shop
 "
 
-[node name="CloseButton" type="Button" parent="."]
+[node name="CloseButton" type="Button" parent="ColorRect"]
 layout_mode = 0
-offset_left = 1061.0
-offset_top = 8.0
-offset_right = 1146.0
-offset_bottom = 79.0
+offset_left = 830.0
+offset_top = 21.0
+offset_right = 915.0
+offset_bottom = 92.0
 text = "Close"
 
-[node name="money" type="Label" parent="."]
+[node name="money" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 1024.0
-offset_top = 97.0
-offset_right = 1077.0
-offset_bottom = 120.0
+offset_left = 831.0
+offset_top = 110.0
+offset_right = 884.0
+offset_bottom = 133.0
 text = "Money"
 
 [connection signal="pressed" from="ColorRect/GridContainer/Carrots/TextureButton" to="." method="_on_carrot_button_pressed"]
 [connection signal="pressed" from="ColorRect/GridContainer/Tomatoes/TextureButton" to="." method="_on_tomato_button_pressed"]
 [connection signal="pressed" from="ColorRect/GridContainer/Pumpkins/TextureButton" to="." method="_on_pumpkin_button_pressed"]
-[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="ColorRect/CloseButton" to="." method="_on_close_button_pressed"]

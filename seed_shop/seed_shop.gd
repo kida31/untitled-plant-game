@@ -9,8 +9,7 @@ var seed_data = {
 }
 
 func _on_close_button_pressed() -> void:
-	queue_free()
-	pass # Replace with function body.
+	get_parent().close_shop()
 
 func _on_seed_button_pressed(seed_type) -> void:
 	var seed_info = seed_data[seed_type]
@@ -35,7 +34,7 @@ func _on_pumpkin_button_pressed() -> void:
 	_on_seed_button_pressed("Pumpkin")
 
 func update_currency_label():
-	$money.text = "Money: " + str(player_currency)
+	$ColorRect/money.text = "Money: " + str(player_currency)
 
 func update_seed_labels(seed_type):
 	match seed_type:
