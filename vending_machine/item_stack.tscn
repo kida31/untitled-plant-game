@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://v4q4n4opsed6"]
 
+[ext_resource type="Script" path="res://vending_machine/ItemStackView.cs" id="1_8p08p"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="1_onwbe"]
 [ext_resource type="Texture2D" uid="uid://21vebptmufut" path="res://black_dot.png" id="2_7wld1"]
-[ext_resource type="Script" path="res://vending_machine/ItemStack.cs" id="2_vlkqn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6swp8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -12,7 +12,7 @@ custom_minimum_size = Vector2(160, 160)
 offset_right = 160.0
 offset_bottom = 160.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6swp8")
-script = ExtResource("2_vlkqn")
+script = ExtResource("1_8p08p")
 _quantityLabel = NodePath("QuantityLabel")
 _itemTexture = NodePath("CenterContainer/MarginContainer/ItemTexture")
 _placeholderIcon = ExtResource("1_onwbe")

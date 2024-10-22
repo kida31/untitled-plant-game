@@ -5,7 +5,7 @@ using InventoryV0;
 
 namespace GUI.VendingMachine
 {
-    public partial class ItemStack : Control
+    public partial class ItemStackView : Control
     {
         private ItemStack<IStorable> _innerItemStack;
 
@@ -32,7 +32,7 @@ namespace GUI.VendingMachine
         {
             if (_innerItemStack.Item is null) return default;
             
-            var previewClone = this.Duplicate() as ItemStack;
+            var previewClone = this.Duplicate() as ItemStackView;
             previewClone!._innerItemStack = _innerItemStack;
             SetDragPreview(previewClone);
             return this;
@@ -40,7 +40,7 @@ namespace GUI.VendingMachine
 
         public override bool _CanDropData(Vector2 atPosition, Variant data)
         {
-            var that = data.As<ItemStack>();
+            var that = data.As<ItemStackView>();
             if (that is null) return false;
             return true;
         }
@@ -48,7 +48,7 @@ namespace GUI.VendingMachine
         
         public override void _DropData(Vector2 atPosition, Variant data)
         {
-            var that = data.As<ItemStack>();
+            var that = data.As<ItemStackView>();
             Debug.Assert(that is not null);
             
             GD.Print($"Dropping data that:{that._innerItemStack.Item?.Name} <-> this:{_innerItemStack.Item?.Name}");

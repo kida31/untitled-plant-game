@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using InventoryV0;
@@ -10,14 +11,14 @@ public class VendingMachine
     private const float SALES_PERCENT_PER_INTERVAL = 0.1f;
 
     // State
-    private ItemStack<ISellable>[] _items = new ItemStack<ISellable>[8]; 
+    private List<ItemStack<ISellable>> _items = new(new ItemStack<ISellable>[8]); 
     private int _gold = 0;
     private float _priceMultiplier = 1.0f;
     private float _faithMultiplier = 1.0f;
     private int _salesRemaining = MAX_SALES;
 
     // Properties
-    public ItemStack<ISellable>[] Items => _items;
+    public List<ItemStack<ISellable>> Items => _items;
     public float PriceMultiplier => _priceMultiplier;
     public float FaithMultiplier => _faithMultiplier;
 

@@ -12,11 +12,11 @@ public partial class VendingMachineUI : Control
     [Export] private Slider _slider;
 
     private VendingMachine _vendingMachine;
-    private List<ItemStack> _itemStacks;
+    private List<ItemStackView> _itemStacks;
 
     public override void _Ready()
     {
-        _itemStacks = _itemStackContainer.GetChildren().Cast<ItemStack>().ToList();
+        _itemStacks = _itemStackContainer.GetChildren().Cast<ItemStackView>().ToList();
         _slider.ValueChanged += OnSliderValueChanged;
     }
     
@@ -24,7 +24,7 @@ public partial class VendingMachineUI : Control
     {
         if (_vendingMachine is null) return;
         // i do not know whether this affects performance
-        for (var index = 0; index < _itemStacks.Count && index < _vendingMachine.Items.Length; index++)
+        for (var index = 0; index < _itemStacks.Count && index < _vendingMachine.Items.Count; index++)
         {
             // TODO: un-uglify this. Thanks!
             // Tedious copying of data from vending machine to UI
