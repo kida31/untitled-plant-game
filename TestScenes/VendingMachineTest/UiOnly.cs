@@ -11,6 +11,8 @@ public partial class UiOnly : Node2D
 	[Export] private VendingMachineUI _vendingMachineUi;
 	[Export] private Control _inventoryGrid;
 	[Export] private PackedScene stackViewTemplate;
+	[Export] private Button _sellButton;
+
 	private VendingMachine _vendingMachine;
 	private List<ItemStack<IStorable>> _inventory;
 
@@ -34,6 +36,8 @@ public partial class UiOnly : Node2D
 			stackView.InnerItemStack = stack;
 			_inventoryGrid.AddChild(stackView);
 		});
+
+		_sellButton.Pressed += _vendingMachine.SellRandomItems;
 	}
 
 }

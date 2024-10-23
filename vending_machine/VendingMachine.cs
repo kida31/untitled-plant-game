@@ -2,10 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Godot;
 using InventoryV0;
 
 public class VendingMachine
 {
+    // Events
+    public event Action<List<ItemStack<ISellable>>> ContentChanged;
+
     // Magic Numbers
     private const int MAX_SALES = 100;
     private const float SALES_PERCENT_PER_INTERVAL = 0.1f;
@@ -21,6 +25,7 @@ public class VendingMachine
     public List<ItemStack<ISellable>> Items => _items;
     public float PriceMultiplier => _priceMultiplier;
     public float FaithMultiplier => _faithMultiplier;
+    public int Gold => _gold;
 
     /// <summary>
     /// Sells a random item from the vending machine's inventory.
@@ -53,14 +58,15 @@ public class VendingMachine
         }
 
         // Sales count for this transaction is a percent of current supply, but at least one.
-        var totalSellCount = (int) Math.Max(SALES_PERCENT_PER_INTERVAL * totalItemCount, 1);
+        var totalSellCount = (int) Math.Ceiling(Math.Max(SALES_PERCENT_PER_INTERVAL * totalItemCount, 1));
 
         // Sort by price descending, sell most expensive first.
-        var itemsByPrice = _items.OrderBy(stack => stack.Item.Price).ToList();
+        var itemsByPrice = _items.OrderBy(stack => stack.Item?.Price ?? 0).ToList();
 
         for (var index = 0; index < itemsByPrice.Count; index++)
         {
             var stack = itemsByPrice[index];
+            var originalIndex = _items.IndexOf(stack);
 
             // Can stop selling once count has reached zero
             if (totalSellCount == 0) break;
@@ -73,12 +79,16 @@ public class VendingMachine
 
             // Do not sell more than supply
             var itemSellCount = Math.Min(totalSellCount, quantity);
+            GD.Print($"{item.Name}: {totalSellCount} vs. {quantity} => {itemSellCount}");
 
             // Prices after multiplier are rounded up.
-            _gold += (int) Math.Ceiling(item.Price * _priceMultiplier) * itemSellCount;
+            var goldEarned = Math.Ceiling(item.Price * _priceMultiplier);
+            _gold += (int) goldEarned * itemSellCount;
 
             // Actual sell count has to be deducted from remaining sales
             _salesRemaining -= itemSellCount;
+            totalSellCount -= itemSellCount;
+            GD.Print($"itemsellcount={totalSellCount}");
 
             // Sold items are no longer in container
             stack.Quantity -= itemSellCount;
@@ -87,7 +97,10 @@ public class VendingMachine
                 stack.Item = null;
             }
 
-            itemsByPrice[index] = stack;
+            GD.Print($"Sold {item.Name} x{itemSellCount} for {goldEarned}g");
+
+            _items[originalIndex] = stack;
+            ContentChanged?.Invoke(_items);
         }
     }
 

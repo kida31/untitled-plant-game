@@ -4,22 +4,30 @@
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://vending_machine/vending_machine_ui.tscn" id="1_sapqf"]
 [ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://vending_machine/item_stack.tscn" id="2_77ub2"]
 
-[node name="UiOnly" type="Node2D" node_paths=PackedStringArray("_vendingMachineUi", "_inventoryGrid")]
+[node name="UiOnly" type="Node2D" node_paths=PackedStringArray("_vendingMachineUi", "_inventoryGrid", "_sellButton")]
 script = ExtResource("1_hus41")
 _vendingMachineUi = NodePath("Control/VendingMachineUi")
-_inventoryGrid = NodePath("Control/GridContainer")
+_inventoryGrid = NodePath("Control/InventoryContainer")
 stackViewTemplate = ExtResource("2_77ub2")
+_sellButton = NodePath("Control/SellButton")
 
 [node name="Control" type="VBoxContainer" parent="."]
 offset_right = 752.0
-offset_bottom = 500.0
+offset_bottom = 575.0
 
 [node name="VendingMachineUi" parent="Control" instance=ExtResource("1_sapqf")]
 layout_mode = 2
 
+[node name="HSeparator2" type="HSeparator" parent="Control"]
+layout_mode = 2
+
+[node name="SellButton" type="Button" parent="Control"]
+layout_mode = 2
+text = "Sell"
+
 [node name="HSeparator" type="HSeparator" parent="Control"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Control"]
+[node name="InventoryContainer" type="GridContainer" parent="Control"]
 layout_mode = 2
 columns = 8
