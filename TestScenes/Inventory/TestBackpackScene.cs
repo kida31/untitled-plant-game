@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using untitledplantgame.Inventory;
 
 public partial class TestBackpackScene : Node2D

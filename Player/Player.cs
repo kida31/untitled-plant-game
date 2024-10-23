@@ -24,7 +24,7 @@ public partial class Player : CharacterBody2D
 	{
 		Direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
 		Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
-
+		GD.Print(_interactablesManager);
 		//Velocity = direction * MoveSpeed;
 		_interactablesManager.ScanForInteractables();
 	}

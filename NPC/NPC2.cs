@@ -10,6 +10,9 @@ public partial class NPC2 : Area2D, IInteractable
         AddToGroup("Interactables");
         var eventBus = GetNode<EventBus>("/root/EventBus");
         eventBus.Connect("NPCInteracted", new Callable(this, nameof(OnNPCInteracted)));
+        
+        //Rework with C# Events
+        eventBus.NPCInteracted += OnNPCInteracted; //Yay :D
     }
 
     private void OnBodyEntered(Node body)

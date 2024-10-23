@@ -1,9 +1,8 @@
-using Godot;
-using System;
+using untitledplantgame.Inventory.GeneralInventory;
 
 public interface IInventoryItem
 {
     string GetInventoryItemName();
 
-    //ICategory GetCategory();  return seed/herb
+    IItemCategory GetItemCategoryName();
 }

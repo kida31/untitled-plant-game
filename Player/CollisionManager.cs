@@ -20,7 +20,7 @@ public partial class CollisionManager : Node
     {
         if (_npcDialogueActions.TryGetValue(npcName, out var action))
         {
-            action.Invoke();
+            action.Invoke(); //ok
         }
         else
         {
