@@ -7,6 +7,9 @@ namespace untitledplantgame.Item;
 public partial class InteractableItem : Area2D, IInteractable
 {
 	[Export]
+	public string ItemName => _dataContainer.EntityName; // Convenience property
+	
+	[Export]
 	private DataContainer _dataContainer;
 
 	[Export(PropertyHint.Enum, "Herb,Medicine,Seed")]

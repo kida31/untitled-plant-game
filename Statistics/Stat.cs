@@ -25,6 +25,9 @@ public partial class Stat : Resource
 	public int StatValue;
 
 	[Export]
+	public bool IsHidden;
+
+	[Export]
 	public Array<int> StatModifiers { get; set; } = new();
 	private string _selectedOption;
 	public IStatType StatType { get; set; }
@@ -35,15 +38,16 @@ public partial class Stat : Resource
 	// Without a parameterless constructor, Godot will have problems
 	// creating and editing your resource via the inspector.
 	public Stat()
-		: this(0, null)
+		: this(0, null, false)
 	{
 		StatValue = int.MinValue;
 	}
 
-	public Stat(int value, IStatType statType)
+	public Stat(int value, IStatType statType, bool isHidden)
 	{
 		StatValue = value;
 		StatType = statType;
+		IsHidden = isHidden;
 	}
 
 	/**

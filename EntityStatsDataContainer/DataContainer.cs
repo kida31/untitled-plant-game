@@ -8,6 +8,9 @@ namespace untitledplantgame.EntityStatsDataContainer;
 public partial class DataContainer : Node
 {
 	[Export]
+	public string EntityName { get; private set; } // TODO: Access
+	
+	[Export]
 	private EntityStats _entityStats;
 
 	// Bad idea, but okay for now
