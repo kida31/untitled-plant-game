@@ -20,8 +20,6 @@ public class Requirement
 
 	public override string ToString()
 	{
-		return string.Format(
-			$"The current level reached {CurrentLevel}, minimum level: {MinimumLevel}, maximum level: {MaxLevel}"
-		);
+		return string.Format($"The current level reached {CurrentLevel}, minimum level: {MinimumLevel}, maximum level: {MaxLevel}");
 	}
 }
