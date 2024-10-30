@@ -1,12 +1,13 @@
 using Godot;
 using untitledplantgame.Player;
 
-public partial class NpcLogic : Node 
+public partial class NpcLogic : Node
 {
-	[Export] private NPC _npcSelf;
-	
+	[Export]
+	private NPC _npcSelf;
+
 	private CollisionManager _collisionManager;
-	
+
 	public override void _Ready()
 	{
 		_collisionManager = GetNode<CollisionManager>("../../CollisionManager"); // Reference to the global collision manager
@@ -19,9 +20,9 @@ public partial class NpcLogic : Node
 			_collisionManager.HandleNpcCollision(npcName);
 		}
 	}
-	
+
 	//------------------------------------------------------------------------------------//
-	
+
 	public void InteractionLogic()
 	{
 		// Logic for talking to the NPC

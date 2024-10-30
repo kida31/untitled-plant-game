@@ -1,19 +1,20 @@
-using Godot;
 using System.Collections.Generic;
+using Godot;
 using untitledplantgame.Player;
 
 public partial class InteractablesManager : Node
 {
-	[Export] private Player _player;
-	
-	private List<IInteractable> _interactablesInReach = new ();
+	[Export]
+	private Player _player;
+
+	private List<IInteractable> _interactablesInReach = new();
 	private IInteractable _nearestInteractable;
 
 	// In Player
 	public void ScanForInteractables()
 	{
 		CheckForInteractables();
-		if (Input.IsKeyPressed(Key.E))// Bind this to your interact key
+		if (Input.IsKeyPressed(Key.E)) // Bind this to your interact key
 		{
 			PerformInteraction();
 		}
@@ -26,14 +27,13 @@ public partial class InteractablesManager : Node
 
 		// Get all Area2D nodes that are in range (this could be optimized)
 		var area2DList = GetTree().GetNodesInGroup("Interactables");
-		
+
 		foreach (var area in area2DList)
 		{
-			if (area is IInteractable interactable) {
-				
+			if (area is IInteractable interactable)
+			{
 				if (IsOverlapping(interactable as Area2D))
 				{
-					
 					_interactablesInReach.Add(interactable);
 				}
 			}

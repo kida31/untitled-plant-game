@@ -69,16 +69,8 @@ public partial class ClockUi : Control
 			return "pm";
 	}
 
-	private float RemapRangeF(
-		double input,
-		double minInput,
-		double maxInput,
-		double minOutput,
-		double maxOutput
-	)
+	private float RemapRangeF(double input, double minInput, double maxInput, double minOutput, double maxOutput)
 	{
-		return (float)(
-			(input - minInput) / (maxInput - minInput) * (maxOutput - minOutput) + minOutput
-		);
+		return (float)((input - minInput) / (maxInput - minInput) * (maxOutput - minOutput) + minOutput);
 	}
 }

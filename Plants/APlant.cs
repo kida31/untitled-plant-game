@@ -58,9 +58,7 @@ public partial class APlant : Node2D
 		var plantData = ResourceManager.Instance.GetPlantData(_plantId);
 		var plantRequirements = new Dictionary<string, Requirement>();
 
-		var plantDataRequirementsForStage = plantData
-			.DataForGrowthStages[(int)Stage]
-			.GrowthRequirements;
+		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
 		{
@@ -88,9 +86,7 @@ public partial class APlant : Node2D
 				break;
 		}
 
-		_logger.Debug(
-			$"Requirement {fulfilled} for stage {Stage}, current day count at {_currentDay} of {_daysToGrow}."
-		);
+		_logger.Debug($"Requirement {fulfilled} for stage {Stage}, current day count at {_currentDay} of {_daysToGrow}.");
 
 		return fulfilled && Stage != GrowthStage.Ripening && Stage != GrowthStage.Dead;
 	}
@@ -139,10 +135,7 @@ public partial class APlant : Node2D
 
 		waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
 
-		_logger.Debug(
-			RequirementType.water.ToString()
-				+ _currentRequirements.GetValueOrDefault(RequirementType.water.ToString())
-		);
+		_logger.Debug(RequirementType.water.ToString() + _currentRequirements.GetValueOrDefault(RequirementType.water.ToString()));
 	}
 
 	/// <summary>
@@ -168,10 +161,7 @@ public partial class APlant : Node2D
 
 		sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + _absorptionRate, sunReq.MaxLevel);
 
-		_logger.Info(
-			RequirementType.sun.ToString()
-				+ _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString())
-		);
+		_logger.Info(RequirementType.sun.ToString() + _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString()));
 	}
 
 	/// <summary>

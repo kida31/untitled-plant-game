@@ -15,6 +15,7 @@ public partial class EventBus : Node
 {
 	public static EventBus Instance { get; private set; }
 	private readonly Logger _logger = new("EventBus");
+
 	public override void _Ready()
 	{
 		if (Instance == null)
@@ -27,25 +28,28 @@ public partial class EventBus : Node
 			QueueFree();
 		}
 	}
-	
+
 	//---------------------------------------------Legacy Signals---------------------------------------------
-	[Signal][Obsolete] public delegate void NPCInteractedEventHandler(Node npc); //Replace with C# Action
-	
+	[Signal]
+	[Obsolete]
+	public delegate void NPCInteractedEventHandler(Node npc); //Replace with C# Action
+
 	[Obsolete]
 	public void NotifyNPCInteracted(Node npc)
 	{
 		EmitSignal(nameof(NPCInteracted), npc);
 	}
+
 	//---------------------------------------------Legacy Signals---------------------------------------------
-	
-	
-	
+
+
+
 	public delegate void AddToInventoryEventHandler(InteractableItem interactableItem);
 
 	public event AddToInventoryEventHandler OnItemPickUp;
 
 	public void ItemPickedUp(InteractableItem interactableItem)
 	{
-		OnItemPickUp?.Invoke(interactableItem); 
+		OnItemPickUp?.Invoke(interactableItem);
 	}
 }

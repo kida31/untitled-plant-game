@@ -1,6 +1,3 @@
 namespace untitledplantgame.Statistics.StatTypes;
 
-public class Health : IStatType
-{
-    
-}
+public class Health : IStatType { }

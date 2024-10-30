@@ -3,12 +3,23 @@ using untitledplantgame.Inventory;
 
 public partial class TestBackpackScene : Node2D
 {
-	[Export] private BackpackView _backpackView;
-	[Export] private Button _addSeedsButton;
-	[Export] private Button _addWaterButton;
-	[Export] private Button _addSlimeButton;
-	[Export] private Button _newBackpackButton;
-	[Export] private LineEdit _backpackSizeLineEdit;
+	[Export]
+	private BackpackView _backpackView;
+
+	[Export]
+	private Button _addSeedsButton;
+
+	[Export]
+	private Button _addWaterButton;
+
+	[Export]
+	private Button _addSlimeButton;
+
+	[Export]
+	private Button _newBackpackButton;
+
+	[Export]
+	private LineEdit _backpackSizeLineEdit;
 
 	private Backpack _backpack;
 

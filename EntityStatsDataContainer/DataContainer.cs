@@ -7,13 +7,12 @@ namespace untitledplantgame.EntityStatsDataContainer;
 
 public partial class DataContainer : Node
 {
-    [Export] private EntityStats _entityStats;
+	[Export]
+	private EntityStats _entityStats;
 
-    
-
-    // Bad idea, but okay for now
-    public Array<Stat> GetEntityBaseStats()
-    {
-        return _entityStats.GetEntityStats();
-    }
+	// Bad idea, but okay for now
+	public Array<Stat> GetEntityBaseStats()
+	{
+		return _entityStats.GetEntityStats();
+	}
 }

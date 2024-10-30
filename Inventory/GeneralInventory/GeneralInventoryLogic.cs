@@ -1,6 +1,6 @@
-using Godot;
 using System.Collections.Generic;
 using System.Linq;
+using Godot;
 using Godot.Collections;
 using untitledplantgame.EntityStatsDataContainer;
 using untitledplantgame.Inventory.GeneralInventory.UI_ItemCategory;
@@ -14,25 +14,24 @@ namespace untitledplantgame.Inventory.GeneralInventory;
  */
 public partial class GeneralInventoryLogic : Node
 {
-	private Array<DataContainer> _dataContainers = new (); 
+	private Array<DataContainer> _dataContainers = new();
 	private List<ICategoryTab> _categories;
-	
+
 	public override void _Ready()
 	{
 		var eventBus = GetNode<EventBus>("/root/EventBus");
 		eventBus.OnItemPickUp += AddItemToInventory;
-		
+
 		_categories = GetChildrenOfType<ICategoryTab>();
 	}
-	
-	public override void _Process(double delta)
-	{
-	}
-	
+
+	public override void _Process(double delta) { }
+
 	/**
 	 * Checks if first-degree nodes are of the type "ICategoryTab" and returns them.
 	 */
-	private List<T> GetChildrenOfType<T>() where T : ICategoryTab
+	private List<T> GetChildrenOfType<T>()
+		where T : ICategoryTab
 	{
 		List<T> childrenOfType = new List<T>();
 		for (int i = 0; i < GetChildCount(); i++)
@@ -43,7 +42,7 @@ public partial class GeneralInventoryLogic : Node
 				childrenOfType.Add(typedChild);
 			}
 		}
-        
+
 		return childrenOfType;
 	}
 
@@ -57,7 +56,7 @@ public partial class GeneralInventoryLogic : Node
 		}
 		*/
 		_dataContainers.Add(item.GetItemDataContainer());
-		
+
 		switch (item.GetICharacteristic())
 		{
 			case HerbCategory:
@@ -71,16 +70,20 @@ public partial class GeneralInventoryLogic : Node
 				break;
 		}
 
-
 		foreach (var tab in _categories)
 		{
 			foreach (var data in tab.GetItemsInCategoryTab())
 			{
 				foreach (var stat in data.GetEntityBaseStats())
 				{
-					GD.Print("In the tab: \"" + tab.GetType() + 
-					            "\" the stat: \"" + stat.StatType +
-					            "\" has the total value:" + stat.GetModifiedStatValue());
+					GD.Print(
+						"In the tab: \""
+							+ tab.GetType()
+							+ "\" the stat: \""
+							+ stat.StatType
+							+ "\" has the total value:"
+							+ stat.GetModifiedStatValue()
+					);
 				}
 			}
 		}

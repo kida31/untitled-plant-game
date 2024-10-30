@@ -8,13 +8,14 @@ namespace untitledplantgame.Entity;
 
 public partial class EntityStats : Node
 {
-	[Export] public EntityConfiguration EntityConfiguration;
-	private Array<Stat> _baseStats; 
-	
+	[Export]
+	public EntityConfiguration EntityConfiguration;
+	private Array<Stat> _baseStats;
+
 	public override void _Ready()
 	{
 		_baseStats = new Array<Stat>();
-		
+
 		try
 		{
 			foreach (var stat in EntityConfiguration.Stats)
@@ -36,7 +37,7 @@ public partial class EntityStats : Node
 	{
 		return _baseStats;
 	}
-	
+
 	// Debug Method
 	public void PrintAllBaseStatsFromConfig()
 	{

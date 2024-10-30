@@ -4,8 +4,8 @@ namespace untitledplantgame.Inventory.GeneralInventory.UI_ItemCategory;
 
 public class MedicineCategory : IItemCategory
 {
-    public ICharacteristic GetCharacteristicType()
-    {
-        return null;
-    }
+	public ICharacteristic GetCharacteristicType()
+	{
+		return null;
+	}
 }

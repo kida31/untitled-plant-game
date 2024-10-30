@@ -6,7 +6,9 @@ namespace untitledplantgame.Item;
 
 public partial class InteractableItem : Area2D, IInteractable
 {
-	[Export] private DataContainer _dataContainer;
+	[Export]
+	private DataContainer _dataContainer;
+
 	[Export(PropertyHint.Enum, "Herb,Medicine,Seed")]
 	private string SelectedOption
 	{
@@ -19,24 +21,25 @@ public partial class InteractableItem : Area2D, IInteractable
 			EmitSignal("changed"); // Notify Godot that the property has changed to update the Inspector
 		}
 	}
-	
+
 	private string _selectedOption;
 	private ICharacteristic _characteristic;
 	private bool _canBeInteractedWith = true;
-	
+
 	public override void _Ready()
 	{
 		AddToGroup("Interactables");
 	}
-	
-	private ICharacteristic CreateInstance() => _selectedOption switch
-	{
-		"Herb" => new HerbCategory(),
-		"Medicine" => new MedicineCategory(),
-		"Seed" => new SeedCategory(),
-		_ => null
-	};
-	
+
+	private ICharacteristic CreateInstance() =>
+		_selectedOption switch
+		{
+			"Herb" => new HerbCategory(),
+			"Medicine" => new MedicineCategory(),
+			"Seed" => new SeedCategory(),
+			_ => null,
+		};
+
 	public void Interact()
 	{
 		if (_canBeInteractedWith) //Very bad temporary solution. The Item should be "destroyed" anyway
