@@ -2,3 +2,4 @@
 * text=auto eol=lf
 
 addons/** linguist-vendored
+addons/**/* linguist-vendored
