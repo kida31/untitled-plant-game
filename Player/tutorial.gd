@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var interaction_area: InteractionArea = $InteractionArea
+@onready var interaction_area = $InteractionArea
 
-var shop_scene = load("res://seed_shop/seed_shop.tscn")
+var shop_scene = load("res://Seedshop/Seedshop.tscn")
 var shop_instance = null
 
 func _input(event):
@@ -24,7 +24,7 @@ func close_shop():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	interaction_area.interact = Callable(self, "_on_interact")
+	interaction_area.connect("Interacted", self, "_on_interact")
 
 func _on_interact():
 	open_shop()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cg5yho3bnwg55"]
 
-[ext_resource type="Script" path="res://seed_shop/seed_shop.gd" id="1_mofja"]
-[ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Sprites/seed.png" id="2_a2cl7"]
+[ext_resource type="Script" path="res://Seedshop/Seedshop.cs" id="1_mekxv"]
+[ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Sprites/seed.png" id="2_yabdn"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mofja")
+script = ExtResource("1_mekxv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -65,7 +65,7 @@ offset_right = -80.0
 offset_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("2_a2cl7")
+texture_normal = ExtResource("2_yabdn")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -117,7 +117,7 @@ offset_right = -80.0
 offset_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("2_a2cl7")
+texture_normal = ExtResource("2_yabdn")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -170,7 +170,7 @@ offset_right = -80.0
 offset_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("2_a2cl7")
+texture_normal = ExtResource("2_yabdn")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -223,8 +223,3 @@ offset_top = 110.0
 offset_right = 884.0
 offset_bottom = 133.0
 text = "Money"
-
-[connection signal="pressed" from="ColorRect/GridContainer/Carrots/TextureButton" to="." method="_on_carrot_button_pressed"]
-[connection signal="pressed" from="ColorRect/GridContainer/Tomatoes/TextureButton" to="." method="_on_tomato_button_pressed"]
-[connection signal="pressed" from="ColorRect/GridContainer/Pumpkins/TextureButton" to="." method="_on_pumpkin_button_pressed"]
-[connection signal="pressed" from="ColorRect/CloseButton" to="." method="_on_close_button_pressed"]
