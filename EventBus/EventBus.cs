@@ -1,4 +1,6 @@
+using System;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.EntityStatsDataContainer;
 using untitledplantgame.Item;
 
@@ -12,6 +14,7 @@ using untitledplantgame.Item;
 public partial class EventBus : Node
 {
 	public static EventBus Instance { get; private set; }
+	private readonly Logger _logger = new("EventBus");
 	public override void _Ready()
 	{
 		if (Instance == null)
@@ -20,14 +23,15 @@ public partial class EventBus : Node
 		}
 		else
 		{
-			GD.PrintErr("There are multiple instances of EventBus. This is not allowed.");
+			_logger.Error("There are multiple instances of EventBus. This is not allowed. Instance will be freed.");
 			QueueFree();
 		}
 	}
 	
 	//---------------------------------------------Legacy Signals---------------------------------------------
-	[Signal] public delegate void NPCInteractedEventHandler(Node npc); //Replace with C# Action
+	[Signal][Obsolete] public delegate void NPCInteractedEventHandler(Node npc); //Replace with C# Action
 	
+	[Obsolete]
 	public void NotifyNPCInteracted(Node npc)
 	{
 		EmitSignal(nameof(NPCInteracted), npc);
