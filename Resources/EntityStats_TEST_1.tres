@@ -1,24 +1,13 @@
-[gd_resource type="Resource" script_class="EntityConfiguration" load_steps=7 format=3 uid="uid://b628th77wbd7s"]
+[gd_resource type="Resource" script_class="EntityConfiguration" load_steps=4 format=3 uid="uid://b628th77wbd7s"]
 
-[ext_resource type="Script" path="res://Statistics/Modifier.cs" id="1_cy3eu"]
 [ext_resource type="Script" path="res://Entity/EntityConfiguration.cs" id="1_etj51"]
 [ext_resource type="Script" path="res://Statistics/Stat.cs" id="2_mg5sa"]
-
-[sub_resource type="Resource" id="Resource_01fwk"]
-script = ExtResource("1_cy3eu")
-SelectedOption = "Health"
-ModifierValue = 10
-
-[sub_resource type="Resource" id="Resource_lu0ra"]
-script = ExtResource("1_cy3eu")
-SelectedOption = "Health"
-ModifierValue = 10
 
 [sub_resource type="Resource" id="Resource_vds7m"]
 script = ExtResource("2_mg5sa")
 SelectedOption = "Health"
 StatValue = 100
-StatModifiers = Array[Object]([SubResource("Resource_01fwk"), SubResource("Resource_lu0ra")])
+StatModifiers = [2, 5]
 
 [resource]
 script = ExtResource("1_etj51")

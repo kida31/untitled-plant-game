@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Statistics.StatTypes;
@@ -25,7 +26,7 @@ public partial class Stat : Resource
 	public int StatValue;
 
 	[Export]
-	public Array<Modifier> StatModifiers { get; set; } = new();
+	public Array<int> StatModifiers { get; set; } = new();
 	private string _selectedOption;
 	public IStatType StatType { get; set; }
 
@@ -77,49 +78,23 @@ public partial class Stat : Resource
 		return StatValue;
 	}
 
-	public void AddStatModifier(Modifier modifier)
+	public void AddStatModifier(int modifier)
 	{
-		if (modifier.StatType.GetType() == this.StatType.GetType())
-		{
-			StatModifiers.Add(modifier);
-		}
-		else
-		{
-			throw new InvalidOperationException(
-				"Tried to add a modifier to " + this.StatType + " with the incompatible type: " + modifier.StatType
-			);
-		}
+		StatModifiers.Add(modifier);
 	}
 
 	public int GetModifiedStatValue()
 	{
-		int finalValue = 0;
-		foreach (var mod in StatModifiers)
-		{
-			if (mod.StatType.GetType() == this.StatType.GetType())
-			{
-				finalValue += mod.ModifierValue;
-			}
-			else
-			{
-				throw new InvalidOperationException(
-					"Type mismatch! Can't add Modifier Type: " + mod.StatType + " to Stat of Type " + this.StatType
-				);
-			}
-		}
-		finalValue += StatValue;
-		return finalValue;
+		// Base stat + sum of all modifiers
+		return StatValue + StatModifiers.Sum();
 	}
 
-	public void AddMultipleModifiers(Array<Modifier> modifiers)
+	public void AddMultipleModifiers(Array<int> modifiers)
 	{
-		foreach (var modifier in modifiers)
-		{
-			StatModifiers.Add(new Modifier(modifier.ModifierValue, CreateStatTypeInstance(modifier.StatType)));
-		}
+		StatModifiers.AddRange(modifiers);
 	}
 
-	public Array<Modifier> GetStatModifiers()
+	public Array<int> GetStatModifiers()
 	{
 		return StatModifiers;
 	}
