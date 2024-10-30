@@ -6,6 +6,9 @@ namespace untitledplantgame.Player;
 
 public partial class Player : CharacterBody2D
 {
+	[Export]
+	private InteractablesManager _interactablesManager;
+
 	private readonly Logger _logger = new Logger("Player");
 	private Vector2 _cardinalDirection = Vector2.Down;
 	public Vector2 Direction = Vector2.Zero;
@@ -27,6 +30,7 @@ public partial class Player : CharacterBody2D
 		Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
 
 		//Velocity = direction * MoveSpeed;
+		_interactablesManager.ScanForInteractables();
 	}
 
 	public override void _PhysicsProcess(double delta)
