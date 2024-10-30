@@ -1,13 +1,12 @@
 using Godot;
-using untitledplantgame.Inventory.GeneralInventory;
+using untitledplantgame.Inventory.GeneralInventory.UI_ItemCategory;
 
-public partial class IuiInventoryItem : Node, I_UI_InventoryItem
+public partial class UI_InventoryItem : Node, I_UI_InventoryItem
 {
 	private IItemCategory ItemCategory;
 	
 	public override void _Ready()
 	{
-		//TODO make category variable
 		ItemCategory = new HerbCategory();
 	}
 	

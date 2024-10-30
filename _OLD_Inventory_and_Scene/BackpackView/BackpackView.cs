@@ -46,7 +46,7 @@ public partial class BackpackView : Control
             _gridContainer.AddChild(itemView);
             _itemViews.Add(itemView);
 
-            // Connect "Delete" button
+            // Connect "Delete" button (this is an anonymous, inline method. Avoid those)
             var staticIndex = i;
             itemView.DeletePressed += () => _backpack.Remove(_itemViews[staticIndex].Item);
             

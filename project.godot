@@ -27,7 +27,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://TestScenes/Inventory/EventBus.cs"
+EventBus="*res://EventBus/EventBus.cs"
 
 [display]
 

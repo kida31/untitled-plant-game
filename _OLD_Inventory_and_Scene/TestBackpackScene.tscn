@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfvse3igi5er8"]
 
-[ext_resource type="Script" path="res://TestScenes/Inventory/TestBackpackScene.cs" id="1_p7f02"]
-[ext_resource type="PackedScene" uid="uid://bp3d1clwykgxu" path="res://Inventory/BackpackView/BackpackView.tscn" id="2_8xhmj"]
+[ext_resource type="Script" path="res://_OLD_Inventory_and_Scene/TestBackpackScene.cs" id="1_p7f02"]
+[ext_resource type="PackedScene" uid="uid://bp3d1clwykgxu" path="res://_OLD_Inventory_and_Scene/BackpackView/BackpackView.tscn" id="2_8xhmj"]
 
 [node name="TestBackpackScene" type="Node2D" node_paths=PackedStringArray("_backpackView", "_addSeedsButton", "_addWaterButton", "_addSlimeButton", "_newBackpackButton", "_backpackSizeLineEdit")]
 script = ExtResource("1_p7f02")

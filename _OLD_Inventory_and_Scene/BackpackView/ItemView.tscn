@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://nyv2tqdcvli1"]
 
-[ext_resource type="Script" path="res://Inventory/BackpackView/ItemView.cs" id="1_84adk"]
+[ext_resource type="Script" path="res://_OLD_Inventory_and_Scene/BackpackView/ItemView.cs" id="1_84adk"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_2ln20"]
 
 [node name="ItemView" type="PanelContainer" node_paths=PackedStringArray("_nameLabel", "_deleteButton", "_iconTexture")]

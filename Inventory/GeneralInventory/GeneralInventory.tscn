@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cca7okqb2j4c7"]
+[gd_scene load_steps=5 format=3 uid="uid://cca7okqb2j4c7"]
 
 [ext_resource type="Script" path="res://Inventory/GeneralInventory/GeneralInventoryLogic.cs" id="1_rrual"]
-[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI/SeedsTab.cs" id="2_f80sh"]
-[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI/HerbsTab.cs" id="3_kyvoe"]
-[ext_resource type="Script" path="res://Inventory/GeneralInventory/InventoryItem/InventoryItem.cs" id="3_okfu2"]
-[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI/MedicineTab.cs" id="4_3lda1"]
+[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI_Tabs/SeedsTab.cs" id="2_f80sh"]
+[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI_Tabs/HerbsTab.cs" id="3_kyvoe"]
+[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI_Tabs/MedicineTab.cs" id="4_3lda1"]
 
 [node name="GeneralInventory" type="Control"]
 layout_mode = 3
@@ -17,33 +16,11 @@ grow_vertical = 2
 [node name="GeneralInventoryLogic" type="Node" parent="."]
 script = ExtResource("1_rrual")
 
-[node name="TestItem1" type="Node" parent="GeneralInventoryLogic"]
-
-[node name="TestItem2" type="Node" parent="GeneralInventoryLogic"]
-
-[node name="TestItem3" type="Node" parent="GeneralInventoryLogic"]
-
-[node name="TestItem4" type="Node" parent="GeneralInventoryLogic"]
-
-[node name="Categories" type="Control" parent="GeneralInventoryLogic"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SeedsTab" type="Node" parent="GeneralInventoryLogic/Categories"]
+[node name="SeedsTab" type="Node" parent="GeneralInventoryLogic"]
 script = ExtResource("2_f80sh")
 
-[node name="SeedItem1" type="Node" parent="GeneralInventoryLogic/Categories/SeedsTab"]
-script = ExtResource("3_okfu2")
-Name = "SeedItem1"
-
-[node name="SeedItem2" type="Node" parent="GeneralInventoryLogic/Categories/SeedsTab"]
-script = ExtResource("3_okfu2")
-Name = "SeedItem2"
-
-[node name="HerbsTab" type="Node" parent="GeneralInventoryLogic/Categories"]
+[node name="HerbsTab" type="Node" parent="GeneralInventoryLogic"]
 script = ExtResource("3_kyvoe")
 
-[node name="MedicineTab" type="Node" parent="GeneralInventoryLogic/Categories"]
+[node name="MedicineTab" type="Node" parent="GeneralInventoryLogic"]
 script = ExtResource("4_3lda1")

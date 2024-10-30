@@ -6,7 +6,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75sbn"]
 
-[node name="InteractableNode" type="Area2D" node_paths=PackedStringArray("_npcLogicNode")]
+[node name="NPC_Moving" type="Area2D" node_paths=PackedStringArray("_npcLogicNode")]
 script = ExtResource("1_vgetu")
 _npcName = "Interactable"
 _npcLogicNode = NodePath("NPC_Logic")
