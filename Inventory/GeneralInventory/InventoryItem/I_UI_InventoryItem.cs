@@ -1,8 +1,6 @@
 using untitledplantgame.Inventory.GeneralInventory;
 
-public interface IInventoryItem
+public interface I_UI_InventoryItem
 {
-    string GetInventoryItemName();
-
     IItemCategory GetItemCategoryName();
 }
