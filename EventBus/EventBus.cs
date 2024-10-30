@@ -11,6 +11,19 @@ using untitledplantgame.Item;
  */
 public partial class EventBus : Node
 {
+	public static EventBus Instance { get; private set; }
+	public override void _Ready()
+	{
+		if (Instance == null)
+		{
+			Instance = this;
+		}
+		else
+		{
+			GD.PrintErr("There are multiple instances of EventBus. This is not allowed.");
+			QueueFree();
+		}
+	}
 	
 	//---------------------------------------------Legacy Signals---------------------------------------------
 	[Signal] public delegate void NPCInteractedEventHandler(Node npc); //Replace with C# Action

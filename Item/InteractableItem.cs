@@ -22,13 +22,11 @@ public partial class InteractableItem : Area2D, IInteractable
 	
 	private string _selectedOption;
 	private ICharacteristic _characteristic;
-	private EventBus _globalEventBus;
 	private bool _canBeInteractedWith = true;
 	
 	public override void _Ready()
 	{
 		AddToGroup("Interactables");
-		_globalEventBus = GetNode<EventBus>("/root/EventBus");
 	}
 	
 	private ICharacteristic CreateInstance() => _selectedOption switch
@@ -43,7 +41,7 @@ public partial class InteractableItem : Area2D, IInteractable
 	{
 		if (_canBeInteractedWith) //Very bad temporary solution. The Item should be "destroyed" anyway
 		{
-			_globalEventBus.ItemPickedUp(this);
+			EventBus.Instance.ItemPickedUp(this);
 			_canBeInteractedWith = false;
 		}
 	}
