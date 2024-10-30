@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Player;
 
@@ -7,14 +8,16 @@ public partial class Player : CharacterBody2D
 {
 	[Export] private InteractablesManager _interactablesManager;
 	
+	private readonly Logger _logger = new Logger("Player");
 	private Vector2 _cardinalDirection = Vector2.Down;
 	public Vector2 Direction = Vector2.Zero;
-	
+
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
-	
+
 	public override void _Ready()
 	{
+		_logger.Info("! Ready !");
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_stateMachine.Initialize(this);
@@ -24,7 +27,7 @@ public partial class Player : CharacterBody2D
 	{
 		Direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
 		Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
-		
+
 		//Velocity = direction * MoveSpeed;
 		_interactablesManager.ScanForInteractables();
 	}
@@ -38,18 +41,23 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 newDirection = _cardinalDirection;
 
-		if (Direction == Vector2.Zero) return false;
+		if (Direction == Vector2.Zero)
+			return false;
 
 		if (Direction.Y == 0)
 		{
-			if (Direction.X < 0) newDirection = Vector2.Left;
-			else newDirection = Vector2.Right;
+			if (Direction.X < 0)
+				newDirection = Vector2.Left;
+			else
+				newDirection = Vector2.Right;
 		}
 
 		if (Direction.X == 0)
 		{
-			if (Direction.Y > 0) newDirection = Vector2.Down;
-			else newDirection = Vector2.Up;
+			if (Direction.Y > 0)
+				newDirection = Vector2.Down;
+			else
+				newDirection = Vector2.Up;
 		}
 
 		_cardinalDirection = newDirection;
