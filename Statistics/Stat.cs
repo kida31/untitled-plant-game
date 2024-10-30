@@ -18,7 +18,6 @@ public partial class Stat : Resource
 		{
 			_selectedOption = value;
 			StatType = CreateInstance();
-			EmitSignal("changed"); // Notify Godot that the property has changed to update the Inspector
 		}
 	}
 

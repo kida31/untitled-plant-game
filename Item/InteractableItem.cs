@@ -17,8 +17,6 @@ public partial class InteractableItem : Area2D, IInteractable
 		{
 			_selectedOption = value;
 			_characteristic = CreateInstance();
-			// Godot seems to not know what changed is. This is not causing any major issues for now... But idk.
-			EmitSignal("changed"); // Notify Godot that the property has changed to update the Inspector
 		}
 	}
 
