@@ -79,9 +79,7 @@ public partial class ResourceManager : Node
 		}
 
 		var plantRequirements = new Dictionary<string, Requirement>();
-		var plantDataRequirementsForStage = plantData
-			.DataForGrowthStages[(int)stage]
-			.GrowthRequirements;
+		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
 		{

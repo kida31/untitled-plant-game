@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvp3ydfiptsmt"]
+
+[ext_resource type="Script" path="res://Item/InteractableItem.cs" id="1_l0r68"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="1_v5q0m"]
+[ext_resource type="Script" path="res://Entity/EntityStats.cs" id="3_ia5xj"]
+[ext_resource type="Script" path="res://EntityStatsDataContainer/DataContainer.cs" id="3_joi6a"]
+[ext_resource type="Resource" uid="uid://8t0ckk2crugh" path="res://Resources/EntityStats_TEST_2.tres" id="4_kwqxe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_daws7"]
+
+[node name="GenericItem" type="Area2D" node_paths=PackedStringArray("_dataContainer")]
+script = ExtResource("1_l0r68")
+_dataContainer = NodePath("DataContainerNode")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_daws7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0507813, 0.128906)
+texture = ExtResource("1_v5q0m")
+
+[node name="EntityStatsNode" type="Node" parent="."]
+script = ExtResource("3_ia5xj")
+EntityConfiguration = ExtResource("4_kwqxe")
+
+[node name="DataContainerNode" type="Node" parent="." node_paths=PackedStringArray("_entityStats")]
+script = ExtResource("3_joi6a")
+_entityStats = NodePath("../EntityStatsNode")

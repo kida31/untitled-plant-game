@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://nyv2tqdcvli1"]
+
+[ext_resource type="Script" path="res://_OLD_Inventory_and_Scene/BackpackView/ItemView.cs" id="1_84adk"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_2ln20"]
+
+[node name="ItemView" type="PanelContainer" node_paths=PackedStringArray("_nameLabel", "_deleteButton", "_iconTexture")]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+tooltip_text = "123"
+script = ExtResource("1_84adk")
+_nameLabel = NodePath("Label")
+_deleteButton = NodePath("Button")
+_iconTexture = NodePath("MarginContainer/TextureRect")
+_defaultImage = ExtResource("2_2ln20")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_2ln20")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "NoItemName"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 12
+text = " x "
+icon_alignment = 2
