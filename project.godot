@@ -8,6 +8,16 @@
 
 config_version=5
 
+[addons]
+
+resources_spreadsheet_view/array_color_tint=100.0
+resources_spreadsheet_view/color_rows=true
+resources_spreadsheet_view/array_min_width=128.0
+resources_spreadsheet_view/resource_preview_size=32.0
+resources_spreadsheet_view/clip_headers=false
+resources_spreadsheet_view/dupe_arrays=true
+resources_spreadsheet_view/context_menu_on_leftclick=false
+
 [application]
 
 config/name="untitled-plant-game"
@@ -18,6 +28,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 InteractionManager="*res://Interaction/InteractionManager.tscn"
+EventBus="*res://EventBus/EventBus.cs"
+ResourceManager="*res://ResourceData/ResourceManager.cs"
+TimeController="*res://Common/TimeController.cs"
+WeatherCycle="*res://Cycle/Weather/WeatherCycle.cs"
 
 [display]
 
@@ -27,6 +41,15 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="untitled-plant-game"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg")
+
+[global_group]
+
+player=""
+Interactables=""
 
 [input]
 

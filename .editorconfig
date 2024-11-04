@@ -1,0 +1,11 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.cs]
+indent_style = tab
+indent_size = 4
+max_line_length = 140
+csharp_prefer_braces = true

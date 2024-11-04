@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=59 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" path="res://Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="Texture2D" uid="uid://bklcso0wn7iqr" path="res://Sprites/idle.png" id="2_5ih1s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Player/PlayerStateMachine.cs" id="4_oih3d"]
 [ext_resource type="Script" path="res://Player/StateIdle.cs" id="5_k3tas"]
 [ext_resource type="Script" path="res://Player/StateWalk.cs" id="6_6k3md"]
+[ext_resource type="Script" path="res://Player/InteractablesManager.cs" id="7_pko3m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ik7q4"]
 
@@ -388,11 +389,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 2
+[sub_resource type="CircleShape2D" id="CircleShape2D_obis7"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_interactablesManager") groups=["player"]]
 script = ExtResource("1_ypuiu")
+_interactablesManager = NodePath("Area2D/InteractablesManager")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_ik7q4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -408,3 +412,12 @@ script = ExtResource("5_k3tas")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("6_6k3md")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_obis7")
+
+[node name="InteractablesManager" type="Node" parent="Area2D" node_paths=PackedStringArray("_player")]
+script = ExtResource("7_pko3m")
+_player = NodePath("../..")
