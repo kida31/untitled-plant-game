@@ -22,7 +22,7 @@ public partial class EntityStats : Node
 			{
 				// Godot suffers from the same problem as Unity; Accessing Script and Scenes without them existing!
 				// Modifiers CANNOT be added when the Object is created!
-				Stat tempStat = new Stat(stat.GetBaseValueOfStat(), stat.CreateStatTypeInstance(stat.StatType));
+				Stat tempStat = new Stat(stat.GetBaseValueOfStat(), stat.CreateStatTypeInstance(stat.StatType), stat.IsHidden);
 				tempStat.AddMultipleModifiers(stat.GetStatModifiers());
 				_baseStats.Add(tempStat);
 			}
