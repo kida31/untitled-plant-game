@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ffmnb0ywgx2"]
 
 [ext_resource type="Script" path="res://TestScenes/VendingMachineTest/UiOnly.cs" id="1_hus41"]
-[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://vending_machine/vending_machine_ui.tscn" id="1_sapqf"]
-[ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://vending_machine/item_stack.tscn" id="2_77ub2"]
+[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://VendingMachine/vending_machine_ui.tscn" id="1_sapqf"]
+[ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://VendingMachine/item_stack.tscn" id="2_77ub2"]
 
 [node name="UiOnly" type="Node2D" node_paths=PackedStringArray("_vendingMachineUi", "_inventoryGrid", "_sellButton")]
 script = ExtResource("1_hus41")
