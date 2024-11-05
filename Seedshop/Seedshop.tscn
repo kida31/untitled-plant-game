@@ -3,17 +3,10 @@
 [ext_resource type="Script" path="res://Seedshop/Seedshop.cs" id="1_mekxv"]
 [ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Sprites/seed.png" id="2_yabdn"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Control" type="CanvasLayer"]
 script = ExtResource("1_mekxv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

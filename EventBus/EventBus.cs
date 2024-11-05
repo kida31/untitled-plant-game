@@ -52,4 +52,13 @@ public partial class EventBus : Node
 	{
 		OnItemPickUp?.Invoke(interactableItem);
 	}
+
+	public delegate void OpenSeedshopEventHandler();
+
+	public event OpenSeedshopEventHandler OnSeedshopOpened;
+
+	public void SeedshopOpened()
+	{
+		OnSeedshopOpened?.Invoke();
+	}
 }
