@@ -1,13 +1,7 @@
 using Godot;
 
-public partial class NPC2 : Area2D, IInteractable
+public partial class NPC2 : AbstractNPC, IInteractable
 {
-	[Export]
-	private string _npcName;
-
-	[Export]
-	private NpcLogic _npcLogicNode;
-
 	public override void _Ready()
 	{
 		AddToGroup("Interactables");
@@ -18,15 +12,6 @@ public partial class NPC2 : Area2D, IInteractable
 		eventBus.NPCInteracted += OnNPCInteracted; //Yay :D
 	}
 
-	private void OnBodyEntered(Node body)
-	{
-		_npcLogicNode.ManageNpcCollisionWithPlayer(body, _npcName);
-	}
-
-	public Vector2 GetGlobalInteractablePosition()
-	{
-		return GlobalPosition;
-	}
 
 	private void OnNPCInteracted(Node npc)
 	{
@@ -38,5 +23,8 @@ public partial class NPC2 : Area2D, IInteractable
 		}
 	}
 
-	public void Interact() { }
+	public override void Interact() { }
+
 }
+
+

@@ -10,6 +10,7 @@ public partial class InteractableItem : Area2D, IInteractable
 	
 	[Export]
 	private DataContainer _dataContainer;
+	private string ActionName { get; set; } = "pickup";
 
 	[Export(PropertyHint.Enum, "Herb,Medicine,Seed")]
 	private string SelectedOption
@@ -62,5 +63,10 @@ public partial class InteractableItem : Area2D, IInteractable
 	public ICharacteristic GetICharacteristic()
 	{
 		return _characteristic;
+	}
+
+		public string GetActionName()
+	{
+		return ActionName;
 	}
 }

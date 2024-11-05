@@ -31,6 +31,7 @@ public partial class Player : CharacterBody2D
 
 		//Velocity = direction * MoveSpeed;
 		_interactablesManager.ScanForInteractables();
+		InteractionManager.Instance.PerformInteraction();
 	}
 
 	public override void _PhysicsProcess(double delta)
