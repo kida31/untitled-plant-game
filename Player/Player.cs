@@ -34,11 +34,6 @@ public partial class Player : CharacterBody2D
 		_interactablesManager.ScanForInteractables();
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
-		MoveAndSlide();
-	}
-
 	public override void _Input(InputEvent @event)
 	{
 		// ignore input if not in correct state
@@ -48,9 +43,14 @@ public partial class Player : CharacterBody2D
 			return;
 		}
 
-		// handle input in @event or read from Input
+		// Handle input @event or read from Input
 		Direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
 		Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		MoveAndSlide();
 	}
 
 	public bool SetDirection()
