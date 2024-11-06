@@ -27,7 +27,10 @@ public partial class Player : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
-		//Velocity = direction * MoveSpeed;
+		// For demo purposes
+		if (Input.IsKeyPressed(Key.F12)) GameStateMachine.Instance.CurrentState = GameState.GAMEPLAY;
+		if (Input.IsKeyPressed(Key.F11)) GameStateMachine.Instance.CurrentState = GameState.BOOK;
+		
 		_interactablesManager.ScanForInteractables();
 	}
 
@@ -38,10 +41,6 @@ public partial class Player : CharacterBody2D
 
 	public override void _Input(InputEvent @event)
 	{
-		// For demo purposes
-		if (Input.IsKeyPressed(Key.F12)) GameStateMachine.Instance.CurrentState = GameState.GAMEPLAY;
-		if (Input.IsKeyPressed(Key.F11)) GameStateMachine.Instance.CurrentState = GameState.MENU;
-		
 		// ignore input if not in correct state
 		if (GameStateMachine.Instance.CurrentState != GameState.GAMEPLAY)
 		{
