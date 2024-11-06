@@ -1,27 +1,29 @@
 using Godot;
-using System;
 using untitledplantgame.Dialogue;
-using untitledplantgame.MagicBoxForData;
+using ResourceManager = untitledplantgame.ResourceData.ResourceManager;
 
 public partial class DialogueCanvas : CanvasLayer
 {
 	private RichTextLabel _nameLabel;
 	private RichTextLabel _dialogueTextLabel;
-	
-	private ResourceManager _resourceManager;
+	private CanvasLayer _dialogueCanvas;
+
 	private DialogueResourceObject _currentDialogue;
 	private int _currentDialogueIndex;
+
 	public override void _Ready()
 	{
+		_dialogueCanvas = GetNode<CanvasLayer>(".");
 		_nameLabel = GetNode<RichTextLabel>("NameBox/Name");
 		_dialogueTextLabel = GetNode<RichTextLabel>("DialogueBox/DialogueText");
 
 		_currentDialogue = LoadDialogueResource(0);
 	}
-	
+
 	private DialogueResourceObject LoadDialogueResource(int id)
 	{
 		// Load dialogue from file
+		_dialogueCanvas.Visible = true;
 		_currentDialogueIndex = 0;
 		return null;
 	}
@@ -31,7 +33,7 @@ public partial class DialogueCanvas : CanvasLayer
 		_nameLabel.Text = dialogueLine.speakerName;
 		_dialogueTextLabel.Text = dialogueLine.dialogueText;
 	}
-	
+
 	private void OnDialogueButtonPressed()
 	{
 		_currentDialogueIndex++;
@@ -41,6 +43,7 @@ public partial class DialogueCanvas : CanvasLayer
 		}
 		else
 		{
+			_dialogueCanvas.Visible = false;
 			// End dialogue
 		}
 	}

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RequirementDataForGrowthStage" load_steps=5 format=3 uid="uid://d2mhdnorl6ynw"]
 
-[ext_resource type="Script" path="res://ResourceData/RequirementData.cs" id="1_e5br3"]
-[ext_resource type="Script" path="res://ResourceData/RequirementDataForGrowthStage.cs" id="2_0lae3"]
+[ext_resource type="Script" path="res://Plants/RequirementData.cs" id="1_e5br3"]
+[ext_resource type="Script" path="res://Plants/RequirementDataForGrowthStage.cs" id="2_0lae3"]
 
 [sub_resource type="Resource" id="Resource_sjwfd"]
 script = ExtResource("1_e5br3")

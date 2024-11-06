@@ -59,17 +59,17 @@ animations = [{
 [node name="DialogueScene" type="Node2D"]
 position = Vector2(305.5, 455.25)
 
-[node name="Dialogue" type="CanvasLayer" parent="."]
+[node name="DialogueCanvas" type="CanvasLayer" parent="."]
 script = ExtResource("1_ng045")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dialogue"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DialogueCanvas"]
 texture_filter = 1
 position = Vector2(373.5, 397.25)
 scale = Vector2(4.7625, 4.50625)
 sprite_frames = SubResource("SpriteFrames_3m0r1")
 animation = &"sad"
 
-[node name="DialogueBox" type="NinePatchRect" parent="Dialogue"]
+[node name="DialogueBox" type="NinePatchRect" parent="DialogueCanvas"]
 offset_left = 307.5
 offset_top = 458.25
 offset_right = 824.5
@@ -80,17 +80,18 @@ patch_margin_left = 2
 patch_margin_top = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="DialogueText" type="RichTextLabel" parent="Dialogue/DialogueBox"]
+[node name="DialogueText" type="RichTextLabel" parent="DialogueCanvas/DialogueBox"]
 layout_mode = 0
 offset_left = 47.0
 offset_top = 56.0
 offset_right = 477.0
 offset_bottom = 142.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "Some random text in here..."
+text = "Some random dialogue text in here... Bla bla bla..."
+visible_characters_behavior = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="NameBox" type="NinePatchRect" parent="Dialogue"]
+[node name="NameBox" type="NinePatchRect" parent="DialogueCanvas"]
 offset_left = 309.5
 offset_top = 434.25
 offset_right = 458.5
@@ -103,7 +104,7 @@ patch_margin_right = 4
 patch_margin_bottom = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Name" type="RichTextLabel" parent="Dialogue/NameBox"]
+[node name="Name" type="RichTextLabel" parent="DialogueCanvas/NameBox"]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 7.0
