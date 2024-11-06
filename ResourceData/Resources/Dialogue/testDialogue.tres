@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=6 format=3 uid="uid://cafacdxwiej7c"]
+
+[ext_resource type="Script" path="res://Dialogue/DialogueLine.cs" id="1_lnhut"]
+[ext_resource type="Script" path="res://Dialogue/DialogueResourceObject.cs" id="2_xo56h"]
+
+[sub_resource type="Resource" id="Resource_o0fig"]
+script = ExtResource("1_lnhut")
+speakerName = "Seed Boy"
+DialogueExpression = 0
+dialogueText = "Here are the things that I collected today"
+
+[sub_resource type="Resource" id="Resource_l8iug"]
+script = ExtResource("1_lnhut")
+speakerName = "Seed Boy"
+DialogueExpression = 2
+dialogueText = "There wasn't a lot today..."
+
+[sub_resource type="Resource" id="Resource_6inu6"]
+script = ExtResource("1_lnhut")
+speakerName = "Seed Boy"
+DialogueExpression = 1
+dialogueText = "Thank you for your purchase!"
+
+[resource]
+script = ExtResource("2_xo56h")
+_dialogueId = "0"
+_dialogueText = Array[Object]([SubResource("Resource_o0fig"), SubResource("Resource_l8iug"), SubResource("Resource_6inu6")])

@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://cc8tr4q35n0q8"]
+
+[ext_resource type="Script" path="res://Dialogue/DialogueCanvas.cs" id="1_ng045"]
+[ext_resource type="Texture2D" uid="uid://o4fvncrv04mo" path="res://Sprites/damage.png" id="2_cnal3"]
+[ext_resource type="Texture2D" uid="uid://y1pnkolace2g" path="res://UI Assets/01_Flat_Theme/Sprites/UI_Flat_Frame03a.png" id="2_dbhsn"]
+[ext_resource type="Texture2D" uid="uid://d0vfo4ggpdkjf" path="res://UI Assets/01_Flat_Theme/Sprites/UI_Flat_Banner02a.png" id="3_kd5nr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soyak"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuaaj"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sfre"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oefjw"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3m0r1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soyak")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuaaj")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sfre")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oefjw")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}]
+
+[node name="DialogueScene" type="Node2D"]
+position = Vector2(305.5, 455.25)
+
+[node name="Dialogue" type="CanvasLayer" parent="."]
+script = ExtResource("1_ng045")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dialogue"]
+texture_filter = 1
+position = Vector2(373.5, 397.25)
+scale = Vector2(4.7625, 4.50625)
+sprite_frames = SubResource("SpriteFrames_3m0r1")
+animation = &"sad"
+
+[node name="DialogueBox" type="NinePatchRect" parent="Dialogue"]
+offset_left = 307.5
+offset_top = 458.25
+offset_right = 824.5
+offset_bottom = 642.25
+texture = ExtResource("2_dbhsn")
+region_rect = Rect2(0, -0.946583, 94.6165, 64.8414)
+patch_margin_left = 2
+patch_margin_top = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="DialogueText" type="RichTextLabel" parent="Dialogue/DialogueBox"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 56.0
+offset_right = 477.0
+offset_bottom = 142.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Some random text in here..."
+metadata/_edit_use_anchors_ = true
+
+[node name="NameBox" type="NinePatchRect" parent="Dialogue"]
+offset_left = 309.5
+offset_top = 434.25
+offset_right = 458.5
+offset_bottom = 485.25
+texture = ExtResource("3_kd5nr")
+region_rect = Rect2(0, 0, 64, 20)
+patch_margin_left = 4
+patch_margin_top = 1
+patch_margin_right = 4
+patch_margin_bottom = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="RichTextLabel" parent="Dialogue/NameBox"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 7.0
+offset_right = 117.0
+offset_bottom = 35.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Name"
+metadata/_edit_use_anchors_ = true

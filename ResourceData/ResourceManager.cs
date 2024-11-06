@@ -12,7 +12,7 @@ public partial class ResourceManager : Node
 {
 	public static ResourceManager Instance { get; private set; }
 
-	private string _plantDataPath = "res://ResourceData/Resources";
+	private string _plantDataPath = "res://ResourceData/Resources/Plants";
 	private readonly List<PlantData> _plantDatas = new();
 	private readonly Logger _logger = new("ResourceManager");
 
