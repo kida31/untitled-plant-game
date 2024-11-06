@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.TestScenes;
 
 namespace untitledplantgame.Player;
 
@@ -26,9 +27,6 @@ public partial class Player : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
-		Direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
-		Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
-
 		//Velocity = direction * MoveSpeed;
 		_interactablesManager.ScanForInteractables();
 	}
@@ -36,6 +34,24 @@ public partial class Player : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		MoveAndSlide();
+	}
+
+	public override void _Input(InputEvent @event)
+	{
+		// For demo purposes
+		if (Input.IsKeyPressed(Key.F12)) GameStateMachine.Instance.CurrentState = GameState.GAMEPLAY;
+		if (Input.IsKeyPressed(Key.F11)) GameStateMachine.Instance.CurrentState = GameState.MENU;
+		
+		// ignore input if not in correct state
+		if (GameStateMachine.Instance.CurrentState != GameState.GAMEPLAY)
+		{
+			Direction = Vector2.Zero; // default value, movement is an exception
+			return;
+		}
+
+		// handle input in @event or read from Input
+		Direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
+		Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
 	}
 
 	public bool SetDirection()
