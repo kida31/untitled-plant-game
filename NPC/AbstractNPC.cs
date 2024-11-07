@@ -1,7 +1,10 @@
 using Godot;
+using untitledplantgame.Common;
 
 public abstract partial class AbstractNPC : Area2D, IInteractable
 {
+	private readonly Logger _logger = new("NPC");
+
 	[Export]
 	private NpcLogic _npcLogicNode;
 
@@ -24,7 +27,7 @@ public abstract partial class AbstractNPC : Area2D, IInteractable
 		_npcLogicNode.ManageNpcCollisionWithPlayer(body, _npcName);
 	}
 
-	private void OnBodyExited(Node body)
+	protected void OnBodyExited(Node body)
 	{
 		InteractionManager.Instance.UnregisterArea(this);
 		_npcLogicNode.ManageNpcCollisionWithPlayer(body, _npcName);

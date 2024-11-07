@@ -161,6 +161,7 @@ public partial class Seedshop : CanvasLayer
 	{
 		this.Hide();
 		EventBus.Instance.OnSeedshopOpened += OpenSeedshop;
+		EventBus.Instance.OnSeedshopClosed += CloseSeedshop;
 		var closeButton = GetNode<Button>("CloseButton");
 		closeButton.Connect("pressed", new Callable(this, nameof(OnCloseButtonPressed)));
 
@@ -189,6 +190,12 @@ public partial class Seedshop : CanvasLayer
 	{
 		this.Show();
 		_logger.Debug("Seedshop opened.");
+	}
+
+	private void CloseSeedshop()
+	{
+		this.Hide();
+		_logger.Debug("Seedshop closed.");
 	}
 
 	private void OnCloseButtonPressed()

@@ -34,6 +34,11 @@ public partial class InteractionManager : Node2D
 		}
 	}
 
+	public int GetAreaCount()
+	{
+		return activeAreas.Count;
+	}
+
 	public void RegisterArea(IInteractable area)
 	{
 		activeAreas.Add(area);

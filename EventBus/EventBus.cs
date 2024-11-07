@@ -61,4 +61,13 @@ public partial class EventBus : Node
 	{
 		OnSeedshopOpened?.Invoke();
 	}
+
+	public delegate void CloseSeedshopEventHandler();
+
+	public event CloseSeedshopEventHandler OnSeedshopClosed;
+
+	public void SeedshopClosed()
+	{
+		OnSeedshopClosed?.Invoke();
+	}
 }
