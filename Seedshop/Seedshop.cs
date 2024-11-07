@@ -61,12 +61,10 @@ public partial class Seedshop : CanvasLayer
 		UpdateSeedLabels("Tomato");
 		UpdateSeedLabels("Pumpkin");
 		UpdateCurrencyLabel();
-
 	}
 
-
-
-	private void OpenSeedshop(){
+	private void OpenSeedshop()
+	{
 		this.Show();
 		_logger.Debug("Seedshop opened.");
 	}

@@ -1,5 +1,6 @@
 using System;
 using Godot;
+
 [Obsolote]
 public partial class NPC : Area2D, IInteractable
 {
@@ -36,13 +37,11 @@ public partial class NPC : Area2D, IInteractable
 	{
 		_npcLogicNode.InteractionLogic();
 	}
-	
+
 	public string GetActionName()
 	{
 		return ActionName;
 	}
 }
 
-internal class ObsoloteAttribute : Attribute
-{
-}
+internal class ObsoloteAttribute : Attribute { }

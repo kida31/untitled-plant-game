@@ -8,7 +8,7 @@ public partial class InteractionManager : Node2D
 
 	private Node2D player;
 	private Label label;
-public static InteractionManager Instance { get; private set; }
+	public static InteractionManager Instance { get; private set; }
 	private const string BaseText = "[E] to ";
 	private List<IInteractable> activeAreas = new();
 	private bool canInteract = true;
@@ -24,14 +24,14 @@ public static InteractionManager Instance { get; private set; }
 		}
 
 		if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-					GD.PrintErr("Blub");
-            QueueFree();
-        }
+		{
+			Instance = this;
+		}
+		else
+		{
+			GD.PrintErr("Blub");
+			QueueFree();
+		}
 	}
 
 	public void RegisterArea(IInteractable area)
@@ -48,13 +48,12 @@ public static InteractionManager Instance { get; private set; }
 		}
 	}
 
-    /// <summary>
-    /// Looks for the closest interactable area and displays that area's action name.
-    /// </summary>
-    /// <param name="delta"></param>
+	/// <summary>
+	/// Looks for the closest interactable area and displays that area's action name.
+	/// </summary>
+	/// <param name="delta"></param>
 	public override void _Process(double delta)
 	{
-
 		if (activeAreas.Count > 0 && canInteract)
 		{
 			activeAreas.Sort(SortByDistanceToPlayer);

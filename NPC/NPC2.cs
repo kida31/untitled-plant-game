@@ -12,7 +12,6 @@ public partial class NPC2 : AbstractNPC, IInteractable
 		eventBus.NPCInteracted += OnNPCInteracted; //Yay :D
 	}
 
-
 	private void OnNPCInteracted(Node npc)
 	{
 		// Only react if the interaction is from NPC1
@@ -24,7 +23,4 @@ public partial class NPC2 : AbstractNPC, IInteractable
 	}
 
 	public override void Interact() { }
-
 }
-
-

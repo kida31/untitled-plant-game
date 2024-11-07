@@ -12,5 +12,4 @@ public partial class NPC1 : AbstractNPC, IInteractable
 
 		//_npcLogicNode.InteractionLogic();
 	}
-	
 }

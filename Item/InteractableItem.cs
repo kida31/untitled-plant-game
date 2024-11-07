@@ -7,7 +7,7 @@ namespace untitledplantgame.Item;
 public partial class InteractableItem : Area2D, IInteractable
 {
 	public string ItemName => _dataContainer.EntityName; // Convenience property
-	
+
 	[Export]
 	private DataContainer _dataContainer;
 	private string ActionName { get; set; } = "pickup";
@@ -65,7 +65,7 @@ public partial class InteractableItem : Area2D, IInteractable
 		return _characteristic;
 	}
 
-		public string GetActionName()
+	public string GetActionName()
 	{
 		return ActionName;
 	}
