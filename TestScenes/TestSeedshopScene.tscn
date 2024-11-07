@@ -16,5 +16,5 @@ scale = Vector2(1.00188, 0.98962)
 script = ExtResource("3_karx4")
 ActionName = "shop"
 
-[node name="SeedshopRevised" parent="." instance=ExtResource("4_ufdni")]
+[node name="Seedshop" parent="." instance=ExtResource("4_ufdni")]
 visible = false
