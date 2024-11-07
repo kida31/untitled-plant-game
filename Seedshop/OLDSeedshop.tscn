@@ -1,0 +1,218 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg5yho3bnwg55"]
+
+[ext_resource type="Script" path="res://Seedshop/OLDSeedshop.cs" id="1_mekxv"]
+[ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Sprites/seed.png" id="2_yabdn"]
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource("1_mekxv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 85.0
+offset_top = 73.0
+offset_right = -127.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.488352, 0.651003, 0.413614, 1)
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 49.0
+offset_right = -174.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 5
+
+[node name="Carrots" type="Panel" parent="ColorRect/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="name" type="Label" parent="ColorRect/GridContainer/Carrots"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -173.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Carrot
+"
+
+[node name="TextureButton" type="TextureButton" parent="ColorRect/GridContainer/Carrots"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 22.0
+offset_right = -80.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_yabdn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="available" type="Label" parent="ColorRect/GridContainer/Carrots"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 35.0
+offset_right = 186.0
+offset_bottom = 58.0
+text = "Available:"
+
+[node name="owned" type="Label" parent="ColorRect/GridContainer/Carrots"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 105.0
+offset_right = 174.0
+offset_bottom = 128.0
+text = "Owned:"
+
+[node name="price" type="Label" parent="ColorRect/GridContainer/Carrots"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 146.0
+offset_right = 52.0
+offset_bottom = 169.0
+text = "Price:"
+
+[node name="Tomatoes" type="Panel" parent="ColorRect/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="name" type="Label" parent="ColorRect/GridContainer/Tomatoes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -174.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tomato"
+
+[node name="TextureButton" type="TextureButton" parent="ColorRect/GridContainer/Tomatoes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 22.0
+offset_right = -80.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_yabdn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="available" type="Label" parent="ColorRect/GridContainer/Tomatoes"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 35.0
+offset_right = 186.0
+offset_bottom = 58.0
+text = "Available:
+"
+
+[node name="owned" type="Label" parent="ColorRect/GridContainer/Tomatoes"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 105.0
+offset_right = 174.0
+offset_bottom = 128.0
+text = "Owned:"
+
+[node name="price" type="Label" parent="ColorRect/GridContainer/Tomatoes"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 146.0
+offset_right = 52.0
+offset_bottom = 169.0
+text = "Price:"
+
+[node name="Pumpkins" type="Panel" parent="ColorRect/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="name" type="Label" parent="ColorRect/GridContainer/Pumpkins"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -173.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pumpkin"
+
+[node name="TextureButton" type="TextureButton" parent="ColorRect/GridContainer/Pumpkins"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 22.0
+offset_right = -80.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_yabdn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="available" type="Label" parent="ColorRect/GridContainer/Pumpkins"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 35.0
+offset_right = 186.0
+offset_bottom = 58.0
+text = "Available: 
+"
+
+[node name="owned" type="Label" parent="ColorRect/GridContainer/Pumpkins"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 105.0
+offset_right = 174.0
+offset_bottom = 128.0
+text = "Owned:"
+
+[node name="price" type="Label" parent="ColorRect/GridContainer/Pumpkins"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 146.0
+offset_right = 52.0
+offset_bottom = 169.0
+text = "Price: "
+
+[node name="name" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 5.0
+offset_right = 529.0
+offset_bottom = 41.0
+text = "Seed Shop
+"
+
+[node name="CloseButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 21.0
+offset_right = 915.0
+offset_bottom = 92.0
+text = "Close"
+
+[node name="money" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 110.0
+offset_right = 884.0
+offset_bottom = 133.0
+text = "Money"
