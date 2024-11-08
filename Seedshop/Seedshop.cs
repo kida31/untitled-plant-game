@@ -188,19 +188,26 @@ public partial class Seedshop : CanvasLayer
 
 	private void OpenSeedshop()
 	{
-		this.Show();
-		_logger.Debug("Seedshop opened.");
+		//work around for logging the event multiple times. On interacting, it gets called more than once
+		if (!this.Visible)
+		{
+			this.Show();
+			_logger.Debug("Seedshop opened.");
+		}
 	}
 
 	private void CloseSeedshop()
 	{
-		this.Hide();
-		_logger.Debug("Seedshop closed.");
+		if (this.Visible)
+		{
+			this.Hide();
+			_logger.Debug("Seedshop closed.");
+		}
 	}
 
 	private void OnCloseButtonPressed()
 	{
-		this.Hide();
+		CloseSeedshop();
 	}
 
 	private void InitializeShopSlotLabels()
