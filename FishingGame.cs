@@ -61,15 +61,16 @@ public partial class FishingGame : Node2D
 		{
 			GD.Print("You caught a fish!");
 			_progressBar.Value = _progressBar.MaxValue;
-			_progressDecayPerSecond = 0;
 			_fish.QueueFree();
 			_hookbar.QueueFree();
 			_textLabel.Show();
+SetProcess(false);		
 		}
 	}
 
 	private void RestartGame()
 	{
 		GetTree().ReloadCurrentScene();
+		SetProcess(true);
 	}
 }

@@ -3,10 +3,14 @@ using System;
 
 public partial class Fish : Area2D
 {
-	public float BaseSpeed { get; set; } = 50;
+	public float BaseSpeed { get; set; } = 200;
 	public Vector2 Direction { get; private set; } = new Vector2(0, 0);
 	public static float HookSpeedMod { get; set; }= 0.2f;
 	public bool IsHooked { get; set; } = false;
+	[Export]
+	private Node2D _leftBound;
+	[Export]
+	private Node2D _rightBound;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -24,6 +28,11 @@ public partial class Fish : Area2D
 		{
 			ds *= HookSpeedMod;
 		}
-		Position += ds;
+		GlobalPosition += ds;
+		// Keep fish in bounds;
+		if (GlobalPosition.X < _leftBound.GlobalPosition.X || GlobalPosition.X > _rightBound.GlobalPosition.X)
+		{
+			Direction = -Direction;
+		}
 	}
 }

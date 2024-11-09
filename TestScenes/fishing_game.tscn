@@ -94,9 +94,19 @@ offset_right = 794.0
 offset_bottom = 421.0
 value = 50.0
 
-[node name="Fish" type="Area2D" parent="."]
+[node name="Left" type="Marker2D" parent="."]
+position = Vector2(333, 348)
+gizmo_extents = 92.4
+
+[node name="Right" type="Marker2D" parent="."]
+position = Vector2(851, 345)
+gizmo_extents = 111.1
+
+[node name="Fish" type="Area2D" parent="." node_paths=PackedStringArray("_leftBound", "_rightBound")]
 position = Vector2(581, 347)
 script = ExtResource("2_m13j7")
+_leftBound = NodePath("../Left")
+_rightBound = NodePath("../Right")
 
 [node name="Sprite2D" type="Sprite2D" parent="Fish"]
 scale = Vector2(0.390625, 0.34375)
