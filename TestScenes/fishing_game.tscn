@@ -1,0 +1,131 @@
+[gd_scene load_steps=7 format=3 uid="uid://l0god11q82hd"]
+
+[ext_resource type="Script" path="res://FishingGame.cs" id="1_ou2vg"]
+[ext_resource type="Script" path="res://Fish.cs" id="2_m13j7"]
+[ext_resource type="Script" path="res://Hookbar.cs" id="3_vjkye"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="3_yi8uc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dltwh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dof6c"]
+size = Vector2(200, 50)
+
+[node name="FishingGame" type="Node2D" node_paths=PackedStringArray("_progressBar", "_hookbar", "_fish", "_textLabel", "_restartButton", "_fishSpeed", "_hookedFishSpeedModifier", "_pullDistance", "_hookDistanceMod", "_hookDistance", "_progressDecayPerSecondText", "_progressPerPullText")]
+script = ExtResource("1_ou2vg")
+_progressBar = NodePath("ProgressBar")
+_hookbar = NodePath("Hookbar")
+_fish = NodePath("Fish")
+_textLabel = NodePath("Label")
+_restartButton = NodePath("Button")
+_fishSpeed = NodePath("Config/LineEdit")
+_hookedFishSpeedModifier = NodePath("Config/LineEdit2")
+_pullDistance = NodePath("Config/LineEdit3")
+_hookDistanceMod = NodePath("Config/LineEdit4")
+_hookDistance = NodePath("Config/LineEdit5")
+_progressDecayPerSecondText = NodePath("Config/LineEdit6")
+_progressPerPullText = NodePath("Config/LineEdit7")
+
+[node name="Config" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 2
+
+[node name="Label" type="Label" parent="Config"]
+layout_mode = 2
+text = "Fish Base Speed"
+
+[node name="LineEdit" type="LineEdit" parent="Config"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Config"]
+layout_mode = 2
+text = "HookedFishSpeedModifier"
+
+[node name="LineEdit2" type="LineEdit" parent="Config"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Config"]
+layout_mode = 2
+text = "PullDistance"
+
+[node name="LineEdit3" type="LineEdit" parent="Config"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Config"]
+layout_mode = 2
+text = "HookIsHookedDistanceModifier"
+
+[node name="LineEdit4" type="LineEdit" parent="Config"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="Config"]
+layout_mode = 2
+text = "HookMoveDistance"
+
+[node name="LineEdit5" type="LineEdit" parent="Config"]
+layout_mode = 2
+
+[node name="Label6" type="Label" parent="Config"]
+layout_mode = 2
+text = "DecaySpeed"
+
+[node name="LineEdit6" type="LineEdit" parent="Config"]
+layout_mode = 2
+
+[node name="Label7" type="Label" parent="Config"]
+layout_mode = 2
+text = "ProgressPerPull"
+
+[node name="LineEdit7" type="LineEdit" parent="Config"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 333.0
+offset_top = 314.0
+offset_right = 853.0
+offset_bottom = 379.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 375.0
+offset_top = 394.0
+offset_right = 794.0
+offset_bottom = 421.0
+value = 50.0
+
+[node name="Fish" type="Area2D" parent="."]
+position = Vector2(581, 347)
+script = ExtResource("2_m13j7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Fish"]
+scale = Vector2(0.390625, 0.34375)
+texture = ExtResource("3_yi8uc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fish"]
+shape = SubResource("CircleShape2D_dltwh")
+
+[node name="Hookbar" type="Area2D" parent="."]
+position = Vector2(581, 348)
+script = ExtResource("3_vjkye")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hookbar"]
+shape = SubResource("RectangleShape2D_dof6c")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 333.0
+offset_top = 214.0
+offset_right = 851.0
+offset_bottom = 307.0
+theme_override_font_sizes/font_size = 32
+text = "Congratulations,
+You caught a fish!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 545.0
+offset_top = 445.0
+offset_right = 610.0
+offset_bottom = 476.0
+text = "Restart"
