@@ -8,7 +8,7 @@ using untitledplantgame.Common;
 public partial class Seedshop : CanvasLayer
 {
 	private readonly Logger _logger = new("Seedshop");
-
+	private Label tooltip;
 	private Dictionary<string, Dictionary<string, int>> seedData = new Dictionary<string, Dictionary<string, int>>()
 	{
 		{
@@ -203,6 +203,12 @@ public partial class Seedshop : CanvasLayer
 			this.Hide();
 			_logger.Debug("Seedshop closed.");
 		}
+	}
+
+	private void CustomTooltip(string name)
+	{
+		tooltip = GetNode<Label>("Seedshop/Tooltip");
+		tooltip.Text = name;
 	}
 
 	private void OnCloseButtonPressed()
