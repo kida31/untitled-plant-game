@@ -24,7 +24,12 @@ public partial class ShopSlot : Panel
 		tooltipInstance.slot = GetNode<Label>("Panel/Name").Text;
 		_logger.Debug("Slot name: " + tooltipInstance.slot);
 		_logger.Debug("Tooltip origin: " + tooltipInstance.origin);
-		// tooltipInstance.Position = (Vector2I)GetGlobalMousePosition();
+
+		float x = GlobalPosition.X + GetRect().Size.X;
+		float y = GlobalPosition.Y;
+		Vector2I position = (Vector2I)new Vector2(x, y);
+		tooltipInstance.Position = position;
+		tooltipInstance.Transparent = true;
 
 		AddChild(tooltipInstance);
 		_logger.Debug("Tooltip valid: " + tooltipInstance.valid);
