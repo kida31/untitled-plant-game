@@ -4,25 +4,26 @@ using System.Diagnostics;
 using System.Linq;
 using Godot;
 using InventoryV0;
+using untitledplantgame.Inventory.Alt;
 
 public class VendingMachine
 {
     // Events
-    public event Action<List<ItemStack<ISellable>>> ContentChanged;
+    public event Action<IInventory> ContentChanged;
 
     // Magic Numbers
     private const int MAX_SALES = 100;
     private const float SALES_PERCENT_PER_INTERVAL = 0.1f;
 
     // State
-    private List<ItemStack<ISellable>> _items = new(new ItemStack<ISellable>[8]); 
+    private readonly Inventory _inventory = new(12, 64, "Vending Machine"); 
     private int _gold = 0;
     private float _priceMultiplier = 1.0f;
     private float _faithMultiplier = 1.0f;
     private int _salesRemaining = MAX_SALES;
 
     // Properties
-    public List<ItemStack<ISellable>> Items => _items;
+    public Inventory Inventory => _inventory;
     public float PriceMultiplier => _priceMultiplier;
     public float FaithMultiplier => _faithMultiplier;
     public int Gold => _gold;
@@ -51,56 +52,47 @@ public class VendingMachine
         }
 
         // Check if any items in supply
-        var totalItemCount = _items.Select((stack) => stack.Quantity).Sum();
-        if (totalItemCount == 0)
+        var itemStacks = _inventory.GetContents();
+        if (itemStacks.Count == 0)
         {
             return;
         }
 
         // Sales count for this transaction is a percent of current supply, but at least one.
-        var totalSellCount = (int) Math.Ceiling(Math.Max(SALES_PERCENT_PER_INTERVAL * totalItemCount, 1));
+        var totalSellCount = (int) Math.Ceiling(Math.Max(SALES_PERCENT_PER_INTERVAL * itemStacks.Count, 1));
 
         // Sort by price descending, sell most expensive first.
-        var itemsByPrice = _items.OrderBy(stack => stack.Item?.Price ?? 0).ToList();
+        var itemsByPrice = _inventory.OrderBy(stack => stack?.BaseValue ?? 0).ToList();
 
-        for (var index = 0; index < itemsByPrice.Count; index++)
+        foreach (var stack in itemsByPrice)
         {
-            var stack = itemsByPrice[index];
-            var originalIndex = _items.IndexOf(stack);
+	        // Can stop selling once count has reached zero
+	        if (totalSellCount == 0) break;
 
-            // Can stop selling once count has reached zero
-            if (totalSellCount == 0) break;
+	        if (stack == null) continue;
 
-            var item = stack.Item;
-            if (item == null) continue;
+	        var quantity = stack.Amount;
+	        Debug.Assert(quantity > 0); // Empty item stacks should not be in container
 
-            var quantity = stack.Quantity;
-            Debug.Assert(quantity > 0); // Empty item stacks should not be in container
+	        // Do not sell more than supply
+	        var itemSellCount = Math.Min(totalSellCount, quantity);
+	        GD.Print($"{stack.Name}: {totalSellCount} vs. {quantity} => {itemSellCount}");
 
-            // Do not sell more than supply
-            var itemSellCount = Math.Min(totalSellCount, quantity);
-            GD.Print($"{item.Name}: {totalSellCount} vs. {quantity} => {itemSellCount}");
+	        // Prices after multiplier are rounded up.
+	        var goldEarned = Math.Ceiling(stack.BaseValue * _priceMultiplier);
+	        _gold += (int) goldEarned * itemSellCount;
 
-            // Prices after multiplier are rounded up.
-            var goldEarned = Math.Ceiling(item.Price * _priceMultiplier);
-            _gold += (int) goldEarned * itemSellCount;
+	        // Actual sell count has to be deducted from remaining sales
+	        _salesRemaining -= itemSellCount;
+	        totalSellCount -= itemSellCount;
+	        GD.Print($"itemsellcount={totalSellCount}");
 
-            // Actual sell count has to be deducted from remaining sales
-            _salesRemaining -= itemSellCount;
-            totalSellCount -= itemSellCount;
-            GD.Print($"itemsellcount={totalSellCount}");
+	        // Sold items are no longer in container
+	        _inventory.RemoveItem(new ItemStack(stack.Id, stack.Name, stack.Icon, stack.Description, stack.Category, stack.MaxStackSize,
+		        stack.BaseValue) {Amount = itemSellCount});
 
-            // Sold items are no longer in container
-            stack.Quantity -= itemSellCount;
-            if (stack.Quantity == 0)
-            {
-                stack.Item = null;
-            }
-
-            GD.Print($"Sold {item.Name} x{itemSellCount} for {goldEarned}g");
-
-            _items[originalIndex] = stack;
-            ContentChanged?.Invoke(_items);
+	        GD.Print($"Sold {stack.Name} x{itemSellCount} for {goldEarned}g");
+	        ContentChanged?.Invoke(_inventory);
         }
     }
 

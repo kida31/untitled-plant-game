@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GUI.VendingMachine;
 using InventoryV0;
+using untitledplantgame.Inventory.Alt;
 
 public partial class VendingMachineUI : Control
 {
@@ -13,11 +14,11 @@ public partial class VendingMachineUI : Control
     [Export] private Label _moneyLabel;
 
     private VendingMachine _vendingMachine;
-    private List<ItemStackView> _itemStacks;
+    private List<ItemSlotUI> _itemSlots;
 
     public override void _Ready()
     {
-        _itemStacks = _itemStackContainer.GetChildren().Cast<ItemStackView>().ToList();
+        _itemSlots = _itemStackContainer.GetChildren().Cast<ItemSlotUI>().ToList();
         _slider.ValueChanged += OnSliderValueChanged;
     }
     
@@ -29,25 +30,20 @@ public partial class VendingMachineUI : Control
     
     public void SetVendingMachine(VendingMachine vendingMachine)
     {
-        if (_vendingMachine is not null) _vendingMachine.ContentChanged -= SetContent;
+        if (_vendingMachine is not null) _vendingMachine.ContentChanged -= UpdateContent;
 
         _vendingMachine = vendingMachine;
         if (_vendingMachine is null) return;
-        _vendingMachine.ContentChanged += SetContent;
-        SetContent(_vendingMachine.Items);
+        _vendingMachine.ContentChanged += UpdateContent;
+        UpdateContent(_vendingMachine.Inventory);
     }
 
-    private void SetContent(List<ItemStack<ISellable>> stacks) {
-        
-        for (var index = 0; index < _itemStacks.Count && index < stacks.Count; index++)
+    private void UpdateContent(IInventory inventory)
+    {
+	    var items = inventory.GetContents();
+        for (var index = 0; index < _itemSlots.Count && index < items.Count; index++)
         {
-            // TODO: un-uglify this. Thanks!
-            // Tedious copying of data from vending machine to UI
-            var sourceItem = _vendingMachine.Items[index];
-            var destinationItem = _itemStacks[index].InnerItemStack;
-            destinationItem.Item = sourceItem.Item;
-            destinationItem.Quantity = sourceItem.Quantity;
-            _itemStacks[index].InnerItemStack = destinationItem;
+	        _itemSlots[index].ItemStack = items[index];
         }
     }
     

@@ -16,8 +16,9 @@ public class ItemStack: IItemStack
 	public ItemCategory Category { get; }
 	public int Amount { get; set; }
 	public int MaxStackSize { get; }
+	public int BaseValue { get; }
 	
-	public ItemStack(string id, string name, Texture2D icon, string description, ItemCategory category, int maxStackSize)
+	public ItemStack(string id, string name, Texture2D icon, string description, ItemCategory category, int maxStackSize, int baseValue, int amount = 1)
 	{
 		Id = id;
 		Name = name;
@@ -25,6 +26,8 @@ public class ItemStack: IItemStack
 		Description = description;
 		Category = category;
 		MaxStackSize = maxStackSize;
+		BaseValue = baseValue;
+		Amount = amount;
 	}
 	
 	private readonly List<IComponent> _components = new();
@@ -57,7 +60,7 @@ public class ItemStack: IItemStack
 
 	public IItemStack Clone()
 	{
-		var newStack = new ItemStack(Id, Name, Icon, Description, Category, MaxStackSize);
+		var newStack = new ItemStack(Id, Name, Icon, Description, Category, MaxStackSize, BaseValue);
 		newStack.Amount = Amount;
 		return newStack;
 	}

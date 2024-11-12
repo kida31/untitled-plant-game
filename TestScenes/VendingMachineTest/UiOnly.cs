@@ -5,6 +5,7 @@ using untitledplantgame.vending_machine;
 using GUI.VendingMachine;
 using System.Linq;
 using System.Collections.Generic;
+using untitledplantgame.Inventory.Alt;
 
 public partial class UiOnly : Node2D
 {
@@ -14,30 +15,31 @@ public partial class UiOnly : Node2D
 	[Export] private Button _sellButton;
 
 	private VendingMachine _vendingMachine;
-	private List<ItemStack<IStorable>> _inventory;
+	private Inventory _inventory;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		GD.Print("Init vending machine");
 		_vendingMachine = new VendingMachine();
-		_vendingMachine.Items[0] = new ItemStack<ISellable>(new ItemImpl("Coke", 3), 8);
-		_vendingMachine.Items[1] = new ItemStack<ISellable>(new ItemImpl("Pepsi", 3), 3);
+		var inventory = _vendingMachine.Inventory;
+		inventory.SetItem(0, new ItemStack("coke", "Coke", null, "This is a coke", ItemCategory.Medicine, 64, 3, 12));
+		inventory.SetItem(1, new ItemStack("pepsi", "Pepsi", null, "This is a pepsi", ItemCategory.Medicine, 64, 1, 11));
 		_vendingMachineUi.SetVendingMachine(_vendingMachine);
-		
-		GD.Print("Init inventory");
-		_inventory = new(new ItemStack<IStorable>[8]);
-		_inventory[0] = new ItemStack<IStorable>(new ItemImpl("Fanta", 3), 5);
 
-		GD.Print($"init inventory view s={_inventory.Count}");
-		_inventory.ForEach((stack) => {
-			var stackView = stackViewTemplate.Instantiate<ItemStackView>();
+		GD.Print("Init inventory");
+		_inventory = new Inventory(15, 64, "PlayerInventory");
+		_inventory.SetItem(0, new ItemStack("fanta", "Fanta", null, "This is a fanta", ItemCategory.Medicine, 64, 5, 10));
+
+		GD.Print($"init inventory view s={_inventory.Size}");
+		_inventory.GetContents().ForEach(stack =>
+		{
+			var stackView = stackViewTemplate.Instantiate<ItemSlotUI>();
 			GD.Print($"Create {stackView}={stack}");
-			stackView.InnerItemStack = stack;
+			stackView.ItemStack = stack;
 			_inventoryGrid.AddChild(stackView);
 		});
 
 		_sellButton.Pressed += _vendingMachine.SellRandomItems;
 	}
-
 }

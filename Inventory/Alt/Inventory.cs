@@ -1,19 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace untitledplantgame.Inventory.Alt;
 
 public class Inventory: IInventory
 {
-	public int Size { get; }
+	public int Size => _items.Length;
 	public int MaxStackSize { get; set; }
 	public string Name { get; }
-	
-	private List<ItemStack> _items = new();
+
+	private ItemStack[] _items;
 	
 	public Inventory(int size, int maxStackSize, string name)
 	{
-		Size = size;
+		_items = new ItemStack[size];
 		MaxStackSize = maxStackSize;
 		Name = name;
 	}
@@ -82,7 +84,7 @@ public class Inventory: IInventory
 
 	private int GetFirstNonFull(string itemId)
 	{
-		for (var i = 0; i < _items.Count; i++)
+		for (var i = 0; i < _items.Length; i++)
 		{
 			if (_items[i].Id == itemId && _items[i].Amount < _items[i].MaxStackSize)
 			{
@@ -95,12 +97,54 @@ public class Inventory: IInventory
 
 	public Dictionary<int, ItemStack> RemoveItem(params ItemStack[] items)
 	{
-		throw new System.NotImplementedException();
+		Dictionary<int, ItemStack> remainingToRemove = new();
+		for (var i = 0; i < items.Length; i++)
+		{
+			var leftover = RemoveItem(items[i]);
+			if (leftover != null)
+			{
+				remainingToRemove.Add(i, leftover);
+			}
+		}
+
+		return remainingToRemove;
+	}
+	
+	private ItemStack RemoveItem(ItemStack item)
+	{
+		if (item == null) return null;
+		item = item.Clone() as ItemStack;
+
+		var itemIndex = First(item!.Id);
+		while (itemIndex != -1)
+		{
+			var sourceItem = _items[itemIndex];
+			// Remove as much as possible
+			var deducibleAmount = Math.Min(sourceItem.Amount, item.Amount);
+			if (deducibleAmount < sourceItem.Amount)
+			{
+				sourceItem.Amount -= deducibleAmount;
+			}
+			else
+			{
+				_items[itemIndex] = null; // Removed all of the item
+			}
+			
+			item.Amount -= deducibleAmount;
+			if (item.Amount == 0)
+			{
+				return null;
+			}
+			
+			itemIndex = First(item.Id);
+		}
+
+		return item;
 	}
 
 	public List<ItemStack> GetContents()
 	{
-		throw new System.NotImplementedException();
+		return new List<ItemStack>(_items);
 	}
 
 	public void SetContents(List<ItemStack> items)
@@ -145,12 +189,14 @@ public class Inventory: IInventory
 
 	public int First(string itemId)
 	{
-		throw new System.NotImplementedException();
+		// return index of first item matching id else -1
+		return Array.FindIndex(_items, item => item.Id == itemId);
 	}
 
 	public int First(ItemStack item)
 	{
-		throw new System.NotImplementedException();
+		// return index of first item matching id else -1
+		return Array.FindIndex(_items, it => it.Id == item.Id && it.Amount == item.Amount);
 	}
 
 	public int FirstEmpty()
@@ -190,8 +236,7 @@ public class Inventory: IInventory
 
 	public IEnumerator<ItemStack> GetEnumerator()
 	{
-		throw new System.NotImplementedException();
-
+		return ((IEnumerable<ItemStack>)_items).GetEnumerator();
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()

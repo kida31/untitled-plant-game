@@ -32,6 +32,11 @@ public interface IItemStack
 	ItemCategory Category { get; }
 	
 	/// <summary>
+	/// The base monetary value of the item
+	/// </summary>
+	public int BaseValue { get; }
+	
+	/// <summary>
 	/// The amount of items in this stack
 	/// </summary>
 	int Amount { get; set; }

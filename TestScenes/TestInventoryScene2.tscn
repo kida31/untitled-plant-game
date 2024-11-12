@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dytya2dhvjtj7"]
+[gd_scene load_steps=10 format=3 uid="uid://cnp2co4pcv5y6"]
 
 [ext_resource type="Script" path="res://Player/CollisionManager.cs" id="1_gwtwb"]
 [ext_resource type="PackedScene" uid="uid://cca7okqb2j4c7" path="res://Inventory/GeneralInventory/GeneralInventory.tscn" id="2_oc5l6"]

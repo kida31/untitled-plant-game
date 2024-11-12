@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://v4q4n4opsed6"]
 
-[ext_resource type="Script" path="res://VendingMachine/ItemStackView.cs" id="1_8p08p"]
+[ext_resource type="Script" path="res://VendingMachine/ItemSlotUI.cs" id="1_5dpbk"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="1_onwbe"]
 [ext_resource type="Texture2D" uid="uid://21vebptmufut" path="res://black_dot.png" id="2_7wld1"]
 
@@ -12,7 +12,7 @@ custom_minimum_size = Vector2(64, 64)
 offset_right = 64.0
 offset_bottom = 67.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6swp8")
-script = ExtResource("1_8p08p")
+script = ExtResource("1_5dpbk")
 _quantityLabel = NodePath("QuantityLabel")
 _itemTexture = NodePath("CenterContainer/MarginContainer/ItemTexture")
 _placeholderIcon = ExtResource("1_onwbe")
