@@ -28,7 +28,7 @@ public class Inventory: IInventory
 		_items[index] = item;
 	}
 
-	public Dictionary<int, ItemStack> AddItem(params ItemStack[] items)
+	public virtual Dictionary<int, ItemStack> AddItem(params ItemStack[] items)
 	{
 		Dictionary<int, ItemStack> overflow = new();
 		for (var i = 0; i < items.Length; i++)
