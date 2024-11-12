@@ -1,8 +1,10 @@
-﻿using Godot.Collections;
-using InventoryV0;
+﻿using System;
+using Godot.Collections;
 
 namespace untitledplantgame.vending_machine;
 
+/// This is merely a reference. See other implementations.
+[Obsolete]
 public interface IInventoryHandler
 {
     void QuickStack(IInventoryHandler target);
@@ -10,7 +12,7 @@ public interface IInventoryHandler
     // Minecraft Inventory
     bool IsHotbarSlot(int i);
     // Minecraft Container
-    int CountItem(IStorable item);
+    int CountItem(IItemStack item);
     int GetContainerSize();
     IItemStack GetStackInSlot(int i);
     bool IsItemValid(int n, IItemStack s);

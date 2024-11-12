@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Godot;
-using InventoryV0;
 using untitledplantgame.Inventory.Alt;
 
 public class VendingMachine

@@ -1,10 +1,5 @@
 using Godot;
-using System;
-using InventoryV0;
-using untitledplantgame.vending_machine;
 using GUI.VendingMachine;
-using System.Linq;
-using System.Collections.Generic;
 using untitledplantgame.Inventory.Alt;
 
 public partial class UiOnly : Node2D

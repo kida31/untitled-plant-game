@@ -1,7 +1,4 @@
 using Godot;
-using System;
-using System.Diagnostics;
-using InventoryV0;
 using untitledplantgame.Inventory.Alt;
 
 namespace GUI.VendingMachine
