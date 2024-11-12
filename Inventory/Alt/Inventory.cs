@@ -45,37 +45,39 @@ public class Inventory: IInventory
 
 	private ItemStack AddItem(ItemStack item)
 	{
-		item = item.Clone();
-		while (item.Amount > 0)
+		if (item == null) return null;
+		item = item.Clone() as ItemStack;
+		
+		while (true)
 		{
-			var idx = GetFirstNonFull(item.Id);
-			if (idx != -1)
+			var idx = GetFirstNonFull(item!.Id);
+			if (idx == -1)
 			{
-				var destination = _items[idx];
+				break;
+			}
+			var destination = _items[idx];
 				var transferableAmount = MaxStackSize - destination.Amount;
-				if (transferableAmount > item.Amount)
-				{
-					destination.Amount += item.Amount;
-					item.Amount = 0;
-				}
-				else
+				if (transferableAmount < item.Amount)
 				{
 					destination.Amount = MaxStackSize;
 					item.Amount -= transferableAmount;
 				}
-
-				continue;
-			}
-
-			idx = FirstEmpty();
-			if (idx != -1)
-			{
-				_items[idx] = item;
-				return null;
-			}
-
+				else
+				{
+					destination.Amount += item.Amount;
+					item.Amount = 0;
+					return null;
+				}
+		}
+		
+		var emptyIdx = FirstEmpty();
+		if (emptyIdx == -1)
+		{
 			return item;
 		}
+
+		_items[emptyIdx] = item;
+		return null;
 	}
 
 	private int GetFirstNonFull(string itemId)
