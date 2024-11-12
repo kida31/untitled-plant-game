@@ -10,11 +10,28 @@ public partial class ItemSlotUI : Control
 	[Export] private Texture2D _placeholderIcon;
 
 	[Export] private Label _quantityLabel;
+	[Export] private CanvasItem _highlight;
 
 	public ItemStack ItemStack
 	{
 		get => _itemStack;
 		set => SetItemStack(value);
+	}
+
+	public override void _Ready()
+	{
+		SetItemStack(null);
+		FocusEntered += () =>
+		{
+			_highlight.Show();
+			GD.Print($"[{Name}] Entered");
+		};
+
+		FocusExited += () =>
+		{
+			_highlight.Hide();
+			GD.Print($"[{Name}] Exited");
+		};
 	}
 
 	private void SetItemStack(ItemStack itemStack)
