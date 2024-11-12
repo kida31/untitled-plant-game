@@ -2,15 +2,18 @@
 
 namespace untitledplantgame.Inventory.Alt;
 
-public class ItemCategory: IEquatable<ItemCategory>
+public class ItemCategory : IEquatable<ItemCategory>
 {
-	public static ItemCategory Plant = new ItemCategory("Plant");
-	public static ItemCategory Material = new ItemCategory("Material");
-	public static ItemCategory Medicine = new ItemCategory("Medicine");
-	
+	public static ItemCategory Plant = new("Plant");
+	public static ItemCategory Material = new("Material");
+	public static ItemCategory Medicine = new("Medicine");
+
 	public string Name { get; }
 
-	private ItemCategory(string name) => Name = name;
+	private ItemCategory(string name)
+	{
+		Name = name;
+	}
 
 	public bool Equals(ItemCategory other)
 	{
@@ -39,7 +42,7 @@ public class ItemCategory: IEquatable<ItemCategory>
 			return true;
 		}
 
-		if (obj.GetType() != this.GetType())
+		if (obj.GetType() != GetType())
 		{
 			return false;
 		}
@@ -49,6 +52,6 @@ public class ItemCategory: IEquatable<ItemCategory>
 
 	public override int GetHashCode()
 	{
-		return (Name != null ? Name.GetHashCode() : 0);
+		return Name != null ? Name.GetHashCode() : 0;
 	}
 }

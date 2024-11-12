@@ -5,21 +5,21 @@ using System.Linq;
 
 namespace untitledplantgame.Inventory.Alt;
 
-public class Inventory: IInventory
+public class Inventory : IInventory
 {
 	public int Size => _items.Length;
 	public int MaxStackSize { get; set; }
 	public string Name { get; }
 
 	private ItemStack[] _items;
-	
+
 	public Inventory(int size, int maxStackSize, string name)
 	{
 		_items = new ItemStack[size];
 		MaxStackSize = maxStackSize;
 		Name = name;
 	}
-	
+
 	public ItemStack GetItem(int index)
 	{
 		return _items[index];
@@ -47,9 +47,13 @@ public class Inventory: IInventory
 
 	private ItemStack AddItem(ItemStack item)
 	{
-		if (item == null) return null;
+		if (item == null)
+		{
+			return null;
+		}
+
 		item = item.Clone() as ItemStack;
-		
+
 		while (true)
 		{
 			var idx = GetFirstNonFull(item!.Id);
@@ -57,21 +61,22 @@ public class Inventory: IInventory
 			{
 				break;
 			}
+
 			var destination = _items[idx];
-				var transferableAmount = MaxStackSize - destination.Amount;
-				if (transferableAmount < item.Amount)
-				{
-					destination.Amount = MaxStackSize;
-					item.Amount -= transferableAmount;
-				}
-				else
-				{
-					destination.Amount += item.Amount;
-					item.Amount = 0;
-					return null;
-				}
+			var transferableAmount = MaxStackSize - destination.Amount;
+			if (transferableAmount < item.Amount)
+			{
+				destination.Amount = MaxStackSize;
+				item.Amount -= transferableAmount;
+			}
+			else
+			{
+				destination.Amount += item.Amount;
+				item.Amount = 0;
+				return null;
+			}
 		}
-		
+
 		var emptyIdx = FirstEmpty();
 		if (emptyIdx == -1)
 		{
@@ -109,10 +114,14 @@ public class Inventory: IInventory
 
 		return remainingToRemove;
 	}
-	
+
 	private ItemStack RemoveItem(ItemStack item)
 	{
-		if (item == null) return null;
+		if (item == null)
+		{
+			return null;
+		}
+
 		item = item.Clone() as ItemStack;
 
 		var itemIndex = First(item!.Id);
@@ -129,13 +138,13 @@ public class Inventory: IInventory
 			{
 				_items[itemIndex] = null; // Removed all of the item
 			}
-			
+
 			item.Amount -= deducibleAmount;
 			if (item.Amount == 0)
 			{
 				return null;
 			}
-			
+
 			itemIndex = First(item.Id);
 		}
 
@@ -149,42 +158,42 @@ public class Inventory: IInventory
 
 	public void SetContents(List<ItemStack> items)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public bool Contains(string itemId)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public bool Contains(ItemStack item)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public bool Contains(string itemId, int amount)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public bool Contains(ItemStack item, int amount)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public bool ContainsAtLeast(ItemStack item, int amount)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public Dictionary<int, ItemStack> All(string itemId)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public Dictionary<int, ItemStack> All(ItemStack item)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public int First(string itemId)
@@ -201,42 +210,42 @@ public class Inventory: IInventory
 
 	public int FirstEmpty()
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public void Remove(string itemId)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public void Remove(ItemStack item)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public void Clear(int index)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public void Clear()
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public string GetTitle()
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public Dictionary<int, ItemStack> GetItemsOfCategory(ItemCategory category)
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	public IEnumerator<ItemStack> GetEnumerator()
 	{
-		return ((IEnumerable<ItemStack>)_items).GetEnumerator();
+		return ((IEnumerable<ItemStack>) _items).GetEnumerator();
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()

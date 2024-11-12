@@ -17,7 +17,8 @@ public interface IInventory : IEnumerable<ItemStack>
 	/**
 	 * Returns the maximum stack size for an ItemStack in this inventory.
 	 */
-	[Obsolete] public int MaxStackSize { get; set; }
+	[Obsolete]
+	public int MaxStackSize { get; set; }
 
 	/**
 	 * Returns the name of the inventory
@@ -260,8 +261,8 @@ public interface IInventory : IEnumerable<ItemStack>
 	//  * @return The holder of the inventory; null if it has no holder.
 	//  */
 	// public InventoryHolder getHolder();
-	
-	
+
+
 	/// <summary>
 	/// Returns all ItemStacks of the given category.
 	/// </summary>

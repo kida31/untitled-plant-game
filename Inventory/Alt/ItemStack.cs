@@ -4,10 +4,11 @@ using System.Diagnostics;
 using Godot;
 
 namespace untitledplantgame.Inventory.Alt;
+
 /// <summary>
 /// https://github.com/Bukkit/Bukkit/blob/master/src/main/java/org/bukkit/inventory/ItemStack.java
 /// </summary>
-public class ItemStack: IItemStack
+public class ItemStack : IItemStack
 {
 	public string Id { get; }
 	public string Name { get; }
@@ -17,8 +18,9 @@ public class ItemStack: IItemStack
 	public int Amount { get; set; }
 	public int MaxStackSize { get; }
 	public int BaseValue { get; }
-	
-	public ItemStack(string id, string name, Texture2D icon, string description, ItemCategory category, int maxStackSize, int baseValue, int amount = 1)
+
+	public ItemStack(string id, string name, Texture2D icon, string description, ItemCategory category, int maxStackSize, int baseValue,
+		int amount = 1)
 	{
 		Id = id;
 		Name = name;
@@ -29,13 +31,13 @@ public class ItemStack: IItemStack
 		BaseValue = baseValue;
 		Amount = amount;
 	}
-	
+
 	private readonly List<IComponent> _components = new();
-	
+
 	public T GetComponent<T>() where T : class, IComponent
 	{
 		var idx = _components.FindIndex(component => component is T);
-		return idx != -1 ? (T)_components[idx] : null;
+		return idx != -1 ? (T) _components[idx] : null;
 	}
 
 	public void AddComponent<T>(T component) where T : class, IComponent
@@ -47,8 +49,12 @@ public class ItemStack: IItemStack
 	public T RemoveComponent<T>() where T : class, IComponent
 	{
 		var idx = _components.FindIndex(component => component is T);
-		if (idx == -1) return null;
-		var component = (T)_components[idx];
+		if (idx == -1)
+		{
+			return null;
+		}
+
+		var component = (T) _components[idx];
 		_components.RemoveAt(idx);
 		return component;
 	}
