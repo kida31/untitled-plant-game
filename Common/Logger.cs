@@ -5,10 +5,10 @@ namespace untitledplantgame.Common;
 
 enum LogLevel
 {
-	Info,
-	Debug,
-	Warn,
-	Error,
+	Info, // Grey
+	Debug, // Blue
+	Warn, // Yellow
+	Error, // Red
 }
 
 public class Logger
@@ -61,7 +61,15 @@ public class Logger
 		else
 		{
 			// Write to (Godot) console
-			GD.Print(logMessage);
+			var coloredMessage = level switch
+			{
+				LogLevel.Info => BBColor.Gray.Apply(logMessage),
+				LogLevel.Debug => BBColor.Aqua.Apply(logMessage),
+				LogLevel.Warn => BBColor.Yellow.Apply(logMessage),
+				LogLevel.Error => BBColor.Red.Apply(logMessage),
+				_ => logMessage
+			};
+			GD.PrintRich(coloredMessage);
 		}
 	}
 
