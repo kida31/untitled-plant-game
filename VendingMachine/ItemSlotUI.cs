@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using untitledplantgame.Inventory.Alt;
 
@@ -5,6 +6,8 @@ namespace GUI.VendingMachine;
 
 public partial class ItemSlotUI : Control
 {
+	public event Action Pressed;
+	
 	private ItemStack _itemStack;
 	[Export] private TextureRect _itemTexture;
 	[Export] private Texture2D _placeholderIcon;
@@ -32,6 +35,17 @@ public partial class ItemSlotUI : Control
 			_highlight.Hide();
 			GD.Print($"[{Name}] Exited");
 		};
+
+		GuiInput += OnGuiInput;
+	}
+
+	private void OnGuiInput(InputEvent @event)
+	{
+		if (@event.IsActionPressed("ui_accept"))
+		{
+			Pressed?.Invoke();
+			GD.Print($"Pressed {Name}");
+		}
 	}
 
 	private void SetItemStack(ItemStack itemStack)
@@ -48,4 +62,6 @@ public partial class ItemSlotUI : Control
 			_quantityLabel.Text = _itemStack.Amount.ToString();
 		}
 	}
+	
+	
 }

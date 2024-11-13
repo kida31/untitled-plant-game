@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,51 @@ public partial class VendingMachineUI : Control
 	{
 		_itemSlots = _itemStackContainer.GetChildren().Cast<ItemSlotUI>().ToList();
 		_slider.ValueChanged += OnSliderValueChanged;
+
+		for (int i = 0; i < _itemSlots.Count; i++)
+		{
+			var s = _itemSlots[i];
+			s.Pressed += OnItemSlotPressedCurry(i);
+		}
 	}
+
+	private Action OnItemSlotPressedCurry(int idx)
+	{
+		return () =>
+		{
+			if (CursorFriend.Instance is null) return;
+
+			if (CursorFriend.Instance.ItemStack == null)
+			{
+				// Empty hand
+				var item = _vendingMachine.Inventory.GetItem(idx);
+				if (item == null) return;
+				CursorFriend.Instance.ItemStack = item;
+				_vendingMachine.Inventory.SetItem(idx, null);
+			}
+			else
+			{
+				// Holding item
+				if (_itemSlots[idx].ItemStack == null)
+				{
+					// Empty vending machine slot
+					_vendingMachine.Inventory.SetItem(idx, CursorFriend.Instance.ItemStack);
+					CursorFriend.Instance.ItemStack = null;
+				}
+				else
+				{
+					// TODO: may need to stack instead
+					// Swap
+					var temp = _vendingMachine.Inventory.GetItem(idx);
+					_vendingMachine.Inventory.SetItem(idx, CursorFriend.Instance.ItemStack);
+					CursorFriend.Instance.ItemStack = temp;
+				}
+			}
+			UpdateContent(_vendingMachine.Inventory);
+		};
+	}
+	
+
 
 	public override void _Process(double delta)
 	{
