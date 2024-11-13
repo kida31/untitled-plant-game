@@ -27,6 +27,8 @@ public partial class ShopSlot : Panel
 
 		float x = GlobalPosition.X + GetRect().Size.X;
 		float y = GlobalPosition.Y;
+		// float tempx = GetNode<ColorRect>("/root/TestInventoryScene/Seedshop/ColorRect").GlobalPosition.X;
+		// _logger.Debug("Scale: " + tempx);
 		Vector2I position = (Vector2I)new Vector2(x, y);
 		tooltipInstance.Position = position;
 		tooltipInstance.Transparent = true;

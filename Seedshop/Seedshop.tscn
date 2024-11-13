@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://w84710wgdj5r" path="res://Seedshop/ShopSlot.tscn" id="1_hct0p"]
 
 [node name="SeedshopRevised" type="CanvasLayer"]
+scale = Vector2(0.8, 0.8)
+transform = Transform2D(0.8, 0, 0, 0.8, 0, 0)
 script = ExtResource("1_frgxh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
