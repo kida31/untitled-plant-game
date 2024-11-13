@@ -16,6 +16,7 @@ _itemSlot = NodePath("ItemSlot")
 [node name="ItemSlot" parent="." instance=ExtResource("2_e62am")]
 visible = false
 layout_mode = 0
+scale = Vector2(0.7, 0.7)
 focus_mode = 0
 mouse_filter = 2
 

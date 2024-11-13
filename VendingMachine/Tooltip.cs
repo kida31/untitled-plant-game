@@ -15,13 +15,14 @@ public partial class Tooltip : Control
 	[Export] private TextureRect _emojiTexture;
 	[Export] private Slider _slider;
 	[Export] private Vector2 _offset;
+	[Export] private Timer _fadeTimer;
 
 	[ExportGroup("Emojis")] [Export] private Texture2D[] _sadFaces;
 	[Export] private Texture2D[] _neutralFaces;
 	[Export] private Texture2D[] _happyFaces;
 
 	private Mood _currentMood = Mood.NEUTRAL;
-	private bool _isDragging = false;
+	private bool _isFadingOut = false;
 
 	private float Alpha
 	{
@@ -37,22 +38,16 @@ public partial class Tooltip : Control
 	public override void _Ready()
 	{
 		_slider.ValueChanged += OnSliderValueChanged;
-		_slider.DragEnded += OnDragEnded;
+		_fadeTimer.Timeout += () => _isFadingOut = true;
 		Visible = true;
 	}
 
 	public override void _Process(double delta)
 	{
-		if (!_isDragging)
+		if (_isFadingOut)
 		{
-			Alpha = Mathf.Lerp(Alpha, 0.0f, 3.0f * (float) delta);
+			Alpha = Mathf.Lerp(Alpha, 0.0f, 1.0f * (float) delta);
 		}
-	}
-
-	private void OnDragEnded(bool valuechanged)
-	{
-		Alpha = (float) 1.0;
-		_isDragging = false;
 	}
 
 	private void OnSliderValueChanged(double value)
@@ -61,7 +56,9 @@ public partial class Tooltip : Control
 		var updatedPosition = _slider.GlobalPosition + _offset;
 		updatedPosition.X += _slider.GetRect().Size.X * (float) valuePercent;
 		GlobalPosition = updatedPosition;
-		_isDragging = true;
+		_isFadingOut = false;
+		_fadeTimer.Stop();
+		_fadeTimer.Start();
 
 		// Set Modulate.A
 		Alpha = (float) 1.0;

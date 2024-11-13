@@ -199,7 +199,7 @@ public class Inventory : IInventory
 	public int First(string itemId)
 	{
 		// return index of first item matching id else -1
-		return Array.FindIndex(_items, item => item.Id == itemId);
+		return Array.FindIndex(_items, item => item?.Id == itemId);
 	}
 
 	public int First(ItemStack item)

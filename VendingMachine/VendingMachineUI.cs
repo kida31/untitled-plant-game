@@ -11,19 +11,32 @@ public partial class VendingMachineUI : Control
 	[Export] private Tooltip _tooltip;
 	[Export] private Slider _slider;
 	[Export] private Label _moneyLabel;
+	[Export] private Label _itemNameLabel;
+	[Export] private Button _withdrawButton;
 
 	private VendingMachine _vendingMachine;
-	private List<ItemSlotUI> _itemSlots;
+	private List<VMItemSlotUI> _itemSlots;
 
 	public override void _Ready()
 	{
-		_itemSlots = _itemStackContainer.GetChildren().Cast<ItemSlotUI>().ToList();
+		_itemSlots = _itemStackContainer.GetChildren().Cast<VMItemSlotUI>().ToList();
 		_slider.ValueChanged += OnSliderValueChanged;
 
-		for (int i = 0; i < _itemSlots.Count; i++)
+		for (var i = 0; i < _itemSlots.Count; i++)
 		{
 			var s = _itemSlots[i];
 			s.Pressed += OnItemSlotPressedCurry(i);
+		}
+
+		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
+		_withdrawButton.Pressed += () => _vendingMachine.WithdrawGold();
+	}
+
+	private void OnGuiFocusChanged(Control node)
+	{
+		if (node is ItemSlotUI slot)
+		{
+			_itemNameLabel!.Text = slot.ItemStack?.Name ?? "";
 		}
 	}
 
@@ -80,6 +93,8 @@ public partial class VendingMachineUI : Control
 		if (_vendingMachine is not null)
 		{
 			_vendingMachine.ContentChanged -= UpdateContent;
+			_vendingMachine.PriceMultChanged -= OnPriceMultChanged;
+			_vendingMachine.FaithMultChanged -= OnFaithMultChanged;
 		}
 
 		_vendingMachine = vendingMachine;
@@ -89,7 +104,19 @@ public partial class VendingMachineUI : Control
 		}
 
 		_vendingMachine.ContentChanged += UpdateContent;
+		_vendingMachine.PriceMultChanged += OnPriceMultChanged;
+		_vendingMachine.FaithMultChanged += OnFaithMultChanged;
 		UpdateContent(_vendingMachine.Inventory);
+	}
+
+	private void OnFaithMultChanged(float obj)
+	{
+		// TODO:
+	}
+
+	private void OnPriceMultChanged(float obj)
+	{
+		_itemSlots.ForEach(s => s.PriceMult = obj);
 	}
 
 	private void UpdateContent(IInventory inventory)

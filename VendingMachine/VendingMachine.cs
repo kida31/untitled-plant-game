@@ -8,6 +8,8 @@ public class VendingMachine
 {
 	// Events
 	public event Action<IInventory> ContentChanged;
+	public event Action<float> PriceMultChanged;
+	public event Action<float> FaithMultChanged;
 
 	// Magic Numbers
 	private const int MAX_SALES = 100;
@@ -60,7 +62,7 @@ public class VendingMachine
 		var totalSellCount = (int) Math.Ceiling(Math.Max(SALES_PERCENT_PER_INTERVAL * itemStacks.Count, 1));
 
 		// Sort by price descending, sell most expensive first.
-		var itemsByPrice = _inventory.OrderBy(stack => stack?.BaseValue ?? 0).ToList();
+		var itemsByPrice = _inventory.OrderByDescending(stack => stack?.BaseValue ?? 0).ToList();
 
 		foreach (var stack in itemsByPrice)
 		{
@@ -104,6 +106,9 @@ public class VendingMachine
 	{
 		_priceMultiplier = f;
 		_faithMultiplier = (float) 1.0 / f;
+		
+		PriceMultChanged?.Invoke(_priceMultiplier);
+		FaithMultChanged?.Invoke(_faithMultiplier);
 	}
 
 	public int WithdrawGold()

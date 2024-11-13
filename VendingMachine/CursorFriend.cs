@@ -29,7 +29,7 @@ public partial class CursorFriend : Control
 
 	private void OnGuiFocusChanged(Control node)
 	{
-		GlobalPosition = node.GlobalPosition;
+		GlobalPosition = 0.5f * (node.GlobalPosition + node.GetGlobalRect().End);
 	}
 
 

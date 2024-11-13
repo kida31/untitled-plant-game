@@ -27,15 +27,13 @@ public partial class UiOnly : Node2D
 		_inventory.SetItem(0, new ItemStack("fanta", "Fanta", null, "This is a fanta", ItemCategory.Medicine, 64, 5, 10));
 
 		GD.Print($"init inventory view s={_inventory.Size}");
-		var list = _inventory.GetContents();
-		for (var index = 0; index < list.Count; index++)
+		foreach (var stack in _inventory)
 		{
-			var stack = list[index];
 			var stackView = stackViewTemplate.Instantiate<ItemSlotUI>();
 			stackView.Pressed += () => OnInventorySlotPressed(stackView);
 			GD.Print($"Create {stackView}={stack}");
-			stackView.ItemStack = stack;
 			_inventoryGrid.AddChild(stackView);
+			stackView.ItemStack = stack;
 		}
 
 		_sellButton.Pressed += _vendingMachine.SellRandomItems;

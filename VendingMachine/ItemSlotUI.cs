@@ -41,6 +41,7 @@ public partial class ItemSlotUI : Control
 
 	private void OnGuiInput(InputEvent @event)
 	{
+		// || (@event is InputEventMouseButton mb && mb.ButtonIndex == MouseButton.Left && mb.Pressed)
 		if (@event.IsActionPressed("ui_accept"))
 		{
 			Pressed?.Invoke();
@@ -48,7 +49,7 @@ public partial class ItemSlotUI : Control
 		}
 	}
 
-	private void SetItemStack(ItemStack itemStack)
+	protected virtual void SetItemStack(ItemStack itemStack)
 	{
 		_itemStack = itemStack;
 		if (_itemStack == null)
