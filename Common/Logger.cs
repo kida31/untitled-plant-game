@@ -44,6 +44,10 @@ public class Logger
 		}
 	}
 
+	public Logger(Node node) : this(node.GetType().Name)
+	{
+	}
+
 	private void Log(LogLevel level, string message)
 	{
 		var logMessage = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} [{level}] |{_name}| {message}";
