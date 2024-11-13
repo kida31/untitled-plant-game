@@ -40,6 +40,7 @@ public partial class Tooltip : Control
 		_slider.ValueChanged += OnSliderValueChanged;
 		_fadeTimer.Timeout += () => _isFadingOut = true;
 		Visible = true;
+		Alpha = 0;
 	}
 
 	public override void _Process(double delta)

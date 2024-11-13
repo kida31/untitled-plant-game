@@ -28,6 +28,6 @@ text = "Sell"
 [node name="InventoryContainer" type="GridContainer" parent="Control"]
 layout_mode = 2
 size_flags_vertical = 4
-columns = 8
+columns = 5
 
 [node name="CursorFriend" parent="." instance=ExtResource("4_yq4o6")]
