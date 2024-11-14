@@ -3,9 +3,9 @@ using System;
 
 public partial class Fish : Area2D
 {
-	public float BaseSpeed { get; set; } = 200;
-	public Vector2 Direction { get; private set; } = new Vector2(0, 0);
-	public static float HookSpeedMod { get; set; }= 0.2f;
+	public float BaseSpeed { get; private set; } = 200;
+	public Vector2 Direction { get; private set; } = new(0, 0);
+	public static float HookSpeedMod { get; private set; }= 0.2f;
 	public bool IsHooked { get; set; } = false;
 	[Export]
 	private Node2D _leftBound;
