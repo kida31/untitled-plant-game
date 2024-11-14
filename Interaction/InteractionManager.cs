@@ -24,7 +24,7 @@ public partial class InteractionManager : Node2D
 
 	public override void _Ready()
 	{
-		player = (Node2D)GetTree().GetFirstNodeInGroup("player");
+		player = (Node2D)GetTree().GetFirstNodeInGroup(Group.Player);
 
 		if (player == null)
 		{
