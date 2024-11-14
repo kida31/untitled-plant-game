@@ -5,6 +5,7 @@ public partial class Hookbar : Area2D
 {
 	private Fish _hookedFish;
 	public float StepDistance { get; set; }= 100;
+	//test
 	public float PullDistance { get; set; }= 10;
 	public float HookIsHookedDistanceMod { get; set; }= 0.25f;
 	public event Action PulledFish;
