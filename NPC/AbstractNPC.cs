@@ -1,5 +1,4 @@
 using Godot;
-using untitledplantgame.Common;
 
 public abstract partial class AbstractNPC : Area2D, IInteractable
 {
