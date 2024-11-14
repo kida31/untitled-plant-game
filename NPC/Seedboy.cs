@@ -14,14 +14,9 @@ public partial class Seedboy : AbstractNPC
 		EventBus.Instance.SeedshopOpened();
 	}
 
-	private void OnBodyExited(Node body)
+	private new void OnBodyExited(Node body)
 	{
 		EventBus.Instance.SeedshopClosed();
 		base.OnBodyExited(body);
-	}
-
-	private void close_shop()
-	{
-		GD.Print("Shop closed");
 	}
 }

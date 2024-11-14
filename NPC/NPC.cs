@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-[Obsolote]
+[Obsolete]
 public partial class NPC : Area2D, IInteractable
 {
 	[Export]
@@ -9,7 +9,7 @@ public partial class NPC : Area2D, IInteractable
 
 	[Export]
 	private NpcLogic _npcLogicNode;
-	private string ActionName { get; set; } = "talk";
+	public string ActionName { get; private set; } = "talk";
 
 	public override void _Ready()
 	{
@@ -37,11 +37,4 @@ public partial class NPC : Area2D, IInteractable
 	{
 		_npcLogicNode.InteractionLogic();
 	}
-
-	public string GetActionName()
-	{
-		return ActionName;
-	}
 }
-
-internal class ObsoloteAttribute : Attribute { }

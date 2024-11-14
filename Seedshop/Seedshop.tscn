@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://Seedshop/Seedshop.cs" id="1_frgxh"]
 [ext_resource type="PackedScene" uid="uid://w84710wgdj5r" path="res://Seedshop/ShopSlot.tscn" id="1_hct0p"]
 
-[node name="SeedshopRevised" type="CanvasLayer"]
+[node name="SeedshopRevised" type="CanvasLayer" node_paths=PackedStringArray("closeButton")]
 scale = Vector2(0.8, 0.8)
 transform = Transform2D(0.8, 0, 0, 0.8, 0, 0)
 script = ExtResource("1_frgxh")
+closeButton = NodePath("CloseButton")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 502.0

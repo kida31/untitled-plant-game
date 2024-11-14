@@ -1,26 +1,29 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
+using untitledplantgame.Common;
 
 public partial class InteractionManager : Node2D
 {
-	// [Export] private NodePath playerPath;
-	// [Export] private NodePath labelPath;
-
-	private Node2D player;
+	[Export]
 	private Label label;
 	public static InteractionManager Instance { get; private set; }
+	public int AreaCount => activeAreas.Count;
+	private Node2D player;
+
 	private const string BaseText = "[E] to ";
 	private List<IInteractable> activeAreas = new();
 	private bool canInteract = true;
+	private readonly Logger _logger = new("InteractionManager");
 
 	public override void _Ready()
 	{
-		player = (Node2D)GetTree().GetFirstNodeInGroup("Player");
-		label = GetNode<Label>("Label");
+		// player = (Node2D)GetTree().GetFirstNodeInGroup("Player"); //not working I think
+		player = (Node2D)GetNode("/root/TestInventoryScene/Player"); //TODO: Make this work properly whithout hardcoding the path
 
 		if (player == null)
 		{
-			GD.PrintErr("Player node not found.");
+			_logger.Error("Player node not found.");
 		}
 
 		if (Instance == null)
@@ -29,14 +32,9 @@ public partial class InteractionManager : Node2D
 		}
 		else
 		{
-			GD.PrintErr("Blub");
+			_logger.Error("No Instance found");
 			QueueFree();
 		}
-	}
-
-	public int GetAreaCount()
-	{
-		return activeAreas.Count;
 	}
 
 	public void RegisterArea(IInteractable area)
@@ -59,10 +57,10 @@ public partial class InteractionManager : Node2D
 	/// <param name="delta"></param>
 	public override void _Process(double delta)
 	{
-		if (activeAreas.Count > 0 && canInteract)
+		if (AreaCount > 0 && canInteract)
 		{
 			activeAreas.Sort(SortByDistanceToPlayer);
-			label.Text = BaseText + activeAreas[0].GetActionName();
+			label.Text = BaseText + activeAreas[0].ActionName;
 			label.GlobalPosition = activeAreas[0].GetGlobalInteractablePosition();
 			label.GlobalPosition -= new Vector2(label.Size.X / 2, 36);
 			label.Show();
@@ -73,18 +71,11 @@ public partial class InteractionManager : Node2D
 		}
 	}
 
-	private int SortByDistanceToPlayer(IInteractable area1, IInteractable area2)
-	{
-		float distance1 = player.GlobalPosition.DistanceTo(area1.GetGlobalInteractablePosition());
-		float distance2 = player.GlobalPosition.DistanceTo(area2.GetGlobalInteractablePosition());
-		return distance1.CompareTo(distance2);
-	}
-
 	public void PerformInteraction()
 	{
 		if (Input.IsKeyPressed(Key.E) && canInteract)
 		{
-			if (activeAreas.Count > 0)
+			if (AreaCount > 0)
 			{
 				canInteract = false;
 				label.Hide();
@@ -94,5 +85,21 @@ public partial class InteractionManager : Node2D
 				canInteract = true;
 			}
 		}
+	}
+
+	private int SortByDistanceToPlayer(IInteractable area1, IInteractable area2)
+	{
+		if (area1 == null || area2 == null)
+		{
+			_logger.Error("Area is null.");
+		}
+
+		if (player == null)
+		{
+			_logger.Error("Player is null.");
+		}
+		float distance1 = player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
+		float distance2 = player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
+		return distance1.CompareTo(distance2);
 	}
 }

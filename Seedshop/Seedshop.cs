@@ -5,6 +5,8 @@ using untitledplantgame.Common;
 
 public partial class Seedshop : CanvasLayer
 {
+	[Export]
+	private Button closeButton;
 	private readonly Logger _logger = new("Seedshop");
 	private Label tooltip;
 	private Dictionary<string, Dictionary<string, int>> seedData = new Dictionary<string, Dictionary<string, int>>()
@@ -160,19 +162,20 @@ public partial class Seedshop : CanvasLayer
 		this.Hide();
 		EventBus.Instance.OnSeedshopOpened += OpenSeedshop;
 		EventBus.Instance.OnSeedshopClosed += CloseSeedshop;
-		var closeButton = GetNode<Button>("CloseButton");
-		closeButton.Connect("pressed", new Callable(this, nameof(OnCloseButtonPressed)));
+		closeButton.Pressed += OnCloseButtonPressed;
 
 		var GridContainer = GetNode<GridContainer>("ColorRect/GridContainer");
 		if (GridContainer != null)
 		{
-			foreach (Node ShopSlot in GridContainer.GetChildren())
+			var shopSlots = GridContainer.GetChildren();
+			for (int i = 0; i < shopSlots.Count; i++)
 			{
-				var textureButton = ShopSlot.GetNode<TextureButton>("Panel/ColorRect/TextureButton");
+				var shopSlot = shopSlots[i];
+				var textureButton = shopSlot.GetNode<TextureButton>("Panel/ColorRect/TextureButton");
 				if (textureButton != null)
 				{
-					string name = ShopSlot.Name;
-					textureButton.Connect("pressed", new Callable(this, name));
+					var number = i + 1;
+					textureButton.Pressed += () => SeedSold(number);
 				}
 			}
 		}
@@ -229,17 +232,6 @@ public partial class Seedshop : CanvasLayer
 		}
 	}
 
-	[Obsolete]
-	private void updateLabel(string panelName, string name, int price, int available)
-	{
-		Label nameLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/Name");
-		Label priceLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/Price");
-		Label availableLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/ColorRect/Available");
-		nameLabel.Text = name;
-		priceLabel.Text = price.ToString();
-		availableLabel.Text = available.ToString();
-	}
-
 	private void reduceAvailability(string name)
 	{
 		foreach (KeyValuePair<string, Dictionary<string, int>> seed in seedData)
@@ -279,85 +271,5 @@ public partial class Seedshop : CanvasLayer
 		}
 		_logger.Error("Seed not found.");
 		return ("", -1, -1);
-	}
-
-	private void Panel1()
-	{
-		SeedSold(1);
-	}
-
-	private void Panel2()
-	{
-		SeedSold(2);
-	}
-
-	private void Panel3()
-	{
-		SeedSold(3);
-	}
-
-	private void Panel4()
-	{
-		SeedSold(4);
-	}
-
-	private void Panel5()
-	{
-		SeedSold(5);
-	}
-
-	private void Panel6()
-	{
-		SeedSold(6);
-	}
-
-	private void Panel7()
-	{
-		SeedSold(7);
-	}
-
-	private void Panel8()
-	{
-		SeedSold(8);
-	}
-
-	private void Panel9()
-	{
-		SeedSold(9);
-	}
-
-	private void Panel10()
-	{
-		SeedSold(10);
-	}
-
-	private void Panel11()
-	{
-		SeedSold(11);
-	}
-
-	private void Panel12()
-	{
-		SeedSold(12);
-	}
-
-	private void Panel13()
-	{
-		SeedSold(13);
-	}
-
-	private void Panel14()
-	{
-		SeedSold(14);
-	}
-
-	private void Panel15()
-	{
-		SeedSold(15);
-	}
-
-	private void Panel16()
-	{
-		SeedSold(16);
 	}
 }

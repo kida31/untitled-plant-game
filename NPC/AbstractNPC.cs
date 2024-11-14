@@ -3,7 +3,8 @@ using untitledplantgame.Common;
 
 public abstract partial class AbstractNPC : Area2D, IInteractable
 {
-	private readonly Logger _logger = new("NPC");
+	[Export]
+	public string ActionName { get; private set; } = "interact";
 
 	[Export]
 	private NpcLogic _npcLogicNode;
@@ -11,26 +12,12 @@ public abstract partial class AbstractNPC : Area2D, IInteractable
 	[Export]
 	private string _npcName;
 
-	[Export]
-	protected string ActionName { get; set; } = "interact";
-
 	public override void _Ready()
 	{
 		AddToGroup("Interactables");
-		Connect("body_entered", new Callable(this, nameof(OnBodyEntered)));
-		Connect("body_exited", new Callable(this, nameof(OnBodyExited)));
-	}
-
-	private void OnBodyEntered(Node body)
-	{
-		InteractionManager.Instance.RegisterArea(this);
-		_npcLogicNode.ManageNpcCollisionWithPlayer(body, _npcName);
-	}
-
-	protected void OnBodyExited(Node body)
-	{
-		InteractionManager.Instance.UnregisterArea(this);
-		_npcLogicNode.ManageNpcCollisionWithPlayer(body, _npcName);
+		BodyEntered += OnBodyEntered;
+		// BodyExited += OnBodyExited; // Activate this once the Player is unable to move in shop
+		Connect("body_exited", new Callable(this, nameof(OnBodyExited))); // Deactivate this once the Player is unable to move in shop
 	}
 
 	public Vector2 GetGlobalInteractablePosition()
@@ -40,8 +27,15 @@ public abstract partial class AbstractNPC : Area2D, IInteractable
 
 	public abstract void Interact();
 
-	public string GetActionName()
+	protected void OnBodyExited(Node body)
 	{
-		return ActionName;
+		InteractionManager.Instance.UnregisterArea(this);
+		_npcLogicNode.ManageNpcCollisionWithPlayer(body, _npcName);
+	}
+
+	private void OnBodyEntered(Node body)
+	{
+		InteractionManager.Instance.RegisterArea(this);
+		_npcLogicNode.ManageNpcCollisionWithPlayer(body, _npcName);
 	}
 }

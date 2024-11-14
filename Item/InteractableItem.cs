@@ -6,24 +6,15 @@ namespace untitledplantgame.Item;
 
 public partial class InteractableItem : Area2D, IInteractable
 {
-	public string ItemName => _dataContainer.EntityName; // Convenience property
-
 	[Export]
 	private DataContainer _dataContainer;
-	private string ActionName { get; set; } = "pickup";
 
 	[Export(PropertyHint.Enum, "Herb,Medicine,Seed")]
-	private string SelectedOption
-	{
-		get => _selectedOption;
-		set
-		{
-			_selectedOption = value;
-			_characteristic = CreateInstance();
-		}
-	}
-
 	private string _selectedOption;
+	public string ItemName => _dataContainer.EntityName; // Convenience property
+
+	public string ActionName { get; private set; } = "pickup";
+
 	private ICharacteristic _characteristic;
 	private bool _canBeInteractedWith = true;
 
@@ -31,15 +22,6 @@ public partial class InteractableItem : Area2D, IInteractable
 	{
 		AddToGroup("Interactables");
 	}
-
-	private ICharacteristic CreateInstance() =>
-		_selectedOption switch
-		{
-			"Herb" => new HerbCategory(),
-			"Medicine" => new MedicineCategory(),
-			"Seed" => new SeedCategory(),
-			_ => null,
-		};
 
 	public void Interact()
 	{
@@ -65,8 +47,22 @@ public partial class InteractableItem : Area2D, IInteractable
 		return _characteristic;
 	}
 
-	public string GetActionName()
+	private string SelectedOption
 	{
-		return ActionName;
+		get => _selectedOption;
+		set
+		{
+			_selectedOption = value;
+			_characteristic = CreateInstance();
+		}
 	}
+
+	private ICharacteristic CreateInstance() =>
+		_selectedOption switch
+		{
+			"Herb" => new HerbCategory(),
+			"Medicine" => new MedicineCategory(),
+			"Seed" => new SeedCategory(),
+			_ => null,
+		};
 }

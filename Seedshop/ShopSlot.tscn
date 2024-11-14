@@ -3,10 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Sprites/seed.png" id="1_6iyc4"]
 [ext_resource type="Script" path="res://Seedshop/ShopSlot.cs" id="1_f3gqh"]
 
-[node name="Panel" type="Panel"]
+[node name="Panel" type="Panel" node_paths=PackedStringArray("ItemName")]
 offset_right = 110.0
 offset_bottom = 160.0
 script = ExtResource("1_f3gqh")
+ItemName = NodePath("Panel/Name")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

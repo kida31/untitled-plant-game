@@ -53,18 +53,14 @@ public partial class EventBus : Node
 		OnItemPickUp?.Invoke(interactableItem);
 	}
 
-	public delegate void OpenSeedshopEventHandler();
-
-	public event OpenSeedshopEventHandler OnSeedshopOpened;
+	public event Action OnSeedshopOpened;
 
 	public void SeedshopOpened()
 	{
 		OnSeedshopOpened?.Invoke();
 	}
 
-	public delegate void CloseSeedshopEventHandler();
-
-	public event CloseSeedshopEventHandler OnSeedshopClosed;
+	public event Action OnSeedshopClosed;
 
 	public void SeedshopClosed()
 	{

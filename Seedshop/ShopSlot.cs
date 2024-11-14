@@ -4,40 +4,33 @@ using untitledplantgame.Common;
 
 public partial class ShopSlot : Panel
 {
-	private readonly Logger _logger = new("Seedshop");
+	[Export]
+	private Label ItemName;
+	private readonly Logger _logger = new("ShopSLot");
 
-	PackedScene tooltip = GD.Load<PackedScene>("res://Seedshop/Tooltip.tscn");
+	private PackedScene tooltip = GD.Load<PackedScene>("res://Seedshop/Tooltip.tscn");
 
 	public override void _Ready()
 	{
-		Connect("mouse_entered", new Callable(this, nameof(OnMouseEntered)));
-		Connect("mouse_exited", new Callable(this, nameof(OnMouseExited)));
+		MouseEntered += OnMouseEntered;
+		MouseExited += OnMouseExited;
 	}
-
-	public override void _Process(double delta) { }
 
 	private async void OnMouseEntered()
 	{
-		_logger.Debug("Mouse entered");
-		var tooltipInstance = (Tooltip)tooltip.Instantiate();
+		var tooltipInstance = tooltip.Instantiate<Tooltip>();
+		// _logger.Debug("Mouse entered");
 		tooltipInstance.origin = "Seedshop";
-		tooltipInstance.slot = GetNode<Label>("Panel/Name").Text;
-		_logger.Debug("Slot name: " + tooltipInstance.slot);
-		_logger.Debug("Tooltip origin: " + tooltipInstance.origin);
+		tooltipInstance.slot = ItemName.Text;
 
 		float x = GlobalPosition.X + GetRect().Size.X;
 		float y = GlobalPosition.Y;
-		// float tempx = GetNode<ColorRect>("/root/TestInventoryScene/Seedshop/ColorRect").GlobalPosition.X;
-		// _logger.Debug("Scale: " + tempx);
 		Vector2I position = (Vector2I)new Vector2(x, y);
 		tooltipInstance.Position = position;
 		tooltipInstance.Transparent = true;
 
 		AddChild(tooltipInstance);
-		_logger.Debug("Tooltip valid: " + tooltipInstance.valid);
-
-		_logger.Debug("has node: " + HasNode("Tooltip"));
-		await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
+		await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
 		if (HasNode("Tooltip") && tooltipInstance.valid)
 		{
 			tooltipInstance.Show();
@@ -46,7 +39,6 @@ public partial class ShopSlot : Panel
 
 	private void OnMouseExited()
 	{
-		_logger.Debug("Mouse exited");
 		if (HasNode("Tooltip"))
 		{
 			GetNode("Tooltip").QueueFree();
