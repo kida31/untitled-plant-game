@@ -3,9 +3,8 @@ using System;
 
 public partial class Hookbar : Area2D
 {
-	private Fish _hookedFish;
-	public float StepDistance { get; set; }= 100;
-	//test
+	private Fish _hookedFish; // Fish that is currently hooked
+	public float StepDistance { get; set; }= 100; // Distance to move left or right
 	public float PullDistance { get; set; }= 10;
 	public float HookIsHookedDistanceMod { get; set; }= 0.25f;
 	public event Action PulledFish;
@@ -74,12 +73,13 @@ public partial class Hookbar : Area2D
 
 	private void OnAreaEntered(Area2D area)
 	{
-		if (area is Fish fish)
+		if (area is not Fish fish)
 		{
-			GD.Print("hooked fish");
-			_hookedFish = fish;
-			fish.IsHooked = true;
+			return;
 		}
+
+		_hookedFish = fish;
+		fish.IsHooked = true;
 	}
 
 	private void OnAreaExited(Area2D area)
