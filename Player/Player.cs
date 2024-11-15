@@ -1,7 +1,7 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.TestScenes;
+using GameStateMachine = untitledplantgame.Common.GameStateMachine;
 
 namespace untitledplantgame.Player;
 
@@ -27,17 +27,15 @@ public partial class Player : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
-		// For demo purposes
-		if (Input.IsKeyPressed(Key.F12)) GameStateMachine.Instance.CurrentState = GameState.GAMEPLAY;
-		if (Input.IsKeyPressed(Key.F11)) GameStateMachine.Instance.CurrentState = GameState.BOOK;
-		
 		_interactablesManager.ScanForInteractables();
 	}
 
 	public override void _Input(InputEvent @event)
 	{
 		// ignore input if not in correct state
-		if (GameStateMachine.Instance.CurrentState != GameState.GAMEPLAY)
+		// GameStateMachine.CurrentState
+		// GameStateMachine.Instance.CurrentState
+		if (GameStateMachine.Instance.CurrentState != GameState.Gameplay)
 		{
 			Direction = Vector2.Zero; // default value, movement is an exception
 			return;

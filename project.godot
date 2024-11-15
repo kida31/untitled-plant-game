@@ -27,6 +27,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GameStateMachine="*res://Common/GameStateMachine.cs"
 EventBus="*res://EventBus/EventBus.cs"
 ResourceManager="*res://ResourceData/ResourceManager.cs"
 TimeController="*res://Common/TimeController.cs"
