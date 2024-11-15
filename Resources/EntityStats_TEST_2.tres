@@ -7,7 +7,6 @@
 script = ExtResource("2_07lcu")
 SelectedOption = "Health"
 StatValue = 10
-IsHidden = false
 StatModifiers = [2, 2]
 
 [resource]
