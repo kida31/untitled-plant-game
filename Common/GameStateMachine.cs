@@ -5,6 +5,16 @@ namespace untitledplantgame.Common;
 
 /// <summary>
 /// Represents the current state of the game.
+/// <remarks>
+/// Usage
+/// <code>
+/// CurrentState //for current state
+/// PreviousState //for previous state
+/// ChangeState(newState) //to change state
+/// RevertState() //to revert to previous state
+/// >StateChanged += (previous, current) => { ... } //to subscribe to state changes
+/// </code>
+/// </remarks>
 /// </summary>
 public partial class GameStateMachine : Node
 {
@@ -13,6 +23,7 @@ public partial class GameStateMachine : Node
 	/// The first argument is the previous state, the second argument is the new state.
 	/// </summary>
 	public event Action<GameState, GameState> StateChanged;
+
 	public static GameStateMachine Instance
 	{
 		get
@@ -31,7 +42,6 @@ public partial class GameStateMachine : Node
 
 	public GameState CurrentState => _currentState;
 	public GameState PreviousState => _previousState;
-
 
 	private GameState _currentState = GameState.Gameplay;
 	private GameState _previousState = null;
@@ -66,7 +76,7 @@ public partial class GameStateMachine : Node
 			_logger.Error("No previous state to revert to. There might be a mistake with the control flow");
 			return;
 		}
-		
+
 		var temp = _currentState;
 		_currentState = _previousState;
 		_previousState = null;
