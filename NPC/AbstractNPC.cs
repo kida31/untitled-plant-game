@@ -1,4 +1,6 @@
+// using System.Text.RegularExpressions;
 using Godot;
+using untitledplantgame.Common;
 
 public abstract partial class AbstractNPC : Area2D, IInteractable
 {
@@ -13,9 +15,9 @@ public abstract partial class AbstractNPC : Area2D, IInteractable
 
 	public override void _Ready()
 	{
-		AddToGroup("Interactables");
+		AddToGroup(Group.Interactables);
 		BodyEntered += OnBodyEntered;
-		BodyExited += OnBodyExited; 
+		BodyExited += OnBodyExited;
 	}
 
 	public Vector2 GetGlobalInteractablePosition()

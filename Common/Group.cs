@@ -23,4 +23,5 @@ public class Group
 	/// Refers to the player node. See <see cref="untitledplantgame.Player.Player">Player Class</see>
 	/// </summary>
 	public const string Player = "player";
+	public const string Interactables = "interactables";
 }

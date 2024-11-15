@@ -8,6 +8,8 @@ public partial class Seedshop : CanvasLayer
 	private Button closeButton;
 	private readonly Logger _logger = new("Seedshop");
 	private Label tooltip;
+	//TODO remove Dictionary from Seedshop and use a resource file or something else instead
+	//TODO implement parser for resource file
 	private Dictionary<string, Dictionary<string, int>> seedData = new Dictionary<string, Dictionary<string, int>>()
 	{
 		{
@@ -183,7 +185,16 @@ public partial class Seedshop : CanvasLayer
 			_logger.Error("GridContainer is null");
 		}
 
-		InitializeShopSlotLabels();
+		foreach (KeyValuePair<string, Dictionary<string, int>> seed in seedData)
+		{
+			string panelName = "Panel" + seed.Value["panel"];
+			var nameLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/Name");
+			var priceLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/Price");
+			var availableLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/ColorRect/Available");
+			nameLabel.Text = seed.Key;
+			priceLabel.Text = seed.Value["price"].ToString();
+			availableLabel.Text = seed.Value["available"].ToString();
+		}
 	}
 
 	private void OpenSeedshop()
@@ -209,21 +220,6 @@ public partial class Seedshop : CanvasLayer
 	{
 		tooltip = GetNode<Label>("Seedshop/Tooltip");
 		tooltip.Text = name;
-	}
-
-	private void InitializeShopSlotLabels()
-	{
-		foreach (KeyValuePair<string, Dictionary<string, int>> seed in seedData)
-		{
-			string panelName = "Panel" + seed.Value["panel"];
-			// updateLabel(panelName, seed.Key, seed.Value["price"], seed.Value["available"]);
-			var nameLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/Name");
-			var priceLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/Price");
-			var availableLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/ColorRect/Available");
-			nameLabel.Text = seed.Key;
-			priceLabel.Text = seed.Value["price"].ToString();
-			availableLabel.Text = seed.Value["available"].ToString();
-		}
 	}
 
 	private void reduceAvailability(string name)

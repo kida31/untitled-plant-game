@@ -3,11 +3,11 @@ using Godot;
 using untitledplantgame.Common;
 
 /// <summary>
-/// This Class manages the interaction with any interactable object in the game. 
+/// This Class manages the interaction with any interactable object in the game.
 /// The Object registers itself to the InteractionManager once the player enters its area.
 /// It unregisters itself once the player leaves it's area. The manager just sorts the list
-/// of registered collisionshapes and chooses the closest one. 
-/// See AbstractNPC.cs 
+/// of registered collisionshapes and chooses the closest one.
+/// See AbstractNPC.cs
 /// </summary>
 public partial class InteractionManager : Node2D
 {
@@ -22,7 +22,7 @@ public partial class InteractionManager : Node2D
 	private List<IInteractable> activeAreas = new();
 	private bool canInteract = true;
 	private readonly Logger _logger = new("InteractionManager");
-	
+
 	public override void _Ready()
 	{
 		player = (Node2D)GetTree().GetFirstNodeInGroup(Group.Player);

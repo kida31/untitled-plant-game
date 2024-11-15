@@ -1,4 +1,6 @@
+// using System.Text.RegularExpressions;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.EntityStatsDataContainer;
 using untitledplantgame.Inventory.GeneralInventory.UI_ItemCategory;
 
@@ -20,7 +22,7 @@ public partial class InteractableItem : Area2D, IInteractable
 
 	public override void _Ready()
 	{
-		AddToGroup("Interactables");
+		AddToGroup(Group.Interactables);
 	}
 
 	public void Interact()

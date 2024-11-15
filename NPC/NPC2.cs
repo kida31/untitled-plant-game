@@ -1,10 +1,11 @@
 using Godot;
+using untitledplantgame.Common;
 
 public partial class NPC2 : AbstractNPC, IInteractable
 {
 	public override void _Ready()
 	{
-		AddToGroup("Interactables");
+		AddToGroup(Group.Interactables);
 		var eventBus = GetNode<EventBus>("/root/EventBus");
 		eventBus.Connect("NPCInteracted", new Callable(this, nameof(OnNPCInteracted)));
 
