@@ -15,7 +15,7 @@ public partial class ShopSlot : Panel
 		MouseExited += OnMouseExited;
 	}
 
-	private async void OnMouseEntered()
+	private void OnMouseEntered()
 	{
 		var tooltipInstance = tooltip.Instantiate<Tooltip>();
 		// _logger.Debug("Mouse entered");
@@ -29,7 +29,7 @@ public partial class ShopSlot : Panel
 		tooltipInstance.Transparent = true;
 
 		AddChild(tooltipInstance);
-		await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
+		// await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
 		if (HasNode("Tooltip") && tooltipInstance.valid)
 		{
 			tooltipInstance.Show();

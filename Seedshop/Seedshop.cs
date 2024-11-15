@@ -161,7 +161,7 @@ public partial class Seedshop : CanvasLayer
 		this.Hide();
 		EventBus.Instance.OnSeedshopOpened += OpenSeedshop;
 		EventBus.Instance.OnSeedshopClosed += CloseSeedshop;
-		closeButton.Pressed += OnCloseButtonPressed;
+		closeButton.Pressed += CloseSeedshop;
 
 		var GridContainer = GetNode<GridContainer>("ColorRect/GridContainer");
 		if (GridContainer != null)
@@ -211,20 +211,15 @@ public partial class Seedshop : CanvasLayer
 		tooltip.Text = name;
 	}
 
-	private void OnCloseButtonPressed()
-	{
-		CloseSeedshop();
-	}
-
 	private void InitializeShopSlotLabels()
 	{
 		foreach (KeyValuePair<string, Dictionary<string, int>> seed in seedData)
 		{
 			string panelName = "Panel" + seed.Value["panel"];
 			// updateLabel(panelName, seed.Key, seed.Value["price"], seed.Value["available"]);
-			Label nameLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/Name");
-			Label priceLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/Price");
-			Label availableLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/ColorRect/Available");
+			var nameLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/Name");
+			var priceLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/Price");
+			var availableLabel = GetNode<Label>("ColorRect/GridContainer/" + panelName + "/Panel/ColorRect/Available");
 			nameLabel.Text = seed.Key;
 			priceLabel.Text = seed.Value["price"].ToString();
 			availableLabel.Text = seed.Value["available"].ToString();

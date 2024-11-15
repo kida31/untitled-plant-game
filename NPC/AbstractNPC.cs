@@ -15,8 +15,7 @@ public abstract partial class AbstractNPC : Area2D, IInteractable
 	{
 		AddToGroup("Interactables");
 		BodyEntered += OnBodyEntered;
-		// BodyExited += OnBodyExited; // Activate this once the Player is unable to move in shop
-		Connect("body_exited", new Callable(this, nameof(OnBodyExited))); // Deactivate this once the Player is unable to move in shop
+		BodyExited += OnBodyExited; 
 	}
 
 	public Vector2 GetGlobalInteractablePosition()
@@ -26,7 +25,7 @@ public abstract partial class AbstractNPC : Area2D, IInteractable
 
 	public abstract void Interact();
 
-	protected void OnBodyExited(Node body)
+	protected virtual void OnBodyExited(Node body)
 	{
 		InteractionManager.Instance.UnregisterArea(this);
 		_npcLogicNode.ManageNpcCollisionWithPlayer(body, _npcName);

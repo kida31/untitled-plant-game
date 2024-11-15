@@ -11,17 +11,18 @@ using untitledplantgame.Common;
 /// </summary>
 public partial class InteractionManager : Node2D
 {
+	private const string BaseText = "[E] to ";
+	private const int BaseTextYTransform = 50;
+
 	[Export]
 	private Label label;
 	public static InteractionManager Instance { get; private set; }
 	public int AreaCount => activeAreas.Count;
 	private Node2D player;
-
-	private const string BaseText = "[E] to ";
 	private List<IInteractable> activeAreas = new();
 	private bool canInteract = true;
 	private readonly Logger _logger = new("InteractionManager");
-
+	
 	public override void _Ready()
 	{
 		player = (Node2D)GetTree().GetFirstNodeInGroup("player");
@@ -42,20 +43,6 @@ public partial class InteractionManager : Node2D
 		}
 	}
 
-	public void RegisterArea(IInteractable area)
-	{
-		activeAreas.Add(area);
-	}
-
-	public void UnregisterArea(IInteractable area)
-	{
-		int index = activeAreas.IndexOf(area);
-		if (index != -1)
-		{
-			activeAreas.Remove(area);
-		}
-	}
-
 	/// <summary>
 	/// Looks for the closest interactable area and displays that area's action name.
 	/// </summary>
@@ -67,13 +54,23 @@ public partial class InteractionManager : Node2D
 			activeAreas.Sort(SortByDistanceToPlayer);
 			label.Text = BaseText + activeAreas[0].ActionName;
 			label.GlobalPosition = activeAreas[0].GetGlobalInteractablePosition();
-			label.GlobalPosition -= new Vector2(label.Size.X / 2, 36);
+			label.GlobalPosition -= new Vector2(label.Size.X / 2, BaseTextYTransform);
 			label.Show();
 		}
 		else
 		{
 			label.Hide();
 		}
+	}
+
+	public void RegisterArea(IInteractable area)
+	{
+		activeAreas.Add(area);
+	}
+
+	public void UnregisterArea(IInteractable area)
+	{
+		activeAreas.Remove(area);
 	}
 
 	public void PerformInteraction()
@@ -97,12 +94,15 @@ public partial class InteractionManager : Node2D
 		if (area1 == null || area2 == null)
 		{
 			_logger.Error("Area is null.");
+			return int.MaxValue;
 		}
 
 		if (player == null)
 		{
 			_logger.Error("Player is null.");
+			return int.MaxValue;
 		}
+
 		float distance1 = player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
 		float distance2 = player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
 		return distance1.CompareTo(distance2);

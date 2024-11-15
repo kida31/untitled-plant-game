@@ -14,7 +14,7 @@ public partial class Seedboy : AbstractNPC
 		EventBus.Instance.SeedshopOpened();
 	}
 
-	private new void OnBodyExited(Node body)
+	protected override void OnBodyExited(Node body)
 	{
 		EventBus.Instance.SeedshopClosed();
 		base.OnBodyExited(body);
