@@ -3,8 +3,16 @@ using Godot;
 
 namespace untitledplantgame.Common;
 
+/// <summary>
+/// Represents the current state of the game.
+/// </summary>
 public partial class GameStateMachine : Node
 {
+	/// <summary>
+	/// Event that is triggered when the game state changes.
+	/// The first argument is the previous state, the second argument is the new state.
+	/// </summary>
+	public event Action<GameState, GameState> StateChanged;
 	public static GameStateMachine Instance
 	{
 		get
@@ -48,6 +56,7 @@ public partial class GameStateMachine : Node
 		_logger.Info($"Change game state {_currentState} -> {newState}");
 		_previousState = _currentState;
 		_currentState = newState;
+		StateChanged?.Invoke(_previousState, _currentState);
 	}
 
 	public void RevertState()
@@ -57,8 +66,10 @@ public partial class GameStateMachine : Node
 			_logger.Error("No previous state to revert to. There might be a mistake with the control flow");
 			return;
 		}
-
+		
+		var temp = _currentState;
 		_currentState = _previousState;
 		_previousState = null;
+		StateChanged?.Invoke(temp, _currentState);
 	}
 }
