@@ -2,10 +2,12 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
 public class VendingMachine
 {
+	private Logger _logger = new("VendingMachine");
 	// Events
 	public event Action<IInventory> ContentChanged;
 	public event Action<float> PriceMultChanged;
@@ -82,7 +84,7 @@ public class VendingMachine
 
 			// Do not sell more than supply
 			var itemSellCount = Math.Min(totalSellCount, quantity);
-			GD.Print($"{stack.Name}: {totalSellCount} vs. {quantity} => {itemSellCount}");
+			_logger.Debug($"{stack.Name}: {totalSellCount} vs. {quantity} => {itemSellCount}");
 
 			// Prices after multiplier are rounded up.
 			var goldEarned = Math.Ceiling(stack.BaseValue * _priceMultiplier);
@@ -91,13 +93,13 @@ public class VendingMachine
 			// Actual sell count has to be deducted from remaining sales
 			_salesRemaining -= itemSellCount;
 			totalSellCount -= itemSellCount;
-			GD.Print($"itemsellcount={totalSellCount}");
+			_logger.Debug($"itemsellcount={totalSellCount}");
 
 			// Sold items are no longer in container
 			_inventory.RemoveItem(new ItemStack(stack.Id, stack.Name, stack.Icon, stack.Description, stack.Category, stack.MaxStackSize,
 				stack.BaseValue) {Amount = itemSellCount});
 
-			GD.Print($"Sold {stack.Name} x{itemSellCount} for {goldEarned}g");
+			_logger.Info($"Sold {stack.Name} x{itemSellCount} for {goldEarned}g");
 			ContentChanged?.Invoke(_inventory);
 		}
 	}

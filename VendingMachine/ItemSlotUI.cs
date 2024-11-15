@@ -1,11 +1,13 @@
 using System;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
 namespace GUI.VendingMachine;
 
 public partial class ItemSlotUI : Control
 {
+	private Logger _logger; 
 	public event Action Pressed;
 	
 	private ItemStack _itemStack;
@@ -23,17 +25,18 @@ public partial class ItemSlotUI : Control
 
 	public override void _Ready()
 	{
+		_logger = new Logger(this);
 		SetItemStack(null);
 		FocusEntered += () =>
 		{
 			_highlight.Show();
-			GD.Print($"[{Name}] Entered");
+			_logger.Debug($"[{Name}] Entered");
 		};
 
 		FocusExited += () =>
 		{
 			_highlight.Hide();
-			GD.Print($"[{Name}] Exited");
+			_logger.Debug($"[{Name}] Exited");
 		};
 
 		GuiInput += OnGuiInput;
@@ -45,7 +48,7 @@ public partial class ItemSlotUI : Control
 		if (@event.IsActionPressed("ui_accept"))
 		{
 			Pressed?.Invoke();
-			GD.Print($"Pressed {Name}");
+			_logger.Debug($"Pressed {Name}");
 		}
 	}
 
