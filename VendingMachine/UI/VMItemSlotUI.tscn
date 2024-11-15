@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci3xd0kudwy7k"]
+
+[ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://VendingMachine/UI/ItemSlot.tscn" id="1_w2jhk"]
+[ext_resource type="Script" path="res://VendingMachine/UI/VMItemSlotUI.cs" id="2_pq2av"]
+
+[node name="VMItemSlotUI" type="VBoxContainer" node_paths=PackedStringArray("_priceLabel", "_itemSlot")]
+script = ExtResource("2_pq2av")
+_priceLabel = NodePath("PriceLabel")
+_itemSlot = NodePath("ItemSlot")
+
+[node name="ItemSlot" parent="." instance=ExtResource("1_w2jhk")]
+layout_mode = 2
+
+[node name="PriceLabel" type="Label" parent="."]
+layout_mode = 2
+text = "200g"
+horizontal_alignment = 1
+
+[editable path="ItemSlot"]
