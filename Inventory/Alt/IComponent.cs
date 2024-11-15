@@ -1,5 +1,3 @@
 ﻿namespace untitledplantgame.Inventory.Alt;
 
-public interface IComponent
-{
-}
+public interface IComponent { }

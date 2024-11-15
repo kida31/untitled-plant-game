@@ -3,11 +3,12 @@ using System.Linq;
 
 namespace untitledplantgame.Inventory.Alt;
 
-public class RestrictedInventory : Inventory
+public class CategoryInventory : Inventory
 {
-	private ItemCategory _category;
+	private readonly ItemCategory _category;
 
-	public RestrictedInventory(int size, int maxStackSize, string name, ItemCategory category) : base(size, maxStackSize, name)
+	public CategoryInventory(int size, int maxStackSize, string name, ItemCategory category)
+		: base(size, maxStackSize, name)
 	{
 		_category = category;
 	}
@@ -32,9 +33,7 @@ public class RestrictedInventory : Inventory
 		var overflow = base.AddItem(items);
 
 		// combine overflow and invalids
-		return invalids.Concat(overflow)
-			.GroupBy(kv => kv.Key)
-			.ToDictionary(g => g.Key, g => g.First().Value);
+		return invalids.Concat(overflow).GroupBy(kv => kv.Key).ToDictionary(g => g.Key, g => g.First().Value);
 	}
 
 	// TODO override other add/set

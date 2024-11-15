@@ -7,11 +7,7 @@ namespace untitledplantgame.Inventory.Alt;
 
 public class Inventory : IInventory
 {
-	public int Size => _items.Length;
-	public int MaxStackSize { get; set; }
-	public string Name { get; }
-
-	private ItemStack[] _items;
+	private readonly ItemStack[] _items;
 
 	public Inventory(int size, int maxStackSize, string name)
 	{
@@ -19,6 +15,10 @@ public class Inventory : IInventory
 		MaxStackSize = maxStackSize;
 		Name = name;
 	}
+
+	public int Size => _items.Length;
+	public int MaxStackSize { get; set; } // May be redundant
+	public string Name { get; }
 
 	public ItemStack GetItem(int index)
 	{
@@ -45,6 +45,161 @@ public class Inventory : IInventory
 		return overflow;
 	}
 
+	public Dictionary<int, ItemStack> RemoveItem(params ItemStack[] items)
+	{
+		Dictionary<int, ItemStack> remainingToRemove = new();
+		for (var i = 0; i < items.Length; i++)
+		{
+			var leftover = RemoveItem(items[i]);
+			if (leftover != null)
+			{
+				remainingToRemove.Add(i, leftover);
+			}
+		}
+
+		return remainingToRemove;
+	}
+
+	public List<ItemStack> GetContents()
+	{
+		return new List<ItemStack>(_items);
+	}
+
+	public void SetContents(List<ItemStack> items)
+	{
+		for (var i = 0; i < _items.Length; i++)
+		{
+			_items[i] = i < items.Count ? items[i] : null;
+		}
+	}
+
+	public bool Contains(string itemId)
+	{
+		return this.Any(stack => stack.Id == itemId);
+	}
+
+	public bool Contains(ItemStack item)
+	{
+		return this.Any(stack => stack.Id == item.Id);
+	}
+
+	public bool Contains(string itemId, int amount)
+	{
+		return this.Where(stack => stack.Id == itemId).Sum(stack => stack.Amount) >= amount;
+	}
+
+	public bool Contains(ItemStack item, int amount)
+	{
+		return this.Where(item.HasSameIdAndProps).Sum(stack => stack.Amount) >= amount;
+	}
+
+	public bool ContainsAtLeast(ItemStack item, int amount)
+	{
+		return Contains(item, amount);
+	}
+
+	public Dictionary<int, ItemStack> All(string itemId)
+	{
+		return this.Select((item, index) => (item, index))
+			.Where(tuple => tuple.item.Id == itemId)
+			.ToDictionary(tuple => tuple.index, tuple => tuple.item);
+	}
+
+	public Dictionary<int, ItemStack> All(ItemStack item)
+	{
+		return this.Select((it, index) => (it, index))
+			.Where(tuple => tuple.it.HasSameIdAndProps(item))
+			.ToDictionary(tuple => tuple.index, tuple => tuple.it);
+	}
+
+	public int First(string itemId)
+	{
+		// return index of first item matching id else -1
+		return Array.FindIndex(_items, item => item?.Id == itemId);
+	}
+
+	public int First(ItemStack item)
+	{
+		// return index of first item matching id else -1
+		return Array.FindIndex(_items, it => it.HasSameIdAndProps(item));
+	}
+
+	public int FirstEmpty()
+	{
+		return Array.FindIndex(_items, item => item == null);
+	}
+
+	public void Remove(string itemId)
+	{
+		for (var i = 0; i < _items.Length; i++)
+		{
+			if (_items[i].Id == itemId)
+			{
+				_items[i] = null;
+			}
+		}
+	}
+
+	public void Remove(ItemStack item)
+	{
+		for (var i = 0; i < _items.Length; i++)
+		{
+			if (_items[i].HasSameIdAndProps(item))
+			{
+				_items[i] = null;
+			}
+		}
+	}
+
+	public void Clear(int index)
+	{
+		_items[index] = null;
+	}
+
+	public void Clear()
+	{
+		for (var i = 0; i < _items.Length; i++)
+		{
+			_items[i] = null;
+		}
+	}
+
+	public string GetTitle()
+	{
+		return Name;
+	}
+
+	public Dictionary<int, ItemStack> GetItemsOfCategory(ItemCategory category)
+	{
+		return _items
+			.Select((item, index) => (item, index))
+			.Where(tuple => tuple.item.Category == category)
+			.ToDictionary(tuple => tuple.index, tuple => tuple.item);
+	}
+
+	public void QuickStack(IInventory target)
+	{
+		for (var i = 0; i < _items.Length; i++)
+		{
+			// If the target inventory contains the item, add the item to the target inventory
+			if (target.Contains(_items[i]))
+			{
+				var leftover = target.AddItem(_items[i]);
+				_items[i] = leftover.ContainsKey(i) ? leftover[i] : null;
+			}
+		}
+	}
+
+	public IEnumerator<ItemStack> GetEnumerator()
+	{
+		return ((IEnumerable<ItemStack>) _items).GetEnumerator();
+	}
+
+	IEnumerator IEnumerable.GetEnumerator()
+	{
+		return GetEnumerator();
+	}
+
 	private ItemStack AddItem(ItemStack item)
 	{
 		if (item == null)
@@ -63,10 +218,10 @@ public class Inventory : IInventory
 			}
 
 			var destination = _items[idx];
-			var transferableAmount = MaxStackSize - destination.Amount;
+			var transferableAmount = Math.Min(MaxStackSize, destination.MaxStackSize) - destination.Amount;
 			if (transferableAmount < item.Amount)
 			{
-				destination.Amount = MaxStackSize;
+				destination.Amount = Math.Min(MaxStackSize, destination.MaxStackSize);
 				item.Amount -= transferableAmount;
 			}
 			else
@@ -98,21 +253,6 @@ public class Inventory : IInventory
 		}
 
 		return -1;
-	}
-
-	public Dictionary<int, ItemStack> RemoveItem(params ItemStack[] items)
-	{
-		Dictionary<int, ItemStack> remainingToRemove = new();
-		for (var i = 0; i < items.Length; i++)
-		{
-			var leftover = RemoveItem(items[i]);
-			if (leftover != null)
-			{
-				remainingToRemove.Add(i, leftover);
-			}
-		}
-
-		return remainingToRemove;
 	}
 
 	private ItemStack RemoveItem(ItemStack item)
@@ -149,107 +289,5 @@ public class Inventory : IInventory
 		}
 
 		return item;
-	}
-
-	public List<ItemStack> GetContents()
-	{
-		return new List<ItemStack>(_items);
-	}
-
-	public void SetContents(List<ItemStack> items)
-	{
-		throw new NotImplementedException();
-	}
-
-	public bool Contains(string itemId)
-	{
-		throw new NotImplementedException();
-	}
-
-	public bool Contains(ItemStack item)
-	{
-		throw new NotImplementedException();
-	}
-
-	public bool Contains(string itemId, int amount)
-	{
-		throw new NotImplementedException();
-	}
-
-	public bool Contains(ItemStack item, int amount)
-	{
-		throw new NotImplementedException();
-	}
-
-	public bool ContainsAtLeast(ItemStack item, int amount)
-	{
-		throw new NotImplementedException();
-	}
-
-	public Dictionary<int, ItemStack> All(string itemId)
-	{
-		throw new NotImplementedException();
-	}
-
-	public Dictionary<int, ItemStack> All(ItemStack item)
-	{
-		throw new NotImplementedException();
-	}
-
-	public int First(string itemId)
-	{
-		// return index of first item matching id else -1
-		return Array.FindIndex(_items, item => item?.Id == itemId);
-	}
-
-	public int First(ItemStack item)
-	{
-		// return index of first item matching id else -1
-		return Array.FindIndex(_items, it => it.Id == item.Id && it.Amount == item.Amount);
-	}
-
-	public int FirstEmpty()
-	{
-		throw new NotImplementedException();
-	}
-
-	public void Remove(string itemId)
-	{
-		throw new NotImplementedException();
-	}
-
-	public void Remove(ItemStack item)
-	{
-		throw new NotImplementedException();
-	}
-
-	public void Clear(int index)
-	{
-		throw new NotImplementedException();
-	}
-
-	public void Clear()
-	{
-		throw new NotImplementedException();
-	}
-
-	public string GetTitle()
-	{
-		throw new NotImplementedException();
-	}
-
-	public Dictionary<int, ItemStack> GetItemsOfCategory(ItemCategory category)
-	{
-		throw new NotImplementedException();
-	}
-
-	public IEnumerator<ItemStack> GetEnumerator()
-	{
-		return ((IEnumerable<ItemStack>) _items).GetEnumerator();
-	}
-
-	IEnumerator IEnumerable.GetEnumerator()
-	{
-		return GetEnumerator();
 	}
 }

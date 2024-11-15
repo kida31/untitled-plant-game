@@ -8,12 +8,12 @@ public class ItemCategory : IEquatable<ItemCategory>
 	public static ItemCategory Material = new("Material");
 	public static ItemCategory Medicine = new("Medicine");
 
-	public string Name { get; }
-
 	private ItemCategory(string name)
 	{
 		Name = name;
 	}
+
+	public string Name { get; }
 
 	public bool Equals(ItemCategory other)
 	{
@@ -47,11 +47,21 @@ public class ItemCategory : IEquatable<ItemCategory>
 			return false;
 		}
 
-		return Equals((ItemCategory) obj);
+		return Equals((ItemCategory)obj);
 	}
 
 	public override int GetHashCode()
 	{
 		return Name != null ? Name.GetHashCode() : 0;
+	}
+
+	public static bool operator ==(ItemCategory left, ItemCategory right)
+	{
+		return Equals(left, right);
+	}
+
+	public static bool operator !=(ItemCategory left, ItemCategory right)
+	{
+		return !Equals(left, right);
 	}
 }
