@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cak2v2wh7j0ft"]
 
 [ext_resource type="Script" path="res://NPC/VendingMachine/VendingMachineNPC.cs" id="1_7xvtu"]
-[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://VendingMachine/vending_machine_ui.tscn" id="2_tv3pq"]
+[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://VendingMachine/UI/vending_machine_ui.tscn" id="2_tv3pq"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="3_s6syo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_alu6d"]

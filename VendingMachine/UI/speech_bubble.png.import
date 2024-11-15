@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daewgkls8y0jg"
-path="res://.godot/imported/gold_coin_pirated.png-5f9ea4c14d8d1eb7b49b1ffe0d8601f3.ctex"
+uid="uid://bpmmqaxhkw5id"
+path="res://.godot/imported/speech_bubble.png-a4f829c7124eb1f1c03ae0aa18f53795.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://VendingMachine/gold_coin_pirated.png"
-dest_files=["res://.godot/imported/gold_coin_pirated.png-5f9ea4c14d8d1eb7b49b1ffe0d8601f3.ctex"]
+source_file="res://VendingMachine/UI/speech_bubble.png"
+dest_files=["res://.godot/imported/speech_bubble.png-a4f829c7124eb1f1c03ae0aa18f53795.ctex"]
 
 [params]
 

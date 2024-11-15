@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://21vebptmufut"
-path="res://.godot/imported/black_dot.png-e65851bd8d625ffca315a91e23ed05cd.ctex"
+uid="uid://daewgkls8y0jg"
+path="res://.godot/imported/gold_coin_pirated.png-e649914948d4b18605653d534a35d129.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://black_dot.png"
-dest_files=["res://.godot/imported/black_dot.png-e65851bd8d625ffca315a91e23ed05cd.ctex"]
+source_file="res://VendingMachine/UI/gold_coin_pirated.png"
+dest_files=["res://.godot/imported/gold_coin_pirated.png-e649914948d4b18605653d534a35d129.ctex"]
 
 [params]
 

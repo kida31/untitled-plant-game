@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b04d8mwf8rhjp"
-path="res://.godot/imported/gold_coin_pirated_many.png-dc25863a857c6867047ef00d5c3b34d5.ctex"
+uid="uid://cyhjl37v35jg0"
+path="res://.godot/imported/withdraw.png-14d23fbdfbdc40d50b387c9e8d43213e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://VendingMachine/gold_coin_pirated_many.png"
-dest_files=["res://.godot/imported/gold_coin_pirated_many.png-dc25863a857c6867047ef00d5c3b34d5.ctex"]
+source_file="res://VendingMachine/UI/withdraw.png"
+dest_files=["res://.godot/imported/withdraw.png-14d23fbdfbdc40d50b387c9e8d43213e.ctex"]
 
 [params]
 

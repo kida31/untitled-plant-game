@@ -1,10 +1,11 @@
 using Godot;
-using GUI.VendingMachine;
 using untitledplantgame.Inventory;
+using untitledplantgame.VendingMachine;
+using ItemSlotUI = untitledplantgame.VendingMachine.ItemSlotUI;
 
 public partial class UiOnly : Node2D
 {
-	[Export] private VendingMachineUI _vendingMachineUi;
+	[Export] private untitledplantgame.VendingMachine.VendingMachineUI _vendingMachineUi;
 	[Export] private Control _inventoryGrid;
 	[Export] private PackedScene stackViewTemplate;
 	[Export] private Button _sellButton;
@@ -41,7 +42,7 @@ public partial class UiOnly : Node2D
 
 	private void OnInventorySlotPressed(ItemSlotUI slot)
 	{
-		if (CursorFriend.Instance is null) return;
+		if (untitledplantgame.VendingMachine.CursorFriend.Instance is null) return;
 
 		var idx = _inventory.GetContents().IndexOf(slot.ItemStack);
 		if (idx == -1)
@@ -49,12 +50,12 @@ public partial class UiOnly : Node2D
 			GD.PrintErr("Unexpected index");
 		}
 		
-		if (CursorFriend.Instance.ItemStack == null)
+		if (untitledplantgame.VendingMachine.CursorFriend.Instance.ItemStack == null)
 		{
 			// Empty hand
 			var item = _inventory.GetItem(idx);
 			if (item == null) return;
-			CursorFriend.Instance.ItemStack = item;
+			untitledplantgame.VendingMachine.CursorFriend.Instance.ItemStack = item;
 			_inventory.SetItem(idx, null);
 		}
 		else
@@ -63,8 +64,8 @@ public partial class UiOnly : Node2D
 			if (slot.ItemStack == null)
 			{
 				// Empty inventory slot
-				_inventory.SetItem(idx, CursorFriend.Instance.ItemStack);
-				CursorFriend.Instance.ItemStack = null;
+				_inventory.SetItem(idx, untitledplantgame.VendingMachine.CursorFriend.Instance.ItemStack);
+				untitledplantgame.VendingMachine.CursorFriend.Instance.ItemStack = null;
 				GD.Print("Dropped item in inventory");
 			}
 			else
@@ -72,8 +73,8 @@ public partial class UiOnly : Node2D
 				// TODO: may need to stack instead
 				// Swap
 				var temp = _inventory.GetItem(idx);
-				_inventory.SetItem(idx, CursorFriend.Instance.ItemStack);
-				CursorFriend.Instance.ItemStack = temp;
+				_inventory.SetItem(idx, untitledplantgame.VendingMachine.CursorFriend.Instance.ItemStack);
+				untitledplantgame.VendingMachine.CursorFriend.Instance.ItemStack = temp;
 			}
 		}
 		

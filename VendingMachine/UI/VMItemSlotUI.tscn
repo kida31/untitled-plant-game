@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ci3xd0kudwy7k"]
 
-[ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://VendingMachine/ItemSlot.tscn" id="1_w2jhk"]
-[ext_resource type="Script" path="res://VendingMachine/VMItemSlotUI.cs" id="2_pq2av"]
+[ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://VendingMachine/UI/ItemSlot.tscn" id="1_w2jhk"]
+[ext_resource type="Script" path="res://VendingMachine/UI/VMItemSlotUI.cs" id="2_pq2av"]
 
 [node name="VMItemSlotUI" type="VBoxContainer" node_paths=PackedStringArray("_priceLabel", "_itemSlot")]
 script = ExtResource("2_pq2av")

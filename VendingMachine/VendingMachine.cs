@@ -1,13 +1,13 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
+namespace untitledplantgame.VendingMachine;
+
 public class VendingMachine
 {
-	private Logger _logger = new("VendingMachine");
 	// Events
 	public event Action<IInventory> ContentChanged;
 	public event Action<float> PriceMultChanged;
@@ -17,18 +17,19 @@ public class VendingMachine
 	private const int MAX_SALES = 100;
 	private const float SALES_PERCENT_PER_INTERVAL = 0.1f;
 
-	// State
-	private readonly Inventory _inventory = new(12, 64, "Vending Machine");
+	// Properties
+	public Inventory.Inventory Inventory => _inventory;
+	public float PriceMultiplier => _priceMultiplier;
+	public float FaithMultiplier => _faithMultiplier;
+	public int Gold => _gold;
+
+	// Private
+	private readonly Inventory.Inventory _inventory = new(12, 64, "Vending Machine");
 	private int _gold = 0;
 	private float _priceMultiplier = 1.0f;
 	private float _faithMultiplier = 1.0f;
 	private int _salesRemaining = MAX_SALES;
-
-	// Properties
-	public Inventory Inventory => _inventory;
-	public float PriceMultiplier => _priceMultiplier;
-	public float FaithMultiplier => _faithMultiplier;
-	public int Gold => _gold;
+	private Logger _logger = new("VendingMachine");
 
 	/// <summary>
 	/// Sells a random item from the vending machine's inventory.
@@ -61,7 +62,7 @@ public class VendingMachine
 		}
 
 		// Sales count for this transaction is a percent of current supply, but at least one.
-		var totalSellCount = (int) Math.Ceiling(Math.Max(SALES_PERCENT_PER_INTERVAL * itemStacks.Count, 1));
+		var totalSellCount = (int)Math.Ceiling(Math.Max(SALES_PERCENT_PER_INTERVAL * itemStacks.Count, 1));
 
 		// Sort by price descending, sell most expensive first.
 		var itemsByPrice = _inventory.OrderByDescending(stack => stack?.BaseValue ?? 0).ToList();
@@ -87,8 +88,8 @@ public class VendingMachine
 			_logger.Debug($"{stack.Name}: {totalSellCount} vs. {quantity} => {itemSellCount}");
 
 			// Prices after multiplier are rounded up.
-			var goldEarned = Math.Max(1, (int) Math.Ceiling(stack.BaseValue * _priceMultiplier));
-			_gold += (int) goldEarned * itemSellCount;
+			var goldEarned = Math.Max(1, (int)Math.Ceiling(stack.BaseValue * _priceMultiplier));
+			_gold += (int)goldEarned * itemSellCount;
 
 			// Actual sell count has to be deducted from remaining sales
 			_salesRemaining -= itemSellCount;
@@ -96,8 +97,12 @@ public class VendingMachine
 			_logger.Debug($"itemsellcount={totalSellCount}");
 
 			// Sold items are no longer in container
-			_inventory.RemoveItem(new ItemStack(stack.Id, stack.Name, stack.Icon, stack.Description, stack.Category, stack.MaxStackSize,
-				stack.BaseValue) {Amount = itemSellCount});
+			_inventory.RemoveItem(
+				new ItemStack(stack.Id, stack.Name, stack.Icon, stack.Description, stack.Category, stack.MaxStackSize, stack.BaseValue)
+				{
+					Amount = itemSellCount,
+				}
+			);
 
 			_logger.Info($"Sold {stack.Name} x{itemSellCount} for {goldEarned}g");
 			ContentChanged?.Invoke(_inventory);
@@ -107,8 +112,8 @@ public class VendingMachine
 	public void SetPriceSlider(float f)
 	{
 		_priceMultiplier = f;
-		_faithMultiplier = (float) 1.0 / f;
-		
+		_faithMultiplier = (float)1.0 / f;
+
 		PriceMultChanged?.Invoke(_priceMultiplier);
 		FaithMultChanged?.Invoke(_faithMultiplier);
 	}

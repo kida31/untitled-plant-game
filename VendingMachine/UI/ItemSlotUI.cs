@@ -3,25 +3,32 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
-namespace GUI.VendingMachine;
+namespace untitledplantgame.VendingMachine;
 
-public partial class ItemSlotUI : Control
+public partial class ItemSlotUI : Control, IItemSlotUI
 {
-	private Logger _logger; 
 	public event Action Pressed;
-	
-	private ItemStack _itemStack;
-	[Export] private TextureRect _itemTexture;
-	[Export] private Texture2D _placeholderIcon;
 
-	[Export] private Label _quantityLabel;
-	[Export] private CanvasItem _highlight;
+	[Export]
+	private TextureRect _itemTexture;
+
+	[Export]
+	private Texture2D _placeholderIcon;
+
+	[Export]
+	private Label _quantityLabel;
+
+	[Export]
+	private CanvasItem _highlight;
 
 	public ItemStack ItemStack
 	{
 		get => _itemStack;
 		set => SetItemStack(value);
 	}
+
+	private ItemStack _itemStack;
+	private Logger _logger;
 
 	public override void _Ready()
 	{
@@ -42,16 +49,6 @@ public partial class ItemSlotUI : Control
 		GuiInput += OnGuiInput;
 	}
 
-	private void OnGuiInput(InputEvent @event)
-	{
-		// || (@event is InputEventMouseButton mb && mb.ButtonIndex == MouseButton.Left && mb.Pressed)
-		if (@event.IsActionPressed("ui_accept"))
-		{
-			Pressed?.Invoke();
-			_logger.Debug($"Pressed {Name}");
-		}
-	}
-
 	protected virtual void SetItemStack(ItemStack itemStack)
 	{
 		_itemStack = itemStack;
@@ -66,6 +63,14 @@ public partial class ItemSlotUI : Control
 			_quantityLabel.Text = _itemStack.Amount.ToString();
 		}
 	}
-	
-	
+
+	private void OnGuiInput(InputEvent @event)
+	{
+		// || (@event is InputEventMouseButton mb && mb.ButtonIndex == MouseButton.Left && mb.Pressed)
+		if (@event.IsActionPressed("ui_accept"))
+		{
+			Pressed?.Invoke();
+			_logger.Debug($"Pressed {Name}");
+		}
+	}
 }

@@ -1,19 +1,24 @@
 using Godot;
-using System;
-using GUI.VendingMachine;
 using untitledplantgame.Inventory;
 
+namespace untitledplantgame.VendingMachine;
+
+/// <summary>
+/// Represents Cursor "storage" for the player when picking up items from some inventory
+/// Functional + UI
+/// </summary>
 public partial class CursorFriend : Control
 {
 	public static CursorFriend Instance { get; private set; }
+
+	[Export]
+	private ItemSlotUI _itemSlot;
 
 	public ItemStack ItemStack
 	{
 		get => _itemSlot?.ItemStack;
 		set => _itemSlot.ItemStack = value;
 	}
-
-	[Export] private ItemSlotUI _itemSlot;
 
 	public override void _Ready()
 	{
@@ -26,12 +31,6 @@ public partial class CursorFriend : Control
 		Instance = this;
 		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
 	}
-
-	private void OnGuiFocusChanged(Control node)
-	{
-		GlobalPosition = 0.5f * (node.GlobalPosition + node.GetGlobalRect().End);
-	}
-
 
 	public override void _Process(double delta)
 	{
@@ -51,5 +50,10 @@ public partial class CursorFriend : Control
 		{
 			GlobalPosition = GetGlobalMousePosition();
 		}
+	}
+
+	private void OnGuiFocusChanged(Control node)
+	{
+		GlobalPosition = 0.5f * (node.GlobalPosition + node.GetGlobalRect().End);
 	}
 }

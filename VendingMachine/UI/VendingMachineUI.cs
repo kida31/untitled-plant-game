@@ -1,18 +1,30 @@
 using System;
-using Godot;
 using System.Collections.Generic;
 using System.Linq;
-using GUI.VendingMachine;
+using Godot;
 using untitledplantgame.Inventory;
+
+namespace untitledplantgame.VendingMachine;
 
 public partial class VendingMachineUI : Control
 {
-	[Export] private Node _itemStackContainer;
-	[Export] private Tooltip _tooltip;
-	[Export] private Slider _slider;
-	[Export] private Label _moneyLabel;
-	[Export] private Label _itemNameLabel;
-	[Export] private Button _withdrawButton;
+	[Export]
+	private Node _itemStackContainer;
+
+	[Export]
+	private Tooltip _tooltip;
+
+	[Export]
+	private Slider _slider;
+
+	[Export]
+	private Label _moneyLabel;
+
+	[Export]
+	private Label _itemNameLabel;
+
+	[Export]
+	private Button _withdrawButton;
 
 	private VendingMachine _vendingMachine;
 	private List<VMItemSlotUI> _itemSlots;
@@ -31,52 +43,6 @@ public partial class VendingMachineUI : Control
 		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
 		_withdrawButton.Pressed += () => _vendingMachine.WithdrawGold();
 	}
-
-	private void OnGuiFocusChanged(Control node)
-	{
-		if (node is ItemSlotUI slot)
-		{
-			_itemNameLabel!.Text = slot.ItemStack?.Name ?? "";
-		}
-	}
-
-	private Action OnItemSlotPressedCurry(int idx)
-	{
-		return () =>
-		{
-			if (CursorFriend.Instance is null) return;
-
-			if (CursorFriend.Instance.ItemStack == null)
-			{
-				// Empty hand
-				var item = _vendingMachine.Inventory.GetItem(idx);
-				if (item == null) return;
-				CursorFriend.Instance.ItemStack = item;
-				_vendingMachine.Inventory.SetItem(idx, null);
-			}
-			else
-			{
-				// Holding item
-				if (_itemSlots[idx].ItemStack == null)
-				{
-					// Empty vending machine slot
-					_vendingMachine.Inventory.SetItem(idx, CursorFriend.Instance.ItemStack);
-					CursorFriend.Instance.ItemStack = null;
-				}
-				else
-				{
-					// TODO: may need to stack instead
-					// Swap
-					var temp = _vendingMachine.Inventory.GetItem(idx);
-					_vendingMachine.Inventory.SetItem(idx, CursorFriend.Instance.ItemStack);
-					CursorFriend.Instance.ItemStack = temp;
-				}
-			}
-			UpdateContent(_vendingMachine.Inventory);
-		};
-	}
-	
-
 
 	public override void _Process(double delta)
 	{
@@ -109,6 +75,52 @@ public partial class VendingMachineUI : Control
 		UpdateContent(_vendingMachine.Inventory);
 	}
 
+	private void OnGuiFocusChanged(Control node)
+	{
+		if (node is ItemSlotUI slot)
+		{
+			_itemNameLabel!.Text = slot.ItemStack?.Name ?? "";
+		}
+	}
+
+	private Action OnItemSlotPressedCurry(int idx)
+	{
+		return () =>
+		{
+			if (CursorFriend.Instance is null)
+				return;
+
+			if (CursorFriend.Instance.ItemStack == null)
+			{
+				// Empty hand
+				var item = _vendingMachine.Inventory.GetItem(idx);
+				if (item == null)
+					return;
+				CursorFriend.Instance.ItemStack = item;
+				_vendingMachine.Inventory.SetItem(idx, null);
+			}
+			else
+			{
+				// Holding item
+				if (_itemSlots[idx].ItemStack == null)
+				{
+					// Empty vending machine slot
+					_vendingMachine.Inventory.SetItem(idx, CursorFriend.Instance.ItemStack);
+					CursorFriend.Instance.ItemStack = null;
+				}
+				else
+				{
+					// TODO: may need to stack instead
+					// Swap
+					var temp = _vendingMachine.Inventory.GetItem(idx);
+					_vendingMachine.Inventory.SetItem(idx, CursorFriend.Instance.ItemStack);
+					CursorFriend.Instance.ItemStack = temp;
+				}
+			}
+			UpdateContent(_vendingMachine.Inventory);
+		};
+	}
+
 	private void OnFaithMultChanged(float obj)
 	{
 		// TODO:
@@ -135,7 +147,7 @@ public partial class VendingMachineUI : Control
 			return;
 		}
 
-		_vendingMachine.SetPriceSlider((float) value);
+		_vendingMachine.SetPriceSlider((float)value);
 
 		// Update UI
 		var offsetValue = value - _slider.MinValue;
@@ -144,13 +156,13 @@ public partial class VendingMachineUI : Control
 		switch (offsetPercent)
 		{
 			case > 0.75:
-				_tooltip.SetMood(Tooltip.Mood.SAD);
+				_tooltip.SetMood(Tooltip.Mood.Sad);
 				break;
 			case < 0.25:
-				_tooltip.SetMood(Tooltip.Mood.HAPPY);
+				_tooltip.SetMood(Tooltip.Mood.Happy);
 				break;
 			default:
-				_tooltip.SetMood(Tooltip.Mood.NEUTRAL);
+				_tooltip.SetMood(Tooltip.Mood.Neutral);
 				break;
 		}
 	}

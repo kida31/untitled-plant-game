@@ -1,14 +1,18 @@
-using Godot;
 using System;
-using GUI.VendingMachine;
+using Godot;
 using untitledplantgame.Inventory;
+
+namespace untitledplantgame.VendingMachine;
 
 public partial class VMItemSlotUI : Control
 {
 	public event Action Pressed;
 
-	[Export] private Label _priceLabel;
-	[Export] private ItemSlotUI _itemSlot;
+	[Export]
+	private Label _priceLabel;
+
+	[Export]
+	private ItemSlotUI _itemSlot;
 
 	public ItemStack ItemStack
 	{
@@ -39,13 +43,12 @@ public partial class VMItemSlotUI : Control
 		if (itemStack != null)
 		{
 			/// <see cref="VendingMachine._priceMultiplier"/>
-			var price = Math.Max(1, (int) Math.Ceiling(itemStack.BaseValue * _priceMult));
+			var price = Math.Max(1, (int)Math.Ceiling(itemStack.BaseValue * _priceMult));
 			_priceLabel.Text = $"{price}g";
 		}
 		else
 		{
-			_priceLabel.Text =  "";
+			_priceLabel.Text = "";
 		}
-		
 	}
 }

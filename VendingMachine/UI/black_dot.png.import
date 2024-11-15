@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyhjl37v35jg0"
-path="res://.godot/imported/withdraw.png-7d2e666e80505257e9c6ab60550accd4.ctex"
+uid="uid://21vebptmufut"
+path="res://.godot/imported/black_dot.png-046459d381cbb511968169aaeb83bad2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://VendingMachine/withdraw.png"
-dest_files=["res://.godot/imported/withdraw.png-7d2e666e80505257e9c6ab60550accd4.ctex"]
+source_file="res://VendingMachine/UI/black_dot.png"
+dest_files=["res://.godot/imported/black_dot.png-046459d381cbb511968169aaeb83bad2.ctex"]
 
 [params]
 
