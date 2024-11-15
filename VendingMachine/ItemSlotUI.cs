@@ -1,6 +1,6 @@
 using System;
 using Godot;
-using untitledplantgame.Inventory.Alt;
+using untitledplantgame.Inventory;
 
 namespace GUI.VendingMachine;
 

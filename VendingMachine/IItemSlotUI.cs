@@ -1,5 +1,5 @@
 ﻿using System;
-using untitledplantgame.Inventory.Alt;
+using untitledplantgame.Inventory;
 
 namespace GUI.VendingMachine;
 

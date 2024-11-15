@@ -3,7 +3,7 @@ using Godot;
 using System.Collections.Generic;
 using System.Linq;
 using GUI.VendingMachine;
-using untitledplantgame.Inventory.Alt;
+using untitledplantgame.Inventory;
 
 public partial class VendingMachineUI : Control
 {

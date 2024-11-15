@@ -1,6 +1,6 @@
 using Godot;
 using GUI.VendingMachine;
-using untitledplantgame.Inventory.Alt;
+using untitledplantgame.Inventory;
 
 public partial class UiOnly : Node2D
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace untitledplantgame.Inventory.Alt;
+namespace untitledplantgame.Inventory;
 
 public class CategoryInventory : Inventory
 {

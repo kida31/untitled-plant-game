@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using GUI.VendingMachine;
-using untitledplantgame.Inventory.Alt;
+using untitledplantgame.Inventory;
 
 public partial class VMItemSlotUI: Control
 {

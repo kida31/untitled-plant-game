@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace untitledplantgame.Inventory.Alt;
+namespace untitledplantgame.Inventory;
 
 public class ItemCategory : IEquatable<ItemCategory>
 {

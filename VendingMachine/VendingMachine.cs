@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using Godot;
-using untitledplantgame.Inventory.Alt;
+using untitledplantgame.Inventory;
 
 public class VendingMachine
 {

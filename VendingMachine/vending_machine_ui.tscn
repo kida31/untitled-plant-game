@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c108xawc8eseh"]
+[gd_scene load_steps=20 format=3 uid="uid://c108xawc8eseh"]
 
 [ext_resource type="Script" path="res://VendingMachine/VendingMachineUI.cs" id="1_eust6"]
 [ext_resource type="PackedScene" uid="uid://ci3xd0kudwy7k" path="res://VendingMachine/VMItemSlotUI.tscn" id="2_3ain1"]
@@ -7,28 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://cyhjl37v35jg0" path="res://VendingMachine/withdraw.png" id="5_6n24k"]
 [ext_resource type="Texture2D" uid="uid://bpmmqaxhkw5id" path="res://VendingMachine/speech_bubble.png" id="5_40186"]
 [ext_resource type="Script" path="res://VendingMachine/Tooltip.cs" id="5_ost7f"]
-[ext_resource type="Texture2D" uid="uid://criyfursy7xo5" path="res://VendingMachine/emojis/tile004.png" id="6_etwnf"]
 [ext_resource type="Texture2D" uid="uid://b44flee2bca17" path="res://VendingMachine/emojis/tile019.png" id="7_dbben"]
 [ext_resource type="Texture2D" uid="uid://d0177efgg4ejp" path="res://VendingMachine/emojis/tile007.png" id="7_ndc7e"]
 [ext_resource type="Texture2D" uid="uid://bggvlaus0p1hr" path="res://VendingMachine/emojis/tile008.png" id="8_ntp46"]
 [ext_resource type="Texture2D" uid="uid://cbnhdlyagqmm5" path="res://VendingMachine/emojis/tile009.png" id="9_i45gt"]
-[ext_resource type="Texture2D" uid="uid://dknxirjc8kr0" path="res://VendingMachine/emojis/tile010.png" id="10_jj46c"]
-[ext_resource type="Texture2D" uid="uid://blgjlvy1yufcu" path="res://VendingMachine/emojis/tile011.png" id="11_d6imq"]
-[ext_resource type="Texture2D" uid="uid://dq3u0r110v8uu" path="res://VendingMachine/emojis/tile012.png" id="12_gdu1w"]
 [ext_resource type="Texture2D" uid="uid://4ykaypmenmc0" path="res://VendingMachine/emojis/tile016.png" id="13_ouufr"]
-[ext_resource type="Texture2D" uid="uid://dhjbfg7n3q4by" path="res://VendingMachine/emojis/tile025.png" id="15_epsk0"]
-[ext_resource type="Texture2D" uid="uid://cxdssgsmkni1y" path="res://VendingMachine/emojis/tile026.png" id="16_2kvn2"]
 [ext_resource type="Texture2D" uid="uid://tgbymc1dhq68" path="res://VendingMachine/emojis/tile005.png" id="17_k3tbp"]
-[ext_resource type="Texture2D" uid="uid://b7k0m3m7awvf8" path="res://VendingMachine/emojis/tile017.png" id="18_uamek"]
-[ext_resource type="Texture2D" uid="uid://bn8rgmtl3evby" path="res://VendingMachine/emojis/tile018.png" id="19_haylc"]
-[ext_resource type="Texture2D" uid="uid://bd6bpbr168qo2" path="res://VendingMachine/emojis/tile023.png" id="20_c2wlc"]
-[ext_resource type="Texture2D" uid="uid://ilf2feopq70g" path="res://VendingMachine/emojis/tile029.png" id="21_wekqf"]
 [ext_resource type="Texture2D" uid="uid://cplq3q4e7qr6v" path="res://VendingMachine/emojis/tile000.png" id="22_aw1gf"]
-[ext_resource type="Texture2D" uid="uid://c0n835is7rqrv" path="res://VendingMachine/emojis/tile001.png" id="23_b4c5g"]
-[ext_resource type="Texture2D" uid="uid://b4f6ya27jxkxo" path="res://VendingMachine/emojis/tile002.png" id="24_s562r"]
 [ext_resource type="Texture2D" uid="uid://c5jrdiftxlpc4" path="res://VendingMachine/emojis/tile003.png" id="25_md3i7"]
-[ext_resource type="Texture2D" uid="uid://by3duolq5q2ax" path="res://VendingMachine/emojis/tile014.png" id="26_uhm4p"]
-[ext_resource type="Texture2D" uid="uid://clxnlamiwsfks" path="res://VendingMachine/emojis/tile015.png" id="27_c3i6h"]
 [ext_resource type="Texture2D" uid="uid://cuoen5pevumf6" path="res://VendingMachine/emojis/tile033.png" id="28_g7jpj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk1jj"]
@@ -42,12 +28,12 @@ offset_right = 336.0
 offset_bottom = 664.0
 scale = Vector2(1.00627, 0.973425)
 script = ExtResource("1_eust6")
-_itemStackContainer = NodePath("MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer")
-_tooltip = NodePath("IndepentendRoot/Tooltip")
-_slider = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/HSlider")
-_moneyLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Label")
-_itemNameLabel = NodePath("MarginContainer/VBoxContainer/PanelContainer2/ItemNameLabel")
-_withdrawButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/WithdrawButton")
+_itemStackContainer = NodePath("MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer")
+_tooltip = NodePath("IndepentendRoot/FaithTooltip")
+_slider = NodePath("MarginContainer/VBoxContainer/SliderAndWithdrawContainer/SliderContainer/MarginContainer/VBoxContainer/HSlider")
+_moneyLabel = NodePath("MarginContainer/VBoxContainer/SliderAndWithdrawContainer/WidthdrawContainer/Label")
+_itemNameLabel = NodePath("MarginContainer/VBoxContainer/LabelContainer/ItemNameLabel")
+_withdrawButton = NodePath("MarginContainer/VBoxContainer/SliderAndWithdrawContainer/WidthdrawContainer/WithdrawButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -60,65 +46,65 @@ theme_override_constants/margin_bottom = 32
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+[node name="ItemShowCaseContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pk1jj")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 4
 
-[node name="VMItemSlotUI" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="VMItemSlotUI2" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI2" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="VMItemSlotUI3" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI3" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="VMItemSlotUI4" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI4" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="VMItemSlotUI5" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI5" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="VMItemSlotUI6" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI6" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="VMItemSlotUI7" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI7" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="VMItemSlotUI8" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI8" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="VMItemSlotUI9" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI9" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="VMItemSlotUI10" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI10" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="VMItemSlotUI11" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI11" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="VMItemSlotUI12" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI12" parent="MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+[node name="LabelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_81cbx")
 
-[node name="ItemNameLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2"]
+[node name="ItemNameLabel" type="Label" parent="MarginContainer/VBoxContainer/LabelContainer"]
 custom_minimum_size = Vector2(128, 24)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -127,17 +113,17 @@ text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="SliderAndWithdrawContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="SliderContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/SliderAndWithdrawContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_v1ber")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/SliderAndWithdrawContainer/SliderContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/margin_left = 8
@@ -145,17 +131,17 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/SliderAndWithdrawContainer/SliderContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/SliderAndWithdrawContainer/SliderContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="MinIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MinIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/SliderAndWithdrawContainer/SliderContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -164,7 +150,7 @@ texture = ExtResource("3_rclpn")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="MaxIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MaxIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/SliderAndWithdrawContainer/SliderContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -173,7 +159,7 @@ texture = ExtResource("4_q7c76")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/SliderAndWithdrawContainer/SliderContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -181,17 +167,17 @@ max_value = 2.0
 step = 0.25
 value = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="WidthdrawContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/SliderAndWithdrawContainer"]
 layout_mode = 2
 
-[node name="WithdrawButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+[node name="WithdrawButton" type="Button" parent="MarginContainer/VBoxContainer/SliderAndWithdrawContainer/WidthdrawContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 icon = ExtResource("5_6n24k")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SliderAndWithdrawContainer/WidthdrawContainer"]
 layout_mode = 2
 text = "Coins: 0"
 
@@ -199,7 +185,7 @@ text = "Coins: 0"
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+[node name="Produktentnahmefachplatzhalter" type="ColorRect" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(240, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -208,7 +194,7 @@ color = Color(0.270222, 0.270222, 0.270222, 1)
 
 [node name="IndepentendRoot" type="Node" parent="."]
 
-[node name="Tooltip" type="Control" parent="IndepentendRoot" node_paths=PackedStringArray("_emojiTexture", "_slider", "_fadeTimer")]
+[node name="FaithTooltip" type="Control" parent="IndepentendRoot" node_paths=PackedStringArray("_emojiTexture", "_slider", "_fadeTimer")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 102.0
@@ -220,14 +206,14 @@ size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("5_ost7f")
 _emojiTexture = NodePath("Emoji")
-_slider = NodePath("../../MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/HSlider")
+_slider = NodePath("../../MarginContainer/VBoxContainer/SliderAndWithdrawContainer/SliderContainer/MarginContainer/VBoxContainer/HSlider")
 _offset = Vector2(10, -100)
 _fadeTimer = NodePath("Timer")
-_sadFaces = Array[Texture2D]([ExtResource("6_etwnf"), ExtResource("7_ndc7e"), ExtResource("8_ntp46"), ExtResource("9_i45gt"), ExtResource("10_jj46c"), ExtResource("11_d6imq"), ExtResource("12_gdu1w"), ExtResource("13_ouufr"), ExtResource("7_dbben"), ExtResource("15_epsk0"), ExtResource("16_2kvn2")])
-_neutralFaces = Array[Texture2D]([ExtResource("17_k3tbp"), ExtResource("18_uamek"), ExtResource("19_haylc"), ExtResource("20_c2wlc"), ExtResource("21_wekqf")])
-_happyFaces = Array[Texture2D]([ExtResource("22_aw1gf"), ExtResource("23_b4c5g"), ExtResource("24_s562r"), ExtResource("25_md3i7"), ExtResource("26_uhm4p"), ExtResource("27_c3i6h"), ExtResource("28_g7jpj")])
+_sadFaces = Array[Texture2D]([ExtResource("7_ndc7e"), ExtResource("8_ntp46"), ExtResource("9_i45gt"), ExtResource("13_ouufr"), ExtResource("7_dbben")])
+_neutralFaces = Array[Texture2D]([ExtResource("17_k3tbp")])
+_happyFaces = Array[Texture2D]([ExtResource("22_aw1gf"), ExtResource("25_md3i7"), ExtResource("28_g7jpj")])
 
-[node name="Bubble" type="TextureRect" parent="IndepentendRoot/Tooltip"]
+[node name="Bubble" type="TextureRect" parent="IndepentendRoot/FaithTooltip"]
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
@@ -236,7 +222,7 @@ mouse_filter = 2
 texture = ExtResource("5_40186")
 expand_mode = 1
 
-[node name="Emoji" type="TextureRect" parent="IndepentendRoot/Tooltip"]
+[node name="Emoji" type="TextureRect" parent="IndepentendRoot/FaithTooltip"]
 layout_mode = 1
 offset_left = 30.8068
 offset_top = 15.4095
@@ -246,4 +232,4 @@ scale = Vector2(0.6, 0.6)
 mouse_filter = 2
 texture = ExtResource("7_dbben")
 
-[node name="Timer" type="Timer" parent="IndepentendRoot/Tooltip"]
+[node name="Timer" type="Timer" parent="IndepentendRoot/FaithTooltip"]
