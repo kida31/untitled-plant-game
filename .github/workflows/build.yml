@@ -1,0 +1,38 @@
+name: Build Godot Project
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Godot:
+    runs-on: ubuntu-24.04
+
+    strategy:
+      matrix:
+        platform: [linux, windows]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Build
+        id: build
+        uses: felix-schindler/build-godot-action@v1.6.1
+        with:
+          name: untitled-plant-game
+          preset: ${{ matrix.platform }}
+          debugMode: "false"
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
+        with:
+          files: ${{ github.workspace }}/${{ steps.build.outputs.build }}
