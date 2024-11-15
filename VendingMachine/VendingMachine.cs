@@ -24,7 +24,7 @@ public class VendingMachine
 	public int Gold => _gold;
 
 	// Private
-	private readonly Inventory.Inventory _inventory = new(12, 64, "Vending Machine");
+	private readonly Inventory.Inventory _inventory = new(12, "Vending Machine");
 	private int _gold = 0;
 	private float _priceMultiplier = 1.0f;
 	private float _faithMultiplier = 1.0f;

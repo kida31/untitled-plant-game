@@ -7,8 +7,8 @@ public class CategoryInventory : Inventory
 {
 	private readonly ItemCategory _category;
 
-	public CategoryInventory(int size, int maxStackSize, string name, ItemCategory category)
-		: base(size, maxStackSize, name)
+	public CategoryInventory(int size, string name, ItemCategory category)
+		: base(size, name)
 	{
 		_category = category;
 	}

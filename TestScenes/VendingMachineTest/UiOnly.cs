@@ -24,7 +24,7 @@ public partial class UiOnly : Node2D
 		_vendingMachineUi.SetVendingMachine(_vendingMachine);
 
 		GD.Print("Init inventory");
-		_inventory = new Inventory(15, 64, "PlayerInventory");
+		_inventory = new Inventory(15, "PlayerInventory");
 		_inventory.SetItem(0, new ItemStack("fanta", "Fanta", null, "This is a fanta", ItemCategory.Medicine, 64, 5, 10));
 
 		GD.Print($"init inventory view s={_inventory.Size}");

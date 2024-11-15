@@ -16,12 +16,6 @@ public interface IInventory : IEnumerable<ItemStack>
 	public int Size { get; }
 
 	/// <summary>
-	///     Returns the maximum stack size for an ItemStack in this inventory.
-	/// </summary>
-	[Obsolete]
-	public int MaxStackSize { get; set; }
-
-	/// <summary>
 	///     Returns the name of the inventory
 	///     @return The String with the name of the inventory
 	/// </summary>

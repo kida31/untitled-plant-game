@@ -9,15 +9,13 @@ public class Inventory : IInventory
 {
 	private readonly ItemStack[] _items;
 
-	public Inventory(int size, int maxStackSize, string name)
+	public Inventory(int size, string name)
 	{
 		_items = new ItemStack[size];
-		MaxStackSize = maxStackSize;
 		Name = name;
 	}
 
 	public int Size => _items.Length;
-	public int MaxStackSize { get; set; } // May be redundant
 	public string Name { get; }
 
 	public ItemStack GetItem(int index)
@@ -207,31 +205,30 @@ public class Inventory : IInventory
 			return null;
 		}
 
-		item = item.Clone() as ItemStack;
+		item = (item.Clone() as ItemStack)!;
 
-		while (true)
+		// Try to fill up existing item stacks
+		var nonFullStackIdx = GetFirstNonFull(item);
+		while (nonFullStackIdx != -1)
 		{
-			var idx = GetFirstNonFull(item!.Id);
-			if (idx == -1)
-			{
-				break;
-			}
-
-			var destination = _items[idx];
-			var transferableAmount = Math.Min(MaxStackSize, destination.MaxStackSize) - destination.Amount;
-			if (transferableAmount < item.Amount)
-			{
-				destination.Amount = Math.Min(MaxStackSize, destination.MaxStackSize);
-				item.Amount -= transferableAmount;
-			}
-			else
+			var destination = _items[nonFullStackIdx];
+			var transferableAmount = destination.MaxStackSize - destination.Amount;
+			
+			// If remaining amount fits into the stack, we are done
+			if (transferableAmount >= item.Amount)
 			{
 				destination.Amount += item.Amount;
 				item.Amount = 0;
 				return null;
 			}
+			
+			// Otherwise fill up and try to fill up another stack
+			destination.Amount = destination.MaxStackSize;
+			item.Amount -= transferableAmount;
+			nonFullStackIdx = GetFirstNonFull(item);
 		}
 
+		// Try to add remaining items to empty slots
 		var emptyIdx = FirstEmpty();
 		if (emptyIdx == -1)
 		{
@@ -242,11 +239,11 @@ public class Inventory : IInventory
 		return null;
 	}
 
-	private int GetFirstNonFull(string itemId)
+	private int GetFirstNonFull(ItemStack itemStack)
 	{
 		for (var i = 0; i < _items.Length; i++)
 		{
-			if (_items[i].Id == itemId && _items[i].Amount < _items[i].MaxStackSize)
+			if (itemStack.HasSameIdAndProps(_items[i]) && _items[i].Amount < _items[i].MaxStackSize)
 			{
 				return i;
 			}

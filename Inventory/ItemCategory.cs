@@ -2,7 +2,11 @@
 
 namespace untitledplantgame.Inventory;
 
-public class ItemCategory : IEquatable<ItemCategory>
+/// <summary>
+/// Items can belong to one of these ItemCategory-s
+/// This is an enum with properties.
+/// </summary>
+public class ItemCategory
 {
 	public static readonly ItemCategory Plant = new("Plant");
 	public static readonly ItemCategory Material = new("Material");
