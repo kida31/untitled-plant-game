@@ -24,6 +24,7 @@ jobs:
       - name: Build
         id: build
         uses: felix-schindler/build-godot-action@v1.6.1
+        if: github.event.pull_request.draft == false
         with:
           name: untitled-plant-game
           preset: ${{ matrix.platform }}
