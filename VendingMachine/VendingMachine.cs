@@ -87,7 +87,7 @@ public class VendingMachine
 			_logger.Debug($"{stack.Name}: {totalSellCount} vs. {quantity} => {itemSellCount}");
 
 			// Prices after multiplier are rounded up.
-			var goldEarned = Math.Ceiling(stack.BaseValue * _priceMultiplier);
+			var goldEarned = Math.Max(1, (int) Math.Ceiling(stack.BaseValue * _priceMultiplier));
 			_gold += (int) goldEarned * itemSellCount;
 
 			// Actual sell count has to be deducted from remaining sales

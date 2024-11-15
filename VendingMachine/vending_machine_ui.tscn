@@ -207,7 +207,6 @@ mouse_filter = 2
 script = ExtResource("5_ost7f")
 _emojiTexture = NodePath("Emoji")
 _slider = NodePath("../../MarginContainer/VBoxContainer/SliderAndWithdrawContainer/SliderContainer/MarginContainer/VBoxContainer/HSlider")
-_offset = Vector2(10, -100)
 _fadeTimer = NodePath("Timer")
 _sadFaces = Array[Texture2D]([ExtResource("7_ndc7e"), ExtResource("8_ntp46"), ExtResource("9_i45gt"), ExtResource("13_ouufr"), ExtResource("7_dbben")])
 _neutralFaces = Array[Texture2D]([ExtResource("17_k3tbp")])
@@ -215,19 +214,21 @@ _happyFaces = Array[Texture2D]([ExtResource("22_aw1gf"), ExtResource("25_md3i7")
 
 [node name="Bubble" type="TextureRect" parent="IndepentendRoot/FaithTooltip"]
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(2.57898, 2.43872)
+offset_left = 4.0
+offset_top = 101.0
+offset_right = 44.0
+offset_bottom = 141.0
+scale = Vector2(2.579, -2.439)
 mouse_filter = 2
 texture = ExtResource("5_40186")
 expand_mode = 1
 
 [node name="Emoji" type="TextureRect" parent="IndepentendRoot/FaithTooltip"]
 layout_mode = 1
-offset_left = 30.8068
-offset_top = 15.4095
-offset_right = 134.807
-offset_bottom = 120.41
+offset_left = 28.0
+offset_top = 25.0
+offset_right = 132.0
+offset_bottom = 130.001
 scale = Vector2(0.6, 0.6)
 mouse_filter = 2
 texture = ExtResource("7_dbben")

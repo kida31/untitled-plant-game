@@ -39,8 +39,8 @@ public partial class Tooltip : Control
 	{
 		_slider.ValueChanged += OnSliderValueChanged;
 		_fadeTimer.Timeout += () => _isFadingOut = true;
-		Visible = true;
 		Alpha = 0;
+		Visible = false;
 	}
 
 	public override void _Process(double delta)
@@ -63,6 +63,7 @@ public partial class Tooltip : Control
 
 		// Set Modulate.A
 		Alpha = (float) 1.0;
+		Visible = true;
 	}
 
 
