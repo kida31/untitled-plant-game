@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
-using GameStateMachine = untitledplantgame.Common.GameStateMachine;
 
 namespace untitledplantgame.Player;
 
