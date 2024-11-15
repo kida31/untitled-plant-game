@@ -2,7 +2,7 @@ using Godot;
 
 namespace untitledplantgame.VendingMachine;
 
-public partial class Tooltip : Control
+public partial class EmojiTooltip : Control
 {
 	public enum Mood
 	{
@@ -33,7 +33,7 @@ public partial class Tooltip : Control
 	[Export]
 	private Texture2D[] _happyFaces;
 
-	private Mood _currentMood = Mood.Neutral;
+	private Mood? _currentMood = null;
 	private bool _isFadingOut = false;
 
 	public override void _Ready()

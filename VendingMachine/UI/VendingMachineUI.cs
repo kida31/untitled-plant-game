@@ -12,7 +12,7 @@ public partial class VendingMachineUI : Control
 	private Node _itemStackContainer;
 
 	[Export]
-	private Tooltip _tooltip;
+	private EmojiTooltip _emojiTooltip;
 
 	[Export]
 	private Slider _slider;
@@ -155,14 +155,14 @@ public partial class VendingMachineUI : Control
 
 		switch (offsetPercent)
 		{
-			case > 0.75:
-				_tooltip.SetMood(Tooltip.Mood.Sad);
+			case > 0.66:
+				_emojiTooltip.SetMood(EmojiTooltip.Mood.Sad);
 				break;
-			case < 0.25:
-				_tooltip.SetMood(Tooltip.Mood.Happy);
+			case < 0.33:
+				_emojiTooltip.SetMood(EmojiTooltip.Mood.Happy);
 				break;
 			default:
-				_tooltip.SetMood(Tooltip.Mood.Neutral);
+				_emojiTooltip.SetMood(EmojiTooltip.Mood.Neutral);
 				break;
 		}
 	}

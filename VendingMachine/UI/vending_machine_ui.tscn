@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b04d8mwf8rhjp" path="res://VendingMachine/UI/gold_coin_pirated_many.png" id="4_q7c76"]
 [ext_resource type="Texture2D" uid="uid://cyhjl37v35jg0" path="res://VendingMachine/UI/withdraw.png" id="5_6n24k"]
 [ext_resource type="Texture2D" uid="uid://bpmmqaxhkw5id" path="res://VendingMachine/UI/speech_bubble.png" id="5_40186"]
-[ext_resource type="Script" path="res://VendingMachine/UI/Tooltip.cs" id="5_ost7f"]
+[ext_resource type="Script" path="res://VendingMachine/UI/EmojiTooltip.cs" id="6_puycv"]
 [ext_resource type="Texture2D" uid="uid://b44flee2bca17" path="res://VendingMachine/emojis/tile019.png" id="7_dbben"]
 [ext_resource type="Texture2D" uid="uid://d0177efgg4ejp" path="res://VendingMachine/emojis/tile007.png" id="7_ndc7e"]
 [ext_resource type="Texture2D" uid="uid://bggvlaus0p1hr" path="res://VendingMachine/emojis/tile008.png" id="8_ntp46"]
@@ -23,13 +23,13 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1ber"]
 
-[node name="VendingMachineUi" type="PanelContainer" node_paths=PackedStringArray("_itemStackContainer", "_tooltip", "_slider", "_moneyLabel", "_itemNameLabel", "_withdrawButton")]
+[node name="VendingMachineUi" type="PanelContainer" node_paths=PackedStringArray("_itemStackContainer", "_emojiTooltip", "_slider", "_moneyLabel", "_itemNameLabel", "_withdrawButton")]
 offset_right = 336.0
 offset_bottom = 664.0
 scale = Vector2(1.00627, 0.973425)
 script = ExtResource("1_eust6")
 _itemStackContainer = NodePath("MarginContainer/VBoxContainer/ItemShowCaseContainer/MarginContainer/GridContainer")
-_tooltip = NodePath("IndepentendRoot/FaithTooltip")
+_emojiTooltip = NodePath("IndepentendRoot/EmojiTooltip")
 _slider = NodePath("MarginContainer/VBoxContainer/SliderAndWithdrawContainer/SliderContainer/MarginContainer/VBoxContainer/HSlider")
 _moneyLabel = NodePath("MarginContainer/VBoxContainer/SliderAndWithdrawContainer/WidthdrawContainer/Label")
 _itemNameLabel = NodePath("MarginContainer/VBoxContainer/LabelContainer/ItemNameLabel")
@@ -194,7 +194,7 @@ color = Color(0.270222, 0.270222, 0.270222, 1)
 
 [node name="IndepentendRoot" type="Node" parent="."]
 
-[node name="FaithTooltip" type="Control" parent="IndepentendRoot" node_paths=PackedStringArray("_emojiTexture", "_slider", "_fadeTimer")]
+[node name="EmojiTooltip" type="Control" parent="IndepentendRoot" node_paths=PackedStringArray("_emojiTexture", "_slider", "_fadeTimer")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 102.0
@@ -204,15 +204,15 @@ offset_bottom = 120.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-script = ExtResource("5_ost7f")
+script = ExtResource("6_puycv")
 _emojiTexture = NodePath("Emoji")
 _slider = NodePath("../../MarginContainer/VBoxContainer/SliderAndWithdrawContainer/SliderContainer/MarginContainer/VBoxContainer/HSlider")
 _fadeTimer = NodePath("Timer")
-_sadFaces = Array[Texture2D]([ExtResource("7_ndc7e"), ExtResource("8_ntp46"), ExtResource("9_i45gt"), ExtResource("13_ouufr"), ExtResource("7_dbben")])
+_sadFaces = Array[Texture2D]([ExtResource("7_ndc7e"), ExtResource("8_ntp46"), ExtResource("9_i45gt"), ExtResource("7_dbben"), ExtResource("13_ouufr")])
 _neutralFaces = Array[Texture2D]([ExtResource("17_k3tbp")])
 _happyFaces = Array[Texture2D]([ExtResource("22_aw1gf"), ExtResource("25_md3i7"), ExtResource("28_g7jpj")])
 
-[node name="Bubble" type="TextureRect" parent="IndepentendRoot/FaithTooltip"]
+[node name="Bubble" type="TextureRect" parent="IndepentendRoot/EmojiTooltip"]
 layout_mode = 1
 offset_left = 4.0
 offset_top = 101.0
@@ -223,7 +223,7 @@ mouse_filter = 2
 texture = ExtResource("5_40186")
 expand_mode = 1
 
-[node name="Emoji" type="TextureRect" parent="IndepentendRoot/FaithTooltip"]
+[node name="Emoji" type="TextureRect" parent="IndepentendRoot/EmojiTooltip"]
 layout_mode = 1
 offset_left = 28.0
 offset_top = 25.0
@@ -233,4 +233,4 @@ scale = Vector2(0.6, 0.6)
 mouse_filter = 2
 texture = ExtResource("7_dbben")
 
-[node name="Timer" type="Timer" parent="IndepentendRoot/FaithTooltip"]
+[node name="Timer" type="Timer" parent="IndepentendRoot/EmojiTooltip"]
