@@ -4,9 +4,9 @@ namespace untitledplantgame.Inventory;
 
 public class ItemCategory : IEquatable<ItemCategory>
 {
-	public static ItemCategory Plant = new("Plant");
-	public static ItemCategory Material = new("Material");
-	public static ItemCategory Medicine = new("Medicine");
+	public static readonly ItemCategory Plant = new("Plant");
+	public static readonly ItemCategory Material = new("Material");
+	public static readonly ItemCategory Medicine = new("Medicine");
 
 	private ItemCategory(string name)
 	{

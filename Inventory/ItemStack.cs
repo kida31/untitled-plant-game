@@ -10,6 +10,15 @@ namespace untitledplantgame.Inventory;
 /// </summary>
 public class ItemStack : IItemStack
 {
+	public int Amount { get; set; }
+	public string Id { get; }
+	public string Name { get; }
+	public Texture2D Icon { get; }
+	public string Description { get; }
+	public ItemCategory Category { get; }
+	public int MaxStackSize { get; }
+	public int BaseValue { get; }
+
 	private readonly List<IComponent> _components = new();
 	private readonly Logger _logger = new("ItemStack");
 
@@ -33,15 +42,6 @@ public class ItemStack : IItemStack
 		BaseValue = baseValue;
 		Amount = amount;
 	}
-
-	public string Id { get; }
-	public string Name { get; }
-	public Texture2D Icon { get; }
-	public string Description { get; }
-	public ItemCategory Category { get; }
-	public int Amount { get; set; }
-	public int MaxStackSize { get; }
-	public int BaseValue { get; }
 
 	public T GetComponent<T>()
 		where T : class, IComponent

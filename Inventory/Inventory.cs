@@ -192,7 +192,7 @@ public class Inventory : IInventory
 
 	public IEnumerator<ItemStack> GetEnumerator()
 	{
-		return ((IEnumerable<ItemStack>) _items).GetEnumerator();
+		return ((IEnumerable<ItemStack>)_items).GetEnumerator();
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()
