@@ -2,6 +2,7 @@ using System;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.TestScenes;
+using untitledplantgame.Common.GameState;
 
 namespace untitledplantgame.Player;
 
@@ -25,7 +26,6 @@ public partial class Player : CharacterBody2D
 		_stateMachine.Initialize(this);
 	}
 
-
 	public override void _Process(double delta)
 	{
 		
@@ -36,6 +36,7 @@ public partial class Player : CharacterBody2D
 	
 	public override void _UnhandledInput(InputEvent @event)
 	{
+		// TODO: Check gamestate, if false Direction = Zero
 		Direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
 		Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
 		//GD.Print(Direction);

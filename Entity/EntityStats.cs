@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Statistics;
@@ -38,8 +39,12 @@ public class EntityStats
 		return _baseStats;
 	}
 
-	
-	
+	[Obsolete] // TODO: Remove
+	public Array<Stat> GetEntityStats()
+	{
+		return _baseStats;
+	}
+
 	// Debug Method
 	public void PrintAllBaseStatsFromConfig()
 	{
