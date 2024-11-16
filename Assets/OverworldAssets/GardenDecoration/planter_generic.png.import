@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0sow3m0sih2h"
-path="res://.godot/imported/planter_small_rect.png-8126e9915cdda10a9298ac7a7a175f01.ctex"
+uid="uid://dpeeq8nasp15n"
+path="res://.godot/imported/planter_generic.png-941982cd7bd28c8e7c22513aad86d17a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Garden_Stuff/planter_small_rect.png"
-dest_files=["res://.godot/imported/planter_small_rect.png-8126e9915cdda10a9298ac7a7a175f01.ctex"]
+source_file="res://Assets/OverworldAssets/GardenDecoration/planter_generic.png"
+dest_files=["res://.godot/imported/planter_generic.png-941982cd7bd28c8e7c22513aad86d17a.ctex"]
 
 [params]
 

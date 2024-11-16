@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cldfn4m8umal5"
-path="res://.godot/imported/Pole_fairy_lights.png-089941e0a1472a463288d63119ed5e67.ctex"
+uid="uid://b0sow3m0sih2h"
+path="res://.godot/imported/planter_small_rect.png-336ea0fdcbc848be07685e316c6e5902.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Garden_Stuff/Pole_fairy_lights.png"
-dest_files=["res://.godot/imported/Pole_fairy_lights.png-089941e0a1472a463288d63119ed5e67.ctex"]
+source_file="res://Assets/OverworldAssets/GardenDecoration/planter_small_rect.png"
+dest_files=["res://.godot/imported/planter_small_rect.png-336ea0fdcbc848be07685e316c6e5902.ctex"]
 
 [params]
 

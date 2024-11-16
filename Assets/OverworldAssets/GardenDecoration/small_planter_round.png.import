@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chw64e1a3c7py"
-path="res://.godot/imported/bathtub_basic.png-044d733abedb1d933c1e4704465418ab.ctex"
+uid="uid://dempy0e7dsgb7"
+path="res://.godot/imported/small_planter_round.png-20aa84e9539c8635f420eb0c060b8650.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Garden_Stuff/bathtub_basic.png"
-dest_files=["res://.godot/imported/bathtub_basic.png-044d733abedb1d933c1e4704465418ab.ctex"]
+source_file="res://Assets/OverworldAssets/GardenDecoration/small_planter_round.png"
+dest_files=["res://.godot/imported/small_planter_round.png-20aa84e9539c8635f420eb0c060b8650.ctex"]
 
 [params]
 

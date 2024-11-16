@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxjrcllnnc3s2"
-path="res://.godot/imported/Licary_SpriteSheet.png-a56a726009bc10e41a1a7e2f36cca5b1.ctex"
+uid="uid://d4ea26g4gx1mn"
+path="res://.godot/imported/bathtub_var2.png-487473ad19d55cf8334c31bccf552643.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Plant/Licary_SpriteSheet.png"
-dest_files=["res://.godot/imported/Licary_SpriteSheet.png-a56a726009bc10e41a1a7e2f36cca5b1.ctex"]
+source_file="res://Assets/OverworldAssets/GardenDecoration/bathtub_var2.png"
+dest_files=["res://.godot/imported/bathtub_var2.png-487473ad19d55cf8334c31bccf552643.ctex"]
 
 [params]
 

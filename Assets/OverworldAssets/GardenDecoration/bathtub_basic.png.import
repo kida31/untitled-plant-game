@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc08shc1btj02"
-path="res://.godot/imported/chubery_sheet.png-23810d6d91b7c1f7755f64b5d3fc91de.ctex"
+uid="uid://chw64e1a3c7py"
+path="res://.godot/imported/bathtub_basic.png-0f4be411f705ebb58cb882e836b5f58b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Plant/chubery_sheet.png"
-dest_files=["res://.godot/imported/chubery_sheet.png-23810d6d91b7c1f7755f64b5d3fc91de.ctex"]
+source_file="res://Assets/OverworldAssets/GardenDecoration/bathtub_basic.png"
+dest_files=["res://.godot/imported/bathtub_basic.png-0f4be411f705ebb58cb882e836b5f58b.ctex"]
 
 [params]
 

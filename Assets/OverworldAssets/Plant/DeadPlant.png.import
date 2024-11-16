@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgr1wagj37jdb"
-path="res://.godot/imported/drupoleaum_sheet.png-a6105fd03be0459d404dd6992d05dba7.ctex"
+uid="uid://bq3ict6tudlsf"
+path="res://.godot/imported/DeadPlant.png-dd07a85cdd9eb8f69d775e37e8415d7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Plant/drupoleaum_sheet.png"
-dest_files=["res://.godot/imported/drupoleaum_sheet.png-a6105fd03be0459d404dd6992d05dba7.ctex"]
+source_file="res://Assets/OverworldAssets/Plant/DeadPlant.png"
+dest_files=["res://.godot/imported/DeadPlant.png-dd07a85cdd9eb8f69d775e37e8415d7b.ctex"]
 
 [params]
 
