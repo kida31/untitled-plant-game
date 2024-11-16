@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Inventory;
 
 public class Inventory : IInventory
 {
 	private readonly ItemStack[] _items;
+	private readonly Logger _logger = new("Inventory");
 
 	public Inventory(int size, string name)
 	{
@@ -65,6 +67,12 @@ public class Inventory : IInventory
 
 	public void SetContents(List<ItemStack> items)
 	{
+		if (items.Count > Size)
+		{
+			_logger.Error("Trying to set more items than inventory size");
+			return;
+		}
+		
 		for (var i = 0; i < _items.Length; i++)
 		{
 			_items[i] = i < items.Count ? items[i] : null;
