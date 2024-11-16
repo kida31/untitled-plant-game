@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,36 +59,40 @@ public partial class TabsController : Control
 		return childrenOfType;
 	}
 	
+	[Obsolete]
 	private void AddItemToCorrespondingTab(untitledplantgame.Item.ItemStack item)
 	{
-		switch (item.GetItemType())
-		{
-			case HerbCategory:
-				Categories.OfType<HerbsTab>().FirstOrDefault()?.UpdateTabUi(item);
-				break;
-			case MedicineCategory:
-				Categories.OfType<MedicineTab>().FirstOrDefault()?.UpdateTabUi(item);
-				break;
-			case SeedCategory:
-				Categories.OfType<SeedsTab>().FirstOrDefault()?.UpdateTabUi(item);
-				break;
-		}
+		Categories.OfType<SeedsTab>().FirstOrDefault()?.UpdateTabUi(item);
+		// switch (item.GetItemType())
+		// {
+		// 	case HerbCategory:
+		// 		Categories.OfType<HerbsTab>().FirstOrDefault()?.UpdateTabUi(item);
+		// 		break;
+		// 	case MedicineCategory:
+		// 		Categories.OfType<MedicineTab>().FirstOrDefault()?.UpdateTabUi(item);
+		// 		break;
+		// 	case SeedCategory:
+		// 		Categories.OfType<SeedsTab>().FirstOrDefault()?.UpdateTabUi(item);
+		// 		break;
+		// }
 	}
 
+	[Obsolete]
 	private void DropInventoryItemToNewSlot(untitledplantgame.Item.ItemStack itemStack, InventoryItemView inventoryItemView)
 	{
-		switch (itemStack.GetItemType())
-		{
-			case HerbCategory:
-				//Categories.OfType<HerbsTab>().FirstOrDefault()?.UpdateTabUi(item);
-				break;
-			case MedicineCategory:
-				//Categories.OfType<MedicineTab>().FirstOrDefault()?.UpdateTabUi(item);
-				break;
-			case SeedCategory:
-				Categories.OfType<SeedsTab>().FirstOrDefault()?.DropInventoryItemToNewSlot(itemStack, inventoryItemView.Id);
-				break;
-		}
+		Categories.OfType<SeedsTab>().FirstOrDefault()?.DropInventoryItemToNewSlot(itemStack, inventoryItemView.Id);
+		// switch (itemStack.GetItemType())
+		// {
+		// 	case HerbCategory:
+		// 		//Categories.OfType<HerbsTab>().FirstOrDefault()?.UpdateTabUi(item);
+		// 		break;
+		// 	case MedicineCategory:
+		// 		//Categories.OfType<MedicineTab>().FirstOrDefault()?.UpdateTabUi(item);
+		// 		break;
+		// 	case SeedCategory:
+		// 		Categories.OfType<SeedsTab>().FirstOrDefault()?.DropInventoryItemToNewSlot(itemStack, inventoryItemView.Id);
+		// 		break;
+		// }
 	}
 
 	private void SetPotentialItemSlot(InventoryItemView inventoryItemView)

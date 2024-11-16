@@ -15,14 +15,14 @@ namespace untitledplantgame.Item;
  */
 public partial class GroundItem : Area2D, IInteractable, IEntity
 {
-	private string _itemName; 
+	private string _itemName;
 	private bool _canBeInteractedWith = true;
 	private List<ItemStack> _itemStacks;
 
 	public override void _Ready()
 	{
 		AddToGroup("Interactables");
-		
+
 		// Temporary solution: Discuss with group how items should be created and added (visually in godot, JSON, etc.)
 		/*
 		 * Example:
@@ -30,25 +30,14 @@ public partial class GroundItem : Area2D, IInteractable, IEntity
 		 */
 		_itemStacks = new List<ItemStack>
 		{
-			new (
-				new HerbCategory(
-					"res://Resources/NewEntityStats.tres", 
-					"StoryHerb_", 
-					"MagicHerb",
-					64)
-				),
-			new (
-				new MedicineCategory(
-					"res://Resources/NewEntityStats.tres", 
-					"StoryHerb_", 
-					"MagicHerb", 
-					64)),
-			new (
+			new(
 				new SeedCategory(
-					"res://Resources/NewEntityStats.tres", 
-					"StoryHerb_", 
-					"MagicHerb", 
-					64))
+					"res://Resources/NewEntityStats.tres",
+					"YourFirstSeed_",
+					"MagicSeed",
+					64
+				)
+			)
 		};
 	}
 
@@ -62,6 +51,7 @@ public partial class GroundItem : Area2D, IInteractable, IEntity
 				// TODO: Should not be called several times, but instead a list => heavy performance problems.
 				EventBus.Instance.ItemPickedUp(itemStack);
 			}
+
 			_canBeInteractedWith = false;
 		}
 	}

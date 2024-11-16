@@ -54,7 +54,7 @@ public partial class InventoryItemView : Control
 		else
 		{
 			// Placeholders: 
-			_itemCurrentQuantity.Text = "0";
+			_itemCurrentQuantity.Text = itemStack.Amount.ToString();
 			_displayItemName.Text = itemStack.Name ?? "Placeholder_ItemName";
 			_itemTextureRect.Texture = _specificItemIcon;
 			TooltipText = itemStack.Name ?? "Placeholder_Tooltip";
