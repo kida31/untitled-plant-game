@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://3sh7ul4k0fh6"]
+[gd_resource type="Resource" script_class="RequirementDataForGrowthStage" load_steps=5 format=3 uid="uid://3sh7ul4k0fh6"]
 
 [ext_resource type="Script" path="res://ResourceData/RequirementData.cs" id="1_nmpdu"]
 [ext_resource type="Script" path="res://ResourceData/RequirementDataForGrowthStage.cs" id="2_yjhn1"]
