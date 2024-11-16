@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.GameState;
 
 namespace untitledplantgame.Player;
 
@@ -34,7 +35,7 @@ public partial class Player : CharacterBody2D
 		// ignore input if not in correct state
 		// GameStateMachine.CurrentState
 		// GameStateMachine.Instance.CurrentState
-		if (GameStateMachine.Instance.CurrentState != GameState.Gameplay)
+		if (GameStateMachine.Instance.CurrentState != GameState.FreeRoam)
 		{
 			Direction = Vector2.Zero; // default value, movement is an exception
 			return;

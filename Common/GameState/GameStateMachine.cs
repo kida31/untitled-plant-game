@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace untitledplantgame.Common;
+namespace untitledplantgame.Common.GameState;
 
 /// <summary>
 /// Represents the current state of the game.
@@ -43,7 +43,7 @@ public partial class GameStateMachine : Node
 	public GameState CurrentState => _currentState;
 	public GameState PreviousState => _previousState;
 
-	private GameState _currentState = GameState.Gameplay;
+	private GameState _currentState = GameState.FreeRoam;
 	private GameState _previousState = null;
 	private Logger _logger;
 

@@ -1,4 +1,4 @@
-﻿namespace untitledplantgame.Common;
+﻿namespace untitledplantgame.Common.GameState;
 
 /// <summary>
 /// Possible states of the game.
@@ -9,10 +9,10 @@
 /// </summary>
 public sealed class GameState
 {
-	public static readonly GameState Gameplay = new GameState();
-	public static readonly GameState Book = new GameState();
-	public static readonly GameState Config = new GameState();
-	public static readonly GameState Dialogue = new GameState();
+	public static readonly GameState FreeRoam = new();
+	public static readonly GameState Book = new();
+	public static readonly GameState Config = new();
+	public static readonly GameState Dialogue = new();
 
 	private GameState() { }
 }
