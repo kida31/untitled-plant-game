@@ -26,7 +26,7 @@ public partial class PlayerInventoryController : Node
 	
 	public override void _Process(double delta) { }
 
-	private void UpdateTabs(untitledplantgame.Item.ItemStack item)
+	private void UpdateTabs(ItemStack item)
 	{
 		EventBus.Instance.TabsUpdated(item);
 	}

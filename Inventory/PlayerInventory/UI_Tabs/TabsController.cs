@@ -60,7 +60,7 @@ public partial class TabsController : Control
 	}
 	
 	[Obsolete]
-	private void AddItemToCorrespondingTab(untitledplantgame.Item.ItemStack item)
+	private void AddItemToCorrespondingTab(ItemStack item)
 	{
 		Categories.OfType<SeedsTab>().FirstOrDefault()?.UpdateTabUi(item);
 		// switch (item.GetItemType())
@@ -78,7 +78,7 @@ public partial class TabsController : Control
 	}
 
 	[Obsolete]
-	private void DropInventoryItemToNewSlot(untitledplantgame.Item.ItemStack itemStack, InventoryItemView inventoryItemView)
+	private void DropInventoryItemToNewSlot(ItemStack itemStack, InventoryItemView inventoryItemView)
 	{
 		Categories.OfType<SeedsTab>().FirstOrDefault()?.DropInventoryItemToNewSlot(itemStack, inventoryItemView.Id);
 		// switch (itemStack.GetItemType())

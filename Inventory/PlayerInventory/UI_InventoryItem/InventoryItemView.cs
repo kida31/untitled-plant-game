@@ -18,7 +18,7 @@ public partial class InventoryItemView : Control
 
 	public int Id;
 	
-	public untitledplantgame.Item.ItemStack ItemStack;
+	public ItemStack ItemStack;
 	
 	public event Action DeletePressed;
 	
@@ -40,7 +40,7 @@ public partial class InventoryItemView : Control
 		}
 	}
 
-	public void UpdateItemView(untitledplantgame.Item.ItemStack itemStack)
+	public void UpdateItemView(ItemStack itemStack)
 	{
 		if (itemStack == null)
 		{

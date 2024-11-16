@@ -7,15 +7,15 @@ namespace untitledplantgame.Inventory.PlayerInventory;
 
 public class PlayerInventory
 {
-	private untitledplantgame.Item.ItemStack[] _itemStacks;
+	private ItemStack[] _itemStacks;
 
 	public PlayerInventory(int inventorySize)
 	{
-		_itemStacks = new untitledplantgame.Item.ItemStack[inventorySize];
+		_itemStacks = new ItemStack[inventorySize];
 		EventBus.Instance.OnItemPickUp += AddItemToInventory;
 	}
 
-	private void AddItemToInventory(untitledplantgame.Item.ItemStack item)
+	private void AddItemToInventory(ItemStack item)
 	{
 		// TODO: Check we can actually stack on top, instead of just adding to an empty slot
 		for (var i = 0; i < _itemStacks.Length; i++)

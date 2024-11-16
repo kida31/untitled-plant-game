@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Entity;
 using untitledplantgame.Event;
-using untitledplantgame.Item.ItemTypes;
+using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Item;
 
@@ -17,7 +17,7 @@ public partial class GroundItem : Area2D, IInteractable, IEntity
 {
 	private string _itemName;
 	private bool _canBeInteractedWith = true;
-	private List<ItemStack> _itemStacks;
+	private List<untitledplantgame.Inventory.ItemStack> _itemStacks;
 
 	public override void _Ready()
 	{
@@ -28,16 +28,9 @@ public partial class GroundItem : Area2D, IInteractable, IEntity
 		 * Example:
 		 * We have three distinct "ItemStacks", each has exactly one copy of their respective items.
 		 */
-		_itemStacks = new List<ItemStack>
+		_itemStacks = new List<untitledplantgame.Inventory.ItemStack>
 		{
-			new(
-				new SeedCategory(
-					"res://Resources/NewEntityStats.tres",
-					"YourFirstSeed_",
-					"MagicSeed",
-					64
-				)
-			)
+			new untitledplantgame.Inventory.ItemStack("YourFirstSeed_MagicSeed", "MagicSeed", null, "a seed", ItemCategory.Plant, 64, 1),
 		};
 	}
 
