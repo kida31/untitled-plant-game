@@ -50,9 +50,9 @@ public partial class GameStateMachine : Node
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
-		if (Instance is null)
+		if (_instance is null)
 		{
-			Instance = this;
+			_instance = this;
 		}
 		else
 		{
