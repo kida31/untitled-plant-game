@@ -1,28 +1,27 @@
 using System;
-using System.Linq;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Statistics;
 
 namespace untitledplantgame.Entity;
 
-public partial class EntityStats : Node
+public class EntityStats
 {
 	[Export]
-	public EntityConfiguration EntityConfiguration;
+	private Node _rootNode;
 	private Array<Stat> _baseStats;
 
-	public override void _Ready()
+	public EntityStats(EntityConfiguration entityConfiguration)
 	{
 		_baseStats = new Array<Stat>();
-
+		
 		try
 		{
-			foreach (var stat in EntityConfiguration.Stats)
+			foreach (var stat in entityConfiguration.Stats)
 			{
 				// Godot suffers from the same problem as Unity; Accessing Script and Scenes without them existing!
 				// Modifiers CANNOT be added when the Object is created!
-				Stat tempStat = new Stat(stat.GetBaseValueOfStat(), stat.CreateStatTypeInstance(stat.StatType));
+				Stat tempStat = new Stat(stat.GetBaseValueOfStat(), stat.CreateStatTypeInstance(stat.StatType), stat.IsHidden);
 				tempStat.AddMultipleModifiers(stat.GetStatModifiers());
 				_baseStats.Add(tempStat);
 			}
@@ -33,11 +32,14 @@ public partial class EntityStats : Node
 		}
 	}
 
-	public Array<Stat> GetEntityStats()
+	public Array<Stat> GetBaseStats()
 	{
+		// Ofc I need all the get stat and stuff, but this is as good as it gets for now.
 		return _baseStats;
 	}
 
+	
+	
 	// Debug Method
 	public void PrintAllBaseStatsFromConfig()
 	{

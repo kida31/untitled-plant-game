@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://nyv2tqdcvli1"]
+
+[ext_resource type="Script" path="res://Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.cs" id="1_753u5"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_s1jlp"]
+[ext_resource type="Texture2D" uid="uid://dary2k7vaser5" path="res://DefaultItemBackground_Black.png" id="3_0i1d7"]
+
+[node name="ItemView" type="PanelContainer" node_paths=PackedStringArray("_displayItemName", "_itemCurrentQuantity", "_itemDeleteButton", "_itemTextureRect", "_descriptionButton")]
+custom_minimum_size = Vector2(128, 128)
+offset_right = 64.0
+offset_bottom = 64.0
+tooltip_text = "Placeholder_Text"
+script = ExtResource("1_753u5")
+_specificItemIcon = ExtResource("2_s1jlp")
+_displayItemName = NodePath("ItemName")
+_itemCurrentQuantity = NodePath("ItemQuantity")
+_itemDeleteButton = NodePath("Button")
+_itemTextureRect = NodePath("MarginContainer/TextureRect")
+_descriptionButton = NodePath("CenterContainer/Button2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Background" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_0i1d7")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_0i1d7")
+expand_mode = 1
+
+[node name="ItemName" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="ItemQuantity" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+horizontal_alignment = 1
+vertical_alignment = 3
+autowrap_mode = 2
+justification_flags = 162
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 12
+text = " x "
+icon_alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 12
+text = "Details"
+icon_alignment = 2

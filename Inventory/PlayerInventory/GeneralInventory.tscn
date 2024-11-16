@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://cca7okqb2j4c7"]
+
+[ext_resource type="Script" path="res://Inventory/PlayerInventory/PlayerInventoryController.cs" id="1_rrual"]
+[ext_resource type="Script" path="res://Inventory/PlayerInventory/UI_Tabs/TabsController.cs" id="2_eefgp"]
+[ext_resource type="Script" path="res://Inventory/PlayerInventory/UI_Tabs/SeedsTab.cs" id="2_f80sh"]
+[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.tscn" id="3_5pjti"]
+[ext_resource type="Script" path="res://Inventory/PlayerInventory/UI_Tabs/HerbsTab.cs" id="3_kyvoe"]
+[ext_resource type="Script" path="res://Inventory/PlayerInventory/UI_Tabs/MedicineTab.cs" id="4_3lda1"]
+[ext_resource type="PackedScene" uid="uid://uun6r8profaf" path="res://Inventory/PlayerInventory/UI_Tabs/TabItemView.tscn" id="5_6dyti"]
+[ext_resource type="Texture2D" uid="uid://dary2k7vaser5" path="res://DefaultItemBackground_Black.png" id="6_xj551"]
+[ext_resource type="PackedScene" uid="uid://bw6q4ydeapnu6" path="res://Inventory/PlayerInventory/UI_Tabs/DetailedItemView.tscn" id="7_up4jy"]
+
+[node name="InventoryCanvas" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 764.0
+
+[node name="Tabs" type="TabContainer" parent="HBoxContainer" node_paths=PackedStringArray("_rightPanelForDetailedItemView")]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+script = ExtResource("2_eefgp")
+_rightPanelForDetailedItemView = NodePath("../RightDisplay")
+_detailedItemView = ExtResource("7_up4jy")
+
+[node name="SeedsTab" type="TabBar" parent="HBoxContainer/Tabs"]
+layout_mode = 2
+script = ExtResource("2_f80sh")
+_inventoryItemScene = ExtResource("3_5pjti")
+_tabItemView = ExtResource("5_6dyti")
+metadata/_tab_index = 0
+
+[node name="HerbsTab" type="TabBar" parent="HBoxContainer/Tabs"]
+visible = false
+layout_mode = 2
+script = ExtResource("3_kyvoe")
+_inventoryItemScene = ExtResource("3_5pjti")
+_tabItemView = ExtResource("5_6dyti")
+metadata/_tab_index = 1
+
+[node name="MedicineTab" type="TabBar" parent="HBoxContainer/Tabs"]
+visible = false
+layout_mode = 2
+script = ExtResource("4_3lda1")
+_inventoryItemScene = ExtResource("3_5pjti")
+_tabItemView = ExtResource("5_6dyti")
+metadata/_tab_index = 2
+
+[node name="RightDisplay" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ToolSectionBackground" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.482353)
+offset_left = 19.0
+offset_top = 803.0
+offset_right = 1900.0
+offset_bottom = 1075.0
+texture = ExtResource("6_xj551")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ToolSectionBackground"]
+layout_mode = 0
+offset_right = 1883.0
+offset_bottom = 274.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ToolSectionBackground/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="GridContainer" type="GridContainer" parent="ToolSectionBackground/VBoxContainer/MarginContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="ItemView" parent="ToolSectionBackground/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("3_5pjti")]
+layout_mode = 2
+
+[node name="ItemView2" parent="ToolSectionBackground/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("3_5pjti")]
+layout_mode = 2
+
+[node name="ItemView3" parent="ToolSectionBackground/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("3_5pjti")]
+layout_mode = 2
+
+[node name="ItemView4" parent="ToolSectionBackground/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("3_5pjti")]
+layout_mode = 2
+
+[node name="GeneralInventoryLogic" type="Node" parent="." node_paths=PackedStringArray("_tabsController")]
+script = ExtResource("1_rrual")
+_tabsController = NodePath("../HBoxContainer/Tabs")
+_tabInventorySize = 20

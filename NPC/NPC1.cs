@@ -1,4 +1,5 @@
 using Godot;
+using untitledplantgame.Event;
 
 public partial class NPC1 : Area2D, IInteractable
 {

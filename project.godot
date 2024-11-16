@@ -27,13 +27,16 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://EventBus/EventBus.cs"
+EventBus="*res://Event/EventBus.cs"
 ResourceManager="*res://ResourceData/ResourceManager.cs"
 TimeController="*res://Common/TimeController.cs"
 WeatherCycle="*res://Cycle/Weather/WeatherCycle.cs"
+FocusManager="res://TestScenes/FocusManager.cs"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

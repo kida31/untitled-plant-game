@@ -21,6 +21,7 @@ public partial class ItemView : Control
 
 	public override void _Ready()
 	{
+		// Do whatever "DeletePressed" was assigned to
 		_deleteButton.Pressed += () => DeletePressed?.Invoke();
 	}
 

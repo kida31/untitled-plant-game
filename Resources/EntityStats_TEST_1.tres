@@ -7,6 +7,7 @@
 script = ExtResource("2_mg5sa")
 SelectedOption = "Health"
 StatValue = 100
+IsHidden = false
 StatModifiers = [2, 5]
 
 [resource]

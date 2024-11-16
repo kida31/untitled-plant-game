@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bp3d1clwykgxu"]
 
 [ext_resource type="Script" path="res://_OLD_Inventory_and_Scene/BackpackView/BackpackView.cs" id="1_0r1at"]
-[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://_OLD_Inventory_and_Scene/BackpackView/ItemView.tscn" id="2_jplhb"]
+[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.tscn" id="2_jplhb"]
 
 [node name="BackpackView" type="PanelContainer" node_paths=PackedStringArray("_gridContainer", "_arrangeButton")]
 script = ExtResource("1_0r1at")
@@ -24,7 +24,7 @@ clip_contents = true
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
-columns = 4
+columns = 5
 
 [node name="ItemView" parent="HBoxContainer/MarginContainer/GridContainer" instance=ExtResource("2_jplhb")]
 layout_mode = 2
