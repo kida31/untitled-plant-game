@@ -58,7 +58,7 @@ public partial class TabsController : Control
 		return childrenOfType;
 	}
 	
-	private void AddItemToCorrespondingTab(ItemStack item)
+	private void AddItemToCorrespondingTab(untitledplantgame.Item.ItemStack item)
 	{
 		switch (item.GetItemType())
 		{
@@ -74,7 +74,7 @@ public partial class TabsController : Control
 		}
 	}
 
-	private void DropInventoryItemToNewSlot(ItemStack itemStack, InventoryItemView inventoryItemView)
+	private void DropInventoryItemToNewSlot(untitledplantgame.Item.ItemStack itemStack, InventoryItemView inventoryItemView)
 	{
 		switch (itemStack.GetItemType())
 		{

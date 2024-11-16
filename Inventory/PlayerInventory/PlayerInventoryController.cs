@@ -1,7 +1,7 @@
 using Godot;
 using untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
-using untitledplantgame.Item;
 using untitledplantgame.Event;
+
 
 namespace untitledplantgame.Inventory.PlayerInventory;
 
@@ -26,7 +26,7 @@ public partial class PlayerInventoryController : Node
 	
 	public override void _Process(double delta) { }
 
-	private void UpdateTabs(ItemStack item)
+	private void UpdateTabs(untitledplantgame.Item.ItemStack item)
 	{
 		EventBus.Instance.TabsUpdated(item);
 	}

@@ -1,6 +1,5 @@
 using Godot;
 using untitledplantgame.EntityStatsDataContainer;
-using untitledplantgame.Inventory.GeneralInventory.UI_ItemCategory;
 
 namespace untitledplantgame.Item;
 
@@ -34,9 +33,6 @@ public partial class InteractableItem : Area2D, IInteractable
 	private ICharacteristic CreateInstance() =>
 		_selectedOption switch
 		{
-			"Herb" => new HerbCategory(),
-			"Medicine" => new MedicineCategory(),
-			"Seed" => new SeedCategory(),
 			_ => null,
 		};
 
@@ -44,7 +40,6 @@ public partial class InteractableItem : Area2D, IInteractable
 	{
 		if (_canBeInteractedWith) //Very bad temporary solution. The Item should be "destroyed" anyway
 		{
-			EventBus.Instance.ItemPickedUp(this);
 			_canBeInteractedWith = false;
 		}
 	}

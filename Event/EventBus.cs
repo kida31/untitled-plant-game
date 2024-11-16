@@ -15,6 +15,8 @@ namespace untitledplantgame.Event;
  */
 public partial class EventBus : Node
 {
+
+
 	public static EventBus Instance { get; private set; }
 	private readonly Logger _logger = new("EventBus");
 
@@ -42,12 +44,8 @@ public partial class EventBus : Node
 		EmitSignal(nameof(NPCInteracted), npc);
 	}
 	//---------------------------------------------Legacy Signals---------------------------------------------
-
-
-
-	public delegate void AddToInventoryEventHandler(ItemStack item);
-
-	public event AddToInventoryEventHandler OnItemPickUp;
+	
+	public event Action<ItemStack> OnItemPickUp;
 
 	public void ItemPickedUp(ItemStack item)
 	{
@@ -100,4 +98,6 @@ public partial class EventBus : Node
 	{
 		OnItemClicked?.Invoke(icon, description);
 	}
+	
+	
 }

@@ -12,7 +12,7 @@ public partial class HerbsTab : Node, ICategoryTab
 	[Export] private PackedScene _tabItemView;
 	
 	private TabItemView _herbsItemView;
-	private ItemStack[] _itemStacks;
+	private untitledplantgame.Item.ItemStack[] _itemStacks;
 	private InventoryItemView[] _inventoryItemViews;
 
 	public override void _EnterTree()
@@ -25,13 +25,13 @@ public partial class HerbsTab : Node, ICategoryTab
 
 	public void SetTabInventorySize(int inventorySize)
 	{
-		_itemStacks = new ItemStack[inventorySize];
+		_itemStacks = new untitledplantgame.Item.ItemStack[inventorySize];
 		_inventoryItemViews = new InventoryItemView[inventorySize];
 		
 		FillTabWithEmptyInventoryItemViews();
 	}
 	
-	public void UpdateTabUi(ItemStack seedItem)
+	public void UpdateTabUi(untitledplantgame.Item.ItemStack seedItem)
 	{
 		for (var i = 0; i < _itemStacks.Length; i++)
 		{
@@ -43,12 +43,12 @@ public partial class HerbsTab : Node, ICategoryTab
 		}
 	}
 	
-	public void DropInventoryItemToNewSlot(ItemStack item, int slot)
+	public void DropInventoryItemToNewSlot(untitledplantgame.Item.ItemStack item, int slot)
 	{
 		
 	}
 
-	public ItemStack[] GetItemsInCategoryTab()
+	public untitledplantgame.Item.ItemStack[] GetItemsInCategoryTab()
 	{
 		return _itemStacks;
 	}

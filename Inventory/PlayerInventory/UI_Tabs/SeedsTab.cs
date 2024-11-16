@@ -28,7 +28,7 @@ public partial class SeedsTab : Node, ICategoryTab
 		FillTabWithEmptyInventoryItemViews();
 	}
 	
-	public void UpdateTabUi(ItemStack seedItem)
+	public void UpdateTabUi(untitledplantgame.Item.ItemStack seedItem)
 	{
 		foreach (var inventoryItemView in _inventoryItemViews)
 		{
@@ -40,7 +40,7 @@ public partial class SeedsTab : Node, ICategoryTab
 		}
 	}
 	
-	public void DropInventoryItemToNewSlot(ItemStack item, int slot)
+	public void DropInventoryItemToNewSlot(untitledplantgame.Item.ItemStack item, int slot)
 	{
 		foreach (var inventoryItemView in _inventoryItemViews)
 		{
@@ -53,7 +53,7 @@ public partial class SeedsTab : Node, ICategoryTab
 		}
 	}
 
-	public ItemStack[] GetItemsInCategoryTab()
+	public untitledplantgame.Item.ItemStack[] GetItemsInCategoryTab()
 	{
 		// Useless
 		return null;
