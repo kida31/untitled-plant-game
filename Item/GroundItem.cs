@@ -32,20 +32,20 @@ public partial class GroundItem : Area2D, IInteractable, IEntity
 		{
 			new (
 				new HerbCategory(
-					"res://Resources/EntityStats_TEST_1.tres", 
+					"res://Resources/NewEntityStats.tres", 
 					"StoryHerb_", 
 					"MagicHerb",
 					64)
 				),
 			new (
 				new MedicineCategory(
-					"res://Resources/EntityStats_TEST_1.tres", 
+					"res://Resources/NewEntityStats.tres", 
 					"StoryHerb_", 
 					"MagicHerb", 
 					64)),
 			new (
 				new SeedCategory(
-					"res://Resources/EntityStats_TEST_1.tres", 
+					"res://Resources/NewEntityStats.tres", 
 					"StoryHerb_", 
 					"MagicHerb", 
 					64))

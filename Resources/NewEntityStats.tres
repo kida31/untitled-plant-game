@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EntityStats" load_steps=4 format=3 uid="uid://cbbkyxomtf2sr"]
+
+[ext_resource type="Script" path="res://Statistics/Stat.cs" id="1_4co6n"]
+[ext_resource type="Script" path="res://Entity/EntityStats.cs" id="1_5g7sx"]
+
+[sub_resource type="Resource" id="Resource_xlqrg"]
+script = ExtResource("1_4co6n")
+SelectedOption = "Health"
+StatValue = 10
+IsHidden = false
+StatModifiers = [2, 2]
+
+[resource]
+script = ExtResource("1_5g7sx")
+BaseStats = Array[Object]([SubResource("Resource_xlqrg")])

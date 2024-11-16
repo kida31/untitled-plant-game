@@ -2,55 +2,29 @@ using System;
 using System.Linq;
 using Godot;
 using Godot.Collections;
+using untitledplantgame.Common;
+using untitledplantgame.Inventory;
 using untitledplantgame.Statistics;
 
 namespace untitledplantgame.Entity;
 
-public class EntityStats
+[GlobalClass]
+public partial class EntityStats : Resource, IComponent
 {
-	[Export]
-	private Node _rootNode;
-	private Array<Stat> _baseStats;
+	[Export] public Array<Stat> BaseStats { get; set; }
 
-	public EntityStats(EntityConfiguration entityConfiguration)
+	public EntityStats()
 	{
-		_baseStats = new Array<Stat>();
-		
-		try
-		{
-			foreach (var stat in entityConfiguration.Stats)
-			{
-				// Godot suffers from the same problem as Unity; Accessing Script and Scenes without them existing!
-				// Modifiers CANNOT be added when the Object is created!
-				Stat tempStat = new Stat(stat.GetBaseValueOfStat(), stat.CreateStatTypeInstance(stat.StatType), stat.IsHidden);
-				tempStat.AddMultipleModifiers(stat.GetStatModifiers());
-				_baseStats.Add(tempStat);
-			}
-		}
-		catch (Exception ex)
-		{
-			GD.PrintErr("Error in foreach loop: " + ex.Message);
-		}
+		BaseStats = new();
 	}
 
-	public Array<Stat> GetBaseStats()
+	public EntityStats(Array<Stat> baseStats)
 	{
-		// Ofc I need all the get stat and stuff, but this is as good as it gets for now.
-		return _baseStats;
+		BaseStats = baseStats;
 	}
 
-	[Obsolete] // TODO: Remove
-	public Array<Stat> GetEntityStats()
+	public static EntityStats FromFile(string path)
 	{
-		return _baseStats;
-	}
-
-	// Debug Method
-	public void PrintAllBaseStatsFromConfig()
-	{
-		foreach (var stat in _baseStats)
-		{
-			GD.Print(stat.GetModifiedStatValue());
-		}
+		return GD.Load<EntityStats>(path);
 	}
 }

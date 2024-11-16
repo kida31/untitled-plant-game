@@ -15,7 +15,7 @@ public class MedicineCategory : IItemCategory
 	
 	public MedicineCategory(string pathToStatResource, string itemId, string displayName, int stackSize)
 	{
-		_entityStats = new EntityStats(ResourceLoader.Load<EntityConfiguration>(pathToStatResource));
+		_entityStats = EntityStats.FromFile(pathToStatResource);
 		
 		_itemId = itemId;
 		_displayName = displayName;
@@ -39,6 +39,6 @@ public class MedicineCategory : IItemCategory
 	
 	public Array<Stat> GetAllEntityStats()
 	{
-		return _entityStats.GetBaseStats();
+		return _entityStats.BaseStats;
 	}
 }

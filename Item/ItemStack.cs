@@ -21,20 +21,13 @@ public class ItemStack
 		return _itemType;
 	}
 
-	public int GetQuantity()
+	public int Amount
 	{
-		return _quantity;
-	}
-	
-	public void SetQuantity(int quantity)
-	{
-		_quantity = quantity;
+		get => _quantity;
+		set => _quantity = value;
 	}
 
-	public string GetItemName()
-	{
-		return _itemType.GetItemName();
-	}
-	
+	public string Name => _itemType.GetItemName();
+
 	// Add, Remove, ...
 }
