@@ -44,9 +44,8 @@ public class Logger
 		}
 	}
 
-	public Logger(Node node) : this(node.GetType().Name)
-	{
-	}
+	public Logger(Node node)
+		: this(node.GetType().Name) { }
 
 	private void Log(LogLevel level, string message)
 	{
@@ -67,7 +66,7 @@ public class Logger
 				LogLevel.Debug => BBColor.Aqua.Apply(logMessage),
 				LogLevel.Warn => BBColor.Yellow.Apply(logMessage),
 				LogLevel.Error => BBColor.Red.Apply(logMessage),
-				_ => logMessage
+				_ => logMessage,
 			};
 			GD.PrintRich(coloredMessage);
 		}
