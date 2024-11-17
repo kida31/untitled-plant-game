@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ducp8fk43ftki"
-path="res://.godot/imported/BookDecor1.png-68674652891c339b337a4ac243c7d28a.ctex"
+uid="uid://cdvenxbf4mf1v"
+path="res://.godot/imported/Bookmark_inactive.png-83c5adf92a60c8c513bd95833fc6c6ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/BookUI/UninteractableDecor/BookDecor1.png"
-dest_files=["res://.godot/imported/BookDecor1.png-68674652891c339b337a4ac243c7d28a.ctex"]
+source_file="res://Assets/UI/BookUI/Icons/Bookmark_inactive.png"
+dest_files=["res://.godot/imported/Bookmark_inactive.png-83c5adf92a60c8c513bd95833fc6c6ff.ctex"]
 
 [params]
 

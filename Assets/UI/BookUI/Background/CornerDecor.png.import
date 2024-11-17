@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4v2jah0rhpuv"
-path="res://.godot/imported/DecorKreuz.png-c2d5710111218c1cb6904683d7bef08f.ctex"
+uid="uid://7pxw1e2phjcd"
+path="res://.godot/imported/CornerDecor.png-5d031c60daa1d7586895a8685347e205.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/BookUI/UninteractableDecor/DecorKreuz.png"
-dest_files=["res://.godot/imported/DecorKreuz.png-c2d5710111218c1cb6904683d7bef08f.ctex"]
+source_file="res://Assets/UI/BookUI/Background/CornerDecor.png"
+dest_files=["res://.godot/imported/CornerDecor.png-5d031c60daa1d7586895a8685347e205.ctex"]
 
 [params]
 

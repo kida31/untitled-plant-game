@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbwcajw24ox4e"
-path="res://.godot/imported/NewItemIndicator.png-e38be6d9c282905443106ad826b06901.ctex"
+uid="uid://ckel5qoihtmwe"
+path="res://.godot/imported/BookRing.png-a7e3180be7594cc4f62c0bb402dbb4a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/BookUI/NewItemIndicator.png"
-dest_files=["res://.godot/imported/NewItemIndicator.png-e38be6d9c282905443106ad826b06901.ctex"]
+source_file="res://Assets/UI/BookUI/Background/BookRing.png"
+dest_files=["res://.godot/imported/BookRing.png-a7e3180be7594cc4f62c0bb402dbb4a4.ctex"]
 
 [params]
 
