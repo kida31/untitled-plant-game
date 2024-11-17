@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Godot.Collections;
 
@@ -10,5 +11,5 @@ public partial class DialogueResourceObject : Resource
 
 	[Export] public DialogueLine[] _dialogueText { get; set; }
 
-	[Export] public Dictionary<string, DialogueResourceObject> responses { get; set; }
+	[Export] public DialogueResponse[] _responses { get; set; }
 }
