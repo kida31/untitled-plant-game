@@ -6,7 +6,7 @@ public interface IDatabase<T> where T: Resource
 {
 	// Path to the directory containing the specific resources
 	// e.g. "res://Resources/Items" for ItemDatabase or "res://Resources/Dialoue" for DialogueDatabase
-	string DirPath { get; set; } //TODO do we need this?
+	string DirPath { get; } //TODO do we need this?
 	
 	/// <summary>
 	/// Get resource of type T by name. If no resource is found, return null.

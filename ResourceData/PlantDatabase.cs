@@ -13,11 +13,7 @@ public partial class PlantDatabase : Node, IDatabase<PlantData>
 {
 	public static PlantDatabase Instance { get; private set; }
 
-	public string DirPath
-	{
-		get => _dirPath;
-		set => _dirPath = value;
-	}
+	public string DirPath => _dirPath;
 
 	private Logger _logger;
 	private string _dirPath = "res://ResourceData/Resources/Plants";
