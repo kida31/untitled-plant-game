@@ -31,7 +31,7 @@ public partial class DialogueAnimation : Node
 
 	void Reset()
 	{
-		IsPlaying = false;
+		StopAnimation();
 		_currentLetterIndex = 0;
 	}
 
