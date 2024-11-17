@@ -1,44 +1,76 @@
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using untitledplantgame.Dialogue;
-using ResourceManager = untitledplantgame.ResourceData.ResourceManager;
 
 public partial class DialogueCanvas : CanvasLayer
 {
 	private RichTextLabel _nameLabel;
 	private RichTextLabel _dialogueTextLabel;
 	private CanvasLayer _dialogueCanvas;
+	private AnimatedSprite2D _animatedSprite2D;
+	private BoxContainer _responseContainer;
 
-	private DialogueResourceObject _currentDialogue;
+	private DialogueSystem _dialogueSystem;
 	private int _currentDialogueIndex;
 
 	public override void _Ready()
 	{
 		_dialogueCanvas = GetNode<CanvasLayer>(".");
+		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_nameLabel = GetNode<RichTextLabel>("PanelContainer2/MarginContainer/Name");
 		_dialogueTextLabel = GetNode<RichTextLabel>("PanelContainer/MarginContainer/DialogueText");
-
-		_currentDialogue = DialogueDatabase.Instance?.GetResourceById(0);
-		_dialogueCanvas.Visible = true;
-		_currentDialogueIndex = 0;
+		_responseContainer = GetNode<BoxContainer>("Responses");
+		_dialogueSystem = DialogueSystem.Instance;
 	}
 
-	private void DisplayDialogue(DialogueLine dialogueLine)
+	//Displays dialogue on the screen
+	public void DisplayDialogue(DialogueLine line)
 	{
-		_nameLabel.Text = dialogueLine.speakerName;
-		_dialogueTextLabel.Text = dialogueLine.dialogueText;
+		if (!_dialogueCanvas.Visible)
+		{
+			_dialogueCanvas.Visible = true;
+		}
+
+		_nameLabel.Text = line.speakerName;
+		_dialogueTextLabel.Text = line.dialogueText;
+		_animatedSprite2D.Play(line.DialogueExpression.ToString());
+		//_dialogueAnimation.SetLine(text);
 	}
 
-	private void OnDialogueButtonPressed()
+	public void DisplayResponses(string[] responses)
 	{
-		_currentDialogueIndex++;
-		if (_currentDialogueIndex < _currentDialogue._dialogueText.Length)
+		var buttons = new List<Button>();
+		foreach (var response in responses)
 		{
-			DisplayDialogue(_currentDialogue._dialogueText[_currentDialogueIndex]);
+			Button button;
+			_responseContainer.CallDeferred(Node.MethodName.AddChild, button = new Button());
+			button.Text = response;
+			button.ActionMode = Button.ActionModeEnum.Press;
+			button.Pressed += () =>
+			{
+				_dialogueSystem.InsertSelectedResponse(response);
+				ClearResponses();
+			};
+			buttons.Add(button);
 		}
-		else
+
+		buttons.First().CallDeferred(Button.MethodName.GrabFocus);
+	}
+
+	private void ClearResponses()
+	{
+		foreach (Node child in _responseContainer.GetChildren())
 		{
-			_dialogueCanvas.Visible = false;
-			// End dialogue
+			child.QueueFree();
 		}
+	}
+
+	public void ClearDialogue()
+	{
+		_nameLabel.Text = "";
+		_dialogueTextLabel.Text = "";
+		_animatedSprite2D.Stop();
+		_dialogueCanvas.Visible = false;
 	}
 }

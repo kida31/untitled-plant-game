@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=6 format=3 uid="uid://cafacdxwiej7c"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=12 format=3 uid="uid://cafacdxwiej7c"]
 
 [ext_resource type="Script" path="res://Dialogue/DialogueLine.cs" id="1_lnhut"]
+[ext_resource type="Resource" uid="uid://dv8bjijerqcjr" path="res://ResourceData/Resources/Dialogue/testDialogue_yes.tres" id="2_rqr2m"]
 [ext_resource type="Script" path="res://Dialogue/DialogueResourceObject.cs" id="2_xo56h"]
+[ext_resource type="Script" path="res://Dialogue/DialogueResponse.cs" id="3_lb0nv"]
 
 [sub_resource type="Resource" id="Resource_o0fig"]
 script = ExtResource("1_lnhut")
@@ -21,8 +23,30 @@ speakerName = "Seed Boy"
 DialogueExpression = 1
 dialogueText = "Thank you for your purchase!"
 
+[sub_resource type="Resource" id="Resource_nbus4"]
+script = ExtResource("3_lb0nv")
+_responseButton = "Yes"
+_responseDialogue = ExtResource("2_rqr2m")
+
+[sub_resource type="Resource" id="Resource_01t4l"]
+script = ExtResource("1_lnhut")
+speakerName = "SeedBoy"
+DialogueExpression = 0
+dialogueText = "NANI?!"
+
+[sub_resource type="Resource" id="Resource_cfjoq"]
+script = ExtResource("2_xo56h")
+_dialogueId = "2"
+_dialogueText = Array[Object]([SubResource("Resource_01t4l")])
+_responses = null
+
+[sub_resource type="Resource" id="Resource_k12ia"]
+script = ExtResource("3_lb0nv")
+_responseButton = "No"
+_responseDialogue = SubResource("Resource_cfjoq")
+
 [resource]
 script = ExtResource("2_xo56h")
 _dialogueId = "0"
 _dialogueText = Array[Object]([SubResource("Resource_o0fig"), SubResource("Resource_l8iug"), SubResource("Resource_6inu6")])
-responses = null
+_responses = Array[Object]([SubResource("Resource_nbus4"), SubResource("Resource_k12ia")])

@@ -13,4 +13,4 @@ dialogueText = "Yo whatsup idk"
 script = ExtResource("1_2513s")
 _dialogueId = "1"
 _dialogueText = Array[Object]([SubResource("Resource_tutyv")])
-responses = null
+_responses = null

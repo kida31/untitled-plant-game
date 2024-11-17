@@ -10,8 +10,6 @@ public partial class TestDialogue : Node2D
 	public override void _Ready()
 	{
 		// Prepare
-
-		_exampleDialogue.responses["Yes"] = _followupDialogue;
 			
 			
 		GD.Print($"Current game state: {GameStateMachine.Instance.CurrentState}");
