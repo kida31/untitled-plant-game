@@ -1,20 +1,14 @@
-using System.Collections.Generic;
 using Godot;
+using Godot.Collections;
 
 namespace untitledplantgame.Dialogue;
 
 [GlobalClass]
 public partial class DialogueResourceObject : Resource
 {
-	[Export] public string _dialogueId;
+	[Export] public string _dialogueId { get; set; }
 
-	[Export] public DialogueLine[] _dialogueText;
+	[Export] public DialogueLine[] _dialogueText { get; set; }
 
-	[Export] public Dictionary<string, DialogueResourceObject> responses;
-
-	public DialogueResourceObject(string dialogueId, DialogueLine[] dialogueText)
-	{
-		_dialogueId = dialogueId;
-		_dialogueText = dialogueText;
-	}
+	[Export] public Dictionary<string, DialogueResourceObject> responses { get; set; }
 }
