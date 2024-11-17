@@ -1,13 +1,14 @@
-using Godot;
 using System;
-using System.Collections.Generic;
+using System.Linq;
+using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Dialogue;
-using untitledplantgame.ResourceData;
+
+namespace untitledplantgame.ResourceData;
 
 public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 {
-	const string _dialogueResourcePath = "res://ResourceData/Resources/Dialogue";
+	private const string _dialogueResourcePath = "res://ResourceData/Resources/Dialogue";
 	public static DialogueDatabase Instance { get; private set; }
 
 	private Logger _logger;
@@ -30,7 +31,8 @@ public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 
 	public DialogueResourceObject GetResourceByName(string name)
 	{
-		throw new NotImplementedException();
+		var dialogues = GetAllResources();
+		return dialogues.FirstOrDefault(dialogue => dialogue._dialogueId == name);
 	}
 
 	public DialogueResourceObject GetResourceById(int id)
@@ -40,6 +42,7 @@ public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 
 	public DialogueResourceObject[] GetAllResources()
 	{
-		throw new NotImplementedException();
+		var subDirectories = DirAccess.GetDirectoriesAt(DirPath);
+		return subDirectories.Select(GetResourceByName).ToArray();
 	}
 }
