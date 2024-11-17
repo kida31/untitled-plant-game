@@ -1,51 +1,45 @@
-using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using Godot;
 using untitledplantgame.Plants;
-using PlantData = untitledplantgame.Plants.PlantData;
 
 namespace untitledplantgame.ResourceData.Resources.Plants;
 
 public partial class PlantDatabase : Node, IDatabase<PlantData>
 {
-	private string _plantDataPath = "res://ResourceData/Resources/Plants";
-	private readonly List<PlantData> _plantDatas = new();
+	public static PlantDatabase Instance { get; private set; }
 
-	private ResourceManager _resourceManager = ResourceManager.Instance;
-
-	public static PlantDatabase Instance { get; set; }
+	public string DirPath
+	{
+		get => _dirPath;
+		set => _dirPath = value;
+	}
+	
+	private string _dirPath = "res://ResourceData/Resources/Plants";
 
 	public override void _Ready()
 	{
-		var directories = _resourceManager.LoadDirectoriesFromDirectory(_plantDataPath, new List<string>());
-		foreach (var directory in directories)
-		{
-			_plantDatas.AddRange(_resourceManager.LoadFromDirectory<PlantData>(directory));
-		}
-	}
-	
-	private PlantData GetPlantData(int plantId)
-	{
-		var plantData = _plantDatas.Find(data => data._plantId == plantId);
-		if (plantData != null)
-			return plantData;
-
-		throw new InvalidDataException($"There was no Data for {plantId}");
+		Instance = this;
 	}
 
-	public string DirPath { get; set; } = "res://ResourceData/Resources/Plants";
 	public PlantData GetResourceByName(string name)
 	{
-		return GD.Load<PlantData>("res://ResourceData/Resources/Plants/" + name);
+		// name == "Basil"
+		// turns into
+		// "res://ResourceData/Resources/Plants/Basil/Basil.tres"
+		return GD.Load<PlantData>($"{_dirPath}/{name}/{name}.tres");
 	}
 
 	public PlantData GetResourceById(int id)
 	{
-		throw new System.NotImplementedException();
+		return GetAllResources().FirstOrDefault(plant => plant._plantId == id, null);
 	}
 
 	public PlantData[] GetAllResources()
 	{
-		throw new System.NotImplementedException();
+		// Check all directories in the Plants directory
+		// Directory names are the names of the plants
+		// Load the PlantData from the .tres file in each directory
+		var subDirectories = DirAccess.GetDirectoriesAt(_dirPath);
+		return subDirectories.Select(GetResourceByName).ToArray();
 	}
 }
