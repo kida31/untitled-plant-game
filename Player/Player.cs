@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.GameState;
 
 namespace untitledplantgame.Player;
 
@@ -26,11 +27,23 @@ public partial class Player : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
+		_interactablesManager.ScanForInteractables();
+	}
+
+	public override void _Input(InputEvent @event)
+	{
+		// ignore input if not in correct state
+		// GameStateMachine.CurrentState
+		// GameStateMachine.Instance.CurrentState
+		if (GameStateMachine.Instance.CurrentState != GameState.FreeRoam)
+		{
+			Direction = Vector2.Zero; // default value, movement is an exception
+			return;
+		}
+
+		// Handle input @event or read from Input
 		Direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
 		Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
-
-		//Velocity = direction * MoveSpeed;
-		_interactablesManager.ScanForInteractables();
 	}
 
 	public override void _PhysicsProcess(double delta)
