@@ -27,11 +27,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameStateMachine="*res://Common/GameState/GameStateMachine.cs"
 EventBus="*res://EventBus/EventBus.cs"
 TimeController="*res://Common/TimeController.cs"
 WeatherCycle="*res://Cycle/Weather/WeatherCycle.cs"
 PlantDatabase="*res://ResourceData/PlantDatabase.cs"
+GameStateMachine="*res://Common/GameState/GameStateMachine.cs"
+DialogueSystemImpl="*res://Dialogue/DialogueSystemImpl.cs"
+DialogueSystem="*res://Dialogue/DialogueSystem.cs"
 
 [display]
 

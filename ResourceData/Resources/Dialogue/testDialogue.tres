@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cafacdxwiej7c"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=6 format=3 uid="uid://cafacdxwiej7c"]
 
 [ext_resource type="Script" path="res://Dialogue/DialogueLine.cs" id="1_lnhut"]
 [ext_resource type="Script" path="res://Dialogue/DialogueResourceObject.cs" id="2_xo56h"]
@@ -25,3 +25,4 @@ dialogueText = "Thank you for your purchase!"
 script = ExtResource("2_xo56h")
 _dialogueId = "0"
 _dialogueText = Array[Object]([SubResource("Resource_o0fig"), SubResource("Resource_l8iug"), SubResource("Resource_6inu6")])
+responses = null

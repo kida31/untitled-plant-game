@@ -1,30 +1,45 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using untitledplantgame.Common;
 using untitledplantgame.Dialogue;
 using untitledplantgame.ResourceData;
 
-public partial class DialogueDatabase : Node
+public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 {
+	const string _dialogueResourcePath = "res://ResourceData/Resources/Dialogue";
 	public static DialogueDatabase Instance { get; private set; }
-	
-	String _dialogueResourcePath = "res://ResourceData/Resources/Dialogue";
-	List<DialogueResourceObject> _dialogueResources = new List<DialogueResourceObject>();
-	
-	ResourceManager _resourceManager = ResourceManager.Instance;
+
+	private Logger _logger;
 
 	public override void _Ready()
 	{
-		var directories = _resourceManager.LoadDirectoriesFromDirectory(_dialogueResourcePath, new List<string>());
-		foreach (var directory in directories)
+		_logger = new Logger(this);
+		if (Instance == null)
 		{
-			_dialogueResources.AddRange(_resourceManager.LoadFromDirectory<DialogueResourceObject>(directory));
+			Instance = this;
+		}
+		else
+		{
+			_logger.Error("There are multiple instances of DialogueDatabase");
+			QueueFree();
 		}
 	}
 
-	public DialogueResourceObject LoadDialogueResource(int id)
+	public string DirPath => _dialogueResourcePath;
+
+	public DialogueResourceObject GetResourceByName(string name)
 	{
-		// Load dialogue from file
-		return null;
+		throw new NotImplementedException();
+	}
+
+	public DialogueResourceObject GetResourceById(int id)
+	{
+		throw new NotImplementedException();
+	}
+
+	public DialogueResourceObject[] GetAllResources()
+	{
+		throw new NotImplementedException();
 	}
 }

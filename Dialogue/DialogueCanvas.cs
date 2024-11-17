@@ -14,18 +14,13 @@ public partial class DialogueCanvas : CanvasLayer
 	public override void _Ready()
 	{
 		_dialogueCanvas = GetNode<CanvasLayer>(".");
-		_nameLabel = GetNode<RichTextLabel>("NameBox/Name");
-		_dialogueTextLabel = GetNode<RichTextLabel>("DialogueBox/DialogueText");
+		_nameLabel = GetNode<RichTextLabel>("PanelContainer2/MarginContainer/Name");
+		_dialogueTextLabel = GetNode<RichTextLabel>("PanelContainer/MarginContainer/DialogueText");
 
-		_currentDialogue = LoadDialogueResource(0);
-	}
-
-	private DialogueResourceObject LoadDialogueResource(int id)
-	{
-		// Load dialogue from file
+		_currentDialogue = DialogueDatabase.Instance?.GetResourceById(0);
 		_dialogueCanvas.Visible = true;
 		_currentDialogueIndex = 0;
-		return null;
+		DialogueSystem.Instance.OnDialogueEnd += (_) => GD.Print("Hello");
 	}
 
 	private void DisplayDialogue(DialogueLine dialogueLine)
