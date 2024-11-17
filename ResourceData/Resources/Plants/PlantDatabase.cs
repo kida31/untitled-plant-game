@@ -6,7 +6,7 @@ using PlantData = untitledplantgame.Plants.PlantData;
 
 namespace untitledplantgame.ResourceData.Resources.Plants;
 
-public partial class PlantDatabase : Node
+public partial class PlantDatabase : Node, IDatabase<PlantData>
 {
 	private string _plantDataPath = "res://ResourceData/Resources/Plants";
 	private readonly List<PlantData> _plantDatas = new();
@@ -24,7 +24,7 @@ public partial class PlantDatabase : Node
 		}
 	}
 	
-	public PlantData GetPlantData(int plantId)
+	private PlantData GetPlantData(int plantId)
 	{
 		var plantData = _plantDatas.Find(data => data._plantId == plantId);
 		if (plantData != null)
@@ -33,23 +33,19 @@ public partial class PlantDatabase : Node
 		throw new InvalidDataException($"There was no Data for {plantId}");
 	}
 
-	//not sure if we still need this
-	public Dictionary<string, Requirement> GetRequirements(int plantId, GrowthStage stage)
+	public string DirPath { get; set; } = "res://ResourceData/Resources/Plants";
+	public PlantData GetResourceByName(string name)
 	{
-		var plantData = _plantDatas.Find(data => data._plantId == plantId);
-		if (plantData == null)
-		{
-			throw new InvalidDataException($"There was no Data for {plantId}");
-		}
+		return GD.Load<PlantData>("res://ResourceData/Resources/Plants/" + name);
+	}
 
-		var plantRequirements = new Dictionary<string, Requirement>();
-		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)stage].GrowthRequirements;
+	public PlantData GetResourceById(int id)
+	{
+		throw new System.NotImplementedException();
+	}
 
-		foreach (var data in plantDataRequirementsForStage)
-		{
-			plantRequirements[data.Name.ToString()] = new Requirement(data.MaxLevel, data.MinLevel);
-		}
-
-		return plantRequirements;
+	public PlantData[] GetAllResources()
+	{
+		throw new System.NotImplementedException();
 	}
 }
