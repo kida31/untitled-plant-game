@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwxmbwp5d4xjh"
-path="res://.godot/imported/BookDecor_divider.png-3a2b56d567cd81e9ddaf8c4e5026775e.ctex"
+uid="uid://c88k0j8m7apd8"
+path="res://.godot/imported/SkillOverviewConttainer.png-94592f32ee170c56fbf740cf5617aea8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/BookUI/UninteractableDecor/BookDecor_divider.png"
-dest_files=["res://.godot/imported/BookDecor_divider.png-3a2b56d567cd81e9ddaf8c4e5026775e.ctex"]
+source_file="res://Assets/UI/BookUI/Containers&Labels/SkillOverviewConttainer.png"
+dest_files=["res://.godot/imported/SkillOverviewConttainer.png-94592f32ee170c56fbf740cf5617aea8.ctex"]
 
 [params]
 
