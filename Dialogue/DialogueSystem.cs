@@ -7,8 +7,6 @@ using untitledplantgame.Common;
 using untitledplantgame.Common.GameState;
 
 namespace untitledplantgame.Dialogue;
-// TODO:
-// - Show responses directly after last line ends, not on input
 
 public partial class DialogueSystem : Node, IDialogueSystem
 {
@@ -16,7 +14,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	{
 		Conversing,
 		Responding,
-		end
+		End
 	}
 
 	public static DialogueSystem Instance { get; private set; }
@@ -25,7 +23,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	public event Action<DialogueResourceObject> OnDialogueEnd;
 
 	private DialogueResourceObject _currentDialogue;
-	private IEnumerator<DialogueLine> enumerator;
+	private IEnumerator<DialogueLine> _enumerator;
 	private DialogueState _state;
 	private Logger _logger;
 
@@ -70,8 +68,8 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		OnDialogueStart?.Invoke(dialogue);
 
 		SetAndResetDialogue(dialogue);
-		if (enumerator.MoveNext())
-			DisplayLine(enumerator.Current);
+		if (_enumerator.MoveNext())
+			DisplayLine(_enumerator.Current);
 	}
 
 	private void EndDialogue()
@@ -79,14 +77,14 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_currentDialogue = null;
 		OnDialogueEnd?.Invoke(_currentDialogue);
 		GameStateMachine.Instance.ChangeState(GameState.FreeRoam);
-		_state = DialogueState.end;
+		_state = DialogueState.End;
 	}
 
 	private void SetAndResetDialogue(DialogueResourceObject dialogue)
 	{
 		_currentDialogue = dialogue;
-		enumerator = _currentDialogue._dialogueText.AsEnumerable().GetEnumerator();
-		enumerator.Reset();
+		_enumerator = _currentDialogue._dialogueText.AsEnumerable().GetEnumerator();
+		_enumerator.Reset();
 		_state = DialogueState.Conversing;
 	}
 
@@ -95,7 +93,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	/// </summary>
 	private void OnPlayerInputConfirm()
 	{
-		if (_currentDialogue == null || _state == DialogueState.end)
+		if (_currentDialogue == null || _state == DialogueState.End)
 		{
 			return;
 		}
@@ -103,10 +101,10 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_logger.Debug("Player input confirm.");
 		_logger.Debug("State: " + _state);
 
-		if (enumerator.MoveNext())
+		if (_enumerator.MoveNext())
 		{
-			DisplayLine(enumerator.Current);
-			if (_currentDialogue.responses.Count > 0 && enumerator.Current == _currentDialogue._dialogueText.Last())
+			DisplayLine(_enumerator.Current);
+			if (_currentDialogue.responses.Count > 0 && _enumerator.Current == _currentDialogue._dialogueText.Last())
 			{
 				DisplayResponses();
 			}
@@ -129,8 +127,8 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 		var nextDialogue = _currentDialogue.responses[currentSelection];
 		SetAndResetDialogue(nextDialogue);
-		if (enumerator.MoveNext())
-			DisplayLine(enumerator.Current);
+		if (_enumerator.MoveNext())
+			DisplayLine(_enumerator.Current);
 	}
 
 	private void DisplayLine(DialogueLine line)
