@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using Godot;
@@ -11,10 +12,11 @@ namespace untitledplantgame.Dialogue;
 
 public partial class DialogueSystem : Node, IDialogueSystem
 {
-	enum DialogueState
+	private enum DialogueState
 	{
 		Conversing,
 		Responding,
+		end
 	}
 
 	public static DialogueSystem Instance { get; private set; }
@@ -23,7 +25,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	public event Action<DialogueResourceObject> OnDialogueEnd;
 
 	private DialogueResourceObject _currentDialogue;
-	private int _currentLineIndex;
+	private IEnumerator<DialogueLine> enumerator;
 	private DialogueState _state;
 	private Logger _logger;
 
@@ -68,13 +70,23 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		OnDialogueStart?.Invoke(dialogue);
 
 		SetAndResetDialogue(dialogue);
-		DisplayCurentLine();
+		if (enumerator.MoveNext())
+			DisplayLine(enumerator.Current);
+	}
+
+	private void EndDialogue()
+	{
+		_currentDialogue = null;
+		OnDialogueEnd?.Invoke(_currentDialogue);
+		GameStateMachine.Instance.ChangeState(GameState.FreeRoam);
+		_state = DialogueState.end;
 	}
 
 	private void SetAndResetDialogue(DialogueResourceObject dialogue)
 	{
 		_currentDialogue = dialogue;
-		_currentLineIndex = 0;
+		enumerator = _currentDialogue._dialogueText.AsEnumerable().GetEnumerator();
+		enumerator.Reset();
 		_state = DialogueState.Conversing;
 	}
 
@@ -83,49 +95,42 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	/// </summary>
 	private void OnPlayerInputConfirm()
 	{
-		if (_currentDialogue == null)
+		if (_currentDialogue == null || _state == DialogueState.end)
 		{
 			return;
 		}
 
 		_logger.Debug("Player input confirm.");
+		_logger.Debug("State: " + _state);
 
-		_currentLineIndex += 1;
-
-		// If dialogue has more lines
-		if (_currentLineIndex < _currentDialogue._dialogueText.Length)
+		if (enumerator.MoveNext())
 		{
-			DisplayCurentLine();
+			DisplayLine(enumerator.Current);
+			if (_currentDialogue.responses.Count > 0 && enumerator.Current == _currentDialogue._dialogueText.Last())
+			{
+				DisplayResponses();
+			}
+
 			return;
 		}
 
-		// No more dialogue lines
 		if (_state == DialogueState.Responding)
 		{
 			InsertSelectedResponse();
 			return;
 		}
 
-		if (!_currentDialogue.responses.Any())
-		{
-			_currentDialogue = null;
-			OnDialogueEnd?.Invoke(_currentDialogue);
-			GameStateMachine.Instance.ChangeState(GameState.FreeRoam);
-			return;
-		}
-
-		// Display responses
-		DisplayResponses();
+		EndDialogue();
 	}
 
 	private void InsertSelectedResponse()
 	{
-		var currentSelection = _currentDialogue.responses.Keys.First();
-		// "Yes"
+		var currentSelection = _currentDialogue.responses.Keys.First(); //TODO: Implement selection
 
 		var nextDialogue = _currentDialogue.responses[currentSelection];
 		SetAndResetDialogue(nextDialogue);
-		DisplayCurentLine();
+		if (enumerator.MoveNext())
+			DisplayLine(enumerator.Current);
 	}
 
 	private void DisplayLine(DialogueLine line)
@@ -141,11 +146,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		var expr = line.DialogueExpression.ToString();
 		var text = line.dialogueText;
 		GD.Print($"{speaker} (${expr}): {text}");
-	}
-
-	private void DisplayCurentLine()
-	{
-		DisplayLine(_currentDialogue?._dialogueText[_currentLineIndex]);
 	}
 
 	private void DisplayResponses()
