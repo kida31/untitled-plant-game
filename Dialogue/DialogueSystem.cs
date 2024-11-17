@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameState;
@@ -26,18 +25,21 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	private IEnumerator<DialogueLine> _enumerator;
 	private DialogueState _state;
 	private Logger _logger;
+	private DialogueAnimation _dialogueAnimation;
+	private Timer _timer;
 
 	public override void _Ready()
 	{
 		_logger = new(this);
-
+		
 		if (Instance != null)
 		{
 			_logger.Error("There is already an instance of DialogueSystem.");
 			QueueFree();
 			return;
 		}
-
+		_dialogueAnimation = new DialogueAnimation();
+		AddChild(_dialogueAnimation);
 		Instance = this;
 	}
 
@@ -100,7 +102,13 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 		_logger.Debug("Player input confirm.");
 		_logger.Debug("State: " + _state);
-
+		
+		if (_dialogueAnimation.IsPlaying)
+		{
+			_dialogueAnimation.SkipAnimation();
+			return;
+		}
+		
 		if (_enumerator.MoveNext())
 		{
 			DisplayLine(_enumerator.Current);
@@ -143,7 +151,8 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		var speaker = line.speakerName;
 		var expr = line.DialogueExpression.ToString();
 		var text = line.dialogueText;
-		GD.Print($"{speaker} (${expr}): {text}");
+		GD.Print($"{speaker} (${expr}):");
+		_dialogueAnimation.SetLine(text);
 	}
 
 	private void DisplayResponses()
