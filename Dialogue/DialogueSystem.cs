@@ -9,26 +9,36 @@ namespace untitledplantgame.Dialogue;
 public partial class DialogueSystem : Node, IDialogueSystem
 {
 	public static DialogueSystem Instance { get; private set; }
-	
+
 	public event Action<DialogueResourceObject> OnDialogueStart;
 	public event Action<DialogueResourceObject> OnDialogueEnd;
 
 	private DialogueResourceObject _currentDialogue;
 	private int _currentLineIndex;
 	private Logger _logger;
+
 	public override void _Ready()
 	{
 		_logger = new(this);
-		
+
 		if (Instance != null)
 		{
 			_logger.Error("There is already an instance of DialogueSystem.");
 			QueueFree();
 			return;
 		}
-		
+
 		Instance = this;
 	}
+	
+	public override void _Input(InputEvent @event)
+	{
+		if (Input.IsActionJustPressed("ui_accept"))
+		{
+			OnPlayerInputConfirm();
+		}
+	}
+
 
 	public void StartDialog(DialogueResourceObject dialogue)
 	{
@@ -43,12 +53,14 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			_logger.Error("Dialogue has no text.");
 			return;
 		}
-		
+
 		GameStateMachine.Instance.ChangeState(GameState.Dialogue);
 		OnDialogueStart?.Invoke(dialogue);
 
+		_currentDialogue = dialogue;
 		_currentLineIndex = 0;
-		GD.Print(dialogue._dialogueText[_currentLineIndex]);
+		
+		DisplayLine(_currentDialogue!._dialogueText[_currentLineIndex]);
 	}
 
 	/// <summary>
@@ -57,7 +69,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	private void OnPlayerInputConfirm()
 	{
 		_currentLineIndex += 1;
-		
+
 		if (_currentLineIndex >= _currentDialogue._dialogueText.Length)
 		{
 			// Dont end yet
@@ -66,15 +78,21 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		}
 		else
 		{
-			GD.Print(_currentDialogue?._dialogueText[_currentLineIndex]);	
+			DisplayLine(_currentDialogue?._dialogueText[_currentLineIndex]);
 		}
 	}
 
-	public override void _Input(InputEvent @event)
+	private void DisplayLine(DialogueLine line)
 	{
-		if (Input.IsActionJustPressed("ui_confirm"))
+		if (line == null)
 		{
-			OnPlayerInputConfirm();
+			_logger.Error("Dialogue line is null.");
+			return;
 		}
+		// Display dialogue line
+		var speaker = line.speakerName;
+		var expr = line.DialogueExpression.ToString();
+		var text = line.dialogueText;
+		GD.Print($"{speaker} (${expr}): {text}");
 	}
 }

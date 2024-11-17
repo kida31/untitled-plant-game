@@ -20,7 +20,6 @@ public partial class DialogueCanvas : CanvasLayer
 		_currentDialogue = DialogueDatabase.Instance?.GetResourceById(0);
 		_dialogueCanvas.Visible = true;
 		_currentDialogueIndex = 0;
-		DialogueSystem.Instance.OnDialogueEnd += (_) => GD.Print("Hello");
 	}
 
 	private void DisplayDialogue(DialogueLine dialogueLine)

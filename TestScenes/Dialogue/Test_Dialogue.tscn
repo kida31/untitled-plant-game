@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwglknqprfvev"]
+[gd_scene load_steps=4 format=3 uid="uid://cwglknqprfvev"]
 
+[ext_resource type="Script" path="res://TestScenes/Dialogue/TestDialogue.cs" id="1_mgpfb"]
 [ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Dialogue/Dialogue_Scene.tscn" id="1_mt3pj"]
+[ext_resource type="Resource" uid="uid://cafacdxwiej7c" path="res://ResourceData/Resources/Dialogue/testDialogue.tres" id="2_c7ujq"]
 
 [node name="TestDialogue" type="Node2D"]
+script = ExtResource("1_mgpfb")
+_exampleDialogue = ExtResource("2_c7ujq")
 
 [node name="DialogueScene" parent="." instance=ExtResource("1_mt3pj")]

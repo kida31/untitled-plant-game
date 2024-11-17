@@ -15,4 +15,29 @@ public sealed class GameState
 	public static readonly GameState Dialogue = new();
 
 	private GameState() { }
+
+	public override string ToString()
+	{
+		if (this == FreeRoam)
+		{
+			return "FreeRoam";
+		}
+
+		if (this == Book)
+		{
+			return "Book";
+		}
+
+		if (this == Config)
+		{
+			return "Config";
+		}
+
+		if (this == Dialogue)
+		{
+			return "Dialogue";
+		}
+
+		return "Unknown";
+	}
 }
