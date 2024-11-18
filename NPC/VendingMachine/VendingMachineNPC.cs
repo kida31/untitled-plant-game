@@ -44,5 +44,5 @@ public partial class VendingMachineNPC : Area2D, IInteractable
 		return GlobalPosition;
 	}
 
-	public string ActionName { get; } = "Vending Machine";
+	public string ActionName => "Vending Machine";
 }
