@@ -1,4 +1,6 @@
-﻿namespace untitledplantgame.Common.GameStates;
+﻿using System.Collections.Generic;
+
+namespace untitledplantgame.Common.GameStates;
 
 /// <summary>
 /// Possible states of the game.
@@ -13,11 +15,22 @@ public sealed class GameState
 	public static readonly GameState Book = new("book");
 	public static readonly GameState Config = new("config");
 	public static readonly GameState Dialogue = new("dialogue");
+	public static readonly GameState Shop = new("shop");
 
 	public readonly string Name;
 
 	private GameState(string name)
 	{
 		Name = name;
+	}
+
+	public static IEnumerable<GameState> GetValues()
+	{
+		return new[] {FreeRoam, Book, Config, Dialogue, Shop};
+	}
+
+	public override string ToString()
+	{
+		return GetType().Name + "." + Name;
 	}
 }

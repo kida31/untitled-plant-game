@@ -34,42 +34,10 @@ public partial class Player : CharacterBody2D
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		// ignore input if not in correct state
-		// GameStateMachine.CurrentState
-		// GameStateMachine.Instance.CurrentState
-		// if (GameStateMachine.Instance.CurrentState != GameState.FreeRoam)
-		// {
-		// 	Direction = Vector2.Zero; // default value, movement is an exception
-		// 	return;
-		// }
+		Direction.X = Input.GetActionStrength(FreeRoam.Right) - Input.GetActionStrength(FreeRoam.Left);
+		Direction.Y = Input.GetActionStrength(FreeRoam.Down) - Input.GetActionStrength(FreeRoam.Up);
 
-		// Handle input @event or read from Input
-
-		foreach (var s in new[] {FreeRoam.Right, FreeRoam.Left, FreeRoam.Up, FreeRoam.Down})
-		{
-			if (@event.IsAction(s))
-			{
-				_directionalIsPressed[s] = @event.IsActionPressed(s, true);
-				if (@event.IsActionPressed(s, true))
-				{
-					GD.Print("PRESSED");
-				}
-				if (@event.IsActionReleased(s))
-				{
-					GD.Print("RELEASED");
-				}
-			}
-		}
-		
-		float GetStrength(string action)
-		{
-			return Input.GetActionStrength(action) * (_directionalIsPressed.GetValueOrDefault(action, true) ? 1 : 0);
-		}
-		
-		Direction.X = GetStrength(FreeRoam.Right) - GetStrength(FreeRoam.Left);
-		Direction.Y = GetStrength(FreeRoam.Down) - GetStrength(FreeRoam.Up);
-
-		if (@event.IsActionPressed(FreeRoam.Interact, true))
+		if (Input.IsActionPressed(FreeRoam.Interact, true))
 		{
 			_logger.Error("PRESSING INTERACT");
 		}
