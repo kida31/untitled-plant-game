@@ -1,31 +1,16 @@
 using Godot;
+using untitledplantgame.Common;
 
-public partial class NPC2 : Area2D, IInteractable
+public partial class NPC2 : AbstractNPC, IInteractable
 {
-	[Export]
-	private string _npcName;
-
-	[Export]
-	private NpcLogic _npcLogicNode;
-
 	public override void _Ready()
 	{
-		AddToGroup("Interactables");
+		AddToGroup(Group.Interactables);
 		var eventBus = GetNode<EventBus>("/root/EventBus");
 		eventBus.Connect("NPCInteracted", new Callable(this, nameof(OnNPCInteracted)));
 
 		//Rework with C# Events
 		eventBus.NPCInteracted += OnNPCInteracted; //Yay :D
-	}
-
-	private void OnBodyEntered(Node body)
-	{
-		_npcLogicNode.ManageNpcCollisionWithPlayer(body, _npcName);
-	}
-
-	public Vector2 GetGlobalInteractablePosition()
-	{
-		return GlobalPosition;
 	}
 
 	private void OnNPCInteracted(Node npc)
@@ -38,5 +23,5 @@ public partial class NPC2 : Area2D, IInteractable
 		}
 	}
 
-	public void Interact() { }
+	public override void Interact() { }
 }

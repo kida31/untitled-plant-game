@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvg3mpwor2ux0"
-path="res://.godot/imported/Ency_ItemNameLabel.png-4044a4923b25cd4010062dad499b3183.ctex"
+uid="uid://cdlpjv222kodg"
+path="res://.godot/imported/BookPage_left.png-ee78034bbe17b458ea787fd299d6b716.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/BookUI/Ency_ItemNameLabel.png"
-dest_files=["res://.godot/imported/Ency_ItemNameLabel.png-4044a4923b25cd4010062dad499b3183.ctex"]
+source_file="res://Assets/UI/BookUI/Background/BookPage_left.png"
+dest_files=["res://.godot/imported/BookPage_left.png-ee78034bbe17b458ea787fd299d6b716.ctex"]
 
 [params]
 
