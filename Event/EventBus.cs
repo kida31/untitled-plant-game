@@ -100,5 +100,20 @@ public partial class EventBus : Node
 		OnItemClicked?.Invoke(icon, description);
 	}
 	
+	public delegate void UpdateCurrency(int change);
+	public event UpdateCurrency OnCurrencyChange;
+
+	public void CurrencyChanged(int change)
+	{
+		OnCurrencyChange?.Invoke(change);
+	}
 	
+	public delegate void UpdateFaith(int change);
+	public event UpdateFaith OnFaithChange;
+
+	public void FaithChanged(int change)
+	{
+		OnFaithChange?.Invoke(change);
+	}
+
 }

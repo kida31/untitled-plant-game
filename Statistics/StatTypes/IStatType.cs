@@ -8,7 +8,7 @@ public interface IStatType
 	public static List<Type> GetAllTypes()
 	{
 		Type parentType = typeof(IStatType);
-		Assembly assembly = parentType.Assembly;
+		Assembly assembly = parentType.Assembly; // muss ganz dringend weg
 
 		var childTypes = assembly.GetTypes().Where(t => t != parentType && parentType.IsAssignableFrom(t));
 

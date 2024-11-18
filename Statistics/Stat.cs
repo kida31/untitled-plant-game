@@ -10,7 +10,7 @@ namespace untitledplantgame.Statistics;
 public partial class Stat : Resource
 {
 	// Order was chosen to make it easily readable
-	[Export(PropertyHint.Enum, "Health,MovementSpeed")]
+	[Export(PropertyHint.Enum, "Health,MovementSpeed,Faith,Currency")]
 	private string SelectedOption
 	{
 		get => _selectedOption;
@@ -22,7 +22,7 @@ public partial class Stat : Resource
 	}
 
 	[Export]
-	public int StatValue;
+	public int StatBaseValue;
 
 	[Export]
 	public bool IsHidden;
@@ -40,12 +40,12 @@ public partial class Stat : Resource
 	public Stat()
 		: this(0, null, false)
 	{
-		StatValue = int.MinValue;
+		StatBaseValue = int.MinValue;
 	}
 
-	public Stat(int value, IStatType statType, bool isHidden)
+	public Stat(int baseValue, IStatType statType, bool isHidden)
 	{
-		StatValue = value;
+		StatBaseValue = baseValue;
 		StatType = statType;
 		IsHidden = isHidden;
 	}
@@ -63,22 +63,22 @@ public partial class Stat : Resource
 
 	public void AssignBaseValueOfStat(int baseValue)
 	{
-		if (StatValue != int.MinValue)
+		if (StatBaseValue != int.MinValue)
 		{
 			throw new InvalidOperationException("The variable of type: " + this + " already has a BaseStatValue");
 		}
 
-		StatValue = baseValue;
+		StatBaseValue = baseValue;
 	}
 
 	public int GetBaseValueOfStat()
 	{
-		if (StatValue == int.MinValue)
+		if (StatBaseValue == int.MinValue)
 		{
 			throw new InvalidOperationException("BaseStatValue is not assigned!");
 		}
 
-		return StatValue;
+		return StatBaseValue;
 	}
 
 	public void AddStatModifier(int modifier)
@@ -89,7 +89,7 @@ public partial class Stat : Resource
 	public int GetModifiedStatValue()
 	{
 		// Base stat + sum of all modifiers
-		return StatValue + StatModifiers.Sum();
+		return StatBaseValue + StatModifiers.Sum();
 	}
 
 	public void AddMultipleModifiers(Array<int> modifiers)

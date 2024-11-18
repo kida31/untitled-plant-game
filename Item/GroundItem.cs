@@ -3,6 +3,8 @@ using Godot;
 using untitledplantgame.Entity;
 using untitledplantgame.Event;
 using untitledplantgame.Inventory;
+using untitledplantgame.Statistics.StatTypes;
+using untitledplantgame.Systems;
 
 namespace untitledplantgame.Item;
 
@@ -21,6 +23,7 @@ public partial class GroundItem : Area2D, IInteractable, IEntity
 
 	public override void _Ready()
 	{
+		EventBus.Instance.OnFaithChange += listenToFaithChange;
 		AddToGroup("Interactables");
 
 		// Temporary solution: Discuss with group how items should be created and added (visually in godot, JSON, etc.)
@@ -37,6 +40,7 @@ public partial class GroundItem : Area2D, IInteractable, IEntity
 	public void Interact()
 	{
 		Hide();
+		CurrencyFaithOfficer.TheOneAndOnly.ChangeAny(new Faith(), 69);
 		if (_canBeInteractedWith) //Very bad temporary solution. The Item should be "destroyed" after the interaction is finished
 		{
 			foreach (var itemStack in _itemStacks)
@@ -47,10 +51,16 @@ public partial class GroundItem : Area2D, IInteractable, IEntity
 
 			_canBeInteractedWith = false;
 		}
+		QueueFree();
 	}
 
 	public Vector2 GetGlobalInteractablePosition()
 	{
 		return GlobalPosition;
+	}
+
+	public void listenToFaithChange(int change)
+	{
+		GD.Print(change);
 	}
 }

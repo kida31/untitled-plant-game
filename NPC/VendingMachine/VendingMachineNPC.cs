@@ -23,7 +23,7 @@ public partial class VendingMachineNPC : Area2D, IInteractable
 		if (_vendingMachine is null)
 		{
 			_logger.Info("Creating new vending machine");
-			// TODO: make serializable/savable vending machine
+			// TODO: make serializable/saveable vending machine
 			_vendingMachine = new VendingMachine();
 		}
 		
@@ -43,4 +43,5 @@ public partial class VendingMachineNPC : Area2D, IInteractable
 	{
 		return GlobalPosition;
 	}
+	
 }
