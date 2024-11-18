@@ -30,7 +30,6 @@ grow_vertical = 2
 columns = 4
 
 [node name="Panel1" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
 layout_mode = 2
 
 [node name="Panel2" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]

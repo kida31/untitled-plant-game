@@ -1,30 +1,53 @@
+using System;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Inventory;
+using untitledplantgame.VendingMachine;
 
-public partial class ShopSlot : Panel
+public partial class ShopSlot : Panel, IItemSlotUI
 {
-	[Export]
-	private Label ItemName;
-	private readonly Logger _logger = new("ShopSLot");
+	public event Action Pressed;
 
-	private PackedScene tooltip = GD.Load<PackedScene>("res://Seedshop/Tooltip.tscn");
+	[Export] private Label _nameLabel;
+	[Export] private TextureRect _textureRect;
+	[Export] private Label _amountLabel;
+	[Export] private Label _priceLabel;
 
+	private ItemStack _itemStack;
+
+	public ItemStack ItemStack
+	{
+		get => _itemStack;
+		set
+		{
+			_itemStack = value;
+			UpdateContent();
+		}
+	}
+
+	private Logger _logger;
+	
 	public override void _Ready()
 	{
-		MouseEntered += OnMouseEntered;
-		MouseExited += OnMouseExited;
+		_logger = new(this);
+	}
+
+	private void UpdateContent()
+	{
+		_nameLabel.Text = _itemStack.Name;
+		_textureRect.Texture = _itemStack.Icon ?? _textureRect.Texture;
+		_amountLabel.Text = _itemStack.Amount.ToString();
+		_priceLabel.Text = _itemStack.BaseValue.ToString();
 	}
 
 	private void OnMouseEntered()
 	{
-		var tooltipInstance = tooltip.Instantiate<Tooltip>();
-		// _logger.Debug("Mouse entered");
-		tooltipInstance.origin = "Seedshop";
-		tooltipInstance.slot = ItemName.Text;
-
+		Tooltip tooltipInstance = null;
+		
+		tooltipInstance.slot = _nameLabel.Text;
 		float x = GlobalPosition.X + GetRect().Size.X;
 		float y = GlobalPosition.Y;
-		Vector2I position = (Vector2I)new Vector2(x, y);
+		Vector2I position = (Vector2I) new Vector2(x, y);
 		tooltipInstance.Position = position;
 		tooltipInstance.Transparent = true;
 
