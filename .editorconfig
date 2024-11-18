@@ -4,6 +4,9 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
+# Microsoft .NET properties
+csharp_preferred_modifier_order = public, protected, private, internal, new, async, override, sealed, abstract, virtual, static, extern, unsafe, volatile, readonly, required:suggestion
+
 [*.cs]
 indent_style = tab
 indent_size = 4

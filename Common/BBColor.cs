@@ -1,3 +1,5 @@
+namespace untitledplantgame.Common;
+
 // Clipboard
 // Find: ([A-Za-z]+) \| .*
 // Replace: public static BBColor $1 => new("\L$1");
@@ -59,7 +61,8 @@ public class BBColor
 	public static BBColor Khaki => new("#F0E68C");
 	public static BBColor Darkkhaki => new("#BDB76B");
 	public static BBColor Goldenrod => new("#DAA520");
-	public static BBColor Darkgoldenrod => new("#B8860B	          	Greenyellow | ADFF2F");
+	public static BBColor Greenyellow => new("#ADFF2F");
+	public static BBColor Darkgoldenrod => new("#B8860B");
 	public static BBColor Chartreuse => new("#7FFF00");
 	public static BBColor Lawngreen => new("#7CFC00");
 	public static BBColor Lime => new("#00FF00");
@@ -105,7 +108,8 @@ public class BBColor
 	public static BBColor Mediumblue => new("#0000CD");
 	public static BBColor Darkblue => new("#00008B");
 	public static BBColor Navy => new("#000080");
-	public static BBColor Midnightblue => new("#191970	          	Cornsilk | FFF8DC");
+	public static BBColor Midnightblue => new("#191970");
+	public static BBColor Cornsilk => new("#FFF8DC");
 	public static BBColor Blanchedalmond => new("#FFEBCD");
 	public static BBColor Bisque => new("#FFE4C4");
 	public static BBColor Navajowhite => new("#FFDEAD");
@@ -147,9 +151,9 @@ public class BBColor
 	public static BBColor Darkslategray => new("#2F4F4F");
 	public static BBColor Black => new("#000000");
 
-	private readonly string Value;
+	public readonly string Value;
 
-	public BBColor(string value)
+	private BBColor(string value)
 	{
 		Value = value;
 	}

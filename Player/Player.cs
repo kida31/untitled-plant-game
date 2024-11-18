@@ -1,14 +1,14 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Common.GameState;
+using untitledplantgame.Common.GameStates;
+using untitledplantgame.Common.Inputs.GameActions;
 
 namespace untitledplantgame.Player;
 
 public partial class Player : CharacterBody2D
 {
-	[Export]
-	private InteractablesManager _interactablesManager;
+	[Export] private InteractablesManager _interactablesManager;
 
 	private readonly Logger _logger = new Logger("Player");
 	private Vector2 _cardinalDirection = Vector2.Down;
@@ -30,20 +30,16 @@ public partial class Player : CharacterBody2D
 		_interactablesManager.ScanForInteractables();
 	}
 
-	public override void _Input(InputEvent @event)
+	public override void _UnhandledInput(InputEvent @event)
 	{
-		// ignore input if not in correct state
-		// GameStateMachine.CurrentState
-		// GameStateMachine.Instance.CurrentState
 		if (GameStateMachine.Instance.CurrentState != GameState.FreeRoam)
 		{
 			Direction = Vector2.Zero; // default value, movement is an exception
-			return;
 		}
 
 		// Handle input @event or read from Input
-		Direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
-		Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
+		Direction.X = Input.GetActionStrength(FreeRoam.Right) - Input.GetActionStrength(FreeRoam.Left);
+		Direction.Y = Input.GetActionStrength(FreeRoam.Down) - Input.GetActionStrength(FreeRoam.Up);
 		//Velocity = direction * MoveSpeed;
 		_interactablesManager.ScanForInteractables();
 		InteractionManager.Instance.PerformInteraction();

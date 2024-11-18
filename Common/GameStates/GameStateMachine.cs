@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace untitledplantgame.Common.GameState;
+namespace untitledplantgame.Common.GameStates;
 
 /// <summary>
 /// Represents the current state of the game.
@@ -44,7 +44,7 @@ public partial class GameStateMachine : Node
 	public GameState PreviousState => _previousState;
 
 	private GameState _currentState = GameState.FreeRoam;
-	private GameState _previousState = null;
+	private GameState _previousState;
 	private Logger _logger;
 
 	public override void _Ready()
@@ -61,13 +61,23 @@ public partial class GameStateMachine : Node
 		}
 	}
 
-	public void ChangeState(GameState newState)
+	/// <summary>
+	/// Changes the game state.
+	/// </summary>
+	/// <param name="newState"></param>
+	public void SetState(GameState newState)
 	{
 		_logger.Info($"Change game state {_currentState} -> {newState}");
 		_previousState = _currentState;
 		_currentState = newState;
 		StateChanged?.Invoke(_previousState, _currentState);
 	}
+
+	/// <summary>
+	/// Changes the game state.
+	/// </summary>
+	/// <param name="newState"></param>
+	public void ChangeState(GameState newState) => SetState(newState);
 
 	public void RevertState()
 	{

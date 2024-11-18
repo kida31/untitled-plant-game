@@ -1,6 +1,5 @@
 using Godot;
-using System;
-using untitledplantgame.Common.GameState;
+using untitledplantgame.Common.GameStates;
 using untitledplantgame.Dialogue;
 
 public partial class TestDialogue : Node2D

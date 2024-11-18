@@ -10,7 +10,7 @@ public partial class NpcLogic : Node
 
 	public override void _Ready()
 	{
-		_collisionManager = GetNode<CollisionManager>("../../CollisionManager"); // Reference to the global collision manager
+		_collisionManager = GetTree().Root.GetNode<CollisionManager>("CollisionManager");
 	}
 
 	public void ManageNpcCollisionWithPlayer(Node body, string npcName)

@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Common.GameState;
+using untitledplantgame.Common.GameStates;
+using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Player;
 
 public partial class InteractablesManager : Node
@@ -21,7 +22,7 @@ public partial class InteractablesManager : Node
 		}
 
 		CheckForInteractables();
-		if (Input.IsKeyPressed(Key.E)) // Bind this to your interact key
+		if (Input.IsActionJustPressed(FreeRoam.Interact)) // Bind this to your interact key
 		{
 			PerformInteraction();
 		}
@@ -33,7 +34,7 @@ public partial class InteractablesManager : Node
 		_interactablesInReach.Clear();
 
 		// Get all Area2D nodes that are in range (this could be optimized)
-		var area2DList = GetTree().GetNodesInGroup("Interactables");
+		var area2DList = GetTree().GetNodesInGroup(Group.Interactables);
 
 		foreach (var area in area2DList)
 		{

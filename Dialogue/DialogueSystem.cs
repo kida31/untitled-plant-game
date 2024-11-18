@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Common.GameState;
+using untitledplantgame.Common.GameStates;
 using untitledplantgame.ResourceData;
 
 namespace untitledplantgame.Dialogue;
@@ -49,7 +49,8 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_skipCooldownTimer.Autostart = false;
 		_skipCooldownTimer.OneShot = true;
 		_skipCooldownTimer.Timeout += () => _Smashable = true;
-		_dialogueCanvas = GetNode<DialogueCanvas>("/root/TestDialogue/DialogueScene/DialogueCanvas");
+		// TODO: This does not work, unless in test scene
+		_dialogueCanvas = GetNodeOrNull<DialogueCanvas>("/root/TestDialogue/DialogueScene/DialogueCanvas");
 		Instance = this;
 	}
 
@@ -77,7 +78,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			return;
 		}
 
-		GameStateMachine.Instance.ChangeState(GameState.Dialogue);
+		GameStateMachine.Instance.SetState(GameState.Dialogue);
 		OnDialogueStart?.Invoke(dialogue);
 
 		SetAndResetDialogue(dialogue);
@@ -88,7 +89,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	private void EndDialogue()
 	{
 		_currentDialogue = null;
-		GameStateMachine.Instance.ChangeState(GameState.FreeRoam);
+		GameStateMachine.Instance.SetState(GameState.FreeRoam);
 		_state = DialogueState.End;
 		_dialogueCanvas.ClearDialogue();
 		OnDialogueEnd?.Invoke(_currentDialogue);
