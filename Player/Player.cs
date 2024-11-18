@@ -44,6 +44,9 @@ public partial class Player : CharacterBody2D
 		// Handle input @event or read from Input
 		Direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
 		Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
+		//Velocity = direction * MoveSpeed;
+		_interactablesManager.ScanForInteractables();
+		InteractionManager.Instance.PerformInteraction();
 	}
 
 	public override void _PhysicsProcess(double delta)

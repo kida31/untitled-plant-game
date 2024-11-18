@@ -1,4 +1,6 @@
+// using System.Text.RegularExpressions;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.EntityStatsDataContainer;
 using untitledplantgame.Inventory.GeneralInventory.UI_ItemCategory;
 
@@ -6,39 +8,22 @@ namespace untitledplantgame.Item;
 
 public partial class InteractableItem : Area2D, IInteractable
 {
-	public string ItemName => _dataContainer.EntityName; // Convenience property
-	
 	[Export]
 	private DataContainer _dataContainer;
 
 	[Export(PropertyHint.Enum, "Herb,Medicine,Seed")]
-	private string SelectedOption
-	{
-		get => _selectedOption;
-		set
-		{
-			_selectedOption = value;
-			_characteristic = CreateInstance();
-		}
-	}
-
 	private string _selectedOption;
+	public string ItemName => _dataContainer.EntityName; // Convenience property
+
+	public string ActionName { get; private set; } = "pickup";
+
 	private ICharacteristic _characteristic;
 	private bool _canBeInteractedWith = true;
 
 	public override void _Ready()
 	{
-		AddToGroup("Interactables");
+		AddToGroup(Group.Interactables);
 	}
-
-	private ICharacteristic CreateInstance() =>
-		_selectedOption switch
-		{
-			"Herb" => new HerbCategory(),
-			"Medicine" => new MedicineCategory(),
-			"Seed" => new SeedCategory(),
-			_ => null,
-		};
 
 	public void Interact()
 	{
@@ -63,4 +48,23 @@ public partial class InteractableItem : Area2D, IInteractable
 	{
 		return _characteristic;
 	}
+
+	private string SelectedOption
+	{
+		get => _selectedOption;
+		set
+		{
+			_selectedOption = value;
+			_characteristic = CreateInstance();
+		}
+	}
+
+	private ICharacteristic CreateInstance() =>
+		_selectedOption switch
+		{
+			"Herb" => new HerbCategory(),
+			"Medicine" => new MedicineCategory(),
+			"Seed" => new SeedCategory(),
+			_ => null,
+		};
 }

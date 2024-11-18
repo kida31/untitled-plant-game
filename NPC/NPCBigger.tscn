@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://6m0jv0pp1br6"]
+[gd_scene load_steps=5 format=3 uid="uid://b71nowk1pn75v"]
 
-[ext_resource type="Script" path="res://NPC/NPC.cs" id="1_08g4h"]
-[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="1_hwhva"]
-[ext_resource type="Script" path="res://NPC/NpcLogic.cs" id="3_mssbl"]
+[ext_resource type="Script" path="res://NPC/NPC.cs" id="1_8ojmf"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_pt4p6"]
+[ext_resource type="Script" path="res://NPC/NpcLogic.cs" id="3_k5ke3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qxak0"]
+radius = 37.0034
 
 [node name="NPC" type="Area2D" node_paths=PackedStringArray("_npcLogicNode") groups=["Interactables"]]
 position = Vector2(25, 74)
-script = ExtResource("1_08g4h")
+script = ExtResource("1_8ojmf")
 _npcLogicNode = NodePath("NPC_Logic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -17,8 +18,8 @@ shape = SubResource("CircleShape2D_qxak0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.195313, 0.160156)
-texture = ExtResource("1_hwhva")
+texture = ExtResource("2_pt4p6")
 
 [node name="NPC_Logic" type="Node" parent="." node_paths=PackedStringArray("_npcSelf")]
-script = ExtResource("3_mssbl")
+script = ExtResource("3_k5ke3")
 _npcSelf = NodePath("..")

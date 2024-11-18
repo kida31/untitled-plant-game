@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://blnwnotey1wvy"]
+
+[ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Player/Player.tscn" id="1_wfjmq"]
+[ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://NPC/NPC.tscn" id="2_w0tog"]
+[ext_resource type="Script" path="res://NPC/Seedboy.cs" id="3_hsg6s"]
+[ext_resource type="PackedScene" uid="uid://cg5yho3bnwg55" path="res://Seedshop/OLDSeedshop.tscn" id="4_p87q8"]
+
+[node name="TestInventoryScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_wfjmq")]
+position = Vector2(28, 26)
+
+[node name="Seedboy" parent="." instance=ExtResource("2_w0tog")]
+position = Vector2(55, 113)
+scale = Vector2(1.00188, 0.98962)
+script = ExtResource("3_hsg6s")
+ActionName = "shop"
+
+[node name="Seedshop" parent="." instance=ExtResource("4_p87q8")]
+visible = false
+scale = Vector2(0.995229, 1.00289)
+transform = Transform2D(0.995229, 0, 0, 1.00289, 0, 0)
