@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Player/Player.tscn" id="1_7otp0"]
 [ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://NPC/NPC.tscn" id="2_qa45g"]
 [ext_resource type="Script" path="res://NPC/Seedboy.cs" id="3_karx4"]
-[ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Seedshop/Seedshop.tscn" id="4_ufdni"]
+[ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://GUI/Shops/SeedshopUI.tscn" id="4_ufdni"]
 
 [node name="TestInventoryScene" type="Node2D"]
 

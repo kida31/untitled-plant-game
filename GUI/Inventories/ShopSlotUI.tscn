@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://w84710wgdj5r"]
 
-[ext_resource type="Script" path="res://Inventory/GUI/ShopSlotUI.cs" id="1_hk53u"]
+[ext_resource type="Script" path="res://GUI/Inventories/ShopSlotUI.cs" id="1_hk53u"]
 [ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Sprites/seed.png" id="2_rwsnq"]
 
 [node name="ShopItemStackView" type="PanelContainer" node_paths=PackedStringArray("_nameLabel", "_textureRect", "_amountLabel", "_priceLabel")]
