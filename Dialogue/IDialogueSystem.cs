@@ -20,5 +20,5 @@ public interface IDialogueSystem
 	/// Start the dialogue.
 	/// </summary>
 	/// <param name="dialogue"></param>
-	void StartDialog(DialogueResourceObject dialogue);
+	void StartDialog(string dialogue);
 }

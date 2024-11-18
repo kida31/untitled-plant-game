@@ -47,7 +47,7 @@ public partial class PlantDatabase : Node, IDatabase<PlantData>
 
 	public PlantData[] GetAllResources()
 	{
-		// Check all directories in the Plants directory
+		// Check all directories in the Plants directory.
 		// Directory names are the names of the plants
 		// Load the PlantData from the .tres file in each directory
 		var subDirectories = DirAccess.GetDirectoriesAt(_dirPath);

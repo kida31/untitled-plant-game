@@ -15,7 +15,7 @@ public partial class TestDialogue : Node2D
 		GD.Print($"Current game state: {GameStateMachine.Instance.CurrentState}");
 		GD.Print("Trigger dialogue.");
 		
-		DialogueSystem.Instance.StartDialog(_exampleDialogue);
+		DialogueSystem.Instance.StartDialog(_exampleDialogue._dialogueId);
 		
 		GD.Print($"Current game state: {GameStateMachine.Instance.CurrentState}");
 	}

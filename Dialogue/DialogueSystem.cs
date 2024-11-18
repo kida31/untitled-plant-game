@@ -4,6 +4,7 @@ using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameState;
+using untitledplantgame.ResourceData;
 
 namespace untitledplantgame.Dialogue;
 
@@ -17,7 +18,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	}
 
 	public static DialogueSystem Instance { get; private set; }
-
 	public event Action<DialogueResourceObject> OnDialogueStart;
 	public event Action<DialogueResourceObject> OnDialogueEnd;
 
@@ -53,8 +53,10 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		}
 	}
 
-	public void StartDialog(DialogueResourceObject dialogue)
+	public void StartDialog(string dialogueId)
 	{
+		var dialogue = DialogueDatabase.Instance.GetResourceByName(dialogueId);
+		
 		if (dialogue == null)
 		{
 			_logger.Error("Dialogue is null.");
@@ -78,10 +80,10 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	private void EndDialogue()
 	{
 		_currentDialogue = null;
-		OnDialogueEnd?.Invoke(_currentDialogue);
 		GameStateMachine.Instance.ChangeState(GameState.FreeRoam);
 		_state = DialogueState.End;
 		_dialogueCanvas.ClearDialogue();
+		OnDialogueEnd?.Invoke(_currentDialogue);
 	}
 
 	private void SetAndResetDialogue(DialogueResourceObject dialogue)

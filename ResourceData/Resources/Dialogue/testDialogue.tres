@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=12 format=3 uid="uid://cafacdxwiej7c"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=12 format=3 uid="uid://dim7viemwd80s"]
 
 [ext_resource type="Script" path="res://Dialogue/DialogueLine.cs" id="1_lnhut"]
-[ext_resource type="Resource" uid="uid://dv8bjijerqcjr" path="res://ResourceData/Resources/Dialogue/testDialogue_yes.tres" id="2_rqr2m"]
+[ext_resource type="Resource" uid="uid://dopseyyrpdbu8" path="res://ResourceData/Resources/Dialogue/testDialogue_yes.tres" id="2_rqr2m"]
 [ext_resource type="Script" path="res://Dialogue/DialogueResourceObject.cs" id="2_xo56h"]
 [ext_resource type="Script" path="res://Dialogue/DialogueResponse.cs" id="3_lb0nv"]
 
