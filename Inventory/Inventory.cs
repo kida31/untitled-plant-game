@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace untitledplantgame.Inventory;
@@ -186,6 +187,29 @@ public class Inventory : IInventory
 				_items[i] = leftover.ContainsKey(i) ? leftover[i] : null;
 			}
 		}
+	}
+
+	public ItemStack AddItemToSlot(int slotIdx, ItemStack item)
+	{
+		var targetStack = GetItem(slotIdx);
+		if (!item.HasSameIdAndProps(targetStack))
+		{
+			return item;
+		}
+
+		var leftover = (ItemStack) item.Clone(); // TODO: Change inventory to handle IItemStack
+		var spaceLeft = targetStack.MaxStackSize - targetStack.Amount;
+
+		// If can transfer all
+		if (spaceLeft > leftover.Amount)
+		{
+			targetStack.Amount += leftover.Amount;
+			return null;
+		}
+
+		leftover.Amount -= spaceLeft;
+		targetStack.Amount += spaceLeft;
+		return leftover;
 	}
 
 	public IEnumerator<ItemStack> GetEnumerator()

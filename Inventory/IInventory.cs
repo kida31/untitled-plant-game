@@ -7,6 +7,7 @@ namespace untitledplantgame.Inventory;
 
 /// <summary>
 ///     https://github.com/Bukkit/Bukkit/blob/master/src/main/java/org/bukkit/inventory/Inventory.java
+/// Methods that allow manipulating the inventory without directly manipulating ItemStack objects
 /// </summary>
 public interface IInventory : IEnumerable<ItemStack>
 {
@@ -256,4 +257,17 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	/// <param name="target"></param>
 	void QuickStack(IInventory target);
+
+	void TransferTo(ItemStack item, IInventory destination)
+	{
+		if (!Contains(item))
+		{
+			throw new InvalidOperationException("Should not try to transfer items that are larger than the available quantity");
+		}
+
+		RemoveItem(item);
+		destination.AddItem(item);
+	}
+
+	ItemStack AddItemToSlot(int slotIdx, ItemStack item);
 }
