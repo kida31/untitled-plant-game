@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using untitledplantgame.Common;
-using untitledplantgame.Inventory;
+using untitledplantgame.Items;
 
 namespace untitledplantgame.VendingMachine;
 
@@ -18,13 +18,13 @@ public class VendingMachine
 	private const float SALES_PERCENT_PER_INTERVAL = 0.1f;
 
 	// Properties
-	public Inventory.Inventory Inventory => _inventory;
+	public Items.Inventory Inventory => _inventory;
 	public float PriceMultiplier => _priceMultiplier;
 	public float FaithMultiplier => _faithMultiplier;
 	public int Gold => _gold;
 
 	// Private
-	private readonly Inventory.Inventory _inventory = new(12, "Vending Machine");
+	private readonly Items.Inventory _inventory = new(12, "Vending Machine");
 	private int _gold = 0;
 	private float _priceMultiplier = 1.0f;
 	private float _faithMultiplier = 1.0f;
@@ -81,7 +81,7 @@ public class VendingMachine
 			}
 
 			var quantity = stack.Amount;
-			Debug.Assert(quantity > 0); // Empty item stacks should not be in container
+			Debug.Assert(quantity > 0, "Assume no empty stacks in container"); // Empty item stacks should not be in container
 
 			// Do not sell more than supply
 			var itemSellCount = Math.Min(totalSellCount, quantity);

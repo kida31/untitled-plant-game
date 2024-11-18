@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
@@ -12,6 +13,10 @@ public partial class InteractablesManager : Node
 
 	private List<IInteractable> _interactablesInReach = new();
 	private IInteractable _nearestInteractable;
+
+	public override void _Ready()
+	{
+	}
 
 	// In Player
 	public void ScanForInteractables()
@@ -76,6 +81,8 @@ public partial class InteractablesManager : Node
 
 	private void PerformInteraction()
 	{
+		new Logger("InteractableManager").Debug(Name + " is interacting with " + _nearestInteractable + ".");
+		throw new Exception("I DONT WANT THIS");
 		_nearestInteractable?.Interact();
 	}
 }

@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://w84710wgdj5r"]
 
-[ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Sprites/seed.png" id="1_6iyc4"]
-[ext_resource type="Script" path="res://Seedshop/ShopSlot.cs" id="1_f3gqh"]
+[ext_resource type="Script" path="res://Items/GUI/ShopSlotUI.cs" id="1_hk53u"]
+[ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Sprites/seed.png" id="2_rwsnq"]
 
-[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("_nameLabel", "_textureRect", "_amountLabel", "_priceLabel")]
+[node name="ShopItemStackView" type="PanelContainer" node_paths=PackedStringArray("_nameLabel", "_textureRect", "_amountLabel", "_priceLabel")]
 offset_right = 103.0
 offset_bottom = 157.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-script = ExtResource("1_f3gqh")
+script = ExtResource("1_hk53u")
 _nameLabel = NodePath("MarginContainer/VBoxContainer/Name")
 _textureRect = NodePath("MarginContainer/VBoxContainer/PanelContainer/TextureRect")
 _amountLabel = NodePath("MarginContainer/VBoxContainer/PanelContainer/Amount")
@@ -26,11 +26,12 @@ layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
 custom_minimum_size = Vector2(87, 87)
 layout_mode = 2
-texture = ExtResource("1_6iyc4")
+texture = ExtResource("2_rwsnq")
 expand_mode = 3
 stretch_mode = 4
 

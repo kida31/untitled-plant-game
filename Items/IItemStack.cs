@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace untitledplantgame.Inventory;
+namespace untitledplantgame.Items;
 
 public interface IItemStack
 {

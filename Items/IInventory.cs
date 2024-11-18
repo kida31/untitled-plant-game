@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace untitledplantgame.Inventory;
+namespace untitledplantgame.Items;
 
 // TODO: Replace javadoc with c# xml
 

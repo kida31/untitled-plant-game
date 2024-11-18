@@ -85,6 +85,7 @@ public partial class InteractionManager : Node2D
 				label.Hide();
 
 				activeAreas[0].Interact();
+				_logger.Debug(Name + ": Interacting with " + activeAreas[0]);
 
 				canInteract = true;
 			}

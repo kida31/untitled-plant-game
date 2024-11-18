@@ -1,100 +1,98 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd54v5orqpb6t"]
+[gd_scene load_steps=4 format=3 uid="uid://bd54v5orqpb6t"]
 
-[ext_resource type="Script" path="res://Seedshop/Seedshop.cs" id="1_frgxh"]
-[ext_resource type="PackedScene" uid="uid://w84710wgdj5r" path="res://Seedshop/ShopSlot.tscn" id="1_hct0p"]
+[ext_resource type="Script" path="res://Seedshop/SeedShopUI.cs" id="1_e6kxg"]
+[ext_resource type="PackedScene" uid="uid://w84710wgdj5r" path="res://Items/GUI/ShopSlotUI.tscn" id="1_hct0p"]
+[ext_resource type="PackedScene" uid="uid://b4rq57akghs3p" path="res://Items/GUI/ItemTooltip.tscn" id="3_3i3nm"]
 
-[node name="SeedshopRevised" type="CanvasLayer" node_paths=PackedStringArray("closeButton")]
+[node name="SeedShopUI" type="Panel" node_paths=PackedStringArray("_slotContainer", "_closeButton", "tooltip")]
+offset_right = 452.0
+offset_bottom = 652.0
 scale = Vector2(0.8, 0.8)
-transform = Transform2D(0.8, 0, 0, 0.8, 0, 0)
-script = ExtResource("1_frgxh")
-closeButton = NodePath("CloseButton")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 502.0
-offset_bottom = 702.0
-color = Color(0.39, 0.39, 0.39, 1)
-
-[node name="GridContainer" type="GridContainer" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -226.0
-offset_top = -326.0
-offset_right = 226.0
-offset_bottom = 326.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 4
-
-[node name="Panel1" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-layout_mode = 2
-
-[node name="Panel2" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel3" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel4" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel5" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel6" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel7" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel8" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel9" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel10" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel11" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel12" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel13" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel14" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel15" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
-
-[node name="Panel16" parent="ColorRect/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
-layout_mode = 2
+script = ExtResource("1_e6kxg")
+_slotContainer = NodePath("MarginContainer/GridContainer")
+_closeButton = NodePath("CloseButton")
+tooltip = NodePath("ItemTooltip")
 
 [node name="CloseButton" type="Button" parent="."]
-offset_left = 548.0
-offset_top = 18.0
-offset_right = 600.0
-offset_bottom = 70.0
+layout_mode = 1
+offset_left = 456.25
+offset_top = 2.5
+offset_right = 506.25
+offset_bottom = 57.5
 text = "Close"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 452.0
+offset_bottom = 652.0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="Panel1" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+layout_mode = 2
+
+[node name="Panel2" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel3" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel4" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel5" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel6" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel7" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel8" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel9" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel10" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel11" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel12" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel13" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel14" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel15" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="Panel16" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+
+[node name="ItemTooltip" parent="." instance=ExtResource("3_3i3nm")]
+visible = false
+layout_mode = 0

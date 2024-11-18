@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using untitledplantgame.Items;
 
-namespace untitledplantgame.Inventory;
+namespace untitledplantgame.Items;
 
-public class CategoryInventory : Inventory
+public class CategoryInventory : Items.Inventory
 {
 	private readonly ItemCategory _category;
 

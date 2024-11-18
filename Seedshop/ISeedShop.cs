@@ -1,10 +1,10 @@
-﻿using untitledplantgame.Inventory;
+﻿using untitledplantgame.Items;
 
 namespace untitledplantgame.Seedshop;
 
-public interface ISeedshop
+public interface ISeedShop
 {
-	public ItemStack[] SetShopContent();
+	public void SetShopContent(ItemStack[] items);
 	
 	public void GenerateRandomShopStock();
 	public ItemStack[] CurrentStock { get; }

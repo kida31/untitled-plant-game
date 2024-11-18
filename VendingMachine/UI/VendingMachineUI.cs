@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using untitledplantgame.Inventory;
+using untitledplantgame.Items;
 
 namespace untitledplantgame.VendingMachine;
 

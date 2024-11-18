@@ -1,4 +1,5 @@
 ﻿using Godot;
+using untitledplantgame.Items;
 
 namespace untitledplantgame.Inventory.GUI;
 
@@ -20,7 +21,7 @@ public partial class ItemTooltip : Control
 
 	private void UpdateContent()
 	{
-		_nameLabel.Text = _itemStack.Name;
-		_descriptionLabel.Text = _itemStack.Description;
+		_nameLabel.Text = _itemStack?.Name ?? "ITEMNAME";
+		_descriptionLabel.Text = _itemStack?.Description ?? "DESCRIPTION";
 	}
 }

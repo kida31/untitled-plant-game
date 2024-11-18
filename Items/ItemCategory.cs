@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace untitledplantgame.Inventory;
+namespace untitledplantgame.Items;
 
 /// <summary>
 /// Items can belong to one of these ItemCategory-s

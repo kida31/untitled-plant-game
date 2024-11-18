@@ -1,17 +1,15 @@
 using Godot;
+using untitledplantgame.Seedshop;
 
 public partial class Seedboy : AbstractNPC
 {
-	private CanvasLayer Seedshop;
+	private SeedShopShop _shop = new();
 
 	public override void Interact()
 	{
-		open_shop();
-	}
-
-	private void open_shop()
-	{
-		EventBus.Instance.SeedshopOpened();
+		GD.Print("Seedboy interact" + this.ToString());
+		_shop.GenerateRandomShopStock();
+		EventBus.Instance.SeedShopOpened(_shop);
 	}
 
 	protected override void OnBodyExited(Node body)
