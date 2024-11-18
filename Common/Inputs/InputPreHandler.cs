@@ -61,7 +61,7 @@ public partial class InputPreHandler : Node
 		
 		if (e_ is InputEventKey e && e.Keycode == Key.F12 && e.IsPressed())
 		{
-			GameStateMachine.Instance.ChangeState(GameStateMachine.Instance.CurrentState == GameState.FreeRoam
+			GameStateMachine.Instance.SetState(GameStateMachine.Instance.CurrentState == GameState.FreeRoam
 				? GameState.Book
 				: GameState.FreeRoam);
 			_logger.Debug($"Toggle gamestate to {GameStateMachine.Instance.CurrentState}");

@@ -77,7 +77,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			return;
 		}
 
-		GameStateMachine.Instance.ChangeState(GameState.Dialogue);
+		GameStateMachine.Instance.SetState(GameState.Dialogue);
 		OnDialogueStart?.Invoke(dialogue);
 
 		SetAndResetDialogue(dialogue);
@@ -88,7 +88,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	private void EndDialogue()
 	{
 		_currentDialogue = null;
-		GameStateMachine.Instance.ChangeState(GameState.FreeRoam);
+		GameStateMachine.Instance.SetState(GameState.FreeRoam);
 		_state = DialogueState.End;
 		_dialogueCanvas.ClearDialogue();
 		OnDialogueEnd?.Invoke(_currentDialogue);

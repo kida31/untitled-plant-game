@@ -22,7 +22,7 @@ public partial class GameStateMachine : Node
 	/// Event that is triggered when the game state changes.
 	/// The first argument is the previous state, the second argument is the new state.
 	/// </summary>
-	public event Action<GameStates.GameState, GameStates.GameState> StateChanged;
+	public event Action<GameState, GameState> StateChanged;
 
 	public static GameStateMachine Instance
 	{
@@ -40,12 +40,13 @@ public partial class GameStateMachine : Node
 
 	private static GameStateMachine _instance;
 
-	public GameStates.GameState CurrentState => _currentState;
-	public GameStates.GameState PreviousState => _previousState;
+	public GameState CurrentState => _currentState;
+	public GameState PreviousState => _previousState;
 
-	private GameStates.GameState _currentState = GameStates.GameState.FreeRoam;
-	private GameStates.GameState _previousState = null;
+	private GameState _currentState = GameState.FreeRoam;
+	private GameState _previousState;
 	private Logger _logger;
+
 
 	public override void _Ready()
 	{
@@ -61,13 +62,23 @@ public partial class GameStateMachine : Node
 		}
 	}
 
-	public void ChangeState(GameStates.GameState newState)
+	/// <summary>
+	/// Changes the game state.
+	/// </summary>
+	/// <param name="newState"></param>
+	public void SetState(GameState newState)
 	{
 		_logger.Info($"Change game state {_currentState} -> {newState}");
 		_previousState = _currentState;
 		_currentState = newState;
 		StateChanged?.Invoke(_previousState, _currentState);
 	}
+
+	/// <summary>
+	/// Changes the game state.
+	/// </summary>
+	/// <param name="newState"></param>
+	public void ChangeState(GameState newState) => SetState(newState);
 
 	public void RevertState()
 	{
