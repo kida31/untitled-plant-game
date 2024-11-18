@@ -10,7 +10,7 @@ public partial class Seedshop : CanvasLayer
 	private Label tooltip;
 	//TODO remove Dictionary from Seedshop and use a resource file or something else instead
 	//TODO implement parser for resource file
-	private Dictionary<string, Dictionary<string, int>> seedData = new Dictionary<string, Dictionary<string, int>>()
+	private Dictionary<string, Dictionary<string, int>> seedData = new()
 	{
 		{
 			"Basil",
