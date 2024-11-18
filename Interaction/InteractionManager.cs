@@ -12,7 +12,7 @@ using untitledplantgame.Common.Inputs;
 /// </summary>
 public partial class InteractionManager : Node2D
 {
-	private const string BaseText = "[E] to ";
+	private string BaseText => $"[{UPGActions.GetKey(UPGActions.FreeRoam.Interact).ToString()}] ";
 	private const int BaseTextYTransform = 50;
 
 	[Export]

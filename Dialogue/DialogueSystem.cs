@@ -49,7 +49,8 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_skipCooldownTimer.Autostart = false;
 		_skipCooldownTimer.OneShot = true;
 		_skipCooldownTimer.Timeout += () => _Smashable = true;
-		_dialogueCanvas = GetNode<DialogueCanvas>("/root/TestDialogue/DialogueScene/DialogueCanvas");
+		// TODO: This does not work, unless in test scene
+		_dialogueCanvas = GetNodeOrNull<DialogueCanvas>("/root/TestDialogue/DialogueScene/DialogueCanvas");
 		Instance = this;
 	}
 

@@ -36,6 +36,7 @@ WeatherCycle="*res://Cycle/Weather/WeatherCycle.cs"
 PlantDatabase="*res://ResourceData/PlantDatabase.cs"
 DialogueSystem="*res://Dialogue/DialogueSystem.cs"
 DialogueDatabase="*res://ResourceData/DialogueDatabase.cs"
+CollisionManager="*res://Player/CollisionManager.cs"
 
 [display]
 

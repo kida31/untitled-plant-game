@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using Godot;
 
+namespace untitledplantgame.Player;
+
+[Obsolete("Handle collisions directly in NPC or other")]
 public partial class CollisionManager : Node
 {
 	private Dictionary<string, Action> _npcDialogueActions;
