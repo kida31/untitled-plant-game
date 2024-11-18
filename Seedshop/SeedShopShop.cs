@@ -2,19 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using untitledplantgame.Common;
-using untitledplantgame.Items;
+using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Seedshop;
 
 public class SeedShopShop: ISeedShop
 {
 	public event Action<List<ItemStack>> ShopStockChanged;
-	private Items.Inventory _shopInventory;
+	private Inventory.Inventory _shopInventory;
 	private Logger _logger = new Logger("SeedShopShop");
 	
 	public SeedShopShop()
 	{
-		_shopInventory = new Items.Inventory(15, "Seedshop");
+		_shopInventory = new Inventory.Inventory(15, "Seedshop");
 	}
 
 	public void SetShopContent(ItemStack[] items)

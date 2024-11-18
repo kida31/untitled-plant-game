@@ -1,7 +1,7 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Items;
+using untitledplantgame.Inventory;
 using untitledplantgame.VendingMachine;
 
 public partial class ShopSlotUI : Control, IItemSlotUI

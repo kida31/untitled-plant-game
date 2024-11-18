@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4rq57akghs3p"]
 
-[ext_resource type="Script" path="res://Items/GUI/ItemTooltip.cs" id="1_6ekhl"]
+[ext_resource type="Script" path="res://Inventory/GUI/ItemTooltip.cs" id="1_6ekhl"]
 
 [node name="ItemTooltip" type="PanelContainer" node_paths=PackedStringArray("_nameLabel", "_descriptionLabel")]
 offset_right = 186.0

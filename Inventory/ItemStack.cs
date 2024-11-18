@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Godot;
 using untitledplantgame.Common;
 
-namespace untitledplantgame.Items;
+namespace untitledplantgame.Inventory;
 
 /// <summary>
 ///     https://github.com/Bukkit/Bukkit/blob/master/src/main/java/org/bukkit/inventory/ItemStack.java

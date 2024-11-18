@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using untitledplantgame.Inventory;
-using untitledplantgame.Items;
 
 namespace untitledplantgame.VendingMachine;
 

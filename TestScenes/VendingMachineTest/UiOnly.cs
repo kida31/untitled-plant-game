@@ -1,5 +1,5 @@
 using Godot;
-using untitledplantgame.Items;
+using untitledplantgame.Inventory;
 using untitledplantgame.VendingMachine;
 using ItemSlotUI = untitledplantgame.VendingMachine.ItemSlotUI;
 

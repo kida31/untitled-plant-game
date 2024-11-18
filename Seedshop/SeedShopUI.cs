@@ -5,7 +5,6 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.GUI;
-using untitledplantgame.Items;
 using untitledplantgame.Seedshop;
 
 public partial class SeedShopUI : Control

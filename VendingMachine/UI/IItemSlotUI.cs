@@ -1,5 +1,5 @@
 ﻿using System;
-using untitledplantgame.Items;
+using untitledplantgame.Inventory;
 
 namespace untitledplantgame.VendingMachine;
 

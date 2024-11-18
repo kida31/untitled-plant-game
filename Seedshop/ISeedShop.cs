@@ -1,4 +1,4 @@
-﻿using untitledplantgame.Items;
+﻿using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Seedshop;
 
