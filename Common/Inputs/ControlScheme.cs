@@ -24,8 +24,8 @@ abstract class ControlScheme
 		
 		if (!_keys.ContainsKey(actionName))
 		{
-			var inputEvent = (InputEventKey) InputMap.ActionGetEvents(actionName).First(e => e is InputEventKey);
-			_keys[actionName] = inputEvent.Keycode;
+			var inputEvent = InputMap.ActionGetEvents(actionName).First(e => e is InputEventKey) as InputEventKey;
+			_keys[actionName] = inputEvent!.PhysicalKeycode;
 		}
 		
 		return _keys[actionName];

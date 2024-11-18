@@ -99,6 +99,6 @@ public partial class InputRemapper : Node
 	public static string GetBaseAction(string actionName)
 	{
 		var parts = actionName.Split('_');
-		return $"{BaseActionPrefix}{parts[1]}";
+		return $"{BaseActionPrefix}{parts[^1]}"; // prefix + last part
 	}
 }
