@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Common.GameState;
+using untitledplantgame.Common.GameStates;
 using untitledplantgame.ResourceData;
 
 namespace untitledplantgame.Dialogue;

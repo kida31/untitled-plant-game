@@ -6,7 +6,7 @@ using untitledplantgame.VendingMachine;
 public partial class VendingMachineNPC : Area2D, IInteractable
 {
 	[Export] private PackedScene _vendingMachineScene;
-	private untitledplantgame.VendingMachine.VendingMachineUI _vendingMachineUi;
+	private VendingMachineUI _vendingMachineUi;
 	
 	private VendingMachine _vendingMachine;
 	
@@ -30,7 +30,7 @@ public partial class VendingMachineNPC : Area2D, IInteractable
 		if (_vendingMachineUi is null)
 		{
 			_logger.Info("Creating new vending machine ui");
-			_vendingMachineUi = _vendingMachineScene.Instantiate<untitledplantgame.VendingMachine.VendingMachineUI>();
+			_vendingMachineUi = _vendingMachineScene.Instantiate<VendingMachineUI>();
 			_vendingMachineUi.SetVendingMachine(_vendingMachine);
 		}
 		
@@ -43,4 +43,6 @@ public partial class VendingMachineNPC : Area2D, IInteractable
 	{
 		return GlobalPosition;
 	}
+
+	public string ActionName { get; } = "Vending Machine";
 }

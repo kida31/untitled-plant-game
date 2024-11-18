@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common.GameStates;
+using untitledplantgame.Common.Inputs;
 using untitledplantgame.Player;
 
 public partial class InteractablesManager : Node
@@ -20,7 +21,7 @@ public partial class InteractablesManager : Node
 		}
 
 		CheckForInteractables();
-		if (Input.IsKeyPressed(Key.E)) // Bind this to your interact key
+		if (Input.IsActionJustPressed(UPGActions.FreeRoam.Interact)) // Bind this to your interact key
 		{
 			PerformInteraction();
 		}
