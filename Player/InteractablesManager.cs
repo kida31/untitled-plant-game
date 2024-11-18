@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Godot;
-using untitledplantgame.Common;
-using untitledplantgame.Common.GameState;
+using untitledplantgame.Common.GameStates;
 using untitledplantgame.Player;
 
 public partial class InteractablesManager : Node

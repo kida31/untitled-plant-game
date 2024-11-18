@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace untitledplantgame.Common.GameState;
+namespace untitledplantgame.Common.GameStates;
 
 /// <summary>
 /// Represents the current state of the game.
@@ -22,7 +22,7 @@ public partial class GameStateMachine : Node
 	/// Event that is triggered when the game state changes.
 	/// The first argument is the previous state, the second argument is the new state.
 	/// </summary>
-	public event Action<GameState, GameState> StateChanged;
+	public event Action<GameStates.GameState, GameStates.GameState> StateChanged;
 
 	public static GameStateMachine Instance
 	{
@@ -40,11 +40,11 @@ public partial class GameStateMachine : Node
 
 	private static GameStateMachine _instance;
 
-	public GameState CurrentState => _currentState;
-	public GameState PreviousState => _previousState;
+	public GameStates.GameState CurrentState => _currentState;
+	public GameStates.GameState PreviousState => _previousState;
 
-	private GameState _currentState = GameState.FreeRoam;
-	private GameState _previousState = null;
+	private GameStates.GameState _currentState = GameStates.GameState.FreeRoam;
+	private GameStates.GameState _previousState = null;
 	private Logger _logger;
 
 	public override void _Ready()
@@ -61,7 +61,7 @@ public partial class GameStateMachine : Node
 		}
 	}
 
-	public void ChangeState(GameState newState)
+	public void ChangeState(GameStates.GameState newState)
 	{
 		_logger.Info($"Change game state {_currentState} -> {newState}");
 		_previousState = _currentState;

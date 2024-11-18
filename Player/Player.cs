@@ -1,14 +1,15 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Common.GameState;
+using static untitledplantgame.Common.Inputs.UPGActions;
 
 namespace untitledplantgame.Player;
 
 public partial class Player : CharacterBody2D
 {
-	[Export]
-	private InteractablesManager _interactablesManager;
+	[Export] private InteractablesManager _interactablesManager;
 
 	private readonly Logger _logger = new Logger("Player");
 	private Vector2 _cardinalDirection = Vector2.Down;
@@ -16,6 +17,7 @@ public partial class Player : CharacterBody2D
 
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
+	private Dictionary<string, bool> _directionalIsPressed = new();
 
 	public override void _Ready()
 	{
@@ -30,20 +32,47 @@ public partial class Player : CharacterBody2D
 		_interactablesManager.ScanForInteractables();
 	}
 
-	public override void _Input(InputEvent @event)
+	public override void _UnhandledInput(InputEvent @event)
 	{
 		// ignore input if not in correct state
 		// GameStateMachine.CurrentState
 		// GameStateMachine.Instance.CurrentState
-		if (GameStateMachine.Instance.CurrentState != GameState.FreeRoam)
-		{
-			Direction = Vector2.Zero; // default value, movement is an exception
-			return;
-		}
+		// if (GameStateMachine.Instance.CurrentState != GameState.FreeRoam)
+		// {
+		// 	Direction = Vector2.Zero; // default value, movement is an exception
+		// 	return;
+		// }
 
 		// Handle input @event or read from Input
-		Direction.X = Input.GetActionStrength("right") - Input.GetActionStrength("left");
-		Direction.Y = Input.GetActionStrength("down") - Input.GetActionStrength("up");
+
+		foreach (var s in new[] {FreeRoam.Right, FreeRoam.Left, FreeRoam.Up, FreeRoam.Down})
+		{
+			if (@event.IsAction(s))
+			{
+				_directionalIsPressed[s] = @event.IsActionPressed(s, true);
+				if (@event.IsActionPressed(s, true))
+				{
+					GD.Print("PRESSED");
+				}
+				if (@event.IsActionReleased(s))
+				{
+					GD.Print("RELEASED");
+				}
+			}
+		}
+		
+		float GetStrength(string action)
+		{
+			return Input.GetActionStrength(action) * (_directionalIsPressed.GetValueOrDefault(action, true) ? 1 : 0);
+		}
+		
+		Direction.X = GetStrength(FreeRoam.Right) - GetStrength(FreeRoam.Left);
+		Direction.Y = GetStrength(FreeRoam.Down) - GetStrength(FreeRoam.Up);
+
+		if (@event.IsActionPressed(FreeRoam.Interact, true))
+		{
+			_logger.Error("PRESSING INTERACT");
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
