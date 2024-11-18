@@ -10,9 +10,12 @@ public partial class DialogueCanvas : CanvasLayer
 	private CanvasLayer _dialogueCanvas;
 	private AnimatedSprite2D _animatedSprite2D;
 	private BoxContainer _responseContainer;
+	private DialogueAnimation _dialogueAnimation;
 
 	private DialogueSystem _dialogueSystem;
 	private int _currentDialogueIndex;
+
+	public bool AnimationIsPlaying => _dialogueAnimation.AnimationIsPlaying;
 
 	public override void _Ready()
 	{
@@ -22,6 +25,9 @@ public partial class DialogueCanvas : CanvasLayer
 		_dialogueTextLabel = GetNode<RichTextLabel>("PanelContainer/MarginContainer/DialogueText");
 		_responseContainer = GetNode<BoxContainer>("Responses");
 		_dialogueSystem = DialogueSystem.Instance;
+		
+		_dialogueAnimation = new DialogueAnimation();
+		AddChild(_dialogueAnimation);
 	}
 
 	//Displays dialogue on the screen
@@ -34,6 +40,7 @@ public partial class DialogueCanvas : CanvasLayer
 
 		_nameLabel.Text = line.speakerName;
 		_dialogueTextLabel.Text = line.dialogueText;
+		_dialogueAnimation.AnimateNextDialogueLine(_dialogueTextLabel, line);
 		_animatedSprite2D.Play(line.DialogueExpression.ToString());
 		//_dialogueAnimation.SetLine(text);
 	}
@@ -72,5 +79,10 @@ public partial class DialogueCanvas : CanvasLayer
 		_dialogueTextLabel.Text = "";
 		_animatedSprite2D.Stop();
 		_dialogueCanvas.Visible = false;
+	}
+
+	public void ShowAllDialogue()
+	{
+		_dialogueAnimation.CurrentLetterIndex = -1;
 	}
 }

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
@@ -8,7 +9,7 @@ namespace untitledplantgame.ResourceData;
 
 public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 {
-	private const string DialogueResourcePath = "res://ResourceData/Resources/Dialogue";
+	private const string DialogueResourcePath = "res://ResourceData/Resources/Dialogue/";
 	public static DialogueDatabase Instance { get; private set; }
 
 	private Logger _logger;
@@ -51,7 +52,7 @@ public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 	/// <returns></returns>
 	public DialogueResourceObject[] GetAllResources()
 	{
-		var subDirectories = DirAccess.GetDirectoriesAt(DirPath);
-		return subDirectories.Select(GetResourceByName).ToArray();
+		var subDirectories = DirAccess.GetFilesAt(DirPath);
+		return subDirectories.Select(s => GD.Load<DialogueResourceObject>(Path.Join(DirPath,s))).ToArray();
 	}
 }

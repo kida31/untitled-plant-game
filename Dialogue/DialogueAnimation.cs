@@ -5,60 +5,47 @@ namespace untitledplantgame.Dialogue;
 
 public partial class DialogueAnimation : Node
 {
+	private const float CharacterPerSecond = 40; // range 25 - 40 
 	public bool IsPlaying { get; private set; }
 
 	[Export] private Timer _timer;
 	private Logger _logger;
-	private char[] _text;
-	private int _currentLetterIndex;
+	public int CurrentLetterIndex;
+	public bool AnimationIsPlaying => CurrentLetterIndex != -1;
 
 	public DialogueAnimation()
 	{
 		_logger = new Logger(this);
 		AddChild(_timer = new Timer());
 		_timer.Timeout += PlayAnimation;
+		_timer.OneShot = true;
 	}
 
 	private void PlayAnimation()
 	{
-		GD.Print("timeout");
+		/*
 		if (_currentLetterIndex < _text.Length)
 		{
 			GD.PrintRaw(_text[_currentLetterIndex]);
 			_currentLetterIndex++;
 		}
+		*/
 	}
 
-	void Reset()
+	public async void AnimateNextDialogueLine(RichTextLabel dialogueTextLabel, DialogueLine line)
 	{
-		StopAnimation();
-		_currentLetterIndex = 0;
-	}
+		CurrentLetterIndex = 1;
 
-	public void SetLine(string line)
-	{
-		_text = line.ToCharArray();
-		Reset();
-		_timer.Start();
-	}
-
-	public void SkipAnimation()
-	{
-		_logger.Info("Skipping animation.");
-		//displays the dialogue all at once
-		if (_text == null)
+		while (CurrentLetterIndex != -1 && CurrentLetterIndex <= line.dialogueText.Length)
 		{
-			_logger.Error("Text is null.");
-			return;
+			dialogueTextLabel.VisibleCharacters = CurrentLetterIndex;
+			CurrentLetterIndex++;
+			_timer.Start(1/CharacterPerSecond);
+			await ToSignal(_timer, Timer.SignalName.Timeout);
 		}
 
-		GD.PrintRaw(_text.ToString().Substring(_currentLetterIndex, _text.Length));
-		Reset();
-	}
-
-	void StopAnimation()
-	{
-		_timer.Stop();
-		IsPlaying = false;
+		CurrentLetterIndex = -1;
+		
+		dialogueTextLabel.VisibleCharacters = -1;
 	}
 }

@@ -25,8 +25,13 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	private IEnumerator<DialogueLine> _enumerator;
 	private DialogueState _state;
 	private Logger _logger;
-	private DialogueAnimation _dialogueAnimation;
 	private DialogueCanvas _dialogueCanvas;
+	private Timer _skipCooldownTimer;
+	private int _waitForSeconds = 1;
+	private bool _Smashable = true;
+
+	public event Action SkipAnimation;
+
 
 	public override void _Ready()
 	{
@@ -39,9 +44,12 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			return;
 		}
 
-		_dialogueAnimation = new DialogueAnimation();
+		_skipCooldownTimer = new Timer();
+		AddChild(_skipCooldownTimer);
+		_skipCooldownTimer.Autostart = false;
+		_skipCooldownTimer.OneShot = true;
+		_skipCooldownTimer.Timeout += () => _Smashable = true;
 		_dialogueCanvas = GetNode<DialogueCanvas>("/root/TestDialogue/DialogueScene/DialogueCanvas");
-		AddChild(_dialogueAnimation);
 		Instance = this;
 	}
 
@@ -56,7 +64,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	public void StartDialog(string dialogueId)
 	{
 		var dialogue = DialogueDatabase.Instance.GetResourceByName(dialogueId);
-		
+
 		if (dialogue == null)
 		{
 			_logger.Error("Dialogue is null.");
@@ -99,6 +107,11 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	/// </summary>
 	private void OnPlayerInputConfirm()
 	{
+		if (!_Smashable)
+		{
+			return;
+		}
+
 		if (_currentDialogue == null || _state != DialogueState.Conversing)
 		{
 			return;
@@ -107,12 +120,14 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_logger.Debug("Player input confirm.");
 		_logger.Debug("State: " + _state);
 
-		/*
-		if (_dialogueAnimation.IsPlaying)
+
+		if (_dialogueCanvas.AnimationIsPlaying)
 		{
-			_dialogueAnimation.SkipAnimation();
+			_Smashable = false;
+			_dialogueCanvas.ShowAllDialogue();
+			_skipCooldownTimer.Start(_waitForSeconds);
 			return;
-		}*/
+		}
 
 		if (_enumerator.MoveNext())
 		{
