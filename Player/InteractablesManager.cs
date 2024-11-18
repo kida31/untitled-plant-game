@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
-using untitledplantgame.Common.Inputs;
+using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Player;
 
 public partial class InteractablesManager : Node
@@ -22,7 +22,7 @@ public partial class InteractablesManager : Node
 		}
 
 		CheckForInteractables();
-		if (Input.IsActionJustPressed(UPGActions.FreeRoam.Interact)) // Bind this to your interact key
+		if (Input.IsActionJustPressed(FreeRoam.Interact)) // Bind this to your interact key
 		{
 			PerformInteraction();
 		}

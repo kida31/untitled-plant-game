@@ -9,6 +9,20 @@ namespace untitledplantgame.Common.Inputs;
 /// </summary>
 public partial class InputRemapper : Node
 {
+	/// <summary>
+	/// Returns they Key that is mapped to this action
+	/// </summary>
+	/// <param name="actionName"></param>
+	/// <returns></returns>
+	public static Key GetKey(string actionName) => ControlScheme.GetKey(actionName);
+
+	/// <summary>
+	/// Returns they gamepad button that is mapped to this action
+	/// </summary>
+	/// <param name="actionName"></param>
+	/// <returns></returns>
+	public static JoyButton GetButton(string actionName) => ControlScheme.GetButton(actionName);
+
 	private const string BaseActionPrefix = "base_";
 
 	private string[] _actionNames;

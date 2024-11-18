@@ -21,13 +21,13 @@ internal abstract class ControlScheme
 	{
 		// freeroam_interact => base_interact
 		actionName = InputRemapper.GetBaseAction(actionName);
-		
+
 		if (!_keys.ContainsKey(actionName))
 		{
 			var inputEvent = InputMap.ActionGetEvents(actionName).First(e => e is InputEventKey) as InputEventKey;
 			_keys[actionName] = inputEvent!.PhysicalKeycode;
 		}
-		
+
 		return _keys[actionName];
 	}
 
@@ -42,10 +42,10 @@ internal abstract class ControlScheme
 
 		if (!_buttons.ContainsKey(actionName))
 		{
-			var inputEvent = (InputEventJoypadButton) InputMap.ActionGetEvents(actionName).First(e => e is InputEventJoypadButton);
+			var inputEvent = (InputEventJoypadButton)InputMap.ActionGetEvents(actionName).First(e => e is InputEventJoypadButton);
 			_buttons[actionName] = inputEvent.ButtonIndex;
 		}
-		
+
 		return _buttons[actionName];
 	}
 }

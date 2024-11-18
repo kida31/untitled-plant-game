@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.Inputs;
+using untitledplantgame.Common.Inputs.GameActions;
 
 /// <summary>
 /// This Class manages the interaction with any interactable object in the game.
@@ -12,7 +13,7 @@ using untitledplantgame.Common.Inputs;
 /// </summary>
 public partial class InteractionManager : Node2D
 {
-	private string BaseText => $"[{UPGActions.GetKey(UPGActions.FreeRoam.Interact).ToString()}] ";
+	private string BaseText => $"[{InputRemapper.GetKey(FreeRoam.Interact).ToString()}] ";
 	private const int BaseTextYTransform = 50;
 
 	[Export]
@@ -76,7 +77,7 @@ public partial class InteractionManager : Node2D
 
 	public void PerformInteraction()
 	{
-		if (Input.IsActionJustPressed(UPGActions.FreeRoam.Interact) && canInteract)
+		if (Input.IsActionJustPressed(FreeRoam.Interact) && canInteract)
 		{
 			if (AreaCount > 0)
 			{

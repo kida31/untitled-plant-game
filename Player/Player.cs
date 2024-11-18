@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
-using static untitledplantgame.Common.Inputs.UPGActions;
+using untitledplantgame.Common.Inputs.GameActions;
 
 namespace untitledplantgame.Player;
 

@@ -1,3 +1,5 @@
+namespace untitledplantgame.Common;
+
 // Clipboard
 // Find: ([A-Za-z]+) \| .*
 // Replace: public static BBColor $1 => new("\L$1");
