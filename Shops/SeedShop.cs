@@ -4,9 +4,9 @@ using System.Diagnostics;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
-namespace untitledplantgame.Seedshop;
+namespace untitledplantgame.Shops;
 
-public class SeedShopShop: ISeedShop
+public class SeedShop: IShop
 {
 	public event Action<List<ItemStack>> ShopStockChanged;
 	
@@ -15,7 +15,7 @@ public class SeedShopShop: ISeedShop
 	private Inventory.Inventory _shopInventory;
 	private Logger _logger = new Logger("SeedShopShop");
 
-	public SeedShopShop()
+	public SeedShop()
 	{
 		_shopInventory = new Inventory.Inventory(15, "Seedshop");
 	}

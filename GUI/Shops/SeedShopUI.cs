@@ -5,7 +5,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.GUI;
-using untitledplantgame.Seedshop;
+using untitledplantgame.Shops;
 
 public partial class SeedShopUI : Control
 {
@@ -16,7 +16,7 @@ public partial class SeedShopUI : Control
 	private readonly Logger _logger = new("Seedshop");
 
 	private List<ShopSlotUI> _shopSlots;
-	private SeedShopShop _currentShop;
+	private IShop _currentShop;
 	
 	public override void _Ready()
 	{
@@ -36,7 +36,7 @@ public partial class SeedShopUI : Control
 		});
 	}
 
-	private void OnOpenSeedShop(SeedShopShop shop)
+	private void OnOpenSeedShop(IShop shop)
 	{
 		if (_currentShop != null)
 		{

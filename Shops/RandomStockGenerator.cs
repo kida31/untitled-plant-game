@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using untitledplantgame.Inventory;
 
-namespace untitledplantgame.Seedshop;
+namespace untitledplantgame.Shops;
 
 public class RandomStockGenerator
 {

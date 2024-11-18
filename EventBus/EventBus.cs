@@ -3,7 +3,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.EntityStatsDataContainer;
 using untitledplantgame.Item;
-using untitledplantgame.Seedshop;
+using untitledplantgame.Shops;
 
 /**
  * NOTE:
@@ -54,9 +54,9 @@ public partial class EventBus : Node
 		OnItemPickUp?.Invoke(interactableItem);
 	}
 
-	public event Action<SeedShopShop> OnSeedshopOpened;
+	public event Action<IShop> OnSeedshopOpened;
 
-	public void SeedShopOpened(SeedShopShop shopShop)
+	public void SeedShopOpened(IShop shopShop)
 	{
 		OnSeedshopOpened?.Invoke(shopShop);
 	}
