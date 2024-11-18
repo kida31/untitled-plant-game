@@ -34,7 +34,6 @@ InteractionManager="*res://Interaction/InteractionManager.tscn"
 TimeController="*res://Common/TimeController.cs"
 WeatherCycle="*res://Cycle/Weather/WeatherCycle.cs"
 PlantDatabase="*res://ResourceData/PlantDatabase.cs"
-GameStateMachine="*res://Common/GameState/GameStateMachine.cs"
 DialogueSystem="*res://Dialogue/DialogueSystem.cs"
 DialogueDatabase="*res://ResourceData/DialogueDatabase.cs"
 
