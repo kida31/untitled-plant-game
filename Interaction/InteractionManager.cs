@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.Inputs;
 
 /// <summary>
 /// This Class manages the interaction with any interactable object in the game.
@@ -75,7 +76,7 @@ public partial class InteractionManager : Node2D
 
 	public void PerformInteraction()
 	{
-		if (Input.IsKeyPressed(Key.E) && canInteract)
+		if (Input.IsActionJustPressed(UPGActions.FreeRoam.Interact) && canInteract)
 		{
 			if (AreaCount > 0)
 			{

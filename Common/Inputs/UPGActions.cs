@@ -1,7 +1,28 @@
-﻿namespace untitledplantgame.Common.Inputs;
+﻿using Godot;
 
+namespace untitledplantgame.Common.Inputs;
+
+/// <summary>
+/// Const string collection of all actions in the game
+/// </summary>
 public abstract class UPGActions
 {
+	/// <summary>
+	/// Returns they Key that is mapped to this action
+	/// </summary>
+	/// <param name="actionName"></param>
+	/// <returns></returns>
+	public static Key GetKey(string actionName) => ControlScheme.GetKey(actionName);
+	/// <summary>
+	/// Returns they gamepad button that is mapped to this action
+	/// </summary>
+	/// <param name="actionName"></param>
+	/// <returns></returns>
+	public static JoyButton GetButton(string actionName) => ControlScheme.GetButton(actionName);
+	
+	public const string UIAccept = "ui_accept";
+	public const string UISelect = "ui_select";
+	
 	public abstract class FreeRoam
 	{
 		public const string Left = "freeroam_left";

@@ -95,4 +95,10 @@ public partial class InputRemapper : Node
 		UnbindInputEvents(prevState);
 		BindInputEvents(newState);
 	}
+
+	public static string GetBaseAction(string actionName)
+	{
+		var parts = actionName.Split('_');
+		return $"{BaseActionPrefix}{parts[1]}";
+	}
 }
