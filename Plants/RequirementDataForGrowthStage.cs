@@ -1,12 +1,12 @@
 ﻿using Godot;
 
-namespace untitledplantgame.MagicBoxForData;
+namespace untitledplantgame.Plants;
 
 [GlobalClass]
 public partial class RequirementDataForGrowthStage : Resource
 {
 	[Export]
-	public RequirementData[] GrowthRequirements;
+	public Plants.RequirementData[] GrowthRequirements;
 
 	[Export]
 	public int DaysToGrow;

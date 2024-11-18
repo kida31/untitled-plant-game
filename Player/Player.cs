@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.GameStates;
 using static untitledplantgame.Common.Inputs.UPGActions;
 
 namespace untitledplantgame.Player;
@@ -17,7 +18,6 @@ public partial class Player : CharacterBody2D
 
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
-	private Dictionary<string, bool> _directionalIsPressed = new();
 
 	public override void _Ready()
 	{
@@ -34,13 +34,17 @@ public partial class Player : CharacterBody2D
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
+		if (GameStateMachine.Instance.CurrentState != GameState.FreeRoam)
+		{
+			Direction = Vector2.Zero; // default value, movement is an exception
+		}
+
+		// Handle input @event or read from Input
 		Direction.X = Input.GetActionStrength(FreeRoam.Right) - Input.GetActionStrength(FreeRoam.Left);
 		Direction.Y = Input.GetActionStrength(FreeRoam.Down) - Input.GetActionStrength(FreeRoam.Up);
-
-		if (Input.IsActionPressed(FreeRoam.Interact, true))
-		{
-			_logger.Error("PRESSING INTERACT");
-		}
+		//Velocity = direction * MoveSpeed;
+		_interactablesManager.ScanForInteractables();
+		InteractionManager.Instance.PerformInteraction();
 	}
 
 	public override void _PhysicsProcess(double delta)

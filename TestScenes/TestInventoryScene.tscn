@@ -31,11 +31,13 @@ _npcName = "Brother"
 position = Vector2(201, 238)
 script = ExtResource("6_bxrka")
 _npcName = "REAL"
+ActionName = "interact"
 
 [node name="Moving_NPC2" parent="." instance=ExtResource("4_jturl")]
 position = Vector2(384, 229)
 script = ExtResource("7_r6hd0")
 _npcName = "REMOVE"
+ActionName = "interact"
 
 [node name="GenericItem" parent="." instance=ExtResource("10_asqu1")]
 position = Vector2(160, 102)

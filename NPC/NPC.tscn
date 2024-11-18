@@ -22,5 +22,3 @@ texture = ExtResource("1_hwhva")
 [node name="NPC_Logic" type="Node" parent="." node_paths=PackedStringArray("_npcSelf")]
 script = ExtResource("3_mssbl")
 _npcSelf = NodePath("..")
-
-[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
