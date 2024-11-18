@@ -27,7 +27,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+
 InteractionManager="*res://Interaction/InteractionManager.tscn"
+GameStateMachine="*res://Common/GameState/GameStateMachine.cs"
 EventBus="*res://EventBus/EventBus.cs"
 ResourceManager="*res://ResourceData/ResourceManager.cs"
 TimeController="*res://Common/TimeController.cs"
@@ -92,3 +94,4 @@ interact={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
