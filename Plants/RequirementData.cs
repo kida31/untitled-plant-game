@@ -1,7 +1,6 @@
 using Godot;
-using untitledplantgame.Plants;
 
-namespace untitledplantgame.MagicBoxForData;
+namespace untitledplantgame.Plants;
 
 [GlobalClass]
 public partial class RequirementData : Resource
