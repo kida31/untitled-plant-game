@@ -10,21 +10,22 @@ using static untitledplantgame.Common.Inputs.UPGActions;
 namespace untitledplantgame.Common;
 
 /// <summary>
-/// 
+///
 /// </summary>
 public partial class InputPreHandler : Node
 {
 	private const string BaseActionPrefix = "base_";
-	
+
 	private Logger _logger;
 	private string[] _actionNames;
 
 	public override void _Ready()
 	{
 		_logger = new(this);
-		
+
 		// Save base actions
-		_actionNames = InputMap.GetActions()
+		_actionNames = InputMap
+			.GetActions()
 			.Select(s => s.ToString())
 			.Where(s => s.StartsWith(BaseActionPrefix))
 			.Select(s => s.Substring(BaseActionPrefix.Length))
@@ -41,10 +42,10 @@ public partial class InputPreHandler : Node
 				InputMap.AddAction(action);
 			}
 		}
-		
+
 		// Bind inputs to actions for current context
 		BindInputEvents(GameStateMachine.Instance.CurrentState);
-		
+
 		GameStateMachine.Instance.StateChanged += OnGameStateChanged;
 	}
 
@@ -58,12 +59,12 @@ public partial class InputPreHandler : Node
 				return;
 			}
 		}
-		
+
 		if (e_ is InputEventKey e && e.Keycode == Key.F12 && e.IsPressed())
 		{
-			GameStateMachine.Instance.SetState(GameStateMachine.Instance.CurrentState == GameState.FreeRoam
-				? GameState.Book
-				: GameState.FreeRoam);
+			GameStateMachine.Instance.SetState(
+				GameStateMachine.Instance.CurrentState == GameState.FreeRoam ? GameState.Book : GameState.FreeRoam
+			);
 			_logger.Debug($"Toggle gamestate to {GameStateMachine.Instance.CurrentState}");
 		}
 	}

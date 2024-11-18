@@ -26,7 +26,7 @@ public sealed class GameState
 
 	public static IEnumerable<GameState> GetValues()
 	{
-		return new[] {FreeRoam, Book, Config, Dialogue, Shop};
+		return new[] { FreeRoam, Book, Config, Dialogue, Shop };
 	}
 
 	public override string ToString()

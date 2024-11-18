@@ -10,7 +10,7 @@ public abstract class UPGActions
 		public const string Right = "freeroam_right";
 		public const string Up = "freeroam_up";
 		public const string Down = "freeroam_down";
-		
+
 		public const string North = "freeroam_north";
 		public const string South = "freeroam_south";
 		public const string East = "freeroam_east";

@@ -47,7 +47,6 @@ public partial class GameStateMachine : Node
 	private GameState _previousState;
 	private Logger _logger;
 
-
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
