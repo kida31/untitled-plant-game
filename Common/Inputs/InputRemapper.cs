@@ -1,23 +1,18 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Godot;
 using untitledplantgame.Common.GameStates;
-using static untitledplantgame.Common.Inputs.UPGActions;
 
-namespace untitledplantgame.Common;
+namespace untitledplantgame.Common.Inputs;
 
 /// <summary>
-///
 /// </summary>
 public partial class InputRemapper : Node
 {
 	private const string BaseActionPrefix = "base_";
 
-	private Logger _logger;
 	private string[] _actionNames;
+	private Logger _logger;
 
 	public override void _Ready()
 	{
@@ -61,7 +56,7 @@ public partial class InputRemapper : Node
 			_logger.Debug($"Copy input bindings {originalActionName} -> {actionName}");
 			var inputs = InputMap.ActionGetEvents(originalActionName);
 			Debug.Assert(inputs.Count > 0, "No inputs bound to action.");
-			
+
 			foreach (var e in inputs)
 			{
 				InputMap.ActionAddEvent(actionName, e);
@@ -94,7 +89,7 @@ public partial class InputRemapper : Node
 				Input.ParseInputEvent(actionEvent);
 			}
 		}
-		
+
 		// Not sure if this is necessary or would feel awkward.
 		// TriggerReleaseOnAllActions();
 		UnbindInputEvents(prevState);

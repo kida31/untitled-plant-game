@@ -1,6 +1,4 @@
-﻿using untitledplantgame.Common.GameStates;
-
-namespace untitledplantgame.Common.Inputs;
+﻿namespace untitledplantgame.Common.Inputs;
 
 public abstract class UPGActions
 {
