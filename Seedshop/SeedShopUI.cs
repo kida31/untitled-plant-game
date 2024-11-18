@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.GUI;
 using untitledplantgame.Items;
 using untitledplantgame.Seedshop;
@@ -20,7 +21,7 @@ public partial class SeedShopUI : Control
 	
 	public override void _Ready()
 	{
-		EventBus.Instance.OnSeedshopOpened += ShowSeedShop;
+		EventBus.Instance.OnSeedshopOpened += OnOpenSeedShop;
 		EventBus.Instance.OnSeedshopClosed += HideSeedShop;
 		
 		_closeButton.Pressed += HideSeedShop;
@@ -32,7 +33,34 @@ public partial class SeedShopUI : Control
 			var thisSlot = slot; // TODO: Check if currying is needed
 			slot.MouseEntered += () => PutTooltip(thisSlot);
 			slot.MouseExited += HideTooltip;
+			slot.Pressed += () => OnSlotPressed(thisSlot);
 		});
+	}
+
+	private void OnOpenSeedShop(SeedShopShop shop)
+	{
+		if (_currentShop != null)
+		{
+			_currentShop.ShopStockChanged -= SetShopUIContent;
+		}
+		
+		Assertions.AssertTrue(!Visible, "Shop was not supposed to be visible");
+		_currentShop = shop;
+		SetShopUIContent(shop.CurrentStock.ToList());
+		shop.ShopStockChanged += SetShopUIContent;
+		Show();
+	}
+
+	private void OnSlotPressed(ShopSlotUI thisSlot)
+	{
+		var item = thisSlot.ItemStack?.Clone() as ItemStack;
+		if (item == null)
+		{
+			return;
+		}
+		item.Amount = 1;
+		_logger.Info("Buy item: " + item);
+		_currentShop?.BuyItem(item);
 	}
 
 	private void HideTooltip()
@@ -42,25 +70,21 @@ public partial class SeedShopUI : Control
 
 	private void PutTooltip(ShopSlotUI slot)
 	{
+		if (slot.ItemStack == null)
+		{
+			tooltip.Hide();
+			return;
+		}
+
 		// Set content
 		tooltip.ItemStack = slot.ItemStack;
-
+		
 		// Set position
 		var newPosition = slot.GlobalPosition;
 		newPosition.X = slot.GlobalPosition.X + slot.GetRect().Size.X * 0.5f;
 		tooltip.GlobalPosition = newPosition;
 
 		tooltip.Show();
-	}
-
-	private void ShowSeedShop(SeedShopShop shop)
-	{
-		Assertions.AssertTrue(!Visible, "Shop was not supposed to be visible");
-		
-		Show();
-		SetShopUIContent(shop.CurrentStock.ToList());
-		shop.ShopStockChanged += SetShopUIContent;
-		_logger.Info("Seedshop opened.");
 	}
 
 	private void SetShopUIContent(List<ItemStack> items)

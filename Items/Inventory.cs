@@ -78,7 +78,7 @@ public class Inventory : IInventory
 
 	public bool Contains(ItemStack item)
 	{
-		return this.Any(stack => stack.Id == item.Id);
+		return item != null && this.Any(stack => stack?.Id == item.Id);
 	}
 
 	public bool Contains(string itemId, int amount)
