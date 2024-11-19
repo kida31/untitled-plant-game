@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bd54v5orqpb6t"]
 
-[ext_resource type="Script" path="res://GUI/Shops/SeedShopView.cs" id="1_e6kxg"]
-[ext_resource type="PackedScene" uid="uid://w84710wgdj5r" path="res://GUI/Inventories/ShopItemStackView.tscn" id="1_hct0p"]
-[ext_resource type="PackedScene" uid="uid://b4rq57akghs3p" path="res://GUI/Inventories/ItemTooltipView.tscn" id="3_3i3nm"]
+[ext_resource type="Script" path="res://Shops/GUI/SeedShopView.cs" id="1_e6kxg"]
+[ext_resource type="PackedScene" uid="uid://w84710wgdj5r" path="res://Shops/GUI/ShopItemStackView.tscn" id="1_hct0p"]
+[ext_resource type="PackedScene" uid="uid://b4rq57akghs3p" path="res://Inventories/GUI/ItemTooltipView.tscn" id="3_3i3nm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy6ll"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://w84710wgdj5r"]
 
-[ext_resource type="Script" path="res://GUI/Inventories/ShopItemStackView.cs" id="1_xc706"]
+[ext_resource type="Script" path="res://Shops/GUI/ShopItemStackView.cs" id="1_xc706"]
 [ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Sprites/seed.png" id="2_4btel"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahdr4"]

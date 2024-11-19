@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cca7okqb2j4c7"]
 
-[ext_resource type="Script" path="res://Inventory/GeneralInventory/GeneralInventoryLogic.cs" id="1_rrual"]
-[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI_Tabs/SeedsTab.cs" id="2_f80sh"]
-[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI_Tabs/HerbsTab.cs" id="3_kyvoe"]
-[ext_resource type="Script" path="res://Inventory/GeneralInventory/UI_Tabs/MedicineTab.cs" id="4_3lda1"]
+[ext_resource type="Script" path="res://Inventories/GeneralInventory/GeneralInventoryLogic.cs" id="1_rrual"]
+[ext_resource type="Script" path="res://Inventories/GeneralInventory/UI_Tabs/SeedsTab.cs" id="2_f80sh"]
+[ext_resource type="Script" path="res://Inventories/GeneralInventory/UI_Tabs/HerbsTab.cs" id="3_kyvoe"]
+[ext_resource type="Script" path="res://Inventories/GeneralInventory/UI_Tabs/MedicineTab.cs" id="4_3lda1"]
 
 [node name="GeneralInventory" type="Control"]
 layout_mode = 3

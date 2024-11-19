@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.GUI;
-using untitledplantgame.Shops;
+
+namespace untitledplantgame.Shops.GUI;
 
 public partial class SeedShopView : Control
 {
