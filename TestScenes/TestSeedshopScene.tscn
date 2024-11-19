@@ -11,7 +11,7 @@
 position = Vector2(28, 26)
 
 [node name="Seedboy" parent="." instance=ExtResource("2_qa45g")]
-position = Vector2(57, 57)
+position = Vector2(55, 85)
 scale = Vector2(1.00188, 0.98962)
 script = ExtResource("3_karx4")
 ActionName = "shop"
@@ -20,7 +20,7 @@ ActionName = "shop"
 visible = false
 
 [node name="Seedboy2" parent="." instance=ExtResource("2_qa45g")]
-position = Vector2(90, 57)
+position = Vector2(212, 68)
 scale = Vector2(1.00376, 0.979348)
 script = ExtResource("3_karx4")
 ActionName = "talk"
