@@ -9,14 +9,17 @@ using untitledplantgame.Shops;
 
 public partial class SeedShopUI : Control
 {
+	// This is the additional offset of the tooltip from the slot.
+	// The tooltip itself will alight to the right side of a slot.
+	// TODO: Change this once design team has created a design.
+	private static readonly Vector2 TooltipOffset = new(8, 0);
+	
 	[Export]
 	private Control _slotContainer;
 
 	[Export]
-	private Button _closeButton;
-
-	[Export]
-	private ItemTooltip tooltip;
+	private ItemTooltip _tooltip;
+	
 
 	private readonly Logger _logger = new("Seedshop");
 
@@ -27,8 +30,6 @@ public partial class SeedShopUI : Control
 	{
 		EventBus.Instance.OnSeedshopOpened += OnOpenSeedShop;
 		EventBus.Instance.OnSeedshopClosed += HideSeedShop;
-
-		_closeButton.Pressed += HideSeedShop;
 
 		_shopSlots = _slotContainer.GetChildren().OfType<ShopSlotUI>().ToList();
 
@@ -69,26 +70,27 @@ public partial class SeedShopUI : Control
 
 	private void HideTooltip()
 	{
-		tooltip.Hide();
+		_tooltip.Hide();
 	}
 
 	private void PutTooltip(ShopSlotUI slot)
 	{
 		if (slot.ItemStack == null)
 		{
-			tooltip.Hide();
+			_tooltip.Hide();
 			return;
 		}
 
 		// Set content
-		tooltip.ItemStack = slot.ItemStack;
+		_tooltip.ItemStack = slot.ItemStack;
 
 		// Set position
 		var newPosition = slot.GlobalPosition;
-		newPosition.X = slot.GlobalPosition.X + slot.GetRect().Size.X * 0.5f;
-		tooltip.GlobalPosition = newPosition;
+		newPosition.X += slot.GetRect().Size.X;
+		newPosition += TooltipOffset;
+		_tooltip.GlobalPosition = newPosition;
 
-		tooltip.Show();
+		_tooltip.Show();
 	}
 
 	private void SetShopUIContent(List<ItemStack> items)

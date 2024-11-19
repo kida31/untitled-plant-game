@@ -66,6 +66,6 @@ public partial class ShopSlotUI : Control, IItemSlotUI
 		_nameLabel.Text = _itemStack.Name;
 		_textureRect.Texture = _itemStack.Icon ?? _textureRect.Texture;
 		_amountLabel.Text = _itemStack.Amount.ToString();
-		_priceLabel.Text = _itemStack.BaseValue.ToString();
+		_priceLabel.Text = _itemStack.BaseValue + " G";
 	}
 }

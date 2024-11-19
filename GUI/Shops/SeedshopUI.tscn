@@ -1,98 +1,89 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd54v5orqpb6t"]
+[gd_scene load_steps=5 format=3 uid="uid://bd54v5orqpb6t"]
 
 [ext_resource type="Script" path="res://GUI/Shops/SeedShopUI.cs" id="1_e6kxg"]
 [ext_resource type="PackedScene" uid="uid://w84710wgdj5r" path="res://GUI/Inventories/ShopSlotUI.tscn" id="1_hct0p"]
 [ext_resource type="PackedScene" uid="uid://b4rq57akghs3p" path="res://GUI/Inventories/ItemTooltip.tscn" id="3_3i3nm"]
 
-[node name="SeedShopUI" type="Panel" node_paths=PackedStringArray("_slotContainer", "_closeButton", "tooltip")]
-offset_right = 452.0
-offset_bottom = 652.0
-scale = Vector2(0.8, 0.8)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy6ll"]
+
+[node name="SeedShopUI" type="PanelContainer" node_paths=PackedStringArray("_slotContainer", "_tooltip")]
+offset_right = 364.0
+offset_bottom = 532.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fy6ll")
 script = ExtResource("1_e6kxg")
 _slotContainer = NodePath("MarginContainer/GridContainer")
-_closeButton = NodePath("CloseButton")
-tooltip = NodePath("ItemTooltip")
+_tooltip = NodePath("IndependentRoot/ItemTooltip")
 
-[node name="CloseButton" type="Button" parent="."]
-layout_mode = 1
-offset_left = 456.25
-offset_top = 2.5
-offset_right = 506.25
-offset_bottom = 57.5
-text = "Close"
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.724642, 0.724643, 0.724642, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-offset_right = 452.0
-offset_bottom = 652.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 columns = 4
 
-[node name="Panel1" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
+[node name="ShopItemStackView" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel2" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView2" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel3" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView3" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel4" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView4" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel5" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView5" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel6" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView6" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel7" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView7" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel8" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView8" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel9" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView9" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel10" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView10" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel11" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView11" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel12" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView12" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel13" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView13" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel14" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView14" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel15" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView15" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="Panel16" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
-custom_minimum_size = Vector2(110, 160)
+[node name="ShopItemStackView16" parent="MarginContainer/GridContainer" instance=ExtResource("1_hct0p")]
 layout_mode = 2
 
-[node name="ItemTooltip" parent="." instance=ExtResource("3_3i3nm")]
+[node name="IndependentRoot" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ItemTooltip" parent="IndependentRoot" instance=ExtResource("3_3i3nm")]
 visible = false
-layout_mode = 0
+layout_mode = 2
+offset_bottom = 85.0
