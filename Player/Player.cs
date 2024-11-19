@@ -23,9 +23,7 @@ public partial class Player : CharacterBody2D
 		_stateMachine.Initialize(this);
 	}
 
-	public override void _Process(double delta)
-	{
-	}
+	public override void _Process(double delta) { }
 
 	public override void _UnhandledInput(InputEvent @event)
 	{

@@ -44,7 +44,7 @@ public partial class VendingMachineUI : Control
 
 		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
 		_withdrawButton.Pressed += () => _vendingMachine.WithdrawGold();
-		
+
 		EventBus.Instance.BeforeVendingMachineOpened += OpenThis;
 	}
 

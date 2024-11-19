@@ -16,7 +16,7 @@ public partial class VendingMachineInteractable : AbstractNPC
 			_logger.Info("Creating new vending machine");
 			_vendingMachine = new VendingMachine.VendingMachine();
 		}
-		
+
 		EventBus.Instance.BeforeVendingMachineOpen(_vendingMachine);
 	}
 }

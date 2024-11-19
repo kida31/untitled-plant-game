@@ -69,6 +69,7 @@ public partial class EventBus : Node
 	}
 
 	public event Action<VendingMachine> BeforeVendingMachineOpened;
+
 	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
