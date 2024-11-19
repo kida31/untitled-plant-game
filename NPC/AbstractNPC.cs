@@ -8,9 +8,6 @@ public abstract partial class AbstractNPC : Area2D, IInteractable
 	public string ActionName { get; private set; } = "interact";
 
 	[Export]
-	private NpcLogic _npcLogicNode;
-
-	[Export]
 	private string _npcName;
 
 	public override void _Ready()
@@ -30,12 +27,10 @@ public abstract partial class AbstractNPC : Area2D, IInteractable
 	protected virtual void OnBodyExited(Node body)
 	{
 		InteractionManager.Instance.UnregisterArea(this);
-		_npcLogicNode.ManageNpcCollisionWithPlayer(body, _npcName);
 	}
 
 	private void OnBodyEntered(Node body)
 	{
 		InteractionManager.Instance.RegisterArea(this);
-		_npcLogicNode.ManageNpcCollisionWithPlayer(body, _npcName);
 	}
 }

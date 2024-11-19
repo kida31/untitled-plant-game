@@ -8,7 +8,8 @@ namespace untitledplantgame.Player;
 
 public partial class Player : CharacterBody2D
 {
-	[Export] private InteractablesManager _interactablesManager;
+	[Export]
+	private InteractablesManager _interactablesManager;
 
 	private readonly Logger _logger = new Logger("Player");
 	private Vector2 _cardinalDirection = Vector2.Down;

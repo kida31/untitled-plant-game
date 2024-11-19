@@ -4,8 +4,6 @@ namespace untitledplantgame.Dialogue;
 
 public interface IDialogueSystem
 {
-
-	
 	/// <summary>
 	/// Event that is triggered when the dialogue starts;
 	/// </summary>

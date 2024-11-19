@@ -1,7 +1,7 @@
 using Godot;
 using untitledplantgame.Common;
 
-public partial class NPC2 : AbstractNPC, IInteractable
+public partial class NPC2 : AbstractNPC
 {
 	public override void _Ready()
 	{

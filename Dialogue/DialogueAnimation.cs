@@ -5,10 +5,11 @@ namespace untitledplantgame.Dialogue;
 
 public partial class DialogueAnimation : Node
 {
-	private const float CharacterPerSecond = 40; // range 25 - 40 
+	private const float CharacterPerSecond = 40; // range 25 - 40
 	public bool IsPlaying { get; private set; }
 
-	[Export] private Timer _timer;
+	[Export]
+	private Timer _timer;
 	private Logger _logger;
 	public int CurrentLetterIndex;
 	public bool AnimationIsPlaying => CurrentLetterIndex != -1;
@@ -40,12 +41,12 @@ public partial class DialogueAnimation : Node
 		{
 			dialogueTextLabel.VisibleCharacters = CurrentLetterIndex;
 			CurrentLetterIndex++;
-			_timer.Start(1/CharacterPerSecond);
+			_timer.Start(1 / CharacterPerSecond);
 			await ToSignal(_timer, Timer.SignalName.Timeout);
 		}
 
 		CurrentLetterIndex = -1;
-		
+
 		dialogueTextLabel.VisibleCharacters = -1;
 	}
 }

@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class NPC1 : AbstractNPC, IInteractable
+public partial class NPC1 : AbstractNPC
 {
 	public override void Interact()
 	{

@@ -5,10 +5,17 @@ using ItemSlotUI = untitledplantgame.VendingMachine.ItemSlotUI;
 
 public partial class UiOnly : Node2D
 {
-	[Export] private untitledplantgame.VendingMachine.VendingMachineUI _vendingMachineUi;
-	[Export] private Control _inventoryGrid;
-	[Export] private PackedScene stackViewTemplate;
-	[Export] private Button _sellButton;
+	[Export]
+	private untitledplantgame.VendingMachine.VendingMachineUI _vendingMachineUi;
+
+	[Export]
+	private Control _inventoryGrid;
+
+	[Export]
+	private PackedScene stackViewTemplate;
+
+	[Export]
+	private Button _sellButton;
 
 	private VendingMachine _vendingMachine;
 	private Inventory _inventory;
@@ -42,19 +49,21 @@ public partial class UiOnly : Node2D
 
 	private void OnInventorySlotPressed(ItemSlotUI slot)
 	{
-		if (untitledplantgame.VendingMachine.CursorFriend.Instance is null) return;
+		if (untitledplantgame.VendingMachine.CursorFriend.Instance is null)
+			return;
 
 		var idx = _inventory.GetContents().IndexOf(slot.ItemStack);
 		if (idx == -1)
 		{
 			GD.PrintErr("Unexpected index");
 		}
-		
+
 		if (untitledplantgame.VendingMachine.CursorFriend.Instance.ItemStack == null)
 		{
 			// Empty hand
 			var item = _inventory.GetItem(idx);
-			if (item == null) return;
+			if (item == null)
+				return;
 			untitledplantgame.VendingMachine.CursorFriend.Instance.ItemStack = item;
 			_inventory.SetItem(idx, null);
 		}
@@ -77,7 +86,7 @@ public partial class UiOnly : Node2D
 				untitledplantgame.VendingMachine.CursorFriend.Instance.ItemStack = temp;
 			}
 		}
-		
+
 		// Update ui
 		slot.ItemStack = _inventory.GetItem(idx);
 	}
