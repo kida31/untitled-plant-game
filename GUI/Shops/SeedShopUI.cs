@@ -43,7 +43,7 @@ public partial class SeedShopUI : Control
 			_currentShop.ShopStockChanged -= SetShopUIContent;
 		}
 		
-		Assertions.AssertTrue(!Visible, "Shop was not supposed to be visible");
+		Assert.AssertTrue(!Visible, "Shop was not supposed to be visible");
 		_currentShop = shop;
 		SetShopUIContent(shop.CurrentStock.ToList());
 		shop.ShopStockChanged += SetShopUIContent;
