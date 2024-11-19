@@ -33,4 +33,10 @@ public partial class VendingMachineNPC : AbstractNPC
 		// TODO: player state needs to change at some point
 		_vendingMachineUi.Show();
 	}
+
+		protected override void OnBodyExited(Node body)
+	{
+		_vendingMachineUi?.Hide();
+		base.OnBodyExited(body);
+	}
 }
