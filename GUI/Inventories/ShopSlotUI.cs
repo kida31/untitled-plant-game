@@ -8,10 +8,17 @@ public partial class ShopSlotUI : Control, IItemSlotUI
 {
 	public event Action Pressed;
 
-	[Export] private Label _nameLabel;
-	[Export] private TextureRect _textureRect;
-	[Export] private Label _amountLabel;
-	[Export] private Label _priceLabel;
+	[Export]
+	private Label _nameLabel;
+
+	[Export]
+	private TextureRect _textureRect;
+
+	[Export]
+	private Label _amountLabel;
+
+	[Export]
+	private Label _priceLabel;
 
 	private ItemStack _itemStack;
 

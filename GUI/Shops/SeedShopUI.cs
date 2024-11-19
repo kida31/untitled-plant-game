@@ -9,24 +9,29 @@ using untitledplantgame.Shops;
 
 public partial class SeedShopUI : Control
 {
-	[Export] private Control _slotContainer;
-	[Export] private Button _closeButton;
-	[Export] private ItemTooltip tooltip;
+	[Export]
+	private Control _slotContainer;
+
+	[Export]
+	private Button _closeButton;
+
+	[Export]
+	private ItemTooltip tooltip;
 
 	private readonly Logger _logger = new("Seedshop");
 
 	private List<ShopSlotUI> _shopSlots;
 	private IShop _currentShop;
-	
+
 	public override void _Ready()
 	{
 		EventBus.Instance.OnSeedshopOpened += OnOpenSeedShop;
 		EventBus.Instance.OnSeedshopClosed += HideSeedShop;
-		
+
 		_closeButton.Pressed += HideSeedShop;
 
 		_shopSlots = _slotContainer.GetChildren().OfType<ShopSlotUI>().ToList();
-		
+
 		_shopSlots.ForEach(slot =>
 		{
 			var thisSlot = slot; // TODO: Check if currying is needed
@@ -42,7 +47,7 @@ public partial class SeedShopUI : Control
 		{
 			_currentShop.ShopStockChanged -= SetShopUIContent;
 		}
-		
+
 		Assert.AssertTrue(!Visible, "Shop was not supposed to be visible");
 		_currentShop = shop;
 		SetShopUIContent(shop.CurrentStock.ToList());
@@ -77,7 +82,7 @@ public partial class SeedShopUI : Control
 
 		// Set content
 		tooltip.ItemStack = slot.ItemStack;
-		
+
 		// Set position
 		var newPosition = slot.GlobalPosition;
 		newPosition.X = slot.GlobalPosition.X + slot.GetRect().Size.X * 0.5f;
@@ -93,7 +98,7 @@ public partial class SeedShopUI : Control
 			_shopSlots[i].ItemStack = i < items.Count ? items[i] : null;
 		}
 	}
-	
+
 	private void HideSeedShop()
 	{
 		if (this.Visible)

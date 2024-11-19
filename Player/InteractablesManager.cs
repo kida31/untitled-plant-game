@@ -14,10 +14,6 @@ public partial class InteractablesManager : Node
 	private List<IInteractable> _interactablesInReach = new();
 	private IInteractable _nearestInteractable;
 
-	public override void _Ready()
-	{
-	}
-
 	// In Player
 	public void ScanForInteractables()
 	{

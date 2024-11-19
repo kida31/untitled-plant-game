@@ -23,9 +23,8 @@ public static class Assert
 	/// </summary>
 	private class AssertionError : Exception
 	{
-		public AssertionError(string message) : base(message)
-		{
-		}
+		public AssertionError(string message)
+			: base(message) { }
 	}
 
 	/// <summary>

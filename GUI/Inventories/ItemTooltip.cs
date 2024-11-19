@@ -5,10 +5,14 @@ namespace untitledplantgame.Inventory.GUI;
 
 public partial class ItemTooltip : Control
 {
-	[Export] private Label _nameLabel;
-	[Export] private Label _descriptionLabel;
+	[Export]
+	private Label _nameLabel;
 
-	public ItemStack ItemStack {
+	[Export]
+	private Label _descriptionLabel;
+
+	public ItemStack ItemStack
+	{
 		get => _itemStack;
 		set
 		{

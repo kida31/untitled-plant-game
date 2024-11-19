@@ -6,12 +6,12 @@ using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Shops;
 
-public class SeedShop: IShop
+public class SeedShop : IShop
 {
 	public event Action<List<ItemStack>> ShopStockChanged;
-	
+
 	public ItemStack[] CurrentStock => _shopInventory.GetContents().ToArray();
-	
+
 	private Inventory.Inventory _shopInventory;
 	private Logger _logger = new Logger("SeedShopShop");
 
