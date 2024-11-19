@@ -8,9 +8,6 @@ namespace untitledplantgame.Player;
 
 public partial class Player : CharacterBody2D
 {
-	[Export]
-	private InteractablesManager _interactablesManager;
-
 	private readonly Logger _logger = new Logger("Player");
 	private Vector2 _cardinalDirection = Vector2.Down;
 	public Vector2 Direction = Vector2.Zero;
@@ -28,7 +25,6 @@ public partial class Player : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
-		_interactablesManager.ScanForInteractables();
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -42,7 +38,6 @@ public partial class Player : CharacterBody2D
 		Direction.X = Input.GetActionStrength(FreeRoam.Right) - Input.GetActionStrength(FreeRoam.Left);
 		Direction.Y = Input.GetActionStrength(FreeRoam.Down) - Input.GetActionStrength(FreeRoam.Up);
 		//Velocity = direction * MoveSpeed;
-		_interactablesManager.ScanForInteractables();
 		InteractionManager.Instance.PerformInteraction();
 	}
 
