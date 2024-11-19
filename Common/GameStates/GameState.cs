@@ -16,6 +16,7 @@ public sealed class GameState
 	public static readonly GameState Config = new("config");
 	public static readonly GameState Dialogue = new("dialogue");
 	public static readonly GameState Shop = new("shop");
+	public static readonly GameState VendingMachine = new ("VendingMachine");
 
 	public readonly string Name;
 

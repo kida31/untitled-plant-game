@@ -1,6 +1,6 @@
 ﻿namespace untitledplantgame.Common.Inputs.GameActions;
 
-public class BookInventory
+public class Book
 {
 	public const string Left = "book_left";
 	public const string Right = "book_right";

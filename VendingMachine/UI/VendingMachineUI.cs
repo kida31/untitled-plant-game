@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using untitledplantgame.Common.GameStates;
+using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.VendingMachine;
@@ -42,6 +44,15 @@ public partial class VendingMachineUI : Control
 
 		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
 		_withdrawButton.Pressed += () => _vendingMachine.WithdrawGold();
+		
+		EventBus.Instance.BeforeVendingMachineOpened += OpenThis;
+	}
+
+	private void OpenThis(VendingMachine vendingMachine)
+	{
+		GameStateMachine.Instance.SetState(GameState.Book);
+		SetVendingMachine(vendingMachine);
+		Show();
 	}
 
 	public override void _Process(double delta)
@@ -54,7 +65,21 @@ public partial class VendingMachineUI : Control
 		_moneyLabel.Text = "Gold: " + _vendingMachine.Gold;
 	}
 
-	public void SetVendingMachine(VendingMachine vendingMachine)
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event.IsActionPressed(Book.Back))
+		{
+			CloseThis();
+		}
+	}
+
+	private void CloseThis()
+	{
+		GameStateMachine.Instance.RevertState();
+		Hide();
+	}
+
+	private void SetVendingMachine(VendingMachine vendingMachine)
 	{
 		if (_vendingMachine is not null)
 		{
