@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnp2co4pcv5y6"]
+[gd_scene load_steps=10 format=3 uid="uid://cnp2co4pcv5y6"]
 
 [ext_resource type="PackedScene" uid="uid://cca7okqb2j4c7" path="res://Inventory/GeneralInventory/GeneralInventory.tscn" id="2_oc5l6"]
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Player/Player.tscn" id="3_obyms"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://NPC/NPC2.cs" id="7_abevf"]
 [ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Item/GenericItem.tscn" id="8_hltls"]
 [ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://NPC/VendingMachine/VendingMachineNPC.tscn" id="9_0dhea"]
-[ext_resource type="Script" path="res://NPC/VendingMachine/VendingMachineNPC.cs" id="10_ycymm"]
 
 [node name="TestInventoryScene" type="Node2D"]
 
@@ -41,10 +40,6 @@ position = Vector2(212, 102)
 
 [node name="GenericItem3" parent="." instance=ExtResource("8_hltls")]
 position = Vector2(267, 103)
-
-[node name="Vending" parent="." instance=ExtResource("4_ptr7l")]
-script = ExtResource("10_ycymm")
-ActionName = "open"
 
 [node name="VendingMachineNPC" parent="." instance=ExtResource("9_0dhea")]
 position = Vector2(396, 33)
