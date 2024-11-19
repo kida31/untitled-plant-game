@@ -1,18 +1,18 @@
 [gd_scene load_steps=5 format=3 uid="uid://bd54v5orqpb6t"]
 
-[ext_resource type="Script" path="res://GUI/Shops/SeedShopUI.cs" id="1_e6kxg"]
-[ext_resource type="PackedScene" uid="uid://w84710wgdj5r" path="res://GUI/Inventories/ShopSlotUI.tscn" id="1_hct0p"]
-[ext_resource type="PackedScene" uid="uid://b4rq57akghs3p" path="res://GUI/Inventories/ItemTooltip.tscn" id="3_3i3nm"]
+[ext_resource type="Script" path="res://GUI/Shops/SeedShopView.cs" id="1_e6kxg"]
+[ext_resource type="PackedScene" uid="uid://w84710wgdj5r" path="res://GUI/Inventories/ShopItemStackView.tscn" id="1_hct0p"]
+[ext_resource type="PackedScene" uid="uid://b4rq57akghs3p" path="res://GUI/Inventories/ItemTooltipView.tscn" id="3_3i3nm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy6ll"]
 
-[node name="SeedShopUI" type="PanelContainer" node_paths=PackedStringArray("_slotContainer", "_tooltip")]
+[node name="SeedShopUI" type="PanelContainer" node_paths=PackedStringArray("_slotContainer", "_tooltipView")]
 offset_right = 364.0
 offset_bottom = 532.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fy6ll")
 script = ExtResource("1_e6kxg")
 _slotContainer = NodePath("MarginContainer/GridContainer")
-_tooltip = NodePath("IndependentRoot/ItemTooltip")
+_tooltipView = NodePath("IndependentRoot/ItemTooltip")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2

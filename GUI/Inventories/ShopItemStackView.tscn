@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://w84710wgdj5r"]
 
-[ext_resource type="Script" path="res://GUI/Inventories/ShopSlotUI.cs" id="1_hk53u"]
-[ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Sprites/seed.png" id="2_rwsnq"]
+[ext_resource type="Script" path="res://GUI/Inventories/ShopItemStackView.cs" id="1_xc706"]
+[ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Sprites/seed.png" id="2_4btel"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahdr4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -15,7 +15,7 @@ offset_bottom = 122.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_ahdr4")
-script = ExtResource("1_hk53u")
+script = ExtResource("1_xc706")
 _nameLabel = NodePath("MarginContainer/VBoxContainer/Name")
 _textureRect = NodePath("MarginContainer/VBoxContainer/PanelContainer/TextureRect")
 _amountLabel = NodePath("MarginContainer/VBoxContainer/PanelContainer/Amount")
@@ -48,7 +48,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_aigu2")
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("2_rwsnq")
+texture = ExtResource("2_4btel")
 expand_mode = 3
 stretch_mode = 4
 

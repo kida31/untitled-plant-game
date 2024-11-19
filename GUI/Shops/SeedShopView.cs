@@ -7,7 +7,7 @@ using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.GUI;
 using untitledplantgame.Shops;
 
-public partial class SeedShopUI : Control
+public partial class SeedShopView : Control
 {
 	// This is the additional offset of the tooltip from the slot.
 	// The tooltip itself will alight to the right side of a slot.
@@ -18,12 +18,12 @@ public partial class SeedShopUI : Control
 	private Control _slotContainer;
 
 	[Export]
-	private ItemTooltip _tooltip;
+	private ItemTooltipView _tooltipView;
 	
 
 	private readonly Logger _logger = new("Seedshop");
 
-	private List<ShopSlotUI> _shopSlots;
+	private List<ShopItemStackView> _shopSlots;
 	private IShop _currentShop;
 
 	public override void _Ready()
@@ -31,7 +31,7 @@ public partial class SeedShopUI : Control
 		EventBus.Instance.OnSeedshopOpened += OnOpenSeedShop;
 		EventBus.Instance.OnSeedshopClosed += HideSeedShop;
 
-		_shopSlots = _slotContainer.GetChildren().OfType<ShopSlotUI>().ToList();
+		_shopSlots = _slotContainer.GetChildren().OfType<ShopItemStackView>().ToList();
 
 		_shopSlots.ForEach(slot =>
 		{
@@ -56,7 +56,7 @@ public partial class SeedShopUI : Control
 		Show();
 	}
 
-	private void OnSlotPressed(ShopSlotUI thisSlot)
+	private void OnSlotPressed(ShopItemStackView thisSlot)
 	{
 		var item = thisSlot.ItemStack?.Clone() as ItemStack;
 		if (item == null)
@@ -70,27 +70,27 @@ public partial class SeedShopUI : Control
 
 	private void HideTooltip()
 	{
-		_tooltip.Hide();
+		_tooltipView.Hide();
 	}
 
-	private void PutTooltip(ShopSlotUI slot)
+	private void PutTooltip(ShopItemStackView slot)
 	{
 		if (slot.ItemStack == null)
 		{
-			_tooltip.Hide();
+			_tooltipView.Hide();
 			return;
 		}
 
 		// Set content
-		_tooltip.ItemStack = slot.ItemStack;
+		_tooltipView.ItemStack = slot.ItemStack;
 
 		// Set position
 		var newPosition = slot.GlobalPosition;
 		newPosition.X += slot.GetRect().Size.X;
 		newPosition += TooltipOffset;
-		_tooltip.GlobalPosition = newPosition;
+		_tooltipView.GlobalPosition = newPosition;
 
-		_tooltip.Show();
+		_tooltipView.Show();
 	}
 
 	private void SetShopUIContent(List<ItemStack> items)

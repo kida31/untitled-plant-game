@@ -4,7 +4,7 @@ using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.VendingMachine;
 
-public partial class ShopSlotUI : Control, IItemSlotUI
+public partial class ShopItemStackView : Control, IItemSlotUI
 {
 	public event Action Pressed;
 

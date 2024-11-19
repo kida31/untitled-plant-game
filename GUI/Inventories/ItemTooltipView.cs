@@ -3,7 +3,7 @@ using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Inventory.GUI;
 
-public partial class ItemTooltip : Control
+public partial class ItemTooltipView : Control
 {
 	[Export]
 	private Label _nameLabel;
