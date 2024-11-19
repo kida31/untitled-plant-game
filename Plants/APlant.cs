@@ -8,6 +8,7 @@ namespace untitledplantgame.Plants;
 
 public enum GrowthStage
 {
+	Sprouting,
 	Seedling,
 	Vegetating,
 	Budding,
@@ -18,10 +19,8 @@ public enum GrowthStage
 
 public partial class APlant : Node2D
 {
-	public string PlantName { get; private set; }
-
 	[Export]
-	private int _plantId;
+	public string PlantName { get; private set; }
 
 	private float _absorptionRate = 100.0f;
 	private float _consumptionRate = 30.0f;
@@ -29,8 +28,8 @@ public partial class APlant : Node2D
 	private AnimatedSprite2D _sprite2D;
 	public SoilTile Tile { get; set; }
 
-	[Export]
-	public GrowthStage Stage { get; private set; } = GrowthStage.Seedling;
+	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
+	private bool _isHarvestable;
 
 	private Dictionary<string, Requirement> _currentRequirements;
 
@@ -42,20 +41,63 @@ public partial class APlant : Node2D
 	public override void _Ready()
 	{
 		_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		_plantId = 0;
-		UpdateRequirements();
+		SetRequirements(PlantName);
 		_logger = new Logger(PlantName);
+	}
+	
+	
+	/// <summary>
+	/// Executes the growth cycle of the plant by absorbing water, consuming water, and absorbing sun.
+	/// Checks if the requirements are fulfilled to advance to the next stage.
+	/// </summary>
+	public void DoGrowthCycle()
+	{
+		if (Stage == GrowthStage.Dead)
+			return;
+
+		AbsorbWaterFromTile();
+		ConsumeWater();
+		AbsorbSun();
+
+		if (!CheckRequirements())
+			return;
+
+		_currentDay++;
+		AdvanceStage();
 	}
 
 	/// <summary>
-	/// Updates the requirements for the plant to grow at each stage.
+	/// sets the plant on a tile
+	/// </summary>
+	/// <param name="soilTile"></param> the tile the plant is planted on
+	public void PlantOnTile(SoilTile soilTile)
+	{
+		Tile = soilTile;
+	}
+
+	public void Harvest()
+	{
+		if (_isHarvestable)
+		{
+			_logger.Info($"Plant {PlantName} has been harvested.");
+			Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
+			SetRequirements(PlantName);
+			_logger.Info("plant has reached stage " + Stage);
+		}
+		else
+		{
+			_logger.Info($"Plant {PlantName} is not ready to be harvested.");
+		}
+	}
+	/// <summary>
+	/// Updates the requirements for the plant to grow for current stage.
 	/// sets the days to grow and the current day count to 0.
 	/// sets the plant name.
 	/// sets the sprite to the current stage.
 	/// </summary>
-	private void UpdateRequirements()
+	private void SetRequirements(string plantName)
 	{
-		var plantData = PlantDatabase.Instance.GetResourceById(_plantId);
+		var plantData = PlantDatabase.Instance.GetResourceByName(plantName);
 		var plantRequirements = new Dictionary<string, Requirement>();
 
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
@@ -66,6 +108,7 @@ public partial class APlant : Node2D
 		}
 
 		_daysToGrow = plantData.DataForGrowthStages[(int)Stage].DaysToGrow;
+		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
 		_currentDay = 0;
 		_currentRequirements = plantRequirements;
 		PlantName = plantData._plantName;
@@ -113,16 +156,7 @@ public partial class APlant : Node2D
 
 		Stage++;
 		_logger.Info($"Plant {PlantName} advanced to {Stage}.");
-		UpdateRequirements();
-	}
-
-	/// <summary>
-	/// sets the plant on a tile
-	/// </summary>
-	/// <param name="soilTile"></param> the tile the plant is planted on
-	public void PlantOnTile(SoilTile soilTile)
-	{
-		Tile = soilTile;
+		SetRequirements(PlantName);
 	}
 
 	/// <summary>
@@ -162,26 +196,6 @@ public partial class APlant : Node2D
 		sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + _absorptionRate, sunReq.MaxLevel);
 
 		_logger.Info(RequirementType.sun.ToString() + _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString()));
-	}
-
-	/// <summary>
-	/// Executes the growth cycle of the plant by absorbing water, consuming water, and absorbing sun.
-	/// Checks if the requirements are fulfilled to advance to the next stage.
-	/// </summary>
-	public void DoGrowthCycle()
-	{
-		if (Stage == GrowthStage.Dead)
-			return;
-
-		AbsorbWaterFromTile();
-		ConsumeWater();
-		AbsorbSun();
-
-		if (!CheckRequirements())
-			return;
-
-		_currentDay++;
-		AdvanceStage();
 	}
 
 	private void SetUnalive()

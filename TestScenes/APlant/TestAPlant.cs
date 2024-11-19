@@ -20,8 +20,15 @@ public partial class TestAPlant : Node2D
 	{
 		var waterSoilButton = GetNode<Button>("VBoxContainer/Button");
 		waterSoilButton.Pressed += OnWaterSoilButtonPressed;
+		var harvestButton = GetNode<Button>("VBoxContainer/Button2");
+		harvestButton.Pressed += OnHarvestButtonPressed;
 
 		_plant.PlantOnTile(_soilTile);
+	}
+
+	private void OnHarvestButtonPressed()
+	{
+		_plant.Harvest();
 	}
 
 	private void OnWaterSoilButtonPressed()
