@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cak2v2wh7j0ft"]
+[gd_scene load_steps=5 format=3 uid="uid://c8w5v0k8jnu41"]
 
 [ext_resource type="Script" path="res://NPC/VendingMachine/VendingMachineNPC.cs" id="1_7xvtu"]
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://VendingMachine/UI/vending_machine_ui.tscn" id="2_tv3pq"]

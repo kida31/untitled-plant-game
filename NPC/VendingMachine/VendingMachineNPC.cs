@@ -1,23 +1,18 @@
 using Godot;
-using System;
 using untitledplantgame.Common;
 using untitledplantgame.VendingMachine;
 
-public partial class VendingMachineNPC : Area2D, IInteractable
+public partial class VendingMachineNPC : AbstractNPC
 {
-	[Export] private PackedScene _vendingMachineScene;
+	[Export]
+	private PackedScene _vendingMachineScene;
 	private VendingMachineUI _vendingMachineUi;
-	
+
 	private VendingMachine _vendingMachine;
-	
+
 	private Logger _logger = new Logger("VendingMachineNPC");
 
-	public override void _Ready()
-	{
-		AddToGroup("Interactables");
-	}
-
-	public void Interact()
+	public override void Interact()
 	{
 		_logger.Debug("Interacted");
 		if (_vendingMachine is null)
@@ -26,23 +21,16 @@ public partial class VendingMachineNPC : Area2D, IInteractable
 			// TODO: make serializable/savable vending machine
 			_vendingMachine = new VendingMachine();
 		}
-		
+
 		if (_vendingMachineUi is null)
 		{
 			_logger.Info("Creating new vending machine ui");
 			_vendingMachineUi = _vendingMachineScene.Instantiate<VendingMachineUI>();
 			_vendingMachineUi.SetVendingMachine(_vendingMachine);
 		}
-		
+
 		_logger.Debug("Showing vending machine ui");
 		// TODO: player state needs to change at some point
 		_vendingMachineUi.Show();
 	}
-
-	public Vector2 GetGlobalInteractablePosition()
-	{
-		return GlobalPosition;
-	}
-
-	public string ActionName => "Open";
 }
