@@ -1,4 +1,4 @@
-namespace untitledplantgame.Features.Dialogue;
+namespace untitledplantgame.Dialogue;
 
 public enum DialogueExpression
 {

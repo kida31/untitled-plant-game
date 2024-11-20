@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace untitledplantgame.Plants;
+namespace untitledplantgame.Plants.Soil;
 
 public partial class SoilTile : Node2D
 {

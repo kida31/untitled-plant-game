@@ -4,10 +4,9 @@ using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
-using DialogueLine = untitledplantgame.Features.Dialogue.Models.DialogueLine;
-using DialogueResourceObject = untitledplantgame.Features.Dialogue.Models.DialogueResourceObject;
+using untitledplantgame.Dialogue.Models;
 
-namespace untitledplantgame.Features.Dialogue;
+namespace untitledplantgame.Dialogue;
 
 public partial class DialogueSystem : Node, IDialogueSystem
 {
@@ -64,7 +63,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 	public void StartDialog(string dialogueId)
 	{
-		var dialogue = DialogueDatabase.Instance.GetResourceByName(dialogueId);
+		var dialogue = untitledplantgame.Dialogue.DialogueDatabase.Instance.GetResourceByName(dialogueId);
 
 		if (dialogue == null)
 		{

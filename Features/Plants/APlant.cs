@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.ResourceData;
+using untitledplantgame.Plants.Soil;
 
 namespace untitledplantgame.Plants;
 
@@ -55,7 +55,7 @@ public partial class APlant : Node2D
 	/// </summary>
 	private void UpdateRequirements()
 	{
-		var plantData = PlantDatabase.Instance.GetResourceById(_plantId);
+		var plantData = untitledplantgame.Plants.PlantDatabase.Instance.GetResourceById(_plantId);
 		var plantRequirements = new Dictionary<string, Requirement>();
 
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;

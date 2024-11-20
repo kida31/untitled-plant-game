@@ -6,4 +6,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>untitledplantgame</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Features\Plants\Models\" />
+  </ItemGroup>
 </Project>

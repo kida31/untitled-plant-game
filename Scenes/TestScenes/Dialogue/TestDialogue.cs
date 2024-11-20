@@ -1,7 +1,7 @@
 using Godot;
 using untitledplantgame.Common.GameStates;
-using DialogueResourceObject = untitledplantgame.Features.Dialogue.Models.DialogueResourceObject;
-using DialogueSystem = untitledplantgame.Features.Dialogue.DialogueSystem;
+using DialogueResourceObject = untitledplantgame.Dialogue.Models.DialogueResourceObject;
+using DialogueSystem = untitledplantgame.Dialogue.DialogueSystem;
 
 namespace untitledplantgame.Scenes.TestScenes.Dialogue;
 

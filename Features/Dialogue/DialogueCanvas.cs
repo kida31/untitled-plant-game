@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using DialogueAnimation = untitledplantgame.Features.Dialogue.DialogueAnimation;
-using DialogueLine = untitledplantgame.Features.Dialogue.Models.DialogueLine;
-using DialogueSystem = untitledplantgame.Features.Dialogue.DialogueSystem;
+using untitledplantgame.Dialogue.Models;
+
+namespace untitledplantgame.Dialogue;
 
 public partial class DialogueCanvas : CanvasLayer
 {

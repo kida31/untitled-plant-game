@@ -1,9 +1,9 @@
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Plants;
+using untitledplantgame.ResourceData;
 
-namespace untitledplantgame.ResourceData;
+namespace untitledplantgame.Plants;
 
 /// <summary>
 /// A database singleton for all plant resources.
@@ -15,7 +15,7 @@ public partial class PlantDatabase : Node, IDatabase<PlantData>
 	public string DirPath => _dirPath;
 
 	private Logger _logger;
-	private string _dirPath = "res://ResourceData/Resources/Plants";
+	private string _dirPath = "res://Resources/Plants/";
 
 	public override void _Ready()
 	{

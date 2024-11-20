@@ -3,10 +3,10 @@ using System.IO;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Features.Dialogue.Models;
+using untitledplantgame.Dialogue.Models;
 using untitledplantgame.ResourceData;
 
-namespace untitledplantgame.Features.Dialogue;
+namespace untitledplantgame.Dialogue;
 
 public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 {
