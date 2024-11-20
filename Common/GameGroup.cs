@@ -17,11 +17,12 @@ namespace untitledplantgame.Common;
 /// <see href="https://docs.godotengine.org/en/stable/tutorials/scripting/groups.html">Godot Docs about Groups</see>
 /// </para>
 /// </summary>
-public class Group
+public class GameGroup
 {
 	/// <summary>
 	/// Refers to the player node. See <see cref="untitledplantgame.Player.Player">Player Class</see>
 	/// </summary>
 	public const string Player = "player";
 	public const string Interactables = "interactables";
+	public const string Plants = "plants";
 }

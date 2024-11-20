@@ -15,14 +15,6 @@ public partial class TestDialogue : Node2D
 
 	public override void _Ready()
 	{
-		// Prepare
-
-
-		GD.Print($"Current game state: {GameStateMachine.Instance.CurrentState}");
-		GD.Print("Trigger dialogue.");
-
 		DialogueSystem.Instance.StartDialog(_exampleDialogue._dialogueId);
-
-		GD.Print($"Current game state: {GameStateMachine.Instance.CurrentState}");
 	}
 }

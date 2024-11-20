@@ -6,9 +6,6 @@ namespace untitledplantgame.Plants.Models;
 public partial class PlantData : Resource
 {
 	[Export]
-	public int _plantId;
-
-	[Export]
 	public string _plantName;
 
 	[Export]
