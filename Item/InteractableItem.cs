@@ -5,7 +5,7 @@ using untitledplantgame.Inventory.GeneralInventory.UI_ItemCategory;
 
 namespace untitledplantgame.Item;
 
-public partial class InteractableItem : AbstractNPC
+public partial class InteractableItem : AInteractable
 {
 	[Export]
 	private DataContainer _dataContainer;

@@ -3,7 +3,7 @@ using untitledplantgame.Common;
 // This namespace is for stuff that should not be talked about (should not be referenced)
 namespace untitledplantgame.donottalktome;
 
-public partial class VendingMachineInteractable : AbstractNPC
+public partial class VendingMachineInteractable : AInteractable
 {
 	private VendingMachine.VendingMachine _vendingMachine;
 	private Logger _logger = new Logger("VendingMachineNPC");

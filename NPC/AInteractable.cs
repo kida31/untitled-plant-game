@@ -2,13 +2,17 @@
 using Godot;
 using untitledplantgame.Common;
 
-public abstract partial class AbstractNPC : Area2D, IInteractable
+// Alternative name AAreaInteractable, to emphasize that it is using an Area
+/// <summary>
+/// Base class for interactable objects in the game.
+/// It is an Area2D that can be interacted with.
+/// <remarks>
+/// The object registers itself to the InteractionManager when a body enters the area.
+/// </remarks>
+/// </summary>
+public abstract partial class AInteractable : Area2D, IInteractable
 {
-	[Export]
-	public string ActionName { get; private set; } = "interact";
-
-	[Export]
-	private string _npcName;
+	public virtual string ActionName => "Interact";
 
 	public override void _Ready()
 	{
