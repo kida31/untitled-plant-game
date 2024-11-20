@@ -28,15 +28,15 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameStateMachine="*res://Common/GameStates/GameStateMachine.cs"
-EventBus="*res://EventBus/EventBus.cs"
+EventBus="*res://Common/EventBus.cs"
 InputRemapper="*res://Common/Inputs/InputRemapper.cs"
-InteractionManager="*res://Interaction/InteractionManager.tscn"
+InteractionManager="*res://Features/Interaction/InteractionManager.tscn"
 TimeController="*res://Common/TimeController.cs"
-WeatherCycle="*res://Cycle/Weather/WeatherCycle.cs"
-PlantDatabase="*res://ResourceData/PlantDatabase.cs"
-DialogueSystem="*res://Dialogue/DialogueSystem.cs"
-DialogueDatabase="*res://ResourceData/DialogueDatabase.cs"
-CollisionManager="*res://Player/CollisionManager.cs"
+WeatherCycle="*res://Features/Cycle/Weather/WeatherCycle.cs"
+PlantDatabase="*res://Features/Plants/PlantDatabase.cs"
+DialogueSystem="*res://Features/Dialogue/DialogueSystem.cs"
+DialogueDatabase="*res://Features/Dialogue/DialogueDatabase.cs"
+CollisionManager="*res://Features/Player/CollisionManager.cs"
 
 [display]
 
