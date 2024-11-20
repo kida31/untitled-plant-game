@@ -23,11 +23,8 @@ public partial class TestAPlant : Node2D
 		var harvestButton = GetNode<Button>("VBoxContainer/Button2");
 		harvestButton.Pressed += OnHarvestButtonPressed;
 		_label = GetNode<Label>("VBoxContainer/Label");
-		GD.Print(_label.Name);
 		_soilTile = GetNode<SoilTile>("Soil");
-		GD.Print(_soilTile.Name);
 		_plant = GetNode<APlant>("APlantPrefab");
-		GD.Print(_plant.Name);
 
 		_plant.PlantOnTile(_soilTile);
 	}

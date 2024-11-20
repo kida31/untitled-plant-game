@@ -71,6 +71,9 @@ public partial class APlant : Node2D
 		Tile = soilTile;
 	}
 
+	/// <summary>
+	/// Harvests the plant if it is harvestable.
+	/// </summary>
 	public void Harvest()
 	{
 		if (_isHarvestable)
@@ -84,6 +87,14 @@ public partial class APlant : Node2D
 		{
 			_logger.Debug($"Plant {PlantName} is not ready to be harvested.");
 		}
+	}
+
+	/// <summary>
+	/// Removes the plant from the scene.
+	/// </summary>
+	public void RemovePlant()
+	{
+		QueueFree();
 	}
 
 	/// <summary>
