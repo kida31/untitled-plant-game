@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Features/Dialogue/DialogueCanvas.cs" id="1_ng045"]
 [ext_resource type="Texture2D" uid="uid://o4fvncrv04mo" path="res://Assets/Sprites/damage.png" id="2_cnal3"]
-[ext_resource type="Texture2D" uid="uid://y1pnkolace2g" path="res://Assets/UI Assets/01_Flat_Theme/Sprites/UI_Flat_Frame03a.png" id="2_dbhsn"]
-[ext_resource type="Texture2D" uid="uid://d0vfo4ggpdkjf" path="res://Assets/UI Assets/01_Flat_Theme/Sprites/UI_Flat_Banner02a.png" id="3_kd5nr"]
+[ext_resource type="Texture2D" uid="uid://be34y66w0usqf" path="res://Assets/UI/chatbox_rounded.png" id="3_2ukc1"]
+[ext_resource type="Texture2D" uid="uid://dvg3mpwor2ux0" path="res://Assets/UI/BookUI/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_soyak"]
 atlas = ExtResource("2_cnal3")
@@ -97,10 +97,12 @@ size_flags_vertical = 8
 
 [node name="DialogueBox" type="NinePatchRect" parent="DialogueCanvas/PanelContainer"]
 layout_mode = 2
-texture = ExtResource("2_dbhsn")
-region_rect = Rect2(0, -0.946583, 94.6165, 64.8414)
-patch_margin_left = 2
-patch_margin_top = 2
+texture = ExtResource("3_2ukc1")
+region_rect = Rect2(0.185928, 0.185112, 29.037, 29.3333)
+patch_margin_left = 8
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 6
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogueCanvas/PanelContainer"]
@@ -130,12 +132,12 @@ size_flags_horizontal = 4
 
 [node name="NameBox" type="NinePatchRect" parent="DialogueCanvas/PanelContainer2"]
 layout_mode = 2
-texture = ExtResource("3_kd5nr")
-region_rect = Rect2(0, 0, 64, 20)
-patch_margin_left = 4
-patch_margin_top = 1
-patch_margin_right = 4
-patch_margin_bottom = 2
+texture = ExtResource("4_kwwp3")
+region_rect = Rect2(2.9637, 0.296223, 122.963, 31.4074)
+patch_margin_left = 11
+patch_margin_top = 10
+patch_margin_right = 12
+patch_margin_bottom = 10
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogueCanvas/PanelContainer2"]
 layout_mode = 2
