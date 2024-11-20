@@ -29,7 +29,7 @@ public class SeedShop : IShop
 
 	public ItemStack BuyItem(ItemStack item)
 	{
-		Debug.Assert(_shopInventory.Contains(item), "items did not exist");
+		Assert.AssertTrue(_shopInventory.Contains(item), "items did not exist");
 		_shopInventory.RemoveItem(item);
 		ShopStockChanged?.Invoke(_shopInventory.GetContents());
 		_logger.Debug("[Buy] ShopStockChanged");

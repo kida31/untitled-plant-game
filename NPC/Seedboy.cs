@@ -1,4 +1,5 @@
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Shops;
 
 // TODO: Each NPC should not need to be its own class
@@ -6,12 +7,13 @@ using untitledplantgame.Shops;
 public partial class Seedboy : AInteractable
 {
 	private SeedShop _seedShop = new();
+	private Logger _logger = new("Seedboy");
 
 	public override void Interact()
 	{
-		GD.Print("Seedboy interact" + this.ToString());
+		_logger.Debug("Interact()");
 		_seedShop.GenerateRandomShopStock();
-		EventBus.Instance.SeedShopOpened(_seedShop);
+		EventBus.Instance.SeedshopOpened(_seedShop);
 	}
 
 	protected override void OnBodyExited(Node body)

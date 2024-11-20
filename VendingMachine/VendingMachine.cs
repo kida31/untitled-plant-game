@@ -81,7 +81,7 @@ public class VendingMachine
 			}
 
 			var quantity = stack.Amount;
-			Debug.Assert(quantity > 0, "Assume no empty stacks in container"); // Empty item stacks should not be in container
+			Assert.AssertTrue(quantity > 0, "Assume no empty stacks in container"); // Empty item stacks should not be in container
 
 			// Do not sell more than supply
 			var itemSellCount = Math.Min(totalSellCount, quantity);
