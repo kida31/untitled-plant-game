@@ -1,6 +1,9 @@
 using Godot;
 using untitledplantgame.Common.GameStates;
-using untitledplantgame.Dialogue;
+using DialogueResourceObject = untitledplantgame.Features.Dialogue.Models.DialogueResourceObject;
+using DialogueSystem = untitledplantgame.Features.Dialogue.DialogueSystem;
+
+namespace untitledplantgame.Scenes.TestScenes.Dialogue;
 
 public partial class TestDialogue : Node2D
 {

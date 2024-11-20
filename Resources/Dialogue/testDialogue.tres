@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=12 format=3 uid="uid://dim7viemwd80s"]
 
-[ext_resource type="Script" path="res://Features/Dialogue/DialogueLine.cs" id="1_lnhut"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_lnhut"]
 [ext_resource type="Resource" uid="uid://dopseyyrpdbu8" path="res://Resources/Dialogue/testDialogue_yes.tres" id="2_rqr2m"]
-[ext_resource type="Script" path="res://Features/Dialogue/DialogueResourceObject.cs" id="2_xo56h"]
-[ext_resource type="Script" path="res://Features/Dialogue/DialogueResponse.cs" id="3_lb0nv"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_xo56h"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_lb0nv"]
 
 [sub_resource type="Resource" id="Resource_o0fig"]
 script = ExtResource("1_lnhut")

@@ -1,7 +1,8 @@
 using Godot;
 using untitledplantgame.Common;
+using DialogueLine = untitledplantgame.Features.Dialogue.Models.DialogueLine;
 
-namespace untitledplantgame.Dialogue;
+namespace untitledplantgame.Features.Dialogue;
 
 public partial class DialogueAnimation : Node
 {

@@ -1,6 +1,7 @@
 ﻿using System;
+using DialogueResourceObject = untitledplantgame.Features.Dialogue.Models.DialogueResourceObject;
 
-namespace untitledplantgame.Dialogue;
+namespace untitledplantgame.Features.Dialogue;
 
 public interface IDialogueSystem
 {
