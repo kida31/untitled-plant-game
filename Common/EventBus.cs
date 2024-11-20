@@ -4,6 +4,7 @@ using untitledplantgame.Common;
 using untitledplantgame.EntityStatsDataContainer;
 using untitledplantgame.Item;
 using untitledplantgame.Shops;
+using untitledplantgame.Tools;
 using untitledplantgame.VendingMachine;
 
 /**
@@ -80,5 +81,11 @@ public partial class EventBus : Node
 	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
+	}
+	
+	public event Func<Tool> OnRequestingActiveTool;
+	public Tool RequestActiveTool()
+	{
+		return OnRequestingActiveTool?.Invoke();
 	}
 }

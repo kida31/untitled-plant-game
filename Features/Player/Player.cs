@@ -3,6 +3,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.Tools;
 
 namespace untitledplantgame.Player;
 
@@ -14,6 +15,12 @@ public partial class Player : CharacterBody2D
 
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
+	
+	// stateful player stuff
+	// Player tools
+	private ToolBelt _toolBelt = new ToolBelt(); // This could be a generic component to unclutter Player.cs
+	public Tool ActiveTool => _toolBelt.ActiveTool;
+	public Tool[] Tools => _toolBelt.Tools;
 
 	public override void _Ready()
 	{
@@ -21,6 +28,8 @@ public partial class Player : CharacterBody2D
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_stateMachine.Initialize(this);
+		
+		EventBus.Instance.OnRequestingActiveTool += () => ActiveTool;
 	}
 
 	public override void _Process(double delta) { }
