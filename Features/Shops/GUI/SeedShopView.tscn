@@ -84,4 +84,5 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="ItemTooltipView" parent="IndependentRoot" instance=ExtResource("3_64quj")]
+visible = false
 layout_mode = 0
