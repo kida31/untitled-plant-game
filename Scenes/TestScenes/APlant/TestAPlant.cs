@@ -18,7 +18,7 @@ public partial class TestAPlant : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		var waterSoilButton = GetNode<Button>("VBoxContainer/Button");
+		var waterSoilButton = GetNode<Button>("Water/Button");
 		waterSoilButton.Pressed += OnWaterSoilButtonPressed;
 
 		_plant.PlantOnTile(_soilTile);
