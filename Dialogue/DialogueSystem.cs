@@ -14,7 +14,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	{
 		Conversing,
 		Responding,
-		End
+		End,
 	}
 
 	public static DialogueSystem Instance { get; private set; }
@@ -31,7 +31,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	private bool _Smashable = true;
 
 	public event Action SkipAnimation;
-
 
 	public override void _Ready()
 	{
@@ -121,7 +120,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_logger.Debug("Player input confirm.");
 		_logger.Debug("State: " + _state);
 
-
 		if (_dialogueCanvas.AnimationIsPlaying)
 		{
 			_Smashable = false;
@@ -146,8 +144,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 	public void InsertSelectedResponse(string response)
 	{
-		var nextDialogue = _currentDialogue._responses
-			.First((r) => r._responseButton == response)._responseDialogue;
+		var nextDialogue = _currentDialogue._responses.First((r) => r._responseButton == response)._responseDialogue;
 		SetAndResetDialogue(nextDialogue);
 		if (_enumerator.MoveNext())
 			DisplayLine(_enumerator.Current);

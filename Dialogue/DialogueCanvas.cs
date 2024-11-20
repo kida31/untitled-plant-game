@@ -25,7 +25,7 @@ public partial class DialogueCanvas : CanvasLayer
 		_dialogueTextLabel = GetNode<RichTextLabel>("PanelContainer/MarginContainer/DialogueText");
 		_responseContainer = GetNode<BoxContainer>("Responses");
 		_dialogueSystem = DialogueSystem.Instance;
-		
+
 		_dialogueAnimation = new DialogueAnimation();
 		AddChild(_dialogueAnimation);
 	}

@@ -35,7 +35,7 @@ public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 	/// </summary>
 	/// <param name="name">Dialogue id</param>
 	/// <returns></returns>
-	public DialogueResourceObject GetResourceByName(string name) 
+	public DialogueResourceObject GetResourceByName(string name)
 	{
 		var dialogues = GetAllResources();
 		return dialogues.FirstOrDefault(dialogue => dialogue._dialogueId == name);
@@ -53,6 +53,6 @@ public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 	public DialogueResourceObject[] GetAllResources()
 	{
 		var subDirectories = DirAccess.GetFilesAt(DirPath);
-		return subDirectories.Select(s => GD.Load<DialogueResourceObject>(Path.Join(DirPath,s))).ToArray();
+		return subDirectories.Select(s => GD.Load<DialogueResourceObject>(Path.Join(DirPath, s))).ToArray();
 	}
 }
