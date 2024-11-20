@@ -2,24 +2,23 @@
 
 public class Requirement
 {
-	public Requirement(float maxLevel, float minimumLevel)
+	public Requirement(float maxLevel, float minimumLevelToGrow)
 	{
 		MaxLevel = maxLevel;
-		MinimumLevel = minimumLevel;
+		MinimumLevelToGrow = minimumLevelToGrow;
 		CurrentLevel = 0;
 	}
 
 	public float MaxLevel { get; }
-	private float MinimumLevel { get; }
 	public float CurrentLevel { get; set; }
-
+	private float MinimumLevelToGrow { get; }
 	public bool IsFulfilled()
 	{
-		return CurrentLevel >= MinimumLevel;
+		return CurrentLevel >= MinimumLevelToGrow;
 	}
 
 	public override string ToString()
 	{
-		return string.Format($"The current level reached {CurrentLevel}, minimum level: {MinimumLevel}, maximum level: {MaxLevel}");
+		return string.Format($"The current level reached {CurrentLevel}, minimum level: {MinimumLevelToGrow}, maximum level: {MaxLevel}");
 	}
 }

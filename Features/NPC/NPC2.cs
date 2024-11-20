@@ -7,7 +7,7 @@ public partial class NPC2 : AInteractable
 {
 	public override void _Ready()
 	{
-		AddToGroup(Group.Interactables);
+		AddToGroup(GameGroup.Interactables);
 		var eventBus = GetNode<EventBus>("/root/EventBus");
 		eventBus.Connect("NPCInteracted", new Callable(this, nameof(OnNPCInteracted)));
 
