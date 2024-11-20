@@ -69,7 +69,7 @@ public partial class InputRemapper : Node
 			// Copy input events
 			_logger.Debug($"Copy input bindings {originalActionName} -> {actionName}");
 			var inputs = InputMap.ActionGetEvents(originalActionName);
-			Debug.Assert(inputs.Count > 0, "No inputs bound to action.");
+			Assert.AssertTrue(inputs.Count > 0, "No inputs bound to action.");
 
 			foreach (var e in inputs)
 			{

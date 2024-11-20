@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://rlrobuntkjok"]
+
+[ext_resource type="Script" path="res://Scenes/TestScenes/Dialogue/TestDialogue.cs" id="1_mgpfb"]
+[ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="1_mt3pj"]
+[ext_resource type="Resource" uid="uid://dim7viemwd80s" path="res://Resources/Dialogue/testDialogue.tres" id="2_c7ujq"]
+[ext_resource type="Resource" uid="uid://dopseyyrpdbu8" path="res://Resources/Dialogue/testDialogue_yes.tres" id="3_vrj03"]
+
+[node name="TestDialogue" type="Node2D"]
+script = ExtResource("1_mgpfb")
+_exampleDialogue = ExtResource("2_c7ujq")
+_followupDialogue = ExtResource("3_vrj03")
+
+[node name="DialogueScene" parent="." instance=ExtResource("1_mt3pj")]
