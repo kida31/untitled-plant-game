@@ -3,13 +3,14 @@ using System.IO;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Dialogue;
+using untitledplantgame.Dialogue.Models;
+using untitledplantgame.ResourceData;
 
-namespace untitledplantgame.ResourceData;
+namespace untitledplantgame.Dialogue;
 
 public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 {
-	private const string DialogueResourcePath = "res://ResourceData/Resources/Dialogue/";
+	private const string DialogueResourcePath = "res://Resources/Dialogue/";
 	public static DialogueDatabase Instance { get; private set; }
 
 	private Logger _logger;

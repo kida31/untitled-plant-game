@@ -1,8 +1,6 @@
-using System;
 using Godot;
-using Godot.Collections;
 
-namespace untitledplantgame.Dialogue;
+namespace untitledplantgame.Dialogue.Models;
 
 [GlobalClass]
 public partial class DialogueResourceObject : Resource

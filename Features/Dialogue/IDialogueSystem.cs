@@ -1,4 +1,5 @@
 ﻿using System;
+using untitledplantgame.Dialogue.Models;
 
 namespace untitledplantgame.Dialogue;
 

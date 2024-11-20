@@ -4,7 +4,7 @@ using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
-using untitledplantgame.ResourceData;
+using untitledplantgame.Dialogue.Models;
 
 namespace untitledplantgame.Dialogue;
 
@@ -28,7 +28,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	private DialogueCanvas _dialogueCanvas;
 	private Timer _skipCooldownTimer;
 	private int _waitForSeconds = 1;
-	private bool _Smashable = true;
+	private bool _smashable = true;
 
 	public event Action SkipAnimation;
 
@@ -47,7 +47,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		AddChild(_skipCooldownTimer);
 		_skipCooldownTimer.Autostart = false;
 		_skipCooldownTimer.OneShot = true;
-		_skipCooldownTimer.Timeout += () => _Smashable = true;
+		_skipCooldownTimer.Timeout += () => _smashable = true;
 		// TODO: This does not work, unless in test scene
 		_dialogueCanvas = GetNodeOrNull<DialogueCanvas>("/root/TestDialogue/DialogueScene/DialogueCanvas");
 		Instance = this;
@@ -107,7 +107,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	/// </summary>
 	private void OnPlayerInputConfirm()
 	{
-		if (!_Smashable)
+		if (!_smashable)
 		{
 			return;
 		}
@@ -122,7 +122,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 		if (_dialogueCanvas.AnimationIsPlaying)
 		{
-			_Smashable = false;
+			_smashable = false;
 			_dialogueCanvas.ShowAllDialogue();
 			_skipCooldownTimer.Start(_waitForSeconds);
 			return;

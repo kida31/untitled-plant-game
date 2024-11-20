@@ -1,5 +1,6 @@
 using Godot;
 using untitledplantgame.Common;
+using DialogueLine = untitledplantgame.Dialogue.Models.DialogueLine;
 
 namespace untitledplantgame.Dialogue;
 

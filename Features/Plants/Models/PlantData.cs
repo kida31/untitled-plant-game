@@ -1,6 +1,6 @@
 using Godot;
 
-namespace untitledplantgame.Plants;
+namespace untitledplantgame.Plants.Models;
 
 [GlobalClass]
 public partial class PlantData : Resource
