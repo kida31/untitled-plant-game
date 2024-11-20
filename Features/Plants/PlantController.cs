@@ -6,13 +6,14 @@ namespace untitledplantgame.Plants;
 
 public partial class PlantController : Node
 {
-	private readonly Logger _logger = new("PlantController");
+	private Logger _logger;
 	private TimeController _timeController;
 
 	public override void _Ready()
 	{
 		_timeController = TimeController.Instance;
 		_timeController.DayChanged += DayPassed;
+		_logger = new Logger(this);
 	}
 
 	private void DayPassed(int day)
@@ -35,6 +36,6 @@ public partial class PlantController : Node
 
 	private Array<Node> GetPlantNodes()
 	{
-		return GetTree().GetNodesInGroup("Plant");
+		return GetTree().GetNodesInGroup(GameGroup.Plants);
 	}
 }

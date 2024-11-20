@@ -16,7 +16,7 @@ public abstract partial class AInteractable : Area2D, IInteractable
 
 	public override void _Ready()
 	{
-		AddToGroup(Group.Interactables);
+		AddToGroup(GameGroup.Interactables);
 		BodyEntered += OnBodyEntered;
 		BodyExited += OnBodyExited;
 	}

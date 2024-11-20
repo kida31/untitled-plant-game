@@ -19,33 +19,30 @@ public enum GrowthStage
 
 public partial class APlant : Node2D
 {
-	[Export]
-	public string PlantName { get; private set; }
-
-	private float _absorptionRate = 100.0f;
-	private float _consumptionRate = 30.0f;
-
-	private AnimatedSprite2D _sprite2D;
+	[Export] public string PlantName { get; private set; }
+	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
 	public SoilTile Tile { get; set; }
 
-	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
-	private bool _isHarvestable;
-
 	private Dictionary<string, Requirement> _currentRequirements;
+	private Logger _logger;
+	private AnimatedSprite2D _sprite2D;
+	
+	private bool _isHarvestable;
+	private float _absorptionRate = 100.0f;
+	private float _consumptionRate = 30.0f;
 
 	private int _daysToGrow;
 	private int _currentDay;
 
-	private Logger _logger;
-
 	public override void _Ready()
 	{
+		AddToGroup(GameGroup.Plants);
 		_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		SetRequirements(PlantName);
 		_logger = new Logger(PlantName);
 	}
-	
-	
+
+
 	/// <summary>
 	/// Executes the growth cycle of the plant by absorbing water, consuming water, and absorbing sun.
 	/// Checks if the requirements are fulfilled to advance to the next stage.
@@ -56,14 +53,13 @@ public partial class APlant : Node2D
 			return;
 
 		AbsorbWaterFromTile();
-		ConsumeWater();
 		AbsorbSun();
 
-		if (!CheckRequirements())
-			return;
-
-		_currentDay++;
-		AdvanceStage();
+		if (CheckRequirements())
+		{
+			_currentDay++;
+			AdvanceStage();
+		}
 	}
 
 	/// <summary>
@@ -79,16 +75,17 @@ public partial class APlant : Node2D
 	{
 		if (_isHarvestable)
 		{
-			_logger.Info($"Plant {PlantName} has been harvested.");
+			_logger.Debug($"Plant {PlantName} has been harvested.");
 			Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
 			SetRequirements(PlantName);
-			_logger.Info("plant has reached stage " + Stage);
+			_logger.Debug("plant has reached stage " + Stage);
 		}
 		else
 		{
-			_logger.Info($"Plant {PlantName} is not ready to be harvested.");
+			_logger.Debug($"Plant {PlantName} is not ready to be harvested.");
 		}
 	}
+
 	/// <summary>
 	/// Updates the requirements for the plant to grow for current stage.
 	/// sets the days to grow and the current day count to 0.
@@ -168,6 +165,7 @@ public partial class APlant : Node2D
 		var waterAbsorbed = Tile.WithdrawHydration(_absorptionRate) + waterReq.CurrentLevel;
 
 		waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
+		ConsumeWater();
 
 		_logger.Debug(RequirementType.water.ToString() + _currentRequirements.GetValueOrDefault(RequirementType.water.ToString()));
 	}
@@ -195,7 +193,7 @@ public partial class APlant : Node2D
 
 		sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + _absorptionRate, sunReq.MaxLevel);
 
-		_logger.Info(RequirementType.sun.ToString() + _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString()));
+		_logger.Debug(RequirementType.sun.ToString() + _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString()));
 	}
 
 	private void SetUnalive()
@@ -203,6 +201,6 @@ public partial class APlant : Node2D
 		_sprite2D.Play("Dead");
 		Stage = GrowthStage.Dead;
 		_isHarvestable = false;
-		_logger.Info($"Plant {PlantName} has died due to lack of water.");
+		_logger.Debug($"Plant {PlantName} has died due to lack of water.");
 	}
 }

@@ -31,6 +31,13 @@ public partial class TestAPlant : Node2D
 
 		_plant.PlantOnTile(_soilTile);
 	}
+	public override void _Process(double delta)
+	{
+		if (_label == null)
+			return;
+
+		_label.Text = $"Current Stage {_plant.Stage} \n with Tile Hydration: {_soilTile.Hydration}";
+	}
 
 	private void OnHarvestButtonPressed()
 	{
@@ -40,14 +47,5 @@ public partial class TestAPlant : Node2D
 	private void OnWaterSoilButtonPressed()
 	{
 		_soilTile.WaterSoilTile(200);
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		if (_label == null)
-			return;
-
-		_label.Text = $"Current Stage {_plant.Stage} \n with Tile Hydration: {_soilTile.Hydration}";
 	}
 }

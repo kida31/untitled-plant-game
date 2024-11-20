@@ -34,7 +34,7 @@ public partial class InteractablesManager : Node
 		_interactablesInReach.Clear();
 
 		// Get all Area2D nodes that are in range (this could be optimized)
-		var area2DList = GetTree().GetNodesInGroup(Group.Interactables);
+		var area2DList = GetTree().GetNodesInGroup(GameGroup.Interactables);
 
 		foreach (var area in area2DList)
 		{
