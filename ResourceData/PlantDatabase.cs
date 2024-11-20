@@ -5,7 +5,6 @@ using untitledplantgame.Plants;
 
 namespace untitledplantgame.ResourceData;
 
-
 /// <summary>
 /// A database singleton for all plant resources.
 /// </summary>
@@ -21,14 +20,14 @@ public partial class PlantDatabase : Node, IDatabase<PlantData>
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
-		
+
 		if (Instance != null)
 		{
 			_logger.Error("There are multiple PlantDatabases in the scene. There should only be one.");
 			QueueFree();
 			return;
 		}
-		
+
 		Instance = this;
 	}
 
