@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://60hnhuunu31o"]
+
+[ext_resource type="Script" path="res://Features/Cycle/Weather/WeatherCycleUi.cs" id="1_sgs1a"]
+[ext_resource type="Material" uid="uid://2rf0jb5b024f" path="res://Features/Cycle/Weather/WeatherResources/rain_particle_setting.tres" id="2_m1v60"]
+
+[node name="Weahter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sgs1a")
+
+[node name="RainParticles" type="GPUParticles2D" parent="."]
+position = Vector2(640, 360)
+amount = 1000
+process_material = ExtResource("2_m1v60")
+lifetime = 0.5
+preprocess = 0.5
