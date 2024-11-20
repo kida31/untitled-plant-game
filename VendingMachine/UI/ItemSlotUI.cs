@@ -73,4 +73,6 @@ public partial class ItemSlotUI : Control, IItemSlotUI
 			_logger.Debug($"Pressed {Name}");
 		}
 	}
+	
+	
 }

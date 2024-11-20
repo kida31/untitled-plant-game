@@ -9,6 +9,7 @@ custom_minimum_size = Vector2(128, 128)
 offset_right = 64.0
 offset_bottom = 64.0
 tooltip_text = "Placeholder_Text"
+focus_mode = 2
 script = ExtResource("1_753u5")
 _specificItemIcon = ExtResource("2_s1jlp")
 _displayItemName = NodePath("ItemName")

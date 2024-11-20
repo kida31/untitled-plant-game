@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cca7okqb2j4c7"]
+[gd_scene load_steps=12 format=3 uid="uid://cca7okqb2j4c7"]
 
 [ext_resource type="Script" path="res://Inventory/PlayerInventory/PlayerInventoryController.cs" id="1_rrual"]
 [ext_resource type="Script" path="res://Inventory/PlayerInventory/UI_Tabs/TabsController.cs" id="2_eefgp"]
@@ -9,12 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://uun6r8profaf" path="res://Inventory/PlayerInventory/UI_Tabs/TabItemView.tscn" id="5_6dyti"]
 [ext_resource type="Texture2D" uid="uid://dary2k7vaser5" path="res://DefaultItemBackground_Black.png" id="6_xj551"]
 [ext_resource type="PackedScene" uid="uid://bw6q4ydeapnu6" path="res://Inventory/PlayerInventory/UI_Tabs/DetailedItemView.tscn" id="7_up4jy"]
+[ext_resource type="PackedScene" uid="uid://dtgjnb2g3iphl" path="res://Inventory/PlayerInventory/UI_Screens/PlayerDetailsPage.tscn" id="8_6xk6p"]
+[ext_resource type="Texture2D" uid="uid://dokj1bqameuwd" path="res://DefaultItemBackground_White.png" id="10_asey4"]
 
 [node name="InventoryCanvas" type="CanvasLayer"]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
 offset_right = 1920.0
-offset_bottom = 764.0
+offset_bottom = 1080.0
 
 [node name="Tabs" type="TabContainer" parent="HBoxContainer" node_paths=PackedStringArray("_rightPanelForDetailedItemView")]
 layout_mode = 2
@@ -51,41 +54,257 @@ metadata/_tab_index = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ToolSectionBackground" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.482353)
-offset_left = 19.0
-offset_top = 803.0
-offset_right = 1900.0
-offset_bottom = 1075.0
+[node name="VBoxContainer" parent="HBoxContainer/RightDisplay" instance=ExtResource("8_6xk6p")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 128
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "First Button"
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "Second Button"
+
+[node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+text = "Third Button"
+
+[node name="CenterContainer2" type="CenterContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2"]
+clip_contents = true
+custom_minimum_size = Vector2(700, 800)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/PanelContainer"]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/PanelContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/PanelContainer/ScrollContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/PanelContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/PanelContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/PanelContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("6_xj551")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ToolSectionBackground"]
-layout_mode = 0
-offset_right = 1883.0
-offset_bottom = 274.0
-
-[node name="MarginContainer" type="MarginContainer" parent="ToolSectionBackground/VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/PanelContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
+texture = ExtResource("6_xj551")
 
-[node name="GridContainer" type="GridContainer" parent="ToolSectionBackground/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/PanelContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-columns = 5
+theme_override_constants/margin_left = 33
 
-[node name="ItemView" parent="ToolSectionBackground/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("3_5pjti")]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/PanelContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("6_xj551")
+
+[node name="Label" type="Label" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/PanelContainer/ScrollContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "This is driving me literally insane, help me god
+No, I am not kidding, ask anyone, this feels horrible.
+I haven't slept normally for 10 days."
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/PanelContainer2"]
 layout_mode = 2
 
-[node name="ItemView2" parent="ToolSectionBackground/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("3_5pjti")]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="ItemView3" parent="ToolSectionBackground/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("3_5pjti")]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("6_xj551")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("10_asey4")
+stretch_mode = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 
-[node name="ItemView4" parent="ToolSectionBackground/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("3_5pjti")]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer2/PanelContainer"]
 layout_mode = 2
+texture = ExtResource("6_xj551")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer2/PanelContainer"]
+layout_mode = 2
+text = "Seeds"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer3/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer3/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer3/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "You wanna hear a funny story?
+So, uh, five years ago, I quit performing live comedy
+Because I was beginning to have, uh, severe panic attacks while on stage
+Which is not a great place to have them
+So I, I quit, and I didn't perform for five years and I spent that time
+Trying to improve myself mentally
+And you know what?
+I did
+I got better
+I got so much better, in fact
+That in January of 2020
+I thought, \"You know what? I should start performing again\"
+\"I've been hiding from the world and I need to re-enter\"
+And then, the funniest thing happened"
+autowrap_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer3/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer3/HBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Hi, my name's Chrissy and I'm an addict
+I'm here 'cause I'm not quite all there
+'Cause what used to be my idea of a laugh is
+Now just me checking my pulse in my underwear
+Thinking I should drop dead, eat shit, go to Hell
+I could jump headfirst out the window
+Dark thoughts keep on filling up in my mind, oh-oh
+Kinda wanna get fucked, make love to a chainsaw
+Wrap my drop-top 'round a lamppost
+Not sure I'll be coming back down this time"
+autowrap_mode = 2
+
+[node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer4/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("6_xj551")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer4/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer4/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_asey4")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer4/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_asey4")
+stretch_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer2/PanelContainer2/VBoxContainer/MarginContainer4/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_asey4")
+stretch_mode = 3
 
 [node name="GeneralInventoryLogic" type="Node" parent="." node_paths=PackedStringArray("_tabsController")]
 script = ExtResource("1_rrual")

@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Event;
 using untitledplantgame.Item;
 
@@ -7,7 +8,6 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 
 public partial class InventoryItemView : Control
 {
-	[Export] private PackedScene _inventoryItemScene;
 	[Export] private Texture2D _specificItemIcon;
 	[Export] private Label _displayItemName;
 	[Export] private Label _itemCurrentQuantity;
@@ -17,19 +17,31 @@ public partial class InventoryItemView : Control
 	[Export] private BaseButton _descriptionButton;
 
 	public int Id;
-	
+	private Logger _logger;
 	public ItemStack ItemStack;
-	
-	public event Action DeletePressed;
 	
 	public override void _Ready()
 	{
+		_logger = new Logger(this);
+		
 		Connect(SignalName.MouseEntered, Callable.From(OnMouseEntered)); // Not sure if right
 		Connect(SignalName.MouseExited, Callable.From(OnMouseExited));
 		
-		_itemDeleteButton.Pressed += () => DeletePressed?.Invoke();
+		FocusEntered += () =>
+		{
+			_itemTextureRect.Hide();
+			_logger.Debug($"[{Name}] Entered");
+		};
+
+		FocusExited += () =>
+		{
+			_itemTextureRect.Show();
+			_logger.Debug($"[{Name}] Exited");
+		};
 
 		_descriptionButton.Pressed += SetDetailedView;
+		
+		//GuiInput += OnGuiInput;
 	}
 
 	public override void _Process(double delta)
@@ -108,5 +120,15 @@ public partial class InventoryItemView : Control
 	private void SetDetailedView()
 	{
 		EventBus.Instance.UiItemClicked(_specificItemIcon, _displayItemName.Text);
+	}
+	
+	private void OnGuiInput(InputEvent @event)
+	{
+		// || (@event is InputEventMouseButton mb && mb.ButtonIndex == MouseButton.Left && mb.Pressed)
+		if (@event.IsActionPressed("ui_accept"))
+		{
+			//Pressed?.Invoke();
+			_logger.Debug($"Pressed {Name}");
+		}
 	}
 }

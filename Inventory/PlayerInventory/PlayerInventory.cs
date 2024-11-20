@@ -8,11 +8,14 @@ namespace untitledplantgame.Inventory.PlayerInventory;
 public class PlayerInventory
 {
 	private ItemStack[] _itemStacks;
-
+	// public  ItemStack... Hand;
+	
+	
 	public PlayerInventory(int inventorySize)
 	{
 		_itemStacks = new ItemStack[inventorySize];
 		EventBus.Instance.OnItemPickUp += AddItemToInventory;
+		/// += GetitemInHand;
 	}
 
 	private void AddItemToInventory(ItemStack item)
@@ -40,4 +43,6 @@ public class PlayerInventory
 			_itemStacks[index] = null;
 		}
 	}
+	
+	//public Tool GetItemInHand() { return Hand; } 
 }
