@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0ibwvk38gij1"]
+
+[ext_resource type="PackedScene" path="res://Player/Player.tscn" id="1_7otp0"]
+[ext_resource type="PackedScene" path="res://NPC/NPC.tscn" id="2_qa45g"]
+[ext_resource type="Script" path="res://NPC/Seedboy.cs" id="3_karx4"]
+[ext_resource type="PackedScene" path="res://Shops/GUI/SeedShopView.tscn" id="4_ufdni"]
+
+[node name="TestInventoryScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_7otp0")]
+position = Vector2(28, 26)
+
+[node name="Seedboy" parent="." instance=ExtResource("2_qa45g")]
+position = Vector2(55, 85)
+scale = Vector2(1.00188, 0.98962)
+script = ExtResource("3_karx4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Seedshop" parent="CanvasLayer" instance=ExtResource("4_ufdni")]
+visible = false
