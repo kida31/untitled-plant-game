@@ -28,7 +28,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameStateMachine="*res://Common/GameStates/GameStateMachine.cs"
-EventBus="*res://Common/EventBus/EventBus.cs"
+EventBus="*res://Common/EventBus.cs"
 InputRemapper="*res://Common/Inputs/InputRemapper.cs"
 InteractionManager="*res://Features/Interaction/InteractionManager.tscn"
 TimeController="*res://Common/TimeController.cs"
