@@ -14,8 +14,8 @@ public class VendingMachine
 	public event Action<float> FaithMultChanged;
 
 	// Magic Numbers
-	private const int MAX_SALES = 100;
-	private const float SALES_PERCENT_PER_INTERVAL = 0.1f;
+	private const int MaxSalesCount = 100;
+	private const float SalesPercentPerInterval = 0.1f;
 
 	// Properties
 	public Inventory.Inventory Inventory => _inventory;
@@ -28,7 +28,7 @@ public class VendingMachine
 	private int _gold = 0;
 	private float _priceMultiplier = 1.0f;
 	private float _faithMultiplier = 1.0f;
-	private int _salesRemaining = MAX_SALES;
+	private int _salesRemaining = MaxSalesCount;
 	private Logger _logger = new("VendingMachine");
 
 	/// <summary>
@@ -62,7 +62,7 @@ public class VendingMachine
 		}
 
 		// Sales count for this transaction is a percent of current supply, but at least one.
-		var totalSellCount = (int)Math.Ceiling(Math.Max(SALES_PERCENT_PER_INTERVAL * itemStacks.Count, 1));
+		var totalSellCount = (int)Math.Ceiling(Math.Max(SalesPercentPerInterval * itemStacks.Count, 1));
 
 		// Sort by price descending, sell most expensive first.
 		var itemsByPrice = _inventory.OrderByDescending(stack => stack?.BaseValue ?? 0).ToList();
@@ -127,6 +127,6 @@ public class VendingMachine
 
 	public void OnEndOfDay()
 	{
-		_salesRemaining = MAX_SALES;
+		_salesRemaining = MaxSalesCount;
 	}
 }

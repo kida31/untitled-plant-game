@@ -391,9 +391,8 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obis7"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_interactablesManager") groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ypuiu")
-_interactablesManager = NodePath("Area2D/InteractablesManager")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
