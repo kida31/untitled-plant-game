@@ -79,5 +79,6 @@ animations = [{
 script = ExtResource("1_14phw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_1rej4")
-animation = &"Dead"
+animation = &"Budding"

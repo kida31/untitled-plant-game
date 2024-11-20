@@ -143,6 +143,7 @@ public partial class APlant : Node2D
 	/// </summary>
 	private void ConsumeWater()
 	{
+		// TODO: _currentRequirements ist vermutlich NULL. Keine Ahnung wie hier die Abfolge ist... Issue #92
 		var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water.ToString());
 		waterReq.CurrentLevel -= _consumptionRate;
 

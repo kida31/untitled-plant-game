@@ -1,15 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxnxwjoe7007y"]
+[gd_scene load_steps=4 format=3 uid="uid://bxnxwjoe7007y"]
 
 [ext_resource type="Script" path="res://Scenes/TestScenes/PlantAndCycles/TestCycleWithPlants.cs" id="1_7jpbk"]
-[ext_resource type="PackedScene" uid="uid://c186pbacifdrr" path="res://Features/Cycle/placeholder.tscn" id="1_vp5db"]
 [ext_resource type="PackedScene" uid="uid://cc5mcucmbfc65" path="res://Scenes/TestScenes/APlant/TestAPlant.tscn" id="3_0d3u6"]
 [ext_resource type="Script" path="res://Features/Plants/PlantController.cs" id="4_as062"]
 
 [node name="TestCycleWithPlants" type="Node2D" node_paths=PackedStringArray("_skipButton")]
 script = ExtResource("1_7jpbk")
 _skipButton = NodePath("Button")
-
-[node name="Day-night-cycle" parent="." instance=ExtResource("1_vp5db")]
 
 [node name="PlantController" type="Node" parent="."]
 script = ExtResource("4_as062")

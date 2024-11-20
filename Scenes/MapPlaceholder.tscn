@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://odaf4n8fl163"]
+
+[ext_resource type="Texture2D" uid="uid://dx1gvoqkygl8m" path="res://Features/Cycle/placeholder_BG.jpg" id="1_w1cey"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(640, 360)
+scale = Vector2(1.19896, 1.19896)
+texture = ExtResource("1_w1cey")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(362.798, 0)
+scale = Vector2(2.28351, 1)
+polygon = PackedVector2Array(-398.118, -366.151, 78.171, -371.155, 78.171, -360.312, -368.898, -359.478, -370.724, 361.146, 51.5076, 361.146, 51.1424, -360.312, 78.171, -360.312, 79.9973, 361.146, 54.0644, 427.871, -368.532, 424.535, -396.292, 366.985)
