@@ -8,6 +8,8 @@ namespace untitledplantgame.Scenes.TestScenes.Dialogue;
 public partial class TestDialogue : Node2D
 {
 	[Export]
+	private DialogueSystem _dialogueSystem;
+	[Export]
 	private DialogueResourceObject _exampleDialogue;
 
 	[Export]
@@ -15,6 +17,6 @@ public partial class TestDialogue : Node2D
 
 	public override void _Ready()
 	{
-		DialogueSystem.Instance.StartDialog(_exampleDialogue._dialogueId);
+		_dialogueSystem.StartDialog(_exampleDialogue._dialogueId);
 	}
 }

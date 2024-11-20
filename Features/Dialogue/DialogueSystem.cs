@@ -10,14 +10,6 @@ namespace untitledplantgame.Dialogue;
 
 public partial class DialogueSystem : Node, IDialogueSystem
 {
-	private enum DialogueState
-	{
-		Conversing,
-		Responding,
-		End,
-	}
-
-	public static DialogueSystem Instance { get; private set; }
 	public event Action<DialogueResourceObject> OnDialogueStart;
 	public event Action<DialogueResourceObject> OnDialogueEnd;
 
@@ -25,32 +17,22 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	private IEnumerator<DialogueLine> _enumerator;
 	private DialogueState _state;
 	private Logger _logger;
-	private DialogueCanvas _dialogueCanvas;
+	private DialogueUi _dialogueUi;
 	private Timer _skipCooldownTimer;
 	private int _waitForSeconds = 1;
 	private bool _smashable = true;
 
-	public event Action SkipAnimation;
-
 	public override void _Ready()
 	{
 		_logger = new(this);
-
-		if (Instance != null)
-		{
-			_logger.Error("There is already an instance of DialogueSystem.");
-			QueueFree();
-			return;
-		}
 
 		_skipCooldownTimer = new Timer();
 		AddChild(_skipCooldownTimer);
 		_skipCooldownTimer.Autostart = false;
 		_skipCooldownTimer.OneShot = true;
 		_skipCooldownTimer.Timeout += () => _smashable = true;
-		// TODO: This does not work, unless in test scene
-		_dialogueCanvas = GetNodeOrNull<DialogueCanvas>("/root/TestDialogue/DialogueScene/DialogueCanvas");
-		Instance = this;
+		_dialogueUi = GetNode<DialogueUi>("DialogueUi");
+		_logger.Debug(_dialogueUi.Name);
 	}
 
 	public override void _Input(InputEvent @event)
@@ -90,7 +72,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_currentDialogue = null;
 		GameStateMachine.Instance.SetState(GameState.FreeRoam);
 		_state = DialogueState.End;
-		_dialogueCanvas.ClearDialogue();
+		_dialogueUi.ClearDialogue();
 		OnDialogueEnd?.Invoke(_currentDialogue);
 	}
 
@@ -120,10 +102,10 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_logger.Debug("Player input confirm.");
 		_logger.Debug("State: " + _state);
 
-		if (_dialogueCanvas.AnimationIsPlaying)
+		if (_dialogueUi.AnimationIsPlaying)
 		{
 			_smashable = false;
-			_dialogueCanvas.ShowAllDialogue();
+			_dialogueUi.ShowAllDialogue();
 			_skipCooldownTimer.Start(_waitForSeconds);
 			return;
 		}
@@ -162,7 +144,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		var expr = line.DialogueExpression.ToString();
 		var text = line.dialogueText;
 		_logger.Debug($"{speaker} (${expr}):${text}");
-		_dialogueCanvas.DisplayDialogue(line);
+		_dialogueUi.DisplayDialogue(line);
 	}
 
 	private void DisplayResponses()
@@ -173,8 +155,15 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			_logger.Debug("- " + response);
 		}
 
-		_dialogueCanvas.DisplayResponses(_currentDialogue._responses.Select(r => r._responseButton).ToArray());
+		_dialogueUi.DisplayResponses(_currentDialogue._responses.Select(r => r._responseButton).ToArray());
 
 		_state = DialogueState.Responding;
+	}
+	
+	private enum DialogueState
+	{
+		Conversing,
+		Responding,
+		End,
 	}
 }

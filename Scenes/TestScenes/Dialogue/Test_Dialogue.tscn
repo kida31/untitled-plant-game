@@ -5,8 +5,9 @@
 [ext_resource type="Resource" uid="uid://dim7viemwd80s" path="res://Resources/Dialogue/testDialogue.tres" id="2_c7ujq"]
 [ext_resource type="Resource" uid="uid://dopseyyrpdbu8" path="res://Resources/Dialogue/testDialogue_yes.tres" id="3_vrj03"]
 
-[node name="TestDialogue" type="Node2D"]
+[node name="TestDialogue" type="Node2D" node_paths=PackedStringArray("_dialogueSystem")]
 script = ExtResource("1_mgpfb")
+_dialogueSystem = NodePath("DialogueScene")
 _exampleDialogue = ExtResource("2_c7ujq")
 _followupDialogue = ExtResource("3_vrj03")
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cc8tr4q35n0q8"]
+[gd_scene load_steps=11 format=3 uid="uid://cc8tr4q35n0q8"]
 
-[ext_resource type="Script" path="res://Features/Dialogue/DialogueCanvas.cs" id="1_ng045"]
+[ext_resource type="Script" path="res://Features/Dialogue/DialogueSystem.cs" id="1_lmlvm"]
+[ext_resource type="Script" path="res://Features/Dialogue/DialogueUi.cs" id="2_6qnof"]
 [ext_resource type="Texture2D" uid="uid://o4fvncrv04mo" path="res://Assets/Sprites/damage.png" id="2_cnal3"]
 [ext_resource type="Texture2D" uid="uid://y1pnkolace2g" path="res://Assets/UI Assets/01_Flat_Theme/Sprites/UI_Flat_Frame03a.png" id="2_dbhsn"]
 [ext_resource type="Texture2D" uid="uid://d0vfo4ggpdkjf" path="res://Assets/UI Assets/01_Flat_Theme/Sprites/UI_Flat_Banner02a.png" id="3_kd5nr"]
@@ -57,45 +58,46 @@ animations = [{
 }]
 
 [node name="DialogueScene" type="Node2D"]
-position = Vector2(305.5, 455.25)
+script = ExtResource("1_lmlvm")
 
-[node name="DialogueCanvas" type="CanvasLayer" parent="."]
-script = ExtResource("1_ng045")
+[node name="DialogueUi" type="Node2D" parent="."]
+script = ExtResource("2_6qnof")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DialogueCanvas"]
+[node name="Portrait" type="AnimatedSprite2D" parent="DialogueUi"]
 texture_filter = 1
-position = Vector2(397, 407)
+position = Vector2(91.5, -48.25)
 scale = Vector2(4.7625, 4.50625)
 sprite_frames = SubResource("SpriteFrames_3m0r1")
 animation = &"sad"
 
-[node name="Responses" type="VBoxContainer" parent="DialogueCanvas"]
+[node name="Responses" type="VBoxContainer" parent="DialogueUi"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -492.0
-offset_top = -233.0
-offset_right = -342.0
-offset_bottom = -183.0
+offset_left = 354.5
+offset_top = -40.25
+offset_right = 504.5
+offset_bottom = 9.75
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="DialogueCanvas"]
+[node name="PanelContainer" type="PanelContainer" parent="DialogueUi"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -236.0
-offset_top = -181.0
-offset_right = 236.0
+offset_left = 34.5
+offset_top = 11.75
+offset_right = 506.5
+offset_bottom = 192.75
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 
-[node name="DialogueBox" type="NinePatchRect" parent="DialogueCanvas/PanelContainer"]
+[node name="DialogueBox" type="NinePatchRect" parent="DialogueUi/PanelContainer"]
 layout_mode = 2
 texture = ExtResource("2_dbhsn")
 region_rect = Rect2(0, -0.946583, 94.6165, 64.8414)
@@ -103,32 +105,32 @@ patch_margin_left = 2
 patch_margin_top = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="DialogueCanvas/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="DialogueUi/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="DialogueText" type="RichTextLabel" parent="DialogueCanvas/PanelContainer/MarginContainer"]
+[node name="DialogueText" type="RichTextLabel" parent="DialogueUi/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "Some random dialogue text in here... Bla bla bla..."
 visible_characters_behavior = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="DialogueCanvas"]
+[node name="PanelContainer2" type="PanelContainer" parent="DialogueUi"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 342.0
-offset_top = -216.0
-offset_right = 439.0
-offset_bottom = -162.0
+offset_left = 36.5
+offset_top = -23.25
+offset_right = 231.5
+offset_bottom = 30.75
 grow_vertical = 0
 size_flags_horizontal = 4
 
-[node name="NameBox" type="NinePatchRect" parent="DialogueCanvas/PanelContainer2"]
+[node name="NameBox" type="NinePatchRect" parent="DialogueUi/PanelContainer2"]
 layout_mode = 2
 texture = ExtResource("3_kd5nr")
 region_rect = Rect2(0, 0, 64, 20)
@@ -137,14 +139,14 @@ patch_margin_top = 1
 patch_margin_right = 4
 patch_margin_bottom = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="DialogueCanvas/PanelContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="DialogueUi/PanelContainer2"]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 20
 
-[node name="Name" type="RichTextLabel" parent="DialogueCanvas/PanelContainer2/MarginContainer"]
+[node name="Name" type="RichTextLabel" parent="DialogueUi/PanelContainer2/MarginContainer"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 4

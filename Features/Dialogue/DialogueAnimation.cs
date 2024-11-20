@@ -19,19 +19,7 @@ public partial class DialogueAnimation : Node
 	{
 		_logger = new Logger(this);
 		AddChild(_timer = new Timer());
-		_timer.Timeout += PlayAnimation;
 		_timer.OneShot = true;
-	}
-
-	private void PlayAnimation()
-	{
-		/*
-		if (_currentLetterIndex < _text.Length)
-		{
-			GD.PrintRaw(_text[_currentLetterIndex]);
-			_currentLetterIndex++;
-		}
-		*/
 	}
 
 	public async void AnimateNextDialogueLine(RichTextLabel dialogueTextLabel, DialogueLine line)
