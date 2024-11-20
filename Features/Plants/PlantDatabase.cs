@@ -1,6 +1,7 @@
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Plants.Models;
 using untitledplantgame.ResourceData;
 
 namespace untitledplantgame.Plants;

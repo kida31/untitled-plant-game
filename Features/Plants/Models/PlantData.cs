@@ -1,7 +1,6 @@
 using Godot;
-using RequirementDataForGrowthStage = untitledplantgame.Plants.Models.RequirementDataForGrowthStage;
 
-namespace untitledplantgame.Plants;
+namespace untitledplantgame.Plants.Models;
 
 [GlobalClass]
 public partial class PlantData : Resource

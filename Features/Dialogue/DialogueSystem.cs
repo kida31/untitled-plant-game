@@ -63,7 +63,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 	public void StartDialog(string dialogueId)
 	{
-		var dialogue = untitledplantgame.Dialogue.DialogueDatabase.Instance.GetResourceByName(dialogueId);
+		var dialogue = DialogueDatabase.Instance.GetResourceByName(dialogueId);
 
 		if (dialogue == null)
 		{
