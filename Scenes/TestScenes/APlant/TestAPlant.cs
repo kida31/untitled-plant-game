@@ -22,6 +22,12 @@ public partial class TestAPlant : Node2D
 		waterSoilButton.Pressed += OnWaterSoilButtonPressed;
 		var harvestButton = GetNode<Button>("VBoxContainer/Button2");
 		harvestButton.Pressed += OnHarvestButtonPressed;
+		_label = GetNode<Label>("VBoxContainer/Label");
+		GD.Print(_label.Name);
+		_soilTile = GetNode<SoilTile>("Soil");
+		GD.Print(_soilTile.Name);
+		_plant = GetNode<APlant>("APlantPrefab");
+		GD.Print(_plant.Name);
 
 		_plant.PlantOnTile(_soilTile);
 	}
@@ -42,7 +48,6 @@ public partial class TestAPlant : Node2D
 		if (_label == null)
 			return;
 
-		_label.Text = _plant.Stage + "\n";
-		_label.Text += "Tile Hydration: " + _soilTile.Hydration;
+		_label.Text = $"Current Stage {_plant.Stage} \n with Tile Hydration: {_soilTile.Hydration}";
 	}
 }

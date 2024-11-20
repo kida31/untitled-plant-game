@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
@@ -34,15 +36,13 @@ public partial class PlantDatabase : Node, IDatabase<PlantData>
 
 	public PlantData GetResourceByName(string name)
 	{
-		// name == "Basil"
-		// turns into
-		// "res://ResourceData/Resources/Plants/Basil/Basil.tres"
-		return GD.Load<PlantData>($"{_dirPath}/{name}/{name}.tres");
+		var pathName = $"{name}/{name}.tres";
+		return GD.Load<PlantData>(Path.Join(_dirPath, pathName));
 	}
 
 	public PlantData GetResourceById(int id)
 	{
-		return GetAllResources().FirstOrDefault(plant => plant._plantId == id, null);
+		throw new NotImplementedException();
 	}
 
 	public PlantData[] GetAllResources()
