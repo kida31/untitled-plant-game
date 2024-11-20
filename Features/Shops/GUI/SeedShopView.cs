@@ -54,6 +54,9 @@ public partial class SeedShopView : Control
 		SetShopUIContent(shop.CurrentStock.ToList());
 		shop.ShopStockChanged += SetShopUIContent;
 		Show();
+		
+		// Grab focus
+		_shopSlots[0].GrabFocus();
 	}
 
 	private void OnSlotPressed(ShopItemStackView thisSlot)

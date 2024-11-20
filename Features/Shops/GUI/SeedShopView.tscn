@@ -33,51 +33,67 @@ columns = 4
 
 [node name="ShopItemStackView" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView2" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView3" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView4" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView5" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView6" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView7" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView8" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView9" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView10" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView11" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView12" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView13" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView14" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView15" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="ShopItemStackView16" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
 layout_mode = 2
+focus_mode = 2
 
 [node name="IndependentRoot" type="Control" parent="."]
 layout_mode = 2
