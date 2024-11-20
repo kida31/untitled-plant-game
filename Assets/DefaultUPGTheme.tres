@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://btpy11jenkt7s"]
+
+[ext_resource type="FontFile" uid="uid://c84stviqfe4lr" path="res://Assets/Fonts/bitpotion/BitPotionExt.ttf" id="1_kqvm5"]
+[ext_resource type="FontFile" uid="uid://ctogc4uddws7b" path="res://Assets/Fonts/born2bsportfs/Born2bSportyFS.otf" id="2_ojpsa"]
+
+[sub_resource type="FontVariation" id="FontVariation_2cw87"]
+base_font = ExtResource("1_kqvm5")
+variation_transform = Transform2D(1.5, 0, 0, 1, 0, 0)
+spacing_glyph = 1
+
+[resource]
+default_font = ExtResource("1_kqvm5")
+default_font_size = 32
+HeaderMedium/base_type = &"RichTextLabel"
+HeaderMedium/fonts/normal_font = ExtResource("2_ojpsa")
+RichTextLabel/colors/default_color = Color(0.184314, 0.0941176, 0.0196078, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.827451, 0.517647, 0.258824, 0.756863)
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/shadow_outline_size = 0
+RichTextLabel/fonts/bold_font = SubResource("FontVariation_2cw87")
+RichTextLabel/fonts/normal_font = ExtResource("1_kqvm5")
+Secondary/base_type = &"RichTextLabel"
+Secondary/colors/default_color = Color(0.40162, 0.3784, 0.43, 0.882353)
+Secondary/colors/font_shadow_color = Color(0.398323, 0.3741, 0.43, 0.537255)

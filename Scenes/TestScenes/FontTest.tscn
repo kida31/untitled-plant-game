@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://ny45murxjoi6"]
+
+[ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="2_qkk7q"]
+
+[node name="Label" type="VBoxContainer"]
+offset_right = 595.0
+offset_bottom = 227.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TooltipView" parent="." instance=ExtResource("2_qkk7q")]
+layout_mode = 2
+
+[node name="TooltipView2" parent="." instance=ExtResource("2_qkk7q")]
+layout_mode = 2
+
+[node name="NameLabel" parent="TooltipView2/MarginContainer/VBoxContainer" index="0"]
+theme_type_variation = &"HeaderMedium"
+bbcode_enabled = true
+text = "[b]12Ab asdf Hello World[/b]"
+
+[node name="DescriptionLabel" parent="TooltipView2/MarginContainer/VBoxContainer" index="2"]
+bbcode_enabled = true
+text = "12Ab asdf Hello World"
+
+[node name="TooltipView3" parent="." instance=ExtResource("2_qkk7q")]
+layout_mode = 2
+
+[node name="NameLabel" parent="TooltipView3/MarginContainer/VBoxContainer" index="0"]
+theme_type_variation = &"HeaderMedium"
+
+[node name="DescriptionLabel" parent="TooltipView3/MarginContainer/VBoxContainer" index="2"]
+theme_type_variation = &"Text15"
+
+[node name="TooltipView4" parent="." instance=ExtResource("2_qkk7q")]
+layout_mode = 2
+
+[node name="DescriptionLabel" parent="TooltipView4/MarginContainer/VBoxContainer" index="2"]
+theme_type_variation = &"Secondary"
+
+[node name="TooltipView5" parent="." instance=ExtResource("2_qkk7q")]
+layout_mode = 2
+
+[node name="NameLabel" parent="TooltipView5/MarginContainer/VBoxContainer" index="0"]
+theme_type_variation = &"Text25"
+
+[node name="DescriptionLabel" parent="TooltipView5/MarginContainer/VBoxContainer" index="2"]
+theme_type_variation = &"Text25"
+
+[editable path="TooltipView2"]
+[editable path="TooltipView3"]
+[editable path="TooltipView4"]
+[editable path="TooltipView5"]
