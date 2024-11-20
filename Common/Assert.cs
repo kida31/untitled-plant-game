@@ -59,6 +59,32 @@ public static class Assert
 			RaiseError(message);
 		}
 	}
+	
+	/// <summary>
+	///     Asserts that the object is null.
+	/// </summary>
+	/// <param name="obj"></param>
+	/// <param name="message"></param>
+	public static void AssertNull(object obj, string message = null)
+	{
+		if (obj != null)
+		{
+			RaiseError(message);
+		}
+	}
+	
+	/// <summary>
+	///     Asserts that the object is not null.
+	/// </summary>
+	/// <param name="obj"></param>
+	/// <param name="message"></param>
+	public static void AssertNotNull(object obj, string message = null)
+	{
+		if (obj == null)
+		{
+			RaiseError(message);
+		}
+	}
 
 	/// <summary>
 	///     Asserts that the two objects are the same.
