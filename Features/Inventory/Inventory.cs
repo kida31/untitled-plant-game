@@ -78,7 +78,7 @@ public class Inventory : IInventory
 
 	public bool Contains(ItemStack item)
 	{
-		return this.Any(stack => stack.Id == item.Id);
+		return item != null && this.Any(stack => stack?.Id == item.Id);
 	}
 
 	public bool Contains(string itemId, int amount)
@@ -287,4 +287,29 @@ public class Inventory : IInventory
 
 		return item;
 	}
+	
+	public ItemStack AddItemToSlot(int slotIdx, ItemStack item)
+	{
+		var targetStack = GetItem(slotIdx);
+		if (!item.HasSameIdAndProps(targetStack))
+		{
+			return item;
+		}
+
+		var leftover = (ItemStack)item.Clone(); // TODO: Change inventory to handle IItemStack
+		var spaceLeft = targetStack.MaxStackSize - targetStack.Amount;
+
+		// If can transfer all
+		if (spaceLeft > leftover.Amount)
+		{
+			targetStack.Amount += leftover.Amount;
+			return null;
+		}
+
+		leftover.Amount -= spaceLeft;
+		targetStack.Amount += spaceLeft;
+		return leftover;
+	}
+
+
 }
