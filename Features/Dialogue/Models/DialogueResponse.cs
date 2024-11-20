@@ -1,6 +1,6 @@
 using Godot;
 
-namespace untitledplantgame.Dialogue;
+namespace untitledplantgame.Features.Dialogue.Models;
 
 [GlobalClass]
 public partial class DialogueResponse : Resource
