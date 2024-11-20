@@ -31,6 +31,13 @@ script = ExtResource("3_qp075")
 [node name="TestAPlant" parent="Plants" instance=ExtResource("4_qqlvm")]
 position = Vector2(163, 128)
 
+[node name="SkipDay" type="Button" parent="Plants/TestAPlant"]
+offset_left = -6.0
+offset_top = -53.0
+offset_right = 126.0
+offset_bottom = -22.0
+text = "Skip to next day"
+
 [node name="Player" parent="." instance=ExtResource("1_mh621")]
 position = Vector2(640, 360)
 
