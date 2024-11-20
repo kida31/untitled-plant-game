@@ -202,6 +202,7 @@ public partial class APlant : Node2D
 	{
 		_sprite2D.Play("Dead");
 		Stage = GrowthStage.Dead;
+		_isHarvestable = false;
 		_logger.Info($"Plant {PlantName} has died due to lack of water.");
 	}
 }
