@@ -6,7 +6,7 @@
 
 [node name="TestAPlant" type="Node2D" node_paths=PackedStringArray("_label", "_plant", "_soilTile")]
 script = ExtResource("1_5umc6")
-_label = NodePath("Water a plant/Label")
+_label = NodePath("Water/Label")
 _plant = NodePath("APlantPrefab")
 _soilTile = NodePath("Soil")
 
@@ -25,15 +25,15 @@ offset_right = -21.0
 offset_bottom = 133.0
 text = "Skip Day"
 
-[node name="Water a plant" type="VBoxContainer" parent="."]
+[node name="Water" type="VBoxContainer" parent="."]
 offset_left = 110.258
 offset_top = 104.499
 offset_right = 228.258
 offset_bottom = 162.499
 
-[node name="Button" type="Button" parent="Water a plant"]
+[node name="Button" type="Button" parent="Water"]
 layout_mode = 2
 text = "Water Soil Tile"
 
-[node name="Label" type="Label" parent="Water a plant"]
+[node name="Label" type="Label" parent="Water"]
 layout_mode = 2
