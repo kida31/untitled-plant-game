@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Inventory;
 
@@ -256,4 +257,13 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	/// <param name="target"></param>
 	void QuickStack(IInventory target);
+
+	void TransferTo(ItemStack item, IInventory destination)
+	{
+		Assert.AssertTrue(Contains(item), "Should not try to transfer items that are larger than the available quantity");
+		RemoveItem(item);
+		destination.AddItem(item);
+	}
+
+	ItemStack AddItemToSlot(int slotIdx, ItemStack item);
 }

@@ -28,7 +28,7 @@ public partial class SeedShopView : Control
 
 	public override void _Ready()
 	{
-		EventBus.Instance.OnSeedshopOpened += OnOpenSeedShop;
+		EventBus.Instance.OnSeedShopOpening += OpenSeedShop;
 		EventBus.Instance.OnSeedshopClosed += HideSeedShop;
 
 		_shopSlots = _slotContainer.GetChildren().OfType<ShopItemStackView>().ToList();
@@ -42,7 +42,7 @@ public partial class SeedShopView : Control
 		});
 	}
 
-	private void OnOpenSeedShop(IShop shop)
+	private void OpenSeedShop(IShop shop)
 	{
 		if (_currentShop != null)
 		{
