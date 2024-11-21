@@ -130,7 +130,7 @@ public class Inventory : IInventory
 		return Array.FindIndex(_items, item => item == null);
 	}
 
-	public void Remove(string itemId)
+	public void RemoveAll(string itemId)
 	{
 		for (var i = 0; i < _items.Length; i++)
 		{
@@ -141,7 +141,7 @@ public class Inventory : IInventory
 		}
 	}
 
-	public void Remove(ItemStack item)
+	public void RemoveAll(ItemStack item)
 	{
 		for (var i = 0; i < _items.Length; i++)
 		{

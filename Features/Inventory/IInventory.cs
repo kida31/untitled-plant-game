@@ -190,7 +190,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	///     @throws IllegalArgumentException if itemId is null
 	/// </summary>
 	/// <param name="itemId">The itemId to remove</param>
-	public void Remove(string itemId);
+	public void RemoveAll(string itemId);
 
 	/// <summary>
 	///     Removes all stacks in the inventory matching the given stack.
@@ -200,7 +200,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </para>
 	/// </summary>
 	/// <param name="item">The ItemStack to match against</param>
-	public void Remove(ItemStack item);
+	public void RemoveAll(ItemStack item);
 
 	/// <summary>
 	///     Clears out a particular slot in the index.

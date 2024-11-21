@@ -270,19 +270,19 @@ public class BigInventory : IInventory
 		return -1;
 	}
 
-	public void Remove(string itemId)
+	public void RemoveAll(string itemId)
 	{
 		foreach (var inventory in _inventories.Values)
 		{
-			inventory.Remove(itemId);
+			inventory.RemoveAll(itemId);
 		}
 	}
 
-	public void Remove(ItemStack item)
+	public void RemoveAll(ItemStack item)
 	{
 		foreach (var inventory in _inventories.Values)
 		{
-			inventory.Remove(item);
+			inventory.RemoveAll(item);
 		}
 	}
 
