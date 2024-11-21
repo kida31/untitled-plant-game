@@ -213,12 +213,13 @@ public class BigInventory : IInventory
 		var results = new Dictionary<int, ItemStack>();
 		foreach (var (category, inventory) in _inventories)
 		{
-			// Technically redundant since wrongInventory.First() will return empty dictionary
+			
 			if (category != item.Category)
 			{
 				indexOffset += inventory.Size;
-			}
-
+				continue; // Skip rest since wrongInventory.All() will return empty dictionary
+			} 
+			
 			// Get local indices and add offset for "global" index
 			var indices = inventory.All(item);
 			foreach (var (stackIndex, stack) in indices)
