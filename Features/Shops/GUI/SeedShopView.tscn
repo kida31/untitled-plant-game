@@ -29,6 +29,7 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 columns = 4
 
 [node name="ShopItemStackView" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
