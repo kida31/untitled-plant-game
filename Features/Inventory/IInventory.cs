@@ -59,10 +59,11 @@ public interface IInventory : IEnumerable<ItemStack>
 
 	/// <summary>
 	///     Removes the given ItemStacks from the inventory.
-	///     <p>
+	///     <para>
 	///         It will try to remove 'as much as possible' from the types and amounts
 	///         you give as arguments.
-	///         <p>
+	///		
+	///         <para>
 	///             The returned HashMap contains what it couldn't remove, where the key is
 	///             the index of the parameter, and the value is the ItemStack at that
 	///             index of the varargs parameter. If all the given ItemStacks are
@@ -70,6 +71,8 @@ public interface IInventory : IEnumerable<ItemStack>
 	///             @param items The ItemStacks to remove
 	///             @return A HashMap containing items that couldn't be removed.
 	///             @throws IllegalArgumentException if items is null
+	/// </para>
+	/// </para>
 	/// </summary>
 	public Dictionary<int, ItemStack> RemoveItem(params ItemStack[] items);
 
@@ -254,6 +257,7 @@ public interface IInventory : IEnumerable<ItemStack>
 
 	/// <summary>
 	///     Tries to quick stack items from this inventory to the target inventory.
+	///		Only items that already exist in the target inventory will be stacked.
 	/// </summary>
 	/// <param name="target"></param>
 	void QuickStack(IInventory target);

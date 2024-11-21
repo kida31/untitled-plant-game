@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Inventory;
 
 public class Inventory : IInventory
 {
 	private readonly ItemStack[] _items;
+	private readonly Logger _logger = new("Inventory");
 
 	public Inventory(int size, string name)
 	{
@@ -65,6 +67,12 @@ public class Inventory : IInventory
 
 	public void SetContents(List<ItemStack> items)
 	{
+		if (items.Count > Size)
+		{
+			_logger.Error("Trying to set more items than inventory size");
+			return;
+		}
+		
 		for (var i = 0; i < _items.Length; i++)
 		{
 			_items[i] = i < items.Count ? items[i] : null;
@@ -78,7 +86,7 @@ public class Inventory : IInventory
 
 	public bool Contains(ItemStack item)
 	{
-		return item != null && this.Any(stack => stack?.Id == item.Id);
+		return this.Any(stack => stack.Id == item.Id);
 	}
 
 	public bool Contains(string itemId, int amount)
@@ -188,6 +196,11 @@ public class Inventory : IInventory
 		}
 	}
 
+	public ItemStack AddItemToSlot(int slotIdx, ItemStack item)
+	{
+		throw new NotImplementedException();
+	}
+
 	public IEnumerator<ItemStack> GetEnumerator()
 	{
 		return ((IEnumerable<ItemStack>)_items).GetEnumerator();
@@ -213,7 +226,7 @@ public class Inventory : IInventory
 		{
 			var destination = _items[nonFullStackIdx];
 			var transferableAmount = destination.MaxStackSize - destination.Amount;
-
+			
 			// If remaining amount fits into the stack, we are done
 			if (transferableAmount >= item.Amount)
 			{
@@ -221,7 +234,7 @@ public class Inventory : IInventory
 				item.Amount = 0;
 				return null;
 			}
-
+			
 			// Otherwise fill up and try to fill up another stack
 			destination.Amount = destination.MaxStackSize;
 			item.Amount -= transferableAmount;
@@ -287,29 +300,4 @@ public class Inventory : IInventory
 
 		return item;
 	}
-	
-	public ItemStack AddItemToSlot(int slotIdx, ItemStack item)
-	{
-		var targetStack = GetItem(slotIdx);
-		if (!item.HasSameIdAndProps(targetStack))
-		{
-			return item;
-		}
-
-		var leftover = (ItemStack)item.Clone(); // TODO: Change inventory to handle IItemStack
-		var spaceLeft = targetStack.MaxStackSize - targetStack.Amount;
-
-		// If can transfer all
-		if (spaceLeft > leftover.Amount)
-		{
-			targetStack.Amount += leftover.Amount;
-			return null;
-		}
-
-		leftover.Amount -= spaceLeft;
-		targetStack.Amount += spaceLeft;
-		return leftover;
-	}
-
-
 }

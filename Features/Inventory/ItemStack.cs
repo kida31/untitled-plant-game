@@ -47,19 +47,13 @@ public class ItemStack : IItemStack
 		where T : class, IComponent
 	{
 		var idx = _components.FindIndex(component => component is T);
-		return idx != -1 ? (T) _components[idx] : null;
+		return idx != -1 ? (T)_components[idx] : null;
 	}
 
 	public void AddComponent<T>(T component)
 		where T : class, IComponent
 	{
-		Assert.AssertNotNull(component, "Component should not be null");
-		if (GetComponent<T>() is not null)
-		{
-			_logger.Warn("Component should only exist once");
-			return;
-		}
-
+		Debug.Assert(GetComponent<T>() == null, "Component already exists");
 		_components.Add(component);
 	}
 
@@ -72,7 +66,7 @@ public class ItemStack : IItemStack
 			return null;
 		}
 
-		var component = (T) _components[idx];
+		var component = (T)_components[idx];
 		_components.RemoveAt(idx);
 		return component;
 	}
