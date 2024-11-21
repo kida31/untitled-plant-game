@@ -3,49 +3,94 @@
 [ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="2_qkk7q"]
 
 [node name="Label" type="VBoxContainer"]
-offset_right = 595.0
+offset_right = 247.0
 offset_bottom = 227.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="TooltipView" parent="." instance=ExtResource("2_qkk7q")]
 layout_mode = 2
+size_flags_horizontal = 1
+_exampleTitle = "Hello"
+_exampleDescription = "World"
 
 [node name="TooltipView2" parent="." instance=ExtResource("2_qkk7q")]
 layout_mode = 2
+size_flags_horizontal = 1
+_exampleTitle = "Blahblah"
+_exampleDescription = "12Ab asdf Hello World"
 
-[node name="NameLabel" parent="TooltipView2/MarginContainer/VBoxContainer" index="0"]
-theme_type_variation = &"HeaderMedium"
-bbcode_enabled = true
-text = "[b]12Ab asdf Hello World[/b]"
+[node name="TitleLabel" parent="TooltipView2/MarginContainer/VBoxContainer" index="0"]
+visible = true
+custom_minimum_size = Vector2(72, 0)
+text = "Blahblah"
+
+[node name="TitleLabel2" parent="TooltipView2/MarginContainer/VBoxContainer/TitleLabel" index="1"]
+text = "Blahblah"
+
+[node name="HSeparator" parent="TooltipView2/MarginContainer/VBoxContainer" index="1"]
+visible = true
 
 [node name="DescriptionLabel" parent="TooltipView2/MarginContainer/VBoxContainer" index="2"]
-bbcode_enabled = true
 text = "12Ab asdf Hello World"
 
 [node name="TooltipView3" parent="." instance=ExtResource("2_qkk7q")]
 layout_mode = 2
+size_flags_horizontal = 1
+_exampleTitle = "Du stinker"
+_exampleDescription = "stinky stinker"
 
-[node name="NameLabel" parent="TooltipView3/MarginContainer/VBoxContainer" index="0"]
-theme_type_variation = &"HeaderMedium"
+[node name="TitleLabel" parent="TooltipView3/MarginContainer/VBoxContainer" index="0"]
+visible = true
+custom_minimum_size = Vector2(94, 0)
+text = "Du stinker"
+
+[node name="TitleLabel2" parent="TooltipView3/MarginContainer/VBoxContainer/TitleLabel" index="1"]
+text = "Du stinker"
+
+[node name="HSeparator" parent="TooltipView3/MarginContainer/VBoxContainer" index="1"]
+visible = true
 
 [node name="DescriptionLabel" parent="TooltipView3/MarginContainer/VBoxContainer" index="2"]
 theme_type_variation = &"Text15"
+text = "stinky stinker"
 
 [node name="TooltipView4" parent="." instance=ExtResource("2_qkk7q")]
 layout_mode = 2
+size_flags_horizontal = 1
+_exampleTitle = "Sup' turds"
 
-[node name="DescriptionLabel" parent="TooltipView4/MarginContainer/VBoxContainer" index="2"]
-theme_type_variation = &"Secondary"
+[node name="TitleLabel" parent="TooltipView4/MarginContainer/VBoxContainer" index="0"]
+visible = true
+custom_minimum_size = Vector2(94, 0)
+text = "Sup' turds"
+
+[node name="TitleLabel2" parent="TooltipView4/MarginContainer/VBoxContainer/TitleLabel" index="1"]
+text = "Sup' turds"
+
+[node name="HSeparator" parent="TooltipView4/MarginContainer/VBoxContainer" index="1"]
+visible = true
 
 [node name="TooltipView5" parent="." instance=ExtResource("2_qkk7q")]
 layout_mode = 2
+size_flags_horizontal = 1
+_exampleTitle = "[color=aqua]Diamond Sword"
+_exampleDescription = "It's a sword."
 
-[node name="NameLabel" parent="TooltipView5/MarginContainer/VBoxContainer" index="0"]
-theme_type_variation = &"Text25"
+[node name="TitleLabel" parent="TooltipView5/MarginContainer/VBoxContainer" index="0"]
+visible = true
+custom_minimum_size = Vector2(132, 0)
+text = "[color=aqua]Diamond Sword"
+
+[node name="TitleLabel2" parent="TooltipView5/MarginContainer/VBoxContainer/TitleLabel" index="1"]
+text = "Diamond Sword"
+
+[node name="HSeparator" parent="TooltipView5/MarginContainer/VBoxContainer" index="1"]
+visible = true
 
 [node name="DescriptionLabel" parent="TooltipView5/MarginContainer/VBoxContainer" index="2"]
 theme_type_variation = &"Text25"
+text = "It's a sword."
 
 [editable path="TooltipView2"]
 [editable path="TooltipView3"]

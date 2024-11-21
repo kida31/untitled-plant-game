@@ -6,14 +6,19 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5jbk"]
 draw_center = false
 
-[node name="TooltipView" type="PanelContainer" node_paths=PackedStringArray("_separator", "_contentContainer")]
-offset_right = 186.0
-offset_bottom = 50.0
+[node name="TooltipView" type="PanelContainer" node_paths=PackedStringArray("_titleLabel", "_descriptionLabel", "_separator", "_contentContainer", "_referenceLabel")]
+offset_right = 193.0
+offset_bottom = 46.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_q5jbk")
 script = ExtResource("1_ejofp")
+_titleLabel = NodePath("MarginContainer/VBoxContainer/TitleLabel")
+_descriptionLabel = NodePath("MarginContainer/VBoxContainer/DescriptionLabel")
 _separator = NodePath("MarginContainer/VBoxContainer/HSeparator")
 _contentContainer = NodePath("MarginContainer/VBoxContainer/ContentContainer")
+_referenceLabel = NodePath("MarginContainer/VBoxContainer/TitleLabel/TitleLabel2")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
@@ -25,6 +30,7 @@ patch_margin_bottom = 15
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
@@ -33,25 +39,38 @@ theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="NameLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="TitleLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
-text = "Name"
+bbcode_enabled = true
 fit_content = true
+scroll_active = false
+autowrap_mode = 2
+tab_size = 2
+
+[node name="TitleLabel2" type="Label" parent="MarginContainer/VBoxContainer/TitleLabel"]
+layout_mode = 1
+offset_top = 42.0
+offset_right = 1.0
+offset_bottom = 70.0
+size_flags_vertical = 1
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(156, 0)
 layout_mode = 2
-size_flags_vertical = 3
-text = "This is a description."
+theme_type_variation = &"Secondary"
+bbcode_enabled = true
 fit_content = true
+scroll_active = false
 autowrap_mode = 2
+tab_size = 2
 
 [node name="ContentContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

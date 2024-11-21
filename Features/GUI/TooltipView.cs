@@ -1,21 +1,39 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace untitledplantgame.Inventory.GUI;
 
+[Tool]
 public partial class TooltipView : PanelContainer
 {
 	private const bool AutomaticallyFreeOldContent = true;
+	private static float MaxWidth = 400f;
 
-	[Export] private Label _nameLabel;
-	[Export] private Label _descriptionLabel;
+	[Export] private RichTextLabel _titleLabel;
+	[Export] private RichTextLabel _descriptionLabel;
 	[Export] private Separator _separator;
 	[Export] private Control _contentContainer;
+	[Export] private Label _referenceLabel;
+
+	[Export]
+	private string _exampleTitle
+	{
+		get => Title;
+		set => Title = value;
+	}
+
+	[Export]
+	private string _exampleDescription
+	{
+		get => Description;
+		set => Description = value;
+	}
 
 	public string Title
 	{
-		get => _nameLabel.Text;
+		get => _titleLabel.Text;
 		set => SetTitle(value);
 	}
 
@@ -33,17 +51,31 @@ public partial class TooltipView : PanelContainer
 
 	private List<Control> _customContent;
 
+	public override void _Ready()
+	{
+		// We adjust the title width according to a reference label.
+		// This is necessary because RichTextLabel does not work like label.
+		// FitContent SUCKS.
+		// IT'S A LIE.
+		// IT SAYS IT WILL BEHAVE LIKE LABEL BUT IT DOESN'T.
+		// IT SIMPLY GROWS VERTICALLY AS NEEDED BUT DOES NOT SHRINK OR EXPAND HORIZONTALLY.
+		_referenceLabel.ItemRectChanged += AutoAdjustWidth;
+	}
+
+
 	private void SetTitle(string value)
 	{
-		_nameLabel.Text = value;
+		_titleLabel.Text = value;
+		_referenceLabel.Text = FilterBBCode(_titleLabel.Text);
+
 		if (string.IsNullOrEmpty(value))
 		{
-			_nameLabel.Hide();
+			_titleLabel.Hide();
 			_separator.Hide();
 		}
 		else
 		{
-			_nameLabel.Show();
+			_titleLabel.Show();
 			_separator.Show();
 		}
 	}
@@ -83,5 +115,30 @@ public partial class TooltipView : PanelContainer
 				_contentContainer.AddChild(node);
 			}
 		}
+	}
+
+	/// <summary>
+	/// Adjusts the width of the TitleLabel according to the reference label.
+	/// Tooltip should auto resize according to the content.
+	/// </summary>
+	private void AutoAdjustWidth()
+	{
+		var newWidth = Math.Min(_referenceLabel.GetRect().Size.X, MaxWidth);
+		_titleLabel.CustomMinimumSize = new Vector2(newWidth, 0);
+	}
+
+	/// <summary>
+	/// Removes all bbcode blocks
+	/// </summary>
+	/// <param name="text"></param>
+	/// <returns></returns>
+	private static string FilterBBCode(string text)
+	{
+		if (text == null)
+		{
+			return null;
+		}
+
+		return Regex.Replace(text, @"\[\/?(?:b|i|u|url|quote|code|img|color|size)*?.*?\]", "");
 	}
 }
