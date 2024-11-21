@@ -164,12 +164,7 @@ public class Inventory : IInventory
 			_items[i] = null;
 		}
 	}
-
-	public string GetTitle()
-	{
-		return Name;
-	}
-
+	
 	public Dictionary<int, ItemStack> GetItemsOfCategory(ItemCategory category)
 	{
 		return _items

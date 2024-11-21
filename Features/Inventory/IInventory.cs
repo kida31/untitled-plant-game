@@ -213,12 +213,6 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	public void Clear();
 
-	/// <summary>
-	///     Returns the title of this inventory.
-	///     @return A String with the title.
-	/// </summary>
-	public string GetTitle();
-
 	// /// <summary>
 	//  /// Returns what type of inventory this is.
 	//  ///

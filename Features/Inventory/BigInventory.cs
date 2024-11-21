@@ -308,11 +308,6 @@ public class BigInventory : IInventory
 		}
 	}
 
-	public string GetTitle()
-	{
-		return Name;
-	}
-
 	public Dictionary<int, ItemStack> GetItemsOfCategory(ItemCategory category)
 	{
 		var results = new Dictionary<int, ItemStack>();
