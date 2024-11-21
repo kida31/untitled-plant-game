@@ -27,7 +27,7 @@ public class RandomStockGenerator
 			new("fennel", "Fennel", null, "This is fennel", ItemCategory.Plant, 64, 16, 6),
 			new("marjoram", "Marjoram", null, "This is marjoram", ItemCategory.Plant, 64, 19, 5),
 			new("lemonbalm", "Lemon Balm", null, "This is lemon balm", ItemCategory.Plant, 64, 14, 8),
-			new("chervil", "Chervil", null, "", ItemCategory.Plant, 64, 12, 10),
+			new("chervil", "Chervil", null, "This is chervil", ItemCategory.Plant, 64, 12, 10),
 		};
 	}
 }
