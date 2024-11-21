@@ -132,24 +132,12 @@ public interface IInventory : IEnumerable<ItemStack>
 	///         An ItemStack only counts if both the type and the amount of the stack
 	///         match.
 	/// </para>
-	/// <see cref="ContainsAtLeast"/>
 	/// </summary>
 	/// <param name="item">the ItemStack to match against</param>
 	/// <param name="amount">how many identical stacks to check for</param>
 	/// <returns>false if item is null, true if amount less than 1, true if
 	///         amount of exactly matching ItemStacks were found</returns>
 	public bool Contains(ItemStack item, int amount);
-
-	/// <summary>
-	///     Checks if the inventory contains ItemStacks matching the given
-	///     ItemStack whose amounts sum to at least the minimum amount specified.
-	///     @param item the ItemStack to match against
-	///     @param amount the minimum amount
-	///     @return false if item is null, true if amount less than 1, true if
-	///     enough ItemStacks were found to add to the given amount
-	/// </summary>
-	[Obsolete("Is this redundant/duplicate?")]
-	public bool ContainsAtLeast(ItemStack item, int amount);
 
 	/// <summary>
 	///     Returns a HashMap with all slots and ItemStacks in the inventory with

@@ -99,11 +99,6 @@ public class Inventory : IInventory
 		return this.Where(item.HasSameIdAndProps).Sum(stack => stack.Amount) >= amount;
 	}
 
-	public bool ContainsAtLeast(ItemStack item, int amount)
-	{
-		return Contains(item, amount);
-	}
-
 	public Dictionary<int, ItemStack> All(string itemId)
 	{
 		return this.Select((item, index) => (item, index))

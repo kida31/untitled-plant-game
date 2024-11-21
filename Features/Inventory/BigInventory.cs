@@ -190,11 +190,6 @@ public class BigInventory : IInventory
 		return _inventories[item.Category].Contains(item, amount);
 	}
 
-	public bool ContainsAtLeast(ItemStack item, int amount)
-	{
-		return _inventories[item.Category].ContainsAtLeast(item, amount);
-	}
-
 	public Dictionary<int, ItemStack> All(string itemId)
 	{
 		var all = new Dictionary<int, ItemStack>();
