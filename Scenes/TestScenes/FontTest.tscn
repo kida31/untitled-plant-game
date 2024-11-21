@@ -11,14 +11,10 @@ size_flags_vertical = 3
 [node name="TooltipView" parent="." instance=ExtResource("2_qkk7q")]
 layout_mode = 2
 size_flags_horizontal = 1
-_exampleTitle = "Hello"
-_exampleDescription = "World"
 
 [node name="TooltipView2" parent="." instance=ExtResource("2_qkk7q")]
 layout_mode = 2
 size_flags_horizontal = 1
-_exampleTitle = "Blahblah"
-_exampleDescription = "12Ab asdf Hello World"
 
 [node name="TitleLabel" parent="TooltipView2/MarginContainer/VBoxContainer" index="0"]
 visible = true
@@ -37,8 +33,6 @@ text = "12Ab asdf Hello World"
 [node name="TooltipView3" parent="." instance=ExtResource("2_qkk7q")]
 layout_mode = 2
 size_flags_horizontal = 1
-_exampleTitle = "Du stinker"
-_exampleDescription = "stinky stinker"
 
 [node name="TitleLabel" parent="TooltipView3/MarginContainer/VBoxContainer" index="0"]
 visible = true
@@ -58,7 +52,6 @@ text = "stinky stinker"
 [node name="TooltipView4" parent="." instance=ExtResource("2_qkk7q")]
 layout_mode = 2
 size_flags_horizontal = 1
-_exampleTitle = "Sup' turds"
 
 [node name="TitleLabel" parent="TooltipView4/MarginContainer/VBoxContainer" index="0"]
 visible = true
@@ -74,8 +67,6 @@ visible = true
 [node name="TooltipView5" parent="." instance=ExtResource("2_qkk7q")]
 layout_mode = 2
 size_flags_horizontal = 1
-_exampleTitle = "[color=aqua]Diamond Sword"
-_exampleDescription = "It's a sword."
 
 [node name="TitleLabel" parent="TooltipView5/MarginContainer/VBoxContainer" index="0"]
 visible = true

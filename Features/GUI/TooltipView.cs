@@ -5,31 +5,19 @@ using System.Text.RegularExpressions;
 
 namespace untitledplantgame.Inventory.GUI;
 
-[Tool]
-public partial class TooltipView : PanelContainer
+public partial class TooltipView : Control
 {
 	private const bool AutomaticallyFreeOldContent = true;
 	private static float MaxWidth = 400f;
+
+	public event Action<string> TitleChanged;
+	public event Action<string> DescriptionChanged;
 
 	[Export] private RichTextLabel _titleLabel;
 	[Export] private RichTextLabel _descriptionLabel;
 	[Export] private Separator _separator;
 	[Export] private Control _contentContainer;
 	[Export] private Label _referenceLabel;
-
-	[Export]
-	private string _exampleTitle
-	{
-		get => Title;
-		set => Title = value;
-	}
-
-	[Export]
-	private string _exampleDescription
-	{
-		get => Description;
-		set => Description = value;
-	}
 
 	public string Title
 	{
@@ -53,6 +41,9 @@ public partial class TooltipView : PanelContainer
 
 	public override void _Ready()
 	{
+		TitleChanged += (_) => UpdateSeparator();
+		DescriptionChanged += (_) => UpdateSeparator();
+		
 		// We adjust the title width according to a reference label.
 		// This is necessary because RichTextLabel does not work like label.
 		// FitContent SUCKS.
@@ -60,29 +51,25 @@ public partial class TooltipView : PanelContainer
 		// IT SAYS IT WILL BEHAVE LIKE LABEL BUT IT DOESN'T.
 		// IT SIMPLY GROWS VERTICALLY AS NEEDED BUT DOES NOT SHRINK OR EXPAND HORIZONTALLY.
 		_referenceLabel.ItemRectChanged += AutoAdjustWidth;
+		MinimumSizeChanged += () => Size = Vector2.Zero; // Force resize in frame after change
+		void UpdateReference(object ignored) => _referenceLabel.Text = FilterBBCode(Title + "\n" + Description);
+		DescriptionChanged += UpdateReference;
+		TitleChanged += UpdateReference;
+		// EndShittyLabelAdjustment
 	}
-
 
 	private void SetTitle(string value)
 	{
+		value ??= "";
 		_titleLabel.Text = value;
-		_referenceLabel.Text = FilterBBCode(_titleLabel.Text);
-
-		if (string.IsNullOrEmpty(value))
-		{
-			_titleLabel.Hide();
-			_separator.Hide();
-		}
-		else
-		{
-			_titleLabel.Show();
-			_separator.Show();
-		}
+		TitleChanged?.Invoke(value);
 	}
 
 	private void SetDescription(string value)
 	{
+		value ??= "";
 		_descriptionLabel.Text = value;
+		DescriptionChanged?.Invoke(value);
 	}
 
 	/// <summary>
@@ -125,6 +112,7 @@ public partial class TooltipView : PanelContainer
 	{
 		var newWidth = Math.Min(_referenceLabel.GetRect().Size.X, MaxWidth);
 		_titleLabel.CustomMinimumSize = new Vector2(newWidth, 0);
+		SetDeferred(PropertyName.Size, Vector2.Zero);
 	}
 
 	/// <summary>
@@ -140,5 +128,17 @@ public partial class TooltipView : PanelContainer
 		}
 
 		return Regex.Replace(text, @"\[\/?(?:b|i|u|url|quote|code|img|color|size)*?.*?\]", "");
+	}
+
+	private void UpdateSeparator()
+	{
+		if (string.IsNullOrEmpty(Title) || string.IsNullOrEmpty(Description))
+		{
+			_separator.Hide();
+		}
+		else
+		{
+			_separator.Show();
+		}
 	}
 }

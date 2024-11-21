@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://1atpgaaw3khe"]
 
-[ext_resource type="Script" path="res://Scenes/TestScenes/GUI/TooltipAutoResizeTest.cs" id="1_wmhmj"]
-[ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="2_ew4nn"]
+[ext_resource type="Script" path="res://Scenes/TestScenes/GUI/TooltipAutoResizeTest.cs" id="1_ikybr"]
+[ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="2_hx04w"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("_textEdit", "_tooltip")]
 layout_mode = 3
@@ -12,7 +12,7 @@ offset_right = -933.0
 offset_bottom = -561.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wmhmj")
+script = ExtResource("1_ikybr")
 _textEdit = NodePath("TextEdit")
 _tooltip = NodePath("TooltipView")
 
@@ -23,7 +23,7 @@ offset_top = 1.0
 offset_right = 349.0
 offset_bottom = 160.0
 
-[node name="TooltipView" parent="." instance=ExtResource("2_ew4nn")]
+[node name="TooltipView" parent="." instance=ExtResource("2_hx04w")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -101,4 +101,7 @@ mouse_filter = 2
 
 [node name="ItemTooltipView" parent="IndependentRoot" instance=ExtResource("3_64quj")]
 visible = false
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 0
+offset_right = 193.0
+offset_bottom = 46.0
