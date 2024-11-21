@@ -53,7 +53,7 @@ public class ItemStack : IItemStack
 	public void AddComponent<T>(T component)
 		where T : class, IComponent
 	{
-		Debug.Assert(GetComponent<T>() == null, "Component already exists");
+		Assert.AssertNull(GetComponent<T>(), "Component already exists");
 		_components.Add(component);
 	}
 
