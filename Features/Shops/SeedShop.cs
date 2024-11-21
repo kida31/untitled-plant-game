@@ -17,7 +17,7 @@ public class SeedShop : IShop
 
 	public SeedShop()
 	{
-		_shopInventory = new Inventory.Inventory(15, "Seedshop");
+		_shopInventory = new Inventory.Inventory(16, "Seedshop");
 	}
 
 	public void SetShopContent(ItemStack[] items)

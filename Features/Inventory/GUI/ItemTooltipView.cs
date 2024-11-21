@@ -1,31 +1,19 @@
-﻿using Godot;
-using untitledplantgame.Inventory;
+﻿namespace untitledplantgame.Inventory.GUI;
 
-namespace untitledplantgame.Inventory.GUI;
-
-public partial class ItemTooltipView : Control
+public partial class ItemTooltipView : TooltipView
 {
-	[Export]
-	private Label _nameLabel;
-
-	[Export]
-	private Label _descriptionLabel;
-
 	public ItemStack ItemStack
 	{
 		get => _itemStack;
-		set
-		{
-			_itemStack = value;
-			UpdateContent();
-		}
+		set => SetItemStack(value);
 	}
 
 	private ItemStack _itemStack;
 
-	private void UpdateContent()
+	private void SetItemStack(ItemStack value)
 	{
-		_nameLabel.Text = _itemStack?.Name ?? "ITEMNAME";
-		_descriptionLabel.Text = _itemStack?.Description ?? "DESCRIPTION";
+		_itemStack = value;
+		Title = _itemStack?.Name ?? "";
+		Description = _itemStack?.Description ?? "";
 	}
 }

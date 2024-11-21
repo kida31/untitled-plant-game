@@ -6,20 +6,16 @@ namespace untitledplantgame.Cycle.DayNight;
 
 public partial class ClockUi : Control
 {
-	private Label _dayLabelBackground;
 	private Label _dayLabel;
-	private Label _timeLabelBackground;
 	private Label _timeLabel;
 	private TextureRect _arrow;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_dayLabelBackground = GetNode<Label>("CenterContainerDay/DayLabelBackground");
-		_dayLabel = GetNode<Label>("CenterContainerDay/DayLabelBackground/DayLabel");
-		_timeLabelBackground = GetNode<Label>("CenterContainerTime/TimeLabelBackground");
-		_timeLabel = GetNode<Label>("CenterContainerTime/TimeLabelBackground/TimeLabel");
-		_arrow = GetNode<TextureRect>("Arrow");
+		_dayLabel = GetNode<Label>("%DayLabel");
+		_timeLabel = GetNode<Label>("%TimeLabel");
+		_arrow = GetNode<TextureRect>("%Arrow");
 
 		TimeController.Instance.TimeTick += SetDaytime;
 	}
@@ -27,10 +23,8 @@ public partial class ClockUi : Control
 	private void SetDaytime(int day, int hour, int minute)
 	{
 		_dayLabel.Text = "Day " + Convert.ToString(day + 1);
-		_dayLabelBackground.Text = _dayLabel.Text;
 
 		_timeLabel.Text = AmFm(hour) + ":" + SingleOrDoubleDigitMinute(minute) + " " + AmPm(hour);
-		_timeLabelBackground.Text = _timeLabel.Text;
 
 		if (hour <= 12)
 		{
