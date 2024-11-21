@@ -21,8 +21,10 @@ namespace untitledplantgame.Inventory;
 /// </summary>
 public class BigInventory : IInventory
 {
+	public int Size => _inventories.Values.Sum(inventory => inventory.Size);
+	public string Name => "Player Inventory";
+	
 	private readonly Dictionary<ItemCategory, IInventory> _inventories;
-
 	private readonly Logger _logger = new("BigInventory");
 
 	public BigInventory()
@@ -57,9 +59,6 @@ public class BigInventory : IInventory
 	{
 		return GetEnumerator();
 	}
-
-	public int Size => _inventories.Values.Sum(inventory => inventory.Size);
-	public string Name => "Player Inventory";
 
 	/// <summary>
 	/// Return item of item from the big inventory.
@@ -192,20 +191,20 @@ public class BigInventory : IInventory
 
 	public Dictionary<int, ItemStack> All(string itemId)
 	{
-		var all = new Dictionary<int, ItemStack>();
+		var results = new Dictionary<int, ItemStack>();
 		var index = 0;
 		foreach (var inventory in _inventories.Values)
 		{
 			var items = inventory.All(itemId);
 			foreach (var (key, value) in items)
 			{
-				all.Add(key + index, value);
+				results.Add(key + index, value);
 			}
 
 			index += inventory.Size;
 		}
 
-		return all;
+		return results;
 	}
 
 	public Dictionary<int, ItemStack> All(ItemStack item)
