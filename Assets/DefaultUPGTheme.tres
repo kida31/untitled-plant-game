@@ -13,6 +13,7 @@ default_font = ExtResource("1_kqvm5")
 default_font_size = 32
 HeaderMedium/base_type = &"RichTextLabel"
 HeaderMedium/fonts/normal_font = ExtResource("2_ojpsa")
+Label/colors/font_color = Color(0.490196, 0.219608, 0.2, 1)
 RichTextLabel/colors/default_color = Color(0.184314, 0.0941176, 0.0196078, 1)
 RichTextLabel/colors/font_shadow_color = Color(0.83, 0.515015, 0.2573, 0.34902)
 RichTextLabel/constants/line_separation = -10
