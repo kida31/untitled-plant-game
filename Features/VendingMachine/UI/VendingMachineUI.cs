@@ -156,7 +156,7 @@ public partial class VendingMachineUI : Control
 
 	private void UpdateContent(IInventory inventory)
 	{
-		var items = inventory.GetContents();
+		var items = inventory.GetItems();
 		for (var index = 0; index < _itemSlots.Count && index < items.Count; index++)
 		{
 			_itemSlots[index].ItemStack = items[index];

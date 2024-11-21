@@ -60,7 +60,7 @@ public class Inventory : IInventory
 		return remainingToRemove;
 	}
 
-	public List<ItemStack> GetContents()
+	public List<ItemStack> GetItems()
 	{
 		return new List<ItemStack>(_items);
 	}

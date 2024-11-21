@@ -81,7 +81,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	///     Returns all ItemStacks from the inventory
 	/// </summary>
 	/// <returns>An array of ItemStacks from the inventory.</returns>
-	public List<ItemStack> GetContents();
+	public List<ItemStack> GetItems();
 
 	/// <summary>
 	///     Completely replaces the inventory's contents. Removes all existing

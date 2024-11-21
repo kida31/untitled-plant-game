@@ -147,9 +147,9 @@ public class BigInventory : IInventory
 		return remainders;
 	}
 
-	public List<ItemStack> GetContents()
+	public List<ItemStack> GetItems()
 	{
-		return _inventories.Values.SelectMany(inventory => inventory.GetContents()).ToList();
+		return _inventories.Values.SelectMany(inventory => inventory.GetItems()).ToList();
 	}
 
 	public void SetContents(List<ItemStack> items)
