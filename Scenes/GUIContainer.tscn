@@ -1,3 +1,23 @@
-[gd_scene format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=6 format=3 uid="uid://3ndp3em1fi7h"]
+
+[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/VendingMachine/UI/vending_machine_ui.tscn" id="1_iuaq5"]
+[ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="1_sne77"]
+[ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Features/Cycle/UI/ClockUI.tscn" id="1_tdwvu"]
+[ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="2_y866b"]
+[ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
 
 [node name="GUIContainer" type="CanvasLayer"]
+
+[node name="VendingMachineUi" parent="." instance=ExtResource("1_iuaq5")]
+visible = false
+
+[node name="SeedShopView" parent="." instance=ExtResource("2_y866b")]
+visible = false
+
+[node name="DialogueScene" parent="." instance=ExtResource("1_sne77")]
+
+[node name="ClockUI" parent="." instance=ExtResource("1_tdwvu")]
+
+[node name="Weahter" parent="." instance=ExtResource("5_ctdgk")]
+
+[node name="Cheats" type="Node" parent="."]

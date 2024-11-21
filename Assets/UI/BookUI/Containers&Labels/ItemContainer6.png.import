@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp2ws2buv4r2r"
-path="res://.godot/imported/UI_Flat_Banner04a.png-f101e0ac8b55cb8d492f0bce0a0c082b.ctex"
+uid="uid://chkhvsk34632"
+path="res://.godot/imported/ItemContainer6.png-ac7b76c57f4219f2cf141c04f62a3c0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI Assets/01_Flat_Theme/Sprites/UI_Flat_Banner04a.png"
-dest_files=["res://.godot/imported/UI_Flat_Banner04a.png-f101e0ac8b55cb8d492f0bce0a0c082b.ctex"]
+source_file="res://Assets/UI/BookUI/Containers&Labels/ItemContainer6.png"
+dest_files=["res://.godot/imported/ItemContainer6.png-ac7b76c57f4219f2cf141c04f62a3c0c.ctex"]
 
 [params]
 
