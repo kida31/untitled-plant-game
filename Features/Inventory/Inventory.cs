@@ -19,7 +19,7 @@ public class Inventory : IInventory
 		_items = new ItemStack[size];
 		Name = name;
 	}
-	
+
 	public ItemStack GetItem(int index)
 	{
 		return _items[index];
@@ -130,7 +130,7 @@ public class Inventory : IInventory
 		return Array.FindIndex(_items, it => it.HasSameIdAndProps(item));
 	}
 
-	public int FirstEmpty()
+	protected int FirstEmpty()
 	{
 		return Array.FindIndex(_items, item => item == null);
 	}

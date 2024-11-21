@@ -198,12 +198,6 @@ public interface IInventory : IEnumerable<ItemStack>
 	public int First(ItemStack item);
 
 	/// <summary>
-	///     Returns the first empty Slot.
-	/// </summary>
-	/// <returns>The first empty Slot found, or -1 if no empty slots.</returns>
-	public int FirstEmpty();
-
-	/// <summary>
 	///     Removes all stacks in the inventory matching the given itemId.
 	///     @throws IllegalArgumentException if itemId is null
 	/// </summary>

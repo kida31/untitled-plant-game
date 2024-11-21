@@ -6,7 +6,18 @@ using untitledplantgame.Common;
 namespace untitledplantgame.Inventory;
 
 /// <summary>
-/// A big inventory that contains multiple sub-inventories.
+///     A big inventory that contains multiple sub-inventories.
+///     Inventories have contiguous indexes.
+///     <example>
+///          <list type="bullet">
+///               <item>inventory A: [0, 1, 2, 3, 4]</item>
+///               <item>inventory B: [5, 6, 7, 8, 9]</item>
+///               <item>inventory C: [10, 11, 12, 13, 14]</item>
+///          </list>
+///     </example>
+///     <remarks>
+///         Check <see cref="IInventory">the interface</see> for functionality details
+///     </remarks>
 /// </summary>
 public class BigInventory : IInventory
 {
@@ -259,25 +270,6 @@ public class BigInventory : IInventory
 			{
 				return first + indexOffset;
 			}
-		}
-
-		return -1;
-	}
-
-	public int FirstEmpty()
-	{
-		// I see no use for this
-		// ~ kida31
-		var indexOffset = 0;
-		foreach (var inventory in _inventories.Values)
-		{
-			var firstEmpty = inventory.FirstEmpty();
-			if (firstEmpty != -1)
-			{
-				return firstEmpty + indexOffset;
-			}
-
-			indexOffset += inventory.Size;
 		}
 
 		return -1;
