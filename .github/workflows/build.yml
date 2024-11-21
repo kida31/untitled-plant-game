@@ -39,6 +39,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
         with:
           files: |
-            ${{ github.workspace }}/${{ steps.build.outputs.build }}/untitled-plant-game.app.zip
-            ${{ github.workspace }}/${{ steps.build.outputs.build }}/untitled-plant-game.exe
-            ${{ github.workspace }}/${{ steps.build.outputs.build }}/untitled-plant-game.x86_64
+            ${{ github.workspace }}/${{ steps.build.outputs.build }}untitled-plant-game.app.zip
+            ${{ github.workspace }}/${{ steps.build.outputs.build }}untitled-plant-game.exe
+            ${{ github.workspace }}/${{ steps.build.outputs.build }}untitled-plant-game.x86_64
