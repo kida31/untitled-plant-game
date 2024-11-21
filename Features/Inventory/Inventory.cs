@@ -198,7 +198,35 @@ public class Inventory : IInventory
 
 	public ItemStack AddItemToSlot(int slotIdx, ItemStack item)
 	{
-		throw new NotImplementedException();
+		if (slotIdx < 0 || slotIdx >= _items.Length)
+		{
+			_logger.Error("Invalid slot index");
+			return item;
+		}
+
+		var existingItem = _items[slotIdx];
+		if (existingItem == null)
+		{
+			_items[slotIdx] = item;
+			return null;
+		}
+
+		// Check if stackable item
+		if (!existingItem.HasSameIdAndProps(item))
+		{
+			return item;
+		}
+
+		var transferableAmount = existingItem.MaxStackSize - existingItem.Amount;
+		if (transferableAmount >= item.Amount)
+		{
+			existingItem.Amount += item.Amount;
+			return null;
+		}
+
+		var leftover = item.Clone() as ItemStack;
+		leftover!.Amount -= transferableAmount;
+		return leftover;
 	}
 
 	public IEnumerator<ItemStack> GetEnumerator()

@@ -350,6 +350,16 @@ public class BigInventory : IInventory
 
 	public ItemStack AddItemToSlot(int slotIdx, ItemStack item)
 	{
-		throw new System.NotImplementedException();
+		foreach (var inventory in _inventories.Values)
+		{
+			if (slotIdx < inventory.Size)
+			{
+				return inventory.AddItemToSlot(slotIdx, item);
+			}
+
+			slotIdx -= inventory.Size;
+		}
+
+		return null;
 	}
 }
