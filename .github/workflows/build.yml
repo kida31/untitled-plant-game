@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        platform: [linux, windows]
+        platform: [linux, windows, mac]
 
     steps:
       - uses: actions/checkout@v4
