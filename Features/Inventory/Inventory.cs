@@ -72,7 +72,7 @@ public class Inventory : IInventory
 			_logger.Error("Trying to set more items than inventory size");
 			return;
 		}
-		
+
 		for (var i = 0; i < _items.Length; i++)
 		{
 			_items[i] = i < items.Count ? items[i] : null;
@@ -226,7 +226,7 @@ public class Inventory : IInventory
 		{
 			var destination = _items[nonFullStackIdx];
 			var transferableAmount = destination.MaxStackSize - destination.Amount;
-			
+
 			// If remaining amount fits into the stack, we are done
 			if (transferableAmount >= item.Amount)
 			{
@@ -234,7 +234,7 @@ public class Inventory : IInventory
 				item.Amount = 0;
 				return null;
 			}
-			
+
 			// Otherwise fill up and try to fill up another stack
 			destination.Amount = destination.MaxStackSize;
 			item.Amount -= transferableAmount;

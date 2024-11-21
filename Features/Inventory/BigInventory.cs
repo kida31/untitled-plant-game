@@ -14,17 +14,16 @@ public class BigInventory : IInventory
 
 	private readonly Logger _logger = new("BigInventory");
 
-	public BigInventory() : this(15)
-	{
-	}
+	public BigInventory()
+		: this(15) { }
 
 	public BigInventory(int size)
 	{
 		_inventories = new Dictionary<ItemCategory, IInventory>
 		{
-			{ItemCategory.Plant, new Inventory(size, "Seed Inventory")},
-			{ItemCategory.Medicine, new Inventory(size, "Fertilizer Inventory")},
-			{ItemCategory.Material, new Inventory(size, "Plant Inventory")},
+			{ ItemCategory.Plant, new Inventory(size, "Seed Inventory") },
+			{ ItemCategory.Medicine, new Inventory(size, "Fertilizer Inventory") },
+			{ ItemCategory.Material, new Inventory(size, "Plant Inventory") },
 		};
 	}
 
@@ -32,7 +31,7 @@ public class BigInventory : IInventory
 	{
 		_inventories = inventories;
 	}
-	
+
 	public IInventory GetInventory(ItemCategory category)
 	{
 		return _inventories[category];

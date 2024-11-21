@@ -62,7 +62,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	///     <para>
 	///         It will try to remove 'as much as possible' from the types and amounts
 	///         you give as arguments.
-	///		
+	///
 	///         <para>
 	///             The returned HashMap contains what it couldn't remove, where the key is
 	///             the index of the parameter, and the value is the ItemStack at that
