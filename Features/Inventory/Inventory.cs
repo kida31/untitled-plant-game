@@ -225,6 +225,7 @@ public class Inventory : IInventory
 		}
 
 		var leftover = item.Clone() as ItemStack;
+		existingItem.Amount += transferableAmount;
 		leftover!.Amount -= transferableAmount;
 		return leftover;
 	}
