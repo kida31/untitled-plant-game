@@ -11,15 +11,15 @@ public class Inventory : IInventory
 	private readonly ItemStack[] _items;
 	private readonly Logger _logger = new("Inventory");
 
+	public int Size => _items.Length;
+	public string Name { get; }
+
 	public Inventory(int size, string name)
 	{
 		_items = new ItemStack[size];
 		Name = name;
 	}
-
-	public int Size => _items.Length;
-	public string Name { get; }
-
+	
 	public ItemStack GetItem(int index)
 	{
 		return _items[index];
