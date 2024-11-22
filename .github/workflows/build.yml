@@ -12,7 +12,7 @@ on:
 
 jobs:
   Godot:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -25,7 +25,7 @@ jobs:
 
       - name: Build
         id: build
-        uses: felix-schindler/build-godot-action@v1.6.1
+        uses: felix-schindler/build-godot-action@v2.0.0
         if: github.event.pull_request.draft == false
         with:
           name: untitled-plant-game
@@ -39,6 +39,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
         with:
           files: |
-            ${{ github.workspace }}/${{ steps.build.outputs.build }}/untitled-plant-game.app.zip
-            ${{ github.workspace }}/${{ steps.build.outputs.build }}/untitled-plant-game.exe
-            ${{ github.workspace }}/${{ steps.build.outputs.build }}/untitled-plant-game.x86_64
+            build/untitled-plant-game.app.zip
+            build/untitled-plant-game.exe
+            build/untitled-plant-game.x86_64
