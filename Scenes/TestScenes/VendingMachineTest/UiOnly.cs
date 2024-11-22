@@ -51,7 +51,7 @@ public partial class UiOnly : Node2D
 		if (CursorFriend.Instance is null)
 			return;
 
-		var idx = _inventory.GetContents().IndexOf(slot.ItemStack);
+		var idx = _inventory.GetItems().IndexOf(slot.ItemStack);
 		if (idx == -1)
 		{
 			GD.PrintErr("Unexpected index");

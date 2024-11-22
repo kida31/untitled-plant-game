@@ -2,21 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Inventory;
 
 public class Inventory : IInventory
 {
 	private readonly ItemStack[] _items;
+	private readonly Logger _logger = new("Inventory");
+
+	public int Size => _items.Length;
+	public string Name { get; }
 
 	public Inventory(int size, string name)
 	{
 		_items = new ItemStack[size];
 		Name = name;
 	}
-
-	public int Size => _items.Length;
-	public string Name { get; }
 
 	public ItemStack GetItem(int index)
 	{
@@ -58,13 +60,19 @@ public class Inventory : IInventory
 		return remainingToRemove;
 	}
 
-	public List<ItemStack> GetContents()
+	public List<ItemStack> GetItems()
 	{
 		return new List<ItemStack>(_items);
 	}
 
 	public void SetContents(List<ItemStack> items)
 	{
+		if (items.Count > Size)
+		{
+			_logger.Error("Trying to set more items than inventory size");
+			return;
+		}
+
 		for (var i = 0; i < _items.Length; i++)
 		{
 			_items[i] = i < items.Count ? items[i] : null;
@@ -78,7 +86,7 @@ public class Inventory : IInventory
 
 	public bool Contains(ItemStack item)
 	{
-		return item != null && this.Any(stack => stack?.Id == item.Id);
+		return this.Any(stack => stack.Id == item.Id);
 	}
 
 	public bool Contains(string itemId, int amount)
@@ -89,11 +97,6 @@ public class Inventory : IInventory
 	public bool Contains(ItemStack item, int amount)
 	{
 		return this.Where(item.HasSameIdAndProps).Sum(stack => stack.Amount) >= amount;
-	}
-
-	public bool ContainsAtLeast(ItemStack item, int amount)
-	{
-		return Contains(item, amount);
 	}
 
 	public Dictionary<int, ItemStack> All(string itemId)
@@ -122,12 +125,12 @@ public class Inventory : IInventory
 		return Array.FindIndex(_items, it => it.HasSameIdAndProps(item));
 	}
 
-	public int FirstEmpty()
+	protected int FirstEmpty()
 	{
 		return Array.FindIndex(_items, item => item == null);
 	}
 
-	public void Remove(string itemId)
+	public void RemoveAll(string itemId)
 	{
 		for (var i = 0; i < _items.Length; i++)
 		{
@@ -138,7 +141,7 @@ public class Inventory : IInventory
 		}
 	}
 
-	public void Remove(ItemStack item)
+	public void RemoveAll(ItemStack item)
 	{
 		for (var i = 0; i < _items.Length; i++)
 		{
@@ -161,12 +164,7 @@ public class Inventory : IInventory
 			_items[i] = null;
 		}
 	}
-
-	public string GetTitle()
-	{
-		return Name;
-	}
-
+	
 	public Dictionary<int, ItemStack> GetItemsOfCategory(ItemCategory category)
 	{
 		return _items
@@ -186,6 +184,40 @@ public class Inventory : IInventory
 				_items[i] = leftover.ContainsKey(i) ? leftover[i] : null;
 			}
 		}
+	}
+
+	public ItemStack AddItemToSlot(int slotIdx, ItemStack item)
+	{
+		if (slotIdx < 0 || slotIdx >= _items.Length)
+		{
+			_logger.Error("Invalid slot index");
+			return item;
+		}
+
+		var existingItem = _items[slotIdx];
+		if (existingItem == null)
+		{
+			_items[slotIdx] = item;
+			return null;
+		}
+
+		// Check if stackable item
+		if (!existingItem.HasSameIdAndProps(item))
+		{
+			return item;
+		}
+
+		var transferableAmount = existingItem.MaxStackSize - existingItem.Amount;
+		if (transferableAmount >= item.Amount)
+		{
+			existingItem.Amount += item.Amount;
+			return null;
+		}
+
+		var leftover = item.Clone() as ItemStack;
+		existingItem.Amount += transferableAmount;
+		leftover!.Amount -= transferableAmount;
+		return leftover;
 	}
 
 	public IEnumerator<ItemStack> GetEnumerator()
@@ -287,29 +319,4 @@ public class Inventory : IInventory
 
 		return item;
 	}
-	
-	public ItemStack AddItemToSlot(int slotIdx, ItemStack item)
-	{
-		var targetStack = GetItem(slotIdx);
-		if (!item.HasSameIdAndProps(targetStack))
-		{
-			return item;
-		}
-
-		var leftover = (ItemStack)item.Clone(); // TODO: Change inventory to handle IItemStack
-		var spaceLeft = targetStack.MaxStackSize - targetStack.Amount;
-
-		// If can transfer all
-		if (spaceLeft > leftover.Amount)
-		{
-			targetStack.Amount += leftover.Amount;
-			return null;
-		}
-
-		leftover.Amount -= spaceLeft;
-		targetStack.Amount += spaceLeft;
-		return leftover;
-	}
-
-
 }

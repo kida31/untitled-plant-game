@@ -55,7 +55,7 @@ public class VendingMachine
 		}
 
 		// Check if any items in supply
-		var itemStacks = _inventory.GetContents();
+		var itemStacks = _inventory.GetItems();
 		if (itemStacks.Count == 0)
 		{
 			return;
