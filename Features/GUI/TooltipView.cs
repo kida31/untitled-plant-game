@@ -1,7 +1,7 @@
-using Godot;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Godot;
 
 namespace untitledplantgame.Inventory.GUI;
 
@@ -13,11 +13,20 @@ public partial class TooltipView : Control
 	public event Action<string> TitleChanged;
 	public event Action<string> DescriptionChanged;
 
-	[Export] private RichTextLabel _titleLabel;
-	[Export] private RichTextLabel _descriptionLabel;
-	[Export] private Separator _separator;
-	[Export] private Control _contentContainer;
-	[Export] private Label _referenceLabel;
+	[Export]
+	private RichTextLabel _titleLabel;
+
+	[Export]
+	private RichTextLabel _descriptionLabel;
+
+	[Export]
+	private Separator _separator;
+
+	[Export]
+	private Control _contentContainer;
+
+	[Export]
+	private Label _referenceLabel;
 
 	public string Title
 	{
@@ -43,7 +52,7 @@ public partial class TooltipView : Control
 	{
 		TitleChanged += (_) => UpdateSeparator();
 		DescriptionChanged += (_) => UpdateSeparator();
-		
+
 		// We adjust the title width according to a reference label.
 		// This is necessary because RichTextLabel does not work like label.
 		// FitContent SUCKS.

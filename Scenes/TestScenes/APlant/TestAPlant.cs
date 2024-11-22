@@ -28,6 +28,7 @@ public partial class TestAPlant : Node2D
 
 		_plant.PlantOnTile(_soilTile);
 	}
+
 	public override void _Process(double delta)
 	{
 		if (_label == null)

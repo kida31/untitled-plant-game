@@ -47,6 +47,7 @@ public partial class VendingMachineUI : Control
 
 		EventBus.Instance.BeforeVendingMachineOpened += OpenThis;
 	}
+
 	public override void _Process(double delta)
 	{
 		if (_vendingMachine is null)
@@ -64,6 +65,7 @@ public partial class VendingMachineUI : Control
 			CloseThis();
 		}
 	}
+
 	private void OpenThis(VendingMachine vendingMachine)
 	{
 		GameStateMachine.Instance.SetState(GameState.Book);

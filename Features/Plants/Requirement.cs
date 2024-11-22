@@ -12,6 +12,7 @@ public class Requirement
 	public float MaxLevel { get; }
 	public float CurrentLevel { get; set; }
 	private float MinimumLevelToGrow { get; }
+
 	public bool IsFulfilled()
 	{
 		return CurrentLevel >= MinimumLevelToGrow;

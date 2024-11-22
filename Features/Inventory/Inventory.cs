@@ -287,7 +287,7 @@ public class Inventory : IInventory
 
 		return item;
 	}
-	
+
 	public ItemStack AddItemToSlot(int slotIdx, ItemStack item)
 	{
 		var targetStack = GetItem(slotIdx);
@@ -310,6 +310,4 @@ public class Inventory : IInventory
 		targetStack.Amount += spaceLeft;
 		return leftover;
 	}
-
-
 }

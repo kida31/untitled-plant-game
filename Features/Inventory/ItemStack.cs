@@ -47,7 +47,7 @@ public class ItemStack : IItemStack
 		where T : class, IComponent
 	{
 		var idx = _components.FindIndex(component => component is T);
-		return idx != -1 ? (T) _components[idx] : null;
+		return idx != -1 ? (T)_components[idx] : null;
 	}
 
 	public void AddComponent<T>(T component)
@@ -72,7 +72,7 @@ public class ItemStack : IItemStack
 			return null;
 		}
 
-		var component = (T) _components[idx];
+		var component = (T)_components[idx];
 		_components.RemoveAt(idx);
 		return component;
 	}
