@@ -15,13 +15,12 @@ public partial class SeedShopView : Control
 	// The tooltip itself will alight to the right side of a slot.
 	// TODO: Change this once design team has created a design.
 	private static readonly Vector2 TooltipOffset = new(8, 0);
-	
+
 	[Export]
 	private Control _slotContainer;
 
 	[Export]
 	private ItemTooltipView _tooltipView;
-	
 
 	private readonly Logger _logger = new("Seedshop");
 
@@ -43,7 +42,7 @@ public partial class SeedShopView : Control
 			slot.FocusExited += HideTooltip;
 			slot.Pressed += () => OnSlotPressed(thisSlot);
 		});
-		
+
 		// Adjust navigation, hacky
 		var columnCount = (_slotContainer as GridContainer)!.Columns;
 		for (var i = 0; i < _shopSlots.Count; i++)
@@ -88,17 +87,16 @@ public partial class SeedShopView : Control
 		{
 			_currentShop.ShopStockChanged -= SetShopUIContent;
 		}
-		
+
 		// Block interaction while shop is open
 		GameStateMachine.Instance.SetState(GameState.Shop);
 
-		
 		Assert.AssertTrue(!Visible, "Shop was not supposed to be visible");
 		_currentShop = shop;
 		SetShopUIContent(shop.CurrentStock.ToList());
 		shop.ShopStockChanged += SetShopUIContent;
 		Show();
-		
+
 		// Grab focus
 		_shopSlots[0].GrabFocus();
 	}

@@ -59,7 +59,7 @@ public static class Assert
 			RaiseError(message);
 		}
 	}
-	
+
 	/// <summary>
 	///     Asserts that the object is null.
 	/// </summary>
@@ -72,7 +72,7 @@ public static class Assert
 			RaiseError(message);
 		}
 	}
-	
+
 	/// <summary>
 	///     Asserts that the object is not null.
 	/// </summary>
@@ -184,8 +184,6 @@ public static class Assert
 	private class AssertionError : Exception
 	{
 		public AssertionError(string message)
-			: base(message)
-		{
-		}
+			: base(message) { }
 	}
 }

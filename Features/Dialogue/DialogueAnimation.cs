@@ -7,14 +7,16 @@ namespace untitledplantgame.Dialogue;
 public partial class DialogueAnimation : Node
 {
 	private const float CharacterPerSecond = 40; // range 25 - 40
-	[Export] private Timer _timer;
+
+	[Export]
+	private Timer _timer;
 
 	public int CurrentLetterIndex;
 	public bool AnimationIsPlaying => CurrentLetterIndex != -1;
 	public bool IsPlaying { get; private set; }
-	
+
 	private Logger _logger;
-	
+
 	public DialogueAnimation()
 	{
 		_logger = new Logger(this);

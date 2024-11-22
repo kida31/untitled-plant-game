@@ -19,14 +19,17 @@ public enum GrowthStage
 
 public partial class APlant : Node2D
 {
-	[Export] public string PlantName { get; private set; }
-	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
+	[Export]
+	public string PlantName { get; private set; }
+
+	[Export]
+	public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
 	public SoilTile Tile { get; set; }
 
 	private Dictionary<string, Requirement> _currentRequirements;
 	private Logger _logger;
 	private AnimatedSprite2D _sprite2D;
-	
+
 	private bool _isHarvestable;
 	private float _absorptionRate = 100.0f;
 	private float _consumptionRate = 30.0f;
@@ -41,7 +44,6 @@ public partial class APlant : Node2D
 		SetRequirements(PlantName);
 		_logger = new Logger(PlantName);
 	}
-
 
 	/// <summary>
 	/// Executes the growth cycle of the plant by absorbing water, consuming water, and absorbing sun.

@@ -10,7 +10,7 @@ public partial class RequirementDataForGrowthStage : Resource
 
 	[Export]
 	public int DaysToGrow;
-	
+
 	[Export]
 	public bool IsHarvestable;
 }

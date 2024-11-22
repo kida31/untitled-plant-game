@@ -18,7 +18,7 @@ public partial class SeedBoy : AInteractable
 	{
 		EventBus.Instance.SeedShopOpening(_seedShop);
 	}
-	
+
 	protected override void OnBodyExited(Node body)
 	{
 		base.OnBodyExited(body);

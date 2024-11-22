@@ -63,6 +63,7 @@ public partial class EventBus : Node
 	}
 
 	public event Action<IShop> OnSeedShopOpening;
+
 	public void SeedShopOpening(IShop shop)
 	{
 		OnSeedShopOpening?.Invoke(shop);
