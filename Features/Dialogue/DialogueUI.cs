@@ -8,7 +8,6 @@ namespace untitledplantgame.Dialogue;
 public partial class DialogueUi : Node2D
 {
 	private DialogueSystem _dialogueSystem;
-	
 	private RichTextLabel _nameLabel;
 	private RichTextLabel _dialogueTextLabel;
 	private AnimatedSprite2D _animatedSprite2D;

@@ -11,13 +11,9 @@ public partial class DialogueAnimation : Node
 
 	public int CurrentLetterIndex;
 	public bool AnimationIsPlaying => CurrentLetterIndex != -1;
-	public bool IsPlaying { get; private set; }
-	
-	private Logger _logger;
 	
 	public DialogueAnimation()
 	{
-		_logger = new Logger(this);
 		AddChild(_timer = new Timer());
 		_timer.OneShot = true;
 	}

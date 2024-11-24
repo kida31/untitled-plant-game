@@ -5,10 +5,12 @@
 [ext_resource type="Resource" uid="uid://dim7viemwd80s" path="res://Resources/Dialogue/testDialogue.tres" id="2_c7ujq"]
 [ext_resource type="Resource" uid="uid://dopseyyrpdbu8" path="res://Resources/Dialogue/testDialogue_yes.tres" id="3_vrj03"]
 
-[node name="TestDialogue" type="Node2D" node_paths=PackedStringArray("_dialogueSystem")]
+[node name="TestDialogue" type="Node2D"]
 script = ExtResource("1_mgpfb")
-_dialogueSystem = NodePath("DialogueScene")
 _exampleDialogue = ExtResource("2_c7ujq")
 _followupDialogue = ExtResource("3_vrj03")
 
-[node name="DialogueScene" parent="." instance=ExtResource("1_mt3pj")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueScene" parent="CanvasLayer" instance=ExtResource("1_mt3pj")]
+position = Vector2(331, 525)

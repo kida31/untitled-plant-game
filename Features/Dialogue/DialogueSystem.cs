@@ -13,25 +13,38 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	public event Action<DialogueResourceObject> OnDialogueStart;
 	public event Action<DialogueResourceObject> OnDialogueEnd;
 
+	private static DialogueSystem Instance { get; set; }
+
 	private DialogueResourceObject _currentDialogue;
 	private IEnumerator<DialogueLine> _enumerator;
 	private DialogueState _state;
 	private Logger _logger;
 	private DialogueUi _dialogueUi;
 	private Timer _skipCooldownTimer;
-	private int _waitForSeconds = 1;
+	private double _waitForSeconds = 0.5;
 	private bool _smashable = true;
 
 	public override void _Ready()
 	{
 		_logger = new(this);
 
+		if (Instance == null)
+		{
+			Instance = this;
+		}
+		else
+		{
+			_logger.Error("There are multiple instances of DialogueSystem");
+			QueueFree();
+		}
+
 		_skipCooldownTimer = new Timer();
 		AddChild(_skipCooldownTimer);
 		_skipCooldownTimer.Autostart = false;
 		_skipCooldownTimer.OneShot = true;
 		_skipCooldownTimer.Timeout += () => _smashable = true;
-		_dialogueUi = GetNode<DialogueUi>("DialogueUi");
+		EventBus.Instance.StartingDialogue += StartDialog;
+		_dialogueUi = GetNode<DialogueUi>("GUI");
 		_logger.Debug(_dialogueUi.Name);
 	}
 
@@ -89,12 +102,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	/// </summary>
 	private void OnPlayerInputConfirm()
 	{
-		if (!_smashable)
-		{
-			return;
-		}
-
-		if (_currentDialogue == null || _state != DialogueState.Conversing)
+		if (!_smashable || _currentDialogue == null || _state != DialogueState.Conversing)
 		{
 			return;
 		}
@@ -117,7 +125,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			{
 				DisplayResponses();
 			}
-
 			return;
 		}
 
@@ -139,27 +146,17 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			_logger.Error("Dialogue line is null.");
 			return;
 		}
-
-		var speaker = line.speakerName;
-		var expr = line.DialogueExpression.ToString();
-		var text = line.dialogueText;
-		_logger.Debug($"{speaker} (${expr}):${text}");
+		
 		_dialogueUi.DisplayDialogue(line);
 	}
 
 	private void DisplayResponses()
 	{
-		// Display responses
-		foreach (var response in _currentDialogue._responses)
-		{
-			_logger.Debug("- " + response);
-		}
-
 		_dialogueUi.DisplayResponses(_currentDialogue._responses.Select(r => r._responseButton).ToArray());
 
 		_state = DialogueState.Responding;
 	}
-	
+
 	private enum DialogueState
 	{
 		Conversing,

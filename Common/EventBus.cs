@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.EntityStatsDataContainer;
 using untitledplantgame.Item;
 using untitledplantgame.Shops;
 using untitledplantgame.VendingMachine;
@@ -80,5 +79,12 @@ public partial class EventBus : Node
 	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
+	}
+	
+	public event Action<string> StartingDialogue;
+
+	public void OnDialogueStarting(string obj)
+	{
+		StartingDialogue?.Invoke(obj);
 	}
 }
