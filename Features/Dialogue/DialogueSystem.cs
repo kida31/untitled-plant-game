@@ -15,11 +15,12 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 	private static DialogueSystem Instance { get; set; }
 
+	[Export] private DialogueUi _dialogueUi;
+
 	private DialogueResourceObject _currentDialogue;
 	private IEnumerator<DialogueLine> _enumerator;
 	private DialogueState _state;
 	private Logger _logger;
-	private DialogueUi _dialogueUi;
 	private Timer _skipCooldownTimer;
 	private double _waitForSeconds = 0.5;
 	private bool _smashable = true;
@@ -44,7 +45,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_skipCooldownTimer.OneShot = true;
 		_skipCooldownTimer.Timeout += () => _smashable = true;
 		EventBus.Instance.StartingDialogue += StartDialog;
-		_dialogueUi = GetNode<DialogueUi>("GUI");
 		_logger.Debug(_dialogueUi.Name);
 	}
 
@@ -125,6 +125,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			{
 				DisplayResponses();
 			}
+
 			return;
 		}
 
@@ -146,7 +147,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			_logger.Error("Dialogue line is null.");
 			return;
 		}
-		
+
 		_dialogueUi.DisplayDialogue(line);
 	}
 

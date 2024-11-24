@@ -5,9 +5,10 @@ using untitledplantgame.Dialogue.Models;
 
 namespace untitledplantgame.Dialogue;
 
-public partial class DialogueUi : Node2D
+public partial class DialogueUi : Control
 {
-	private DialogueSystem _dialogueSystem;
+	[Export] private DialogueSystem _dialogueSystem;
+	
 	private RichTextLabel _nameLabel;
 	private RichTextLabel _dialogueTextLabel;
 	private AnimatedSprite2D _animatedSprite2D;
@@ -19,7 +20,6 @@ public partial class DialogueUi : Node2D
 
 	public override void _Ready()
 	{
-		_dialogueSystem = GetParent<DialogueSystem>();
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("Portrait");
 		_nameLabel = GetNode<RichTextLabel>("PanelContainer2/MarginContainer/Name");
 		_dialogueTextLabel = GetNode<RichTextLabel>("PanelContainer/MarginContainer/DialogueText");
