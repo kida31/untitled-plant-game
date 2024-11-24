@@ -12,6 +12,9 @@ public partial class DialogueSystem : Node, IDialogueSystem
 {
 	public event Action<DialogueResourceObject> OnDialogueStart;
 	public event Action<DialogueResourceObject> OnDialogueEnd;
+	public event Action<string[]> OnResponding; 
+	public event Action<DialogueLine> OnDisplayLine; 
+	public event Action OnSkipAnimation;
 
 	private static DialogueSystem Instance { get; set; }
 
@@ -45,7 +48,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_skipCooldownTimer.OneShot = true;
 		_skipCooldownTimer.Timeout += () => _smashable = true;
 		EventBus.Instance.StartingDialogue += StartDialog;
-		_logger.Debug(_dialogueUi.Name);
 	}
 
 	public override void _Input(InputEvent @event)
@@ -85,7 +87,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_currentDialogue = null;
 		GameStateMachine.Instance.SetState(GameState.FreeRoam);
 		_state = DialogueState.End;
-		_dialogueUi.ClearDialogue();
 		OnDialogueEnd?.Invoke(_currentDialogue);
 	}
 
@@ -112,9 +113,8 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 		if (_dialogueUi.AnimationIsPlaying)
 		{
-			_smashable = false;
-			_dialogueUi.ShowAllDialogue();
-			_skipCooldownTimer.Start(_waitForSeconds);
+			_logger.Debug("Skipping animation.");
+			SkipAnimation();
 			return;
 		}
 
@@ -132,6 +132,13 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		EndDialogue();
 	}
 
+	private void SkipAnimation()
+	{
+		OnSkipAnimation?.Invoke();
+		_smashable = false;
+		_skipCooldownTimer.Start(_waitForSeconds);
+	}
+
 	public void InsertSelectedResponse(string response)
 	{
 		var nextDialogue = _currentDialogue._responses.First((r) => r._responseButton == response)._responseDialogue;
@@ -147,14 +154,12 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			_logger.Error("Dialogue line is null.");
 			return;
 		}
-
-		_dialogueUi.DisplayDialogue(line);
+		OnDisplayLine?.Invoke(line);
 	}
 
 	private void DisplayResponses()
 	{
-		_dialogueUi.DisplayResponses(_currentDialogue._responses.Select(r => r._responseButton).ToArray());
-
+		OnResponding?.Invoke(_currentDialogue._responses.Select(r => r._responseButton).ToArray());
 		_state = DialogueState.Responding;
 	}
 

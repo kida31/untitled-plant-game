@@ -27,6 +27,10 @@ public partial class DialogueUi : Control
 
 		_dialogueAnimation = new DialogueAnimation();
 		AddChild(_dialogueAnimation);
+		_dialogueSystem.OnDialogueEnd += o => ClearDialogue();
+		_dialogueSystem.OnResponding += DisplayResponses;
+		_dialogueSystem.OnDisplayLine += DisplayDialogue;
+		_dialogueSystem.OnSkipAnimation += ShowAllDialogue;
 	}
 
 	//Displays dialogue on the screen
