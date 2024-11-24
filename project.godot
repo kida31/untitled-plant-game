@@ -35,9 +35,9 @@ InteractionManager="*res://Features/Interaction/InteractionManager.tscn"
 TimeController="*res://Common/TimeController.cs"
 WeatherCycle="*res://Features/Cycle/Weather/WeatherCycle.cs"
 PlantDatabase="*res://Features/Plants/PlantDatabase.cs"
-DialogueSystem="*res://Features/Dialogue/DialogueSystem.cs"
 DialogueDatabase="*res://Features/Dialogue/DialogueDatabase.cs"
 CollisionManager="*res://Features/Player/CollisionManager.cs"
+DialogueSystem="*res://Features/Dialogue/DialogueSystem.cs"
 
 [display]
 
