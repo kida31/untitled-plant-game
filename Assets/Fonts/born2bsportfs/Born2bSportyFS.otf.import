@@ -2,32 +2,32 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dt6jbuskqvs7g"
-path="res://.godot/imported/pixelmix.ttf-c3a2cc445df247c7fc99a8cbbeb7fce0.fontdata"
+uid="uid://ctogc4uddws7b"
+path="res://.godot/imported/Born2bSportyFS.otf-a86f7f4b38f84873100b773af5a50015.fontdata"
 
 [deps]
 
-source_file="res://Features/Cycle/UI/fonts/pixelmix/pixelmix.ttf"
-dest_files=["res://.godot/imported/pixelmix.ttf-c3a2cc445df247c7fc99a8cbbeb7fce0.fontdata"]
+source_file="res://Assets/Fonts/born2bsportfs/Born2bSportyFS.otf"
+dest_files=["res://.godot/imported/Born2bSportyFS.otf-a86f7f4b38f84873100b773af5a50015.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
-generate_mipmaps=false
-disable_embedded_bitmaps=true
+generate_mipmaps=true
+disable_embedded_bitmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
-hinting=1
+hinting=2
 subpixel_positioning=1
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
-compress=true
+compress=false
 preload=[]
 language_support={}
 script_support={}

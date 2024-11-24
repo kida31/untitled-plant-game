@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.GameStates;
+using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.GUI;
 
@@ -29,7 +31,6 @@ public partial class SeedShopView : Control
 	public override void _Ready()
 	{
 		EventBus.Instance.OnSeedShopOpening += OpenSeedShop;
-		EventBus.Instance.OnSeedshopClosed += HideSeedShop;
 
 		_shopSlots = _slotContainer.GetChildren().OfType<ShopItemStackView>().ToList();
 
@@ -38,8 +39,47 @@ public partial class SeedShopView : Control
 			var thisSlot = slot; // TODO: Check if currying is needed
 			slot.MouseEntered += () => PutTooltip(thisSlot);
 			slot.MouseExited += HideTooltip;
+			slot.FocusEntered += () => PutTooltip(thisSlot);
+			slot.FocusExited += HideTooltip;
 			slot.Pressed += () => OnSlotPressed(thisSlot);
 		});
+		
+		// Adjust navigation, hacky
+		var columnCount = (_slotContainer as GridContainer)!.Columns;
+		for (var i = 0; i < _shopSlots.Count; i++)
+		{
+			var slot = _shopSlots[i];
+			slot.FocusMode = FocusModeEnum.All;
+			// RightNeighbour, Not last column
+			if (i % columnCount != columnCount - 1)
+			{
+				slot.FocusNeighborRight = _shopSlots[i + 1].GetPath();
+			}
+			// LeftNeighbour, Not first column
+			if (i % columnCount != 0)
+			{
+				slot.FocusNeighborLeft = _shopSlots[i - 1].GetPath();
+			}
+			// TopNeighbour, Not first row
+			if (i >= columnCount)
+			{
+				slot.FocusNeighborTop = _shopSlots[i - columnCount].GetPath();
+			}
+			// BottomNeighbour, Not last row
+			if (i < _shopSlots.Count - columnCount)
+			{
+				slot.FocusNeighborBottom = _shopSlots[i + columnCount].GetPath();
+			}
+		}
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		base._UnhandledInput(@event);
+		if (@event.IsActionPressed(Shop.CloseShop))
+		{
+			CloseSeedShop();
+		}
 	}
 
 	private void OpenSeedShop(IShop shop)
@@ -48,7 +88,11 @@ public partial class SeedShopView : Control
 		{
 			_currentShop.ShopStockChanged -= SetShopUIContent;
 		}
+		
+		// Block interaction while shop is open
+		GameStateMachine.Instance.SetState(GameState.Shop);
 
+		
 		Assert.AssertTrue(!Visible, "Shop was not supposed to be visible");
 		_currentShop = shop;
 		SetShopUIContent(shop.CurrentStock.ToList());
@@ -104,12 +148,17 @@ public partial class SeedShopView : Control
 		}
 	}
 
-	private void HideSeedShop()
+	private void CloseSeedShop()
 	{
 		if (this.Visible)
 		{
 			this.Hide();
 			_logger.Debug("Seedshop closed.");
 		}
+
+		// Change game state back to previous state
+		GameStateMachine.Instance.RevertState();
+		// Tell subscribers that the shop was closed
+		EventBus.Instance.SeedshopClosed();
 	}
 }

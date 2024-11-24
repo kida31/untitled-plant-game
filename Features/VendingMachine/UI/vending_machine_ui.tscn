@@ -192,9 +192,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.270222, 0.270222, 0.270222, 1)
 
-[node name="IndepentendRoot" type="Node" parent="."]
+[node name="IndepentendRoot" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
 
 [node name="EmojiTooltip" type="Control" parent="IndepentendRoot" node_paths=PackedStringArray("_emojiTexture", "_slider", "_fadeTimer")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 102.0
