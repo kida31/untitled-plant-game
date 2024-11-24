@@ -45,7 +45,7 @@ public partial class DialogueUi : Control
 		AddChild(_dialogueAnimation);
 
 		//Events
-		EventBus.Instance.InitialiseDialogueSystem += ConnectDialogueSystem;
+		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
 		_logger.Debug("Subscribed to dialogue system intialising.");
 		_skipCooldownTimer.Timeout += () => _smashable = true;
 	}
@@ -58,7 +58,7 @@ public partial class DialogueUi : Control
 		}
 	}
 
-	private void ConnectDialogueSystem(IDialogueSystem sys)
+	private void ConnectDialogue(IDialogueSystem sys)
 	{
 		_logger.Debug("Dialogue system connected." + sys);
 		_dialogueSystem = sys;
@@ -66,6 +66,7 @@ public partial class DialogueUi : Control
 		_dialogueSystem.OnDialogueEnd += o => HideDialogueUi();
 		_dialogueSystem.OnResponding += DisplayResponses;
 	}
+
 	private void OnDialogueBlockStarted(DialogueResourceObject dialogue)
 	{
 		_currentDialogue = dialogue;
@@ -76,12 +77,12 @@ public partial class DialogueUi : Control
 
 	private void OnPlayerInputConfirm()
 	{
-		if( _currentDialogue == null)
+		if (_currentDialogue == null)
 		{
 			_logger.Warn("There is no dialogue to show."); //happens when player chooses a response TODO: ignore confirm response
 			return;
 		}
-		
+
 		if (!_smashable)
 		{
 			_logger.Debug("Stop smashing the button.");

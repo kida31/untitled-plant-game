@@ -32,7 +32,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			QueueFree();
 		}
 
-		
+
 		EventBus.Instance.StartingDialogue += StartDialog;
 		_logger.Debug("Initialised.");
 	}
@@ -40,8 +40,8 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	public void StartDialog(string dialogueId)
 	{
 		var dialogue = DialogueDatabase.Instance.GetResourceByName(dialogueId);
-		EventBus.Instance.OnInitialiseDialogueSystem(this);
-		
+		EventBus.Instance.InvokeInitialiseDialogue(this);
+
 		if (dialogue == null)
 		{
 			_logger.Error("Dialogue is null.");

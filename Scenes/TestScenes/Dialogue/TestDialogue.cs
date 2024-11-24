@@ -14,6 +14,6 @@ public partial class TestDialogue : Node2D
 
 	public override void _Ready()
 	{
-		EventBus.Instance.OnDialogueStarting(_exampleDialogue._dialogueId);
+		EventBus.Instance.InvokeStartingDialogue(_exampleDialogue._dialogueId);
 	}
 }
