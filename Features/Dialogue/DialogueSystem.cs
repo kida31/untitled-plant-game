@@ -15,8 +15,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 	private static DialogueSystem Instance { get; set; }
 
-	[Export] private DialogueUi _dialogueUi;
-	
 	private DialogueResourceObject _currentDialogue;
 	private Logger _logger;
 
@@ -33,14 +31,17 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			_logger.Error("There are multiple instances of DialogueSystem");
 			QueueFree();
 		}
+
 		
 		EventBus.Instance.StartingDialogue += StartDialog;
+		_logger.Debug("Initialised.");
 	}
 
 	public void StartDialog(string dialogueId)
 	{
 		var dialogue = DialogueDatabase.Instance.GetResourceByName(dialogueId);
-
+		EventBus.Instance.OnInitialiseDialogueSystem(this);
+		
 		if (dialogue == null)
 		{
 			_logger.Error("Dialogue is null.");
@@ -56,23 +57,24 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		GameStateMachine.Instance.SetState(GameState.Dialogue);
 		SetAndResetDialogueBlock(dialogue);
 	}
-	
+
 	public void InsertSelectedResponse(string response)
 	{
 		var nextDialogue = _currentDialogue._responses.First((r) => r._responseButton == response)._responseDialogue;
 		SetAndResetDialogueBlock(nextDialogue);
 	}
-	
+
 	public void GetResponses()
 	{
-		if(_currentDialogue._responses.Length == 0)
+		if (_currentDialogue._responses.Length == 0)
 		{
 			EndDialogue();
 			return;
 		}
+
 		OnResponding?.Invoke(_currentDialogue._responses.Select(r => r._responseButton).ToArray());
 	}
-	
+
 	private void EndDialogue()
 	{
 		_currentDialogue = null;

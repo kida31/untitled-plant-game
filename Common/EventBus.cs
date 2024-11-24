@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Dialogue;
 using untitledplantgame.Item;
 using untitledplantgame.Shops;
 using untitledplantgame.VendingMachine;
@@ -82,9 +83,15 @@ public partial class EventBus : Node
 	}
 	
 	public event Action<string> StartingDialogue;
+	public event Action<IDialogueSystem> InitialiseDialogueSystem; 
 
 	public void OnDialogueStarting(string obj)
 	{
 		StartingDialogue?.Invoke(obj);
+	}
+
+	public void OnInitialiseDialogueSystem(IDialogueSystem obj)
+	{
+		InitialiseDialogueSystem?.Invoke(obj);
 	}
 }

@@ -8,7 +8,7 @@ namespace untitledplantgame.Dialogue;
 
 public partial class DialogueUi : Control
 {
-	[Export] private IDialogueSystem _dialogueSystem;
+	private IDialogueSystem _dialogueSystem;
 
 	private RichTextLabel _nameLabel;
 	private RichTextLabel _dialogueTextLabel;
@@ -45,20 +45,27 @@ public partial class DialogueUi : Control
 		AddChild(_dialogueAnimation);
 
 		//Events
-		_dialogueSystem.OnDialogueBlockStarted += OnDialogueBlockStarted;
-		_dialogueSystem.OnDialogueEnd += o => OnEndOfDialogueBlock();
-		_dialogueSystem.OnResponding += DisplayResponses;
+		EventBus.Instance.InitialiseDialogueSystem += ConnectDialogueSystem;
+		_logger.Debug("Subscribed to dialogue system intialising.");
 		_skipCooldownTimer.Timeout += () => _smashable = true;
 	}
 
 	public override void _Input(InputEvent @event)
 	{
-		if (Input.IsActionJustPressed("ui_accept"))
+		if (Input.IsActionJustPressed("ui_accept") && Visible)
 		{
 			OnPlayerInputConfirm();
 		}
 	}
 
+	private void ConnectDialogueSystem(IDialogueSystem sys)
+	{
+		_logger.Debug("Dialogue system connected." + sys);
+		_dialogueSystem = sys;
+		_dialogueSystem.OnDialogueBlockStarted += OnDialogueBlockStarted;
+		_dialogueSystem.OnDialogueEnd += o => HideDialogueUi();
+		_dialogueSystem.OnResponding += DisplayResponses;
+	}
 	private void OnDialogueBlockStarted(DialogueResourceObject dialogue)
 	{
 		_currentDialogue = dialogue;
@@ -69,9 +76,15 @@ public partial class DialogueUi : Control
 
 	private void OnPlayerInputConfirm()
 	{
-		if (!_smashable || _currentDialogue == null)
+		if( _currentDialogue == null)
 		{
-			_logger.Warn("Stop smashing the button.");
+			_logger.Warn("There is no dialogue to show."); //happens when player chooses a response TODO: ignore confirm response
+			return;
+		}
+		
+		if (!_smashable)
+		{
+			_logger.Debug("Stop smashing the button.");
 			return;
 		}
 
