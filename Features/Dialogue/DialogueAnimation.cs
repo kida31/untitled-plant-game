@@ -1,5 +1,4 @@
 using Godot;
-using untitledplantgame.Common;
 using DialogueLine = untitledplantgame.Dialogue.Models.DialogueLine;
 
 namespace untitledplantgame.Dialogue;
@@ -33,5 +32,13 @@ public partial class DialogueAnimation : Node
 		CurrentLetterIndex = -1;
 
 		dialogueTextLabel.VisibleCharacters = -1;
+	}
+	
+	/// <summary>
+	/// Goes to the end of the current animation.
+	/// </summary>
+	public void StopAnimation()
+	{
+		CurrentLetterIndex = -1;
 	}
 }

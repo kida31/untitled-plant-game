@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Dialogue.Models;
 
 namespace untitledplantgame.Dialogue;
@@ -13,28 +14,89 @@ public partial class DialogueUi : Control
 	private RichTextLabel _dialogueTextLabel;
 	private AnimatedSprite2D _animatedSprite2D;
 	private BoxContainer _responseContainer;
+	
+	
+	private DialogueResourceObject _currentDialogue;
+	private IEnumerator<DialogueLine> _lineEnumerator;
+	
 	private DialogueAnimation _dialogueAnimation;
-	private int _currentDialogueIndex;
-
-	public bool AnimationIsPlaying => _dialogueAnimation.AnimationIsPlaying;
+	private bool _smashable = true;
+	private double _waitForSeconds = 0.5;
+	private Timer _skipCooldownTimer;
+	
+	private Logger _logger;
+	private bool AnimationIsPlaying => _dialogueAnimation.AnimationIsPlaying;
 
 	public override void _Ready()
 	{
+		_logger = new Logger(this);
+		
+		//UI elements
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("Portrait");
 		_nameLabel = GetNode<RichTextLabel>("PanelContainer2/MarginContainer/Name");
 		_dialogueTextLabel = GetNode<RichTextLabel>("PanelContainer/MarginContainer/DialogueText");
 		_responseContainer = GetNode<BoxContainer>("Responses");
-
+		
+		//Animation
+		_skipCooldownTimer = new Timer();
+		AddChild(_skipCooldownTimer);
+		_skipCooldownTimer.Autostart = false;
+		_skipCooldownTimer.OneShot = true;
 		_dialogueAnimation = new DialogueAnimation();
 		AddChild(_dialogueAnimation);
-		_dialogueSystem.OnDialogueEnd += o => ClearDialogue();
+		
+		//Events
+		_dialogueSystem.OnDialogueBlockStarted += OnDialogueBlockStarted;
+		_dialogueSystem.OnDialogueEnd += o => OnEndOfDialogueBlock();
 		_dialogueSystem.OnResponding += DisplayResponses;
-		_dialogueSystem.OnDisplayLine += DisplayDialogue;
-		_dialogueSystem.OnSkipAnimation += ShowAllDialogue;
+		_skipCooldownTimer.Timeout += () => _smashable = true;
+	}
+	public override void _Input(InputEvent @event)
+	{
+		if (Input.IsActionJustPressed("ui_accept"))
+		{
+			OnPlayerInputConfirm();
+		}
+	}
+	private void OnDialogueBlockStarted(DialogueResourceObject dialogue)
+	{
+		_currentDialogue = dialogue;
+		_lineEnumerator = dialogue._dialogueText.AsEnumerable().GetEnumerator();
+		_lineEnumerator.MoveNext(); //Enumerator starts at index -1
+		ShowDialogueLine(_lineEnumerator.Current);
+	}
+	
+	private void OnPlayerInputConfirm()
+	{
+		if (!_smashable || _currentDialogue == null)
+		{
+			_logger.Warn("Stop smashing the button.");
+			return;
+		}
+
+		_logger.Debug("Player input confirm.");
+
+		if (AnimationIsPlaying)
+		{
+			_logger.Debug("Skipping animation.");
+			SkipAnimation();
+			return;
+		}
+
+		_smashable = true;
+		if (_lineEnumerator.MoveNext()) //End of Line
+		{
+			_logger.Debug("Showing next line.");
+			ShowDialogueLine(_lineEnumerator.Current);
+			return;
+		}
+		
+		_logger.Debug("End of dialogue block.");
+		OnEndOfDialogueBlock();
 	}
 
 	//Displays dialogue on the screen
-	public void DisplayDialogue(DialogueLine line)
+	private void ShowDialogueLine(DialogueLine line)
 	{
 		_nameLabel.Text = line.speakerName;
 		_dialogueTextLabel.Text = line.dialogueText;
@@ -43,7 +105,7 @@ public partial class DialogueUi : Control
 		Visible = true;
 	}
 
-	public void DisplayResponses(string[] responses)
+	private void DisplayResponses(string[] responses)
 	{
 		var buttons = new List<Button>();
 		foreach (var response in responses)
@@ -70,14 +132,30 @@ public partial class DialogueUi : Control
 			child.QueueFree();
 		}
 	}
-
-	public void ClearDialogue()
+	
+	private void OnEndOfDialogueBlock()
 	{
-		Visible = false;
+		_currentDialogue = null;
+		_dialogueSystem.GetResponses();
 	}
 
-	public void ShowAllDialogue()
+	private void SkipAnimation()
 	{
-		_dialogueAnimation.CurrentLetterIndex = -1;
+		_dialogueAnimation.StopAnimation();
+		_smashable = false;
+		_skipCooldownTimer.Start(_waitForSeconds);
+	}
+	
+	private void ShowDialogueUi(DialogueResourceObject dialogue)
+	{
+		OnDialogueBlockStarted(dialogue);
+		Visible = true;
+	}
+	
+	private void HideDialogueUi()
+	{
+		_currentDialogue = null;
+		_lineEnumerator = null;
+		Visible = false;
 	}
 }
