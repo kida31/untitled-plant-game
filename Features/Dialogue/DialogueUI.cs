@@ -8,35 +8,34 @@ namespace untitledplantgame.Dialogue;
 
 public partial class DialogueUi : Control
 {
-	[Export] private DialogueSystem _dialogueSystem;
-	
+	[Export] private IDialogueSystem _dialogueSystem;
+
 	private RichTextLabel _nameLabel;
 	private RichTextLabel _dialogueTextLabel;
 	private AnimatedSprite2D _animatedSprite2D;
 	private BoxContainer _responseContainer;
-	
-	
+
 	private DialogueResourceObject _currentDialogue;
 	private IEnumerator<DialogueLine> _lineEnumerator;
-	
+
 	private DialogueAnimation _dialogueAnimation;
 	private bool _smashable = true;
 	private double _waitForSeconds = 0.5;
 	private Timer _skipCooldownTimer;
-	
+
 	private Logger _logger;
 	private bool AnimationIsPlaying => _dialogueAnimation.AnimationIsPlaying;
 
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
-		
+
 		//UI elements
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("Portrait");
 		_nameLabel = GetNode<RichTextLabel>("PanelContainer2/MarginContainer/Name");
 		_dialogueTextLabel = GetNode<RichTextLabel>("PanelContainer/MarginContainer/DialogueText");
 		_responseContainer = GetNode<BoxContainer>("Responses");
-		
+
 		//Animation
 		_skipCooldownTimer = new Timer();
 		AddChild(_skipCooldownTimer);
@@ -44,13 +43,14 @@ public partial class DialogueUi : Control
 		_skipCooldownTimer.OneShot = true;
 		_dialogueAnimation = new DialogueAnimation();
 		AddChild(_dialogueAnimation);
-		
+
 		//Events
 		_dialogueSystem.OnDialogueBlockStarted += OnDialogueBlockStarted;
 		_dialogueSystem.OnDialogueEnd += o => OnEndOfDialogueBlock();
 		_dialogueSystem.OnResponding += DisplayResponses;
 		_skipCooldownTimer.Timeout += () => _smashable = true;
 	}
+
 	public override void _Input(InputEvent @event)
 	{
 		if (Input.IsActionJustPressed("ui_accept"))
@@ -58,6 +58,7 @@ public partial class DialogueUi : Control
 			OnPlayerInputConfirm();
 		}
 	}
+
 	private void OnDialogueBlockStarted(DialogueResourceObject dialogue)
 	{
 		_currentDialogue = dialogue;
@@ -65,7 +66,7 @@ public partial class DialogueUi : Control
 		_lineEnumerator.MoveNext(); //Enumerator starts at index -1
 		ShowDialogueLine(_lineEnumerator.Current);
 	}
-	
+
 	private void OnPlayerInputConfirm()
 	{
 		if (!_smashable || _currentDialogue == null)
@@ -90,7 +91,7 @@ public partial class DialogueUi : Control
 			ShowDialogueLine(_lineEnumerator.Current);
 			return;
 		}
-		
+
 		_logger.Debug("End of dialogue block.");
 		OnEndOfDialogueBlock();
 	}
@@ -132,7 +133,7 @@ public partial class DialogueUi : Control
 			child.QueueFree();
 		}
 	}
-	
+
 	private void OnEndOfDialogueBlock()
 	{
 		_currentDialogue = null;
@@ -145,13 +146,13 @@ public partial class DialogueUi : Control
 		_smashable = false;
 		_skipCooldownTimer.Start(_waitForSeconds);
 	}
-	
+
 	private void ShowDialogueUi(DialogueResourceObject dialogue)
 	{
 		OnDialogueBlockStarted(dialogue);
 		Visible = true;
 	}
-	
+
 	private void HideDialogueUi()
 	{
 		_currentDialogue = null;

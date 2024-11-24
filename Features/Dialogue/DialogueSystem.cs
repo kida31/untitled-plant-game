@@ -16,10 +16,8 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	private static DialogueSystem Instance { get; set; }
 
 	[Export] private DialogueUi _dialogueUi;
-
 	
 	private DialogueResourceObject _currentDialogue;
-	private DialogueState _state;
 	private Logger _logger;
 
 	public override void _Ready()
@@ -73,14 +71,12 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			return;
 		}
 		OnResponding?.Invoke(_currentDialogue._responses.Select(r => r._responseButton).ToArray());
-		_state = DialogueState.Responding;
 	}
 	
 	private void EndDialogue()
 	{
 		_currentDialogue = null;
 		GameStateMachine.Instance.SetState(GameState.FreeRoam);
-		_state = DialogueState.End;
 		OnDialogueEnd?.Invoke(_currentDialogue);
 	}
 
@@ -88,13 +84,5 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	{
 		OnDialogueBlockStarted?.Invoke(dialogue);
 		_currentDialogue = dialogue;
-		_state = DialogueState.Conversing;
-	}
-
-	public enum DialogueState
-	{
-		Conversing,
-		Responding,
-		End,
 	}
 }
