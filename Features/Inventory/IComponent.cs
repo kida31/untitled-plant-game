@@ -1,3 +1,8 @@
-﻿namespace untitledplantgame.Inventory;
+﻿using System;
 
-public interface IComponent { }
+namespace untitledplantgame.Inventory;
+
+public interface IComponent : IEquatable<IComponent>
+{
+	
+}
