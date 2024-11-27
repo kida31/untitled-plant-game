@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.Inputs;
 using untitledplantgame.Common.Inputs.GameActions;
-using untitledplantgame.Tools;
 
 /// <summary>
 /// This Class manages the interaction with any interactable object in the game.
@@ -66,13 +64,7 @@ public partial class InteractionManager : Node2D
 			label.Hide();
 		}
 	}
-	
-	// TODO: Check whether it makes sense to place this here
-	public Tool GetInteractionTool()
-	{
-		throw new NotImplementedException();
-	}
-	
+
 	public void RegisterArea(IInteractable area)
 	{
 		activeAreas.Add(area);
