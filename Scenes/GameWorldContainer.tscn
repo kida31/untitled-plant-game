@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=13 format=3 uid="uid://cv1fhyjs170lk"]
 
-[ext_resource type="PackedScene" uid="uid://odaf4n8fl163" path="res://Scenes/MapPlaceholder.tscn" id="1_03e08"]
+[ext_resource type="PackedScene" path="res://Scenes/MapPlaceholder.tscn" id="1_03e08"]
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://Features/NPC/VendingMachine/VendingMachineNPC.tscn" id="2_ldf7o"]
 [ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://Features/NPC/NPC.tscn" id="2_w1s7m"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cc5mcucmbfc65" path="res://Scenes/TestScenes/APlant/TestAPlant.tscn" id="4_qqlvm"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
+[ext_resource type="Script" path="res://Features/Tools/Entity2D.cs" id="11_ir23d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5n2xv"]
 
 [node name="GameWorldContainer" type="Node2D"]
 
@@ -46,3 +49,10 @@ position = Vector2(577.5, 328.625)
 scale = Vector2(1.19896, 1.19896)
 script = ExtResource("6_4ec11")
 _gradientTexture = ExtResource("7_xmbsw")
+
+[node name="Entity" type="Area2D" parent="."]
+script = ExtResource("11_ir23d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entity"]
+position = Vector2(532, 374)
+shape = SubResource("RectangleShape2D_5n2xv")

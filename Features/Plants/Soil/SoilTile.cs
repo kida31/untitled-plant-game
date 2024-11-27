@@ -3,7 +3,7 @@ using Godot;
 
 namespace untitledplantgame.Plants.Soil;
 
-public partial class SoilTile : Node2D
+public partial class SoilTile : Area2D
 {
 	[Export]
 	public float Hydration { get; private set; }
