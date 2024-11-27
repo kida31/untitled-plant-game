@@ -18,6 +18,10 @@ offset_bottom = 40.0
 layout_mode = 2
 text = "Water Soil Tile"
 
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Harvest"
+
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -25,6 +29,7 @@ layout_mode = 2
 texture_filter = 1
 position = Vector2(276, 175)
 scale = Vector2(4, 4)
+PlantName = "Basil"
 
 [node name="Soil" type="Node2D" parent="."]
 position = Vector2(276, 175)

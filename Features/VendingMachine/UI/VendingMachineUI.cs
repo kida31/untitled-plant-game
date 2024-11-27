@@ -47,14 +47,6 @@ public partial class VendingMachineUI : Control
 
 		EventBus.Instance.BeforeVendingMachineOpened += OpenThis;
 	}
-
-	private void OpenThis(VendingMachine vendingMachine)
-	{
-		GameStateMachine.Instance.SetState(GameState.Book);
-		SetVendingMachine(vendingMachine);
-		Show();
-	}
-
 	public override void _Process(double delta)
 	{
 		if (_vendingMachine is null)
@@ -71,6 +63,12 @@ public partial class VendingMachineUI : Control
 		{
 			CloseThis();
 		}
+	}
+	private void OpenThis(VendingMachine vendingMachine)
+	{
+		GameStateMachine.Instance.SetState(GameState.Book);
+		SetVendingMachine(vendingMachine);
+		Show();
 	}
 
 	private void CloseThis()
@@ -158,7 +156,7 @@ public partial class VendingMachineUI : Control
 
 	private void UpdateContent(IInventory inventory)
 	{
-		var items = inventory.GetContents();
+		var items = inventory.GetItems();
 		for (var index = 0; index < _itemSlots.Count && index < items.Count; index++)
 		{
 			_itemSlots[index].ItemStack = items[index];

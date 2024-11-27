@@ -21,3 +21,4 @@ Capacity = 0.0
 script = ExtResource("2_xw4i2")
 GrowthRequirements = Array[Object]([SubResource("Resource_8q17h"), SubResource("Resource_5pigg")])
 DaysToGrow = 1
+IsHarvestable = false

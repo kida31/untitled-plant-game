@@ -1,34 +1,38 @@
-[gd_scene load_steps=10 format=3 uid="uid://f7it4seve2en"]
+[gd_scene load_steps=11 format=3 uid="uid://f7it4seve2en"]
 
-[ext_resource type="Script" path="res://Features/Plants/APlant.cs" id="1_14phw"]
-[ext_resource type="Texture2D" uid="uid://c2uogdsxjcvep" path="res://Features/Plants/Sprites/Basic_Plants.png" id="2_oayfo"]
-[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="3_4yb86"]
+[ext_resource type="Script" path="res://Features/Plants/APlant.cs" id="1_g03kh"]
+[ext_resource type="Texture2D" uid="uid://dxjrcllnnc3s2" path="res://Assets/OverworldAssets/Plant/Licary_SpriteSheet.png" id="2_ukl5i"]
+[ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/OverworldAssets/Plant/DeadPlant.png" id="3_srjlf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ydsg4"]
-atlas = ExtResource("2_oayfo")
-region = Rect2(48, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0qlg"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cldp"]
-atlas = ExtResource("2_oayfo")
-region = Rect2(48, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvws3"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0joly"]
-atlas = ExtResource("2_oayfo")
-region = Rect2(64, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_822xi"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(192, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_51oe2"]
-atlas = ExtResource("2_oayfo")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8p1h"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4x32u"]
-atlas = ExtResource("2_oayfo")
-region = Rect2(32, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_002dl"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7cyj"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1rej4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ydsg4")
+"texture": SubResource("AtlasTexture_v0qlg")
 }],
 "loop": true,
 "name": &"Budding",
@@ -36,7 +40,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_4yb86")
+"texture": ExtResource("3_srjlf")
 }],
 "loop": true,
 "name": &"Dead",
@@ -44,7 +48,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3cldp")
+"texture": SubResource("AtlasTexture_vvws3")
 }],
 "loop": true,
 "name": &"Flowering",
@@ -52,7 +56,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0joly")
+"texture": SubResource("AtlasTexture_822xi")
 }],
 "loop": true,
 "name": &"Ripening",
@@ -60,7 +64,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_51oe2")
+"texture": SubResource("AtlasTexture_u8p1h")
 }],
 "loop": true,
 "name": &"Seedling",
@@ -68,7 +72,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4x32u")
+"texture": SubResource("AtlasTexture_002dl")
+}],
+"loop": true,
+"name": &"Sprouting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7cyj")
 }],
 "loop": true,
 "name": &"Vegetating",
@@ -76,8 +88,8 @@ animations = [{
 }]
 
 [node name="APlantPrefab" type="Node2D" groups=["Plant"]]
-script = ExtResource("1_14phw")
+script = ExtResource("1_g03kh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1rej4")
-animation = &"Dead"
+animation = &"Ripening"

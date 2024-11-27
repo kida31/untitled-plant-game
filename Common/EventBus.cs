@@ -1,7 +1,7 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.EntityStatsDataContainer;
+using untitledplantgame.Dialogue;
 using untitledplantgame.Item;
 using untitledplantgame.Shops;
 using untitledplantgame.VendingMachine;
@@ -45,7 +45,6 @@ public partial class EventBus : Node
 	//---------------------------------------------Legacy Signals---------------------------------------------
 
 
-
 	public delegate void AddToInventoryEventHandler(InteractableItem interactableItem);
 
 	public event AddToInventoryEventHandler OnItemPickUp;
@@ -63,6 +62,7 @@ public partial class EventBus : Node
 	}
 
 	public event Action<IShop> OnSeedShopOpening;
+
 	public void SeedShopOpening(IShop shop)
 	{
 		OnSeedShopOpening?.Invoke(shop);
@@ -80,5 +80,25 @@ public partial class EventBus : Node
 	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
+	}
+
+	/// <summary>
+	/// Invoked when a dialogue is starting, passes the dialogue name
+	/// </summary>
+	public event Action<string> StartingDialogue;
+
+	/// <summary>
+	/// Emitted when a dialogue is started for the first time
+	/// </summary>
+	public event Action<IDialogueSystem> InitialiseDialogue;
+
+	public void InvokeStartingDialogue(string obj)
+	{
+		StartingDialogue?.Invoke(obj);
+	}
+
+	public void InvokeInitialiseDialogue(IDialogueSystem obj)
+	{
+		InitialiseDialogue?.Invoke(obj);
 	}
 }

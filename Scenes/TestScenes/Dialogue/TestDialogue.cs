@@ -1,5 +1,4 @@
 using Godot;
-using untitledplantgame.Common.GameStates;
 using DialogueResourceObject = untitledplantgame.Dialogue.Models.DialogueResourceObject;
 using DialogueSystem = untitledplantgame.Dialogue.DialogueSystem;
 
@@ -15,14 +14,6 @@ public partial class TestDialogue : Node2D
 
 	public override void _Ready()
 	{
-		// Prepare
-
-
-		GD.Print($"Current game state: {GameStateMachine.Instance.CurrentState}");
-		GD.Print("Trigger dialogue.");
-
-		DialogueSystem.Instance.StartDialog(_exampleDialogue._dialogueId);
-
-		GD.Print($"Current game state: {GameStateMachine.Instance.CurrentState}");
+		EventBus.Instance.InvokeStartingDialogue(_exampleDialogue._dialogueId);
 	}
 }
