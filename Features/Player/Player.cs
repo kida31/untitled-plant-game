@@ -3,6 +3,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.Tools;
 
 namespace untitledplantgame.Player;
 
@@ -14,6 +15,8 @@ public partial class Player : CharacterBody2D
 
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
+
+	private Tool _tool = new WateringCan();
 
 	public override void _Ready()
 	{
@@ -37,7 +40,12 @@ public partial class Player : CharacterBody2D
 		Direction.Y = Input.GetActionStrength(FreeRoam.Down) - Input.GetActionStrength(FreeRoam.Up);
 		//Velocity = direction * MoveSpeed;
 		InteractionManager.Instance.PerformInteraction();
+
+		if (@event.IsActionPressed(FreeRoam.UseTool)) {
+			_tool?.Use(this);
+		}
 	}
+
 
 	public override void _PhysicsProcess(double delta)
 	{
