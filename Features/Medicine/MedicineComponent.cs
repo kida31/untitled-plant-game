@@ -16,4 +16,5 @@ public partial class MedicineComponent : AComponent
 		this.name = name;
 		this.value = value;
 	}
+	public MedicineComponent() {}
 }

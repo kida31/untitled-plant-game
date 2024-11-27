@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Godot.Collections;
 using untitledplantgame.Common;
 using untitledplantgame.Item;
 
@@ -17,23 +18,39 @@ public partial class ItemStack : Resource, IItemStack
 	[Export] public string Name { get; set; }
 	[Export] public Texture2D Icon { get; set; }
 	[Export] public string Description { get; set; }
-	public ItemCategory Category { get; set; }
 	[Export] public int MaxStackSize { get; set; }
 	[Export] public int BaseValue { get; set; }
 
-	[Export] private AComponent[] Components
+	[Export(PropertyHint.Enum, "Plant,Material,Medicine")] private string _category;
+	[Export] private Array<AComponent> _component;
+
+	public ItemCategory Category
 	{
-		get => _component.ToArray();
-		set => _component = value.ToList();
+		get
+		{
+			return _category switch {
+				"Plant" => ItemCategory.Plant,
+				"Material" => ItemCategory.Material,
+				"Medicine" => ItemCategory.Medicine,
+				_ => null
+			};
+
+			
+		}
+		set
+		{
+			_category = value.Name;
+		}
 	}
-	
-	private List<AComponent> _component = new List<AComponent>();
-	private readonly Logger _logger = new("ItemStack");
+
+	private readonly Logger _logger;
 
 	public ItemStack()
 	{
+		_logger = new Logger("ItemStack");
+		_component = new();
 	}
-	
+
 	public ItemStack(
 		string id,
 		string name,
@@ -43,7 +60,7 @@ public partial class ItemStack : Resource, IItemStack
 		int maxStackSize,
 		int baseValue,
 		int amount = 1
-	)
+	) : this()
 	{
 		Id = id;
 		Name = name;
@@ -58,11 +75,11 @@ public partial class ItemStack : Resource, IItemStack
 	public T GetComponent<T>()
 		where T : AComponent
 	{
-		var idx = _component.FindIndex(component => component is T);
+		var idx = _component.ToList().FindIndex(component => component is T);
 		if (idx != -1)
 		{
 			var blah = _component[idx];
-			return (T) blah;
+			return (T)blah;
 		}
 		else
 		{
@@ -85,7 +102,7 @@ public partial class ItemStack : Resource, IItemStack
 	public T RemoveComponent<T>()
 		where T : AComponent
 	{
-		var idx = _component.FindIndex(component => component is T);
+		var idx = _component.ToList().FindIndex(component => component is T);
 		if (idx == -1)
 		{
 			return null;
