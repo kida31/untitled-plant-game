@@ -1,27 +1,39 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Item;
 
 namespace untitledplantgame.Inventory;
 
 /// <summary>
 ///     https://github.com/Bukkit/Bukkit/blob/master/src/main/java/org/bukkit/inventory/ItemStack.java
 /// </summary>
-public class ItemStack : IItemStack
+[GlobalClass]
+public partial class ItemStack : Resource, IItemStack
 {
-	public int Amount { get; set; }
-	public string Id { get; }
-	public string Name { get; }
-	public Texture2D Icon { get; }
-	public string Description { get; }
-	public ItemCategory Category { get; }
-	public int MaxStackSize { get; }
-	public int BaseValue { get; }
+	[Export] public int Amount { get; set; }
+	[Export] public string Id { get; set; }
+	[Export] public string Name { get; set; }
+	[Export] public Texture2D Icon { get; set; }
+	[Export] public string Description { get; set; }
+	public ItemCategory Category { get; set; }
+	[Export] public int MaxStackSize { get; set; }
+	[Export] public int BaseValue { get; set; }
 
-	private readonly List<IComponent> _components = new();
+	[Export] private AComponent[] Components
+	{
+		get => _component.ToArray();
+		set => _component = value.ToList();
+	}
+	
+	private List<AComponent> _component = new List<AComponent>();
 	private readonly Logger _logger = new("ItemStack");
 
+	public ItemStack()
+	{
+	}
+	
 	public ItemStack(
 		string id,
 		string name,
@@ -44,34 +56,43 @@ public class ItemStack : IItemStack
 	}
 
 	public T GetComponent<T>()
-		where T : class, IComponent
+		where T : AComponent
 	{
-		var idx = _components.FindIndex(component => component is T);
-		return idx != -1 ? (T)_components[idx] : null;
+		var idx = _component.FindIndex(component => component is T);
+		if (idx != -1)
+		{
+			var blah = _component[idx];
+			return (T) blah;
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public void AddComponent<T>(T component)
-		where T : class, IComponent
+		where T : AComponent
 	{
 		if (GetComponent<T>() is not null)
 		{
 			_logger.Warn("Component should only exist once");
 			return;
 		}
-		_components.Add(component);
+
+		_component.Add(component);
 	}
 
 	public T RemoveComponent<T>()
-		where T : class, IComponent
+		where T : AComponent
 	{
-		var idx = _components.FindIndex(component => component is T);
+		var idx = _component.FindIndex(component => component is T);
 		if (idx == -1)
 		{
 			return null;
 		}
 
-		var component = (T)_components[idx];
-		_components.RemoveAt(idx);
+		var component = (T)_component[idx];
+		_component.RemoveAt(idx);
 		return component;
 	}
 
