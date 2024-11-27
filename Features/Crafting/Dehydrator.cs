@@ -1,13 +1,17 @@
 using System.Linq;
 using Godot;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 
 namespace untitledplantgame.Crafting;
 
 public partial class Dehydrator : Node, ICraftingStation
 {
+	private const CraftMethod CraftMethod = Crafting.CraftMethod.Dehydrate;
+	
 	private int _slotNumber = 6;
 	private CraftingSlot[] _craftingSlots;
+	private IItemDatabase _itemDatabase;
 
 	public override void _Ready()
 	{
@@ -43,6 +47,7 @@ public partial class Dehydrator : Node, ICraftingStation
 
 	private void OnCraftingComplete(ItemStack item)
 	{
-		//change item to crafted output
+		ItemStack result;
+		Resource product = _itemDatabase.RequestCraftedItem(item, CraftMethod);
 	}
 }

@@ -2,7 +2,8 @@
 
 public enum CraftMethod
 {
-	Drying,
-	Grinding,
-	Boiling,
+	Dehydrate,
+	Mix,
+	Grind,
+	Boil,
 }
