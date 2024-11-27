@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Common;
@@ -21,26 +20,24 @@ public partial class ItemStack : Resource, IItemStack
 	[Export] public int MaxStackSize { get; set; }
 	[Export] public int BaseValue { get; set; }
 
-	[Export(PropertyHint.Enum, "Plant,Material,Medicine")] private string _category;
+	[Export(PropertyHint.Enum, "Plant,Material,Medicine")]
+	private string _category;
+
 	[Export] private Array<AComponent> _component;
 
 	public ItemCategory Category
 	{
 		get
 		{
-			return _category switch {
+			return _category switch
+			{
 				"Plant" => ItemCategory.Plant,
 				"Material" => ItemCategory.Material,
 				"Medicine" => ItemCategory.Medicine,
 				_ => null
 			};
-
-			
 		}
-		set
-		{
-			_category = value.Name;
-		}
+		set { _category = value.Name; }
 	}
 
 	private readonly Logger _logger;
@@ -81,10 +78,8 @@ public partial class ItemStack : Resource, IItemStack
 			var blah = _component[idx];
 			return (T)blah;
 		}
-		else
-		{
-			return null;
-		}
+
+		return null;
 	}
 
 	public void AddComponent<T>(T component)

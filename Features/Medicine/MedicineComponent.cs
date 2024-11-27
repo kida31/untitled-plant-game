@@ -1,20 +1,21 @@
-﻿using Godot;
+﻿using System;
+using Godot;
 using untitledplantgame.Item;
 
 namespace untitledplantgame.Medicine;
 
-[GlobalClass]
-public partial class MedicineComponent : AComponent
+[GlobalClass] [Obsolete("This class is a placeholder.")]
+public partial class MedicineComponent : AComponent //TODO: PLACEHOLDER
 {
 	[Export]
-	private string name;
+	private string _name;
 	[Export]
-	private int value;
+	private int _value;
 	
 	public MedicineComponent(string name, int value)
 	{
-		this.name = name;
-		this.value = value;
+		_name = name;
+		_value = value;
 	}
-	public MedicineComponent() {}
+	public MedicineComponent() {} //needed to instantiate the class
 }
