@@ -48,6 +48,6 @@ public partial class Dehydrator : Node, ICraftingStation
 	private void OnCraftingComplete(ItemStack item)
 	{
 		ItemStack result;
-		Resource product = _itemDatabase.RequestCraftedItem(item, CraftMethod);
+		var resultResource = _itemDatabase.RequestCraftedItem(item, CraftMethod);
 	}
 }
