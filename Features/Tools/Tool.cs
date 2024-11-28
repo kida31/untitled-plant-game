@@ -29,7 +29,7 @@ public abstract class Tool
         box.TopLevel = true;
         box.Hit += (hits) => _OnHit(user, hits);
         user.AddChild(box);
-        box.GlobalPosition = user.GlobalPosition + user.Direction * _range;
+        box.GlobalPosition = user.GlobalPosition + user.FrontDirection * _range;
     }
 
     protected abstract void OnUse(Player.Player user);
