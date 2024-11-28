@@ -31,6 +31,8 @@ public partial class Player : CharacterBody2D
 		}
 	);
 
+	public Toolbelt Toolbelt => _toolbelt;
+
 	public override void _Ready()
 	{
 		_logger.Info("! Ready !");
@@ -46,23 +48,12 @@ public partial class Player : CharacterBody2D
 			Direction = Vector2.Zero; // default value, movement is an exception
 		}
 
-		// Handle input @event or read from Input
-		Direction.X = Input.GetActionStrength(FreeRoam.Right) - Input.GetActionStrength(FreeRoam.Left);
-		Direction.Y = Input.GetActionStrength(FreeRoam.Down) - Input.GetActionStrength(FreeRoam.Up);
 		//Velocity = direction * MoveSpeed;
 		InteractionManager.Instance.PerformInteraction();
+	}
 
-		if (@event.IsActionPressed(FreeRoam.UseTool)) {
-			_toolbelt.CurrentTool?.Use(this);
-		}
-
-		if (@event.IsActionPressed(FreeRoam.SwitchToNextTool)) {
-			_toolbelt.GoToNext();
-		}
-
-		if (@event.IsActionPressed(FreeRoam.SwitchToPreviousTool)) {
-			_toolbelt.GoToPrevious();
-		}
+	public void GetSetInputDirection() {
+		Direction = Input.GetVector(FreeRoam.Left, FreeRoam.Right, FreeRoam.Up, FreeRoam.Down).Normalized();
 	}
 
 
