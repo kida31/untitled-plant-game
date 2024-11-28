@@ -16,7 +16,7 @@ public partial class Player : CharacterBody2D
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
 
-	private Tool _tool = new WateringCan();
+	private Tool _tool = new Shears(32, 0);//new WateringCan();
 
 	public override void _Ready()
 	{
