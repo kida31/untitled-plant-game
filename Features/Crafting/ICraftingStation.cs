@@ -9,7 +9,5 @@ public interface ICraftingStation
 {
 	void InsertItemToSlot(ItemStack item, int slotIndex);
 	ItemStack RemoveItemFromSlot(int slotIndex);
-	ItemStack[] GetAllItemSlots();
-	
-	ItemStack[] RetrieveAllFinishedItems();
+	ItemStack[] GetAllItems();
 }

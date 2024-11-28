@@ -1,21 +1,23 @@
 ﻿using System;
 using Godot;
 using untitledplantgame.Inventory;
-using untitledplantgame.Item;
-
 
 namespace untitledplantgame.Crafting;
 
 public partial class CraftingSlot : Node
 {
-	public event Action<ItemStack> OnCraftingComplete;
+	public event Action<CraftingSlot> OnCraftingComplete;
 	public ItemStack ItemStack { get; set; }
 	public bool IsCraftingComplete { get; private set; }
+	public int Index { get; set; }
 	private Timer _timer;
 	private bool _isCrafting;
 
-	public override void _Ready()
+	public CraftingSlot(ItemStack item, int index)
 	{
+		ItemStack = item;
+		Index = index;
+		
 		_timer = new Timer();
 		AddChild(_timer);
 		_timer.Autostart = false;
@@ -31,15 +33,13 @@ public partial class CraftingSlot : Node
 
 	public void RemoveItem()
 	{
-		ItemStack = null;
-		_isCrafting = false;
-		_timer.Stop();
+		QueueFree();
 	}
 
 	private void CompleteCrafting()
 	{
 		_isCrafting = false;
 		IsCraftingComplete = true;
-		OnCraftingComplete?.Invoke(ItemStack);
+		OnCraftingComplete?.Invoke(this);
 	}
 }
