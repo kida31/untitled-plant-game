@@ -14,7 +14,11 @@ public class WateringCan : Tool
     // EndPlaceholders
 
     private readonly Logger _logger;
-    public WateringCan() : base(WateringRadius, WateringRange)
+    public WateringCan() : this(WateringRadius, WateringRange)
+    {
+    }
+
+    public WateringCan(float radius, float range) : base(radius, range)
     {
         _logger = new Logger("WateringCan");
     }

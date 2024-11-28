@@ -16,7 +16,12 @@ public partial class Player : CharacterBody2D
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
 
-	private Tool _tool = new Shears(32, 0);//new WateringCan();
+	private Toolbelt _toolbelt = new Toolbelt(
+		new Tool[] {
+			new Shears(16, 0),
+			new WateringCan(32, 0),
+		}
+	);
 
 	public override void _Ready()
 	{
@@ -42,7 +47,15 @@ public partial class Player : CharacterBody2D
 		InteractionManager.Instance.PerformInteraction();
 
 		if (@event.IsActionPressed(FreeRoam.UseTool)) {
-			_tool?.Use(this);
+			_toolbelt.CurrentTool?.Use(this);
+		}
+
+		if (@event.IsActionPressed(FreeRoam.SwitchToNextTool)) {
+			_toolbelt.GoToNext();
+		}
+
+		if (@event.IsActionPressed(FreeRoam.SwitchToPreviousTool)) {
+			_toolbelt.GoToPrevious();
 		}
 	}
 
