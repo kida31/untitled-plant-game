@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu0gsc1mye678"]
+
+[ext_resource type="Script" path="res://Features/Entities/Entity.cs" id="1_wwdm0"]
+[ext_resource type="Script" path="res://Features/Entities/GodotComponents/Area2DComponent.cs" id="2_ra8js"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_73oy4"]
+
+[node name="ExampleEntity1" type="Node2D"]
+script = ExtResource("1_wwdm0")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_ra8js")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_73oy4")
