@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://w5ou251jlw1d"]
+
+[ext_resource type="Script" path="res://Features/Crafting/Dehydrator/CraftingSlotUi.cs" id="1_3bp8e"]
+[ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/OverworldAssets/Plant/DeadPlant.png" id="2_k0ion"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vpidj"]
+load_path = "res://.godot/imported/TextLabel.png-515d9a54e895d078172024d9301962d8.ctex"
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 130.0
+offset_bottom = 123.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_3bp8e")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_vpidj")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 6
+patch_margin_bottom = 7
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_k0ion")

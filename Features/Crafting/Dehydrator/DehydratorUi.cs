@@ -7,8 +7,19 @@ public partial class DehydratorUi : Control
 {
 	[Export] private Button _closeButton;
 	[Export] private Button _retrieveAllItemsButton;
+	[Export] private GridContainer _slotContainer;
 	
 	private ICraftingStation _craftingStation;
+
+	public override void _Ready()
+	{
+		foreach (var VARIABLE in _craftingStation.GetAllItems())
+		{
+			
+		}
+		var Slot = new CraftingSlotUi();
+		_slotContainer.AddChild(Slot);
+	}
 
 	private void OnCraftingStationUiOpened()
 	{
@@ -22,9 +33,12 @@ public partial class DehydratorUi : Control
 
 	private void OnCraftingStationUiItemInserted(ItemStack item, int slotIndex)
 	{
+		_craftingStation.InsertItemToSlot(item, slotIndex);
 	}
 
-	private void OnCraftingStationUiItemRemoved(ItemStack item, int slotIndex)
+	private void OnCraftingStationUiItemRemoved(int slotIndex)
 	{
+		var item = _craftingStation.RemoveItemFromSlot(slotIndex);
+		// put item in inventory
 	}
 }
