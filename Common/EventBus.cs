@@ -2,6 +2,9 @@ using System;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Dialogue;
+using untitledplantgame.Inventory;
+using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
+using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 using untitledplantgame.Item;
 using untitledplantgame.Shops;
 using untitledplantgame.VendingMachine;
@@ -43,17 +46,6 @@ public partial class EventBus : Node
 	}
 
 	//---------------------------------------------Legacy Signals---------------------------------------------
-
-
-	public delegate void AddToInventoryEventHandler(InteractableItem interactableItem);
-
-	public event AddToInventoryEventHandler OnItemPickUp;
-
-	public void ItemPickedUp(InteractableItem interactableItem)
-	{
-		OnItemPickUp?.Invoke(interactableItem);
-	}
-
 	public event Action OnSeedshopOpened;
 
 	public void SeedshopOpened()
@@ -100,5 +92,70 @@ public partial class EventBus : Node
 	public void InvokeInitialiseDialogue(IDialogueSystem obj)
 	{
 		InitialiseDialogue?.Invoke(obj);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public delegate InventoryItemView GetItemSlotEventHandler();
+	
+	public event Action<int> OnFaithChange;
+	public event Action<int> OnCurrencyChange;
+	public event Action<WikiItemView> OnScrollContainerViewUpdate; 
+	public event Action<ItemStack> OnTabsUpdate;
+	public event Action<ItemStack> OnItemPickUp;
+	public event Action<ItemStack> OnWikiItemClicked;
+	public event Action<InventoryItemView> OnSetItemSlot;
+	public event Action<ItemStack, InventoryItemView> OnInventoryItemMove;
+	public event GetItemSlotEventHandler OnGetItemSlot;
+	
+	
+	public void FaithChanged(int change)
+	{
+		OnFaithChange?.Invoke(change);
+	}
+	
+	public void CurrencyChanged(int change)
+	{
+		OnCurrencyChange?.Invoke(change);
+	}
+
+	public void ScrollContainerViewChanged(WikiItemView scrollContainerElement)
+	{
+		OnScrollContainerViewUpdate?.Invoke(scrollContainerElement);
+	}
+	
+	public void TabsUpdated(ItemStack item)
+	{
+		OnTabsUpdate?.Invoke(item);
+	}
+	
+	public void ItemPickedUp(ItemStack item)
+	{
+		OnItemPickUp?.Invoke(item);
+	}
+	
+	public void UiWikiItemClicked(ItemStack itemStack)
+	{
+		OnWikiItemClicked?.Invoke(itemStack);
+	}
+	
+	public void SetItemSlot(InventoryItemView inventoryItemView)
+	{
+		OnSetItemSlot?.Invoke(inventoryItemView);
+	}
+	
+	public void InventoryItemMoved(ItemStack itemStack, InventoryItemView inventoryItemView)
+	{
+		OnInventoryItemMove?.Invoke(itemStack, inventoryItemView);
+	}
+
+	public InventoryItemView GetItemSlot()
+	{
+		return OnGetItemSlot?.Invoke();
 	}
 }

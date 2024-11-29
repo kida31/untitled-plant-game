@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://msi6pcy22i2y"]
+
+[ext_resource type="Texture2D" uid="uid://dary2k7vaser5" path="res://DefaultItemBackground_Black.png" id="1_1ik1v"]
+[ext_resource type="Script" path="res://Inventory/PlayerInventory/UI_Tabs/TabItemView.cs" id="1_nmgvk"]
+[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.tscn" id="2_rove4"]
+[ext_resource type="Texture2D" uid="uid://dokj1bqameuwd" path="res://DefaultItemBackground_White.png" id="3_e1oso"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+offset_left = 13.0
+offset_top = 9.0
+offset_right = 784.0
+offset_bottom = 855.0
+script = ExtResource("1_nmgvk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_1ik1v")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_1ik1v")
+stretch_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("3_e1oso")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+text = "TESTi
+"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 5
+
+[node name="ItemView" parent="GridContainer" instance=ExtResource("2_rove4")]
+layout_mode = 2
+
+[node name="ItemView2" parent="GridContainer" instance=ExtResource("2_rove4")]
+layout_mode = 2
+
+[node name="ItemView3" parent="GridContainer" instance=ExtResource("2_rove4")]
+layout_mode = 2
+
+[node name="ItemView4" parent="GridContainer" instance=ExtResource("2_rove4")]
+layout_mode = 2
+
+[node name="ItemView5" parent="GridContainer" instance=ExtResource("2_rove4")]
+layout_mode = 2
