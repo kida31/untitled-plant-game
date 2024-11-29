@@ -3,19 +3,25 @@ using Godot;
 
 namespace untitledplantgame.Tools;
 
+
+
+// TODO: Implement cast time
+// Problem, cast time logic needs to be in/by a Node
+// Part of the logic (Use()) is in Tool. Logic should be in one place only.
 public abstract class Tool
 {
-    protected float _radius;
-    protected float _range;
+	private readonly float _radius;
+	private readonly float _range;
+	private readonly float _castTime;
 
     private Player.Player _user;
     private ToolHitScan _hitScan;
-
-
-    public Tool(float radius, float range)
+    
+    public Tool(float radius, float range, float castTime = 0)
     {
         _radius = radius;
         _range = range;
+        _castTime = castTime;
     }
 
     public void Use(Player.Player user)
