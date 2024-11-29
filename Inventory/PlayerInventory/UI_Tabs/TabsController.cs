@@ -11,8 +11,6 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 
 public partial class TabsController : Control
 {
-	[Export] private PanelContainer _rightPanelForDetailedItemView;
-	[Export] private PackedScene _detailedItemView;
 	public List<ICategoryTab> Categories { get; private set; }
 	private InventoryItemView _potentialItemSlot;
 	
@@ -23,13 +21,11 @@ public partial class TabsController : Control
 
 	public override void _Ready()
 	{
-		EventBus.Instance.OnTabsUpdated += AddItemToCorrespondingTab;
-		EventBus.Instance.OnInventoryItemMoved += DropInventoryItemToNewSlot; // different
+		EventBus.Instance.OnTabsUpdate += AddItemToCorrespondingTab;
+		EventBus.Instance.OnInventoryItemMove += DropInventoryItemToNewSlot; // different
 
 		EventBus.Instance.OnSetItemSlot += SetPotentialItemSlot;
 		EventBus.Instance.OnGetItemSlot += GetPotentialItemSlot;
-
-		EventBus.Instance.OnItemClicked += SetDetailedScene;
 	}
 	
 	public void SetInventorySizeOfTabs(int inventorySize)
@@ -103,18 +99,5 @@ public partial class TabsController : Control
 	private InventoryItemView GetPotentialItemSlot()
 	{
 		return _potentialItemSlot;
-	}
-
-	private void SetDetailedScene(Texture2D icon, string description)
-	{
-		foreach (var node in _rightPanelForDetailedItemView.GetChildren())
-		{
-			node.QueueFree();
-		}
-		
-		var detailedView = _detailedItemView.Instantiate<DetailedItemView>();
-		detailedView.SetItemTextureRect(icon);
-		detailedView.SetItemDescription(description);
-		_rightPanelForDetailedItemView.AddChild(detailedView);
 	}
 }

@@ -1,8 +1,6 @@
-using System;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Event;
-using untitledplantgame.Item;
 
 namespace untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 
@@ -11,10 +9,7 @@ public partial class InventoryItemView : Control
 	[Export] private Texture2D _specificItemIcon;
 	[Export] private Label _displayItemName;
 	[Export] private Label _itemCurrentQuantity;
-	[Export] private BaseButton _itemDeleteButton;
 	[Export] private TextureRect _itemTextureRect;
-
-	[Export] private BaseButton _descriptionButton;
 
 	public int Id;
 	private Logger _logger;
@@ -24,7 +19,7 @@ public partial class InventoryItemView : Control
 	{
 		_logger = new Logger(this);
 		
-		Connect(SignalName.MouseEntered, Callable.From(OnMouseEntered)); // Not sure if right
+		Connect(SignalName.MouseEntered, Callable.From(OnMouseEntered)); 
 		Connect(SignalName.MouseExited, Callable.From(OnMouseExited));
 		
 		FocusEntered += () =>
@@ -38,18 +33,6 @@ public partial class InventoryItemView : Control
 			_itemTextureRect.Show();
 			_logger.Debug($"[{Name}] Exited");
 		};
-
-		_descriptionButton.Pressed += SetDetailedView;
-		
-		//GuiInput += OnGuiInput;
-	}
-
-	public override void _Process(double delta)
-	{
-		if (ItemStack != null)
-		{
-			//GD.Print(ItemStack);	
-		}
 	}
 
 	public void UpdateItemView(ItemStack itemStack)
@@ -58,7 +41,6 @@ public partial class InventoryItemView : Control
 		{
 			_displayItemName.Text = "";
 			_itemCurrentQuantity.Text = "";
-			_itemDeleteButton.Visible = false;
 			_itemTextureRect.Texture = null;
 
 			ItemStack = null;
@@ -108,27 +90,10 @@ public partial class InventoryItemView : Control
 	private void OnMouseEntered()
 	{
 		EventBus.Instance.SetItemSlot(this);
-		//GD.Print($"Hovering over: {EventBus.Instance.GetItemSlot()}");
 	}
 
 	private void OnMouseExited()
 	{
 		EventBus.Instance.SetItemSlot(null);
-		//GD.Print($"Hovering over: {EventBus.Instance.GetItemSlot()}");
-	}
-
-	private void SetDetailedView()
-	{
-		EventBus.Instance.UiItemClicked(_specificItemIcon, _displayItemName.Text);
-	}
-	
-	private void OnGuiInput(InputEvent @event)
-	{
-		// || (@event is InputEventMouseButton mb && mb.ButtonIndex == MouseButton.Left && mb.Pressed)
-		if (@event.IsActionPressed("ui_accept"))
-		{
-			//Pressed?.Invoke();
-			_logger.Debug($"Pressed {Name}");
-		}
 	}
 }

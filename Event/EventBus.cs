@@ -3,6 +3,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
+using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 using untitledplantgame.Item;
 
 namespace untitledplantgame.Event;
@@ -16,8 +17,6 @@ namespace untitledplantgame.Event;
  */
 public partial class EventBus : Node
 {
-
-
 	public static EventBus Instance { get; private set; }
 	private readonly Logger _logger = new("EventBus");
 
@@ -46,74 +45,62 @@ public partial class EventBus : Node
 	}
 	//---------------------------------------------Legacy Signals---------------------------------------------
 	
+	public delegate InventoryItemView GetItemSlotEventHandler();
+	
+	public event Action<int> OnFaithChange;
+	public event Action<int> OnCurrencyChange;
+	public event Action<WikiItemView> OnScrollContainerViewUpdate; 
+	public event Action<ItemStack> OnTabsUpdate;
 	public event Action<ItemStack> OnItemPickUp;
+	public event Action<ItemStack> OnWikiItemClicked;
+	public event Action<InventoryItemView> OnSetItemSlot;
+	public event Action<ItemStack, InventoryItemView> OnInventoryItemMove;
+	public event GetItemSlotEventHandler OnGetItemSlot;
+	
+	
+	public void FaithChanged(int change)
+	{
+		OnFaithChange?.Invoke(change);
+	}
+	
+	public void CurrencyChanged(int change)
+	{
+		OnCurrencyChange?.Invoke(change);
+	}
 
+	public void ScrollContainerViewChanged(WikiItemView scrollContainerElement)
+	{
+		OnScrollContainerViewUpdate?.Invoke(scrollContainerElement);
+	}
+	
+	public void TabsUpdated(ItemStack item)
+	{
+		OnTabsUpdate?.Invoke(item);
+	}
+	
 	public void ItemPickedUp(ItemStack item)
 	{
 		OnItemPickUp?.Invoke(item);
 	}
-
-
-	public delegate void UpdateTabsInventoryEventHandler(ItemStack item);
-
-	public event UpdateTabsInventoryEventHandler OnTabsUpdated;
-
-	public void TabsUpdated(ItemStack item)
+	
+	public void UiWikiItemClicked(ItemStack itemStack)
 	{
-		OnTabsUpdated?.Invoke(item);
+		OnWikiItemClicked?.Invoke(itemStack);
 	}
 	
-	
-	public delegate void UpdateInventoryItemPosition(ItemStack itemStack, InventoryItemView inventoryItemView);
-	public event UpdateInventoryItemPosition OnInventoryItemMoved;
-	
-	public void InventoryItemMoved(ItemStack itemStack, InventoryItemView inventoryItemView)
-	{
-		OnInventoryItemMoved?.Invoke(itemStack, inventoryItemView);
-	}
-
-	
-	
-	public delegate void UpdateItemSlotEventHandler(InventoryItemView inventoryItemView);
-	public event UpdateItemSlotEventHandler OnSetItemSlot;
-
 	public void SetItemSlot(InventoryItemView inventoryItemView)
 	{
 		OnSetItemSlot?.Invoke(inventoryItemView);
 	}
 	
-	
-	public delegate InventoryItemView GetItemSlotEventHandler();
-	public event GetItemSlotEventHandler OnGetItemSlot;
+	public void InventoryItemMoved(ItemStack itemStack, InventoryItemView inventoryItemView)
+	{
+		OnInventoryItemMove?.Invoke(itemStack, inventoryItemView);
+	}
 
 	public InventoryItemView GetItemSlot()
 	{
 		return OnGetItemSlot?.Invoke();
 	}
-
-
-	public delegate void UpdatedDetailedItemView(Texture2D icon, string description);
-	public event UpdatedDetailedItemView OnItemClicked;
-
-	public void UiItemClicked(Texture2D icon, string description)
-	{
-		OnItemClicked?.Invoke(icon, description);
-	}
 	
-	public delegate void UpdateCurrency(int change);
-	public event UpdateCurrency OnCurrencyChange;
-
-	public void CurrencyChanged(int change)
-	{
-		OnCurrencyChange?.Invoke(change);
-	}
-	
-	public delegate void UpdateFaith(int change);
-	public event UpdateFaith OnFaithChange;
-
-	public void FaithChanged(int change)
-	{
-		OnFaithChange?.Invoke(change);
-	}
-
 }
