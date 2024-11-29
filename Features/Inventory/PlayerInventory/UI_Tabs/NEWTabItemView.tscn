@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://msi6pcy22i2y"]
 
 [ext_resource type="Texture2D" uid="uid://dary2k7vaser5" path="res://DefaultItemBackground_Black.png" id="1_1ik1v"]
-[ext_resource type="Script" path="res://Inventory/PlayerInventory/UI_Tabs/TabItemView.cs" id="1_nmgvk"]
-[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.tscn" id="2_rove4"]
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/TabItemView.cs" id="1_nmgvk"]
+[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.tscn" id="2_rove4"]
 [ext_resource type="Texture2D" uid="uid://dokj1bqameuwd" path="res://DefaultItemBackground_White.png" id="3_e1oso"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
