@@ -13,9 +13,11 @@ public class WateringCan : Tool
     private const float WateringRange = 16; // TODO: Fix; Direction of player is only active while moving instead of most recent facing
     // EndPlaceholders
 
+    private readonly float _wateringAmount;
     private readonly Logger _logger;
     public WateringCan() : this(WateringRadius, WateringRange)
     {
+	    _wateringAmount = PlaceholderWateringAmount;
     }
 
     public WateringCan(float radius, float range) : base(radius, range)
@@ -25,14 +27,14 @@ public class WateringCan : Tool
 
     protected override bool OnHit(Player user, Node2D[] hits)
     {
-        var soil = hits.OfType<SoilTile>().FirstOrDefault();
+        var soil = hits.OfType<IWaterable>().FirstOrDefault();
         if (soil == null)
         {
             return false;
         }
 
         _logger.Debug("Watering soil");
-        soil.WaterSoilTile(PlaceholderWateringAmount);
+        soil.AddWater(_wateringAmount);
         return true;
     }
 

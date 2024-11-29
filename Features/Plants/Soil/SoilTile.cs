@@ -3,7 +3,7 @@ using Godot;
 
 namespace untitledplantgame.Plants.Soil;
 
-public partial class SoilTile : Area2D
+public partial class SoilTile : Area2D, IWaterable
 {
 	[Export]
 	public float Hydration { get; private set; }
@@ -18,7 +18,7 @@ public partial class SoilTile : Area2D
 		return prevHydration - Hydration;
 	}
 
-	public void WaterSoilTile(float addedWater)
+	public void AddWater(float addedWater)
 	{
 		Hydration = Math.Min(Hydration + addedWater, _maxHydration);
 	}

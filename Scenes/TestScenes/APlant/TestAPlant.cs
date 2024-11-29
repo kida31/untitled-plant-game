@@ -43,6 +43,6 @@ public partial class TestAPlant : Node2D
 
 	private void OnWaterSoilButtonPressed()
 	{
-		_soilTile.WaterSoilTile(200);
+		_soilTile.AddWater(200);
 	}
 }
