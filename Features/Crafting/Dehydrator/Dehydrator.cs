@@ -1,7 +1,6 @@
 using System.Linq;
 using Godot;
 using untitledplantgame.Inventory;
-using untitledplantgame.Item;
 
 namespace untitledplantgame.Crafting;
 
@@ -9,11 +8,11 @@ public partial class Dehydrator : Node, ICraftingStation
 {
 	private const CraftMethod CraftMethod = Crafting.CraftMethod.Dehydrate;
 	public CraftingSlot[] CraftingSlots { get; private set; }
-	private int _slotNumber = 6;
+	public const int SlotNumber = 6;
 
 	public override void _Ready()
 	{
-		CraftingSlots = new CraftingSlot[_slotNumber];
+		CraftingSlots = new CraftingSlot[SlotNumber];
 		foreach (var slot in CraftingSlots)
 		{
 			slot.OnCraftingComplete += OnCraftingComplete;

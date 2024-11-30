@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://bfexqs7ryr05k"]
+[gd_scene load_steps=3 format=3 uid="uid://bfexqs7ryr05k"]
 
-[node name="TestCrafing" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://y78tki415ik5" path="res://Features/Crafting/Dehydrator/DehydratorUi.tscn" id="1_5x2mp"]
+[ext_resource type="Script" path="res://Scenes/TestScenes/Crafting/TestCrafing.cs" id="1_w2l7d"]
+
+[node name="TestCrafing" type="Node2D" node_paths=PackedStringArray("_dehydratorUi")]
+script = ExtResource("1_w2l7d")
+_dehydratorUi = NodePath("CanvasLayer/DehydratorUi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DehydratorUi" parent="CanvasLayer" instance=ExtResource("1_5x2mp")]
+offset_left = 376.0
+offset_top = 130.0
+offset_right = 376.0
+offset_bottom = 130.0
