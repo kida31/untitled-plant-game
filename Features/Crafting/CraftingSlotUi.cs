@@ -7,14 +7,14 @@ namespace untitledplantgame.Crafting;
 public partial class CraftingSlotUi : ItemSlotUI
 {
 	[Export] private ProgressBar _progressBar;
-	CraftingSlot _craftingSlot;
-	
+	public CraftingSlot CraftingSlot { get; set; }
+
 	private bool _isCraftingComplete;
-	
+
 	public CraftingSlotUi(CraftingSlot craftingSlot)
 	{
 		_isCraftingComplete = false;
-		_craftingSlot = craftingSlot;
+		CraftingSlot = craftingSlot;
 	}
 
 	public CraftingSlotUi()
@@ -23,28 +23,29 @@ public partial class CraftingSlotUi : ItemSlotUI
 
 	private void OnCraftingComplete(CraftingSlot obj)
 	{
-		// TODO: "Crafting COmplete"
-		// -> Parent.ModifyItem
-		// -> thisHere.OnCraftingCOmplete
-		SetItemStack(obj.ItemStack); // TODO: im not sure this is the latest updated item or the old one
+		var item = obj.ItemStack;
+		// TODO: "Crafting Complete"
+		// -> item.ModifyItem
+		// -> thisHere.OnCraftingComplete
+		SetItemStack(item);
 		_isCraftingComplete = true;
 		_progressBar.Value = 1;
 	}
 
-	private void OnTimePassed(CraftingSlot obj)
+	private void UpdateProgressBar(double progress)
 	{
-		_progressBar.Value = 1 - obj.OnTimePassed(obj); //  TODO: This might loop forever
+		_progressBar.Value = progress;
 	}
 
 	protected override void SetItemStack(ItemStack itemStack)
 	{
-		if (_craftingSlot == null) return;
-		
+		if (CraftingSlot == null) return;
+
 		base.SetItemStack(itemStack);
-		_craftingSlot.OnCraftingComplete += OnCraftingComplete;
-		_craftingSlot.TimePassed += OnTimePassed;
-		
-		if(_isCraftingComplete)
+		CraftingSlot.OnCraftingComplete += OnCraftingComplete;
+		CraftingSlot.ProgressChanged += UpdateProgressBar;
+
+		if (_isCraftingComplete)
 			ItemTexture.Modulate = new Color("#7c5f47");
 	}
 }

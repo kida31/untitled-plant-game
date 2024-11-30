@@ -8,48 +8,45 @@ public partial class CraftingSlot
 {
 	// We cooked.
 	public event Action<CraftingSlot> OnCraftingComplete;
-	public event Action<CraftingSlot> TimePassed; // TODO: "Progress has changed: This is the remaining time left in percent"
+	public event Action<double> ProgressChanged;
 	public ItemStack ItemStack { get; set; }
 	public bool IsCraftingComplete { get; private set; } // We have cooked. Still good to know
-	public int Index { get; set; } // TODO: This is not used. Remove it
 	private Timer _timer;
-	private double _currentTime; // TODO: We also have a timer.
 	private double _totalCraftTime;
-	private bool isCrafting => _totalCraftTime <= _currentTime; // TODO: This is not used
 
 	public CraftingSlot()
 	{
 	}
-	
-	public CraftingSlot(ItemStack item, int index)
+
+	public CraftingSlot(ItemStack item)
 	{
 		ItemStack = item;
-		Index = index;
 	}
 
 	public void Process(double delta)
 	{
-		if (IsCraftingComplete) return;
+		if (IsCraftingComplete || _timer == null) return;
 
-		if (isCrafting)
+		if (_timer.TimeLeft <= 0)
 		{
 			CompleteCrafting();
 			return;
 		}
 
-		OnTimePassed(this);
+		var progress = 1 - _timer.TimeLeft / _totalCraftTime;
+		OnTimePassed(progress);
 	}
 
-	// TODO: AddAndProcessItem
-	public void AddItem(ItemStack itemStack, double craftTime)
+	public void OnTimePassed(double timeProgress)
+	{
+		ProgressChanged?.Invoke(timeProgress);
+	}
+
+	public void AddItemAndStartCrafting(ItemStack itemStack, double craftTime)
 	{
 		ItemStack = itemStack;
 		_totalCraftTime = craftTime;
-		_currentTime = 0;
-		_timer = new Timer();
-		_timer.Autostart = true;
-		_timer.OneShot = true;
-		_timer.Timeout += CompleteCrafting;
+		StartCraftProcess();
 	}
 
 	public void RemoveItem()
@@ -57,9 +54,7 @@ public partial class CraftingSlot
 		ItemStack = null;
 		_timer.Stop();
 		IsCraftingComplete = false;
-		_currentTime = 0;
 		_timer.WaitTime = 0;
-		_timer.Start(); // TODO: Why do we start here?
 	}
 
 	private void CompleteCrafting()
@@ -68,9 +63,11 @@ public partial class CraftingSlot
 		OnCraftingComplete?.Invoke(this);
 	}
 
-	public double OnTimePassed(CraftingSlot obj)
+	private void StartCraftProcess()
 	{
-		TimePassed?.Invoke(obj);
-		return _timer.TimeLeft / _totalCraftTime;
+		_timer = new Timer();
+		_timer.Autostart = true;
+		_timer.OneShot = true;
+		_timer.Timeout += CompleteCrafting;
 	}
 }

@@ -37,14 +37,14 @@ public partial class DehydratorUi : Control
 		}
 
 		var slots = _craftingStation.CraftingSlots;
-		var prefab = GD.Load<PackedScene>("res://Features/Crafting/crafting_slot.tscn");
-		foreach (var craftingSlot in slots)
+		var children = _slotContainer.GetChildren();
+		for (var i = 0; i < slots.Length; i++)
 		{
-			if(craftingSlot == null)
-				continue;
-			var slot = prefab.Instantiate<CraftingSlotUi>();
-			// TODO: slot._craftingSlot = craftingSlot;
-			_slotContainer.AddChild(slot);
+			if(slots[i] == null) continue;
+			if (children[i] is CraftingSlotUi slot)
+			{
+				slot.CraftingSlot = slots[i];
+			}
 		}
 		GameStateMachine.Instance.SetState(GameState.Crafting);
 		Visible = true;
@@ -53,6 +53,7 @@ public partial class DehydratorUi : Control
 	private void OnCraftingStationUiClosed()
 	{
 		GameStateMachine.Instance.SetState(GameState.FreeRoam);
+		
 		Visible = false;
 	}
 

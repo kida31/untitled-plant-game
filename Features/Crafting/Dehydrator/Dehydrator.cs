@@ -19,20 +19,22 @@ public partial class Dehydrator : ICraftingStation
 	{
 		_logger = new Logger("Dehydrator");
 
-		CraftingSlots = new CraftingSlot[SlotNumber]; // TODO: these are null by default
+		CraftingSlots = new CraftingSlot[SlotNumber];
+		for (var i = 0; i < CraftingSlots.Length; i++)
+		{
+			CraftingSlots[i] = new CraftingSlot();
+		}
 
 		_logger.Debug($"Initialized Dehydrator with {CraftingSlots.Length} slots");
 	}
 
 	public void Process(double delta)
 	{
-		// TODO: Assert.AssertNotNull(CraftingSlots);
+		Assert.AssertNotNull(CraftingSlots);
 		if (CraftingSlots == null) return;
 
 		foreach (var slot in CraftingSlots)
 		{
-			// TODO: slot!.ItemStack
-			if (slot?.ItemStack == null) continue;
 			slot.Process(delta);
 		}
 	}
@@ -48,8 +50,8 @@ public partial class Dehydrator : ICraftingStation
 			return;
 		}
 
-		var newSlot = new CraftingSlot(item, slotIndex);
-		newSlot.AddItem(item, CraftingTime);
+		var newSlot = new CraftingSlot(item);
+		newSlot.AddItemAndStartCrafting(item, CraftingTime);
 		newSlot.OnCraftingComplete += OnCraftingComplete; // TODO: Ready
 
 		CraftingSlots[slotIndex] = newSlot;
@@ -57,23 +59,26 @@ public partial class Dehydrator : ICraftingStation
 
 	public ItemStack RemoveItemFromSlot(int slotIndex)
 	{
-		ItemStack item = CraftingSlots[slotIndex].ItemStack;
+		var item = CraftingSlots[slotIndex].ItemStack;
 		CraftingSlots[slotIndex].RemoveItem();
-		CraftingSlots[slotIndex] = null; // TODO: Should not need to nullify the slot
 
 		return item;
 	}
 
 	public void RetrieveAllFinishedItems()
 	{
-		var items = CraftingSlots.Where(slot => slot.IsCraftingComplete).Select(slot => slot.ItemStack).ToArray();
-		// TODO: Actually remove the items from the crafting slots
+		var items = CraftingSlots.Where(slot => slot.IsCraftingComplete).Select(slot =>
+		{
+			slot.RemoveItem();
+			return slot.ItemStack;
+		}).ToArray();
+		
 		RetrieveAllFinishedItemsAction?.Invoke(items);
 	}
 
 	private void OnCraftingComplete(CraftingSlot slot)
 	{
-		var item = CraftingSlots[slot.Index].ItemStack;
+		var item = slot.ItemStack;
 		ModifyItemComponent(item);
 	}
 
