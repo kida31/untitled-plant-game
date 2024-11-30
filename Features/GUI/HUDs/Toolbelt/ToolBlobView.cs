@@ -1,29 +1,50 @@
 using Godot;
 using System;
 
-[Tool]
 public partial class ToolBlobView : MarginContainer
 {
-	public enum Style{
+	private const string ToPrimaryAnimationName = "TransitionToPrimary";
+
+	public enum Style
+	{
 		Primary,
 		Secondary
 	}
 
-	[Export] private Control _mainBg;
-	[Export] private Control _secondaryBg;
-	
-	[Export] public Style BlobStyle
+	[Export] private AnimationPlayer _animationPlayer;
+
+	[Export]
+	public Style BlobStyle
 	{
 		get => _style;
 		set => SetBlobStyle(value);
 	}
-	
-	private Style _style = Style.Primary;
-	
-	private void SetBlobStyle(Style value)
+
+	[Export]
+	public Style InstantBlobStyle
 	{
+		get => _style;
+		set => SetBlobStyle(value, customSpeed: Single.MaxValue);
+	}
+
+	private Style _style = Style.Primary;
+
+	private void SetBlobStyle(Style value, float customSpeed = 1.0f)
+	{
+		if (value == _style)
+		{
+			return;
+		}
+
 		_style = value;
-		_mainBg.Visible = _style == Style.Primary;
-		_secondaryBg.Visible = _style == Style.Secondary;
+
+		if (_style == Style.Primary)
+		{
+			_animationPlayer.Play(ToPrimaryAnimationName, customSpeed: customSpeed);
+		}
+		else
+		{
+			_animationPlayer.Play(ToPrimaryAnimationName, customSpeed: -customSpeed, fromEnd: true);
+		}
 	}
 }
