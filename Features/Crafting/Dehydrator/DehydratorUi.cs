@@ -37,12 +37,13 @@ public partial class DehydratorUi : Control
 		}
 
 		var slots = _craftingStation.CraftingSlots;
-		
+		var prefab = GD.Load<PackedScene>("res://Features/Crafting/crafting_slot.tscn");
 		foreach (var craftingSlot in slots)
 		{
 			if(craftingSlot == null)
 				continue;
-			var slot = new CraftingSlotUi(craftingSlot);
+			var slot = prefab.Instantiate<CraftingSlotUi>();
+			// TODO: slot._craftingSlot = craftingSlot;
 			_slotContainer.AddChild(slot);
 		}
 		GameStateMachine.Instance.SetState(GameState.Crafting);

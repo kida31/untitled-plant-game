@@ -19,17 +19,19 @@ public partial class Dehydrator : ICraftingStation
 	{
 		_logger = new Logger("Dehydrator");
 
-		CraftingSlots = new CraftingSlot[SlotNumber];
+		CraftingSlots = new CraftingSlot[SlotNumber]; // TODO: these are null by default
 
 		_logger.Debug($"Initialized Dehydrator with {CraftingSlots.Length} slots");
 	}
 
 	public void Process(double delta)
 	{
+		// TODO: Assert.AssertNotNull(CraftingSlots);
 		if (CraftingSlots == null) return;
 
 		foreach (var slot in CraftingSlots)
 		{
+			// TODO: slot!.ItemStack
 			if (slot?.ItemStack == null) continue;
 			slot.Process(delta);
 		}
@@ -48,7 +50,7 @@ public partial class Dehydrator : ICraftingStation
 
 		var newSlot = new CraftingSlot(item, slotIndex);
 		newSlot.AddItem(item, CraftingTime);
-		newSlot.OnCraftingComplete += OnCraftingComplete;
+		newSlot.OnCraftingComplete += OnCraftingComplete; // TODO: Ready
 
 		CraftingSlots[slotIndex] = newSlot;
 	}
@@ -57,7 +59,7 @@ public partial class Dehydrator : ICraftingStation
 	{
 		ItemStack item = CraftingSlots[slotIndex].ItemStack;
 		CraftingSlots[slotIndex].RemoveItem();
-		CraftingSlots[slotIndex] = null;
+		CraftingSlots[slotIndex] = null; // TODO: Should not need to nullify the slot
 
 		return item;
 	}
@@ -65,6 +67,7 @@ public partial class Dehydrator : ICraftingStation
 	public void RetrieveAllFinishedItems()
 	{
 		var items = CraftingSlots.Where(slot => slot.IsCraftingComplete).Select(slot => slot.ItemStack).ToArray();
+		// TODO: Actually remove the items from the crafting slots
 		RetrieveAllFinishedItemsAction?.Invoke(items);
 	}
 
