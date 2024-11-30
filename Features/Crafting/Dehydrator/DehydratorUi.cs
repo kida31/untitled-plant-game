@@ -1,6 +1,7 @@
 using Godot;
+using untitledplantgame.Common;
+using untitledplantgame.Common.GameStates;
 using untitledplantgame.Inventory;
-using untitledplantgame.VendingMachine;
 
 namespace untitledplantgame.Crafting;
 
@@ -11,47 +12,64 @@ public partial class DehydratorUi : Control
 	[Export] private GridContainer _slotContainer;
 	
 	private Dehydrator _craftingStation;
+	private Logger _logger;
 
 	public override void _Ready()
 	{
-		_craftingStation = GetNode<Dehydrator>("/root/Game/Crafting/Dehydrator");
-		
-		foreach (var itemStack in _craftingStation.GetAllItems())
+		_logger = new Logger(this);
+		_closeButton.Pressed += OnCraftingStationUiClosed;
+		_retrieveAllItemsButton.Pressed += () =>
 		{
-			var slot = new ItemSlotUI();
-			slot.ItemStack = itemStack;
-			
-			_slotContainer.AddChild(slot);
-		}
+			Assert.AssertNotNull(_craftingStation);
+			_craftingStation?.RetrieveAllFinishedItems();
+		};
+		
+		EventBus.Instance.BeforeCraftingStationUiOpened += BeforeCraftingStationUiOpened;
 	}
 
-	private void OnCraftingStationUiOpened()
+	private void BeforeCraftingStationUiOpened(ICraftingStation dehydrator)
 	{
+		_craftingStation = dehydrator as Dehydrator;
+		if (_craftingStation == null)
+		{
+			_logger.Error("Dehydrator is null");
+			return;
+		}
+
+		var slots = _craftingStation.CraftingSlots;
+		
+		foreach (var craftingSlot in slots)
+		{
+			if(craftingSlot == null)
+				continue;
+			var slot = new CraftingSlotUi(craftingSlot);
+			_slotContainer.AddChild(slot);
+		}
+		GameStateMachine.Instance.SetState(GameState.Crafting);
 		Visible = true;
 	}
 
 	private void OnCraftingStationUiClosed()
 	{
+		GameStateMachine.Instance.SetState(GameState.FreeRoam);
 		Visible = false;
 	}
 
 	private void OnCraftingStationUiItemInserted(ItemStack item, int slotIndex)
 	{
 		_craftingStation.InsertItemToSlot(item, slotIndex);
-		if (_slotContainer.GetChild(slotIndex) is ItemSlotUI slot)
+		if (_slotContainer.GetChild(slotIndex) is CraftingSlotUi { ItemStack: null } slot)
 		{
 			slot.ItemStack = item;
 		}
-		// remove item from inventory
 	}
 
 	private void OnCraftingStationUiItemRemoved(int slotIndex)
 	{
 		var item = _craftingStation.RemoveItemFromSlot(slotIndex);
-		if (_slotContainer.GetChild(slotIndex) is ItemSlotUI slot)
+		if (_slotContainer.GetChild(slotIndex) is CraftingSlotUi slot && slot.ItemStack == item)
 		{
 			slot.ItemStack = null;
 		}
-		// put item in inventory
 	}
 }

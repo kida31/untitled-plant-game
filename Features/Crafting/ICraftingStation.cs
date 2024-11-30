@@ -9,5 +9,4 @@ public interface ICraftingStation
 {
 	void InsertItemToSlot(ItemStack item, int slotIndex);
 	ItemStack RemoveItemFromSlot(int slotIndex);
-	ItemStack[] GetAllItems();
 }

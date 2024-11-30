@@ -4,18 +4,19 @@
 [ext_resource type="Script" path="res://Features/Crafting/CraftingSlotUi.cs" id="2_3k3fw"]
 [ext_resource type="Texture2D" uid="uid://c024ll6khogkf" path="res://Assets/Items/Plants/Drupoleaum_Flowers.png" id="3_00dkd"]
 
-[node name="ItemSlot" instance=ExtResource("1_5jnsj")]
+[node name="ItemSlot" node_paths=PackedStringArray("_progressBar") instance=ExtResource("1_5jnsj")]
 script = ExtResource("2_3k3fw")
+_progressBar = NodePath("CenterContainer/ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 1
+step = 1.0
+fill_mode = 3
+show_percentage = false
 
 [node name="ItemTexture" parent="CenterContainer/MarginContainer" index="0"]
 texture = ExtResource("3_00dkd")
 
 [node name="QuantityLabel" parent="." index="1"]
 visible = false
-
-[node name="ProgressBar" type="ProgressBar" parent="." index="3"]
-layout_mode = 2
-size_flags_vertical = 1
-step = 1.0
-fill_mode = 3
-show_percentage = false

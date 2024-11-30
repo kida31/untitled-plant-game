@@ -4,10 +4,12 @@
 [ext_resource type="Script" path="res://Features/Crafting/Dehydrator/DehydratorUi.cs" id="1_p40jb"]
 [ext_resource type="PackedScene" uid="uid://dafhmyiy5jrym" path="res://Features/Crafting/crafting_slot.tscn" id="3_licfq"]
 
-[node name="DehydratorUi" type="Control" node_paths=PackedStringArray("_slotContainer")]
+[node name="DehydratorUi" type="Control" node_paths=PackedStringArray("_closeButton", "_retrieveAllItemsButton", "_slotContainer")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_p40jb")
+_closeButton = NodePath("Button")
+_retrieveAllItemsButton = NodePath("Button2")
 _slotContainer = NodePath("PanelContainer/MarginContainer/Grid")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -53,3 +55,19 @@ layout_mode = 2
 
 [node name="ItemSlot6" parent="PanelContainer/MarginContainer/Grid" instance=ExtResource("3_licfq")]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 191.0
+offset_top = -14.0
+offset_right = 243.0
+offset_bottom = 22.0
+text = "close"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 159.0
+offset_right = 220.0
+offset_bottom = 195.0
+text = "Retrieve Crafted"

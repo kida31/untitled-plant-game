@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Crafting;
 using untitledplantgame.EntityStatsDataContainer;
 using untitledplantgame.Item;
 using untitledplantgame.Shops;
@@ -45,7 +46,6 @@ public partial class EventBus : Node
 	//---------------------------------------------Legacy Signals---------------------------------------------
 
 
-
 	public delegate void AddToInventoryEventHandler(InteractableItem interactableItem);
 
 	public event AddToInventoryEventHandler OnItemPickUp;
@@ -63,6 +63,7 @@ public partial class EventBus : Node
 	}
 
 	public event Action<IShop> OnSeedShopOpening;
+
 	public void SeedShopOpening(IShop shop)
 	{
 		OnSeedShopOpening?.Invoke(shop);
@@ -80,5 +81,12 @@ public partial class EventBus : Node
 	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
+	}
+
+	public event Action<ICraftingStation> BeforeCraftingStationUiOpened;
+
+	public void BeforeCraftingStationUiOpen(ICraftingStation craftingStation)
+	{
+		BeforeCraftingStationUiOpened?.Invoke(craftingStation);
 	}
 }
