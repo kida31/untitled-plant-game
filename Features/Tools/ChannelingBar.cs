@@ -24,11 +24,6 @@ public partial class ChannelingBar : ProgressBar
 		ShowPercentage = false;
 	}
 
-	public override void _Ready()
-	{
-		GD.Print("Start channeling");
-	}
-
 	public override void _Process(double delta)
 	{
 		// Update functional values

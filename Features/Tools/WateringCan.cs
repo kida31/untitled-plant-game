@@ -15,7 +15,7 @@ public class WateringCan : Tool
 	private float _currentWaterLevel;
 	private readonly Logger _logger;
 
-	public WateringCan(float wateringAmount, float waterCapacity, bool isBottomless, float radius, float range) : base(radius, range, 1.5f)
+	public WateringCan(float wateringAmount, float waterCapacity, bool isBottomless, float radius, float range) : base(radius, range, 0.5f)
 	{
 		_wateringAmount = wateringAmount;
 		_waterCapacity = waterCapacity;

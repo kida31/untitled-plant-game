@@ -10,7 +10,7 @@ public class Shears : Tool
 {
 	private Logger _logger;
 
-	public Shears(float radius, float range) : base(radius, range)
+	public Shears(float radius, float range) : base(radius, range, 1.5f)
 	{
 		_logger = new("Shears");
 	}
@@ -29,7 +29,7 @@ public class Shears : Tool
 		}
 
 		closestPlant.Harvest();
-		GD.Print("...pipiab");
+		_logger.Debug("...pipiab");
 		// TODO: move result to player inventory
 		return true;
 	}
@@ -41,6 +41,6 @@ public class Shears : Tool
 
 	protected override void OnStart(Player user)
 	{
-		GD.Print("Schnippschnapp...");
+		_logger.Debug("Schnippschnapp...");
 	}
 }

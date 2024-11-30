@@ -23,7 +23,7 @@ public abstract class Tool
 
 	private Logger _logger = new("Tool");
 
-	public Tool(float radius, float range, float channelingTime = 2.0f)
+	public Tool(float radius, float range, float channelingTime)
 	{
 		_radius = radius;
 		_range = range;

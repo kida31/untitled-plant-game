@@ -55,7 +55,6 @@ public partial class StateUseTool : State
 
 	public override void Exit()
 	{
-		GD.Print("Bye");
 		var tool = Player.Toolbelt.CurrentTool;
 		if (tool != null)
 		{
