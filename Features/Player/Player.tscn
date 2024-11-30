@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=60 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="Texture2D" uid="uid://bklcso0wn7iqr" path="res://Assets/Sprites/idle.png" id="2_5ih1s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Features/Player/PlayerStateMachine.cs" id="4_oih3d"]
 [ext_resource type="Script" path="res://Features/Player/StateIdle.cs" id="5_k3tas"]
 [ext_resource type="Script" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
+[ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
 [ext_resource type="Script" path="res://Features/Player/InteractablesManager.cs" id="7_pko3m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ik7q4"]
@@ -411,6 +412,9 @@ script = ExtResource("5_k3tas")
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("6_6k3md")
 
+[node name="UseTool" type="Node" parent="StateMachine"]
+script = ExtResource("7_lrvm3")
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -422,3 +426,4 @@ _player = NodePath("../..")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+position_smoothing_speed = 2.0

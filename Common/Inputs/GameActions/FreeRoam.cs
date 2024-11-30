@@ -12,8 +12,8 @@ public abstract class FreeRoam
 	public const string East = "freeroam_east";
 	public const string West = "freeroam_west";
 
-	public const string TriggerLeft = "freeroam_trigger_left";
-	public const string TriggerRight = "freeroam_trigger_right";
+	public const string TriggerLeft = "freeroam_lb";
+	public const string TriggerRight = "freeroam_rb";
 
 	public const string Interact = South;
 	public const string UseTool = West;
