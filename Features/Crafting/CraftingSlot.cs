@@ -6,20 +6,21 @@ namespace untitledplantgame.Crafting;
 
 public partial class CraftingSlot
 {
+	// We cooked.
 	public event Action<CraftingSlot> OnCraftingComplete;
-	public event Action<CraftingSlot> TimePassed;
+	public event Action<CraftingSlot> TimePassed; // TODO: "Progress has changed: This is the remaining time left in percent"
 	public ItemStack ItemStack { get; set; }
-	public bool IsCraftingComplete { get; private set; }
-	public int Index { get; set; }
+	public bool IsCraftingComplete { get; private set; } // We have cooked. Still good to know
+	public int Index { get; set; } // TODO: This is not used. Remove it
 	private Timer _timer;
-	private double _currentTime;
+	private double _currentTime; // TODO: We also have a timer.
 	private double _totalCraftTime;
-	private bool isCrafting => _totalCraftTime <= _currentTime;
+	private bool isCrafting => _totalCraftTime <= _currentTime; // TODO: This is not used
 
 	public CraftingSlot()
 	{
 	}
-
+	
 	public CraftingSlot(ItemStack item, int index)
 	{
 		ItemStack = item;
@@ -39,6 +40,7 @@ public partial class CraftingSlot
 		OnTimePassed(this);
 	}
 
+	// TODO: AddAndProcessItem
 	public void AddItem(ItemStack itemStack, double craftTime)
 	{
 		ItemStack = itemStack;
@@ -57,7 +59,7 @@ public partial class CraftingSlot
 		IsCraftingComplete = false;
 		_currentTime = 0;
 		_timer.WaitTime = 0;
-		_timer.Start();
+		_timer.Start(); // TODO: Why do we start here?
 	}
 
 	private void CompleteCrafting()
