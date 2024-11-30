@@ -23,14 +23,17 @@ public partial class CraftingSlotUi : ItemSlotUI
 
 	private void OnCraftingComplete(CraftingSlot obj)
 	{
-		SetItemStack(obj.ItemStack);
+		// TODO: "Crafting COmplete"
+		// -> Parent.ModifyItem
+		// -> thisHere.OnCraftingCOmplete
+		SetItemStack(obj.ItemStack); // TODO: im not sure this is the latest updated item or the old one
 		_isCraftingComplete = true;
 		_progressBar.Value = 1;
 	}
 
 	private void OnTimePassed(CraftingSlot obj)
 	{
-		_progressBar.Value = 1 - obj.OnTimePassed(obj);
+		_progressBar.Value = 1 - obj.OnTimePassed(obj); //  TODO: This might loop forever
 	}
 
 	protected override void SetItemStack(ItemStack itemStack)
