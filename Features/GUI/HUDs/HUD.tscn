@@ -11,6 +11,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ToolbeltView" parent="." instance=ExtResource("2_fhqom")]
+offset_left = 129.0
+offset_top = 647.0
+offset_right = 129.0
+offset_bottom = 647.0
+
 [node name="BookButton" parent="." instance=ExtResource("1_k0baw")]
 layout_mode = 2
 anchors_preset = 0
@@ -22,9 +28,3 @@ offset_left = 1008.0
 offset_top = 528.0
 offset_right = 1248.0
 offset_bottom = 688.0
-
-[node name="ToolbeltView" parent="." instance=ExtResource("2_fhqom")]
-offset_left = 70.0
-offset_top = 567.0
-offset_right = 70.0
-offset_bottom = 567.0

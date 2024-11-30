@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf2xfvp0b25y0"]
+[gd_scene load_steps=10 format=3 uid="uid://cf2xfvp0b25y0"]
 
 [ext_resource type="Texture2D" uid="uid://dhxsj538h0eqk" path="res://Assets/UI/CurrentToolIndicator.png" id="1_av3tc"]
 [ext_resource type="Script" path="res://Features/GUI/HUDs/Toolbelt/ToolBlobView.cs" id="1_ut26e"]
+[ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="2_hn60y"]
 [ext_resource type="Texture2D" uid="uid://c76emfoxjb16l" path="res://Assets/Tools/GardenScissors.png" id="2_i5eui"]
+[ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="3_j2vo2"]
 
 [sub_resource type="Animation" id="Animation_oyjmf"]
 length = 0.001
@@ -16,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -73,12 +75,17 @@ corner_radius_top_right = 512
 corner_radius_bottom_right = 512
 corner_radius_bottom_left = 512
 
-[node name="ToolBlob" type="MarginContainer" node_paths=PackedStringArray("_animationPlayer")]
+[node name="ToolBlob" type="MarginContainer" node_paths=PackedStringArray("_animationPlayer", "_toolIcon")]
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)
 script = ExtResource("1_ut26e")
+BlobStyle = 1
 _animationPlayer = NodePath("AnimationPlayer")
+_toolIcon = NodePath("ToolIconSize/ToolIcon")
+_wateringCanIcon = ExtResource("2_hn60y")
+_shovelIcon = ExtResource("3_j2vo2")
+_shearsIcon = ExtResource("2_i5eui")
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -87,6 +94,7 @@ libraries = {
 }
 
 [node name="MainBG" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -112,6 +120,5 @@ theme_override_constants/margin_bottom = 24
 
 [node name="ToolIcon" type="TextureRect" parent="ToolIconSize"]
 layout_mode = 2
-texture = ExtResource("2_i5eui")
 expand_mode = 3
 stretch_mode = 5
