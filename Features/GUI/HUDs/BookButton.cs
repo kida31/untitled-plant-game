@@ -1,33 +1,45 @@
 using Godot;
 using System;
+using untitledplantgame.Common.GameStates;
 
+/// <summary>
+/// A book button.
+/// Has two visual states: open and closed.
+///
+/// Per default the book reacts to mouse hover and GameState.Book.
+/// Extract this behaviour if it needs to be reused.
+/// </summary>
 public partial class BookButton : Control
 {
-	[Export] private TextureRect _bookIconOpen;
-	[Export] private TextureRect _bookIconClosed;
-	[Export] private Control _inputIndicator;
-	// [Export] private Texture2D _iconOpen;
-	// [Export] private Texture2D _iconClosed;
-	
+	[Export] private AnimationPlayer _animationPlayer;
 	public event Action Pressed;
 
-	private Timer _tooLazyForUpdateLogicTimer;
+	public bool IsOpen
+	{
+		get => _isOpen;
+		set => SetOpen(value);
+	}
+
+	private bool _isOpen;
+	private Timer _tooLazyForConsistentUpdateLogicTimer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		// Update content every 5 seconds
-		_tooLazyForUpdateLogicTimer = new Timer();
-		_tooLazyForUpdateLogicTimer.WaitTime = 2.0f;
-		_tooLazyForUpdateLogicTimer.Autostart = true;
-		_tooLazyForUpdateLogicTimer.OneShot = false;
-		_tooLazyForUpdateLogicTimer.Timeout += UpdateView;
-		AddChild(_tooLazyForUpdateLogicTimer);
-		
-		MouseEntered += UpdateView;
-		MouseExited += UpdateView;
-		
-		UpdateView();
+		_tooLazyForConsistentUpdateLogicTimer = new Timer();
+		_tooLazyForConsistentUpdateLogicTimer.WaitTime = 2.0f;
+		_tooLazyForConsistentUpdateLogicTimer.Autostart = true;
+		_tooLazyForConsistentUpdateLogicTimer.OneShot = false;
+		_tooLazyForConsistentUpdateLogicTimer.Timeout += UpdateViewContent;
+		AddChild(_tooLazyForConsistentUpdateLogicTimer);
+
+		// This is arbitrary behaviour. To have a more modular component extract the following behaviour
+		MouseEntered += UpdateViewContent;
+		MouseExited += UpdateViewContent;
+		GameStateMachine.Instance.StateChanged += (_, _) => UpdateViewContent();
+		UpdateViewContent();
+		// End of arbitrary behaviour
 	}
 
 	public override void _GuiInput(InputEvent @event)
@@ -36,21 +48,45 @@ public partial class BookButton : Control
 
 		if (getIsClicked() || @event.IsActionPressed("ui_accept"))
 		{
-			GD.Print("Clicked");
 			Pressed?.Invoke();
 		}
 	}
-	
-	private void UpdateView()
+
+	/// <summary>
+	/// Update the view content according to mouse hover and/or game state.
+	/// This behaviour is arbitrary and can be extracted. (Set by parent instead)
+	/// </summary>
+	private void UpdateViewContent()
 	{
 		var hasMouseHover = GetGlobalRect().HasPoint(GetGlobalMousePosition());
-		GD.Print(GetGlobalMousePosition());
-		// GD.Print($"{GetGlobalRect()}: {GetGlobalMousePosition()}: {hasMouseHover}");
+		// Hover as a soft way to "open" the book.
+		// GameState.Book overrides this.
+		SetOpen(hasMouseHover || GameStateMachine.Instance.CurrentState == GameState.Book);
+	}
 
-		_bookIconClosed.Visible = !hasMouseHover;
-		_bookIconOpen.Visible = hasMouseHover;
-		var inputIndicatorModulate = _inputIndicator.Modulate;
-		inputIndicatorModulate.A = hasMouseHover ? 0.5f : 1.0f;
-		_inputIndicator.Modulate = inputIndicatorModulate;
+	/// <summary>
+	/// Sets isOpen. If new state is the same as the current state, do nothing.
+	/// If new state is different, animate the change.
+	/// </summary>
+	/// <param name="newIsOpen"></param>
+	private void SetOpen(bool newIsOpen)
+	{
+		if (newIsOpen == _isOpen)
+		{
+			// Do nothing if same
+			return;
+		}
+
+		_isOpen = newIsOpen;
+
+		// Animate new open state
+		if (_isOpen)
+		{
+			_animationPlayer.Play("FadeOpen");
+		}
+		else
+		{
+			_animationPlayer.PlayBackwards("FadeOpen");
+		}
 	}
 }
