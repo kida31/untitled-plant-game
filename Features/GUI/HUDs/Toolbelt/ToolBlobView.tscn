@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf2xfvp0b25y0"]
+
+[ext_resource type="Texture2D" uid="uid://dhxsj538h0eqk" path="res://Assets/UI/CurrentToolIndicator.png" id="1_av3tc"]
+[ext_resource type="Script" path="res://Features/GUI/HUDs/Toolbelt/ToolBlobView.cs" id="1_ut26e"]
+[ext_resource type="Texture2D" uid="uid://c76emfoxjb16l" path="res://Assets/Tools/GardenScissors.png" id="2_i5eui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2ott"]
+bg_color = Color(0.117669, 0.0697023, 0.172146, 0.427451)
+corner_radius_top_left = 512
+corner_radius_top_right = 512
+corner_radius_bottom_right = 512
+corner_radius_bottom_left = 512
+
+[node name="ToolBlob" type="MarginContainer" node_paths=PackedStringArray("_mainBg", "_secondaryBg")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ut26e")
+_mainBg = NodePath("MainBG")
+_secondaryBg = NodePath("CircleBG")
+
+[node name="MainBG" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_av3tc")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="CircleBG" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f2ott")
+
+[node name="ToolIconSize" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ToolIcon" type="TextureRect" parent="ToolIconSize"]
+layout_mode = 2
+texture = ExtResource("2_i5eui")
+expand_mode = 3
+stretch_mode = 5
