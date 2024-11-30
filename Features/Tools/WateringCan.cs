@@ -8,28 +8,25 @@ namespace untitledplantgame.Tools;
 
 public class WateringCan : Tool
 {
-	// Placeholders
-	private const int PlaceholderWateringAmount = 20;
-	private const float WateringRadius = 16;
-
-	private const float WateringRange = 16; // TODO: Fix; Direction of player is only active while moving instead of most recent facing
-	// EndPlaceholders
-
 	private readonly float _wateringAmount;
-	private readonly float _waterCapacity;
+	private readonly float _waterCapacity; // TODO: Implement
 	private readonly bool _isBottomless;
 
 	private float _currentWaterLevel;
 	private readonly Logger _logger;
 
-	public WateringCan() : this(WateringRadius, WateringRange)
+	public WateringCan(float wateringAmount, float waterCapacity, bool isBottomless, float radius, float range) : base(radius, range, 1.5f)
 	{
-		_wateringAmount = PlaceholderWateringAmount;
+		_wateringAmount = wateringAmount;
+		_waterCapacity = waterCapacity;
+		_isBottomless = isBottomless;
+		_currentWaterLevel = 0;
+		_logger = new Logger("WateringCan");
 	}
 
-	public WateringCan(float radius, float range) : base(radius, range)
+	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
 	{
-		_logger = new Logger("WateringCan");
+		return hits.OfType<IWaterable>().Any();
 	}
 
 	protected override bool OnHit(Player.Player user, Node2D[] hits)
@@ -44,13 +41,16 @@ public class WateringCan : Tool
 		}
 
 		_logger.Debug("Watering soil");
-		var deltaWater = Math.Min(_wateringAmount, _currentWaterLevel);
-		closestSoil.AddWater(deltaWater);
-		
-		// Consider moving this to OnUse instead
-		if (!_isBottomless)
+
+		if (_isBottomless)
 		{
-			_currentWaterLevel -= deltaWater;
+			closestSoil.AddWater(_wateringAmount);
+		}
+		else
+		{
+			var deltaWater = Math.Min(_wateringAmount, _currentWaterLevel);
+			closestSoil.AddWater(deltaWater);
+			_currentWaterLevel -= deltaWater; // Consider moving this to OnUse instead
 		}
 
 		return true;
@@ -61,7 +61,7 @@ public class WateringCan : Tool
 		_logger.Debug("Did not water anything. Waste of water");
 	}
 
-	protected override void OnUse(Player.Player user)
+	protected override void OnStart(Player.Player user)
 	{
 		// Something. Example reduce water in tool
 	}

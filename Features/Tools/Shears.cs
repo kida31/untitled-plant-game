@@ -5,25 +5,33 @@ using untitledplantgame.Plants;
 using untitledplantgame.Player;
 using untitledplantgame.Tools;
 
+// NOTE: Make APlant implement IHarvestable instead of we have multiple harvestable objects
 public class Shears : Tool
 {
-    private Logger _logger;
+	private Logger _logger;
+
 	public Shears(float radius, float range) : base(radius, range)
 	{
-        _logger = new("Shears");
+		_logger = new("Shears");
+	}
+
+	protected override bool OnInitialHit(Player user, Node2D[] hits)
+	{
+		return hits.OfType<APlant>().Any();
 	}
 
 	protected override bool OnHit(Player user, Node2D[] hits)
 	{
-        var plant = hits.OfType<APlant>().FirstOrDefault();
-        if (plant == null) {
-            return false;
-        }
+		var closestPlant = hits.OfType<APlant>().MinBy(p => p.GlobalPosition.DistanceSquaredTo(user.GlobalPosition));
+		if (closestPlant == null)
+		{
+			return false;
+		}
 
-        plant.Harvest();
-        GD.Print("...pipiab");
-        // TODO: move result to player inventory
-        return true;
+		closestPlant.Harvest();
+		GD.Print("...pipiab");
+		// TODO: move result to player inventory
+		return true;
 	}
 
 	protected override void OnMiss(Player user)
@@ -31,7 +39,7 @@ public class Shears : Tool
 		// pass
 	}
 
-	protected override void OnUse(Player user)
+	protected override void OnStart(Player user)
 	{
 		GD.Print("Schnippschnapp...");
 	}

@@ -27,7 +27,7 @@ public partial class Player : CharacterBody2D
 	private Toolbelt _toolbelt = new Toolbelt(
 		new Tool[] {
 			new Shears(8, 16),
-			new WateringCan(12, 24),
+			new WateringCan(50, 1000, true, 12, 24),
 		}
 	);
 
