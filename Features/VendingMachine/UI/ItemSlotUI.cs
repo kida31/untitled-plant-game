@@ -54,11 +54,13 @@ public partial class ItemSlotUI : Control, IItemSlotUI
 		_itemStack = itemStack;
 		if (_itemStack == null)
 		{
+			_logger.Debug("ItemStack is null");
 			ItemTexture.Texture = null;
 			_quantityLabel.Text = "";
 		}
 		else
 		{
+			_logger.Debug("setting itemstack");
 			ItemTexture.Texture = _itemStack.Icon ?? _placeholderIcon;
 			_quantityLabel.Text = _itemStack.Amount.ToString();
 		}

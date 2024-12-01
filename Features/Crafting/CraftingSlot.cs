@@ -8,7 +8,7 @@ namespace untitledplantgame.Crafting;
 public partial class CraftingSlot
 {
 	// We cooked.
-	public event Action<CraftingSlot> OnCraftingComplete;
+	public event Action<CraftingSlot> CraftTimeOut;
 	public event Action<double> ProgressChanged;
 	public ItemStack ItemStack { get; set; }
 	public bool IsCraftingComplete;
@@ -70,6 +70,6 @@ public partial class CraftingSlot
 	{
 		IsCraftingComplete = true;
 		_isCrafting = false;
-		OnCraftingComplete?.Invoke(this);
+		CraftTimeOut?.Invoke(this);
 	}
 }

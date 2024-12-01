@@ -9,7 +9,7 @@ public partial class Dehydrator : ICraftingStation
 {
 	//private const CraftMethod CraftMethod = Crafting.CraftMethod.Dehydrate;
 	private const int SlotNumber = 6;
-	private const double CraftingTime = 30;
+	private const double CraftingTime = 10;
 	public event Action<ItemStack[]> RetrieveAllFinishedItemsAction;
 	public event Action<ItemStack, int> ItemInserted;
 	public event Action<int> ItemRemoved;
@@ -55,7 +55,7 @@ public partial class Dehydrator : ICraftingStation
 
 		slot.ItemStack = item;
 		slot.AddItemAndStartCrafting(item, CraftingTime);
-		slot.OnCraftingComplete += OnCraftingComplete; // TODO: Ready
+		slot.CraftTimeOut += OnCraftTimeOut; // TODO: Ready
 
 		CraftingSlots[slotIndex] = slot;
 		ItemInserted?.Invoke(item, slotIndex);
@@ -73,16 +73,16 @@ public partial class Dehydrator : ICraftingStation
 
 	public void RetrieveAllFinishedItems()
 	{
-		var items = CraftingSlots.Where(slot => slot.IsCraftingComplete).Select(slot =>
+		for (var i = 0; i < CraftingSlots.Length; i++)
 		{
-			slot.RemoveItem();
-			return slot.ItemStack;
-		}).ToArray();
-		
-		RetrieveAllFinishedItemsAction?.Invoke(items);
+			if (CraftingSlots[i].IsCraftingComplete)
+			{
+				RemoveItemFromSlot(i);
+			}
+		}
 	}
 
-	private void OnCraftingComplete(CraftingSlot slot)
+	private void OnCraftTimeOut(CraftingSlot slot)
 	{
 		var item = slot.ItemStack;
 		slot.ItemStack = ModifyItemComponent(item);
@@ -91,6 +91,6 @@ public partial class Dehydrator : ICraftingStation
 	private ItemStack ModifyItemComponent(ItemStack item)
 	{
 		// Modify item component here
-		return null;
+		return item;
 	}
 }

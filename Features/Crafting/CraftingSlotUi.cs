@@ -1,6 +1,5 @@
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Inventory;
 using untitledplantgame.VendingMachine;
 
 namespace untitledplantgame.Crafting;
@@ -9,18 +8,20 @@ public partial class CraftingSlotUi : ItemSlotUI
 {
 	[Export] private ProgressBar _progressBar;
 	[Export] private TextureRect _craftingCompleteTexture;
-	public CraftingSlot CraftingSlot { get; set; }
+	public CraftingSlot CraftingSlot { get; private set; }
 
 	private bool _isCraftingComplete;
 	private Logger _logger;
 
 	public override void _Ready()
 	{
+		base._Ready();
 		_logger = new Logger(this);
 		_isCraftingComplete = false;
+		_logger.Debug("I am ready");
 	}
 
-	private void OnCraftingComplete(CraftingSlot obj)
+	private void OnCraftingCompleted(CraftingSlot obj)
 	{
 		_logger.Debug("Crafting Complete");
 		var item = obj.ItemStack;
@@ -36,7 +37,7 @@ public partial class CraftingSlotUi : ItemSlotUI
 	private void UpdateProgressBar(double progress)
 	{
 		var color = new Color(131,90,51, (int)progress);
-		ItemTexture.Modulate = color;
+		//ItemTexture.Modulate = color;
 		_progressBar.Value = progress;
 	}
 
@@ -44,16 +45,21 @@ public partial class CraftingSlotUi : ItemSlotUI
 	{
 		if(CraftingSlot != null)
 		{
-			CraftingSlot.OnCraftingComplete -= OnCraftingComplete;
+			_logger.Debug("Removing old CraftingSlot");
+			CraftingSlot.CraftTimeOut -= OnCraftingCompleted;
 			CraftingSlot.ProgressChanged -= UpdateProgressBar;
 			_progressBar.Value = 0;
 			_isCraftingComplete = false;
 			_craftingCompleteTexture.Visible = false;
 		}
-		
-		_logger.Debug($"Setting CraftingSlot: {slot}");
 		CraftingSlot = slot;
-		CraftingSlot.OnCraftingComplete += OnCraftingComplete;
-		CraftingSlot.ProgressChanged += UpdateProgressBar;
+		_logger.Debug($"Setting CraftingSlot with item {slot?.ItemStack}");
+		ItemStack = slot?.ItemStack;
+		
+		if(slot != null)
+		{
+			CraftingSlot.CraftTimeOut += OnCraftingCompleted; //TODO Change event connection for when the item finished modifying
+			CraftingSlot.ProgressChanged += UpdateProgressBar;
+		}
 	}
 }
