@@ -29,6 +29,7 @@ public partial class DehydratorUi : Control
 
 	private void BeforeCraftingStationUiOpened(ICraftingStation dehydrator)
 	{
+		_logger.Debug("Opening Dehydrator UI");
 		_craftingStation = dehydrator as Dehydrator;
 		if (_craftingStation == null)
 		{
@@ -37,15 +38,26 @@ public partial class DehydratorUi : Control
 		}
 
 		var slots = _craftingStation.CraftingSlots;
-		var children = _slotContainer.GetChildren();
+		var uiSlots = _slotContainer.GetChildren();
+		Assert.AssertTrue(0 < slots.Length);
+		Assert.AssertTrue(uiSlots.Count > 0);
+		Assert.AssertTrue(slots.Length == uiSlots.Count);
 		for (var i = 0; i < slots.Length; i++)
 		{
-			if(slots[i] == null) continue;
-			if (children[i] is CraftingSlotUi slot)
+			Assert.AssertNotNull(slots[i]);
+			if (slots[i] == null)
 			{
-				slot.CraftingSlot = slots[i];
+				_logger.Error("Slot is null");
+				continue;
+			}
+			Assert.AssertTrue(uiSlots[i] is CraftingSlotUi, "this should be a crafting slot uwu");
+			if (uiSlots[i] is CraftingSlotUi slotUi)
+			{
+				slotUi.SetCraftingSlot(slots[i]);
 			}
 		}
+		_craftingStation.ItemInserted += OnCraftingStationUiItemInserted;
+		_craftingStation.ItemRemoved += OnCraftingStationUiItemRemoved;
 		GameStateMachine.Instance.SetState(GameState.Crafting);
 		Visible = true;
 	}
@@ -59,7 +71,7 @@ public partial class DehydratorUi : Control
 
 	private void OnCraftingStationUiItemInserted(ItemStack item, int slotIndex)
 	{
-		_craftingStation.InsertItemToSlot(item, slotIndex);
+		_logger.Debug($"Item {item.Name} inserted to slot {slotIndex}");
 		if (_slotContainer.GetChild(slotIndex) is CraftingSlotUi { ItemStack: null } slot)
 		{
 			slot.ItemStack = item;
@@ -68,9 +80,9 @@ public partial class DehydratorUi : Control
 
 	private void OnCraftingStationUiItemRemoved(int slotIndex)
 	{
-		var item = _craftingStation.RemoveItemFromSlot(slotIndex);
-		if (_slotContainer.GetChild(slotIndex) is CraftingSlotUi slot && slot.ItemStack == item)
+		if (_slotContainer.GetChild(slotIndex) is CraftingSlotUi slot)
 		{
+			_logger.Debug($"Item removed from slot {slotIndex}");
 			slot.ItemStack = null;
 		}
 	}

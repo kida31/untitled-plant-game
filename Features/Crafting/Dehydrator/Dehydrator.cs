@@ -9,8 +9,10 @@ public partial class Dehydrator : ICraftingStation
 {
 	//private const CraftMethod CraftMethod = Crafting.CraftMethod.Dehydrate;
 	private const int SlotNumber = 6;
-	private const double CraftingTime = 100;
+	private const double CraftingTime = 30;
 	public event Action<ItemStack[]> RetrieveAllFinishedItemsAction;
+	public event Action<ItemStack, int> ItemInserted;
+	public event Action<int> ItemRemoved;
 	public CraftingSlot[] CraftingSlots { get; private set; }
 
 	private Logger _logger;
@@ -32,7 +34,7 @@ public partial class Dehydrator : ICraftingStation
 	{
 		Assert.AssertNotNull(CraftingSlots);
 		if (CraftingSlots == null) return;
-
+		
 		foreach (var slot in CraftingSlots)
 		{
 			slot.Process(delta);
@@ -41,26 +43,30 @@ public partial class Dehydrator : ICraftingStation
 
 	public void InsertItemToSlot(ItemStack item, int slotIndex)
 	{
+		_logger.Debug($"Checking slot {slotIndex} : {CraftingSlots[slotIndex].ItemStack}");
 		var slot = CraftingSlots[slotIndex];
-		_logger.Debug($"Inserting item {item.Name} to slot {slotIndex}");
-
-		if (slot?.ItemStack != null)
+		
+		if (slot.ItemStack != null)
 		{
 			_logger.Warn($"Slot {slotIndex} is already occupied.");
 			return;
 		}
+		_logger.Debug($"Inserting item {item.Name} to slot {slotIndex}");
 
-		var newSlot = new CraftingSlot(item);
-		newSlot.AddItemAndStartCrafting(item, CraftingTime);
-		newSlot.OnCraftingComplete += OnCraftingComplete; // TODO: Ready
+		slot.ItemStack = item;
+		slot.AddItemAndStartCrafting(item, CraftingTime);
+		slot.OnCraftingComplete += OnCraftingComplete; // TODO: Ready
 
-		CraftingSlots[slotIndex] = newSlot;
+		CraftingSlots[slotIndex] = slot;
+		ItemInserted?.Invoke(item, slotIndex);
 	}
 
 	public ItemStack RemoveItemFromSlot(int slotIndex)
 	{
+		_logger.Debug($"Removing item from slot {slotIndex}");
 		var item = CraftingSlots[slotIndex].ItemStack;
 		CraftingSlots[slotIndex].RemoveItem();
+		ItemRemoved?.Invoke(slotIndex);
 
 		return item;
 	}
@@ -79,11 +85,12 @@ public partial class Dehydrator : ICraftingStation
 	private void OnCraftingComplete(CraftingSlot slot)
 	{
 		var item = slot.ItemStack;
-		ModifyItemComponent(item);
+		slot.ItemStack = ModifyItemComponent(item);
 	}
 
-	private void ModifyItemComponent(ItemStack item)
+	private ItemStack ModifyItemComponent(ItemStack item)
 	{
 		// Modify item component here
+		return null;
 	}
 }

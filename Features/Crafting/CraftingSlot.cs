@@ -1,5 +1,6 @@
 ﻿using System;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Crafting;
@@ -10,34 +11,43 @@ public partial class CraftingSlot
 	public event Action<CraftingSlot> OnCraftingComplete;
 	public event Action<double> ProgressChanged;
 	public ItemStack ItemStack { get; set; }
-	public bool IsCraftingComplete { get; private set; } // We have cooked. Still good to know
-	private Timer _timer;
+	public bool IsCraftingComplete;
+	private bool _isCrafting; 
+	private double _currentTime;
 	private double _totalCraftTime;
+	private Logger _logger;
 
 	public CraftingSlot()
 	{
+		_logger = new Logger("CraftingSlot");
+		_logger.Debug("hallo empty");
 	}
 
 	public CraftingSlot(ItemStack item)
 	{
+		_isCrafting = false;
 		ItemStack = item;
+		_logger = new Logger("CraftingSlot");
+		_logger.Debug("hallo not empty");
 	}
 
 	public void Process(double delta)
 	{
-		if (IsCraftingComplete || _timer == null) return;
-
-		if (_timer.TimeLeft <= 0)
+		if (IsCraftingComplete || !_isCrafting) return;
+		_currentTime -= delta;
+		
+		if (_currentTime <= 0)
 		{
 			CompleteCrafting();
+			_logger.Debug("Crafting complete");
 			return;
 		}
 
-		var progress = 1 - _timer.TimeLeft / _totalCraftTime;
+		var progress = 1 - _currentTime / _totalCraftTime;
 		OnTimePassed(progress);
 	}
 
-	public void OnTimePassed(double timeProgress)
+	private void OnTimePassed(double timeProgress)
 	{
 		ProgressChanged?.Invoke(timeProgress);
 	}
@@ -46,28 +56,20 @@ public partial class CraftingSlot
 	{
 		ItemStack = itemStack;
 		_totalCraftTime = craftTime;
-		StartCraftProcess();
+		_currentTime = _totalCraftTime;
+		_isCrafting = true;
 	}
 
 	public void RemoveItem()
 	{
 		ItemStack = null;
-		_timer.Stop();
-		IsCraftingComplete = false;
-		_timer.WaitTime = 0;
+		_isCrafting = false;
 	}
 
 	private void CompleteCrafting()
 	{
 		IsCraftingComplete = true;
+		_isCrafting = false;
 		OnCraftingComplete?.Invoke(this);
-	}
-
-	private void StartCraftProcess()
-	{
-		_timer = new Timer();
-		_timer.Autostart = true;
-		_timer.OneShot = true;
-		_timer.Timeout += CompleteCrafting;
 	}
 }

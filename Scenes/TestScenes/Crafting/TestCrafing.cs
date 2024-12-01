@@ -20,7 +20,7 @@ public partial class TestCrafing : Node2D
 		_testItem = new ItemStack("item_id", "Dead Plants", texture,
 			"A dead plant", ItemCategory.Plant, 1, 1);
 		_dehydrator = new Dehydrator();
-		_index = 0;
+		_index = -1;
 		
 		_openDehydratorButton.Pressed += OpenDehydrator;
 		_addItemButton.Pressed += AddItem;
@@ -34,16 +34,17 @@ public partial class TestCrafing : Node2D
 
 	private void RemoveItem()
 	{
-		if(_index <= 0) return;
+		if(_index < 0) return;
 		_dehydrator.RemoveItemFromSlot(_index);
 		_index--;
 	}
 
 	private void AddItem()
 	{
+		_index = Math.Min(++_index, _dehydrator.CraftingSlots.Length);
+		
 		if(_index >= _dehydrator.CraftingSlots.Length) return;
 		_dehydrator.InsertItemToSlot(_testItem, _index);
-		_index++;
 	}
 
 	private void OpenDehydrator()
