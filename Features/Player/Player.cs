@@ -73,9 +73,16 @@ public partial class Player : CharacterBody2D
 		if (Direction.Y == 0)
 		{
 			if (Direction.X < 0)
+			{
 				newDirection = Vector2.Left;
+				_animatedSprite2D.FlipH = true;
+			}
+
 			else
+			{
 				newDirection = Vector2.Right;
+				_animatedSprite2D.FlipH = false;
+			}
 		}
 
 		if (Direction.X == 0)
@@ -94,7 +101,7 @@ public partial class Player : CharacterBody2D
 	/// Update front direction (the direction the player is facing).
 	/// The front direction equals the latest input direction. "Clamping" to NWSE (non-diagonal).
 	/// Horizontal directions have priority. If horizontal direction is zero, vertical direction is chosen.
-	/// If there is not input direction, keep latest front direction value.
+	/// If there is no input direction, keep latest front direction value.
 	/// </summary>
 	private void UpdateFrontDirection() {
 		if (Direction == Vector2.Zero) {
