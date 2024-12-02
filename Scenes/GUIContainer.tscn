@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/VendingMachine/UI/vending_machine_ui.tscn" id="1_iuaq5"]
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Features/Cycle/UI/ClockUI.tscn" id="1_tdwvu"]
 [ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="2_y866b"]
-[ext_resource type="PackedScene" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
+[ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
 
 [node name="GUIContainer" type="CanvasLayer"]
 
