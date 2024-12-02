@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://fde6fy6jals2"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://fde6fy6jals2"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_fjvkf"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_y7onw"]
@@ -19,22 +19,34 @@ dialogueText = "I feel like I have been here before but something feels off... O
 script = ExtResource("1_y7onw")
 speakerName = "MC"
 DialogueExpression = 0
-dialogueText = "This place was swallowed by the floods! No wonder I haven't heard any prayes. They must have forgotten about me."
+dialogueText = "This place was swallowed by the floods! No wonder I haven't heard any prayers. They must have forgotten about me."
 
 [sub_resource type="Resource" id="Resource_da23w"]
 script = ExtResource("1_y7onw")
-speakerName = "It looks as if misery has not bypassed these people here. Their face bear the marks of hardship, their shoulders are hunched under the weight of a life that has not been merciful."
+speakerName = "MC"
 DialogueExpression = 0
-dialogueText = ""
+dialogueText = "It looks as if misery has not bypassed these people here. Their faces bear the marks of hardship, their shoulders are hunched under the weight of a life that has not been merciful."
 
 [sub_resource type="Resource" id="Resource_w0ss3"]
 script = ExtResource("1_y7onw")
 speakerName = "MC"
 DialogueExpression = 0
-dialogueText = "So many residents are wounded and sick! I should. my people."
+dialogueText = "So many residents are wounded and sick! I should aid my people."
+
+[sub_resource type="Resource" id="Resource_g4jrr"]
+script = ExtResource("1_y7onw")
+speakerName = "MC"
+DialogueExpression = 0
+dialogueText = "Okay, going around is easy... But how can i DO stuff?"
+
+[sub_resource type="Resource" id="Resource_it8yj"]
+script = ExtResource("1_y7onw")
+speakerName = "MC"
+DialogueExpression = 0
+dialogueText = "To interact with people I simply need to press G"
 
 [resource]
 script = ExtResource("1_fjvkf")
 _dialogueId = ""
-_dialogueText = Array[Object]([SubResource("Resource_yfdhw"), SubResource("Resource_a8n2g"), SubResource("Resource_4ymo2"), SubResource("Resource_da23w"), SubResource("Resource_w0ss3")])
+_dialogueText = Array[Object]([SubResource("Resource_yfdhw"), SubResource("Resource_a8n2g"), SubResource("Resource_4ymo2"), SubResource("Resource_da23w"), SubResource("Resource_w0ss3"), SubResource("Resource_g4jrr"), SubResource("Resource_it8yj")])
 _responses = null
