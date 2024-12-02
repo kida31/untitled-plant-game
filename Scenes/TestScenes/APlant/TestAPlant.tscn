@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc5mcucmbfc65"]
+[gd_scene load_steps=5 format=3 uid="uid://cc5mcucmbfc65"]
 
 [ext_resource type="Script" path="res://Scenes/TestScenes/APlant/TestAPlant.cs" id="1_5umc6"]
 [ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Scenes/TestScenes/APlant/APlantPrefab.tscn" id="2_64co2"]
 [ext_resource type="Script" path="res://Features/Plants/Soil/SoilTile.cs" id="3_pgupv"]
 
-[node name="TestAPlant" type="Node2D" node_paths=PackedStringArray("_label", "_plant", "_soilTile")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_a4san"]
+
+[node name="TestAPlant" type="Node2D" node_paths=PackedStringArray("_label", "_plant")]
 script = ExtResource("1_5umc6")
 _label = NodePath("VBoxContainer/Label")
 _plant = NodePath("APlantPrefab")
-_soilTile = NodePath("Soil")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 40.0
@@ -27,10 +28,13 @@ layout_mode = 2
 
 [node name="APlantPrefab" parent="." instance=ExtResource("2_64co2")]
 texture_filter = 1
-position = Vector2(276, 175)
-scale = Vector2(4, 4)
+position = Vector2(276, 228)
 PlantName = "Basil"
 
-[node name="Soil" type="Node2D" parent="."]
+[node name="Soil" type="Area2D" parent="."]
 position = Vector2(276, 175)
 script = ExtResource("3_pgupv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soil"]
+position = Vector2(0, 52)
+shape = SubResource("CircleShape2D_a4san")

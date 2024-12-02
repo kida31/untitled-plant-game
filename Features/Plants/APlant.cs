@@ -17,7 +17,7 @@ public enum GrowthStage
 	Dead,
 }
 
-public partial class APlant : Node2D
+public partial class APlant : StaticBody2D
 {
 	[Export] public string PlantName { get; private set; }
 	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
