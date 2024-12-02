@@ -270,8 +270,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yd6t3"]
-size = Vector2(26, 12)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryxll"]
+radius = 34.0147
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ypuiu")
@@ -300,8 +300,7 @@ script = ExtResource("7_lrvm3")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_yd6t3")
+shape = SubResource("CircleShape2D_ryxll")
 
 [node name="InteractablesManager" type="Node" parent="Area2D" node_paths=PackedStringArray("_player")]
 script = ExtResource("7_pko3m")
