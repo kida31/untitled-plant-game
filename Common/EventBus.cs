@@ -101,4 +101,10 @@ public partial class EventBus : Node
 	{
 		InitialiseDialogue?.Invoke(obj);
 	}
+
+	public event Action<int, int> GoldChanged;
+	public void InvokeGoldChanged(int deltaGold, int newGold)
+	{
+		GoldChanged?.Invoke(deltaGold, newGold);
+	}
 }
