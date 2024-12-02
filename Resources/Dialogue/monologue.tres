@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://fde6fy6jals2"]
+
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_fjvkf"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_y7onw"]
+
+[sub_resource type="Resource" id="Resource_yfdhw"]
+script = ExtResource("1_y7onw")
+speakerName = "MC"
+DialogueExpression = 0
+dialogueText = "Huh... Where am I? What is this place?"
+
+[sub_resource type="Resource" id="Resource_a8n2g"]
+script = ExtResource("1_y7onw")
+speakerName = "MC"
+DialogueExpression = 0
+dialogueText = "I feel like I have been here before but something feels off... Oh no!! "
+
+[sub_resource type="Resource" id="Resource_4ymo2"]
+script = ExtResource("1_y7onw")
+speakerName = "MC"
+DialogueExpression = 0
+dialogueText = "This place was swallowed by the floods! No wonder I haven't heard any prayes. They must have forgotten about me."
+
+[sub_resource type="Resource" id="Resource_da23w"]
+script = ExtResource("1_y7onw")
+speakerName = "It looks as if misery has not bypassed these people here. Their face bear the marks of hardship, their shoulders are hunched under the weight of a life that has not been merciful."
+DialogueExpression = 0
+dialogueText = ""
+
+[sub_resource type="Resource" id="Resource_w0ss3"]
+script = ExtResource("1_y7onw")
+speakerName = "MC"
+DialogueExpression = 0
+dialogueText = "So many residents are wounded and sick! I should. my people."
+
+[resource]
+script = ExtResource("1_fjvkf")
+_dialogueId = ""
+_dialogueText = Array[Object]([SubResource("Resource_yfdhw"), SubResource("Resource_a8n2g"), SubResource("Resource_4ymo2"), SubResource("Resource_da23w"), SubResource("Resource_w0ss3")])
+_responses = null
