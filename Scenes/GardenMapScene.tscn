@@ -21,7 +21,7 @@ tile_data = PackedInt32Array(0, 2, 0, 65536, 2, 1, 1, 65538, 0, 65537, 65538, 1)
 [sub_resource type="TileMapPattern" id="TileMapPattern_kabcl"]
 tile_data = PackedInt32Array(0, 3, 0, 65536, 3, 1, 1, 65539, 0, 65537, 65539, 1)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_waff5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lskqp"]
 texture = ExtResource("1_y6de5")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -89,7 +89,7 @@ texture_region_size = Vector2i(32, 32)
 6:7/0 = 0
 7:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cswdc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_75dsw"]
 texture = ExtResource("3_rcpjb")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -98,8 +98,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_i0370"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_waff5")
-sources/6 = SubResource("TileSetAtlasSource_cswdc")
+sources/1 = SubResource("TileSetAtlasSource_lskqp")
+sources/6 = SubResource("TileSetAtlasSource_75dsw")
 pattern_0 = SubResource("TileMapPattern_jas7t")
 pattern_1 = SubResource("TileMapPattern_kabcl")
 
