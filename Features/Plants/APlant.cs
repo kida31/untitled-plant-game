@@ -28,7 +28,7 @@ public partial class APlant : StaticBody2D
 	private AnimatedSprite2D _sprite2D;
 	
 	private bool _isHarvestable;
-	private float _absorptionRate = 100.0f;
+	private float _absorptionRate = 50.0f;
 	private float _consumptionRate = 30.0f;
 
 	private int _daysToGrow;
