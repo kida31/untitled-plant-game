@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsmi4lfqg7int"
-path="res://.godot/imported/ladder_tileset.png-d967972a752af3051816f7de4355395d.ctex"
+uid="uid://c22xfmspxhj70"
+path="res://.godot/imported/tileset_stones.png-a5c274f983c4f4ea4e7a51dce849781e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/ladder_tileset.png"
-dest_files=["res://.godot/imported/ladder_tileset.png-d967972a752af3051816f7de4355395d.ctex"]
+source_file="res://Assets/OverworldAssets/GardenDecoration/tileset_stones.png"
+dest_files=["res://.godot/imported/tileset_stones.png-a5c274f983c4f4ea4e7a51dce849781e.ctex"]
 
 [params]
 

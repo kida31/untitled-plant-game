@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1mpvuex3inx3"
-path="res://.godot/imported/fence.png-f0a17494ad3d671b7288c05af754e412.ctex"
+uid="uid://5d8yf6rhn855"
+path="res://.godot/imported/planters_tileset_rgb.png-9fda4b1138fa42c82575e9733e133845.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OverworldAssets/GardenDecoration/fence.png"
-dest_files=["res://.godot/imported/fence.png-f0a17494ad3d671b7288c05af754e412.ctex"]
+source_file="res://Assets/OverworldAssets/GardenDecoration/planters_tileset_rgb.png"
+dest_files=["res://.godot/imported/planters_tileset_rgb.png-9fda4b1138fa42c82575e9733e133845.ctex"]
 
 [params]
 

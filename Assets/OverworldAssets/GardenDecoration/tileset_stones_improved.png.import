@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyw677sayh7dv"
-path="res://.godot/imported/planters_tileset.png-eb28b635b6218ece9248ba6fdb5950ab.ctex"
+uid="uid://cpd5g3usnjwuo"
+path="res://.godot/imported/tileset_stones_improved.png-06191c63f18e92bb47d80abe5924add2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/planters_tileset.png"
-dest_files=["res://.godot/imported/planters_tileset.png-eb28b635b6218ece9248ba6fdb5950ab.ctex"]
+source_file="res://Assets/OverworldAssets/GardenDecoration/tileset_stones_improved.png"
+dest_files=["res://.godot/imported/tileset_stones_improved.png-06191c63f18e92bb47d80abe5924add2.ctex"]
 
 [params]
 

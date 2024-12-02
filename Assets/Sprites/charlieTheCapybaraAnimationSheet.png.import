@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cldfn4m8umal5"
-path="res://.godot/imported/Pole_fairy_lights.png-18740c37197fef92667a2d8099921969.ctex"
+uid="uid://bnbpxhugl2h0n"
+path="res://.godot/imported/charlieTheCapybaraAnimationSheet.png-d7a2e85b6da7f0b1728780b083f6cb45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OverworldAssets/GardenDecoration/Pole_fairy_lights.png"
-dest_files=["res://.godot/imported/Pole_fairy_lights.png-18740c37197fef92667a2d8099921969.ctex"]
+source_file="res://Assets/Sprites/charlieTheCapybaraAnimationSheet.png"
+dest_files=["res://.godot/imported/charlieTheCapybaraAnimationSheet.png-d7a2e85b6da7f0b1728780b083f6cb45.ctex"]
 
 [params]
 
