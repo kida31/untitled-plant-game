@@ -23,6 +23,6 @@ public partial class TestCycleWithPlants : Node2D
 
 	void OnSkipButtonPressed()
 	{
-		_timeController.FastForwardFor(5);
+		_timeController.FastForwardToNextDay();
 	}
 }
