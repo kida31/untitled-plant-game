@@ -13,10 +13,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ToolbeltView" parent="." instance=ExtResource("2_fhqom")]
-offset_left = 553.0
-offset_top = 654.0
-offset_right = 553.0
-offset_bottom = 654.0
+offset_left = 206.0
+offset_top = 624.0
+offset_right = 206.0
+offset_bottom = 624.0
 
 [node name="BookButton" parent="." instance=ExtResource("1_k0baw")]
 layout_mode = 2
@@ -25,11 +25,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 1090.0
-offset_top = 588.0
-offset_right = 1330.0
-offset_bottom = 748.0
-scale = Vector2(0.7, 0.7)
+offset_left = 1033.0
+offset_top = 524.0
+offset_right = 1273.0
+offset_bottom = 684.0
 
 [node name="CurrencyHUD" parent="." instance=ExtResource("3_h2wb2")]
 layout_mode = 0

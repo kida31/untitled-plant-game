@@ -82,11 +82,11 @@ public partial class BookButton : Control
 		// Animate new open state
 		if (_isOpen)
 		{
-			_animationPlayer.Play("FadeOpen");
+			_animationPlayer.PlayBackwards("FadeClose");
 		}
 		else
 		{
-			_animationPlayer.PlayBackwards("FadeOpen");
+			_animationPlayer.Play("FadeClose");
 		}
 	}
 }

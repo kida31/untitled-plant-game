@@ -12,7 +12,7 @@ step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen/BookIconOpen:modulate")
+tracks/0/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen/VBoxContainer/BookIconOpen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -101,7 +101,7 @@ step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen/BookIconOpen:modulate")
+tracks/0/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen/VBoxContainer/BookIconOpen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -176,7 +176,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen/BookIconOpen:modulate")
+tracks/0/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen/VBoxContainer/BookIconOpen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -267,13 +267,13 @@ _data = {
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jxlk"]
 bg_color = Color(0.051898, 0.0536357, 0.111922, 0.203922)
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 512
 corner_radius_top_right = 512
 corner_radius_bottom_right = 512
 corner_radius_bottom_left = 512
 
 [node name="BookButton" type="AspectRatioContainer" node_paths=PackedStringArray("_animationPlayer")]
-custom_minimum_size = Vector2(0, 160)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -295,7 +295,6 @@ libraries = {
 }
 
 [node name="Offcenter" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 16
@@ -331,24 +330,35 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="ContainerBookOpen" type="MarginContainer" parent="Offcenter/AspectRatioContainer/Control"]
-layout_mode = 2
-offset_left = -94.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
 offset_top = -80.0
-offset_right = 94.0
+offset_right = 128.0
 offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(0, 80)
+scale = Vector2(0.96, 0.96)
+pivot_offset = Vector2(128, 80)
 mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
-metadata/_edit_use_anchors_ = true
 
-[node name="BookIconOpen" type="TextureRect" parent="Offcenter/AspectRatioContainer/Control/ContainerBookOpen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Offcenter/AspectRatioContainer/Control/ContainerBookOpen"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="BookIconOpen" type="TextureRect" parent="Offcenter/AspectRatioContainer/Control/ContainerBookOpen/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+size_flags_vertical = 3
 mouse_filter = 2
 texture = ExtResource("2_tw7lo")
 expand_mode = 3
