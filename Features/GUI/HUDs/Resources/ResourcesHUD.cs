@@ -35,8 +35,8 @@ public partial class ResourcesHUD : MarginContainer
 
 		_targetValues = new Dictionary<ResourceRow, double>();
 
-		
-		// TODO: Move this to to gold
+
+		// TODO: Move this to parent?
 		string FormatGold(double gold)
 		{
 			return gold switch
@@ -47,8 +47,9 @@ public partial class ResourcesHUD : MarginContainer
 				_ => gold.ToString("N0", new NumberFormatInfo {NumberGroupSeparator = ""})
 			};
 		}
+
 		AddRow(icon: _coinIcon, valueFormatter: FormatGold);
-		// EventBus.Instance.GoldUpdated += row.UpdateValue;
+		EventBus.Instance.GoldChanged += (_, newGold) => _targetValues[_targetValues.Keys.First()] = newGold;
 	}
 
 	// TODO: Remove
@@ -59,14 +60,17 @@ public partial class ResourcesHUD : MarginContainer
 	{
 		if (Input.IsActionJustPressed("ui_up"))
 		{
-			_demoGold = (int) ((_demoGold + 1) * 1.5);
-			_targetValues[_targetValues.Keys.First()] = _demoGold;
+			var g = (int) (1 + _demoGold * 0.5);
+			_demoGold += g;
+			EventBus.Instance.InvokeGoldChanged(g, _demoGold);
 		}
 
 		if (Input.IsActionJustPressed("ui_down"))
 		{
-			_demoGold = (int) ((_demoGold - 1) * 0.5);
-			_targetValues[_targetValues.Keys.First()] = _demoGold;
+			var g = (int) (-1 - 0.5f * _demoGold);
+			_demoGold += g;
+			_demoGold = Math.Max(0, _demoGold);
+			EventBus.Instance.InvokeGoldChanged(g, _demoGold);
 		}
 	}
 
