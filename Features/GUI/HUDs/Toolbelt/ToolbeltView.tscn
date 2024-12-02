@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dblh2fmdokupl"]
+[gd_scene load_steps=7 format=3 uid="uid://dblh2fmdokupl"]
 
 [ext_resource type="Script" path="res://Features/GUI/HUDs/Toolbelt/ToolbeltView.cs" id="1_qssme"]
 [ext_resource type="PackedScene" uid="uid://cf2xfvp0b25y0" path="res://Features/GUI/HUDs/Toolbelt/ToolBlobView.tscn" id="1_x7d1f"]
+[ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="3_sqscx"]
 
 [sub_resource type="Animation" id="Animation_gagnq"]
 length = 0.001
@@ -240,5 +241,29 @@ offset_bottom = 64.0
 grow_horizontal = 1
 grow_vertical = 1
 BlobStyle = 0
+
+[node name="ButtonIndicators (Placeholder)" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -21.0
+offset_right = 154.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="InputIndicator" parent="ButtonIndicators (Placeholder)" instance=ExtResource("3_sqscx")]
+layout_mode = 2
+
+[node name="InputIndicator2" parent="ButtonIndicators (Placeholder)" instance=ExtResource("3_sqscx")]
+layout_mode = 2
+size_flags_horizontal = 10
+PrefabBoundAction = "freeroam_rb"
 
 [editable path="Center"]

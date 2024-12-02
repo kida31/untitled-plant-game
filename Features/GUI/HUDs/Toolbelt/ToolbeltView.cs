@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using untitledplantgame.Common;
+using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Player;
 using static Godot.AnimationMixer;
 
@@ -12,7 +13,6 @@ public partial class ToolbeltView : Control
 	[Export] private ToolBlobView _leftBlob;
 	[Export] private ToolBlobView _centerBlob;
 	[Export] private ToolBlobView _rightBlob;
-
 	private Player _player;
 
 	public override void _Ready()
@@ -40,9 +40,8 @@ public partial class ToolbeltView : Control
 			placeholderBecauseImTooStupidToDoProperDependencies.QueueFree();
 		};
 		AddChild(placeholderBecauseImTooStupidToDoProperDependencies);
-		
 	}
-
+	
 	public override void _Process(double delta)
 	{
 		if (Input.IsKeyPressed(Key.F1))

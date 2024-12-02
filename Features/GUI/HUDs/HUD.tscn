@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqi5g6ma3twuq"]
+[gd_scene load_steps=4 format=3 uid="uid://c55xp0xg83mt1"]
 
-[ext_resource type="PackedScene" uid="uid://vgf4qelqv33d" path="res://Features/GUI/HUDs/BookButton.tscn" id="1_k0baw"]
+[ext_resource type="PackedScene" uid="uid://cme58rltegywh" path="res://Features/GUI/HUDs/BookButton.tscn" id="1_k0baw"]
 [ext_resource type="PackedScene" uid="uid://dblh2fmdokupl" path="res://Features/GUI/HUDs/Toolbelt/ToolbeltView.tscn" id="2_fhqom"]
 [ext_resource type="PackedScene" uid="uid://eadq6f41gik3" path="res://Features/GUI/HUDs/Resources/ResourcesHUD.tscn" id="3_h2wb2"]
 
@@ -13,10 +13,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ToolbeltView" parent="." instance=ExtResource("2_fhqom")]
-offset_left = 129.0
-offset_top = 647.0
-offset_right = 129.0
-offset_bottom = 647.0
+offset_left = 553.0
+offset_top = 654.0
+offset_right = 553.0
+offset_bottom = 654.0
 
 [node name="BookButton" parent="." instance=ExtResource("1_k0baw")]
 layout_mode = 2
