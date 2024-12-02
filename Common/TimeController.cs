@@ -9,8 +9,8 @@ public partial class TimeController : Node
 {
 	/// Constants for time calculations
 	private const double SecondsPerDay = 24 * 60 * 60;
-
-	private const double InGameToRealTimeMultiplier = 60.0 * 10; // 1 second = 1min
+	
+	private const double InGameToRealTimeMultiplier = 60.0; // 1 second = 1min
 	private const double InGameToRealTimeFastForwardMultiplier = SecondsPerDay; // 24h in 1s
 	private const double StartOfDaySeconds = 7 * 60 * 60;
 
@@ -33,9 +33,10 @@ public partial class TimeController : Node
 	public double CurrentSeconds { get; private set; }
 
 	private Logger _logger;
-	private int _pastDay; // For reference for DayChanged event
-	private int _pastMinute = -1; // For reference for MinuteTicked event
+	private int _currentDay; // For reference for DayChanged event
+	private int _currentMinute = -1; // For reference for MinuteTicked event
 	private double _fastForwardDuration = -1; // Gotta go fast juice. -1 means not fast forwarding. Consumed while fast forwarding
+	private double _currentTimeMultiplier = InGameToRealTimeMultiplier; // Multiplier for time speed
 
 	public override void _Ready()
 	{
@@ -58,16 +59,22 @@ public partial class TimeController : Node
 	 */
 	public override void _Process(double delta)
 	{
-		var dt = delta * (_fastForwardDuration > 0 ? InGameToRealTimeFastForwardMultiplier : InGameToRealTimeMultiplier);
+		double dt;
+		if (_fastForwardDuration < 0)
+		{
+			dt = delta * InGameToRealTimeMultiplier;
+			_currentTimeMultiplier = InGameToRealTimeMultiplier;
+		}
+		else
+		{
+			_currentTimeMultiplier = Mathf.Lerp(_currentTimeMultiplier, InGameToRealTimeFastForwardMultiplier, delta * 0.1);
+			dt = delta * _currentTimeMultiplier;
+		}
+
 		CurrentSeconds += dt;
 		_fastForwardDuration -= dt;
 
 		RecalculateTimeEvents();
-
-		if (CurrentSeconds >= SecondsPerDay)
-		{
-			CurrentSeconds = 0;
-		}
 	}
 
 	/**
@@ -81,28 +88,29 @@ public partial class TimeController : Node
 
 		var totalMinutes = (int) (CurrentSeconds / 60);
 
-		var day = (int) (totalMinutes / minutesPerDay);
 		var currentDayMinutes = (int) (totalMinutes % minutesPerDay);
 		var hour = (int) (currentDayMinutes / minutesPerHour);
 		var minute = (int) (currentDayMinutes % minutesPerHour);
 
-		if (_pastDay != day)
+		if (CurrentSeconds >= SecondsPerDay)
 		{
-			_logger.Debug($"Day {day} passed, emitting signal");
-			_pastDay = day;
-			DayChanged?.Invoke(day);
+			_logger.Debug($"Day {_currentDay} passed, emitting signal");
+			DayChanged?.Invoke(_currentDay);
+			_currentDay += 1;
+			CurrentSeconds = 0;
 		}
 
-		if (_pastMinute != minute)
+		if (_currentMinute != minute)
 		{
-			_pastMinute = minute;
-			MinuteTicked?.Invoke(day, hour, minute);
+			_currentMinute = minute;
+			MinuteTicked?.Invoke(_currentDay, hour, minute);
 		}
 	}
 
-	public void FastForwardToNextDay()
+	public void GoToNextDay()
 	{
 		FastForwardTo(StartOfDaySeconds);
+		_currentTimeMultiplier = InGameToRealTimeFastForwardMultiplier;
 	}
 
 	//Please remove this later
