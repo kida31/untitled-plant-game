@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
-[ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
+[ext_resource type="PackedScene" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
 [ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://Features/NPC/VendingMachine/VendingMachineNPC.tscn" id="2_ldf7o"]
 [ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://Features/NPC/NPC.tscn" id="2_w1s7m"]
 [ext_resource type="Script" path="res://Scenes/TestScenes/PlantAndCycles/TestCycleWithPlants.cs" id="3_li003"]
@@ -15,6 +15,9 @@
 [node name="GameWorldContainer" type="Node2D"]
 
 [node name="Map" parent="." instance=ExtResource("1_ouy3g")]
+
+[node name="Bed" parent="." instance=ExtResource("11_33dsb")]
+position = Vector2(888, 177)
 
 [node name="SeedShop" parent="." instance=ExtResource("2_w1s7m")]
 position = Vector2(465, 195)
@@ -50,6 +53,3 @@ position = Vector2(577.5, 328.625)
 scale = Vector2(1.19896, 1.19896)
 script = ExtResource("6_4ec11")
 _gradientTexture = ExtResource("7_xmbsw")
-
-[node name="Bed" parent="." instance=ExtResource("11_33dsb")]
-position = Vector2(854, 295)
