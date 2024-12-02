@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cv1fhyjs170lk"]
 
-[ext_resource type="PackedScene" uid="uid://odaf4n8fl163" path="res://Scenes/MapPlaceholder.tscn" id="1_03e08"]
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
+[ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
 [ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://Features/NPC/VendingMachine/VendingMachineNPC.tscn" id="2_ldf7o"]
 [ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://Features/NPC/NPC.tscn" id="2_w1s7m"]
 [ext_resource type="Script" path="res://Scenes/TestScenes/PlantAndCycles/TestCycleWithPlants.cs" id="3_li003"]
@@ -13,13 +13,15 @@
 
 [node name="GameWorldContainer" type="Node2D"]
 
-[node name="Sprite2D" parent="." instance=ExtResource("1_03e08")]
+[node name="Map" parent="." instance=ExtResource("1_ouy3g")]
 
 [node name="SeedShop" parent="." instance=ExtResource("2_w1s7m")]
+position = Vector2(465, 195)
 script = ExtResource("3_orgm4")
 
 [node name="VendingMachineNPC" parent="." instance=ExtResource("2_ldf7o")]
-position = Vector2(1144, 382)
+position = Vector2(741, 191)
+scale = Vector2(0.5, 0.5)
 
 [node name="Plants" type="Node2D" parent="." node_paths=PackedStringArray("_skipButton")]
 script = ExtResource("3_li003")
@@ -29,7 +31,8 @@ _skipButton = NodePath("TestAPlant/SkipDay")
 script = ExtResource("3_qp075")
 
 [node name="TestAPlant" parent="Plants" instance=ExtResource("4_qqlvm")]
-position = Vector2(163, 128)
+position = Vector2(273, 226)
+scale = Vector2(0.5, 0.5)
 
 [node name="SkipDay" type="Button" parent="Plants/TestAPlant"]
 offset_left = -6.0
