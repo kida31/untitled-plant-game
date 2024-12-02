@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=12 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cc5mcucmbfc65" path="res://Scenes/TestScenes/APlant/TestAPlant.tscn" id="4_qqlvm"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
+[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
 
 [node name="GameWorldContainer" type="Node2D"]
 
@@ -49,3 +50,6 @@ position = Vector2(577.5, 328.625)
 scale = Vector2(1.19896, 1.19896)
 script = ExtResource("6_4ec11")
 _gradientTexture = ExtResource("7_xmbsw")
+
+[node name="Bed" parent="." instance=ExtResource("11_33dsb")]
+position = Vector2(854, 295)
