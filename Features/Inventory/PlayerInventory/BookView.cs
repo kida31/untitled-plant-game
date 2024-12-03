@@ -11,19 +11,12 @@ namespace untitledplantgame.Inventory.PlayerInventory;
  */
 public partial class BookView : Control
 {
-	[Export] private TabsController _tabsController;
-	[Export] private int _tabInventorySize;
 	// TODO add custom tab buttons
-	private PlayerInventory _playerInventory;
 
 	public override void _Ready()
 	{
 		EventBus.Instance.OnItemPickUp += UpdateTabs;
 		EventBus.Instance.OnInventoryOpen += ShowInventory;
-
-		_tabsController.SetInventorySizeOfTabs(_tabInventorySize);
-
-		_playerInventory = new PlayerInventory(_tabsController.Categories.Count * _tabInventorySize); //_totalInventorySize
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)

@@ -23,6 +23,8 @@ public partial class TabsController : Control
 
 		EventBus.Instance.OnSetItemSlot += SetPotentialItemSlot;
 		EventBus.Instance.OnGetItemSlot += GetPotentialItemSlot;
+		
+		SetInventorySizeOfTabs(15); // TODO: Move somewhere it makes sense
 	}
 	
 	public void SetInventorySizeOfTabs(int inventorySize)
