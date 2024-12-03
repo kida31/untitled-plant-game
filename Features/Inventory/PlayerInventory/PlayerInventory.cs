@@ -29,18 +29,6 @@ public class PlayerInventory
 		}
 	}
 
-	public void Remove(IStorable item)
-	{
-		var index = Array.IndexOf(_itemStacks, item);
-		if (index == -1)
-		{
-			GD.PrintErr("Item not found in backpack.");
-		}
-		else
-		{
-			_itemStacks[index] = null;
-		}
-	}
 	
 	//public Tool GetItemInHand() { return Hand; } 
 }
