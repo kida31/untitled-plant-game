@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://f7it4seve2en"]
+
+[ext_resource type="Script" path="res://Features/Plants/APlant.cs" id="1_g03kh"]
+[ext_resource type="Texture2D" uid="uid://dxjrcllnnc3s2" path="res://Assets/OverworldAssets/Plant/Licary_SpriteSheet.png" id="2_ukl5i"]
+[ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/OverworldAssets/Plant/DeadPlant.png" id="3_srjlf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0qlg"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvws3"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_822xi"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8p1h"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_002dl"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7cyj"]
+atlas = ExtResource("2_ukl5i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rej4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0qlg")
+}],
+"loop": true,
+"name": &"Budding",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_srjlf")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvws3")
+}],
+"loop": true,
+"name": &"Flowering",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_822xi")
+}],
+"loop": true,
+"name": &"Ripening",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8p1h")
+}],
+"loop": true,
+"name": &"Seedling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_002dl")
+}],
+"loop": true,
+"name": &"Sprouting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7cyj")
+}],
+"loop": true,
+"name": &"Vegetating",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_053fl"]
+
+[node name="APlantPrefab" type="StaticBody2D" groups=["Plant"]]
+script = ExtResource("1_g03kh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1rej4")
+animation = &"Ripening"
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_053fl")

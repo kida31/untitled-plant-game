@@ -2,9 +2,10 @@
 .godot/
 
 # Godot-specific ignores
+build/*
+!build/.gitkeep
 .import/
 export.cfg
-export_presets.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -19,6 +20,7 @@ mono_crash.*.json
 
 # Visual Studio IDE https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 .vs/
+.vscode/
 
 # MacOS specifics https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
 .DS_Store

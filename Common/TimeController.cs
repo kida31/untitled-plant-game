@@ -7,33 +7,36 @@ namespace untitledplantgame.Common;
 [Singleton]
 public partial class TimeController : Node
 {
+	/// Constants for time calculations
+	private const double SecondsPerDay = 24 * 60 * 60;
+	
+	private const double InGameToRealTimeMultiplier = 60.0; // 1 second = 1min
+	private const double InGameToRealTimeFastForwardMultiplier = SecondsPerDay; // 24h in 1s
+	private const double StartOfDaySeconds = 7 * 60 * 60;
+
+	/// The hour with which the day starts
 	/// Singleton instance that's accessible from anywhere
 	public static TimeController Instance { get; private set; }
 
-	/// Radial time in radians
-	public double Time { get; private set; }
+	public delegate void DayChangedHandler(int day);
 
-	private readonly Logger _logger = new("Time");
+	public event DayChangedHandler DayChanged;
 
-	/// Constants for time calculations
-	private const double MinutesPerDay = 1440;
-	private const double MinutesPerHour = 60;
-	private const double InGameToRealMinuteDuration = (2 * Math.PI) / MinutesPerDay;
+	public delegate void MinuteTickedHandler(int day, int hour, int minute);
 
-	/// The speed at which in-game time passes
-	private const double TickSpeed = 20.0;
+	public event MinuteTickedHandler MinuteTicked;
 
-	/// The hour with which the day starts
-	private const int InitialHour = 7;
 
-	private int _pastDay;
-	private int _pastMinute = -1;
+	/// <summary>
+	/// Current time in seconds
+	/// </summary>
+	public double CurrentSeconds { get; private set; }
 
-	[Signal]
-	public delegate void DayChangedEventHandler(int day);
-
-	[Signal]
-	public delegate void TimeTickEventHandler(int day, int hour, int minute);
+	private Logger _logger;
+	private int _currentDay; // For reference for DayChanged event
+	private int _currentMinute = -1; // For reference for MinuteTicked event
+	private double _fastForwardDuration = -1; // Gotta go fast juice. -1 means not fast forwarding. Consumed while fast forwarding
+	private double _currentTimeMultiplier = InGameToRealTimeMultiplier; // Multiplier for time speed
 
 	public override void _Ready()
 	{
@@ -45,8 +48,9 @@ public partial class TimeController : Node
 		}
 
 		Instance = this;
-		Time = InGameToRealMinuteDuration * InitialHour * MinutesPerHour;
-		_logger.Debug($"Time initialized with {Time}");
+		CurrentSeconds = StartOfDaySeconds;
+		_logger = new Logger(this);
+		_logger.Debug($"Time initialized with {CurrentSeconds}");
 	}
 
 	/**
@@ -55,41 +59,70 @@ public partial class TimeController : Node
 	 */
 	public override void _Process(double delta)
 	{
-		Time += delta * InGameToRealMinuteDuration * TickSpeed;
-		RecalculateTime();
+		double dt;
+		if (_fastForwardDuration < 0)
+		{
+			dt = delta * InGameToRealTimeMultiplier;
+			_currentTimeMultiplier = InGameToRealTimeMultiplier;
+		}
+		else
+		{
+			_currentTimeMultiplier = Mathf.Lerp(_currentTimeMultiplier, InGameToRealTimeFastForwardMultiplier, delta * 0.1);
+			dt = delta * _currentTimeMultiplier;
+		}
+
+		CurrentSeconds += dt;
+		_fastForwardDuration -= dt;
+
+		RecalculateTimeEvents();
 	}
 
 	/**
-	 * calculates in-game time every time tick (not every frame, as calculated in _Process())
+	 * TODO: calculates in-game time every time tick (not every frame, as calculated in _Process())
 	 * emits a signal with the current time
 	 */
-	private void RecalculateTime()
+	private void RecalculateTimeEvents()
 	{
-		var totalMinutes = (int)(Time / InGameToRealMinuteDuration);
+		const double minutesPerDay = 24 * 60;
+		const double minutesPerHour = 60;
 
-		var day = (int)(totalMinutes / MinutesPerDay);
-		var currentDayMinutes = (int)(totalMinutes % MinutesPerDay);
-		var hour = (int)(currentDayMinutes / MinutesPerHour);
-		var minute = (int)(currentDayMinutes % MinutesPerHour);
+		var totalMinutes = (int) (CurrentSeconds / 60);
 
-		if (_pastDay != day)
+		var currentDayMinutes = (int) (totalMinutes % minutesPerDay);
+		var hour = (int) (currentDayMinutes / minutesPerHour);
+		var minute = (int) (currentDayMinutes % minutesPerHour);
+
+		if (CurrentSeconds >= SecondsPerDay)
 		{
-			_logger.Debug($"Day {day} passed, emitting signal");
-			_pastDay = day;
-			EmitSignal(SignalName.DayChanged, day);
+			_logger.Debug($"Day {_currentDay} passed, emitting signal");
+			DayChanged?.Invoke(_currentDay);
+			_currentDay += 1;
+			CurrentSeconds = 0;
 		}
 
-		if (_pastMinute != minute)
+		if (_currentMinute != minute)
 		{
-			_pastMinute = minute;
-			EmitSignal(SignalName.TimeTick, day, hour, minute);
+			_currentMinute = minute;
+			MinuteTicked?.Invoke(_currentDay, hour, minute);
 		}
 	}
 
-	//Please remove this later
-	public void FastForwardFor(double targetTime)
+	public void GoToNextDay()
 	{
-		Time += targetTime;
-		RecalculateTime();
+		FastForwardTo(StartOfDaySeconds);
+		_currentTimeMultiplier = InGameToRealTimeFastForwardMultiplier;
+	}
+
+	//Please remove this later
+	public void FastForwardFor(double duration)
+	{
+		Assert.AssertTrue(duration > 0);
+		_fastForwardDuration = duration;
+	}
+
+	public void FastForwardTo(double targetTime)
+	{
+		Assert.AssertTrue(targetTime < SecondsPerDay, "Target time is greater than a day");
+		FastForwardFor((SecondsPerDay + targetTime - CurrentSeconds) % SecondsPerDay);
 	}
 }

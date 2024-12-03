@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxnxwjoe7007y"]
+
+[ext_resource type="Script" path="res://Scenes/TestScenes/PlantAndCycles/TestCycleWithPlants.cs" id="1_7jpbk"]
+[ext_resource type="PackedScene" uid="uid://cc5mcucmbfc65" path="res://Scenes/TestScenes/APlant/TestAPlant.tscn" id="3_0d3u6"]
+[ext_resource type="Script" path="res://Features/Plants/PlantController.cs" id="4_as062"]
+
+[node name="TestCycleWithPlants" type="Node2D" node_paths=PackedStringArray("_skipButton")]
+script = ExtResource("1_7jpbk")
+_skipButton = NodePath("Button")
+
+[node name="PlantController" type="Node" parent="."]
+script = ExtResource("4_as062")
+
+[node name="TestAPlant" parent="." instance=ExtResource("3_0d3u6")]
+position = Vector2(163, 128)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 98.0
+offset_right = 91.0
+offset_bottom = 134.0
+text = "Skip Day"

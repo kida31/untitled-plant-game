@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4rq57akghs3p"]
+
+[ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="1_o4o6c"]
+[ext_resource type="Script" path="res://Features/Inventory/GUI/ItemTooltipView.cs" id="2_physh"]
+
+[node name="ItemTooltipView" instance=ExtResource("1_o4o6c")]
+script = ExtResource("2_physh")
