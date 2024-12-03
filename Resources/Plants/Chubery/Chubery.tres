@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=18 format=3 uid="uid://b5djcvgnblad2"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=22 format=3 uid="uid://b5djcvgnblad2"]
 
 [ext_resource type="Script" path="res://Features/Plants/Models/PlantData.cs" id="1_1enty"]
 [ext_resource type="Script" path="res://Features/Plants/Models/RequirementData.cs" id="1_bpma1"]
@@ -7,16 +7,16 @@
 [sub_resource type="Resource" id="Resource_g2gpf"]
 script = ExtResource("1_bpma1")
 Name = 0
-MinLevel = 10.0
-MaxLevel = 100.0
-Capacity = 150.0
+MinLevel = 5.0
+MaxLevel = 15.0
+Capacity = 50.0
 
 [sub_resource type="Resource" id="Resource_8a5tx"]
 script = ExtResource("1_bpma1")
 Name = 1
-MinLevel = 50.0
-MaxLevel = 200.0
-Capacity = 250.0
+MinLevel = 10.0
+MaxLevel = 30.0
+Capacity = 100.0
 
 [sub_resource type="Resource" id="Resource_bcyye"]
 script = ExtResource("2_0wugi")
@@ -47,54 +47,82 @@ IsHarvestable = false
 [sub_resource type="Resource" id="Resource_o4fkv"]
 script = ExtResource("1_bpma1")
 Name = 0
-MinLevel = 40.0
-MaxLevel = 200.0
-Capacity = 300.0
+MinLevel = 10.0
+MaxLevel = 20.0
+Capacity = 50.0
 
 [sub_resource type="Resource" id="Resource_jynhp"]
 script = ExtResource("1_bpma1")
 Name = 1
-MinLevel = 150.0
-MaxLevel = 250.0
-Capacity = 300.0
+MinLevel = 20.0
+MaxLevel = 40.0
+Capacity = 100.0
 
 [sub_resource type="Resource" id="Resource_bvi8v"]
 script = ExtResource("2_0wugi")
 GrowthRequirements = Array[Object]([SubResource("Resource_o4fkv"), SubResource("Resource_jynhp")])
-DaysToGrow = 1
+DaysToGrow = 3
 IsHarvestable = false
 
 [sub_resource type="Resource" id="Resource_j3gli"]
 script = ExtResource("1_bpma1")
 Name = 0
-MinLevel = 60.0
-MaxLevel = 100.0
-Capacity = 250.0
+MinLevel = 25.0
+MaxLevel = 45.0
+Capacity = 80.0
 
 [sub_resource type="Resource" id="Resource_6k2t8"]
 script = ExtResource("1_bpma1")
 Name = 1
-MinLevel = 0.0
-MaxLevel = 0.0
-Capacity = 0.0
+MinLevel = 20.0
+MaxLevel = 30.0
+Capacity = 150.0
 
 [sub_resource type="Resource" id="Resource_25js4"]
 script = ExtResource("2_0wugi")
 GrowthRequirements = Array[Object]([SubResource("Resource_j3gli"), SubResource("Resource_6k2t8")])
-DaysToGrow = 1
-IsHarvestable = true
+DaysToGrow = 2
+IsHarvestable = false
+
+[sub_resource type="Resource" id="Resource_et1eh"]
+script = ExtResource("1_bpma1")
+Name = 1
+MinLevel = 30.0
+MaxLevel = 50.0
+Capacity = 100.0
+
+[sub_resource type="Resource" id="Resource_atury"]
+script = ExtResource("1_bpma1")
+Name = 0
+MinLevel = 20.0
+MaxLevel = 30.0
+Capacity = 150.0
 
 [sub_resource type="Resource" id="Resource_kdsyi"]
 script = ExtResource("2_0wugi")
-GrowthRequirements = null
-DaysToGrow = 0
+GrowthRequirements = Array[Object]([SubResource("Resource_et1eh"), SubResource("Resource_atury")])
+DaysToGrow = 4
 IsHarvestable = false
+
+[sub_resource type="Resource" id="Resource_0hl3d"]
+script = ExtResource("1_bpma1")
+Name = 1
+MinLevel = 35.0
+MaxLevel = 60.0
+Capacity = 150.0
+
+[sub_resource type="Resource" id="Resource_vvhq2"]
+script = ExtResource("1_bpma1")
+Name = 0
+MinLevel = 25.0
+MaxLevel = 35.0
+Capacity = 100.0
 
 [sub_resource type="Resource" id="Resource_bxr5s"]
 script = ExtResource("2_0wugi")
-GrowthRequirements = null
-DaysToGrow = 0
-IsHarvestable = false
+GrowthRequirements = Array[Object]([SubResource("Resource_0hl3d"), SubResource("Resource_vvhq2")])
+DaysToGrow = 4
+IsHarvestable = true
 
 [resource]
 script = ExtResource("1_1enty")

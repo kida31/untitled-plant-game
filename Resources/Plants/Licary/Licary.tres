@@ -1,8 +1,130 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=2 format=3 uid="uid://dn244n0kq2shv"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=22 format=3 uid="uid://dn244n0kq2shv"]
 
 [ext_resource type="Script" path="res://Features/Plants/Models/PlantData.cs" id="1_77ck6"]
+[ext_resource type="Script" path="res://Features/Plants/Models/RequirementData.cs" id="1_oaorh"]
+[ext_resource type="Script" path="res://Features/Plants/Models/RequirementDataForGrowthStage.cs" id="2_8l48c"]
+
+[sub_resource type="Resource" id="Resource_hktni"]
+script = ExtResource("1_oaorh")
+Name = 1
+MinLevel = 5.0
+MaxLevel = 25.0
+Capacity = 50.0
+
+[sub_resource type="Resource" id="Resource_ehaa3"]
+script = ExtResource("1_oaorh")
+Name = 0
+MinLevel = 5.0
+MaxLevel = 10.0
+Capacity = 50.0
+
+[sub_resource type="Resource" id="Resource_wqbh2"]
+script = ExtResource("2_8l48c")
+GrowthRequirements = Array[Object]([SubResource("Resource_hktni"), SubResource("Resource_ehaa3")])
+DaysToGrow = 2
+IsHarvestable = false
+
+[sub_resource type="Resource" id="Resource_082pg"]
+script = ExtResource("1_oaorh")
+Name = 0
+MinLevel = 10.0
+MaxLevel = 30.0
+Capacity = 80.0
+
+[sub_resource type="Resource" id="Resource_qgfnt"]
+script = ExtResource("1_oaorh")
+Name = 0
+MinLevel = 10.0
+MaxLevel = 15.0
+Capacity = 50.0
+
+[sub_resource type="Resource" id="Resource_ecvvi"]
+script = ExtResource("2_8l48c")
+GrowthRequirements = Array[Object]([SubResource("Resource_082pg"), SubResource("Resource_qgfnt")])
+DaysToGrow = 2
+IsHarvestable = false
+
+[sub_resource type="Resource" id="Resource_jv4vr"]
+script = ExtResource("1_oaorh")
+Name = 1
+MinLevel = 15.0
+MaxLevel = 35.0
+Capacity = 80.0
+
+[sub_resource type="Resource" id="Resource_s7gpc"]
+script = ExtResource("1_oaorh")
+Name = 0
+MinLevel = 15.0
+MaxLevel = 20.0
+Capacity = 60.0
+
+[sub_resource type="Resource" id="Resource_prixi"]
+script = ExtResource("2_8l48c")
+GrowthRequirements = Array[Object]([SubResource("Resource_jv4vr"), SubResource("Resource_s7gpc")])
+DaysToGrow = 3
+IsHarvestable = false
+
+[sub_resource type="Resource" id="Resource_dbd30"]
+script = ExtResource("1_oaorh")
+Name = 1
+MinLevel = 20.0
+MaxLevel = 40.0
+Capacity = 70.0
+
+[sub_resource type="Resource" id="Resource_uqct0"]
+script = ExtResource("1_oaorh")
+Name = 0
+MinLevel = 20.0
+MaxLevel = 30.0
+Capacity = 100.0
+
+[sub_resource type="Resource" id="Resource_egv7k"]
+script = ExtResource("2_8l48c")
+GrowthRequirements = Array[Object]([SubResource("Resource_dbd30"), SubResource("Resource_uqct0")])
+DaysToGrow = 4
+IsHarvestable = true
+
+[sub_resource type="Resource" id="Resource_dpomo"]
+script = ExtResource("1_oaorh")
+Name = 1
+MinLevel = 25.0
+MaxLevel = 45.0
+Capacity = 100.0
+
+[sub_resource type="Resource" id="Resource_cnibk"]
+script = ExtResource("1_oaorh")
+Name = 0
+MinLevel = 25.0
+MaxLevel = 35.0
+Capacity = 100.0
+
+[sub_resource type="Resource" id="Resource_7q8v8"]
+script = ExtResource("2_8l48c")
+GrowthRequirements = Array[Object]([SubResource("Resource_dpomo"), SubResource("Resource_cnibk")])
+DaysToGrow = 2
+IsHarvestable = true
+
+[sub_resource type="Resource" id="Resource_5jfu3"]
+script = ExtResource("1_oaorh")
+Name = 1
+MinLevel = 30.0
+MaxLevel = 50.0
+Capacity = 100.0
+
+[sub_resource type="Resource" id="Resource_4c8n4"]
+script = ExtResource("1_oaorh")
+Name = 0
+MinLevel = 30.0
+MaxLevel = 40.0
+Capacity = 150.0
+
+[sub_resource type="Resource" id="Resource_o7pu8"]
+script = ExtResource("2_8l48c")
+GrowthRequirements = Array[Object]([SubResource("Resource_5jfu3"), SubResource("Resource_4c8n4")])
+DaysToGrow = 2
+IsHarvestable = true
 
 [resource]
 script = ExtResource("1_77ck6")
-_plantName = ""
-DataForGrowthStages = null
+_plantName = "Licary"
+DataForGrowthStages = Array[Object]([SubResource("Resource_wqbh2"), SubResource("Resource_ecvvi"), SubResource("Resource_prixi"), SubResource("Resource_egv7k"), SubResource("Resource_7q8v8"), SubResource("Resource_o7pu8")])
