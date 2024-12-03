@@ -1,5 +1,6 @@
 using Godot;
 using untitledplantgame.Common.GameStates;
+using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Inventory.PlayerInventory.UI_Buttons;
 using untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 
@@ -26,25 +27,18 @@ public partial class PlayerInventoryController : Node
 
 		_playerInventory = new PlayerInventory(_tabsController.Categories.Count * _tabInventorySize); //_totalInventorySize
 	}
-
+	
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (@event is InputEventJoypadButton button)
+		if (@event.IsActionPressed(FreeRoam.OpenBook))
 		{
-			if (button.Pressed && button.ButtonIndex == JoyButton.Start)
-			{
-				_temporarySolution.Visible = !_temporarySolution.Visible;
-				if (_temporarySolution.Visible)
-				{
-					// Temporary solution to disable movement
-					_temps.SetFocus();
-					GameStateMachine.Instance.SetState(GameState.Shop);
-				}
-				else
-				{
-					GameStateMachine.Instance.SetState(GameState.FreeRoam);
-				}
-			}
+			_temporarySolution.Visible = true;
+			_temps.SetFocus();
+			GameStateMachine.Instance.SetState(GameState.Book);
+		} else if (@event.IsActionPressed(Book.CloseBook))
+		{
+			_temporarySolution.Visible = false;
+			GameStateMachine.Instance.SetState(GameState.FreeRoam);
 		}
 	}
 

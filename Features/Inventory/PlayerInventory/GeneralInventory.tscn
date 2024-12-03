@@ -16,44 +16,51 @@
 
 [node name="InventoryCanvas" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+offset_bottom = -66.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -600.0
-offset_top = -328.0
-offset_right = 600.0
-offset_bottom = 328.0
+offset_left = -480.0
+offset_top = -346.0
+offset_right = 480.0
+offset_bottom = 346.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+current_tab = 0
 
-[node name="Tabs" type="TabContainer" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+metadata/_tab_index = 0
+
+[node name="Tabs" type="TabContainer" parent="TabContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 current_tab = 0
 script = ExtResource("2_eefgp")
 
-[node name="SeedsTab" type="Control" parent="HBoxContainer/Tabs" node_paths=PackedStringArray("_moving")]
+[node name="SeedsTab" type="Control" parent="TabContainer/HBoxContainer/Tabs" node_paths=PackedStringArray("_moving")]
 layout_mode = 2
 script = ExtResource("2_f80sh")
 _inventoryItemScene = ExtResource("3_5pjti")
 _tabItemView = ExtResource("6_tsmv5")
-_moving = NodePath("../../../MovingItemView")
+_moving = NodePath("../../../../MovingItemView")
 metadata/_tab_index = 0
 
-[node name="HerbsTab" type="Control" parent="HBoxContainer/Tabs"]
+[node name="HerbsTab" type="Control" parent="TabContainer/HBoxContainer/Tabs"]
 visible = false
 layout_mode = 2
 script = ExtResource("3_kyvoe")
@@ -61,7 +68,7 @@ _inventoryItemScene = ExtResource("3_5pjti")
 _tabItemView = ExtResource("6_tsmv5")
 metadata/_tab_index = 1
 
-[node name="MedicineTab" type="Control" parent="HBoxContainer/Tabs"]
+[node name="MedicineTab" type="Control" parent="TabContainer/HBoxContainer/Tabs"]
 visible = false
 layout_mode = 2
 script = ExtResource("4_3lda1")
@@ -69,73 +76,63 @@ _inventoryItemScene = ExtResource("3_5pjti")
 _tabItemView = ExtResource("6_tsmv5")
 metadata/_tab_index = 2
 
-[node name="RightDisplay" type="PanelContainer" parent="HBoxContainer"]
+[node name="RightDisplay" type="PanelContainer" parent="TabContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" parent="HBoxContainer/RightDisplay" instance=ExtResource("8_6xk6p")]
+[node name="VBoxContainer" parent="TabContainer/HBoxContainer/RightDisplay" instance=ExtResource("8_6xk6p")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer"]
 visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -600.0
-offset_top = -328.0
-offset_right = 600.0
-offset_bottom = 328.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 metadata/_edit_use_anchors_ = true
+metadata/_tab_index = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/HBoxContainer2/PanelContainer"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 128
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer"]
+[node name="Button" type="Button" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 text = "Plant"
 
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2"]
+[node name="Button" type="Button" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2"]
 layout_mode = 2
 text = "Material"
 
-[node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="PanelContainer3" type="PanelContainer" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer3"]
+[node name="Button" type="Button" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer3"]
 layout_mode = 2
 text = "Medicine"
 
-[node name="CenterContainer2" type="CenterContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2" node_paths=PackedStringArray("_plantButton", "_materialButton", "_medicineButton", "_scrollViewItems")]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2" node_paths=PackedStringArray("_plantButton", "_materialButton", "_medicineButton", "_scrollViewItems")]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
@@ -145,57 +142,57 @@ _materialButton = NodePath("../../CenterContainer/HBoxContainer/PanelContainer2/
 _medicineButton = NodePath("../../CenterContainer/HBoxContainer/PanelContainer3/Button")
 _scrollViewItems = NodePath("CenterContainer/VBoxContainer")
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="MarginContainer2" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer2" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="MarginContainer3" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer3" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="MarginContainer4" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer4" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="MarginContainer5" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer5" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="MarginContainer6" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer6" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="MarginContainer7" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer7" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="MarginContainer8" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer8" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="MarginContainer9" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer9" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="MarginContainer10" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer10" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="MarginContainer11" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer11" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="MarginContainer12" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+[node name="MarginContainer12" parent="TabContainer/HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
 layout_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer2"]
+[node name="PanelContainer2" type="PanelContainer" parent="TabContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("9_xuc6d")
 _detailedWikiItemView = ExtResource("9_dcydr")
 
-[node name="VBoxContainer" parent="HBoxContainer2/PanelContainer2" instance=ExtResource("9_dcydr")]
+[node name="VBoxContainer" parent="TabContainer/HBoxContainer2/PanelContainer2" instance=ExtResource("9_dcydr")]
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -218,14 +215,14 @@ layout_mode = 2
 [node name="PanelContainer" parent="PanelContainer/HBoxContainer" node_paths=PackedStringArray("_nodeToShow", "_nodesToHide") instance=ExtResource("11_4t4ka")]
 layout_mode = 2
 _buttonName = "Left"
-_nodeToShow = NodePath("../../../HBoxContainer")
-_nodesToHide = [NodePath("../../../HBoxContainer2")]
+_nodeToShow = NodePath("../../../TabContainer/HBoxContainer")
+_nodesToHide = [NodePath("../../../TabContainer/HBoxContainer2")]
 
 [node name="PanelContainer2" parent="PanelContainer/HBoxContainer" node_paths=PackedStringArray("_nodeToShow", "_nodesToHide") instance=ExtResource("11_4t4ka")]
 layout_mode = 2
 _buttonName = "Right"
-_nodeToShow = NodePath("../../../HBoxContainer2")
-_nodesToHide = [NodePath("../../../HBoxContainer")]
+_nodeToShow = NodePath("../../../TabContainer/HBoxContainer2")
+_nodesToHide = [NodePath("../../../TabContainer/HBoxContainer")]
 
 [node name="MovingItemView" parent="." instance=ExtResource("3_5pjti")]
 visible = false
@@ -239,5 +236,5 @@ offset_bottom = -159.0
 script = ExtResource("1_rrual")
 _temporarySolution = NodePath("..")
 _temps = NodePath("../PanelContainer/HBoxContainer/PanelContainer")
-_tabsController = NodePath("../HBoxContainer/Tabs")
+_tabsController = NodePath("../TabContainer/HBoxContainer/Tabs")
 _tabInventorySize = 15
