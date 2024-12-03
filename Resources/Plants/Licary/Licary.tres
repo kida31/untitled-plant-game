@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=2 format=3 uid="uid://dn244n0kq2shv"]
+
+[ext_resource type="Script" path="res://Features/Plants/Models/PlantData.cs" id="1_77ck6"]
+
+[resource]
+script = ExtResource("1_77ck6")
+_plantName = ""
+DataForGrowthStages = null
