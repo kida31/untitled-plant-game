@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://f7it4seve2en"]
+[gd_scene load_steps=12 format=3 uid="uid://f7it4seve2en"]
 
 [ext_resource type="Script" path="res://Features/Plants/APlant.cs" id="1_g03kh"]
 [ext_resource type="Texture2D" uid="uid://dxjrcllnnc3s2" path="res://Assets/OverworldAssets/Plant/Licary_SpriteSheet.png" id="2_ukl5i"]
@@ -87,9 +87,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="APlantPrefab" type="Node2D" groups=["Plant"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_053fl"]
+
+[node name="APlantPrefab" type="StaticBody2D" groups=["Plant"]]
 script = ExtResource("1_g03kh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1rej4")
 animation = &"Ripening"
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_053fl")

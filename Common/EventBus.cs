@@ -47,6 +47,10 @@ public partial class EventBus : Node
 	}
 
 	//---------------------------------------------Legacy Signals---------------------------------------------
+
+
+	
+
 	public event Action OnSeedshopOpened;
 
 	public void SeedshopOpened()
@@ -93,6 +97,12 @@ public partial class EventBus : Node
 	public void InvokeInitialiseDialogue(IDialogueSystem obj)
 	{
 		InitialiseDialogue?.Invoke(obj);
+	}
+
+	public event Action<int, int> GoldChanged;
+	public void InvokeGoldChanged(int deltaGold, int newGold)
+	{
+		GoldChanged?.Invoke(deltaGold, newGold);
 	}
 	
 	
