@@ -21,6 +21,7 @@ public partial class SwapInventoryViewUiButton : Control
 		foreach (var canvasItem in _nodesToHide)
 		{
 			canvasItem.Hide();
+			GD.Print(canvasItem.Visible);
 		}
 
 		_nodeToShow.Show();
