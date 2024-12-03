@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cca7okqb2j4c7"]
 
-[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/PlayerInventoryController.cs" id="1_rrual"]
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/BookView.cs" id="1_rrual"]
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/TabsController.cs" id="2_eefgp"]
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/SeedsTab.cs" id="2_f80sh"]
 [ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.tscn" id="3_5pjti"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Wiki/DetailedWikiController.cs" id="9_xuc6d"]
 [ext_resource type="PackedScene" uid="uid://cwvye641p7k3x" path="res://Features/Inventory/PlayerInventory/UI_Buttons/UIButton.tscn" id="11_4t4ka"]
 
-[node name="InventoryCanvas" type="Control"]
+[node name="BookView" type="Control" node_paths=PackedStringArray("_temporarySolution", "_tabsController")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +25,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_rrual")
+_temporarySolution = NodePath(".")
+_tabsController = NodePath("TabContainer/HBoxContainer/Tabs")
+_tabInventorySize = 15
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
@@ -231,10 +235,3 @@ offset_left = -582.0
 offset_top = -255.0
 offset_right = -486.0
 offset_bottom = -159.0
-
-[node name="GeneralInventoryLogic" type="Node" parent="." node_paths=PackedStringArray("_temporarySolution", "_temps", "_tabsController")]
-script = ExtResource("1_rrual")
-_temporarySolution = NodePath("..")
-_temps = NodePath("../PanelContainer/HBoxContainer/PanelContainer")
-_tabsController = NodePath("../TabContainer/HBoxContainer/Tabs")
-_tabInventorySize = 15

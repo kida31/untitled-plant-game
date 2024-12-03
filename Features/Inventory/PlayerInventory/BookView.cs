@@ -9,13 +9,12 @@ namespace untitledplantgame.Inventory.PlayerInventory;
 /*
  * Reminder: C# doesn't copy objects inside of lists, but rather creates an additional reference!
  */
-public partial class PlayerInventoryController : Node
+public partial class BookView : Control
 {
 	[Export] private Control _temporarySolution;
-	[Export] private SwapInventoryViewUiButton _temps;
 	[Export] private TabsController _tabsController;
 	[Export] private int _tabInventorySize;
-
+	// TODO add custom tab buttons
 	private PlayerInventory _playerInventory;
 
 	public override void _Ready()
@@ -33,7 +32,6 @@ public partial class PlayerInventoryController : Node
 		if (@event.IsActionPressed(FreeRoam.OpenBook))
 		{
 			_temporarySolution.Visible = true;
-			_temps.SetFocus();
 			GameStateMachine.Instance.SetState(GameState.Book);
 		} else if (@event.IsActionPressed(Book.CloseBook))
 		{
