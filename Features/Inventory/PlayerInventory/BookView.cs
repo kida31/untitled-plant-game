@@ -11,7 +11,6 @@ namespace untitledplantgame.Inventory.PlayerInventory;
  */
 public partial class BookView : Control
 {
-	[Export] private Control _temporarySolution;
 	[Export] private TabsController _tabsController;
 	[Export] private int _tabInventorySize;
 	// TODO add custom tab buttons
@@ -31,11 +30,11 @@ public partial class BookView : Control
 	{
 		if (@event.IsActionPressed(FreeRoam.OpenBook))
 		{
-			_temporarySolution.Visible = true;
+			Visible = true;
 			GameStateMachine.Instance.SetState(GameState.Book);
 		} else if (@event.IsActionPressed(Book.CloseBook))
 		{
-			_temporarySolution.Visible = false;
+			Visible = false;
 			GameStateMachine.Instance.SetState(GameState.FreeRoam);
 		}
 	}
@@ -47,6 +46,6 @@ public partial class BookView : Control
 
 	private void ShowInventory()
 	{
-		_temporarySolution.Show();
+		Show();
 	}
 }
