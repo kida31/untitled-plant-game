@@ -20,25 +20,15 @@ public partial class ScrollViewController : ScrollContainer
 	private const int JumpToThreshold = 10; // Needs to be higher if scrolling should happen faster
 	private const int ScrollToFocusedElementSpeed = 300; // Determines how long each automated scroll should be
 	private WikiItemView _currentlySelectedWikiItemView;
-	private System.Collections.Generic.Dictionary<Button, Action> _buttonActions;
 	
 	public override void _Ready()
 	{
 		GetAllScrollViewItems().First().GrabFocusToButton();
-		
 		EventBus.Instance.OnScrollContainerViewUpdate += ScrollToFocusedElement;
 		
-		_buttonActions = new System.Collections.Generic.Dictionary<Button, Action>
-		{
-			{ _plantButton, ScrollToFirstPlantElement },
-			{ _materialButton, ScrollToFirstMaterialElement },
-			{ _medicineButton, ScrollToFirstMedicineElement }
-		};
-		
-		foreach (var pair in _buttonActions)
-		{
-			pair.Key.Pressed += () => pair.Value();
-		}
+		_plantButton.Pressed += ScrollToFirstPlantElement;
+		_materialButton.Pressed += ScrollToFirstMaterialElement;
+		_medicineButton.Pressed += ScrollToFirstMedicineElement;
 	}
 	
 	public override void _Process(double delta)

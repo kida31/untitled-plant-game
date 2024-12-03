@@ -1,19 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://cca7okqb2j4c7"]
+[gd_scene load_steps=9 format=3 uid="uid://cca7okqb2j4c7"]
 
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/BookView.cs" id="1_rrual"]
-[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/TabsController.cs" id="2_eefgp"]
-[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/SeedsTab.cs" id="2_f80sh"]
+[ext_resource type="PackedScene" uid="uid://5oay11tne1l4" path="res://Features/Inventory/PlayerInventory/Views/InventoryWithTabs.tscn" id="2_p1lmy"]
 [ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.tscn" id="3_5pjti"]
-[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/HerbsTab.cs" id="3_kyvoe"]
-[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/MedicineTab.cs" id="4_3lda1"]
-[ext_resource type="PackedScene" uid="uid://msi6pcy22i2y" path="res://Features/Inventory/PlayerInventory/UI_Tabs/TabItemView.tscn" id="6_tsmv5"]
-[ext_resource type="PackedScene" uid="uid://dtgjnb2g3iphl" path="res://Features/Inventory/PlayerInventory/UI_Screens/PlayerDetailsPage.tscn" id="8_6xk6p"]
+[ext_resource type="PackedScene" uid="uid://dtgjnb2g3iphl" path="res://Features/Inventory/PlayerInventory/Views/PlayerDetails.tscn" id="8_6xk6p"]
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Wiki/ScrollViewController.cs" id="8_16ofx"]
 [ext_resource type="PackedScene" uid="uid://b2i7oxcdj4025" path="res://Features/Inventory/PlayerInventory/UI_Wiki/WikiItemView.tscn" id="9_d2c8a"]
 [ext_resource type="PackedScene" uid="uid://bmc1oq8o2if8d" path="res://Features/Inventory/PlayerInventory/UI_Wiki/DetailedWikiItemView.tscn" id="9_dcydr"]
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Wiki/DetailedWikiController.cs" id="9_xuc6d"]
 
-[node name="BookView" type="Control" node_paths=PackedStringArray("_tabsController")]
+[node name="BookView" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,8 +23,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_rrual")
-_tabsController = NodePath("TabContainer/HBoxContainer/Tabs")
-_tabInventorySize = 15
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
@@ -37,58 +31,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -480.0
+offset_left = -585.0
 offset_top = -346.0
-offset_right = 480.0
-offset_bottom = 346.0
+offset_right = 559.0
+offset_bottom = 302.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 metadata/_tab_index = 0
 
-[node name="Tabs" type="TabContainer" parent="TabContainer/HBoxContainer"]
+[node name="TabbedInventoryView" parent="TabContainer/HBoxContainer" instance=ExtResource("2_p1lmy")]
+layout_mode = 2
+
+[node name="PlayerDetails" parent="TabContainer/HBoxContainer" instance=ExtResource("8_6xk6p")]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 0
-script = ExtResource("2_eefgp")
-
-[node name="SeedsTab" type="Control" parent="TabContainer/HBoxContainer/Tabs" node_paths=PackedStringArray("_moving")]
-layout_mode = 2
-script = ExtResource("2_f80sh")
-_inventoryItemScene = ExtResource("3_5pjti")
-_tabItemView = ExtResource("6_tsmv5")
-_moving = NodePath("../../../../MovingItemView")
-metadata/_tab_index = 0
-
-[node name="HerbsTab" type="Control" parent="TabContainer/HBoxContainer/Tabs"]
-visible = false
-layout_mode = 2
-script = ExtResource("3_kyvoe")
-_inventoryItemScene = ExtResource("3_5pjti")
-_tabItemView = ExtResource("6_tsmv5")
-metadata/_tab_index = 1
-
-[node name="MedicineTab" type="Control" parent="TabContainer/HBoxContainer/Tabs"]
-visible = false
-layout_mode = 2
-script = ExtResource("4_3lda1")
-_inventoryItemScene = ExtResource("3_5pjti")
-_tabItemView = ExtResource("6_tsmv5")
-metadata/_tab_index = 2
-
-[node name="RightDisplay" type="PanelContainer" parent="TabContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" parent="TabContainer/HBoxContainer/RightDisplay" instance=ExtResource("8_6xk6p")]
-layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 metadata/_tab_index = 1
