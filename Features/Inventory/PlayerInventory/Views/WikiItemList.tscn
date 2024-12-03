@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c77ama5r0mirv"]
+[gd_scene load_steps=4 format=3 uid="uid://c77ama5r0mirv"]
 
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Wiki/ScrollViewController.cs" id="1_2ipb1"]
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/Views/WikiItemList.cs" id="1_lt328"]
 [ext_resource type="PackedScene" uid="uid://b2i7oxcdj4025" path="res://Features/Inventory/PlayerInventory/UI_Wiki/WikiItemView.tscn" id="2_kax1w"]
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="WikiItemList" type="PanelContainer" node_paths=PackedStringArray("_itemViewContainer")]
 size_flags_horizontal = 3
+script = ExtResource("1_lt328")
+_itemViewPrefab = ExtResource("2_kax1w")
+_itemViewContainer = NodePath("VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -53,48 +57,48 @@ script = ExtResource("1_2ipb1")
 _plantButton = NodePath("../../CenterContainer/HBoxContainer/PanelContainer/Button")
 _materialButton = NodePath("../../CenterContainer/HBoxContainer/PanelContainer2/Button")
 _medicineButton = NodePath("../../CenterContainer/HBoxContainer/PanelContainer3/Button")
-_scrollViewItems = NodePath("CenterContainer/VBoxContainer")
+_scrollViewItems = NodePath("CenterContainer/ItemViewContainer")
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/CenterContainer2/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer"]
+[node name="ItemViewContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer2" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer2" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer3" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer3" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer4" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer4" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer5" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer5" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer6" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer6" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer7" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer7" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer8" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer8" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer9" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer9" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer10" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer10" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer11" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer11" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer12" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer12" parent="VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2

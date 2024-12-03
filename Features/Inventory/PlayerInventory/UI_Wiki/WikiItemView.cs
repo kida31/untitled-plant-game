@@ -1,36 +1,41 @@
+using System;
 using Godot;
 namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
 // Make a string, so you can change up the category and jump to that. 
 public partial class WikiItemView : Control
 {
+	public event Action Pressed;
+
 	[Export] private Label _itemName;
 	[Export] private BaseButton _detailedWikiItemViewButton;
 	[Export] private TextureRect _iconTextureRect;
 	[Export] private TextureRect _nameTextureRect;
 
 	[Export] private Texture2D _temporary;
-	
-	public ItemStack ItemStack;
+
+	private ItemStack _itemStack;
+	public ItemStack ItemStack
+	{
+		get => _itemStack;
+		set
+		{
+			_itemStack = value;
+			OnSetItemStack(value);
+		}
+	}
 
 	public override void _Ready()
 	{
 		_detailedWikiItemViewButton.FocusEntered += SetFocusOnThisView;
 		_detailedWikiItemViewButton.Pressed += ShowDetailedWikiItemView;
+	}
+	
+	private void OnSetItemStack(ItemStack itemStack)
+	{
 		
-		// Temporary test
-		ItemStack = new ItemStack(
-			"seeds",
-			"Wonder's Seed", 
-			_temporary, 
-			"Long Description with a lot of text. Like lots and lots and lots and lots... oh, a butterfly!", 
-			ItemCategory.Plant,
-			1,
-			1
-			);
-
-		_itemName.Text = ItemStack.Name;
-		_iconTextureRect.Texture = ItemStack.Icon;
+		_itemName.Text = itemStack.Name;
+		_iconTextureRect.Texture = itemStack.Icon ?? _temporary;
 	}
 	
 	public override void _UnhandledInput(InputEvent @event)
