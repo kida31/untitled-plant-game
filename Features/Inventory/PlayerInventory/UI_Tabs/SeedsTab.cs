@@ -1,6 +1,5 @@
 using Godot;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
-using untitledplantgame.Item;
 
 namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 
@@ -10,7 +9,8 @@ public partial class SeedsTab : Node, ICategoryTab
 	[Export] public string SeedsTabDescription;
 	[Export] private PackedScene _inventoryItemScene;
 	[Export] private PackedScene _tabItemView;
-
+	[Export] private InventoryItemView _moving;
+	
 	private TabItemView _seedsItemView;
 	private InventoryItemView[] _inventoryItemViews;
 
@@ -18,6 +18,16 @@ public partial class SeedsTab : Node, ICategoryTab
 	{
 		_seedsItemView = _tabItemView.Instantiate<TabItemView>();
 		AddChild(_seedsItemView);
+	}
+
+	public override void _Ready()
+	{
+		EventBus.Instance.OnInventoryItemViewPressed += CreateHoverItemView;
+		EventBus.Instance.OnInventoryItemViewMoved += MoveHoverItemView;
+		EventBus.Instance.OnInventoryItemViewReleased += DisabledHoverItemView;
+		
+		// Temporary Solution to highlight first element
+		EventBus.Instance.OnInventoryOpen += HighlightFirstElementOfSeedTab;
 	}
 
 	public override void _Process(double delta) { }
@@ -53,10 +63,16 @@ public partial class SeedsTab : Node, ICategoryTab
 		}
 	}
 
-	public ItemStack[] GetItemsInCategoryTab()
+	// Delete after MVP
+	private void HighlightFirstElementOfSeedTab()
 	{
-		// Useless
-		return null;
+		foreach (var inventoryItemView in _inventoryItemViews)
+		{
+			if (inventoryItemView.ItemStack != null)
+			{
+				inventoryItemView.SetThisItemViewFocused();
+			}
+		}
 	}
 
 	private void FillTabWithEmptyInventoryItemViews()
@@ -67,6 +83,53 @@ public partial class SeedsTab : Node, ICategoryTab
 			itemView.Id = i;
 			_seedsItemView.GetGridContainer().AddChild(itemView);
 			_inventoryItemViews[i] = itemView;
+		}
+	}
+
+	private void CreateHoverItemView(InventoryItemView inventoryItemView)
+	{
+		if (inventoryItemView.ItemStack != null && _moving.ItemStack == null)
+		{
+			_moving.Show();
+
+			var slightlyOffPosition = new Vector2(20, -20);
+			slightlyOffPosition += inventoryItemView.GlobalPosition;
+			_moving.GlobalPosition = slightlyOffPosition;
+			_moving.UpdateItemView(inventoryItemView.ItemStack);
+			inventoryItemView.UpdateItemView(null);
+		}
+	}
+
+	private void MoveHoverItemView(InventoryItemView inventoryItemView)
+	{
+		var slightlyOffPosition = new Vector2(20, -20);
+		slightlyOffPosition += inventoryItemView.GlobalPosition;
+		_moving.GlobalPosition = slightlyOffPosition;
+	}
+
+	private void DisabledHoverItemView(InventoryItemView inventoryItemView)
+	{
+		if (inventoryItemView.ItemStack == null)
+		{
+			inventoryItemView.UpdateItemView(_moving.ItemStack);
+			_moving.UpdateItemView(null);
+			_moving.Hide();
+		}
+	}
+	
+	// Delete after MVP
+	private void SafeTanglingItemView()
+	{
+		foreach (var inventoryItemView in _inventoryItemViews)
+		{
+			if (inventoryItemView.ItemStack != null)
+			{
+				inventoryItemView.UpdateItemView(_moving.ItemStack);
+				inventoryItemView.SetThisItemViewFocused();
+				_moving.UpdateItemView(null);
+				_moving.Hide();
+				return;
+			}
 		}
 	}
 }

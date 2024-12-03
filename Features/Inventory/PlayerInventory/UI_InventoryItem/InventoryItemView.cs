@@ -6,17 +6,33 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 public partial class InventoryItemView : Control
 {
 	[Export] private Texture2D _specificItemIcon;
+	[Export] private TextureRect _itemTextureRect;
 	[Export] private Label _displayItemName;
 	[Export] private Label _itemCurrentQuantity;
-	[Export] private TextureRect _itemTextureRect;
+	[Export] private Button _inventoryItemViewButton;
 
-	public int Id;
 	private Logger _logger;
+	
+	public int Id;
 	public ItemStack ItemStack;
 	
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
+		
+		_inventoryItemViewButton.FocusEntered += () =>
+		{
+			EventBus.Instance.UiInventoryItemViewMoved(this);
+			_logger.Debug($"[{Name}] Entered");
+		};
+		_inventoryItemViewButton.FocusExited += () =>
+		{
+			_logger.Debug($"[{Name}] Entered");
+		};
+		
+		
+		// OLD
+		/*
 		
 		Connect(SignalName.MouseEntered, Callable.From(OnMouseEntered)); 
 		Connect(SignalName.MouseExited, Callable.From(OnMouseExited));
@@ -32,6 +48,7 @@ public partial class InventoryItemView : Control
 			_itemTextureRect.Show();
 			_logger.Debug($"[{Name}] Exited");
 		};
+		*/
 	}
 
 	public void UpdateItemView(ItemStack itemStack)
@@ -56,11 +73,38 @@ public partial class InventoryItemView : Control
 		}
 	}
 	
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (_inventoryItemViewButton.HasFocus())
+		{
+			if (@event is InputEventJoypadButton button)
+			{
+				if (button.Pressed && button.ButtonIndex == JoyButton.A)
+				{
+					if (ItemStack != null)
+					{
+						EventBus.Instance.UiInventoryItemViewPressed(this);
+					}
+					else
+					{
+						EventBus.Instance.UiInventoryItemViewReleased(this);
+					}
+				}
+			}
+		}
+	}
+
+	public void SetThisItemViewFocused()
+	{
+		_inventoryItemViewButton.GrabFocus();
+	}
+	
 	public override Variant _GetDragData(Vector2 atPosition)
 	{
 		// This is your custom method generating the preview of the drag data. Can be any Control node.
 		var textureRect = new TextureRect();
 		textureRect.Texture = _itemTextureRect.Texture;
+		textureRect.PivotOffset = textureRect.Size / 2;
 		SetDragPreview(textureRect);
 		
 		_itemTextureRect.Texture = null; // simulate drag; 

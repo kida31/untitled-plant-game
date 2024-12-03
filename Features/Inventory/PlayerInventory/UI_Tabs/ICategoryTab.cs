@@ -7,5 +7,4 @@ public interface ICategoryTab
 	void SetTabInventorySize(int inventorySize);
 	void UpdateTabUi(ItemStack item);
 	void DropInventoryItemToNewSlot(ItemStack item, int slot);
-	ItemStack[] GetItemsInCategoryTab();
 }

@@ -23,7 +23,7 @@ public partial class InteractableItem : AInteractable
 	public override void Interact()
 	{
 		EventBus.Instance.ItemPickedUp(ItemStack);
-		GD.Print("Item picked up");
+		EventBus.Instance.InventoryOpened();
 		QueueFree();
 	}
 

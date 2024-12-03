@@ -64,6 +64,30 @@ public partial class ScrollViewController : ScrollContainer
 	// Cancel the auto scrolling if player decides to intervene
 	public override void _UnhandledInput(InputEvent @event)
 	{
+		// Delete after MVP
+		if (@event is InputEventJoypadButton button && _plantButton.HasFocus())
+		{
+			if (button.Pressed && button.ButtonIndex == JoyButton.A)
+			{
+				ScrollToY(0);
+			}
+		}
+		if (@event is InputEventJoypadButton button2 && _materialButton.HasFocus())
+		{
+			if (button2.Pressed && button2.ButtonIndex == JoyButton.A)
+			{
+				ScrollToY(164);
+			}
+		}
+		if (@event is InputEventJoypadButton button3 && _medicineButton.HasFocus())
+		{
+			if (button3.Pressed && button3.ButtonIndex == JoyButton.A)
+			{
+				ScrollToY(328);
+			}
+		}
+		// Delete after MVP
+		
 		if (@event is InputEventMouseButton mouseEvent)
 		{
 			if (mouseEvent.ButtonIndex == MouseButton.WheelUp || mouseEvent.ButtonIndex == MouseButton.WheelDown)

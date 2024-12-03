@@ -2,19 +2,19 @@
 
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.cs" id="1_753u5"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_s1jlp"]
-[ext_resource type="Texture2D" uid="uid://dary2k7vaser5" path="res://DefaultItemBackground_Black.png" id="3_0i1d7"]
+[ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="3_0i1d7"]
 
-[node name="ItemView" type="PanelContainer" node_paths=PackedStringArray("_displayItemName", "_itemCurrentQuantity", "_itemTextureRect")]
-custom_minimum_size = Vector2(128, 128)
+[node name="ItemView" type="PanelContainer" node_paths=PackedStringArray("_itemTextureRect", "_displayItemName", "_itemCurrentQuantity", "_inventoryItemViewButton")]
+custom_minimum_size = Vector2(96, 96)
 offset_right = 64.0
 offset_bottom = 64.0
 tooltip_text = "Placeholder_Text"
-focus_mode = 2
 script = ExtResource("1_753u5")
 _specificItemIcon = ExtResource("2_s1jlp")
+_itemTextureRect = NodePath("MarginContainer/TextureRect")
 _displayItemName = NodePath("ItemName")
 _itemCurrentQuantity = NodePath("ItemQuantity")
-_itemTextureRect = NodePath("MarginContainer/TextureRect")
+_inventoryItemViewButton = NodePath("Button")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -50,5 +50,6 @@ vertical_alignment = 3
 autowrap_mode = 2
 justification_flags = 162
 
-[node name="DefaultDraggingContainer" type="CenterContainer" parent="."]
+[node name="Button" type="Button" parent="."]
 layout_mode = 2
+flat = true

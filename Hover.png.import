@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw2vrxeho0fas"
-path="res://.godot/imported/DefaultItemBackground_Black.png-01eb2f39c7906aae707a3ef254cb7428.ctex"
+uid="uid://cyk32acdb544h"
+path="res://.godot/imported/Hover.png-ad81ed31f67d786569743b758e558b17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DefaultItemBackground_Black.png"
-dest_files=["res://.godot/imported/DefaultItemBackground_Black.png-01eb2f39c7906aae707a3ef254cb7428.ctex"]
+source_file="res://Hover.png"
+dest_files=["res://.godot/imported/Hover.png-ad81ed31f67d786569743b758e558b17.ctex"]
 
 [params]
 

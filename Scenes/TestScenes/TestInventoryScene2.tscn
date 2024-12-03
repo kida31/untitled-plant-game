@@ -35,4 +35,7 @@ position = Vector2(212, 102)
 [node name="GenericItem3" parent="." instance=ExtResource("8_hltls")]
 position = Vector2(267, 103)
 
-[node name="InventoryCanvas" parent="." instance=ExtResource("8_7eml6")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryCanvas" parent="CanvasLayer" instance=ExtResource("8_7eml6")]
+visible = false

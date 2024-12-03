@@ -25,4 +25,24 @@ public partial class SwapInventoryViewUiButton : Control
 
 		_nodeToShow.Show();
 	}
+	
+	// Delete after MVP
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (_button.HasFocus())
+		{
+			if (@event is InputEventJoypadButton button)
+			{
+				if (button.Pressed && button.ButtonIndex == JoyButton.A)
+				{
+					OnButtonClick();
+				}
+			}
+		}
+	}
+
+	public void SetFocus()
+	{
+		_button.GrabFocus();
+	}
 }

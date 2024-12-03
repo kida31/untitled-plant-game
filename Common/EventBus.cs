@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.GameStates;
 using untitledplantgame.Dialogue;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
@@ -102,17 +103,27 @@ public partial class EventBus : Node
 	
 	
 	public delegate InventoryItemView GetItemSlotEventHandler();
-	
+
+	public Action OnInventoryOpen;
 	public event Action<int> OnFaithChange;
 	public event Action<int> OnCurrencyChange;
 	public event Action<WikiItemView> OnScrollContainerViewUpdate; 
 	public event Action<ItemStack> OnTabsUpdate;
 	public event Action<ItemStack> OnItemPickUp;
 	public event Action<ItemStack> OnWikiItemClicked;
+	public event Action<InventoryItemView> OnInventoryItemViewPressed;
+	public event Action<InventoryItemView> OnInventoryItemViewMoved;
+	public event Action<InventoryItemView> OnInventoryItemViewReleased;
 	public event Action<InventoryItemView> OnSetItemSlot;
 	public event Action<ItemStack, InventoryItemView> OnInventoryItemMove;
 	public event GetItemSlotEventHandler OnGetItemSlot;
-	
+
+
+	public void InventoryOpened()
+	{
+		GameStateMachine.Instance.SetState(GameState.Shop);
+		OnInventoryOpen?.Invoke();
+	}
 	
 	public void FaithChanged(int change)
 	{
@@ -142,6 +153,21 @@ public partial class EventBus : Node
 	public void UiWikiItemClicked(ItemStack itemStack)
 	{
 		OnWikiItemClicked?.Invoke(itemStack);
+	}
+
+	public void UiInventoryItemViewPressed(InventoryItemView inventoryItemView)
+	{
+		OnInventoryItemViewPressed?.Invoke(inventoryItemView);
+	}
+	
+	public void UiInventoryItemViewMoved(InventoryItemView inventoryItemView)
+	{
+		OnInventoryItemViewMoved?.Invoke(inventoryItemView);
+	}
+	
+	public void UiInventoryItemViewReleased(InventoryItemView inventoryItemView)
+	{
+		OnInventoryItemViewReleased?.Invoke(inventoryItemView);
 	}
 	
 	public void SetItemSlot(InventoryItemView inventoryItemView)
