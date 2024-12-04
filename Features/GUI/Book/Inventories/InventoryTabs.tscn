@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://5oay11tne1l4"]
+
+[ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryTabsView.cs" id="1_vftlt"]
+[ext_resource type="PackedScene" uid="uid://c8qlvfu5vslvx" path="res://Features/GUI/Book/Inventories/Inventory.tscn" id="2_c8g2c"]
+
+[node name="InventoryTabsView" type="TabContainer"]
+size_flags_horizontal = 3
+current_tab = 2
+script = ExtResource("1_vftlt")
+
+[node name="Tab1" parent="." instance=ExtResource("2_c8g2c")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Tab2" parent="." instance=ExtResource("2_c8g2c")]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Tab3" parent="." instance=ExtResource("2_c8g2c")]
+visible = true
+layout_mode = 2
+metadata/_tab_index = 2

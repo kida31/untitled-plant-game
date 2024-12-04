@@ -12,10 +12,10 @@ public partial class WikiArticleView : Node
 	
 	private ItemStack _itemStack;
 	
-	public void SetItemStack(ItemStack itemStack)
+	public void UpdateItemStack(ItemStack itemStack)
 	{
 		_itemStack = itemStack;
-		// TODO: fetch wiki data
+		// TODO: fetch wiki data here or in controller
 		UpdateView();
 	}
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Shops;
@@ -13,7 +14,8 @@ public class RandomStockGenerator
 	[Obsolete]
 	public List<ItemStack> GetRandom(int n)
 	{
-		return new List<ItemStack>()
+		Assert.AssertTrue(n > 0);
+		var items = new List<ItemStack>()
 			{
 				new("basil", "Basil", null, "This is basil", ItemCategory.Plant, 64, 10, 5),
 				new("parsley", "Parsley", null, "This is parsley", ItemCategory.Plant, 64, 15, 3),
@@ -33,7 +35,7 @@ public class RandomStockGenerator
 				new("chervil", "Chervil", null, "This is chervil", ItemCategory.Plant, 64, 12, 10),
 			}
 			.OrderBy(o => rand.Next())
-			.ToList()
-			.GetRange(0, n);
+			.ToList();
+		return items.GetRange(0, Math.Min(items.Count, n));
 	}
 }

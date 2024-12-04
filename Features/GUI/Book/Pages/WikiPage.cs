@@ -24,6 +24,6 @@ public partial class WikiPage : HBoxContainer
 
 	public void UpdateArticle(ItemStack content)
 	{
-		_wikiArticle.SetItemStack(content);
+		_wikiArticle.UpdateItemStack(content);
 	}
 }

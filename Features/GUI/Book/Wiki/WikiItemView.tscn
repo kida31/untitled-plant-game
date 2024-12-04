@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2i7oxcdj4025"]
 
-[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Wiki/WikiItemView.cs" id="1_2gnwr"]
+[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiItemView.cs" id="1_2gnwr"]
 [ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="1_qumif"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_48ijb"]
 

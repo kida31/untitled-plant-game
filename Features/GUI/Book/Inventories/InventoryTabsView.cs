@@ -56,25 +56,6 @@ public partial class InventoryTabsView : Control
 		}
 	}
 
-	/**
-	 * Checks if first-degree nodes are of the type "ICategoryTab" and returns them.
-	 */
-	private List<T> GetChildrenOfType<T>()
-		where T : ICategoryTab
-	{
-		var childrenOfType = new List<T>();
-		for (var i = 0; i < this.GetChildCount(); i++)
-		{
-			var child = this.GetChild(i);
-			if (child is T typedChild)
-			{
-				childrenOfType.Add(typedChild);
-			}
-		}
-
-		return childrenOfType;
-	}
-
 	private void SetPotentialItemSlot(InventoryItemView inventoryItemView)
 	{
 		_potentialItemSlot = inventoryItemView;

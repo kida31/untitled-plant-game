@@ -44,6 +44,9 @@ public partial class BookView : Control
 		// Inventory
 		
 		// Wiki
+		var items = new RandomStockGenerator().GetRandom(20); // Placeholder for loading from database
+		_wikiPage.UpdateItems(items);
+		
 		_wikiPage.ItemStackPressed += item => _wikiPage.UpdateArticle(item);
 	}
 

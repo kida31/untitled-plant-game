@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c77ama5r0mirv"]
 
-[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Wiki/ScrollViewController.cs" id="1_2ipb1"]
-[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/Views/WikiItemList.cs" id="1_lt328"]
-[ext_resource type="PackedScene" uid="uid://b2i7oxcdj4025" path="res://Features/Inventory/PlayerInventory/UI_Wiki/WikiItemView.tscn" id="2_kax1w"]
+[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/ScrollViewController.cs" id="1_2ipb1"]
+[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiItemList.cs" id="1_lt328"]
+[ext_resource type="PackedScene" uid="uid://b2i7oxcdj4025" path="res://Features/GUI/Book/Wiki/WikiItemView.tscn" id="2_kax1w"]
 
 [node name="WikiItemList" type="PanelContainer" node_paths=PackedStringArray("_itemViewContainer")]
 size_flags_horizontal = 3
