@@ -27,8 +27,6 @@ public partial class TestAPlant : Node2D
 		var harvestButton = GetNode<Button>("VBoxContainer/Button2");
 		harvestButton.Pressed += OnHarvestButtonPressed;
 		_label = GetNode<Label>("VBoxContainer/Label");
-		_soilTile = GetNode<SoilTile>("Soil");
-		_plant = GetNode<APlant>("APlantPrefab");
 
 		_plant.PlantOnTile(_soilTile);
 		_plant2.PlantOnTile(_soilTile2);
@@ -38,7 +36,8 @@ public partial class TestAPlant : Node2D
 		if (_label == null)
 			return;
 
-		_label.Text = $"Current Stage {_plant.Stage} \n with Tile Hydration: {_soilTile.Hydration}";
+		_label.Text = $"First Plant: Stage {_plant.Stage} with Tile Hydration: {_soilTile.Hydration} \n" +
+		              $"Second Plant: Stage {_plant2.Stage} with Tile Hydration: {_soilTile2.Hydration}";
 	}
 
 	private void OnHarvestButtonPressed()

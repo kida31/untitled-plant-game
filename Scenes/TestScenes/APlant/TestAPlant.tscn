@@ -101,10 +101,10 @@ _soilTile = NodePath("Soil")
 _soilTile2 = NodePath("Soil2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = -86.0
-offset_top = 18.0
-offset_right = -46.0
-offset_bottom = 58.0
+offset_left = -143.0
+offset_top = 1.0
+offset_right = -5.0
+offset_bottom = 109.0
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 visible = false
@@ -123,7 +123,7 @@ layout_mode = 2
 texture_filter = 1
 position = Vector2(276, 228)
 scale = Vector2(0.5, 0.5)
-PlantName = "Basil"
+PlantName = "Licary"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 163.0

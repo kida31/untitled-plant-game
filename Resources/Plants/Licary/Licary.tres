@@ -9,14 +9,16 @@ script = ExtResource("1_oaorh")
 Name = 1
 MinLevel = 5.0
 MaxLevel = 25.0
-Capacity = 50.0
+ConsumptionRate = 5.0
+AbsorptionRate = 30.0
 
 [sub_resource type="Resource" id="Resource_ehaa3"]
 script = ExtResource("1_oaorh")
 Name = 0
 MinLevel = 5.0
 MaxLevel = 10.0
-Capacity = 50.0
+ConsumptionRate = 5.0
+AbsorptionRate = 20.0
 
 [sub_resource type="Resource" id="Resource_wqbh2"]
 script = ExtResource("2_8l48c")
@@ -26,17 +28,19 @@ IsHarvestable = false
 
 [sub_resource type="Resource" id="Resource_082pg"]
 script = ExtResource("1_oaorh")
-Name = 0
+Name = 1
 MinLevel = 10.0
 MaxLevel = 30.0
-Capacity = 80.0
+ConsumptionRate = 5.0
+AbsorptionRate = 30.0
 
 [sub_resource type="Resource" id="Resource_qgfnt"]
 script = ExtResource("1_oaorh")
 Name = 0
 MinLevel = 10.0
 MaxLevel = 15.0
-Capacity = 50.0
+ConsumptionRate = 10.0
+AbsorptionRate = 40.0
 
 [sub_resource type="Resource" id="Resource_ecvvi"]
 script = ExtResource("2_8l48c")
@@ -49,14 +53,16 @@ script = ExtResource("1_oaorh")
 Name = 1
 MinLevel = 15.0
 MaxLevel = 35.0
-Capacity = 80.0
+ConsumptionRate = 10.0
+AbsorptionRate = 40.0
 
 [sub_resource type="Resource" id="Resource_s7gpc"]
 script = ExtResource("1_oaorh")
 Name = 0
 MinLevel = 15.0
 MaxLevel = 20.0
-Capacity = 60.0
+ConsumptionRate = 10.0
+AbsorptionRate = 20.0
 
 [sub_resource type="Resource" id="Resource_prixi"]
 script = ExtResource("2_8l48c")
@@ -69,14 +75,16 @@ script = ExtResource("1_oaorh")
 Name = 1
 MinLevel = 20.0
 MaxLevel = 40.0
-Capacity = 70.0
+ConsumptionRate = 15.0
+AbsorptionRate = 50.0
 
 [sub_resource type="Resource" id="Resource_uqct0"]
 script = ExtResource("1_oaorh")
 Name = 0
 MinLevel = 20.0
 MaxLevel = 30.0
-Capacity = 100.0
+ConsumptionRate = 10.0
+AbsorptionRate = 30.0
 
 [sub_resource type="Resource" id="Resource_egv7k"]
 script = ExtResource("2_8l48c")
@@ -89,14 +97,16 @@ script = ExtResource("1_oaorh")
 Name = 1
 MinLevel = 25.0
 MaxLevel = 45.0
-Capacity = 100.0
+ConsumptionRate = 10.0
+AbsorptionRate = 50.0
 
 [sub_resource type="Resource" id="Resource_cnibk"]
 script = ExtResource("1_oaorh")
 Name = 0
 MinLevel = 25.0
 MaxLevel = 35.0
-Capacity = 100.0
+ConsumptionRate = 10.0
+AbsorptionRate = 50.0
 
 [sub_resource type="Resource" id="Resource_7q8v8"]
 script = ExtResource("2_8l48c")
@@ -109,14 +119,16 @@ script = ExtResource("1_oaorh")
 Name = 1
 MinLevel = 30.0
 MaxLevel = 50.0
-Capacity = 100.0
+ConsumptionRate = 20.0
+AbsorptionRate = 50.0
 
 [sub_resource type="Resource" id="Resource_4c8n4"]
 script = ExtResource("1_oaorh")
 Name = 0
 MinLevel = 30.0
 MaxLevel = 40.0
-Capacity = 150.0
+ConsumptionRate = 20.0
+AbsorptionRate = 50.0
 
 [sub_resource type="Resource" id="Resource_o7pu8"]
 script = ExtResource("2_8l48c")
@@ -126,5 +138,5 @@ IsHarvestable = true
 
 [resource]
 script = ExtResource("1_77ck6")
-_plantName = "Licary"
+PlantName = "Licary"
 DataForGrowthStages = Array[Object]([SubResource("Resource_wqbh2"), SubResource("Resource_ecvvi"), SubResource("Resource_prixi"), SubResource("Resource_egv7k"), SubResource("Resource_7q8v8"), SubResource("Resource_o7pu8")])

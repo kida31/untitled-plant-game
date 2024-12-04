@@ -36,10 +36,11 @@ public partial class APlant : StaticBody2D
 
 	public override void _Ready()
 	{
+		_logger = new Logger(PlantName);
+		_logger.Debug($"Plant {PlantName} has been planted.");
 		AddToGroup(GameGroup.Plants);
 		_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		SetRequirements(PlantName);
-		_logger = new Logger(PlantName);
+		SetRequirements();
 	}
 
 
@@ -74,18 +75,20 @@ public partial class APlant : StaticBody2D
 	/// <summary>
 	/// Harvests the plant if it is harvestable.
 	/// </summary>
-	public void Harvest()
+	public string Harvest()
 	{
 		if (_isHarvestable)
 		{
 			_logger.Debug($"Plant {PlantName} has been harvested.");
 			Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
-			SetRequirements(PlantName);
+			SetRequirements();
 			_logger.Debug("plant has reached stage " + Stage);
+			return $"{PlantName}_{Stage}";
 		}
 		else
 		{
 			_logger.Debug($"Plant {PlantName} is not ready to be harvested.");
+			return null;
 		}
 	}
 
@@ -103,11 +106,13 @@ public partial class APlant : StaticBody2D
 	/// sets the plant name.
 	/// sets the sprite to the current stage.
 	/// </summary>
-	private void SetRequirements(string plantName)
+	private void SetRequirements()
 	{
-		var plantData = PlantDatabase.Instance.GetResourceByName(plantName);
+		_logger.Debug($"Setting requirements for plant {PlantName}.");
+		
+		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
 		var plantRequirements = new Dictionary<string, Requirement>();
-
+		
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
@@ -167,7 +172,7 @@ public partial class APlant : StaticBody2D
 
 		Stage++;
 		_logger.Info($"Plant {PlantName} advanced to {Stage}.");
-		SetRequirements(PlantName);
+		SetRequirements();
 	}
 
 	/// <summary>
