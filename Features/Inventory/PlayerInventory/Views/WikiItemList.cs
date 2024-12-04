@@ -18,13 +18,9 @@ public partial class WikiItemList : PanelContainer
 	{
 		// Initialize list
 		_itemViews = new();
-		
-		// Remove placeholders
-		_itemViewContainer.GetChildren().ToList().ForEach(c => c.Free());
 
-		// Examples TODO: Remove this.
-		var items = new RandomStockGenerator().GetRandom(20);
-		SetItems(items);
+		// Removes placeholders
+		_itemViewContainer.GetChildren().ToList().ForEach(c => c.Free());
 	}
 
 	private List<WikiItemView> _itemViews;
@@ -33,30 +29,24 @@ public partial class WikiItemList : PanelContainer
 	{
 		Assert.AssertTrue(_itemViews.Count == _itemViewContainer.GetChildCount(), "Tracked views and actual are not equal");
 
-		// Initiate nodes
+		// Remove nodes if too many
 		while (_itemViews.Count > items.Count)
 		{
 			var itemView = _itemViews[0];
 			_itemViews.RemoveAt(0);
-			RemoveChild(itemView);
-			itemView.QueueFree();
+			DisconnectItemView(itemView);
 		}
 
+		// Add nodes if too few
 		while (_itemViews.Count < items.Count)
 		{
 			var itemView = _itemViewPrefab.Instantiate<WikiItemView>();
 			_itemViews.Add(itemView);
-			itemView.FocusEntered += () => ItemStackPressed?.Invoke(itemView.ItemStack);
-			itemView.Pressed += () =>
-			{
-				GD.Print("Pressed item view.");
-				ItemStackPressed?.Invoke(itemView.ItemStack);
-			};
-			_itemViewContainer.AddChild(itemView);
+			ConnectItemView(itemView);
 		}
 
-		Assert.AssertTrue(_itemViews.Count == items.Count, "Items and views are not equal count");
 		// Fill with content
+		Assert.AssertTrue(_itemViews.Count == items.Count, "Items and views are not equal count");
 		for (var index = 0; index < items.Count; index++)
 		{
 			var item = items[index];
@@ -67,5 +57,19 @@ public partial class WikiItemList : PanelContainer
 	public void ScrollTo(ItemStack itemStack)
 	{
 		// TODO: 
+	}
+
+	private void ConnectItemView(WikiItemView itemView)
+	{
+		itemView.FocusEntered += () => ItemStackPressed?.Invoke(itemView.ItemStack);
+		itemView.Pressed += () => ItemStackPressed?.Invoke(itemView.ItemStack);
+		_itemViewContainer.AddChild(itemView);
+	}
+	
+	private void DisconnectItemView(WikiItemView itemView)
+	{
+		// Do not need to unsubscribe since object is being removed
+		RemoveChild(itemView);
+		itemView.QueueFree();
 	}
 }

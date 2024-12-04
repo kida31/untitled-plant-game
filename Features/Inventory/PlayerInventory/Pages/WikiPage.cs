@@ -1,25 +1,29 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
 public partial class WikiPage : HBoxContainer
 {
+	public event Action<ItemStack> ItemStackPressed;
+
 	[Export] private WikiItemList _wikiItemList;
 	[Export] private WikiArticleView _wikiArticle;
 
-	private Logger _logger;
-	
 	public override void _Ready()
 	{
-		_logger = new(this);
-		_wikiItemList.ItemStackPressed += OnWikiItemListOnItemStackPressed;
+		_wikiItemList.ItemStackPressed += i => ItemStackPressed?.Invoke(i);
 	}
-	
-	private void OnWikiItemListOnItemStackPressed(ItemStack stack)
+
+	public void UpdateItems(List<ItemStack> items)
 	{
-		_logger.Debug("Set new wiki article.");
-		_wikiArticle.SetItemStack(stack);
+		_wikiItemList.SetItems(items);
+	}
+
+	public void UpdateArticle(ItemStack content)
+	{
+		_wikiArticle.SetItemStack(content);
 	}
 }
