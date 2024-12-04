@@ -1,4 +1,6 @@
 using Godot;
+using untitledplantgame.Common;
+
 namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
 public partial class DetailedWikiController : Node

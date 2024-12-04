@@ -1,4 +1,6 @@
 using Godot;
+using untitledplantgame.Common;
+
 namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
 // Make a string, so you can change up the category and jump to that. 
