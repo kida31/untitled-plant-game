@@ -67,7 +67,7 @@ public partial class InputRemapper : Node
 			var actionName = $"{context.Name}_{baseName}";
 
 			// Copy input events
-			_logger.Debug($"Copy input bindings {originalActionName} -> {actionName}");
+			// _logger.Debug($"Copy input bindings {originalActionName} -> {actionName}");
 			var inputs = InputMap.ActionGetEvents(originalActionName);
 			Assert.AssertTrue(inputs.Count > 0, "No inputs bound to action.");
 
@@ -85,7 +85,7 @@ public partial class InputRemapper : Node
 		{
 			// Unregister inputs
 			var actionName = $"{context.Name}_{baseName}";
-			_logger.Debug($"Erase input bindings for {actionName}");
+			// _logger.Debug($"Erase input bindings for {actionName}");
 			InputMap.ActionEraseEvents(actionName);
 		}
 	}

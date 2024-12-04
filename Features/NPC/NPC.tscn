@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="1_hwhva"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qxak0"]
+radius = 13.537
 
 [node name="NPC" type="Area2D" groups=["Interactables"]]
 position = Vector2(25, 74)

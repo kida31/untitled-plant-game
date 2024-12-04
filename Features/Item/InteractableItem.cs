@@ -1,7 +1,6 @@
 using Godot;
-using untitledplantgame.Common;
 using untitledplantgame.EntityStatsDataContainer;
-using untitledplantgame.Inventory.GeneralInventory.UI_ItemCategory;
+using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Item;
 
@@ -19,10 +18,12 @@ public partial class InteractableItem : AInteractable
 	public string ItemName => _dataContainer.EntityName; // Convenience property
 	private ICharacteristic _characteristic;
 
+	public ItemStack ItemStack = new ItemStack("id", "This", null, "des", ItemCategory.Material, 1, 1);
+	
 	public override void Interact()
 	{
-		EventBus.Instance.ItemPickedUp(this);
-		GD.Print("Item picked up");
+		EventBus.Instance.ItemPickedUp(ItemStack);
+		EventBus.Instance.InventoryOpened();
 		QueueFree();
 	}
 
@@ -42,16 +43,6 @@ public partial class InteractableItem : AInteractable
 		set
 		{
 			_selectedOption = value;
-			_characteristic = CreateInstance();
 		}
 	}
-
-	private ICharacteristic CreateInstance() =>
-		_selectedOption switch
-		{
-			"Herb" => new HerbCategory(),
-			"Medicine" => new MedicineCategory(),
-			"Seed" => new SeedCategory(),
-			_ => null,
-		};
 }

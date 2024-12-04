@@ -10,10 +10,12 @@ public partial class NightTint : CanvasModulate
 	[Export]
 	private GradientTexture1D _gradientTexture;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		var colorValue = (Math.Sin(TimeController.Instance.Time - Math.PI / 2) + 1.0) / 2.0;
+		// 0 percent is midnight, 0.5 is noon, 1 is midnight again
+		var dayPercent = TimeController.Instance.CurrentSeconds / (24f * 60 * 60);
+		// We want sin(x=0.5) = 1, sin(x=0) = 0, sin(x=1) = 0
+		var colorValue = Math.Abs(Math.Sin(dayPercent * Math.PI));
 		Color = _gradientTexture.Gradient.Sample((float)colorValue);
 	}
 }
