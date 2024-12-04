@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Inventory.PlayerInventory;
 
