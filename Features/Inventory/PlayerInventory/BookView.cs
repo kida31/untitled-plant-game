@@ -4,6 +4,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.Player;
 using untitledplantgame.Shops;
 
 namespace untitledplantgame.Inventory.PlayerInventory;
@@ -68,22 +69,25 @@ public partial class BookView : Control
 		// I want to do If-return for readability because i think if-else reads like crap
 		// But if some dimwit forgets the return it would cause some bugs
 
+		// Open book
+		
 		if (@event.IsActionPressed(FreeRoam.OpenBook))
 		{
-			Visible = true;
-			GameStateMachine.Instance.SetState(GameState.Book);
+			ShowBook();
+			
 		}
-		else if (@event.IsAction(Book.Back))
+		
+		// Close book
+		
+		else if (@event.IsAction(Book.Back) || @event.IsActionPressed(Book.CloseBook))
 		{
-			// TODO: This button might have to do different things depending on context
-			Visible = false;
-			GameStateMachine.Instance.SetState(GameState.FreeRoam);
+			// TODO: The back button might have to do different things depending on context
+			HideBook();
+			
 		}
-		else if (@event.IsActionPressed(Book.CloseBook))
-		{
-			Visible = false;
-			GameStateMachine.Instance.SetState(GameState.FreeRoam);
-		}
+		
+		// Switch main tabs
+		
 		else if (@event.IsActionPressed(Book.TriggerRight))
 		{
 			if (Math.Abs(@event.GetActionStrength(Book.TriggerRight) - 1.0) > double.Epsilon)
@@ -108,12 +112,19 @@ public partial class BookView : Control
 
 	private void UpdateInventory(Player.Player player, IInventory inventory)
 	{
-		GD.Print("updating inventory");
 		_playerInventoryPage.UpdateInventories(player.Inventory.GetSubInventories());
 	}
 
 	private void ShowBook()
 	{
+		UpdateInventory(Game.Player, Game.Player.Inventory);
 		Show();
+		GameStateMachine.Instance.SetState(GameState.Book);
+	}
+
+	private void HideBook()
+	{
+		Hide();
+		GameStateMachine.Instance.SetState(GameState.FreeRoam);
 	}
 }
