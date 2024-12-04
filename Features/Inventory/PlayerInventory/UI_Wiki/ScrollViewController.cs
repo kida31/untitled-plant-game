@@ -6,6 +6,9 @@ using Godot.Collections;
 
 namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
+/// <summary>
+/// Manages the scrolling state of the list of items in the wiki.
+/// </summary>
 public partial class ScrollViewController : ScrollContainer
 {
 
