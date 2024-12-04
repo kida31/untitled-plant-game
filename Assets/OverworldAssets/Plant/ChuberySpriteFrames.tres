@@ -1,0 +1,87 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://dldh2xoh0w7ey"]
+
+[ext_resource type="Texture2D" uid="uid://cc08shc1btj02" path="res://Assets/OverworldAssets/Plant/chubery_sheet.png" id="1_eugh0"]
+[ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/OverworldAssets/Plant/DeadPlant.png" id="2_rtutt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlonb"]
+atlas = ExtResource("1_eugh0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laeyy"]
+atlas = ExtResource("1_eugh0")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buqmq"]
+atlas = ExtResource("1_eugh0")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rh78"]
+atlas = ExtResource("1_eugh0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00m6k"]
+atlas = ExtResource("1_eugh0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jjxk"]
+atlas = ExtResource("1_eugh0")
+region = Rect2(96, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlonb")
+}],
+"loop": true,
+"name": &"Budding",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rtutt")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laeyy")
+}],
+"loop": true,
+"name": &"Flowering",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buqmq")
+}],
+"loop": true,
+"name": &"Ripening",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rh78")
+}],
+"loop": true,
+"name": &"Seedling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00m6k")
+}],
+"loop": true,
+"name": &"Sprouting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jjxk")
+}],
+"loop": true,
+"name": &"Vegetating",
+"speed": 5.0
+}]

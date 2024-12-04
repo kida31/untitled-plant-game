@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Inventory;
 using untitledplantgame.Plants.Soil;
 
 namespace untitledplantgame.Plants;
@@ -21,7 +22,7 @@ public partial class APlant : StaticBody2D
 {
 	[Export] public string PlantName { get; private set; }
 	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
-	private SoilTile Tile { get; set; }
+	[Export] private SoilTile Tile { get; set; }
 
 	private Dictionary<string, Requirement> _currentRequirements;
 	private Logger _logger;
@@ -75,7 +76,7 @@ public partial class APlant : StaticBody2D
 	/// <summary>
 	/// Harvests the plant if it is harvestable.
 	/// </summary>
-	public string Harvest()
+	public ItemStack Harvest()
 	{
 		if (_isHarvestable)
 		{
@@ -83,13 +84,14 @@ public partial class APlant : StaticBody2D
 			Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
 			SetRequirements();
 			_logger.Debug("plant has reached stage " + Stage);
-			return $"{PlantName}_{Stage}";
 		}
 		else
 		{
 			_logger.Debug($"Plant {PlantName} is not ready to be harvested.");
 			return null;
 		}
+
+		return GetHarvestItem();
 	}
 
 	/// <summary>
@@ -221,5 +223,11 @@ public partial class APlant : StaticBody2D
 		Stage = GrowthStage.Dead;
 		_isHarvestable = false;
 		_logger.Debug($"Plant {PlantName} has died due to lack of water.");
+	}
+
+	private ItemStack GetHarvestItem()
+	{
+		//get new ItemStack("{PlantName}_{Stage}") from Database
+		return null;
 	}
 }

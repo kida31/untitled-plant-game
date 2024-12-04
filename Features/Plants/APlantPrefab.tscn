@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://f7it4seve2en"]
+
+[ext_resource type="Script" path="res://Features/Plants/APlant.cs" id="1_g03kh"]
+[ext_resource type="SpriteFrames" uid="uid://rlacl8e7glrk" path="res://Assets/OverworldAssets/Plant/LicarySpriteFrames.tres" id="2_y4tpi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_053fl"]
+
+[node name="APlantPrefab" type="StaticBody2D" groups=["Plant"]]
+script = ExtResource("1_g03kh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_y4tpi")
+animation = &"Budding"
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_053fl")

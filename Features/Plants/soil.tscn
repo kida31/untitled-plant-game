@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8bgqaiuddybx"]
+
+[ext_resource type="Script" path="res://Features/Plants/Soil/SoilTile.cs" id="1_0lhsy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a4san"]
+radius = 19.0263
+
+[node name="Soil" type="Area2D"]
+position = Vector2(276, 175)
+script = ExtResource("1_0lhsy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 52)
+shape = SubResource("CircleShape2D_a4san")

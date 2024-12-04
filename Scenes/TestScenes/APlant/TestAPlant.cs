@@ -1,4 +1,5 @@
 using Godot;
+using untitledplantgame.Item;
 using APlant = untitledplantgame.Plants.APlant;
 using SoilTile = untitledplantgame.Plants.Soil.SoilTile;
 
@@ -42,11 +43,18 @@ public partial class TestAPlant : Node2D
 
 	private void OnHarvestButtonPressed()
 	{
-		_plant.Harvest();
+		var item = _plant.Harvest();
+		InteractableItem interact = new InteractableItem(item);
+		//TODO might need to add it somewhere else, not root
+		//How can this be removed from root when loading new scenes?
+		//Do we save if somewhere so it appears again?
+		GetTree().Root.AddChild(interact);
+		interact.GlobalPosition = _plant.GlobalPosition;
 	}
 
 	private void OnWaterSoilButtonPressed()
 	{
 		_soilTile.AddWater(200);
+		_soilTile2.AddWater(200);
 	}
 }
