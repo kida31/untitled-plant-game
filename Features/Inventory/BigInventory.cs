@@ -24,8 +24,8 @@ public class BigInventory : IInventory
 {
 
 	public event Action InventoryChanged;
-	public event Action<ItemStack> ItemAdded;
-	public event Action<ItemStack> ItemRemoved;
+	public event Action<IItemStack> ItemAdded;
+	public event Action<IItemStack> ItemRemoved;
 	
 	public int Size => _inventories.Values.Sum(inventory => inventory.Size);
 	public string Name => "Player Inventory";
@@ -40,9 +40,9 @@ public class BigInventory : IInventory
 	{
 		_inventories = new Dictionary<ItemCategory, IInventory>
 		{
-			{ ItemCategory.Plant, new Inventory(size, "Seed Inventory") },
-			{ ItemCategory.Medicine, new Inventory(size, "Fertilizer Inventory") },
-			{ ItemCategory.Material, new Inventory(size, "Plant Inventory") },
+			{ ItemCategory.Plant, new Inventory(size, "Seeds") },
+			{ ItemCategory.Medicine, new Inventory(size, "Medicine") },
+			{ ItemCategory.Material, new Inventory(size, "Materials") },
 		};
 		
 		foreach (var (_, inventory) in _inventories)
@@ -56,6 +56,11 @@ public class BigInventory : IInventory
 	public BigInventory(Dictionary<ItemCategory, IInventory> inventories)
 	{
 		_inventories = inventories;
+	}
+
+	public List<IInventory> GetSubInventories()
+	{
+		return new List<IInventory>(_inventories.Values);
 	}
 
 	public IInventory GetInventory(ItemCategory category)

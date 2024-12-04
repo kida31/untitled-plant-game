@@ -82,8 +82,8 @@ public class ItemStack : IItemStack
 
 	public bool HasSameIdAndProps(IItemStack itemStack)
 	{
-		_logger.Warn("HasSameIdAndProps is not implemented correctly.");
-		return Id == itemStack.Id;
+		// _logger.Warn("HasSameIdAndProps is not implemented correctly.");
+		return Id == itemStack?.Id;
 	}
 
 	public bool IsIdentical(IItemStack itemStack)

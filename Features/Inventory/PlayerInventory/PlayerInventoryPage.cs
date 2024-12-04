@@ -8,12 +8,12 @@ public partial class PlayerInventoryPage : HBoxContainer
 	[Export] private TabsController _inventoryTabs;
 	[Export] private PlayerDetailsView _playerDetails;
 
-	public void SetInventories(List<Inventory> inventories)
+	public void UpdateInventories(List<IInventory> inventories)
 	{
-		_inventoryTabs.SetInventories(inventories);
+		_inventoryTabs.UpdateInventories(inventories);
 	}
 
-	public void SetPlayerDetails(object obj)
+	public void UpdatePlayerDetails(object obj)
 	{
 		_playerDetails.SetPlayerDetails(obj);
 	}

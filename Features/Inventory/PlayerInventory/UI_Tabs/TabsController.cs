@@ -10,50 +10,52 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 
 public partial class TabsController : Control
 {
-
-	[Export] private InventoryView[] _tabs;
-	public List<ICategoryTab> Categories { get; private set; }
+	[Export] private PackedScene _inventoryViewPrefab;
 	private InventoryItemView _potentialItemSlot;
-	
-	public override void _EnterTree()
-	{
-		Categories = GetChildrenOfType<ICategoryTab>();
-	}
+
+	private List<InventoryView> _tabs;
+
 
 	public override void _Ready()
 	{
-		EventBus.Instance.OnTabsUpdate += AddItemToCorrespondingTab;
-		EventBus.Instance.OnInventoryItemMove += DropInventoryItemToNewSlot; // different
+		// EventBus.Instance.OnTabsUpdate += AddItemToCorrespondingTab;
+		// EventBus.Instance.OnInventoryItemMove += DropInventoryItemToNewSlot; // different
 
 		EventBus.Instance.OnSetItemSlot += SetPotentialItemSlot;
 		EventBus.Instance.OnGetItemSlot += GetPotentialItemSlot;
 
-		_tabs = GetChildren().OfType<InventoryView>().ToArray();
-		
-		foreach (var tab in Categories)
-		{
-			tab.SetTabInventorySize(15);
-		}
+		_tabs ??= GetChildren().OfType<InventoryView>().ToList();
 	}
-	
-	public void SetInventories(List<Inventory> inventories)
+
+	public void UpdateInventories(List<IInventory> inventories)
 	{
+		// Remove excess tabs
+		while (_tabs.Count > inventories.Count)
+		{
+			var tabToRemove = _tabs.Last();
+			_tabs.Remove(tabToRemove);
+			RemoveChild(tabToRemove);
+			tabToRemove.QueueFree();
+		}
+
+		// Add tabs based on the inventories list
+		while (_tabs.Count < inventories.Count)
+		{
+			var newTab = _inventoryViewPrefab.Instantiate<InventoryView>();
+			AddChild(newTab);
+			_tabs.Add(newTab);
+		}
+		
+		Assert.AssertEquals(inventories.Count, _tabs.Count, "Inventories and tabs count mismatch");
 		for (int i = 0; i < inventories.Count; i++)
 		{
-			var inv = inventories[i];
-			var cat = Categories[i];
-			cat.UpdateTabUi(inv.GetItems()[0]); // TODO make this a list
-		}
-		
-		foreach (var child in GetChildren())
-		{
-			if (child is InventoryView invView)
-			{
-				invView.UpdateInventory(inventories[0]);
-			}	
+			var inventory = inventories[i];
+			var tab = _tabs[i];
+			tab.UpdateInventory(inventory);
+			tab.Name = inventory.Name;
 		}
 	}
-	
+
 	/**
 	 * Checks if first-degree nodes are of the type "ICategoryTab" and returns them.
 	 */
@@ -71,31 +73,6 @@ public partial class TabsController : Control
 		}
 
 		return childrenOfType;
-	}
-	
-	[Obsolete]
-	private void AddItemToCorrespondingTab(ItemStack item)
-	{
-		Categories.OfType<SeedsTab>().FirstOrDefault()?.UpdateTabUi(item);
-		// switch (item.GetItemType())
-		// {
-		// 	case HerbCategory:
-		// 		Categories.OfType<HerbsTab>().FirstOrDefault()?.UpdateTabUi(item);
-		// 		break;
-		// 	case MedicineCategory:
-		// 		Categories.OfType<MedicineTab>().FirstOrDefault()?.UpdateTabUi(item);
-		// 		break;
-		// 	case SeedCategory:
-		// 		Categories.OfType<SeedsTab>().FirstOrDefault()?.UpdateTabUi(item);
-		// 		break;
-		// }
-	}
-
-	[Obsolete]
-	private void DropInventoryItemToNewSlot(ItemStack itemStack, InventoryItemView inventoryItemView)
-	{
-		Categories.OfType<SeedsTab>().FirstOrDefault()?.DropInventoryItemToNewSlot(itemStack, inventoryItemView.Id);
-
 	}
 
 	private void SetPotentialItemSlot(InventoryItemView inventoryItemView)

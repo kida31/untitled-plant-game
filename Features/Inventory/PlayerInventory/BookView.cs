@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Shops;
@@ -26,8 +27,9 @@ public partial class BookView : Control
 
 	public override void _Ready()
 	{
+		_tabButtons ??= new Button[0];
 		// Subscribe to events
-		EventBus.Instance.OnItemPickUp += UpdateInventory;
+		EventBus.Instance.OnPlayerInventoryChanged += UpdateInventory;
 		EventBus.Instance.OnInventoryOpen += ShowBook;
 
 		// Connect tab buttons to trigger tabs
@@ -37,8 +39,7 @@ public partial class BookView : Control
 			var capturedIndex = index;
 			button.Pressed += () => _tabContainer.CurrentTab = capturedIndex;
 		}
-
-
+		
 		// TODO move to controller/presenter
 		// Inventory
 		var rand = new RandomStockGenerator();
@@ -48,7 +49,7 @@ public partial class BookView : Control
 		b.SetContents(rand.GetRandom(5));
 		var c = new Inventory(15, "A");
 		c.SetContents(rand.GetRandom(8));
-		_playerInventoryPage.SetInventories(new ()
+		_playerInventoryPage.UpdateInventories(new ()
 		{
 			a,
 			b,
@@ -59,6 +60,8 @@ public partial class BookView : Control
 		_wikiPage.ItemStackPressed += item => _wikiPage.UpdateArticle(item);
 		_wikiPage.UpdateItems(rand.GetRandom(12));
 	}
+
+
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
@@ -103,10 +106,10 @@ public partial class BookView : Control
 		}
 	}
 
-	private void UpdateInventory(ItemStack item)
+	private void UpdateInventory(Player.Player player, IInventory inventory)
 	{
-		// TODO
-		// EventBus.Instance.TabsUpdated(item);
+		GD.Print("updating inventory");
+		_playerInventoryPage.UpdateInventories(player.Inventory.GetSubInventories());
 	}
 
 	private void ShowBook()

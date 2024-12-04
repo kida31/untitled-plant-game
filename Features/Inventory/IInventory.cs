@@ -13,8 +13,8 @@ public interface IInventory : IEnumerable<ItemStack>
 {
 	// TODO verify if these events make sense
 	public event Action InventoryChanged;
-	public event Action<ItemStack> ItemAdded;
-	public event Action<ItemStack> ItemRemoved;
+	public event Action<IItemStack> ItemAdded;
+	public event Action<IItemStack> ItemRemoved;
 	
 	/// <summary>
 	///     Returns the size of the inventory

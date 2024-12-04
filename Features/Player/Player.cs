@@ -48,6 +48,10 @@ public partial class Player : CharacterBody2D
 		_stateMachine.Initialize(this);
 		
 		EventBus.Instance.OnItemPickUp += OnItemPickUp;
+		_inventory.InventoryChanged += () =>
+		{
+			EventBus.Instance.PlayerInventoryChanged(this, _inventory);
+		};
 	}
 
 	private void OnItemPickUp(ItemStack obj)
