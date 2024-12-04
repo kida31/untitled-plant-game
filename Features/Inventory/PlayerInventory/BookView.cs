@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common.GameStates;
@@ -78,11 +79,20 @@ public partial class BookView : Control
 		}
 		else if (@event.IsActionPressed(Book.TriggerRight))
 		{
+			if (Math.Abs(@event.GetActionStrength(Book.TriggerRight) - 1.0) > double.Epsilon)
+			{
+				// Triggers will fire release and press events for each little bit of the trigger
+				return;
+			}
 			var nextOrFirstTabIndex = (_tabContainer.CurrentTab + 1) % _tabContainer.GetChildCount();
 			_tabContainer.CurrentTab = nextOrFirstTabIndex;
 		}
 		else if (@event.IsActionPressed(Book.TriggerLeft))
 		{
+			if (Math.Abs(@event.GetActionStrength(Book.TriggerLeft) - 1.0) > double.Epsilon)
+			{
+				return;
+			}
 			var count = _tabContainer.GetChildCount();
 			var prevOrLastTabIndex = (_tabContainer.CurrentTab - 1 + count) % count;
 			_tabContainer.CurrentTab = prevOrLastTabIndex;
