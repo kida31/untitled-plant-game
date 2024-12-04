@@ -92,7 +92,7 @@ public interface IItemStack
 	IItemStack Clone();
 	
 	// Additionals for convenience
-	IItemStack Subtract(IItemStack that)
+	public sealed IItemStack Subtract(IItemStack that)
 	{
 		if (!HasSameIdAndProps(that))
 		{

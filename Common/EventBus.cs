@@ -117,7 +117,7 @@ public partial class EventBus : Node
 	public event Action<InventoryItemView> OnInventoryItemViewMoved;
 	public event Action<InventoryItemView> OnInventoryItemViewReleased;
 	public event Action<InventoryItemView> OnSetItemSlot;
-	public event Action<ItemStack, InventoryItemView> OnInventoryItemMove;
+	public event Action<IItemStack, InventoryItemView> OnInventoryItemMove;
 	public event GetItemSlotEventHandler OnGetItemSlot;
 
 	public void InventoryOpened()
@@ -176,7 +176,7 @@ public partial class EventBus : Node
 		OnSetItemSlot?.Invoke(inventoryItemView);
 	}
 	
-	public void InventoryItemMoved(ItemStack itemStack, InventoryItemView inventoryItemView)
+	public void InventoryItemMoved(IItemStack itemStack, InventoryItemView inventoryItemView)
 	{
 		OnInventoryItemMove?.Invoke(itemStack, inventoryItemView);
 	}

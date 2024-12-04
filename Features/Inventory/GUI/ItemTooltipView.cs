@@ -2,15 +2,15 @@
 
 public partial class ItemTooltipView : TooltipView
 {
-	public ItemStack ItemStack
+	public IItemStack ItemStack
 	{
 		get => _itemStack;
 		set => SetItemStack(value);
 	}
 
-	private ItemStack _itemStack;
+	private IItemStack _itemStack;
 
-	private void SetItemStack(ItemStack value)
+	private void SetItemStack(IItemStack value)
 	{
 		_itemStack = value;
 		Title = _itemStack?.Name ?? "";

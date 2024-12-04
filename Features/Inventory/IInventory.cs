@@ -9,7 +9,7 @@ namespace untitledplantgame.Inventory;
 /// <summary>
 ///     https://github.com/Bukkit/Bukkit/blob/master/src/main/java/org/bukkit/inventory/Inventory.java
 /// </summary>
-public interface IInventory : IEnumerable<ItemStack>
+public interface IInventory : IEnumerable<IItemStack>
 {
 	// TODO verify if these events make sense
 	public event Action InventoryChanged;
@@ -31,14 +31,14 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	/// <param name="index">The index of the Slot's ItemStack to return</param>
 	/// <returns>The ItemStack in the slot</returns>
-	public ItemStack GetItem(int index);
+	public IItemStack GetItem(int index);
 
 	/// <summary>
 	///     Stores the ItemStack at the given index of the inventory.
 	/// </summary>
 	/// <param name="index">The index where to put the ItemStack</param>
 	/// <param name="item">The ItemStack to set</param>
-	public void SetItem(int index, ItemStack item);
+	public void SetItem(int index, IItemStack item);
 
 	/// <summary>
 	///     Stores the given ItemStacks in the inventory. This will try to fill
@@ -61,7 +61,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	/// <param name="items">The ItemStacks to add</param>
 	/// <returns>A HashMap containing items that didn't fit.</returns>
-	public Dictionary<int, ItemStack> AddItem(params ItemStack[] items);
+	public Dictionary<int, IItemStack> AddItem(params IItemStack[] items);
 
 	/// <summary>
 	///     Removes the given ItemStacks from the inventory.
@@ -80,13 +80,13 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	/// <param name="items">The ItemStacks to remove</param>
 	/// <returns>A HashMap containing items that couldn't be removed.</returns>
-	public Dictionary<int, ItemStack> RemoveItem(params ItemStack[] items);
+	public Dictionary<int, IItemStack> RemoveItem(params IItemStack[] items);
 
 	/// <summary>
 	///     Returns all ItemStacks from the inventory
 	/// </summary>
 	/// <returns>An array of ItemStacks from the inventory.</returns>
-	public List<ItemStack> GetItems();
+	public List<IItemStack> GetItems();
 
 	/// <summary>
 	///     Completely replaces the inventory's contents. Removes all existing
@@ -96,7 +96,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	/// <param name="items">A complete replacement for the contents; the length must
 	///     be less than or equal to Size.</param>
-	public void SetContents(List<ItemStack> items);
+	public void SetContents(List<IItemStack> items);
 
 	/// <summary>
 	///     Checks if the inventory contains any ItemStacks with the given
@@ -117,7 +117,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	/// <param name="item">item The ItemStack to match against</param>
 	/// <returns> false if item is null, true if any exactly matching ItemStacks were found</returns>
-	public bool Contains(ItemStack item);
+	public bool Contains(IItemStack item);
 
 	/// <summary>
 	///     Checks if the inventory contains any ItemStacks with the given
@@ -142,7 +142,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// <param name="amount">how many identical stacks to check for</param>
 	/// <returns>false if item is null, true if amount less than 1, true if
 	///         amount of exactly matching ItemStacks were found</returns>
-	public bool Contains(ItemStack item, int amount);
+	public bool Contains(IItemStack item, int amount);
 
 	/// <summary>
 	///     Returns a HashMap with all slots and ItemStacks in the inventory with
@@ -156,7 +156,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	/// <param name="itemId">The material to look for</param>
 	/// <returns>A HashMap containing the slot index, ItemStack pairs</returns>
-	public Dictionary<int, ItemStack> All(string itemId);
+	public Dictionary<int, IItemStack> All(string itemId);
 
 	/// <summary>
 	///     Finds all slots in the inventory containing any ItemStacks with the
@@ -170,7 +170,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	/// <param name="item">The ItemStack to match against</param>
 	/// <returns>A map from slot indexes to item at index</returns>
-	public Dictionary<int, ItemStack> All(ItemStack item);
+	public Dictionary<int, IItemStack> All(IItemStack item);
 
 	/// <summary>
 	///     Finds the first slot in the inventory containing an ItemStack with the
@@ -188,7 +188,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	/// <param name="item"> The ItemStack to match against</param>
 	/// <returns>The slot index of the given ItemStack or -1 if not found</returns>
-	public int First(ItemStack item);
+	public int First(IItemStack item);
 
 	/// <summary>
 	///     Removes all stacks in the inventory matching the given itemId.
@@ -205,7 +205,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </para>
 	/// </summary>
 	/// <param name="item">The ItemStack to match against</param>
-	public void RemoveAll(ItemStack item);
+	public void RemoveAll(IItemStack item);
 
 	/// <summary>
 	///     Clears out a particular slot in the index.
@@ -238,7 +238,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// </summary>
 	/// <param name="category"></param>
 	/// <returns></returns>
-	public Dictionary<int, ItemStack> GetItemsOfCategory(ItemCategory category);
+	public Dictionary<int, IItemStack> GetItemsOfCategory(ItemCategory category);
 
 	/// <summary>
 	///     Tries to quick stack items from this inventory to the target inventory.
@@ -247,7 +247,7 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// <param name="target"></param>
 	void QuickStack(IInventory target);
 
-	void TransferTo(ItemStack item, IInventory destination)
+	void TransferTo(IItemStack item, IInventory destination)
 	{
 		Assert.AssertTrue(Contains(item), "Should not try to transfer items that are larger than the available quantity");
 		RemoveItem(item);
@@ -264,6 +264,6 @@ public interface IInventory : IEnumerable<ItemStack>
 	/// <param name="slotIdx"></param>
 	/// <param name="item"></param>
 	/// <returns></returns>
-	ItemStack AddItemToSlot(int slotIdx, ItemStack item);
+	IItemStack AddItemToSlot(int slotIdx, IItemStack item);
 }
 // TODO: Replace javadoc @tags with c# xml variant

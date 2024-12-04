@@ -13,7 +13,7 @@ public class Inventory : IInventory
 	public event Action<IItemStack> ItemAdded;
 	public event Action<IItemStack> ItemRemoved;
 	
-	private readonly ItemStack[] _items;
+	private readonly IItemStack[] _items;
 	private readonly Logger _logger = new("Inventory");
 
 	public int Size => _items.Length;
@@ -28,19 +28,19 @@ public class Inventory : IInventory
 		ItemRemoved += (_) => InventoryChanged?.Invoke();
 	}
 
-	public ItemStack GetItem(int index)
+	public IItemStack GetItem(int index)
 	{
 		return _items[index];
 	}
 
-	public void SetItem(int index, ItemStack item)
+	public void SetItem(int index, IItemStack item)
 	{
 		_items[index] = item;
 	}
 
-	public virtual Dictionary<int, ItemStack> AddItem(params ItemStack[] items)
+	public virtual Dictionary<int, IItemStack> AddItem(params IItemStack[] items)
 	{
-		Dictionary<int, ItemStack> overflow = new();
+		Dictionary<int, IItemStack> overflow = new();
 		for (var i = 0; i < items.Length; i++)
 		{
 			var leftover = AddOneItem(items[i]);
@@ -53,9 +53,9 @@ public class Inventory : IInventory
 		return overflow;
 	}
 
-	public Dictionary<int, ItemStack> RemoveItem(params ItemStack[] items)
+	public Dictionary<int, IItemStack> RemoveItem(params IItemStack[] items)
 	{
-		Dictionary<int, ItemStack> remainingToRemove = new();
+		Dictionary<int, IItemStack> remainingToRemove = new();
 		for (var i = 0; i < items.Length; i++)
 		{
 			var leftover = RemoveItem(items[i]);
@@ -68,12 +68,12 @@ public class Inventory : IInventory
 		return remainingToRemove;
 	}
 
-	public List<ItemStack> GetItems()
+	public List<IItemStack> GetItems()
 	{
-		return new List<ItemStack>(_items);
+		return new List<IItemStack>(_items);
 	}
 
-	public void SetContents(List<ItemStack> items)
+	public void SetContents(List<IItemStack> items)
 	{
 		if (items.Count > Size)
 		{
@@ -94,7 +94,7 @@ public class Inventory : IInventory
 		return this.Any(stack => stack.Id == itemId);
 	}
 
-	public bool Contains(ItemStack item)
+	public bool Contains(IItemStack item)
 	{
 		return this.Any(stack => stack.Id == item.Id);
 	}
@@ -104,19 +104,19 @@ public class Inventory : IInventory
 		return this.Where(stack => stack.Id == itemId).Sum(stack => stack.Amount) >= amount;
 	}
 
-	public bool Contains(ItemStack item, int amount)
+	public bool Contains(IItemStack item, int amount)
 	{
 		return this.Where(item.HasSameIdAndProps).Sum(stack => stack.Amount) >= amount;
 	}
 
-	public Dictionary<int, ItemStack> All(string itemId)
+	public Dictionary<int, IItemStack> All(string itemId)
 	{
 		return this.Select((item, index) => (item, index))
 			.Where(tuple => tuple.item.Id == itemId)
 			.ToDictionary(tuple => tuple.index, tuple => tuple.item);
 	}
 
-	public Dictionary<int, ItemStack> All(ItemStack item)
+	public Dictionary<int, IItemStack> All(IItemStack item)
 	{
 		return this.Select((it, index) => (it, index))
 			.Where(tuple => tuple.it.HasSameIdAndProps(item))
@@ -129,7 +129,7 @@ public class Inventory : IInventory
 		return Array.FindIndex(_items, item => item?.Id == itemId);
 	}
 
-	public int First(ItemStack item)
+	public int First(IItemStack item)
 	{
 		// return index of first item matching id else -1
 		return Array.FindIndex(_items, it => it.HasSameIdAndProps(item));
@@ -152,7 +152,7 @@ public class Inventory : IInventory
 		}
 	}
 
-	public void RemoveAll(ItemStack item)
+	public void RemoveAll(IItemStack item)
 	{
 		for (var i = 0; i < _items.Length; i++)
 		{
@@ -179,7 +179,7 @@ public class Inventory : IInventory
 		InventoryChanged?.Invoke();
 	}
 	
-	public Dictionary<int, ItemStack> GetItemsOfCategory(ItemCategory category)
+	public Dictionary<int, IItemStack> GetItemsOfCategory(ItemCategory category)
 	{
 		return _items
 			.Select((item, index) => (item, index))
@@ -201,7 +201,7 @@ public class Inventory : IInventory
 		InventoryChanged?.Invoke();
 	}
 
-	public ItemStack AddItemToSlot(int slotIdx, ItemStack item)
+	public IItemStack AddItemToSlot(int slotIdx, IItemStack item)
 	{
 		if (slotIdx < 0 || slotIdx >= _items.Length)
 		{
@@ -223,7 +223,8 @@ public class Inventory : IInventory
 		{
 			return item;
 		}
-
+		
+		// Fully transfered
 		var transferableAmount = existingItem.MaxStackSize - existingItem.Amount;
 		if (transferableAmount >= item.Amount)
 		{
@@ -232,17 +233,17 @@ public class Inventory : IInventory
 			return null;
 		}
 
-		var leftover = item.Clone() as ItemStack;
+		// Partial transfer
+		var leftover = item.Clone();
 		existingItem.Amount += transferableAmount;
 		leftover!.Amount -= transferableAmount;
-		_logger.Warn("This ItemAdded event is not correct"); // TODO: fix amount of item added
-		ItemAdded?.Invoke(existingItem);
+		ItemAdded?.Invoke(item.Subtract(leftover));
 		return leftover;
 	}
 
-	public IEnumerator<ItemStack> GetEnumerator()
+	public IEnumerator<IItemStack> GetEnumerator()
 	{
-		return ((IEnumerable<ItemStack>)_items).GetEnumerator();
+		return ((IEnumerable<IItemStack>)_items).GetEnumerator();
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()
@@ -250,7 +251,7 @@ public class Inventory : IInventory
 		return GetEnumerator();
 	}
 
-	private ItemStack AddOneItem(ItemStack item)
+	private IItemStack AddOneItem(IItemStack item)
 	{
 		_logger.Debug("Adding one item stack " + item);
 		if (item == null)
@@ -259,7 +260,7 @@ public class Inventory : IInventory
 		}
 
 		var originalItem = item.Clone();
-		item = (item.Clone() as ItemStack)!;
+		item = (item.Clone() as IItemStack)!;
 
 		// Try to fill up existing item stacks
 		var nonFullStackIdx = GetFirstNonFull(item);
@@ -299,7 +300,7 @@ public class Inventory : IInventory
 		return null;
 	}
 
-	private int GetFirstNonFull(ItemStack itemStack)
+	private int GetFirstNonFull(IItemStack itemStack)
 	{
 		for (var i = 0; i < _items.Length; i++)
 		{
@@ -312,7 +313,7 @@ public class Inventory : IInventory
 		return -1;
 	}
 
-	private ItemStack RemoveItem(ItemStack item)
+	private IItemStack RemoveItem(IItemStack item)
 	{
 		if (item == null)
 		{
@@ -320,7 +321,7 @@ public class Inventory : IInventory
 		}
 
 		var originalItem = item.Clone();
-		item = item.Clone() as ItemStack;
+		item = item.Clone() as IItemStack;
 
 		var itemIndex = First(item!.Id);
 		while (itemIndex != -1)
