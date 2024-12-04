@@ -16,8 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/GenericItem.tscn" id="12_tpjy1"]
 
 [node name="GameWorldContainer" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Map" parent="." instance=ExtResource("1_ouy3g")]
+y_sort_enabled = true
 
 [node name="GenericItem" parent="." instance=ExtResource("12_tpjy1")]
 position = Vector2(750, 429)
@@ -26,6 +28,8 @@ position = Vector2(750, 429)
 position = Vector2(888, 177)
 
 [node name="SeedShop" parent="." instance=ExtResource("2_w1s7m")]
+z_index = 2
+y_sort_enabled = true
 position = Vector2(465, 195)
 script = ExtResource("3_orgm4")
 
@@ -34,6 +38,8 @@ position = Vector2(741, 191)
 scale = Vector2(0.5, 0.5)
 
 [node name="Plants" type="Node2D" parent="."]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("3_li003")
 
 [node name="PlantController" type="Node" parent="Plants"]
@@ -45,7 +51,7 @@ PlantName = "Licary"
 Tile = NodePath("../Soil")
 
 [node name="Soil" parent="Plants" instance=ExtResource("10_da3hi")]
-position = Vector2(408, 284)
+position = Vector2(409, 337)
 
 [node name="APlantPrefab2" parent="Plants" node_paths=PackedStringArray("Tile") instance=ExtResource("9_t05jd")]
 position = Vector2(409, 341)
@@ -56,9 +62,11 @@ Tile = NodePath("../Soil2")
 sprite_frames = ExtResource("11_voxp1")
 
 [node name="Soil2" parent="Plants" instance=ExtResource("10_da3hi")]
-position = Vector2(456, 284)
+position = Vector2(458, 339)
 
 [node name="Player" parent="." instance=ExtResource("1_mh621")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(640, 360)
 
 [node name="NightTint" type="CanvasModulate" parent="."]

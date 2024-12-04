@@ -6,6 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_053fl"]
 
 [node name="APlantPrefab" type="StaticBody2D" groups=["Plant"]]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_g03kh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
