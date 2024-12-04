@@ -5,10 +5,9 @@ using untitledplantgame.Dialogue;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
-using untitledplantgame.Item;
-using untitledplantgame.Player;
 using untitledplantgame.Shops;
-using untitledplantgame.VendingMachine;
+
+namespace untitledplantgame.Common;
 
 /**
  * NOTE:
@@ -187,8 +186,8 @@ public partial class EventBus : Node
 		return OnGetItemSlot?.Invoke();
 	}
 	
-	public event Action<Player, IInventory> OnPlayerInventoryChanged;
-	public void PlayerInventoryChanged(Player player, IInventory inventory)
+	public event Action<Player.Player, IInventory> OnPlayerInventoryChanged;
+	public void PlayerInventoryChanged(Player.Player player, IInventory inventory)
 	{
 		OnPlayerInventoryChanged?.Invoke(player, inventory);
 	}
