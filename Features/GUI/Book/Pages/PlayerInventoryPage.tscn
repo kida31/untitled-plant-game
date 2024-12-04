@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Features/GUI/Book/PlayerInventoryPage.cs" id="1_m1va7"]
 [ext_resource type="PackedScene" uid="uid://5oay11tne1l4" path="res://Features/GUI/Book/Inventories/InventoryTabs.tscn" id="2_kjjt2"]
-[ext_resource type="PackedScene" uid="uid://dtgjnb2g3iphl" path="res://Features/GUI/Book/Wiki/PlayerStuff/PlayerDetails.tscn" id="3_pmlsj"]
+[ext_resource type="PackedScene" uid="uid://dtgjnb2g3iphl" path="res://Features/GUI/Book/PlayerStuff/PlayerDetails.tscn" id="3_pmlsj"]
 
 [node name="PlayerInventoryPage" type="HBoxContainer" node_paths=PackedStringArray("_inventoryTabs", "_playerDetails")]
 script = ExtResource("1_m1va7")
