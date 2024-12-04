@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
@@ -9,31 +10,35 @@ namespace untitledplantgame.Inventory.PlayerInventory.Views;
 // View of a single inventory
 public partial class InventoryView : Control
 {
-	// [Export] public string HerbsTabName;
-	// [Export] public string HerbsTabDescription;
-	[Export] private PackedScene _inventoryItemScene;
-	[Export] private PackedScene _tabItemView;
-	[Export] private Control _inventoryItemViewContainer;
+	[Export] private PackedScene _inventoryItemViewPrefab;
+	[Export] private Container _inventoryItemViewContainer;
 
-	private TabItemView _herbsItemView;
-	private ItemStack[] _itemStacks;
 	private List<InventoryItemView> _inventoryItemViews;
 
 	public void UpdateInventory(IInventory inventory)
 	{
+		_inventoryItemViews ??= new();
+		
 		var items = inventory.GetItems();
 		FillTabWithEmptyInventoryItemViews(items.Count);
+		
 		// Populate content of the item views
 		for (int i = 0; i < _inventoryItemViews.Count; i++)
 		{
-			_inventoryItemViews[i].UpdateItemView(i < items.Count ? items[i] : null);
+			var view = _inventoryItemViews[i];
+			view.UpdateItemView(i < items.Count ? items[i] : null);
 		}
 	}
 
+	/// <summary>
+	/// Removes or adds item views to match the new item count
+	/// </summary>
+	/// <param name="newCount"></param>
 	private void FillTabWithEmptyInventoryItemViews(int newCount)
 	{
 		Assert.AssertTrue(_inventoryItemViews.Count == _inventoryItemViewContainer.GetChildCount(),
 			"Tracked nodes and children of container should be same");
+		
 		while (_inventoryItemViews.Count > newCount)
 		{
 			var itemView = _inventoryItemViews[0];
@@ -43,7 +48,7 @@ public partial class InventoryView : Control
 
 		while (_inventoryItemViews.Count < newCount)
 		{
-			var itemView = _inventoryItemScene.Instantiate<InventoryItemView>();
+			var itemView = _inventoryItemViewPrefab.Instantiate<InventoryItemView>();
 			_inventoryItemViewContainer.AddChild(itemView);
 			_inventoryItemViews.Add(itemView);
 		}

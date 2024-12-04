@@ -3,11 +3,14 @@ using Godot;
 using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
+using untitledplantgame.Inventory.PlayerInventory.Views;
 
 namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 
 public partial class TabsController : Control
 {
+
+	[Export] private InventoryView[] _tabs;
 	public List<ICategoryTab> Categories { get; private set; }
 	private InventoryItemView _potentialItemSlot;
 	
@@ -23,20 +26,30 @@ public partial class TabsController : Control
 
 		EventBus.Instance.OnSetItemSlot += SetPotentialItemSlot;
 		EventBus.Instance.OnGetItemSlot += GetPotentialItemSlot;
+
+		_tabs = GetChildren().OfType<InventoryView>().ToArray();
 		
-		SetInventorySizeOfTabs(15); // TODO: Move somewhere it makes sense
+		foreach (var tab in Categories)
+		{
+			tab.SetTabInventorySize(15);
+		}
 	}
 	
 	public void SetInventories(List<Inventory> inventories)
 	{
-		// TODO:
-	}
-	
-	public void SetInventorySizeOfTabs(int inventorySize)
-	{
-		foreach (var tab in Categories)
+		for (int i = 0; i < inventories.Count; i++)
 		{
-			tab.SetTabInventorySize(inventorySize);
+			var inv = inventories[i];
+			var cat = Categories[i];
+			cat.UpdateTabUi(inv.GetItems()[0]); // TODO make this a list
+		}
+		
+		foreach (var child in GetChildren())
+		{
+			if (child is InventoryView invView)
+			{
+				invView.UpdateInventory(inventories[0]);
+			}	
 		}
 	}
 	
@@ -81,18 +94,7 @@ public partial class TabsController : Control
 	private void DropInventoryItemToNewSlot(ItemStack itemStack, InventoryItemView inventoryItemView)
 	{
 		Categories.OfType<SeedsTab>().FirstOrDefault()?.DropInventoryItemToNewSlot(itemStack, inventoryItemView.Id);
-		// switch (itemStack.GetItemType())
-		// {
-		// 	case HerbCategory:
-		// 		//Categories.OfType<HerbsTab>().FirstOrDefault()?.UpdateTabUi(item);
-		// 		break;
-		// 	case MedicineCategory:
-		// 		//Categories.OfType<MedicineTab>().FirstOrDefault()?.UpdateTabUi(item);
-		// 		break;
-		// 	case SeedCategory:
-		// 		Categories.OfType<SeedsTab>().FirstOrDefault()?.DropInventoryItemToNewSlot(itemStack, inventoryItemView.Id);
-		// 		break;
-		// }
+
 	}
 
 	private void SetPotentialItemSlot(InventoryItemView inventoryItemView)

@@ -3,7 +3,6 @@ using Godot;
 
 namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 
-
 /*
  * The idea was to have a script that can be used to easily change up the UI and as long as a GridContainer exists to display items in it,
  * the user can make and break the UI however they see fit.
@@ -13,13 +12,20 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
  */
 public partial class TabItemView : Control
 {
+	[Export]
+	private GridContainer p_gridContainer
+	{
+		get => _gridContainer;
+		set { }
+	}
+
 	private GridContainer _gridContainer;
 
 	public GridContainer GetGridContainer()
 	{
 		return _gridContainer ??= FindFirstGridContainer(this);
 	}
-	
+
 	private GridContainer FindFirstGridContainer(Node parent)
 	{
 		if (parent is GridContainer gridContainer)

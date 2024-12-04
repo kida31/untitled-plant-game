@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5oay11tne1l4"]
+[gd_scene load_steps=8 format=3 uid="uid://5oay11tne1l4"]
 
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/TabsController.cs" id="1_0uwmc"]
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/SeedsTab.cs" id="2_nnjw6"]
@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://msi6pcy22i2y" path="res://Features/Inventory/PlayerInventory/UI_Tabs/TabItemView.tscn" id="4_tsia7"]
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/HerbsTab.cs" id="5_swjmh"]
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/MedicineTab.cs" id="6_4if37"]
+[ext_resource type="PackedScene" uid="uid://c8qlvfu5vslvx" path="res://Features/Inventory/PlayerInventory/Views/InventoryView.tscn" id="7_l6ia7"]
 
-[node name="InventoryWithTabs" type="TabContainer"]
+[node name="InventoryWithTabs" type="TabContainer" node_paths=PackedStringArray("_tabs")]
 size_flags_horizontal = 3
 current_tab = 1
 script = ExtResource("1_0uwmc")
+_tabs = []
 
 [node name="SeedsTab" type="Control" parent="."]
 visible = false
@@ -34,3 +36,6 @@ script = ExtResource("6_4if37")
 _inventoryItemScene = ExtResource("3_w6dip")
 _tabItemView = ExtResource("4_tsia7")
 metadata/_tab_index = 2
+
+[node name="InventoryView" parent="." instance=ExtResource("7_l6ia7")]
+layout_mode = 2
