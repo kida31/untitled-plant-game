@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 

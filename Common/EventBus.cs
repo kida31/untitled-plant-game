@@ -1,6 +1,5 @@
 using System;
 using Godot;
-using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Dialogue;
 using untitledplantgame.Inventory;
@@ -73,9 +72,9 @@ public partial class EventBus : Node
 		OnSeedshopClosed?.Invoke();
 	}
 
-	public event Action<VendingMachine> BeforeVendingMachineOpened;
+	public event Action<VendingMachine.VendingMachine> BeforeVendingMachineOpened;
 
-	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
+	public void BeforeVendingMachineOpen(VendingMachine.VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
 	}
