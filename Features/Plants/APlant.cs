@@ -21,15 +21,15 @@ public partial class APlant : StaticBody2D
 {
 	[Export] public string PlantName { get; private set; }
 	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
-	public SoilTile Tile { get; set; }
+	private SoilTile Tile { get; set; }
 
 	private Dictionary<string, Requirement> _currentRequirements;
 	private Logger _logger;
 	private AnimatedSprite2D _sprite2D;
-	
+
 	private bool _isHarvestable;
-	private float _absorptionRate = 50.0f;
-	private float _consumptionRate = 30.0f;
+	private float _absorptionRate;
+	private float _consumptionRate;
 
 	private int _daysToGrow;
 	private int _currentDay;
@@ -117,9 +117,12 @@ public partial class APlant : StaticBody2D
 
 		_daysToGrow = plantData.DataForGrowthStages[(int)Stage].DaysToGrow;
 		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
+		_absorptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].AbsorptionRate;
+		_consumptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].ConsumptionRate;
+		
 		_currentDay = 0;
 		_currentRequirements = plantRequirements;
-		PlantName = plantData._plantName;
+		PlantName = plantData.PlantName;
 
 		_sprite2D.Play(Stage.ToString());
 	}
