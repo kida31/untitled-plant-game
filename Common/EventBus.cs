@@ -122,7 +122,7 @@ public partial class EventBus : Node
 
 	public void InventoryOpened()
 	{
-		GameStateMachine.Instance.SetState(GameState.Shop);
+		GameStateMachine.Instance.SetState(GameState.Book);
 		OnInventoryOpen?.Invoke();
 	}
 	
