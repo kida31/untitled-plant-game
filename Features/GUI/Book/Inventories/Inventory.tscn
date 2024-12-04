@@ -1,37 +1,207 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8qlvfu5vslvx"]
+[gd_scene load_steps=8 format=3 uid="uid://c8qlvfu5vslvx"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryView.cs" id="1_a7lqt"]
-[ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="2_f358h"]
+[ext_resource type="Texture2D" uid="uid://cdlpjv222kodg" path="res://Assets/UI/BookUI/Background/BookPage_left.png" id="3_3o7mi"]
+[ext_resource type="Texture2D" uid="uid://cp1p736ml5ogt" path="res://Assets/UI/BookUI/Background/BookDecor.png" id="4_e7bmb"]
 [ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="4_edhbq"]
+[ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBox.tscn" id="4_qb6e8"]
+[ext_resource type="Texture2D" uid="uid://ducp8fk43ftki" path="res://Assets/UI/BookUI/Background/BookDecor1.png" id="5_u3ndl"]
+[ext_resource type="Texture2D" uid="uid://b0udl2fbk1ct8" path="res://Assets/UI/BookUI/Containers&Labels/ToolContainer.png" id="6_lgltq"]
 
-[node name="InventoryView" type="CenterContainer" node_paths=PackedStringArray("_inventoryItemViewContainer")]
-visible = false
+[node name="InventoryView" type="Control" node_paths=PackedStringArray("_inventoryItemViewContainer")]
+custom_minimum_size = Vector2(256, 320)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -427.0
+offset_top = -240.0
+offset_right = -171.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_a7lqt")
 _inventoryItemViewPrefab = ExtResource("4_edhbq")
-_inventoryItemViewContainer = NodePath("VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/PanelContainer/GridContainer")
+_inventoryItemViewContainer = NodePath("Content/ItemGrid")
 metadata/_tab_index = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="BG" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -258.0
+offset_top = -206.0
+offset_right = 258.0
+offset_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3o7mi")
+region_rect = Rect2(0, 0, 240, 320)
+patch_margin_left = 32
+patch_margin_top = 16
+patch_margin_right = 32
+patch_margin_bottom = 40
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="BG2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -160.0
+offset_right = 128.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3o7mi")
+stretch_mode = 5
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -135.0
+offset_right = 76.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="ItemGrid" type="GridContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 4
+
+[node name="ItemView" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_f358h")
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer"]
+[node name="ItemView2" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/CenterContainer"]
+[node name="ItemView3" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
+[node name="ItemView4" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/PanelContainer"]
+[node name="ItemView5" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
 layout_mode = 2
-columns = 5
+
+[node name="ItemView6" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView7" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView8" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView9" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView10" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView11" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView12" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView13" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView14" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView15" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView16" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView17" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView18" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView19" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="ItemView20" parent="Content/ItemGrid" instance=ExtResource("4_edhbq")]
+layout_mode = 2
+
+[node name="TextBox" parent="Content" instance=ExtResource("4_qb6e8")]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_alignment = 1
+
+[node name="Decoration" type="TextureRect" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_u3ndl")
+
+[node name="ToolsSection" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Content/ToolsSection"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("6_lgltq")
+
+[node name="TextureRect2" type="TextureRect" parent="Content/ToolsSection"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("6_lgltq")
+
+[node name="TextureRect3" type="TextureRect" parent="Content/ToolsSection"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("6_lgltq")
+
+[node name="TextureRect4" type="TextureRect" parent="Content/ToolsSection"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("6_lgltq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 355.0
+offset_bottom = 322.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 20
+
+[node name="SquiggleDecoLeft2" type="NinePatchRect" parent="."]
+layout_mode = 2
+offset_left = 22.0
+offset_top = 25.0
+offset_right = 38.0
+offset_bottom = 200.0
+size_flags_horizontal = 3
+texture = ExtResource("4_e7bmb")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

@@ -13,26 +13,37 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ToolbeltView" parent="." instance=ExtResource("2_fhqom")]
-offset_left = 206.0
-offset_top = 624.0
-offset_right = 206.0
-offset_bottom = 624.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 167.0
+offset_top = -63.0
+offset_right = 167.0
+offset_bottom = -63.0
+grow_vertical = 0
 
 [node name="BookButton" parent="." instance=ExtResource("1_k0baw")]
-layout_mode = 2
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 1033.0
-offset_top = 524.0
-offset_right = 1273.0
-offset_bottom = 684.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -223.0
+offset_top = -173.0
+offset_right = 17.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="CurrencyHUD" parent="." instance=ExtResource("3_h2wb2")]
-layout_mode = 0
-offset_left = 1133.0
-offset_top = 20.0
-offset_right = 1245.0
-offset_bottom = 56.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -135.0
+offset_top = 18.0
+offset_right = -23.0
+offset_bottom = 54.0
+grow_horizontal = 0

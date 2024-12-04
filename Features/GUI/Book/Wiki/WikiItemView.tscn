@@ -1,16 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2i7oxcdj4025"]
+[gd_scene load_steps=5 format=3 uid="uid://b2i7oxcdj4025"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiItemView.cs" id="1_2gnwr"]
 [ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="1_qumif"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_48ijb"]
+[ext_resource type="Texture2D" uid="uid://cgnox3kn0n8xm" path="res://Assets/UI/BookUI/Icons/CoinIcon.png" id="3_hyrrj"]
 
 [node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("_itemName", "_detailedWikiItemViewButton", "_iconTextureRect", "_nameTextureRect")]
 offset_right = 687.0
-offset_bottom = 160.0
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+offset_bottom = 62.0
 script = ExtResource("1_2gnwr")
 _itemName = NodePath("HBoxContainer/MarginContainer/Label")
 _detailedWikiItemViewButton = NodePath("Button")
@@ -20,6 +17,7 @@ _temporary = ExtResource("2_48ijb")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -28,20 +26,23 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture = ExtResource("1_qumif")
+texture = ExtResource("3_hyrrj")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 33
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+visible = false
 layout_mode = 2
 texture = ExtResource("1_qumif")
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer"]
 layout_mode = 2
-text = "ItemName for Testing"
+text = "ItemName"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2

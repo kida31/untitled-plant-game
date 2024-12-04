@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bmc1oq8o2if8d" path="res://Features/GUI/Book/Wiki/WikiArticleView.tscn" id="3_q0eou"]
 
 [node name="WikiPage" type="HBoxContainer" node_paths=PackedStringArray("_wikiItemList", "_wikiArticle")]
+anchors_preset = -1
+anchor_right = 0.716628
+anchor_bottom = 1.31667
 script = ExtResource("1_hckop")
 _wikiItemList = NodePath("PanelContainer")
 _wikiArticle = NodePath("PanelContainer2/WikiArticleView")
@@ -19,4 +22,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="WikiArticleView" parent="PanelContainer2" instance=ExtResource("3_q0eou")]
+visible = false
 layout_mode = 2

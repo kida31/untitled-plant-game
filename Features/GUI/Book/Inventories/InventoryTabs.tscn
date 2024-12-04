@@ -9,14 +9,15 @@ current_tab = 2
 script = ExtResource("1_vftlt")
 
 [node name="Tab1" parent="." instance=ExtResource("2_c8g2c")]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="Tab2" parent="." instance=ExtResource("2_c8g2c")]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="Tab3" parent="." instance=ExtResource("2_c8g2c")]
-visible = true
 layout_mode = 2
 metadata/_tab_index = 2

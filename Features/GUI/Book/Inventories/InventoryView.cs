@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
@@ -17,7 +18,8 @@ public partial class InventoryView : Control
 
 	public void UpdateInventory(IInventory inventory)
 	{
-		_inventoryItemViews ??= new();
+		// Consider caching children and values instead of querying them every time
+		_inventoryItemViews = _inventoryItemViewContainer.GetChildren().OfType<InventoryItemView>().ToList();
 		
 		var items = inventory.GetItems();
 		FillTabWithEmptyInventoryItemViews(items.Count);

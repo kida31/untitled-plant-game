@@ -5,7 +5,6 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 
 public partial class InventoryItemView : Control
 {
-	[Export] private Texture2D _specificItemIcon;
 	[Export] private TextureRect _itemTextureRect;
 	[Export] private Label _displayItemName;
 	[Export] private Label _itemCurrentQuantity;
@@ -66,7 +65,6 @@ public partial class InventoryItemView : Control
 			// Placeholders: 
 			_itemCurrentQuantity.Text = itemStack.Amount.ToString();
 			_displayItemName.Text = itemStack.Name ?? "Placeholder_ItemName";
-			_itemTextureRect.Texture = _specificItemIcon;
 			TooltipText = itemStack.Name ?? "Placeholder_Tooltip";
 
 			ItemStack = itemStack;

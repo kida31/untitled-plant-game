@@ -1,55 +1,59 @@
 [gd_scene load_steps=4 format=3 uid="uid://nyv2tqdcvli1"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryItemView.cs" id="1_753u5"]
-[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_s1jlp"]
-[ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="3_0i1d7"]
+[ext_resource type="Texture2D" uid="uid://5e5m5bcp0wfa" path="res://Assets/Sprites/seed.png" id="3_k0cwl"]
+[ext_resource type="Texture2D" uid="uid://b807n54jqwn68" path="res://Assets/UI/BookUI/Containers&Labels/ItemContainer7.png" id="3_pa6md"]
 
-[node name="ItemView" type="PanelContainer" node_paths=PackedStringArray("_itemTextureRect", "_displayItemName", "_itemCurrentQuantity", "_inventoryItemViewButton")]
-custom_minimum_size = Vector2(96, 96)
-offset_right = 64.0
-offset_bottom = 64.0
+[node name="ItemView" type="AspectRatioContainer" node_paths=PackedStringArray("_itemTextureRect", "_displayItemName", "_itemCurrentQuantity", "_inventoryItemViewButton")]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 tooltip_text = "Placeholder_Text"
 script = ExtResource("1_753u5")
-_specificItemIcon = ExtResource("2_s1jlp")
-_itemTextureRect = NodePath("MarginContainer/TextureRect")
-_displayItemName = NodePath("ItemName")
-_itemCurrentQuantity = NodePath("ItemQuantity")
-_inventoryItemViewButton = NodePath("Button")
+_itemTextureRect = NodePath("Background")
+_displayItemName = NodePath("MarginContainer/ItemName")
+_itemCurrentQuantity = NodePath("MarginContainer/ItemQuantity")
+_inventoryItemViewButton = NodePath("MarginContainer/Button")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_pa6md")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
 
-[node name="Background" type="TextureRect" parent="MarginContainer"]
+[node name="ImagePadding" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
-texture = ExtResource("3_0i1d7")
-expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/ImagePadding"]
 layout_mode = 2
-texture = ExtResource("3_0i1d7")
+texture = ExtResource("3_k0cwl")
 expand_mode = 1
+stretch_mode = 5
 
-[node name="ItemName" type="Label" parent="."]
+[node name="ItemName" type="Label" parent="MarginContainer"]
+visible = false
 modulate = Color(1, 1, 1, 0.4)
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 autowrap_mode = 3
 
-[node name="ItemQuantity" type="Label" parent="."]
+[node name="ItemQuantity" type="Label" parent="MarginContainer"]
 modulate = Color(1, 1, 1, 0.4)
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 8
-horizontal_alignment = 1
-vertical_alignment = 3
+theme_override_font_sizes/font_size = 16
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 2
 autowrap_mode = 2
 justification_flags = 162
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="MarginContainer"]
 layout_mode = 2
 flat = true
