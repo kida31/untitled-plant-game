@@ -9,8 +9,8 @@ namespace untitledplantgame.Player;
 public class Game
 {
 	// Singleton (keep this at the top)
-	private static readonly Lazy<Game> lazy = new Lazy<Game>(() => new Game());
-	public static Game Instance => lazy.Value;
+	private static readonly Lazy<Game> LazySingleton = new(() => new Game());
+	public static Game Instance => LazySingleton.Value;
 
 	// Fields
 	public static Player Player => Instance.GetPlayer();
@@ -23,7 +23,6 @@ public class Game
 
 	public void Provide(Player player)
 	{
-		GD.Print("Providing player to Game singleton");
 		_player = player;
 	}
 
