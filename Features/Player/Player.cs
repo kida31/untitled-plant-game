@@ -4,6 +4,7 @@ using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Inventory;
+using untitledplantgame.Shops;
 using untitledplantgame.Tools;
 
 namespace untitledplantgame.Player;
@@ -33,7 +34,7 @@ public partial class Player : CharacterBody2D
 	);
 	
 	public BigInventory Inventory => _inventory;
-	private BigInventory _inventory = new ();
+	private BigInventory _inventory;
 
 	public Toolbelt Toolbelt => _toolbelt;
 
@@ -48,10 +49,14 @@ public partial class Player : CharacterBody2D
 		_stateMachine.Initialize(this);
 		
 		EventBus.Instance.OnItemPickUp += OnItemPickUp;
+
+		var rand = new RandomStockGenerator();
+		_inventory = new();
 		_inventory.InventoryChanged += () =>
 		{
 			EventBus.Instance.PlayerInventoryChanged(this, _inventory);
 		};
+		_inventory.AddItem(rand.GetRandom(12).ToArray());
 	}
 
 	private void OnItemPickUp(ItemStack obj)

@@ -41,25 +41,10 @@ public partial class BookView : Control
 			button.Pressed += () => _tabContainer.CurrentTab = capturedIndex;
 		}
 		
-		// TODO move to controller/presenter
 		// Inventory
-		var rand = new RandomStockGenerator();
-		var a = new Inventory(15, "A");
-		a.SetContents(rand.GetRandom(12));
-		var b = new Inventory(15, "A");
-		b.SetContents(rand.GetRandom(5));
-		var c = new Inventory(15, "A");
-		c.SetContents(rand.GetRandom(8));
-		_playerInventoryPage.UpdateInventories(new ()
-		{
-			a,
-			b,
-			c,
-		});
-
+		
 		// Wiki
 		_wikiPage.ItemStackPressed += item => _wikiPage.UpdateArticle(item);
-		_wikiPage.UpdateItems(rand.GetRandom(12));
 	}
 
 
