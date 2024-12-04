@@ -12,13 +12,6 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
  */
 public partial class TabItemView : Control
 {
-	[Export]
-	private GridContainer p_gridContainer
-	{
-		get => _gridContainer;
-		set { }
-	}
-
 	private GridContainer _gridContainer;
 
 	public GridContainer GetGridContainer()
