@@ -27,6 +27,11 @@ public partial class TabsController : Control
 		SetInventorySizeOfTabs(15); // TODO: Move somewhere it makes sense
 	}
 	
+	public void SetInventories(List<Inventory> inventories)
+	{
+		// TODO:
+	}
+	
 	public void SetInventorySizeOfTabs(int inventorySize)
 	{
 		foreach (var tab in Categories)

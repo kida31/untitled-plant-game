@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Common;
@@ -21,6 +22,11 @@ namespace untitledplantgame.Inventory;
 /// </summary>
 public class BigInventory : IInventory
 {
+
+	public event Action InventoryChanged;
+	public event Action<ItemStack> ItemAdded;
+	public event Action<ItemStack> ItemRemoved;
+	
 	public int Size => _inventories.Values.Sum(inventory => inventory.Size);
 	public string Name => "Player Inventory";
 	
@@ -38,6 +44,13 @@ public class BigInventory : IInventory
 			{ ItemCategory.Medicine, new Inventory(size, "Fertilizer Inventory") },
 			{ ItemCategory.Material, new Inventory(size, "Plant Inventory") },
 		};
+		
+		foreach (var (_, inventory) in _inventories)
+		{
+			inventory.InventoryChanged += () => InventoryChanged?.Invoke();
+			inventory.ItemAdded += item => ItemAdded?.Invoke(item);
+			inventory.ItemRemoved += item => ItemRemoved?.Invoke(item);
+		}
 	}
 
 	public BigInventory(Dictionary<ItemCategory, IInventory> inventories)

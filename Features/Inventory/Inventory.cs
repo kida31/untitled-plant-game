@@ -8,6 +8,11 @@ namespace untitledplantgame.Inventory;
 
 public class Inventory : IInventory
 {
+
+	public event Action InventoryChanged;
+	public event Action<ItemStack> ItemAdded;
+	public event Action<ItemStack> ItemRemoved;
+	
 	private readonly ItemStack[] _items;
 	private readonly Logger _logger = new("Inventory");
 

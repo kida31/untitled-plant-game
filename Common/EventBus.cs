@@ -7,6 +7,7 @@ using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 using untitledplantgame.Item;
+using untitledplantgame.Player;
 using untitledplantgame.Shops;
 using untitledplantgame.VendingMachine;
 
@@ -105,13 +106,6 @@ public partial class EventBus : Node
 		GoldChanged?.Invoke(deltaGold, newGold);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	public delegate InventoryItemView GetItemSlotEventHandler();
 
 	public Action OnInventoryOpen;
@@ -127,7 +121,6 @@ public partial class EventBus : Node
 	public event Action<InventoryItemView> OnSetItemSlot;
 	public event Action<ItemStack, InventoryItemView> OnInventoryItemMove;
 	public event GetItemSlotEventHandler OnGetItemSlot;
-
 
 	public void InventoryOpened()
 	{
@@ -193,5 +186,11 @@ public partial class EventBus : Node
 	public InventoryItemView GetItemSlot()
 	{
 		return OnGetItemSlot?.Invoke();
+	}
+	
+	public event Action<Player, IInventory> OnPlayerInventoryChanged;
+	public void PlayerInventoryChanged(Player player, IInventory inventory)
+	{
+		OnPlayerInventoryChanged?.Invoke(player, inventory);
 	}
 }

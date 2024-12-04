@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
@@ -11,23 +12,24 @@ namespace untitledplantgame.Inventory.PlayerInventory;
 // - crisscrossmaster
 public partial class BookView : Control
 {
-	[Export] private TabContainer _tabContainer; // Maybe make bookview the tabcontainer itself
-
+	[ExportGroup("Page References")]
 	// Page references for updating content
 
 	[Export] private PlayerInventoryPage _playerInventoryPage;
 	[Export] private WikiPage _wikiPage;
 
-	// Custom tab buttons
-	[Export] private Button[] _tabButtons;
+	[ExportGroup("Tabs")]
+	[Export] private TabContainer _tabContainer; // Maybe make bookview the tabcontainer itself
+	[Export] private Button[] _tabButtons;	
 	// TODO add custom tab buttons
 
 	public override void _Ready()
 	{
+		// Subscribe to events
 		EventBus.Instance.OnItemPickUp += UpdateInventory;
 		EventBus.Instance.OnInventoryOpen += ShowBook;
 
-		// Connect tab buttons to tabs
+		// Connect tab buttons to trigger tabs
 		for (var index = 0; index < _tabButtons.Length; index++)
 		{
 			var button = _tabButtons[index];
@@ -35,13 +37,22 @@ public partial class BookView : Control
 			button.Pressed += () => _tabContainer.CurrentTab = capturedIndex;
 		}
 
+		var randomItems = new RandomStockGenerator().GetRandom(12);
+		
 		// TODO move to controller/presenter
 		// Inventory
+		var a = new Inventory(15, "A");
+		a.SetContents(randomItems);
+		_playerInventoryPage.SetInventories(new ()
+		{
+			a,
+			a,
+			a,
+		});
 
 		// Wiki
 		_wikiPage.ItemStackPressed += item => _wikiPage.UpdateArticle(item);
-		var items = new RandomStockGenerator().GetRandom(20);
-		_wikiPage.UpdateItems(items);
+		_wikiPage.UpdateItems(randomItems);
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
