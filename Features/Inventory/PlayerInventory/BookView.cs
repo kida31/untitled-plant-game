@@ -38,22 +38,26 @@ public partial class BookView : Control
 			button.Pressed += () => _tabContainer.CurrentTab = capturedIndex;
 		}
 
-		var randomItems = new RandomStockGenerator().GetRandom(12);
-		
+
 		// TODO move to controller/presenter
 		// Inventory
+		var rand = new RandomStockGenerator();
 		var a = new Inventory(15, "A");
-		a.SetContents(randomItems);
+		a.SetContents(rand.GetRandom(12));
+		var b = new Inventory(15, "A");
+		b.SetContents(rand.GetRandom(5));
+		var c = new Inventory(15, "A");
+		c.SetContents(rand.GetRandom(8));
 		_playerInventoryPage.SetInventories(new ()
 		{
 			a,
-			a,
-			a,
+			b,
+			c,
 		});
 
 		// Wiki
 		_wikiPage.ItemStackPressed += item => _wikiPage.UpdateArticle(item);
-		_wikiPage.UpdateItems(randomItems);
+		_wikiPage.UpdateItems(rand.GetRandom(12));
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

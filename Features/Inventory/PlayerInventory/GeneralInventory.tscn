@@ -37,13 +37,13 @@ offset_right = 559.0
 offset_bottom = 302.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
 [node name="PlayerInventoryPage" parent="TabContainer" instance=ExtResource("2_tyesk")]
-visible = false
 layout_mode = 2
 
 [node name="WikiPage" parent="TabContainer" instance=ExtResource("4_t387j")]
+visible = false
 layout_mode = 2
 
 [node name="TODO BookmarkButtons" type="PanelContainer" parent="."]

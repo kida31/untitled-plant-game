@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
@@ -17,5 +16,10 @@ public partial class PlayerInventoryPage : HBoxContainer
 	public void SetPlayerDetails(object obj)
 	{
 		_playerDetails.SetPlayerDetails(obj);
+	}
+
+	public override void _GuiInput(InputEvent @event)
+	{
+		GD.Print(@event);
 	}
 }
