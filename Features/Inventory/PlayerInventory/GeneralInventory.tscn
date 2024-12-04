@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cca7okqb2j4c7"]
+[gd_scene load_steps=6 format=3 uid="uid://cca7okqb2j4c7"]
 
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/BookView.cs" id="1_rrual"]
 [ext_resource type="PackedScene" uid="uid://5oay11tne1l4" path="res://Features/Inventory/PlayerInventory/Views/InventoryWithTabs.tscn" id="2_p1lmy"]
 [ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.tscn" id="3_5pjti"]
-[ext_resource type="PackedScene" uid="uid://c77ama5r0mirv" path="res://Features/Inventory/PlayerInventory/Views/WikiItemList.tscn" id="4_pr7o1"]
+[ext_resource type="PackedScene" uid="uid://e3t5fwq4qne3" path="res://Features/Inventory/PlayerInventory/Pages/WikiPage.tscn" id="4_t387j"]
 [ext_resource type="PackedScene" uid="uid://dtgjnb2g3iphl" path="res://Features/Inventory/PlayerInventory/Views/PlayerDetails.tscn" id="8_6xk6p"]
-[ext_resource type="PackedScene" uid="uid://bmc1oq8o2if8d" path="res://Features/Inventory/PlayerInventory/UI_Wiki/DetailedWikiItemView.tscn" id="9_dcydr"]
-[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Wiki/DetailedWikiController.cs" id="9_xuc6d"]
 
 [node name="BookView" type="Control"]
 layout_mode = 3
@@ -38,34 +36,20 @@ grow_horizontal = 2
 grow_vertical = 2
 current_tab = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer"]
+[node name="PlayerInventoryPage" type="HBoxContainer" parent="TabContainer"]
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 metadata/_tab_index = 0
 
-[node name="TabbedInventoryView" parent="TabContainer/HBoxContainer" instance=ExtResource("2_p1lmy")]
+[node name="TabbedInventoryView" parent="TabContainer/PlayerInventoryPage" instance=ExtResource("2_p1lmy")]
 layout_mode = 2
 
-[node name="PlayerDetails" parent="TabContainer/HBoxContainer" instance=ExtResource("8_6xk6p")]
+[node name="PlayerDetails" parent="TabContainer/PlayerInventoryPage" instance=ExtResource("8_6xk6p")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer"]
+[node name="WikiPage" parent="TabContainer" instance=ExtResource("4_t387j")]
 visible = false
-layout_mode = 2
-metadata/_edit_use_anchors_ = true
-metadata/_tab_index = 1
-
-[node name="PanelContainer" parent="TabContainer/HBoxContainer2" instance=ExtResource("4_pr7o1")]
-layout_mode = 2
-
-[node name="PanelContainer2" type="PanelContainer" parent="TabContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("9_xuc6d")
-_detailedWikiItemView = ExtResource("9_dcydr")
-
-[node name="VBoxContainer" parent="TabContainer/HBoxContainer2/PanelContainer2" instance=ExtResource("9_dcydr")]
 layout_mode = 2
 
 [node name="TODO BookmarkButtons" type="PanelContainer" parent="."]

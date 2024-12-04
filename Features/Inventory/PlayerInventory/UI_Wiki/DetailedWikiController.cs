@@ -4,7 +4,7 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 public partial class DetailedWikiController : Node
 {
 	[Export] private PackedScene _detailedWikiItemView;
-	private DetailedWikiItemView _detailedView;
+	private WikiArticleView _detailedView;
 
 	public override void _Ready()
 	{
@@ -18,8 +18,8 @@ public partial class DetailedWikiController : Node
 			node.QueueFree();
 		}
 		
-		_detailedView = _detailedWikiItemView.Instantiate<DetailedWikiItemView>();
-		_detailedView.SetDetailedWikiItemView(itemStack);
+		_detailedView = _detailedWikiItemView.Instantiate<WikiArticleView>();
+		_detailedView.SetItemStack(itemStack);
 		
 		AddChild(_detailedView);
 	}

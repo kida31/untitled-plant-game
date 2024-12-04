@@ -28,7 +28,8 @@ public partial class WikiItemView : Control
 	public override void _Ready()
 	{
 		_detailedWikiItemViewButton.FocusEntered += SetFocusOnThisView;
-		_detailedWikiItemViewButton.Pressed += ShowDetailedWikiItemView;
+		_detailedWikiItemViewButton.Pressed += () => Pressed?.Invoke();
+
 	}
 	
 	private void OnSetItemStack(ItemStack itemStack)
@@ -37,18 +38,23 @@ public partial class WikiItemView : Control
 		_itemName.Text = itemStack.Name;
 		_iconTextureRect.Texture = itemStack.Icon ?? _temporary;
 	}
-	
-	public override void _UnhandledInput(InputEvent @event)
+
+	public override void _GuiInput(InputEvent @event)
 	{
-		if (_detailedWikiItemViewButton.HasFocus())
+		// We use the button for this, until we have custom highlight for pressed/hovered/selected
+		// Use FocusMode = ALL for this to work
+		return;
+		if (@event is InputEventMouseButton button)
 		{
-			if (@event is InputEventJoypadButton button)
+			if (button.ButtonIndex == MouseButton.Left && button.Pressed)
 			{
-				if (button.ButtonIndex == JoyButton.A)
-				{
-					ShowDetailedWikiItemView();
-				}
+				Pressed?.Invoke();
 			}
+		}
+		
+		if (@event.IsAction("ui_accept"))
+		{
+			Pressed?.Invoke();
 		}
 	}
 
@@ -56,12 +62,7 @@ public partial class WikiItemView : Control
 	{
 		_detailedWikiItemViewButton.GrabFocus();
 	}
-
-	private void ShowDetailedWikiItemView()
-	{
-		EventBus.Instance.UiWikiItemClicked(ItemStack);
-	}
-
+	
 	private void SetFocusOnThisView()
 	{
 		EventBus.Instance.ScrollContainerViewChanged(this);

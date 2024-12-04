@@ -47,7 +47,11 @@ public partial class WikiItemList : PanelContainer
 			var itemView = _itemViewPrefab.Instantiate<WikiItemView>();
 			_itemViews.Add(itemView);
 			itemView.FocusEntered += () => ItemStackPressed?.Invoke(itemView.ItemStack);
-			itemView.Pressed += () => ItemStackPressed?.Invoke(itemView.ItemStack);
+			itemView.Pressed += () =>
+			{
+				GD.Print("Pressed item view.");
+				ItemStackPressed?.Invoke(itemView.ItemStack);
+			};
 			_itemViewContainer.AddChild(itemView);
 		}
 
