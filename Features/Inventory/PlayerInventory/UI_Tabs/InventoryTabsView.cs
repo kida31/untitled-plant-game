@@ -8,7 +8,7 @@ using untitledplantgame.Inventory.PlayerInventory.Views;
 
 namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 
-public partial class TabsController : Control
+public partial class InventoryTabsView : Control
 {
 	[Export] private PackedScene _inventoryViewPrefab;
 	private InventoryItemView _potentialItemSlot;

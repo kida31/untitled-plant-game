@@ -1,11 +1,12 @@
-using Godot;
 using System.Collections.Generic;
-using untitledplantgame.Inventory;
+using Godot;
 using untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 
-public partial class PlayerInventoryPage : HBoxContainer
+namespace untitledplantgame.Inventory.PlayerInventory;
+
+public partial class PlayerInventoryPage : Control
 {
-	[Export] private TabsController _inventoryTabs;
+	[Export] private InventoryTabsView _inventoryTabs;
 	[Export] private PlayerDetailsView _playerDetails;
 
 	public void UpdateInventories(List<IInventory> inventories)
@@ -16,10 +17,5 @@ public partial class PlayerInventoryPage : HBoxContainer
 	public void UpdatePlayerDetails(object obj)
 	{
 		_playerDetails.SetPlayerDetails(obj);
-	}
-
-	public override void _GuiInput(InputEvent @event)
-	{
-		GD.Print(@event);
 	}
 }

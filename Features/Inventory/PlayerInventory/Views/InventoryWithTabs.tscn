@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://5oay11tne1l4"]
 
-[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/TabsController.cs" id="1_0uwmc"]
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/InventoryTabsView.cs" id="1_0uwmc"]
 [ext_resource type="PackedScene" uid="uid://c8qlvfu5vslvx" path="res://Features/Inventory/PlayerInventory/Views/InventoryView.tscn" id="7_l6ia7"]
 
-[node name="InventoryWithTabs" type="TabContainer"]
+[node name="InventoryTabsView" type="TabContainer"]
 size_flags_horizontal = 3
 current_tab = 2
 script = ExtResource("1_0uwmc")
