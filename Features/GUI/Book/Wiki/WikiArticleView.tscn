@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmc1oq8o2if8d"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiArticleView.cs" id="1_6vmcs"]
-[ext_resource type="Texture2D" uid="uid://n66o347wemq8" path="res://Assets/UI/BookUI/Background/BookPage_right.png" id="1_ek2kn"]
+[ext_resource type="Texture2D" uid="uid://bse2hc1dgntl" path="res://Assets/UI/BookUI/Background/EmptyItemDetailsPage.png" id="2_r81nv"]
 [ext_resource type="Texture2D" uid="uid://hqe8ukrnerjw" path="res://Assets/UI/BookUI/Containers&Labels/ItemContainer1.png" id="5_8tctf"]
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_wi3q8"]
 
@@ -9,41 +9,32 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_6vmcs")
-_iconTextureRect = NodePath("Finetunemargin/VBoxContainer/MarginContainer/MarginContainer/ItemIcon")
+_iconTextureRect = NodePath("ItemIcon_Div/AspectRatioContainer/ItemIcon")
 _itemNameAndCategory = NodePath("Finetunemargin/VBoxContainer/Name_TextBoxDiv/TextMargin/Label")
 _itemDescription = NodePath("Finetunemargin/VBoxContainer/InfoTexts/Description_DivWithMinSize/TextMargin/Label")
 _itemStats = NodePath("Finetunemargin/VBoxContainer/InfoTexts/Stats_Div/TextMargin/Label")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
 offset_left = -14.0
 offset_right = 242.0
 offset_bottom = 320.0
-texture = ExtResource("1_ek2kn")
+texture = ExtResource("2_r81nv")
 stretch_mode = 5
 
-[node name="Finetunemargin" type="MarginContainer" parent="."]
-layout_mode = 1
-offset_right = 196.0
-offset_bottom = 296.0
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 19
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Finetunemargin" node_paths=PackedStringArray("_iconTextureRect")]
+[node name="ItemIcon_Div" type="BoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 8
-script = ExtResource("1_6vmcs")
-_iconTextureRect = NodePath("MarginContainer/MarginContainer/ItemIcon")
-
-[node name="MarginContainer" type="BoxContainer" parent="Finetunemargin/VBoxContainer"]
-layout_mode = 2
+offset_left = 26.0
+offset_top = 19.0
+offset_right = 220.0
+offset_bottom = 74.0
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Finetunemargin/VBoxContainer/MarginContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="ItemIcon_Div"]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 
-[node name="BG" type="NinePatchRect" parent="Finetunemargin/VBoxContainer/MarginContainer/MarginContainer"]
+[node name="BG" type="NinePatchRect" parent="ItemIcon_Div/AspectRatioContainer"]
 layout_mode = 2
 texture = ExtResource("5_8tctf")
 patch_margin_left = 14
@@ -51,10 +42,24 @@ patch_margin_top = 14
 patch_margin_right = 12
 patch_margin_bottom = 12
 
-[node name="ItemIcon" type="TextureRect" parent="Finetunemargin/VBoxContainer/MarginContainer/MarginContainer"]
+[node name="ItemIcon" type="TextureRect" parent="ItemIcon_Div/AspectRatioContainer"]
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Finetunemargin" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_top = 58.0
+offset_right = 196.0
+offset_bottom = 296.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 19
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Finetunemargin" node_paths=PackedStringArray("_iconTextureRect")]
+layout_mode = 2
+theme_override_constants/separation = 14
+script = ExtResource("1_6vmcs")
+_iconTextureRect = NodePath("../../ItemIcon_Div/AspectRatioContainer/ItemIcon")
 
 [node name="Name_TextBoxDiv" parent="Finetunemargin/VBoxContainer" instance=ExtResource("5_wi3q8")]
 layout_mode = 2

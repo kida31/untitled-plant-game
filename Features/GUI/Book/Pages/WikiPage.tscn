@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://e3t5fwq4qne3"]
+[gd_scene load_steps=5 format=3 uid="uid://e3t5fwq4qne3"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Pages/WikiPage.cs" id="1_hckop"]
 [ext_resource type="PackedScene" uid="uid://c77ama5r0mirv" path="res://Features/GUI/Book/Wiki/WikiItemList.tscn" id="1_lyx1a"]
 [ext_resource type="PackedScene" uid="uid://bmc1oq8o2if8d" path="res://Features/GUI/Book/Wiki/WikiArticleView.tscn" id="3_q0eou"]
+[ext_resource type="Texture2D" uid="uid://bqnsis3x5b0tg" path="res://Assets/UI/BookUI/Background/BookRing_Shaded.png" id="4_ac805"]
 
 [node name="WikiPage" type="Control" node_paths=PackedStringArray("_wikiItemList", "_wikiArticle")]
 layout_mode = 3
@@ -24,9 +25,23 @@ metadata/_tab_index = 1
 
 [node name="WikiItemList" parent="." instance=ExtResource("1_lyx1a")]
 layout_mode = 2
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="WikiArticleView" parent="." instance=ExtResource("3_q0eou")]
 layout_mode = 2
-offset_left = 231.0
-offset_right = 431.0
-offset_bottom = 320.0
+offset_left = 230.0
+offset_top = 1.0
+offset_right = 430.0
+offset_bottom = 321.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 17.0
+offset_right = 253.0
+offset_bottom = 312.0
+texture = ExtResource("4_ac805")
+region_rect = Rect2(0, 0, 48, 37)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
