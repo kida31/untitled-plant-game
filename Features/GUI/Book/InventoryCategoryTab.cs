@@ -68,4 +68,20 @@ public partial class InventoryCategoryTab : Control, INavigatable
 			// Play animation
 		}
 	}
+
+	public override void _GuiInput(InputEvent @event)
+	{
+		if (@event is InputEventMouseButton button)
+		{
+			if (button.ButtonIndex == MouseButton.Left && button.Pressed)
+			{
+				Pressed?.Invoke();
+			}
+		}
+		
+		if (@event.IsAction("ui_accept"))
+		{
+			Pressed?.Invoke();
+		}
+	}
 }

@@ -140,6 +140,7 @@ _data = {
 [node name="Div" type="MarginContainer" node_paths=PackedStringArray("_activeIcon", "_inactiveIcon", "_textLabel", "_animationPlayer")]
 offset_right = 50.0
 offset_bottom = 55.0
+focus_mode = 2
 script = ExtResource("1_o154g")
 Text = "Plants"
 _activeIcon = NodePath("VBoxContainer/Div/Active")
