@@ -1,33 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://5oay11tne1l4"]
+[gd_scene load_steps=5 format=3 uid="uid://5oay11tne1l4"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryTabsView.cs" id="1_trxec"]
 [ext_resource type="PackedScene" uid="uid://c8qlvfu5vslvx" path="res://Features/GUI/Book/Inventories/InventoryView.tscn" id="2_xhhtn"]
+[ext_resource type="PackedScene" uid="uid://caiu3dqnnxl28" path="res://Features/GUI/Book/InventoryCategoryTab.tscn" id="3_jnob4"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("_tabContainer")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16fns"]
+draw_center = false
+
+[node name="Control" type="Control" node_paths=PackedStringArray("_tabContainer", "_tabButtonContainer")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_trxec")
 _inventoryViewPrefab = ExtResource("2_xhhtn")
+_inventoryCategoryTabPrefab = ExtResource("3_jnob4")
 _tabContainer = NodePath("InventoryTabsView")
+_tabButtonContainer = NodePath("HBoxContainer")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 35.0
+offset_top = -39.0
+offset_right = 193.0
+offset_bottom = 6.0
+
+[node name="PlantsTab_Div" parent="HBoxContainer" instance=ExtResource("3_jnob4")]
+layout_mode = 2
+size_flags_vertical = 8
+Text = null
+IsActive = true
+
+[node name="PlantsTab_Div2" parent="HBoxContainer" instance=ExtResource("3_jnob4")]
+layout_mode = 2
+size_flags_vertical = 8
+Text = null
+
+[node name="PlantsTab_Div3" parent="HBoxContainer" instance=ExtResource("3_jnob4")]
+layout_mode = 2
+size_flags_vertical = 8
+Text = null
+
+[node name="PlantsTab_Div4" parent="HBoxContainer" instance=ExtResource("3_jnob4")]
+layout_mode = 2
+size_flags_vertical = 8
+Text = null
 
 [node name="InventoryTabsView" type="TabContainer" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 320.0
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_16fns")
 current_tab = 2
 tabs_visible = false
 
-[node name="Tab1" parent="InventoryTabsView" instance=ExtResource("2_xhhtn")]
+[node name="Plants" parent="InventoryTabsView" instance=ExtResource("2_xhhtn")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Tab2" parent="InventoryTabsView" instance=ExtResource("2_xhhtn")]
+[node name="Medicine" parent="InventoryTabsView" instance=ExtResource("2_xhhtn")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
