@@ -49,7 +49,7 @@ public partial class InventoryCategoryTab : Control, INavigatable
 
 	public void SetIsActive(bool value, bool instantAnimation = false)
 	{
-		GD.Print("SetActive");
+		// GD.Print("SetActive");
 		if (_isActive == value)
 		{
 			return;

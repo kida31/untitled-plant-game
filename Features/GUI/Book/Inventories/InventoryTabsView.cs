@@ -38,6 +38,7 @@ public partial class InventoryTabsView : Control
 		_tabButtons = _tabButtonContainer.GetChildren().OfType<InventoryCategoryTab>().ToList();
 
 		_tabContainer.TabChanged += OnTabChanged;
+		_tabContainer.CurrentTab = 0;
 	}
 
 	private void OnTabChanged(long tab)
@@ -51,8 +52,8 @@ public partial class InventoryTabsView : Control
 
 		for (var i = 0; i < _tabButtons.Count; i++)
 		{
-			var s = i == activeIndex ? "active" : "inactive";
-			GD.Print($"{i} as {s}");
+			// var s = i == activeIndex ? "active" : "inactive";
+			// GD.Print($"{i} as {s}");
 			var button = _tabButtons[i];
 			button.SetIsActive(i == activeIndex);
 		}
@@ -67,10 +68,12 @@ public partial class InventoryTabsView : Control
 
 		if (@event.IsActionPressed(Book.BumperLeft))
 		{
+			GD.Print("Left");
 			PreviousTab(false);
 		}
 		else if (@event.IsActionPressed(Book.BumperRight))
 		{
+			GD.Print("Right");
 			NextTab(false);
 		}
 	}
