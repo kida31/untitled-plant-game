@@ -3,6 +3,8 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.Inventory;
+using untitledplantgame.Shops;
 using untitledplantgame.Tools;
 
 namespace untitledplantgame.Player;
@@ -30,15 +32,40 @@ public partial class Player : CharacterBody2D
 			new WateringCan(50, 1000, true, 12, 24),
 		}
 	);
+	
+	public BigInventory Inventory => _inventory;
+	private BigInventory _inventory;
 
 	public Toolbelt Toolbelt => _toolbelt;
 
 	public override void _Ready()
 	{
 		_logger.Info("! Ready !");
+		
+		Game.Instance.Provide(this);
+		
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_stateMachine.Initialize(this);
+		
+		EventBus.Instance.OnItemPickUp += OnItemPickUp;
+
+		var rand = new RandomStockGenerator();
+		_inventory = new();
+		_inventory.InventoryChanged += () =>
+		{
+			EventBus.Instance.PlayerInventoryChanged(this, _inventory);
+		};
+		_inventory.AddItem(rand.GetRandom(12).ToArray());
+	}
+
+	private void OnItemPickUp(ItemStack obj)
+	{
+		var leftovers = _inventory.AddItem(obj);
+		if (leftovers.Count > 0)
+		{
+			_logger.Warn("Inventory full, could not pick up all items. This is not handled");
+		}
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

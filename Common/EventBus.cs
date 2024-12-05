@@ -104,13 +104,6 @@ public partial class EventBus : Node
 		GoldChanged?.Invoke(deltaGold, newGold);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	public delegate InventoryItemView GetItemSlotEventHandler();
 
 	public Action OnInventoryOpen;
@@ -124,13 +117,12 @@ public partial class EventBus : Node
 	public event Action<InventoryItemView> OnInventoryItemViewMoved;
 	public event Action<InventoryItemView> OnInventoryItemViewReleased;
 	public event Action<InventoryItemView> OnSetItemSlot;
-	public event Action<ItemStack, InventoryItemView> OnInventoryItemMove;
+	public event Action<IItemStack, InventoryItemView> OnInventoryItemMove;
 	public event GetItemSlotEventHandler OnGetItemSlot;
-
 
 	public void InventoryOpened()
 	{
-		GameStateMachine.Instance.SetState(GameState.Shop);
+		GameStateMachine.Instance.SetState(GameState.Book);
 		OnInventoryOpen?.Invoke();
 	}
 	
@@ -184,7 +176,7 @@ public partial class EventBus : Node
 		OnSetItemSlot?.Invoke(inventoryItemView);
 	}
 	
-	public void InventoryItemMoved(ItemStack itemStack, InventoryItemView inventoryItemView)
+	public void InventoryItemMoved(IItemStack itemStack, InventoryItemView inventoryItemView)
 	{
 		OnInventoryItemMove?.Invoke(itemStack, inventoryItemView);
 	}
@@ -192,5 +184,11 @@ public partial class EventBus : Node
 	public InventoryItemView GetItemSlot()
 	{
 		return OnGetItemSlot?.Invoke();
+	}
+	
+	public event Action<Player.Player, IInventory> OnPlayerInventoryChanged;
+	public void PlayerInventoryChanged(Player.Player player, IInventory inventory)
+	{
+		OnPlayerInventoryChanged?.Invoke(player, inventory);
 	}
 }

@@ -12,8 +12,11 @@ public class Book
 	public const string East = "book_east";
 	public const string West = "book_west";
 
-	public const string TriggerLeft = "book_trigger_left";
-	public const string TriggerRight = "book_trigger_right";
+	public const string BumperLeft = "book_lb";
+	public const string BumperRight = "book_rb";
+	
+	public const string TriggerLeft = "book_lt";
+	public const string TriggerRight = "book_rt";
 
 	public const string Confirm = South;
 	public const string CloseBook = North;
