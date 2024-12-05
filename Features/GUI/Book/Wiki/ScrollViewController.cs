@@ -43,8 +43,20 @@ public partial class ScrollViewController : ScrollContainer
 		ScrollToFocusedElement(itemView);
 	}
 
-	private T GetFirstAncestor<T>(Node child) where T: class
+	/// <summary>
+	/// Gets the first ancestor of type. Searches at most maxDepth steps up the tree.
+	/// </summary>
+	/// <param name="child"></param>
+	/// <param name="maxDepth"></param>
+	/// <typeparam name="T"></typeparam>
+	/// <returns></returns>
+	private T GetFirstAncestor<T>(Node child, int maxDepth = 5) where T : class
 	{
+		if (maxDepth <= 0)
+		{
+			return null;
+		}
+
 		var parent = child.GetParent();
 		if (parent == null)
 		{
@@ -56,7 +68,7 @@ public partial class ScrollViewController : ScrollContainer
 			return parentOfType;
 		}
 
-		return GetFirstAncestor<T>(parent);
+		return GetFirstAncestor<T>(parent, maxDepth - 1);
 	}
 
 	public override void _Process(double delta)
