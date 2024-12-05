@@ -28,23 +28,28 @@ offset_bottom = 6.0
 [node name="PlantsTab_Div" parent="HBoxContainer" instance=ExtResource("3_jnob4")]
 layout_mode = 2
 size_flags_vertical = 8
-Text = null
+Text = "Never"
 IsActive = true
 
 [node name="PlantsTab_Div2" parent="HBoxContainer" instance=ExtResource("3_jnob4")]
 layout_mode = 2
 size_flags_vertical = 8
-Text = null
+Text = "Gonna"
 
 [node name="PlantsTab_Div3" parent="HBoxContainer" instance=ExtResource("3_jnob4")]
 layout_mode = 2
 size_flags_vertical = 8
-Text = null
+Text = "Give"
 
 [node name="PlantsTab_Div4" parent="HBoxContainer" instance=ExtResource("3_jnob4")]
 layout_mode = 2
 size_flags_vertical = 8
-Text = null
+Text = "You"
+
+[node name="PlantsTab_Div5" parent="HBoxContainer" instance=ExtResource("3_jnob4")]
+layout_mode = 2
+size_flags_vertical = 8
+Text = "Up"
 
 [node name="InventoryTabsView" type="TabContainer" parent="."]
 layout_mode = 0
