@@ -42,8 +42,8 @@ public partial class InventoryTabsView : Control
 
 	private void OnTabChanged(long tab)
 	{
-		int index = (int) tab;
-		if (index < 0 || index >= _tabs.Count)
+		int activeIndex = (int) tab;
+		if (activeIndex < 0 || activeIndex >= _tabs.Count)
 		{
 			// log error
 			return;
@@ -51,10 +51,10 @@ public partial class InventoryTabsView : Control
 
 		for (var i = 0; i < _tabButtons.Count; i++)
 		{
-			var s = i == index ? "active" : "inactive";
+			var s = i == activeIndex ? "active" : "inactive";
 			GD.Print($"{i} as {s}");
-			var button = _tabButtons[index];
-			button.SetIsActive(i == index);
+			var button = _tabButtons[i];
+			button.SetIsActive(i == activeIndex);
 		}
 	}
 

@@ -49,19 +49,23 @@ public partial class InventoryCategoryTab : Control, INavigatable
 
 	public void SetIsActive(bool value, bool instantAnimation = false)
 	{
+		GD.Print("SetActive");
+		if (_isActive == value)
+		{
+			return;
+		}
+		
 		_isActive = value;
 		
 		if (_isActive)
 		{
 			_animationPlayer.Play(ActivateAnimation);
-			GD.Print(Name + _isActive);
 			// Play animation
 		}
 		else
 		{
 			_animationPlayer.PlayBackwards(ActivateAnimation);
 			// Play animation
-			GD.Print(Name + _isActive);
 		}
 	}
 }
