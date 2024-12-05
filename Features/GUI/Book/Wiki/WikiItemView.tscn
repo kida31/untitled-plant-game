@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_d341g"]
 
 [node name="WikiItemView" type="MarginContainer" node_paths=PackedStringArray("_itemName", "_detailedWikiItemViewButton", "_iconTextureRect")]
-offset_right = 110.0
+offset_right = 138.0
 offset_bottom = 32.0
 script = ExtResource("1_2gnwr")
 _itemName = NodePath("HBoxContainer/TextBoxDiv/TextMargin/Label")

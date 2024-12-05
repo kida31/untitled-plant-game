@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dvg3mpwor2ux0" path="res://Assets/UI/BookUI/Containers&Labels/Ency_ItemNameLabel.png" id="1_ghexf"]
 
 [node name="TextBoxDiv" type="MarginContainer"]
-offset_right = 78.0
-offset_bottom = 30.0
+offset_right = 122.0
+offset_bottom = 114.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
@@ -18,10 +18,12 @@ patch_margin_bottom = 10
 [node name="TextMargin" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 12
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
 
 [node name="Label" type="Label" parent="TextMargin"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_type_variation = &"GraphFrameTitleLabel"
 text = "Abc123"
