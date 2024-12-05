@@ -25,22 +25,31 @@ metadata/_tab_index = 1
 
 [node name="WikiItemList" parent="." instance=ExtResource("1_lyx1a")]
 layout_mode = 2
+offset_left = -1.0
+offset_right = 255.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="WikiArticleView" parent="." instance=ExtResource("3_q0eou")]
 layout_mode = 2
-offset_left = 230.0
-offset_top = 1.0
-offset_right = 430.0
-offset_bottom = 321.0
+offset_left = 229.0
+offset_top = -3.0
+offset_right = 429.0
+offset_bottom = 317.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 209.0
-offset_top = 17.0
-offset_right = 253.0
-offset_bottom = 312.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -147.5
+offset_right = 22.0
+offset_bottom = 147.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_ac805")
 region_rect = Rect2(0, 0, 48, 37)
 axis_stretch_horizontal = 1

@@ -1,14 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6y60vh6v2ec8"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/PlayerInventoryPage.cs" id="1_m1va7"]
-[ext_resource type="PackedScene" uid="uid://5oay11tne1l4" path="res://Features/GUI/Book/Inventories/InventoryTabs.tscn" id="2_kjjt2"]
+[ext_resource type="Script" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.cs" id="1_qlgnr"]
+[ext_resource type="PackedScene" uid="uid://5oay11tne1l4" path="res://Features/GUI/Book/Inventories/InventoryTabsView.tscn" id="2_kjjt2"]
 [ext_resource type="PackedScene" uid="uid://dtgjnb2g3iphl" path="res://Features/GUI/Book/PlayerStuff/PlayerDetails.tscn" id="3_pmlsj"]
 
 [node name="PlayerInventoryPage" type="HBoxContainer" node_paths=PackedStringArray("_inventoryTabs", "_playerDetails")]
-script = ExtResource("1_m1va7")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -258.0
+offset_top = -171.0
+offset_right = 258.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qlgnr")
 _inventoryTabs = NodePath("TabbedInventory")
 _playerDetails = NodePath("PlayerDetails")
-metadata/_edit_use_anchors_ = true
 metadata/_tab_index = 0
 
 [node name="TabbedInventory" parent="." instance=ExtResource("2_kjjt2")]
