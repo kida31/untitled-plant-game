@@ -1,118 +1,195 @@
-[gd_scene load_steps=5 format=3 uid="uid://c77ama5r0mirv"]
+[gd_scene load_steps=7 format=3 uid="uid://c77ama5r0mirv"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/ScrollViewController.cs" id="1_2ipb1"]
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiItemList.cs" id="1_lt328"]
 [ext_resource type="PackedScene" uid="uid://b2i7oxcdj4025" path="res://Features/GUI/Book/Wiki/WikiItemView.tscn" id="2_kax1w"]
 [ext_resource type="Texture2D" uid="uid://cdlpjv222kodg" path="res://Assets/UI/BookUI/Background/BookPage_left.png" id="3_t4j6v"]
+[ext_resource type="Texture2D" uid="uid://ckpaa387440l2" path="res://Assets/UI/BookUI/Background/EncyclopediaInfoPageDemo.png" id="4_l1kwy"]
+[ext_resource type="Texture2D" uid="uid://b0udl2fbk1ct8" path="res://Assets/UI/BookUI/Containers&Labels/ToolContainer.png" id="5_58xx7"]
 
-[node name="WikiItemList" type="PanelContainer" node_paths=PackedStringArray("_itemViewContainer")]
+[node name="WikiItemList" type="Control" node_paths=PackedStringArray("_itemViewContainer")]
+clip_children = 2
 custom_minimum_size = Vector2(256, 320)
-offset_right = 270.0
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
 offset_bottom = 320.0
 size_flags_horizontal = 3
 script = ExtResource("1_lt328")
 _itemViewPrefab = ExtResource("2_kax1w")
-_itemViewContainer = NodePath("MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer")
+_itemViewContainer = NodePath("MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(256, 320)
 layout_mode = 2
+offset_right = 256.0
+offset_bottom = 320.0
 texture = ExtResource("3_t4j6v")
 stretch_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="plceholder" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(256, 320)
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 16
+offset_left = -26.0
+offset_top = -3.0
+offset_right = 486.0
+offset_bottom = 317.0
+texture = ExtResource("4_l1kwy")
+stretch_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="MarginTopLeft" type="MarginContainer" parent="."]
 layout_mode = 2
+offset_right = 227.0
+offset_bottom = 305.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 40
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginTopLeft"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginTopLeft/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 6
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="MarginTopLeft/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+
+[node name="Div" type="MarginContainer" parent="MarginTopLeft/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginTopLeft/VBoxContainer/HBoxContainer/Div"]
+layout_mode = 2
+texture = ExtResource("5_58xx7")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="MarginTopLeft/VBoxContainer/HBoxContainer/Div"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Plants"
+flat = true
+clip_text = true
+icon_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Div2" type="MarginContainer" parent="MarginTopLeft/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2"]
+[node name="TextureRect" type="TextureRect" parent="MarginTopLeft/VBoxContainer/HBoxContainer/Div2"]
+layout_mode = 2
+texture = ExtResource("5_58xx7")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="MarginTopLeft/VBoxContainer/HBoxContainer/Div2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Material"
+flat = true
+clip_text = true
+icon_alignment = 1
 
-[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Div3" type="MarginContainer" parent="MarginTopLeft/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer3"]
+[node name="TextureRect" type="TextureRect" parent="MarginTopLeft/VBoxContainer/HBoxContainer/Div3"]
+layout_mode = 2
+texture = ExtResource("5_58xx7")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="MarginTopLeft/VBoxContainer/HBoxContainer/Div3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Medicine"
+flat = true
+clip_text = true
+icon_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("_plantButton", "_materialButton", "_medicineButton", "_scrollViewItems")]
+[node name="Div4" type="MarginContainer" parent="MarginTopLeft/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginTopLeft/VBoxContainer/HBoxContainer/Div4"]
+layout_mode = 2
+texture = ExtResource("5_58xx7")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="MarginTopLeft/VBoxContainer/HBoxContainer/Div4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "-"
+flat = true
+clip_text = true
+icon_alignment = 1
+
+[node name="MarginRight" type="MarginContainer" parent="MarginTopLeft/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_right = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginTopLeft/VBoxContainer/MarginRight" node_paths=PackedStringArray("_plantButton", "_materialButton", "_medicineButton", "_scrollViewItems")]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 script = ExtResource("1_2ipb1")
-_plantButton = NodePath("../HBoxContainer/PanelContainer/Button")
-_materialButton = NodePath("../HBoxContainer/PanelContainer2/Button")
-_medicineButton = NodePath("../HBoxContainer/PanelContainer3/Button")
-_scrollViewItems = NodePath("ItemViewContainer")
+_plantButton = NodePath("../../HBoxContainer/Div/Button")
+_materialButton = NodePath("../../HBoxContainer/Div2/Button")
+_medicineButton = NodePath("../../HBoxContainer/Div3/Button")
+_scrollViewItems = NodePath("MarginAll/ItemViewContainer")
 
-[node name="ItemViewContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="MarginAll" type="MarginContainer" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+
+[node name="ItemViewContainer" type="VBoxContainer" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 8
 
-[node name="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer2" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer2" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer3" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer3" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer4" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer4" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer5" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer5" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer6" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer6" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer7" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer7" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer8" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer8" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer9" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer9" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer10" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer10" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer11" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer11" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer12" parent="MarginContainer/VBoxContainer/ScrollContainer/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer12" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2

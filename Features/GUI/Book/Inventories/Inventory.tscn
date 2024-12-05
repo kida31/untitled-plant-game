@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cdlpjv222kodg" path="res://Assets/UI/BookUI/Background/BookPage_left.png" id="3_3o7mi"]
 [ext_resource type="Texture2D" uid="uid://cp1p736ml5ogt" path="res://Assets/UI/BookUI/Background/BookDecor.png" id="4_e7bmb"]
 [ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="4_edhbq"]
-[ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBox.tscn" id="4_qb6e8"]
+[ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="4_qb6e8"]
 [ext_resource type="Texture2D" uid="uid://ducp8fk43ftki" path="res://Assets/UI/BookUI/Background/BookDecor1.png" id="5_u3ndl"]
 [ext_resource type="Texture2D" uid="uid://b0udl2fbk1ct8" path="res://Assets/UI/BookUI/Containers&Labels/ToolContainer.png" id="6_lgltq"]
 

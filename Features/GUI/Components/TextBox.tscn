@@ -1,31 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://ru6miowo20bv"]
+[gd_scene load_steps=2 format=3 uid="uid://duvfpm1poaajg"]
 
-[ext_resource type="Texture2D" uid="uid://dyaetbwehoiqp" path="res://Assets/UI/BookUI/Containers&Labels/TextLabel.png" id="2_rh4sh"]
+[ext_resource type="Texture2D" uid="uid://dvg3mpwor2ux0" path="res://Assets/UI/BookUI/Containers&Labels/Ency_ItemNameLabel.png" id="1_ghexf"]
 
-[node name="TextBox" type="Label"]
-offset_right = 23.0
-offset_bottom = 14.0
-theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
-theme_override_font_sizes/font_size = 16
-text = "Abc12"
-vertical_alignment = 1
-text_overrun_behavior = 3
+[node name="TextBoxDiv" type="MarginContainer"]
+offset_right = 78.0
+offset_bottom = 30.0
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = -8
-theme_override_constants/margin_right = -8
-theme_override_constants/margin_bottom = -2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
-texture = ExtResource("2_rh4sh")
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
+texture = ExtResource("1_ghexf")
+region_rect = Rect2(3, 0, 122, 32)
+patch_margin_left = 11
+patch_margin_top = 10
+patch_margin_right = 11
+patch_margin_bottom = 10
+
+[node name="TextMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="TextMargin"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Abc123"

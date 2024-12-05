@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/PlayerDetailsView.cs" id="1_88tm0"]
 [ext_resource type="Texture2D" uid="uid://n66o347wemq8" path="res://Assets/UI/BookUI/Background/BookPage_right.png" id="2_3wrb8"]
 [ext_resource type="Texture2D" uid="uid://b7meke8ampnx" path="res://Assets/UI/BookUI/Background/EmptyCharacterPage.png" id="2_xwjqq"]
-[ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBox.tscn" id="4_n8hnm"]
+[ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="4_n8hnm"]
 
 [node name="PlayerDetails" type="Control"]
 custom_minimum_size = Vector2(256, 320)

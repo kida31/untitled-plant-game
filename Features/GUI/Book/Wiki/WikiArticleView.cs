@@ -8,7 +8,7 @@ public partial class WikiArticleView : Node
 	[Export] private Label _itemNameAndCategory;
 	[Export] private Label _itemDescription;
 	[Export] private Label _itemStats;
-	[Export] private TextureRect _bottomTextureRect;
+	// TODO show related items
 	
 	private ItemStack _itemStack;
 	
@@ -22,9 +22,8 @@ public partial class WikiArticleView : Node
 	private void UpdateView()
 	{
 		_iconTextureRect.Texture = _itemStack.Icon;
-		_itemNameAndCategory.Text = _itemStack.Name + ", of Type: " + _itemStack.Category.Name;
+		_itemNameAndCategory.Text = $"{_itemStack.Name} - {_itemStack.Category.Name}";
 		_itemDescription.Text = _itemStack.Description;
 		_itemStats.Text = "Stats!... \nStats!... \nStats!...";
-		_bottomTextureRect.Texture = null; // Also not sure where to pull these from. 
 	}
 }

@@ -12,7 +12,6 @@ public partial class WikiItemView : Control
 	[Export] private Label _itemName;
 	[Export] private BaseButton _detailedWikiItemViewButton;
 	[Export] private TextureRect _iconTextureRect;
-	[Export] private TextureRect _nameTextureRect;
 
 	[Export] private Texture2D _temporary;
 

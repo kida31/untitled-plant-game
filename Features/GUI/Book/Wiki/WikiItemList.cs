@@ -7,7 +7,7 @@ using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 using untitledplantgame.Shops;
 
-public partial class WikiItemList : PanelContainer
+public partial class WikiItemList : Control
 {
 	public event Action<ItemStack> ItemStackPressed; // TODO: Use local events instead of event bus where possible
 

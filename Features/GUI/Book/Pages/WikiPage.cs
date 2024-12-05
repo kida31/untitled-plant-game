@@ -5,7 +5,7 @@ using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
-public partial class WikiPage : HBoxContainer
+public partial class WikiPage : Control
 {
 	public event Action<ItemStack> ItemStackPressed;
 

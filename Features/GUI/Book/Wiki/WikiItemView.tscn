@@ -1,49 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2i7oxcdj4025"]
+[gd_scene load_steps=6 format=3 uid="uid://b2i7oxcdj4025"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiItemView.cs" id="1_2gnwr"]
-[ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="1_qumif"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_48ijb"]
 [ext_resource type="Texture2D" uid="uid://cgnox3kn0n8xm" path="res://Assets/UI/BookUI/Icons/CoinIcon.png" id="3_hyrrj"]
+[ext_resource type="Texture2D" uid="uid://b807n54jqwn68" path="res://Assets/UI/BookUI/Containers&Labels/ItemContainer7.png" id="3_op6jt"]
+[ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_d341g"]
 
-[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("_itemName", "_detailedWikiItemViewButton", "_iconTextureRect", "_nameTextureRect")]
-offset_right = 687.0
-offset_bottom = 62.0
+[node name="WikiItemView" type="MarginContainer" node_paths=PackedStringArray("_itemName", "_detailedWikiItemViewButton", "_iconTextureRect")]
+offset_right = 110.0
+offset_bottom = 32.0
 script = ExtResource("1_2gnwr")
-_itemName = NodePath("HBoxContainer/MarginContainer/Label")
+_itemName = NodePath("HBoxContainer/TextBoxDiv/TextMargin/Label")
 _detailedWikiItemViewButton = NodePath("Button")
-_iconTextureRect = NodePath("HBoxContainer/PanelContainer/HBoxContainer/TextureRect")
-_nameTextureRect = NodePath("HBoxContainer/MarginContainer/TextureRect")
+_iconTextureRect = NodePath("HBoxContainer/Div/ItemIcon")
 _temporary = ExtResource("2_48ijb")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 28
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+[node name="Div" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer"]
+[node name="ItemBorder" type="TextureRect" parent="HBoxContainer/Div"]
 layout_mode = 2
+texture = ExtResource("3_op6jt")
+stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="ItemIcon" type="TextureRect" parent="HBoxContainer/Div"]
 layout_mode = 2
 texture = ExtResource("3_hyrrj")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+[node name="TextBoxDiv" parent="HBoxContainer" instance=ExtResource("5_d341g")]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
-visible = false
-layout_mode = 2
-texture = ExtResource("1_qumif")
-
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer"]
-layout_mode = 2
-text = "ItemName"
+[node name="Label" parent="HBoxContainer/TextBoxDiv/TextMargin" index="0"]
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 flat = true
+
+[editable path="HBoxContainer/TextBoxDiv"]
