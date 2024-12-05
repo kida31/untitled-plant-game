@@ -12,10 +12,6 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 /// </summary>
 public partial class ScrollViewController : ScrollContainer
 {
-
-	[Export] private Button _plantButton;
-	[Export] private Button _materialButton;
-	[Export] private Button _medicineButton;
 	[Export] private VBoxContainer _scrollViewItems;
 
 	private bool _isRunning;
@@ -24,17 +20,45 @@ public partial class ScrollViewController : ScrollContainer
 	private const int JumpToThreshold = 10; // Needs to be higher if scrolling should happen faster
 	private const int ScrollToFocusedElementSpeed = 300; // Determines how long each automated scroll should be
 	private WikiItemView _currentlySelectedWikiItemView;
-	
+
 	public override void _Ready()
 	{
 		GetAllScrollViewItems().First().GrabFocusToButton();
-		EventBus.Instance.OnScrollContainerViewUpdate += ScrollToFocusedElement;
-		
-		_plantButton.Pressed += ScrollToFirstPlantElement;
-		_materialButton.Pressed += ScrollToFirstMaterialElement;
-		_medicineButton.Pressed += ScrollToFirstMedicineElement;
+		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
 	}
-	
+
+	private void OnGuiFocusChanged(Control node)
+	{
+		if (node is not Button maybeWikiButton)
+		{
+			return;
+		}
+
+		var itemView = GetFirstAncestor<WikiItemView>(maybeWikiButton);
+		if (itemView == null)
+		{
+			return;
+		}
+
+		ScrollToFocusedElement(itemView);
+	}
+
+	private T GetFirstAncestor<T>(Node child) where T: class
+	{
+		var parent = child.GetParent();
+		if (parent == null)
+		{
+			return null;
+		}
+
+		if (parent is T parentOfType)
+		{
+			return parentOfType;
+		}
+
+		return GetFirstAncestor<T>(parent);
+	}
+
 	public override void _Process(double delta)
 	{
 		if (_isRunning)
@@ -45,8 +69,8 @@ public partial class ScrollViewController : ScrollContainer
 				scrollDistance = -5;
 			}
 
-			ScrollVertical += (int) scrollDistance; 
-			
+			ScrollVertical += (int) scrollDistance;
+
 			if (Math.Abs(_currentlySelectedWikiItemView.Position.Y - ScrollVertical) <= JumpToThreshold)
 			{
 				ScrollToY(_currentlySelectedWikiItemView.Position.Y);
@@ -54,34 +78,12 @@ public partial class ScrollViewController : ScrollContainer
 			}
 		}
 	}
-	
+
 	// Cancel the auto scrolling if player decides to intervene
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		// Delete after MVP
-		if (@event is InputEventJoypadButton button && _plantButton.HasFocus())
-		{
-			if (button.Pressed && button.ButtonIndex == JoyButton.A)
-			{
-				ScrollToY(0);
-			}
-		}
-		if (@event is InputEventJoypadButton button2 && _materialButton.HasFocus())
-		{
-			if (button2.Pressed && button2.ButtonIndex == JoyButton.A)
-			{
-				ScrollToY(164);
-			}
-		}
-		if (@event is InputEventJoypadButton button3 && _medicineButton.HasFocus())
-		{
-			if (button3.Pressed && button3.ButtonIndex == JoyButton.A)
-			{
-				ScrollToY(328);
-			}
-		}
-		// Delete after MVP
-		
+		// Are you sure?
 		if (@event is InputEventMouseButton mouseEvent)
 		{
 			if (mouseEvent.ButtonIndex == MouseButton.WheelUp || mouseEvent.ButtonIndex == MouseButton.WheelDown)
@@ -95,8 +97,8 @@ public partial class ScrollViewController : ScrollContainer
 	{
 		_currentlySelectedWikiItemView = wikiItemView;
 		_distanceToFocusedElement = wikiItemView.Position.Y - ScrollVertical;
-		_speedCoefficient = Math.Pow(1.1, ScrollToFocusedElementSpeed/_distanceToFocusedElement); 
-		
+		_speedCoefficient = Math.Pow(1.1, ScrollToFocusedElementSpeed / _distanceToFocusedElement);
+
 		_isRunning = true;
 		await Task.Delay(ScrollToFocusedElementSpeed);
 	}
@@ -107,20 +109,21 @@ public partial class ScrollViewController : ScrollContainer
 		{
 			_isRunning = false;
 		}
+
 		StartTimedAction(wikiItemView);
 	}
-	
+
 	private void ScrollToY(float elementY)
 	{
 		double scrollValue = Mathf.Clamp(elementY, 0, GetVScrollBar().MaxValue);
 
-		ScrollVertical = (int)scrollValue;
+		ScrollVertical = (int) scrollValue;
 	}
 
 	private Array<WikiItemView> GetAllScrollViewItems()
 	{
 		var scrollViewItems = new Array<WikiItemView>();
-		
+
 		foreach (var node in _scrollViewItems.GetChildren())
 		{
 			if (node is WikiItemView scrollViewItem)
@@ -134,53 +137,5 @@ public partial class ScrollViewController : ScrollContainer
 		}
 
 		return scrollViewItems;
-	}
-	
-	private void ScrollToFirstPlantElement()
-	{
-		foreach (var controlNode in GetAllScrollViewItems())
-		{
-			if (controlNode is WikiItemView wikiItemView)
-			{
-				if (wikiItemView.ItemStack.Category == ItemCategory.Plant)
-				{
-					//ScrollToY(controlNode.Position.Y);
-					ScrollToY(0);
-					return;
-				}
-			}
-		}
-	}
-
-	private void ScrollToFirstMaterialElement()
-	{
-		foreach (var controlNode in GetAllScrollViewItems())
-		{
-			if (controlNode is WikiItemView wikiItemView)
-			{
-				if (wikiItemView.ItemStack.Category == ItemCategory.Plant) // Currently no Material Item
-				{
-					//ScrollToY(controlNode.Position.Y);
-					ScrollToY(164);
-					return;
-				}
-			}
-		}
-	}
-
-	private void ScrollToFirstMedicineElement()
-	{
-		foreach (var controlNode in GetAllScrollViewItems())
-		{
-			if (controlNode is WikiItemView wikiItemView)
-			{
-				if (wikiItemView.ItemStack.Category == ItemCategory.Plant) // Currently no Medicine Item
-				{
-					//ScrollToY(controlNode.Position.Y);
-					ScrollToY(328);
-					return;
-				}
-			}
-		}
 	}
 }

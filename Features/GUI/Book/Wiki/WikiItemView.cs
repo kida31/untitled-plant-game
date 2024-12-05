@@ -7,6 +7,7 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 // Make a string, so you can change up the category and jump to that. 
 public partial class WikiItemView : Control
 {
+	// TODO: Make item view focusable instead of using button. Easier to track focus
 	public event Action Pressed;
 
 	[Export] private Label _itemName;
@@ -30,7 +31,6 @@ public partial class WikiItemView : Control
 	{
 		_detailedWikiItemViewButton.FocusEntered += SetFocusOnThisView;
 		_detailedWikiItemViewButton.Pressed += () => Pressed?.Invoke();
-
 	}
 	
 	private void OnSetItemStack(ItemStack itemStack)
@@ -66,6 +66,6 @@ public partial class WikiItemView : Control
 	
 	private void SetFocusOnThisView()
 	{
-		EventBus.Instance.ScrollContainerViewChanged(this);
+		_detailedWikiItemViewButton.GrabFocus();
 	}
 }
