@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmc1oq8o2if8d"]
+[gd_scene load_steps=5 format=3 uid="uid://bmc1oq8o2if8d"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiArticleView.cs" id="1_6vmcs"]
 [ext_resource type="Texture2D" uid="uid://n66o347wemq8" path="res://Assets/UI/BookUI/Background/BookPage_right.png" id="1_ek2kn"]
-[ext_resource type="Texture2D" uid="uid://jitwrv3dmfn4" path="res://DefaultItemBackground_White.png" id="2_l3a3a"]
 [ext_resource type="Texture2D" uid="uid://hqe8ukrnerjw" path="res://Assets/UI/BookUI/Containers&Labels/ItemContainer1.png" id="5_8tctf"]
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_wi3q8"]
 
@@ -41,12 +40,19 @@ layout_mode = 2
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Finetunemargin/VBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="ItemIcon" type="TextureRect" parent="Finetunemargin/VBoxContainer/MarginContainer/MarginContainer"]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
-texture = ExtResource("2_l3a3a")
+
+[node name="BG" type="NinePatchRect" parent="Finetunemargin/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_8tctf")
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="ItemIcon" type="TextureRect" parent="Finetunemargin/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 

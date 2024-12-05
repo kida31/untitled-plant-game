@@ -32,3 +32,4 @@ offset_bottom = 670.0
 [node name="HUD" parent="." instance=ExtResource("5_gr4nr")]
 
 [node name="BookView" parent="." instance=ExtResource("5_sy5d4")]
+visible = false
