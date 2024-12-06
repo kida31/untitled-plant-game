@@ -277,11 +277,11 @@ radius = 34.0147
 script = ExtResource("1_ypuiu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 16)
+position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_uchbd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-9.53674e-07, 1.90735e-06)
+position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_t74rv")
 animation = &"idle_down"
 
