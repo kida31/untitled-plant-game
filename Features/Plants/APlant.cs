@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Inventory;
 using untitledplantgame.Plants.Soil;
 
 namespace untitledplantgame.Plants;
@@ -21,25 +22,26 @@ public partial class APlant : StaticBody2D
 {
 	[Export] public string PlantName { get; private set; }
 	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
-	public SoilTile Tile { get; set; }
+	[Export] private SoilTile Tile { get; set; }
 
 	private Dictionary<string, Requirement> _currentRequirements;
 	private Logger _logger;
 	private AnimatedSprite2D _sprite2D;
-	
+
 	private bool _isHarvestable;
-	private float _absorptionRate = 50.0f;
-	private float _consumptionRate = 30.0f;
+	private float _absorptionRate;
+	private float _consumptionRate;
 
 	private int _daysToGrow;
 	private int _currentDay;
 
 	public override void _Ready()
 	{
+		_logger = new Logger(PlantName);
+		_logger.Debug($"Plant {PlantName} has been planted.");
 		AddToGroup(GameGroup.Plants);
 		_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		SetRequirements(PlantName);
-		_logger = new Logger(PlantName);
+		SetRequirements();
 	}
 
 
@@ -74,19 +76,22 @@ public partial class APlant : StaticBody2D
 	/// <summary>
 	/// Harvests the plant if it is harvestable.
 	/// </summary>
-	public void Harvest()
+	public ItemStack Harvest()
 	{
 		if (_isHarvestable)
 		{
 			_logger.Debug($"Plant {PlantName} has been harvested.");
 			Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
-			SetRequirements(PlantName);
+			SetRequirements();
 			_logger.Debug("plant has reached stage " + Stage);
 		}
 		else
 		{
 			_logger.Debug($"Plant {PlantName} is not ready to be harvested.");
+			return null;
 		}
+
+		return GetHarvestItem();
 	}
 
 	/// <summary>
@@ -103,11 +108,13 @@ public partial class APlant : StaticBody2D
 	/// sets the plant name.
 	/// sets the sprite to the current stage.
 	/// </summary>
-	private void SetRequirements(string plantName)
+	private void SetRequirements()
 	{
-		var plantData = PlantDatabase.Instance.GetResourceByName(plantName);
+		_logger.Debug($"Setting requirements for plant {PlantName}.");
+		
+		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
 		var plantRequirements = new Dictionary<string, Requirement>();
-
+		
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
@@ -117,9 +124,12 @@ public partial class APlant : StaticBody2D
 
 		_daysToGrow = plantData.DataForGrowthStages[(int)Stage].DaysToGrow;
 		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
+		_absorptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].AbsorptionRate;
+		_consumptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].ConsumptionRate;
+		
 		_currentDay = 0;
 		_currentRequirements = plantRequirements;
-		PlantName = plantData._plantName;
+		PlantName = plantData.PlantName;
 
 		_sprite2D.Play(Stage.ToString());
 	}
@@ -164,7 +174,7 @@ public partial class APlant : StaticBody2D
 
 		Stage++;
 		_logger.Info($"Plant {PlantName} advanced to {Stage}.");
-		SetRequirements(PlantName);
+		SetRequirements();
 	}
 
 	/// <summary>
@@ -213,5 +223,11 @@ public partial class APlant : StaticBody2D
 		Stage = GrowthStage.Dead;
 		_isHarvestable = false;
 		_logger.Debug($"Plant {PlantName} has died due to lack of water.");
+	}
+
+	private ItemStack GetHarvestItem()
+	{
+		//get new ItemStack("{PlantName}_{Stage}") from Database
+		return null;
 	}
 }

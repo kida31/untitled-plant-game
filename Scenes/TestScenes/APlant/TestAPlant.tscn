@@ -1,50 +1,116 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc5mcucmbfc65"]
+[gd_scene load_steps=15 format=3 uid="uid://cc5mcucmbfc65"]
 
 [ext_resource type="Script" path="res://Scenes/TestScenes/APlant/TestAPlant.cs" id="1_5umc6"]
-[ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Scenes/TestScenes/APlant/APlantPrefab.tscn" id="2_64co2"]
+[ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/APlantPrefab.tscn" id="2_64co2"]
 [ext_resource type="Script" path="res://Features/Plants/Soil/SoilTile.cs" id="3_pgupv"]
 [ext_resource type="Texture2D" uid="uid://cc08shc1btj02" path="res://Assets/OverworldAssets/Plant/chubery_sheet.png" id="3_vskut"]
+[ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/OverworldAssets/Plant/DeadPlant.png" id="4_7fwi4"]
+[ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="5_t5w8u"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xu6hg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlonb"]
+atlas = ExtResource("3_vskut")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laeyy"]
 atlas = ExtResource("3_vskut")
 region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_56yp8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_buqmq"]
+atlas = ExtResource("3_vskut")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rh78"]
+atlas = ExtResource("3_vskut")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00m6k"]
+atlas = ExtResource("3_vskut")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jjxk"]
+atlas = ExtResource("3_vskut")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5vgj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xu6hg")
+"texture": SubResource("AtlasTexture_jlonb")
 }],
 "loop": true,
-"name": &"flowering",
+"name": &"Budding",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7fwi4")
+}],
 "loop": true,
-"name": &"seed",
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laeyy")
+}],
+"loop": true,
+"name": &"Flowering",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buqmq")
+}],
+"loop": true,
+"name": &"Ripening",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rh78")
+}],
+"loop": true,
+"name": &"Seedling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00m6k")
+}],
+"loop": true,
+"name": &"Sprouting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jjxk")
+}],
+"loop": true,
+"name": &"Vegetating",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a4san"]
+radius = 22.2036
 
-[node name="TestAPlant" type="Node2D" node_paths=PackedStringArray("_label", "_plant")]
+[node name="TestAPlant" type="Node2D" node_paths=PackedStringArray("_label", "_plant", "_plant2", "_soilTile2")]
 script = ExtResource("1_5umc6")
 _label = NodePath("VBoxContainer/Label")
 _plant = NodePath("APlantPrefab")
+_plant2 = NodePath("APlantPrefab2")
+_soilTile2 = NodePath("Soil2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = -86.0
-offset_top = 18.0
-offset_right = -46.0
-offset_bottom = 58.0
+offset_left = -143.0
+offset_top = 1.0
+offset_right = -5.0
+offset_bottom = 109.0
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "Water Soil Tile"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "Harvest"
 
@@ -55,7 +121,7 @@ layout_mode = 2
 texture_filter = 1
 position = Vector2(276, 228)
 scale = Vector2(0.5, 0.5)
-PlantName = "Basil"
+PlantName = "Licary"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 163.0
@@ -72,15 +138,15 @@ scale = Vector2(0.5, 0.5)
 PlantName = "Chubery"
 
 [node name="AnimatedSprite2D" parent="APlantPrefab2" index="0"]
-sprite_frames = SubResource("SpriteFrames_56yp8")
-animation = &"flowering"
+sprite_frames = SubResource("SpriteFrames_w5vgj")
 
-[node name="Soil" type="Area2D" parent="."]
-position = Vector2(276, 175)
+[node name="Soil" parent="." instance=ExtResource("5_t5w8u")]
+
+[node name="Soil2" type="Area2D" parent="."]
+position = Vector2(370, 227)
 script = ExtResource("3_pgupv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Soil"]
-position = Vector2(0, 52)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soil2"]
 shape = SubResource("CircleShape2D_a4san")
 
 [editable path="APlantPrefab2"]

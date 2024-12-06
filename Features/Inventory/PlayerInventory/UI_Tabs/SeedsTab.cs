@@ -1,4 +1,5 @@
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 
 namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
