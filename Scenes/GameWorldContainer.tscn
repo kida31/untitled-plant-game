@@ -36,7 +36,7 @@ script = ExtResource("3_orgm4")
 [node name="VendingMachineNPC" parent="." instance=ExtResource("2_ldf7o")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(730, 160)
+position = Vector2(729, 193)
 
 [node name="Plants" type="Node2D" parent="."]
 z_index = 1

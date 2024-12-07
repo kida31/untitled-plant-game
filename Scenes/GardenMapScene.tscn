@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://ciy3cfmtd600v"]
+[gd_scene load_steps=46 format=4 uid="uid://ciy3cfmtd600v"]
 
 [ext_resource type="Texture2D" uid="uid://capj2kjiyfndo" path="res://Assets/Tilesets/TX Tileset Grass.png" id="1_y6de5"]
 [ext_resource type="Texture2D" uid="uid://h83g282s043x" path="res://Assets/OverworldAssets/GardenDecoration/ladder_tileset_improved.png" id="3_rcpjb"]
@@ -126,12 +126,16 @@ texture = ExtResource("9_8wk0d")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_n4sue"]
+polygon = PackedVector2Array(-45.5, -53.5, -46.25, -14, -31.5, 9.25, 33, 9.25, 46.25, -18, 46.75, -54)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bsqv2"]
 texture = ExtResource("11_a5t2s")
 texture_region_size = Vector2i(32, 32)
 4:0/size_in_atlas = Vector2i(4, 3)
 4:0/0 = 0
 4:0/0/texture_origin = Vector2i(0, 31)
+4:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_n4sue")
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-44.875, -38, 45.125, -37.75, 44.875, 9, -46.125, 9.25)
 4:3/size_in_atlas = Vector2i(4, 3)
 4:3/0 = 0
@@ -170,6 +174,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_800kd"]
 tile_size = Vector2i(32, 32)
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/4 = SubResource("TileSetAtlasSource_f74g2")
 sources/7 = SubResource("TileSetAtlasSource_bsqv2")
@@ -426,7 +431,7 @@ tile_set = SubResource("TileSet_i0370")
 [node name="WorldAssets" type="TileMapLayer" parent="."]
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAARAA4ABwAAAAAAAAAZAA4ABwAAAAAAAAAZAAsABwAEAAAAAAAaABIABwAEAAAAAAAWABIABwAAAAQAAAASAAcABwAEAAAAAAAMAAYACQABAAAAAAANAAYACQACAAAAAAAOAAYACQABAAAAAAAPAAYACQADAAAAAAANAAsABwAEAAMAAAAaAAgABwAAAAQAAAAOABIABwAAAAQAAAAMABIACAABAAAAAAAMABEACAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAARAA4ABwAAAAAAAAAZAA4ABwAAAAAAAAAZAAsABwAEAAAAAAAaABIABwAEAAAAAAAWABIABwAAAAQAAAASAAcABwAEAAAAAAAMAAYACQABAAAAAAANAAYACQACAAAAAAAOAAYACQABAAAAAAAPAAYACQADAAAAAAANAAsABwAEAAMAAAAaAAgABwAAAAQAAAAOABIABwAAAAQAAAAMABIACAABAAAAAAAMABEACAACAAAAAAAbABAAAAAAAAAAAAAPAAsAAAAAAAAAAAASAAsAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_800kd")
 
 [node name="WorldDecorationPhysics" type="TileMapLayer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=39 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="Texture2D" uid="uid://xmkgwv2sjtus" path="res://Assets/Sprites/ExamplePlayerSprite.png" id="2_ii4t3"]
@@ -273,6 +273,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ryxll"]
 radius = 34.0147
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xfphx"]
+polygon = PackedVector2Array(17, -1, -5, -1, -1, -16, 13, -16)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ypuiu")
 
@@ -309,3 +312,8 @@ _player = NodePath("../..")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+clip_children = 1
+position = Vector2(-6, -9)
+occluder = SubResource("OccluderPolygon2D_xfphx")
