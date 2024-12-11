@@ -23,7 +23,7 @@ public partial class ItemStack : Resource, IItemStack
 	[Export(PropertyHint.Enum, "Plant,Material,Medicine")]
 	private string _category;
 
-	[Export] private Array<AComponent> _component;
+	[Export] public Array<AComponent> Components;
 
 	public ItemCategory Category
 	{
@@ -45,7 +45,7 @@ public partial class ItemStack : Resource, IItemStack
 	public ItemStack()
 	{
 		_logger = new Logger("ItemStack");
-		_component = new();
+		Components = new();
 	}
 
 	public ItemStack(
@@ -56,7 +56,8 @@ public partial class ItemStack : Resource, IItemStack
 		ItemCategory category,
 		int maxStackSize,
 		int baseValue,
-		int amount = 1
+		int amount = 1,
+		Array<AComponent> components = null
 	) : this()
 	{
 		Id = id;
@@ -67,15 +68,16 @@ public partial class ItemStack : Resource, IItemStack
 		MaxStackSize = maxStackSize;
 		BaseValue = baseValue;
 		Amount = amount;
+		Components = components;
 	}
 
 	public T GetComponent<T>()
 		where T : AComponent
 	{
-		var idx = _component.ToList().FindIndex(component => component is T);
+		var idx = Components.ToList().FindIndex(component => component is T);
 		if (idx != -1)
 		{
-			var blah = _component[idx];
+			var blah = Components[idx];
 			return (T)blah;
 		}
 
@@ -91,20 +93,20 @@ public partial class ItemStack : Resource, IItemStack
 			return;
 		}
 
-		_component.Add(component);
+		Components.Add(component);
 	}
 
 	public T RemoveComponent<T>()
 		where T : AComponent
 	{
-		var idx = _component.ToList().FindIndex(component => component is T);
+		var idx = Components.ToList().FindIndex(component => component is T);
 		if (idx == -1)
 		{
 			return null;
 		}
 
-		var component = (T)_component[idx];
-		_component.RemoveAt(idx);
+		var component = (T)Components[idx];
+		Components.RemoveAt(idx);
 		return component;
 	}
 
@@ -126,8 +128,8 @@ public partial class ItemStack : Resource, IItemStack
 
 	public IItemStack Clone()
 	{
-		var newStack = new ItemStack(Id, Name, Icon, Description, Category, MaxStackSize, BaseValue);
-		newStack.Amount = Amount;
+		// TODO: After the JSON fiasco I absolutely do NOT trust Godot to handle deep copies well (especially looking at the Stats)
+		var newStack = new ItemStack(Id, Name, Icon, Description, Category, MaxStackSize, BaseValue, Amount, Components.Duplicate(true));
 		return newStack;
 	}
 }

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7yeloeus6st8"]
+
+[ext_resource type="Script" path="res://Features/Database/ItemDatabaseTester.cs" id="1_hjxxd"]
+
+[node name="ItemDatabaseTester" type="Node"]
+script = ExtResource("1_hjxxd")
