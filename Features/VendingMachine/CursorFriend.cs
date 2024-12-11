@@ -14,7 +14,7 @@ public partial class CursorFriend : Control
 	[Export]
 	private ItemSlotUI _itemSlot;
 
-	public ItemStack ItemStack
+	public IItemStack ItemStack
 	{
 		get => _itemSlot?.ItemStack;
 		set => _itemSlot.ItemStack = value;
