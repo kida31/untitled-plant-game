@@ -1,9 +1,6 @@
 using Godot;
-using System;
 using untitledplantgame.Common;
-using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Player;
-using static Godot.AnimationMixer;
 
 public partial class ToolbeltView : Control
 {
