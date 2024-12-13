@@ -7,32 +7,106 @@ using untitledplantgame.Common;
 namespace untitledplantgame.Inventory;
 
 /// <summary>
-/// 
-/// </summary>
-
-/// <summary>
 /// Represents a cursor and its inventory (one item stack)
 /// </summary>
 interface ICursorInventory
 {
+	/// <summary>
+	/// Invoked when an item is orphaned during any process.
+	/// During invalid operations,y when inventories reject the item or it simply has on place to return to.
+	/// </summary>
+	event Action<IItemStack> ItemOrphaned;
+
+	/// <summary>
+	/// Invoked when the content of cursor inventory changes.
+	/// </summary>
 	event Action ContentChanged;
+
+	/// <summary>
+	/// The current item stack inside the cursor inventory
+	/// </summary>
 	IItemStack Content { get; }
+
+	/// <summary>
+	/// Returns whether a "click" operation would be valid.
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
+	/// <returns></returns>
 	bool CanClick(IInventory inventory, int itemIndex);
+
+	/// <summary>
+	/// Handles a click. May pickup, put down, stack or swap items depending on context.
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
 	void HandleClick(IInventory inventory, int itemIndex);
+
+	/// <summary>
+	/// Returns whether an item can be picked up. False if target has no item or cursor already has content
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
+	/// <returns></returns>
 	bool CanPickUp(IInventory inventory, int itemIndex);
+	/// <summary>
+	/// Adds the targeted item to cursor content.
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
 	void PickUp(IInventory inventory, int itemIndex);
+
+	/// <summary>
+	/// Returns whether an item can be put down. False if destination already has item or there is no content;
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
+	/// <returns></returns>
 	bool CanPutDown(IInventory inventory, int itemIndex);
+
+	/// <summary>
+	/// Puts the cursor content into the target inventory slot
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
 	void PutDown(IInventory inventory, int itemIndex);
+
+	/// <summary>
+	/// Returns whether the cursor content can stack with target inventory
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
+	/// <returns></returns>
 	bool CanStack(IInventory inventory, int itemIndex);
+
+	/// <summary>
+	/// Stacks the cursor content onto the target inventory slot. The content will be updated to the remainder.
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
 	void Stack(IInventory inventory, int itemIndex);
+
+	/// <summary>
+	/// Returns whether content can be swapped with target inventory slot
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
+	/// <returns></returns>
 	bool CanSwap(IInventory inventory, int itemIndex);
+
+	/// <summary>
+	/// Swaps cursor content with target inventory item slot. Will invoke ItemOrphaned if content cannot be placed back into inventory.
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
 	void Swap(IInventory inventory, int itemIndex);
+
+	/// <summary>
+	/// Tries to return the item content to its first pick up origin. Will invoke ItemOrphaned if not possible.
+	/// </summary>
 	void ReturnPickUp();
 }
 
-/// <summary>
-/// 
-/// </summary>
 [Singleton]
 public class CursorHand : ICursorInventory
 {
@@ -40,6 +114,8 @@ public class CursorHand : ICursorInventory
 	private static readonly Lazy<CursorHand> LazySingleton = new(() => new CursorHand());
 	public static CursorHand Instance => LazySingleton.Value;
 	public event Action ContentChanged;
+	public event Action<IItemStack> ItemOrphaned;
+
 	public IItemStack Content => _content;
 
 
@@ -99,7 +175,22 @@ public class CursorHand : ICursorInventory
 
 	public void PickUp(IInventory inventory, int itemIndex)
 	{
-		throw new NotImplementedException();
+		var item = inventory.GetItem(itemIndex).Clone();
+		if (item == null) {
+			_logger.Error("");
+			return;
+		}
+
+		var result = inventory.RemoveItem(item);
+		if (result.Count != 0) {
+			_logger.Error("");
+			return;
+		}
+
+
+		_content = item;
+		_pickupOrigin = inventory;
+		_pickupOriginIndex = itemIndex;
 	}
 
 
@@ -110,7 +201,13 @@ public class CursorHand : ICursorInventory
 
 	public void PutDown(IInventory inventory, int itemIndex)
 	{
-		throw new NotImplementedException();
+		var remainder = inventory.AddItemToSlot(itemIndex, _content);
+		if (remainder != null) {
+			// dupe exploit lol
+			_logger.Error("Failed to put down item");
+			return;
+		}
+		ClearContent();
 	}
 
 	public bool CanStack(IInventory inventory, int itemIndex)
@@ -120,7 +217,7 @@ public class CursorHand : ICursorInventory
 
 	public void Stack(IInventory inventory, int itemIndex)
 	{
-		throw new NotImplementedException();
+		_content = inventory.AddItemToSlot(itemIndex, _content);
 	}
 
 	public bool CanSwap(IInventory inventory, int itemIndex)
@@ -130,7 +227,26 @@ public class CursorHand : ICursorInventory
 
 	public void Swap(IInventory inventory, int itemIndex)
 	{
-		throw new NotImplementedException();
+		var item = inventory.GetItem(itemIndex).Clone();
+		if (item == null || _content == null) {
+			_logger.Error("Nothing here");
+			return;
+		}
+
+		var result = inventory.RemoveItem(item);
+		if (result.Count > 0) {
+			_logger.Error("Could not get item out of target inventory");
+			return;
+		}
+
+		var remainder = inventory.AddItemToSlot(itemIndex, _content);
+		if (remainder != null) {
+			_logger.Error("Failed to put content into inventory during swap.");
+			ItemOrphaned?.Invoke(_content);
+		}
+
+		_content = item;
+		_logger.Info("Swapped item");
 	}
 
 	public void ReturnPickUp()
@@ -144,8 +260,7 @@ public class CursorHand : ICursorInventory
 		if (_pickupOrigin == null || _pickupOriginIndex < 0)
 		{
 			_logger.Warn("No origin location saved to return item to");
-			TryDropContent();
-			return;
+			ItemOrphaned?.Invoke(_content);
 		}
 
 		var destination = _pickupOrigin.GetItem(_pickupOriginIndex);
@@ -153,8 +268,7 @@ public class CursorHand : ICursorInventory
 		if (destination != null)
 		{
 			_logger.Error("Original space is occupied");
-			TryDropContent();
-			return;
+			ItemOrphaned?.Invoke(_content);
 		}
 
 		var remainder = _pickupOrigin.AddItemToSlot(_pickupOriginIndex, _content);
@@ -163,18 +277,16 @@ public class CursorHand : ICursorInventory
 		{
 			// This might be the case with items that have special inventory restrictions
 			_logger.Error("Could not put item back to origin although destination is free. Unexpected Error");
-			TryDropContent();
-			return;
+			ItemOrphaned?.Invoke(_content);
 		}
 
-		_content = null;
-		_pickupOrigin = null;
-		_pickupOriginIndex = -1;
+		ClearContent();
 		_logger.Info("Returned item back to origin");
 	}
 
-	private void TryDropContent()
-	{
-		// TODO:
+	private void ClearContent() {
+		_content = null;
+		_pickupOrigin = null;
+		_pickupOriginIndex = -1;
 	}
 }
