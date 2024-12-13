@@ -34,7 +34,7 @@ public class BigInventory : IInventory
 	{
 		_inventories = new Dictionary<ItemCategory, IInventory>
 		{
-			{ ItemCategory.Plant, new Inventory(size, "Seed Inventory") },
+			{ ItemCategory.Seed, new Inventory(size, "Seed Inventory") },
 			{ ItemCategory.Medicine, new Inventory(size, "Fertilizer Inventory") },
 			{ ItemCategory.Material, new Inventory(size, "Plant Inventory") },
 		};
