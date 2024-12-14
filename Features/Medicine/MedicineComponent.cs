@@ -18,4 +18,9 @@ public partial class MedicineComponent : AComponent //TODO: PLACEHOLDER
 		_value = value;
 	}
 	public MedicineComponent() {} //needed to instantiate the class
+	
+	public override AComponent CombineComponent(AComponent otherComponent)
+	{
+		throw new NotImplementedException();
+	}
 }

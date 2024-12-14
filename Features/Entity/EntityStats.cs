@@ -6,6 +6,7 @@ using untitledplantgame.Statistics;
 
 namespace untitledplantgame.Entity;
 
+[Obsolete]
 public partial class EntityStats : Node
 {
 	[Export]
@@ -39,7 +40,7 @@ public partial class EntityStats : Node
 	}
 
 	// Debug Method
-	public void PrintAllBaseStatsFromConfig()
+	private void PrintAllBaseStatsFromConfig()
 	{
 		foreach (var stat in _baseStats)
 		{

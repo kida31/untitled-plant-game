@@ -125,7 +125,7 @@ public class ItemDatabase
 		throw new NotImplementedException();
 	}
 	
-	public ItemStack GetItemStacksWithAtLeastComponents(ComponentList components)
+	public ItemStack GetItemStacksWithAtLeastThoseComponents(ComponentList components)
 	{
 		throw new NotImplementedException();
 	}
@@ -133,66 +133,100 @@ public class ItemDatabase
 	
 	
 	//---Get Recipes---//
-	public List<Recipe> GetAllRecipesWithItemStacks(List<ItemStack> itemStacks)
+	/*
+	 * This method assumes the following: The user will NEVER provide MORE ItemStack than the Recipe needs (Minecraft Crafting Bench).
+	 * But the user will get a list of potential Recipes that require at least the provided ItemStacks, but also the additional ones.
+	 * (Minecraft Inventory Helper)
+	 * 
+	 * Crossier's Note: I apologize in advance for the abomination I produced here.
+	 */
+	
+	// Additional Method: Get Recipes with EXACT amount of itemStacks.
+	public List<Recipe> GetAllRecipesWithItemStacks(List<ItemStack> itemStacks, List<Recipe> externalRecipeList)
 	{
-		// Checking for name is in progress
-		/* 
-		var requiredIDs = itemStacks.Select(stack => stack.Id).ToList();
+		var matchingRecipes = new List<Recipe>();
+		var recipeSearchList = externalRecipeList ?? Recipes;
 		
-		var matchingRecipesWithId = Recipes.Where(recipe =>
-			requiredIDs.All(itemStackId =>
-				recipe.FilterParts.OfType<ItemId>().Any(itemName => itemName.Id == itemStackId)
-			)).ToList();
-		*/
 		
-		// Chrissy's Note: I apologize in advance for the abomination I produced here.
-		var matchingRecipesWithComponents = new List<Recipe>();
-		
-		foreach (var recipe in Recipes)
+		foreach (var recipe in recipeSearchList)
 		{
-			// If we have more itemStacks than the recipe needs, why bother checking
+			// If we have more itemStacks than the recipe needs, there is no need to check
 			if (itemStacks.Count > recipe.FilterParts.Count)
 			{
 				continue;
 			}
-			
-			var temp = recipe.FilterParts.Where(componentList => componentList.GetType() == typeof(ComponentList)).ToList();
-			
+
 			var numberOfItemsInRecipe = 0;
-			foreach (var filterPart in temp)
+			foreach (var filterPart in recipe.FilterParts)
 			{
-				var componentList = filterPart as ComponentList;
-				
-				foreach (var itemStack in itemStacks)
+				switch (filterPart)
 				{
-					var minComponents = 0;
-					foreach (var componentInItemStack in itemStack.Components)
-					{
-						foreach (var componentInRecipe in componentList)
+					case ItemId id:
+						foreach (var itemStack in itemStacks)
 						{
-							if (componentInItemStack.GetType() == componentInRecipe.GetType())
+							if (itemStack.Id.Equals(id.Id))
 							{
-								minComponents++;
-								break;
+								numberOfItemsInRecipe++;
 							}
 						}
-					}
+						if (numberOfItemsInRecipe >= itemStacks.Count)
+						{
+							matchingRecipes.Add(recipe);
+						}
+						break;
 					
-					if (minComponents >= componentList.Count)
-					{
-						numberOfItemsInRecipe++;
-					}
-				}
+					case ComponentList list:
+						foreach (var itemStack in itemStacks)
+						{
+							var minComponents = 0;
+							foreach (var componentInItemStack in itemStack.Components)
+							{
+								foreach (var componentInRecipe in list)
+								{
+									if (componentInItemStack.GetType() == componentInRecipe.GetType())
+									{
+										minComponents++;
+										break;
+									}
+								}
+							}
+					
+							if (minComponents >= list.Count)
+							{
+								numberOfItemsInRecipe++;
+							}
+						}
 
-				if (numberOfItemsInRecipe >= itemStacks.Count)
-				{
-					matchingRecipesWithComponents.Add(recipe);
+						if (numberOfItemsInRecipe >= itemStacks.Count)
+						{
+							matchingRecipes.Add(recipe);
+						}
+						break;
+					
+					default: // Replace this with logger
+						GD.PrintErr("The type: " + filterPart.GetType() + " in this recipe is not a supported type.");
+						break;
 				}
 			}
 		}
 		
+		return matchingRecipes.Distinct().ToList();
+	}
+	
+	
+	public List<Recipe> GetAllRecipesWithItemStacksAndCraftingType(List<ItemStack> itemStacks, List<Recipe> externalRecipeList, Recipe.CraftingType craftingType)
+	{
+		var recipesWithMatchingCraftingType = new List<Recipe>();
+		var recipeSearchList = externalRecipeList ?? Recipes;
 		
-		return matchingRecipesWithComponents.Distinct().ToList();
+		foreach (var recipe in recipeSearchList)
+		{
+			if (recipe.RecipeCraftingType == craftingType)
+			{
+				recipesWithMatchingCraftingType.Add(recipe);
+			}
+		}
+		return GetAllRecipesWithItemStacks(itemStacks, recipesWithMatchingCraftingType);
 	}
 	//---Get Recipes---//
 
@@ -237,6 +271,11 @@ public class ItemDatabase
 					},
 					new ComponentList
 					{
+						new Oil()
+					},
+					new ItemId("Sunflower"),
+					new ComponentList
+					{
 						new Antioxidant()
 					}
 				},
@@ -253,7 +292,7 @@ public class ItemDatabase
 					{
 						new Basil()
 					},
-					new ItemId("LavenderLeaf")
+					new ItemId("MintLeaf"),
 				},
 				null,
 				null

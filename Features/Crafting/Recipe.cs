@@ -1,18 +1,22 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Godot;
+using Godot.Collections;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 
 namespace untitledplantgame.Crafting;
 
 public class Recipe
 {
 	public readonly List<IRecipeFilterPart> FilterParts;
+	public readonly ItemStack ResultingItemStack;
 	public MatchType RecipeMatchType { get; private set; }
 	public CraftingType RecipeCraftingType { get; private set; }
 	public ComponentList AdditionalComponentsInResultingItem { get; private set; }
 	public ComponentList RemovedComponentsInResultingItem { get; private set; }
-	public ItemStack ResultingItemStack;
+
 
 	// Enums moved into Recipe class
 	public enum MatchType
@@ -85,27 +89,146 @@ public class Recipe
 
 	public ItemStack CraftResult(List<ItemStack> itemStacks)
 	{
-		if (itemStacks.Count > FilterParts.Count)
+		if (itemStacks.Count <= FilterParts.Count)
 		{
-			GD.Print("TOO MANY ITEMS PROVIDED!");
-			return null;
+			var numberOfItemsInRecipe = 0;
+			foreach (var filterPart in FilterParts)
+			{
+				switch (filterPart)
+				{
+					case ItemId id:
+						foreach (var itemStack in itemStacks)
+						{
+							if (itemStack.Id.Equals(id.Id))
+							{
+								numberOfItemsInRecipe++;
+							}
+						}
+
+						break;
+					case ComponentList list:
+						foreach (var itemStack in itemStacks)
+						{
+							var minComponents = 0;
+							foreach (var componentInItemStack in itemStack.Components)
+							{
+								foreach (var componentInRecipe in list)
+								{
+									if (componentInItemStack.GetType() == componentInRecipe.GetType())
+									{
+										minComponents++;
+										break;
+									}
+								}
+							}
+
+							if (minComponents >= list.Count)
+							{
+								numberOfItemsInRecipe++;
+							}
+						}
+
+						break;
+					default:
+						// With Logger
+						GD.Print("The IRecipeFilterPart: " + filterPart + " of type " + filterPart.GetType() + " is not supported");
+						break;
+				}
+			}
+
+			// Safety check to make sure we use exactly the right number of items. 
+			if (numberOfItemsInRecipe == FilterParts.Count)
+			{
+				if (ResultingItemStack != null)
+				{
+					// If the resulting ItemStack was directly specified
+					return ResultingItemStack;
+				}
+
+				// If the resulting ItemStack should be crafted based on components. 
+				/*
+				 * 1. Make id unique by adding them in a particular way
+				 * 2. Combine Names (rule outside this scope) ⇒ Default to add names together
+				 * 3. Icon (rule outside this scope) ⇒ Default to using first Icon provided
+				 * 4. Category (rule outside this scope) ⇒ Default to using the first category
+				 * 5. maxStackSize (rule outside this scope) ⇒ Default to using the first number provided
+				 * 6. baseValue (rule outside this scope) ⇒ Default to using the first number provided
+				 * 7. amount will always be one as a result
+				 * 8. components: will be added and compared via component-interface
+				 */
+				var newId = string.Join("_", itemStacks.Select(item => item.Id));
+				var name = string.Join("-", itemStacks.Select(item => item.Id));
+				var icon = itemStacks[0].Icon;
+				var newDescription = itemStacks[0].Description;
+				var newItemCategory = itemStacks[0].Category;
+				var newMaxStackSize = itemStacks[0].MaxStackSize;
+				var baseValue = itemStacks[0].BaseValue;
+				// Make sure Godot does actual deep copies
+				var newComponents = itemStacks[0].Components.Duplicate(true);
+
+				foreach (var itemStack in itemStacks)
+				{
+					foreach (var aComponent in itemStack.Components)
+					{
+						var matchingComponent = newComponents.FirstOrDefault(c => c.GetType() == aComponent.GetType());
+
+						if (matchingComponent != null)
+						{
+							// Combine components if a match is found
+							matchingComponent.CombineComponent(aComponent);
+						}
+						else
+						{
+							// Add the component to ListA if no match is found
+							newComponents.Add(aComponent);
+						}
+					}
+				}
+
+				if (AdditionalComponentsInResultingItem != null)
+				{
+					// Add extra components if they don't already exist
+					foreach (var extra in AdditionalComponentsInResultingItem)
+					{
+						if (newComponents.All(component => component.GetType() != extra.GetType()))
+						{
+							newComponents.Add(extra);
+						}
+					}
+				}
+
+				// Add to remove list (if component even exists)
+				var componentsToRemove = new ComponentList();
+				if (RemovedComponentsInResultingItem != null)
+				{
+					foreach (var component in newComponents)
+					{
+						foreach (var toRemove in RemovedComponentsInResultingItem)
+						{
+							if (component.GetType() == toRemove.GetType())
+							{
+								componentsToRemove.Add(component);
+								break;
+							}
+						}
+					}
+				}
+
+				// Actually remove the components after identifying them
+				foreach (var toRemove in componentsToRemove)
+				{
+					newComponents.Remove(toRemove);
+				}
+				
+				return new ItemStack(newId, name, icon, newDescription, newItemCategory, newMaxStackSize, baseValue, 1, newComponents);
+			}
+
+			// With Logger
+			GD.PrintErr("Incorrect ItemStacks for this recipe where provided!");
 		}
-		
-		var matchingRecipesWithComponents = FilterParts.Where(_ => 
-			FilterParts.OfType<ComponentList>().Any(componentList =>
-				componentList.Any(componentInFilterList =>
-					itemStacks.Any(itemStack =>
-						itemStack.Components.Any(componentInItemStack =>
-							componentInFilterList.GetType() == componentInItemStack.GetType()
-						)
-					)
-				)
-			)
-		).ToList();
 
-		var list1Types = matchingRecipesWithComponents.Select(x => x.GetType()).OrderBy(type => type.FullName).ToList();
-		var list2Types = FilterParts.Select(x => x.GetType()).OrderBy(type => type.FullName).ToList();
-
+		// With Logger
+		GD.Print("Provided Items do not match recipe requirements.");
 		return null;
 	}
 }
