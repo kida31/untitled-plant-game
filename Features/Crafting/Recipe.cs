@@ -92,13 +92,13 @@ public class Recipe
 	{
 		if (itemStacks.Count > FilterParts.Count)
 		{
-			// With Logger
-			_logger.Info("Provided Items do not match recipe requirements.");
+			_logger.Debug("Provided Items do not match recipe requirements.");
 			return null;
 		}
 
 		if (!HasRequiredIngredients(itemStacks))
 		{
+			_logger.Debug("Item requirements not met.");
 			return null;
 		}
 
