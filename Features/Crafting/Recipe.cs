@@ -9,13 +9,15 @@ namespace untitledplantgame.Crafting;
 
 public class Recipe
 {
-	public readonly List<IRecipeFilterPart> FilterParts;
+	public readonly List<IIngredient> Ingredients;
 	public readonly ItemStack ResultingItemStack;
+
 	public ResultType CraftResultType => ResultingItemStack != null ? ResultType.Specific : ResultType.Generic;
+
 	//public MatchType RecipeMatchType { get; private set; } // Change Name
-	public CraftingType RecipeCraftingType { get; private set; }
-	public ComponentList AdditionalComponentsInResultingItem { get; private set; }
-	public ComponentList RemovedComponentsInResultingItem { get; private set; }
+	public CraftingType RecipeCraftingType { get; }
+	public ComponentList AdditionalComponentsInResultingItem { get; }
+	public ComponentList RemovedComponentsInResultingItem { get; }
 
 	private readonly Logger _logger = new("Recipe");
 
@@ -35,50 +37,27 @@ public class Recipe
 	}
 
 	// Primary constructor
-	private Recipe(
-		ResultType resultType,
-		CraftingType craftingType,
-		List<IRecipeFilterPart> filterLists,
+	public Recipe(
+		List<IIngredient> filterLists,
 		ComponentList additionalComponentsInResultingItem,
-		ComponentList removedComponentsInResultingItem)
+		ComponentList removedComponentsInResultingItem,
+		CraftingType craftingType = CraftingType.Unspecified)
 	{
-		//RecipeMatchType = matchType;
 		RecipeCraftingType = craftingType;
-		FilterParts = filterLists;
+		Ingredients = filterLists;
 		AdditionalComponentsInResultingItem = additionalComponentsInResultingItem;
 		RemovedComponentsInResultingItem = removedComponentsInResultingItem;
 	}
 
-	/*
-	 * Constructor chaining
-	 */
 	public Recipe(
-		CraftingType craftingType,
-		List<IRecipeFilterPart> itemFilterList,
-		ComponentList additionalComponentsInResultingItem,
-		ComponentList removedComponentsInResultingItem
+		List<IIngredient> itemFilterList,
+		ItemStack resultingItemStack,
+		CraftingType craftingType = CraftingType.Unspecified
 	) : this(
-		ResultType.Generic,
-		craftingType,
-		itemFilterList,
-		additionalComponentsInResultingItem,
-		removedComponentsInResultingItem)
-	{
-		//TODO: Handle Logic here...
-		//New Item needs to be crafted accordingly based on components of old item
-	}
-
-	public Recipe(
-		CraftingType craftingType,
-		List<IRecipeFilterPart> itemFilterList,
-		ItemStack resultingItemStack
-	) : this(
-		ResultType.Specific,
-		craftingType,
 		itemFilterList,
 		null,
-		null
-	)
+		null,
+		craftingType)
 	{
 		ResultingItemStack = resultingItemStack;
 	}
@@ -90,7 +69,7 @@ public class Recipe
 
 	public ItemStack CraftResult(List<ItemStack> itemStacks)
 	{
-		if (itemStacks.Count > FilterParts.Count)
+		if (itemStacks.Count > Ingredients.Count)
 		{
 			_logger.Debug("Provided Items do not match recipe requirements.");
 			return null;
@@ -105,7 +84,7 @@ public class Recipe
 		// If the resulting ItemStack was directly specified, return that, else create dynamic result
 		return ResultingItemStack ?? CreateDynamicCraftResult(itemStacks);
 	}
-	
+
 	/// <summary>
 	/// Craft the resulting ItemStack, Merge components. Craft resulting ItemStack based on components
 	/// <list type="number">
@@ -123,7 +102,6 @@ public class Recipe
 	/// <returns></returns>
 	private ItemStack CreateDynamicCraftResult(List<ItemStack> itemStacks)
 	{
-
 		var newId = string.Join("_", itemStacks.Select(item => item.Id).OrderBy(s => s));
 		var name = string.Join("-", itemStacks.Select(item => item.Id).OrderBy(s => s)); // TODO: Combine names
 		var icon = itemStacks[0].Icon;
@@ -182,7 +160,7 @@ public class Recipe
 	/// <returns></returns>
 	private bool HasRequiredIngredients(List<ItemStack> itemStacks)
 	{
-		if (itemStacks.Count != FilterParts.Count)
+		if (itemStacks.Count != Ingredients.Count)
 		{
 			_logger.Debug("Item count does not match recipe requirements.");
 			return false;
@@ -191,7 +169,7 @@ public class Recipe
 		// Check specific items first, then component specifications
 		// because component match may 'take away' from specific item requirement
 		var availableItems = new List<ItemStack>(itemStacks);
-		var hasSpecificallyRequiredItems = FilterParts
+		var hasSpecificallyRequiredItems = Ingredients
 			.OfType<ItemId>()
 			.All(ingredient =>
 			{
@@ -212,7 +190,7 @@ public class Recipe
 		}
 
 		// Check whether items with components are covered
-		var hasAllItemsWithComponents = FilterParts
+		var hasAllItemsWithComponents = Ingredients
 			.OfType<ComponentList>()
 			.All(compList =>
 			{
@@ -244,6 +222,6 @@ public class Recipe
 	public override string ToString()
 	{
 		return
-			$"Recipe{{FilterParts: {FilterParts}, ResultingItemStack: {ResultingItemStack}, RecipeMatchType: {CraftResultType}, RecipeCraftingType: {RecipeCraftingType}, AdditionalComponentsInResultingItem: {AdditionalComponentsInResultingItem}, RemovedComponentsInResultingItem: {RemovedComponentsInResultingItem}}}";
+			$"Recipe{{FilterParts: {Ingredients}, ResultingItemStack: {ResultingItemStack}, RecipeMatchType: {CraftResultType}, RecipeCraftingType: {RecipeCraftingType}, AdditionalComponentsInResultingItem: {AdditionalComponentsInResultingItem}, RemovedComponentsInResultingItem: {RemovedComponentsInResultingItem}}}";
 	}
 }

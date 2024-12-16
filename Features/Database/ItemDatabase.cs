@@ -151,13 +151,13 @@ public class ItemDatabase
 		foreach (var recipe in recipeSearchList)
 		{
 			// If we have more itemStacks than the recipe needs, there is no need to check
-			if (itemStacks.Count > recipe.FilterParts.Count)
+			if (itemStacks.Count > recipe.Ingredients.Count)
 			{
 				continue;
 			}
 
 			var numberOfItemsInRecipe = 0;
-			foreach (var filterPart in recipe.FilterParts)
+			foreach (var filterPart in recipe.Ingredients)
 			{
 				switch (filterPart)
 				{
@@ -241,9 +241,7 @@ public class ItemDatabase
 		{
 			// Generic: Turns single "Leaf" into "DriedLeaf"
 			// Note for Testing: Doesn't work with Sunflower!
-			new(
-				Recipe.CraftingType.Drying,
-				new List<IRecipeFilterPart>
+			new(new List<IIngredient>
 				{
 					new ComponentList
 					{
@@ -257,13 +255,10 @@ public class ItemDatabase
 				new ComponentList
 				{
 					new Leaf()
-				}
-			),
+				}, Recipe.CraftingType.Drying),
 			// Generic; Turns an item with an "Oil" and an item with an "Antioxidant" component into a normal item containing both.
 			// Note for Testing: Just to show that we mix both components together without removing or changing anything.
-			new(
-				Recipe.CraftingType.Brewing,
-				new List<IRecipeFilterPart>
+			new(new List<IIngredient>
 				{
 					new ComponentList
 					{
@@ -280,13 +275,10 @@ public class ItemDatabase
 					}
 				},
 				null,
-				null
-			),
+				null, Recipe.CraftingType.Brewing),
 			// Generic; Showcase of filtering for itemNames
 			// Note for Testing: Searching for string and component!
-			new(
-				Recipe.CraftingType.Cooking,
-				new List<IRecipeFilterPart>
+			new(new List<IIngredient>
 				{
 					new ComponentList
 					{
@@ -295,13 +287,10 @@ public class ItemDatabase
 					new ItemId("MintLeaf"),
 				},
 				null,
-				null
-			),
+				null, Recipe.CraftingType.Cooking),
 			// Generic; Showcase dynamic nature of Recipes
 			// Note for Testing: TACTICAL NUKE INCOMING. ÜÜEHH-ÜÜEHH-ÜÜEHH
-			new(
-				Recipe.CraftingType.Unspecified,
-				new List<IRecipeFilterPart>
+			new(new List<IIngredient>
 				{
 					new ComponentList
 					{
@@ -324,8 +313,7 @@ public class ItemDatabase
 						new Sunflower()
 					}
 				},
-				GetItemStackById("GameEndingNuke")
-			)
+				GetItemStackById("GameEndingNuke"), Recipe.CraftingType.Unspecified)
 		};
 	}
 

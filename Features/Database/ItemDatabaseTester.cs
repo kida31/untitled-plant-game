@@ -115,9 +115,7 @@ public partial class ItemDatabaseTester : Node
 		}
 
 		// 4. Creating a custom Recipe to show how all of it works
-		var customRecipe = new Recipe(
-			Recipe.CraftingType.Unspecified,
-			new List<IRecipeFilterPart>
+		var customRecipe = new Recipe(new List<IIngredient>
 			{
 				new ComponentList
 				{
@@ -128,8 +126,7 @@ public partial class ItemDatabaseTester : Node
 					new Basil(),
 				}
 			},
-			ItemDatabase.Instance.GetItemStackById("GameEndingNuke")
-		);
+			ItemDatabase.Instance.GetItemStackById("GameEndingNuke"), Recipe.CraftingType.Unspecified);
 
 		var temp = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
 		GD.Print(customRecipe.CraftResult(new List<ItemStack> {temp}));
@@ -140,9 +137,7 @@ public partial class ItemDatabaseTester : Node
 		GD.Print("---Tests---");
 		{
 			// Should fail, when not enough ingredients
-			var recipe = new Recipe(
-				Recipe.CraftingType.Unspecified,
-				new List<IRecipeFilterPart>
+			var recipe = new Recipe(new List<IIngredient>
 				{
 					new ComponentList
 					{
@@ -153,8 +148,7 @@ public partial class ItemDatabaseTester : Node
 						new Basil(),
 					}
 				},
-				ItemDatabase.Instance.GetItemStackById("GameEndingNuke")
-			);
+				ItemDatabase.Instance.GetItemStackById("GameEndingNuke"), Recipe.CraftingType.Unspecified);
 
 			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
 			Assert.AssertNull(recipe.CraftResult(new List<ItemStack> {basil}), "This should be null");
@@ -163,9 +157,7 @@ public partial class ItemDatabaseTester : Node
 
 		{
 			// Should fail, when not wrong ingredients
-			var recipe = new Recipe(
-				Recipe.CraftingType.Unspecified,
-				new List<IRecipeFilterPart>
+			var recipe = new Recipe(new List<IIngredient>
 				{
 					new ComponentList
 					{
@@ -177,8 +169,7 @@ public partial class ItemDatabaseTester : Node
 						new Antioxidant(),
 					}
 				},
-				ItemDatabase.Instance.GetItemStackById("GameEndingNuke")
-			);
+				ItemDatabase.Instance.GetItemStackById("GameEndingNuke"), Recipe.CraftingType.Unspecified);
 
 			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
 			Assert.AssertNull(recipe.CraftResult(new() {basil, basil}));
@@ -187,9 +178,7 @@ public partial class ItemDatabaseTester : Node
 
 		{
 			// Should pass, with two matching ingredients
-			var recipe = new Recipe(
-				Recipe.CraftingType.Unspecified,
-				new List<IRecipeFilterPart>
+			var recipe = new Recipe(new List<IIngredient>
 				{
 					new ComponentList
 					{
@@ -200,8 +189,7 @@ public partial class ItemDatabaseTester : Node
 						new Basil(),
 					}
 				},
-				ItemDatabase.Instance.GetItemStackById("GameEndingNuke")
-			);
+				ItemDatabase.Instance.GetItemStackById("GameEndingNuke"), Recipe.CraftingType.Unspecified);
 
 			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
 			Assert.AssertNotNull(recipe.CraftResult(new() {basil, basil}));
@@ -210,9 +198,7 @@ public partial class ItemDatabaseTester : Node
 
 		// Result should remove component from result
 		{
-			var recipe = new Recipe(
-				Recipe.CraftingType.Unspecified,
-				new List<IRecipeFilterPart>
+			var recipe = new Recipe(new List<IIngredient>
 				{
 					new ComponentList
 					{
@@ -223,8 +209,7 @@ public partial class ItemDatabaseTester : Node
 				new ComponentList
 				{
 					new Leaf()
-				}
-			);
+				}, Recipe.CraftingType.Unspecified);
 
 			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
 			var result = recipe.CraftResult(new() {basil});
@@ -235,9 +220,7 @@ public partial class ItemDatabaseTester : Node
 
 		// Result should keep all component from result since removal does not match
 		{
-			var recipe = new Recipe(
-				Recipe.CraftingType.Unspecified,
-				new List<IRecipeFilterPart>
+			var recipe = new Recipe(new List<IIngredient>
 				{
 					new ComponentList
 					{
@@ -248,8 +231,7 @@ public partial class ItemDatabaseTester : Node
 				new ComponentList
 				{
 					new Nuke()
-				}
-			);
+				}, Recipe.CraftingType.Unspecified);
 
 			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
 			var result = recipe.CraftResult(new() {basil});
