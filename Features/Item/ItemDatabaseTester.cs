@@ -21,6 +21,7 @@ public partial class ItemDatabaseTester : Node
 		get => ItemDatabase.Instance?.ItemStacks.ToArray();
 		set { }
 	}
+
 	public override void _Ready()
 	{
 		/*
@@ -256,5 +257,51 @@ public partial class ItemDatabaseTester : Node
 		GD.Print(basilComp);
 		GD.Print(dupe);
 		Assert.AssertTrue(dupe.GetType() == typeof(Basil));
+
+
+		{
+			var coal = new ItemStack()
+			{
+				Id = "coal",
+				Name = "Coal",
+				Category = ItemCategory.Material,
+			};
+			var stick = new ItemStack()
+			{
+				Id = "stick",
+				Name = "Stick",
+				Category = ItemCategory.Material,
+			};
+			var torch = new ItemStack()
+			{
+				Id = "torch",
+				Name = "Torch",
+				Category = ItemCategory.Material,
+			};
+			var torchRecipe = new Recipe(new List<IIngredient>
+				{
+					new ItemId(coal.Id),
+					new ItemId(stick.Id),
+				},
+				torch
+			);
+			
+			{
+				var recipes = new List<Recipe>() {torchRecipe}.Concat(ItemDatabase.Instance.Recipes).ToList();
+				var res = ItemDatabase.Instance.GetAllRecipesWithItemStacks(new() {stick}, recipes);
+				Assert.AssertTrue(res.Contains(torchRecipe));
+			}
+			{
+				var recipes = new List<Recipe>() {torchRecipe}; //.Concat(ItemDatabase.Instance.Recipes).ToList();
+				var res = ItemDatabase.Instance.GetAllRecipesWithItemStacks(new() {stick, stick}, recipes);
+				Assert.AssertTrue(res.Count == 0, "Expected no recipes for stickx2");
+			}
+			{
+				var recipes = new List<Recipe>() {torchRecipe}; //.Concat(ItemDatabase.Instance.Recipes).ToList();
+				var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
+				var res = ItemDatabase.Instance.GetAllRecipesWithItemStacks(new() {basil, stick}, recipes);
+				Assert.AssertTrue(res.Count == 0, "Expected no recipes stick and basil");
+			}
+		}
 	}
 }

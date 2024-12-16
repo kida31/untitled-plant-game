@@ -1,4 +1,6 @@
-﻿using Godot;
+﻿using System;
+using Godot;
+using Godot.Collections;
 using untitledplantgame.Item;
 
 namespace untitledplantgame.Inventory;
@@ -14,6 +16,8 @@ public interface IItemStack
 	///     The name of the item
 	/// </summary>
 	string Name { get; set; }
+	
+	Array<AComponent> Components { get; set; }
 
 	/// <summary>
 	///     The icon of the item
@@ -57,6 +61,9 @@ public interface IItemStack
 	/// <returns>Component of the specified type</returns>
 	T GetComponent<T>()
 		where T : AComponent;
+	
+	T GetComponent<T>(T component)
+		where T : AComponent => GetComponent<T>();
 
 	/// <summary>
 	///     Adds a component to the item

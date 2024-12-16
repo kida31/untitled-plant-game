@@ -18,9 +18,9 @@ public class ItemDatabase
 	public List<Recipe> Recipes { get; private set; }
 	public List<ItemStack> ItemStacks { get; private set; }
 	private static ItemDatabase _instance;
-	
+
 	private readonly Logger _logger = new("ItemDatabase");
-	
+
 	public static ItemDatabase Instance
 	{
 		get => _instance ??= new ItemDatabase();
@@ -65,8 +65,11 @@ public class ItemDatabase
 	}
 	//---Multithreading Testing---//
 
-
-	//---Get ItemStacks---//
+	/// <summary>
+	/// Looks for an ItemStack with the specified ID. Returns a clone of the ItemStack.
+	/// </summary>
+	/// <param name="itemId"></param>
+	/// <returns></returns>
 	public ItemStack CreateItemStack(string itemId)
 	{
 		var item = ItemStacks.FirstOrDefault(itemStack => itemStack.Id == itemId)?.Clone();
@@ -74,13 +77,18 @@ public class ItemDatabase
 		{
 			_logger.Error("Item with ID: " + itemId + " does not exist in the Database.");
 		}
+
 		return item as ItemStack;
 	}
 
-	/*
-	 * If the user throws two or more components into the specified list, the Database will search accordingly to that.
-	 * I.e.: { AComponent, AComponent, AComponent } is NOT the same as { AComponent, AComponent }
-	 */
+	/// <summary>
+	/// Returns a list of ItemStacks that contain the specified components.
+	/// If the user throws two or more components into the specified list, the Database will search accordingly to that.
+	/// I.e.: { AComponent, AComponent, AComponent } is NOT the same as { AComponent, AComponent }.
+	/// This will only return exact matches.
+	/// </summary>
+	/// <param name="components"></param>
+	/// <returns></returns>
 	public List<ItemStack> GetItemStacksWithSpecifiedComponents(List<AComponent> components)
 	{
 		var specificItemStack = new List<ItemStack>();
@@ -102,42 +110,18 @@ public class ItemDatabase
 		return specificItemStack;
 	}
 
-	/*
-	 * If the user throws two or more components into the specified list, the Database will search accordingly to that.
-	 * I.e.: { AComponent, AComponent, AComponent } is NOT the same as { AComponent, AComponent }
-	 */
-	public List<ItemStack> GetItemStacksWithSpecifiedComponents(ComponentList components)
-	{
-		var specificItemStack = new List<ItemStack>();
-		var group1 = components.GroupBy(item => item.GetType())
-			.ToDictionary(g => g.Key, g => g.Count());
-
-		foreach (var itemStack in ItemStacks)
-		{
-			var group2 = itemStack.Components.GroupBy(item => item.GetType())
-				.ToDictionary(g => g.Key, g => g.Count());
-
-			if (group1.Count == group2.Count &&
-			    group1.All(kvp => group2.TryGetValue(kvp.Key, out var count) && count == kvp.Value))
-			{
-				specificItemStack.Add(itemStack);
-			}
-		}
-
-		return specificItemStack;
-	}
-
+	/// <summary>
+	/// Returns a list of ItemStacks that contain the specified components.
+	/// Items that contain more components than the specified
+	/// ones will also be returned.
+	/// </summary>
+	/// <param name="components"></param>
+	/// <returns></returns>
+	/// <exception cref="NotImplementedException"></exception>
 	public ItemStack GetItemStacksWithAtLeastThoseComponents(List<AComponent> components)
 	{
 		throw new NotImplementedException();
 	}
-
-	public ItemStack GetItemStacksWithAtLeastThoseComponents(ComponentList components)
-	{
-		throw new NotImplementedException();
-	}
-	//---Get ItemStacks---//
-
 
 	//---Get Recipes---//
 	/*
@@ -151,76 +135,37 @@ public class ItemDatabase
 	// Additional Method: Get Recipes with EXACT amount of itemStacks.
 	public List<Recipe> GetAllRecipesWithItemStacks(List<ItemStack> itemStacks, List<Recipe> externalRecipeList)
 	{
-		var matchingRecipes = new List<Recipe>();
 		var recipeSearchList = externalRecipeList ?? Recipes;
-
-
-		foreach (var recipe in recipeSearchList)
+		
+		bool UsesIngredients(Recipe recipe, IReadOnlyCollection<ItemStack> items)
 		{
-			// If we have more itemStacks than the recipe needs, there is no need to check
-			if (itemStacks.Count > recipe.Ingredients.Count)
+			if (items.Count > recipe.Ingredients.Count)
 			{
-				continue;
+				return false;
 			}
-
-			var numberOfItemsInRecipe = 0;
-			foreach (var filterPart in recipe.Ingredients)
+			
+			// Check Id match first then components
+			var availableIngredients = new List<IIngredient>()
+				.Concat(recipe.Ingredients.OfType<ItemId>())
+				.Concat(recipe.Ingredients.OfType<ComponentList>()).ToList();
+			
+			// Find a use for each item while not filling the same ingredient twice
+			// Remark: May need to check by ingredient order instead of items, in case it 'takes away' an ingredient
+			return items.All(item =>
 			{
-				switch (filterPart)
+				var matchingIngredient = availableIngredients.FirstOrDefault(ingredient =>
+					ingredient.IsValidIngredient(item));
+				if (matchingIngredient == null)
 				{
-					case ItemId id:
-						foreach (var itemStack in itemStacks)
-						{
-							if (itemStack.Id.Equals(id.Id))
-							{
-								numberOfItemsInRecipe++;
-							}
-						}
-
-						if (numberOfItemsInRecipe >= itemStacks.Count)
-						{
-							matchingRecipes.Add(recipe);
-						}
-
-						break;
-
-					case ComponentList list:
-						foreach (var itemStack in itemStacks)
-						{
-							var minComponents = 0;
-							foreach (var componentInItemStack in itemStack.Components)
-							{
-								foreach (var componentInRecipe in list)
-								{
-									if (componentInItemStack.GetType() == componentInRecipe.GetType())
-									{
-										minComponents++;
-										break;
-									}
-								}
-							}
-
-							if (minComponents >= list.Count)
-							{
-								numberOfItemsInRecipe++;
-							}
-						}
-
-						if (numberOfItemsInRecipe >= itemStacks.Count)
-						{
-							matchingRecipes.Add(recipe);
-						}
-
-						break;
-
-					default: // Replace this with logger
-						GD.PrintErr("The type: " + filterPart.GetType() + " in this recipe is not a supported type.");
-						break;
+					return false;
 				}
-			}
+				
+				availableIngredients.Remove(matchingIngredient); // Item cannot be used for same ingredient
+				return true;
+			});
 		}
 
-		return matchingRecipes.Distinct().ToList();
+		return recipeSearchList.Where(recipe => UsesIngredients(recipe, itemStacks)).ToList();
 	}
 
 
@@ -347,7 +292,7 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
 				Category = ItemCategory.Plant,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "BasilLeaf" },
+				RelatedItemIds = new Array<string> {"BasilLeaf"},
 			},
 			new()
 			{
@@ -364,7 +309,7 @@ public class ItemDatabase
 					new Leaf(),
 					new Spice()
 				},
-				RelatedItemIds = new Array<string> { "chuuberry" },
+				RelatedItemIds = new Array<string> {"chuuberry"},
 			},
 			new(
 				"BasilLeaf",

@@ -24,7 +24,7 @@ public partial class ItemStack : Resource, IItemStack
 	[Export(PropertyHint.Enum, "Plant,Material,Medicine")]
 	private string _category;
 
-	[Export] public Array<AComponent> Components;
+	[Export] public Array<AComponent> Components { get; set; }
 
 	[Export] public Array<string> RelatedItemIds { get; set; }
 
