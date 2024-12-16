@@ -117,11 +117,10 @@ public class Recipe
 			foreach (var aComponent in itemStack.Components)
 			{
 				var matchingComponent = newComponents.FirstOrDefault(c => c.GetType() == aComponent.GetType());
-
 				if (matchingComponent != null)
 				{
 					// Combine components if a match is found
-					matchingComponent.CombineComponent(aComponent);
+					newComponents.Add(matchingComponent.Combine(aComponent));
 				}
 				else
 				{
@@ -149,8 +148,8 @@ public class Recipe
 			.Where(c => RemovedComponentsInResultingItem.All(r => r.GetType() != c.GetType()))
 			.ToArray());
 
-		return new ItemStack(newId, name, icon, newDescription, newItemCategory, newMaxStackSize, baseValue, 1,
-			newComponents);
+		return new ItemStack(newId, name, icon, newDescription, newItemCategory, baseValue: baseValue, maxStackSize: newMaxStackSize,
+			amount: 1, components: newComponents);
 	}
 
 	/// <summary>

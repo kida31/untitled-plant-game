@@ -31,30 +31,42 @@ public partial class EntityConfiguration :  AComponent
 		}
 	}
 
-	public override AComponent CombineComponent(AComponent otherComponent)
+	public override AComponent Clone()
 	{
-		if (otherComponent.GetType() == GetType())
+		// TODO: Is this correct?
+		var newConfig = new EntityConfiguration(Notes);
+		foreach (var stat in Stats)
 		{
-			var entityConfig = otherComponent as EntityConfiguration;
-			
-			foreach (var statInEntityConfig in entityConfig.Stats)
-			{
-				var matchingStat = Stats.FirstOrDefault(stat => stat.StatType.GetType() == statInEntityConfig.StatType.GetType());
+			newConfig.Stats.Add(new Stat(stat.GetModifiedStatValue(), stat.StatType, stat.IsHidden));
+		}
+		return newConfig;
+	}
+
+	public override AComponent Combine(AComponent component)
+	{
+		if (component is not EntityConfiguration entityConfig)
+		{
+			return this;
+		}
+
+		var newConfig = (EntityConfiguration) Clone();
+		foreach (var statInEntityConfig in entityConfig.Stats)
+		{
+			var matchingStat = newConfig.Stats.FirstOrDefault(stat => stat.StatType.GetType() == statInEntityConfig.StatType.GetType());
 				
-				if (matchingStat != null)
-				{
-					// AddModifier if stat exists
-					matchingStat.AddStatModifier(statInEntityConfig.GetModifiedStatValue());
-				}
-				else
-				{
-					// Add new stat if it doesn't exist
-					Stats.Add(new Stat(statInEntityConfig.GetModifiedStatValue(), statInEntityConfig.StatType, false));
-				}
+			if (matchingStat != null)
+			{
+				// AddModifier if stat exists
+				matchingStat.AddStatModifier(statInEntityConfig.GetModifiedStatValue());
+			}
+			else
+			{
+				// Add new stat if it doesn't exist
+				newConfig.Stats.Add(new Stat(statInEntityConfig.GetModifiedStatValue(), statInEntityConfig.StatType, false));
 			}
 		}
 
 		// If the new EntityConfiguration isn't valid, we can just return the same without changes.
-		return this;
+		return newConfig;
 	}
 }

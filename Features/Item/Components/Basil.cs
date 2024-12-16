@@ -6,11 +6,6 @@ namespace untitledplantgame.Item.Components;
 public partial class Basil : AComponent, IEquatable<Basil>
 {
 	public Basil() {} //needed to instantiate the class
-	
-	public override AComponent CombineComponent(AComponent otherComponent)
-	{
-		return otherComponent.GetType() == GetType() ? this : null;
-	}
 
 	public bool Equals(Basil other)
 	{
@@ -40,5 +35,10 @@ public partial class Basil : AComponent, IEquatable<Basil>
 	public override int GetHashCode()
 	{
 		return (int) "BasilComponent".Hash();
+	}
+
+	public override AComponent Clone()
+	{
+		return new Basil();
 	}
 }

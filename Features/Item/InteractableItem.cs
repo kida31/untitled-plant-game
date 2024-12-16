@@ -18,7 +18,7 @@ public partial class InteractableItem : AInteractable
 	public string ItemName => _dataContainer.EntityName; // Convenience property
 	private ICharacteristic _characteristic;
 
-	public ItemStack ItemStack = new ItemStack("id", "This", null, "des", ItemCategory.Material, 1, 1);
+	public ItemStack ItemStack = new ItemStack("id", "This", null, "des", ItemCategory.Material, maxStackSize: 1);
 	
 	public override void Interact()
 	{

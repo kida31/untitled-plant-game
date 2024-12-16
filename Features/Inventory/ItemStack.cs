@@ -2,6 +2,7 @@
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Common;
+using untitledplantgame.Database;
 using untitledplantgame.Item;
 
 namespace untitledplantgame.Inventory;
@@ -25,7 +26,7 @@ public partial class ItemStack : Resource, IItemStack
 
 	[Export] public Array<AComponent> Components;
 
-	[Export] public Array<ItemStack> Related; // TODO
+	[Export] public Array<string> RelatedItemIds { get; set; }
 
 	public ItemCategory Category
 	{
@@ -39,7 +40,7 @@ public partial class ItemStack : Resource, IItemStack
 				_ => null
 			};
 		}
-		set { _category = value.Name; }
+		set => _category = value.Name;
 	}
 
 	private readonly Logger _logger;
@@ -50,14 +51,13 @@ public partial class ItemStack : Resource, IItemStack
 		Components = new();
 	}
 
-	public ItemStack(
-		string id,
+	public ItemStack(string id,
 		string name,
 		Texture2D icon,
 		string description,
 		ItemCategory category,
-		int maxStackSize,
-		int baseValue,
+		int baseValue = 1,
+		int maxStackSize = 64,
 		int amount = 1,
 		Array<AComponent> components = null
 	) : this()
@@ -80,7 +80,7 @@ public partial class ItemStack : Resource, IItemStack
 		if (idx != -1)
 		{
 			var blah = Components[idx];
-			return (T)blah;
+			return (T) blah;
 		}
 
 		return null;
@@ -107,7 +107,7 @@ public partial class ItemStack : Resource, IItemStack
 			return null;
 		}
 
-		var component = (T)Components[idx];
+		var component = (T) Components[idx];
 		Components.RemoveAt(idx);
 		return component;
 	}
@@ -131,7 +131,8 @@ public partial class ItemStack : Resource, IItemStack
 	public IItemStack Clone()
 	{
 		// TODO: After the JSON fiasco I absolutely do NOT trust Godot to handle deep copies well (especially looking at the Stats)
-		var newStack = new ItemStack(Id, Name, Icon, Description, Category, MaxStackSize, BaseValue, Amount, Components.Duplicate(true));
+		var newStack = new ItemStack(Id, Name, Icon, Description, Category, baseValue: BaseValue, maxStackSize: MaxStackSize,
+			amount: Amount, components: Components.Duplicate(true));
 		return newStack;
 	}
 

@@ -5,14 +5,22 @@ using untitledplantgame.Common;
 using untitledplantgame.Crafting;
 using untitledplantgame.Entity;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
 using untitledplantgame.Statistics;
 using untitledplantgame.Statistics.StatTypes;
 
 namespace untitledplantgame.Database;
 
+[Tool]
 public partial class ItemDatabaseTester : Node
 {
+	[Export]
+	private ItemStack[] _items
+	{
+		get => ItemDatabase.Instance?.ItemStacks.ToArray();
+		set { }
+	}
 	public override void _Ready()
 	{
 		/*
@@ -95,7 +103,7 @@ public partial class ItemDatabaseTester : Node
 		//ItemDatabase.Instance.MyAsyncFunction(1000, 1000);
 
 		// 2. Access the Database for a single ItemStack by ID and Access it
-		ItemStack dummyItemStack = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+		ItemStack dummyItemStack = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
 		GD.Print(dummyItemStack.Id);
 		GD.Print(dummyItemStack.Name);
 		GD.Print(dummyItemStack.Description);
@@ -126,9 +134,9 @@ public partial class ItemDatabaseTester : Node
 					new Basil(),
 				}
 			},
-			ItemDatabase.Instance.GetItemStackById("GameEndingNuke"), Recipe.CraftingType.Unspecified);
+			ItemDatabase.Instance.CreateItemStack("GameEndingNuke"), Recipe.CraftingType.Unspecified);
 
-		var temp = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+		var temp = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
 		GD.Print(customRecipe.CraftResult(new List<ItemStack> {temp}));
 
 		//--------------------------------------------------------------------------------------------------------------------------------//
@@ -148,9 +156,9 @@ public partial class ItemDatabaseTester : Node
 						new Basil(),
 					}
 				},
-				ItemDatabase.Instance.GetItemStackById("GameEndingNuke"), Recipe.CraftingType.Unspecified);
+				ItemDatabase.Instance.CreateItemStack("GameEndingNuke"), Recipe.CraftingType.Unspecified);
 
-			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+			var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
 			Assert.AssertNull(recipe.CraftResult(new List<ItemStack> {basil}), "This should be null");
 			GD.Print("Test 1 passed");
 		}
@@ -169,9 +177,9 @@ public partial class ItemDatabaseTester : Node
 						new Antioxidant(),
 					}
 				},
-				ItemDatabase.Instance.GetItemStackById("GameEndingNuke"), Recipe.CraftingType.Unspecified);
+				ItemDatabase.Instance.CreateItemStack("GameEndingNuke"), Recipe.CraftingType.Unspecified);
 
-			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+			var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
 			Assert.AssertNull(recipe.CraftResult(new() {basil, basil}));
 			GD.Print("Test 2 passed");
 		}
@@ -189,9 +197,9 @@ public partial class ItemDatabaseTester : Node
 						new Basil(),
 					}
 				},
-				ItemDatabase.Instance.GetItemStackById("GameEndingNuke"), Recipe.CraftingType.Unspecified);
+				ItemDatabase.Instance.CreateItemStack("GameEndingNuke"), Recipe.CraftingType.Unspecified);
 
-			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+			var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
 			Assert.AssertNotNull(recipe.CraftResult(new() {basil, basil}));
 			GD.Print("Test 3 passed");
 		}
@@ -211,7 +219,7 @@ public partial class ItemDatabaseTester : Node
 					new Leaf()
 				}, Recipe.CraftingType.Unspecified);
 
-			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+			var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
 			var result = recipe.CraftResult(new() {basil});
 			Assert.AssertNotNull(result);
 			Assert.AssertNull(result.Components.FirstOrDefault(c => c.GetType() == typeof(Leaf)), "Should not have leaf component");
@@ -233,7 +241,7 @@ public partial class ItemDatabaseTester : Node
 					new Nuke()
 				}, Recipe.CraftingType.Unspecified);
 
-			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+			var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
 			var result = recipe.CraftResult(new() {basil});
 			Assert.AssertNotNull(result);
 			Assert.AssertTrue(
@@ -241,5 +249,12 @@ public partial class ItemDatabaseTester : Node
 				"Should have leaf component");
 			GD.Print("Test 5 passed");
 		}
+
+
+		var basilComp = new Basil();
+		var dupe = basilComp.Clone();
+		GD.Print(basilComp);
+		GD.Print(dupe);
+		Assert.AssertTrue(dupe.GetType() == typeof(Basil));
 	}
 }
