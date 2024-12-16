@@ -1,0 +1,159 @@
+[gd_scene load_steps=10 format=3 uid="uid://cc8tr4q35n0q8"]
+
+[ext_resource type="Script" path="res://Features/Dialogue/DialogueUi.cs" id="2_6qnof"]
+[ext_resource type="Texture2D" uid="uid://o4fvncrv04mo" path="res://Assets/Sprites/damage.png" id="2_cnal3"]
+[ext_resource type="Texture2D" uid="uid://be34y66w0usqf" path="res://Assets/UI/chatbox_rounded.png" id="3_2ukc1"]
+[ext_resource type="Texture2D" uid="uid://dvg3mpwor2ux0" path="res://Assets/UI/BookUI/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soyak"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuaaj"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sfre"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oefjw"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3m0r1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soyak")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuaaj")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sfre")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oefjw")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}]
+
+[node name="DialogueView" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_6qnof")
+
+[node name="Portrait" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(91.5, -48.25)
+scale = Vector2(4.7625, 4.50625)
+sprite_frames = SubResource("SpriteFrames_3m0r1")
+animation = &"sad"
+
+[node name="Responses" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 354.5
+offset_top = -40.25
+offset_right = 504.5
+offset_bottom = 9.75
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 34.5
+offset_top = 11.75
+offset_right = 506.5
+offset_bottom = 192.75
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="DialogueBox" type="NinePatchRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("3_2ukc1")
+region_rect = Rect2(0.185928, 0.185112, 29.037, 29.3333)
+patch_margin_left = 8
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="DialogueText" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Some random dialogue text in here... Bla bla bla..."
+visible_characters_behavior = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 36.5
+offset_top = -27.25
+offset_right = 250.5
+offset_bottom = 30.75
+grow_vertical = 0
+size_flags_horizontal = 4
+
+[node name="NameBox" type="NinePatchRect" parent="PanelContainer2"]
+layout_mode = 2
+texture = ExtResource("4_kwwp3")
+region_rect = Rect2(2.9637, 0.296223, 122.963, 31.4074)
+patch_margin_left = 11
+patch_margin_top = 10
+patch_margin_right = 12
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 20
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer2/MarginContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Schwanzus Longus"
+fit_content = true
+autowrap_mode = 0

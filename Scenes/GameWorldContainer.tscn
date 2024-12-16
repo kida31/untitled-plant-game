@@ -1,0 +1,80 @@
+[gd_scene load_steps=15 format=3 uid="uid://cv1fhyjs170lk"]
+
+[ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
+[ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
+[ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://Features/NPC/VendingMachine/VendingMachineNPC.tscn" id="2_ldf7o"]
+[ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://Features/NPC/NPC.tscn" id="2_w1s7m"]
+[ext_resource type="Script" path="res://Scenes/TestScenes/PlantAndCycles/TestCycleWithPlants.cs" id="3_li003"]
+[ext_resource type="Script" path="res://Features/NPC/SeedBoy.cs" id="3_orgm4"]
+[ext_resource type="Script" path="res://Features/Plants/PlantController.cs" id="3_qp075"]
+[ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
+[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
+[ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/APlantPrefab.tscn" id="9_t05jd"]
+[ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="10_da3hi"]
+[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
+[ext_resource type="SpriteFrames" uid="uid://dldh2xoh0w7ey" path="res://Assets/OverworldAssets/Plant/ChuberySpriteFrames.tres" id="11_voxp1"]
+[ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/GenericItem.tscn" id="12_tpjy1"]
+
+[node name="GameWorldContainer" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Map" parent="." instance=ExtResource("1_ouy3g")]
+y_sort_enabled = true
+
+[node name="GenericItem" parent="." instance=ExtResource("12_tpjy1")]
+position = Vector2(750, 429)
+
+[node name="Bed" parent="." instance=ExtResource("11_33dsb")]
+position = Vector2(888, 177)
+
+[node name="SeedShop" parent="." instance=ExtResource("2_w1s7m")]
+z_index = 2
+y_sort_enabled = true
+position = Vector2(465, 195)
+script = ExtResource("3_orgm4")
+
+[node name="VendingMachineNPC" parent="." instance=ExtResource("2_ldf7o")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(730, 160)
+
+[node name="Plants" type="Node2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("3_li003")
+
+[node name="PlantController" type="Node" parent="Plants"]
+script = ExtResource("3_qp075")
+
+[node name="APlantPrefab" parent="Plants" node_paths=PackedStringArray("Tile") instance=ExtResource("9_t05jd")]
+position = Vector2(456, 341)
+PlantName = "Licary"
+Tile = NodePath("../Soil")
+
+[node name="Soil" parent="Plants" instance=ExtResource("10_da3hi")]
+position = Vector2(409, 337)
+
+[node name="APlantPrefab2" parent="Plants" node_paths=PackedStringArray("Tile") instance=ExtResource("9_t05jd")]
+position = Vector2(409, 341)
+PlantName = "Chubery"
+Tile = NodePath("../Soil2")
+
+[node name="AnimatedSprite2D" parent="Plants/APlantPrefab2" index="0"]
+sprite_frames = ExtResource("11_voxp1")
+
+[node name="Soil2" parent="Plants" instance=ExtResource("10_da3hi")]
+position = Vector2(458, 339)
+
+[node name="Player" parent="." instance=ExtResource("1_mh621")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(640, 360)
+
+[node name="NightTint" type="CanvasModulate" parent="."]
+position = Vector2(577.5, 328.625)
+scale = Vector2(1.19896, 1.19896)
+script = ExtResource("6_4ec11")
+_gradientTexture = ExtResource("7_xmbsw")
+
+[editable path="Plants/APlantPrefab"]
+[editable path="Plants/APlantPrefab2"]
