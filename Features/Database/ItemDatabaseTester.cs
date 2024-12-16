@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Crafting;
 using untitledplantgame.Entity;
 using untitledplantgame.Inventory;
@@ -87,15 +88,10 @@ public partial class ItemDatabaseTester : Node
 		GD.Print(craftResult.Id);
 		*/
 		
-		
-		
-		
 		//--------------------------------------------------------------------------------------------------------------------------------//
-		
 		
 		// 1. Potential multithreaded solution:
 		//ItemDatabase.Instance.MyAsyncFunction(1000, 1000);
-		
 		
 		// 2. Access the Database for a single ItemStack by ID and Access it
 		ItemStack dummyItemStack = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
@@ -105,11 +101,10 @@ public partial class ItemDatabaseTester : Node
 		GD.Print(dummyItemStack.Amount);
 		GD.Print(dummyItemStack.Category);
 		
-		
 		// 3. Get a Recipe based on ItemStack(s) => returns all Recipes containing AT LEAST 
 		List<Recipe> dummyRecipes =
 			ItemDatabase.Instance.GetAllRecipesWithItemStacksAndCraftingType(
-				new List<ItemStack> { dummyItemStack }, 
+				new List<ItemStack> {dummyItemStack},
 				null,
 				Recipe.CraftingType.Cooking);
 
@@ -117,7 +112,6 @@ public partial class ItemDatabaseTester : Node
 		{
 			GD.Print(recipe.RecipeCraftingType);
 		}
-		
 		
 		// 4. Creating a custom Recipe to show how all of it works
 		var customRecipe = new Recipe(
@@ -136,7 +130,81 @@ public partial class ItemDatabaseTester : Node
 			ItemDatabase.Instance.GetItemStackById("GameEndingNuke")
 		);
 
-		var temp= ItemDatabase.Instance.GetItemStackById("BasilLeaf");
-		GD.Print(customRecipe.CraftResult(new List<ItemStack>{temp}));
+		var temp = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+		GD.Print(customRecipe.CraftResult(new List<ItemStack> {temp}));
+
+		//--------------------------------------------------------------------------------------------------------------------------------//
+		// Some Tests
+
+		GD.Print("---Tests---");
+		{
+			// Should fail, when not enough ingredients
+			var recipe = new Recipe(
+				Recipe.CraftingType.Unspecified,
+				new List<IRecipeFilterPart>
+				{
+					new ComponentList
+					{
+						new Basil(),
+					},
+					new ComponentList
+					{
+						new Basil(),
+					}
+				},
+				ItemDatabase.Instance.GetItemStackById("GameEndingNuke")
+			);
+
+			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+			Assert.AssertNull(recipe.CraftResult(new List<ItemStack> {basil}), "This should be null");
+			GD.Print("Test 1 passed");
+		}
+
+		{
+			// Should fail, when not wrong ingredients
+			var recipe = new Recipe(
+				Recipe.CraftingType.Unspecified,
+				new List<IRecipeFilterPart>
+				{
+					new ComponentList
+					{
+						new Basil(),
+					},
+					new ComponentList
+					{
+						new Decoration(),
+						new Antioxidant(),
+					}
+				},
+				ItemDatabase.Instance.GetItemStackById("GameEndingNuke")
+			);
+
+			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+			Assert.AssertNull(recipe.CraftResult(new() {basil, basil}));
+			GD.Print("Test 2 passed");
+		}
+		
+		{
+			// Should pass, with two matching ingredients
+			var recipe = new Recipe(
+				Recipe.CraftingType.Unspecified,
+				new List<IRecipeFilterPart>
+				{
+					new ComponentList
+					{
+						new Basil(),
+					},
+					new ComponentList
+					{
+						new Basil(),
+					}
+				},
+				ItemDatabase.Instance.GetItemStackById("GameEndingNuke")
+			);
+
+			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+			Assert.AssertNotNull(recipe.CraftResult(new() {basil, basil}));
+			GD.Print("Test 3 passed");
+		}
 	}
 }
