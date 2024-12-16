@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Crafting;
@@ -87,12 +88,12 @@ public partial class ItemDatabaseTester : Node
 		
 		GD.Print(craftResult.Id);
 		*/
-		
+
 		//--------------------------------------------------------------------------------------------------------------------------------//
-		
+
 		// 1. Potential multithreaded solution:
 		//ItemDatabase.Instance.MyAsyncFunction(1000, 1000);
-		
+
 		// 2. Access the Database for a single ItemStack by ID and Access it
 		ItemStack dummyItemStack = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
 		GD.Print(dummyItemStack.Id);
@@ -100,7 +101,7 @@ public partial class ItemDatabaseTester : Node
 		GD.Print(dummyItemStack.Description);
 		GD.Print(dummyItemStack.Amount);
 		GD.Print(dummyItemStack.Category);
-		
+
 		// 3. Get a Recipe based on ItemStack(s) => returns all Recipes containing AT LEAST 
 		List<Recipe> dummyRecipes =
 			ItemDatabase.Instance.GetAllRecipesWithItemStacksAndCraftingType(
@@ -112,7 +113,7 @@ public partial class ItemDatabaseTester : Node
 		{
 			GD.Print(recipe.RecipeCraftingType);
 		}
-		
+
 		// 4. Creating a custom Recipe to show how all of it works
 		var customRecipe = new Recipe(
 			Recipe.CraftingType.Unspecified,
@@ -183,7 +184,7 @@ public partial class ItemDatabaseTester : Node
 			Assert.AssertNull(recipe.CraftResult(new() {basil, basil}));
 			GD.Print("Test 2 passed");
 		}
-		
+
 		{
 			// Should pass, with two matching ingredients
 			var recipe = new Recipe(
@@ -205,6 +206,58 @@ public partial class ItemDatabaseTester : Node
 			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
 			Assert.AssertNotNull(recipe.CraftResult(new() {basil, basil}));
 			GD.Print("Test 3 passed");
+		}
+
+		// Result should remove component from result
+		{
+			var recipe = new Recipe(
+				Recipe.CraftingType.Unspecified,
+				new List<IRecipeFilterPart>
+				{
+					new ComponentList
+					{
+						new Basil(),
+					}
+				},
+				null,
+				new ComponentList
+				{
+					new Leaf()
+				}
+			);
+
+			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+			var result = recipe.CraftResult(new() {basil});
+			Assert.AssertNotNull(result);
+			Assert.AssertNull(result.Components.FirstOrDefault(c => c.GetType() == typeof(Leaf)), "Should not have leaf component");
+			GD.Print("Test 4 passed");
+		}
+
+		// Result should keep all component from result since removal does not match
+		{
+			var recipe = new Recipe(
+				Recipe.CraftingType.Unspecified,
+				new List<IRecipeFilterPart>
+				{
+					new ComponentList
+					{
+						new Basil(),
+					}
+				},
+				null,
+				new ComponentList
+				{
+					new Nuke()
+				}
+			);
+
+			var basil = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+			var result = recipe.CraftResult(new() {basil});
+			Assert.AssertNotNull(result);
+			Assert.AssertTrue(
+				result.Components.All(resComp => basil.Components.FirstOrDefault(comp => comp.GetType() == resComp.GetType()) != null),
+				"Should have leaf component");
+			GD.Print("Test 5 passed");
 		}
 	}
 }

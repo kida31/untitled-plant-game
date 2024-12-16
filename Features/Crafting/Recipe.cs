@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using Godot.Collections;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 
 namespace untitledplantgame.Crafting;
 
@@ -100,26 +102,30 @@ public class Recipe
 			return null;
 		}
 
-		// If the resulting ItemStack was directly specified
-		if (ResultingItemStack != null)
-		{
-			return ResultingItemStack;
-		}
+		// If the resulting ItemStack was directly specified, return that, else create dynamic result
+		return ResultingItemStack ?? CreateDynamicCraftResult(itemStacks);
+	}
+	
+	/// <summary>
+	/// Craft the resulting ItemStack, Merge components. Craft resulting ItemStack based on components
+	/// <list type="number">
+	/// <item><description>Make id unique by adding them in a particular way</description></item>
+	/// <item><description>Combine Names (rule outside this scope) ⇒ Default to add names together</description></item>
+	/// <item><description>Icon (rule outside this scope) ⇒ Default to using first Icon provided</description></item>
+	/// <item><description>Category (rule outside this scope) ⇒ Default to using the first category</description></item>
+	/// <item><description>maxStackSize (rule outside this scope) ⇒ Default to using the first number provided</description></item>
+	/// <item><description>baseValue (rule outside this scope) ⇒ Default to using the first number provided</description></item>
+	/// <item><description>amount will always be one as a result</description></item>
+	/// <item><description>components: will be added and compared via component-interface</description></item>
+	/// </list>
+	/// </summary>
+	/// <param name="itemStacks"></param>
+	/// <returns></returns>
+	private ItemStack CreateDynamicCraftResult(List<ItemStack> itemStacks)
+	{
 
-		// ------------------ Craft the resulting ItemStack, Merge components ------------------
-		// If the resulting ItemStack should be crafted based on components. 
-		/*
-		 * 1. Make id unique by adding them in a particular way
-		 * 2. Combine Names (rule outside this scope) ⇒ Default to add names together
-		 * 3. Icon (rule outside this scope) ⇒ Default to using first Icon provided
-		 * 4. Category (rule outside this scope) ⇒ Default to using the first category
-		 * 5. maxStackSize (rule outside this scope) ⇒ Default to using the first number provided
-		 * 6. baseValue (rule outside this scope) ⇒ Default to using the first number provided
-		 * 7. amount will always be one as a result
-		 * 8. components: will be added and compared via component-interface
-		 */
-		var newId = string.Join("_", itemStacks.Select(item => item.Id));
-		var name = string.Join("-", itemStacks.Select(item => item.Id));
+		var newId = string.Join("_", itemStacks.Select(item => item.Id).OrderBy(s => s));
+		var name = string.Join("-", itemStacks.Select(item => item.Id).OrderBy(s => s)); // TODO: Combine names
 		var icon = itemStacks[0].Icon;
 		var newDescription = itemStacks[0].Description;
 		var newItemCategory = itemStacks[0].Category;
@@ -161,30 +167,12 @@ public class Recipe
 		}
 
 		// ------------------ Remove components if they exist ------------------
-		// Add to remove list (if component even exists)
-		var componentsToRemove = new ComponentList();
-		if (RemovedComponentsInResultingItem != null)
-		{
-			foreach (var component in newComponents)
-			{
-				foreach (var toRemove in RemovedComponentsInResultingItem)
-				{
-					if (component.GetType() == toRemove.GetType())
-					{
-						componentsToRemove.Add(component);
-						break;
-					}
-				}
-			}
-		}
+		newComponents = new Array<AComponent>(newComponents
+			.Where(c => RemovedComponentsInResultingItem.All(r => r.GetType() != c.GetType()))
+			.ToArray());
 
-		// Actually remove the components after identifying them
-		foreach (var toRemove in componentsToRemove)
-		{
-			newComponents.Remove(toRemove);
-		}
-
-		return new ItemStack(newId, name, icon, newDescription, newItemCategory, newMaxStackSize, baseValue, 1, newComponents);
+		return new ItemStack(newId, name, icon, newDescription, newItemCategory, newMaxStackSize, baseValue, 1,
+			newComponents);
 	}
 
 	/// <summary>
