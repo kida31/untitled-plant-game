@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drxtvnvduooxl"
-path="res://.godot/imported/InventoryIndicator_close.png-0ebae0e741fd87ba6eb470556e2302d5.ctex"
+uid="uid://bdy453nqosotw"
+path="res://.godot/imported/close_x.png-921a85f7567ef1f47ba5d375482d6c0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/InventoryIndicator_close.png"
-dest_files=["res://.godot/imported/InventoryIndicator_close.png-0ebae0e741fd87ba6eb470556e2302d5.ctex"]
+source_file="res://Assets/UI/CraftingUI/close_x.png"
+dest_files=["res://.godot/imported/close_x.png-921a85f7567ef1f47ba5d375482d6c0b.ctex"]
 
 [params]
 

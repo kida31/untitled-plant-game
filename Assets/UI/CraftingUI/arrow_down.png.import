@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8dl5qnkwvq52"
-path="res://.godot/imported/InventoryIndicator_open.png-f2c9a5e049dec30d837ad04f3c27a3f6.ctex"
+uid="uid://bxfrrswv0508n"
+path="res://.godot/imported/arrow_down.png-a55298c0833e6b7adc011b8d3f95e9a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/InventoryIndicator_open.png"
-dest_files=["res://.godot/imported/InventoryIndicator_open.png-f2c9a5e049dec30d837ad04f3c27a3f6.ctex"]
+source_file="res://Assets/UI/CraftingUI/arrow_down.png"
+dest_files=["res://.godot/imported/arrow_down.png-a55298c0833e6b7adc011b8d3f95e9a3.ctex"]
 
 [params]
 

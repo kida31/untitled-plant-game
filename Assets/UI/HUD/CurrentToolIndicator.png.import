@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn4fpfuaq40v7"
-path="res://.godot/imported/round_container_currency_hud.png-50f4338dc1171740167830866e27732e.ctex"
+uid="uid://dhxsj538h0eqk"
+path="res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/round_container_currency_hud.png"
-dest_files=["res://.godot/imported/round_container_currency_hud.png-50f4338dc1171740167830866e27732e.ctex"]
+source_file="res://Assets/UI/HUD/CurrentToolIndicator.png"
+dest_files=["res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"]
 
 [params]
 
