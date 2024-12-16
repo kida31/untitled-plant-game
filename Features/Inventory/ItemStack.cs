@@ -25,6 +25,8 @@ public partial class ItemStack : Resource, IItemStack
 
 	[Export] public Array<AComponent> Components;
 
+	[Export] public Array<ItemStack> Related; // TODO
+
 	public ItemCategory Category
 	{
 		get
@@ -131,5 +133,11 @@ public partial class ItemStack : Resource, IItemStack
 		// TODO: After the JSON fiasco I absolutely do NOT trust Godot to handle deep copies well (especially looking at the Stats)
 		var newStack = new ItemStack(Id, Name, Icon, Description, Category, MaxStackSize, BaseValue, Amount, Components.Duplicate(true));
 		return newStack;
+	}
+
+	public override string ToString()
+	{
+		return
+			$"ItemStack{{Name={Name}, Id={Id}, Amount={Amount}, Category={Category}, Description={Description}, MaxStackSize={MaxStackSize}, BaseValue={BaseValue}, Components={Components}}}";
 	}
 }

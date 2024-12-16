@@ -13,6 +13,7 @@ public partial class ItemDatabaseTester : Node
 {
 	public override void _Ready()
 	{
+		/*
 		// ItemDatabase.Instance.MyAsyncFunction(1000, 1000);
 		// GD.Print(ItemDatabase.Instance.GetItemStackById("tenthItem").Description);
 		// var list = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>{ new Leaf(), new Antioxidant(), new Mint() });
@@ -84,6 +85,58 @@ public partial class ItemDatabaseTester : Node
 			);
 		
 		GD.Print(craftResult.Id);
+		*/
 		
+		
+		
+		
+		//--------------------------------------------------------------------------------------------------------------------------------//
+		
+		
+		// 1. Potential multithreaded solution:
+		//ItemDatabase.Instance.MyAsyncFunction(1000, 1000);
+		
+		
+		// 2. Access the Database for a single ItemStack by ID and Access it
+		ItemStack dummyItemStack = ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+		GD.Print(dummyItemStack.Id);
+		GD.Print(dummyItemStack.Name);
+		GD.Print(dummyItemStack.Description);
+		GD.Print(dummyItemStack.Amount);
+		GD.Print(dummyItemStack.Category);
+		
+		
+		// 3. Get a Recipe based on ItemStack(s) => returns all Recipes containing AT LEAST 
+		List<Recipe> dummyRecipes =
+			ItemDatabase.Instance.GetAllRecipesWithItemStacksAndCraftingType(
+				new List<ItemStack> { dummyItemStack }, 
+				null,
+				Recipe.CraftingType.Cooking);
+
+		foreach (var recipe in dummyRecipes)
+		{
+			GD.Print(recipe.RecipeCraftingType);
+		}
+		
+		
+		// 4. Creating a custom Recipe to show how all of it works
+		var customRecipe = new Recipe(
+			Recipe.CraftingType.Unspecified,
+			new List<IRecipeFilterPart>
+			{
+				new ComponentList
+				{
+					new Basil(),
+				},
+				new ComponentList
+				{
+					new Basil(),
+				}
+			},
+			ItemDatabase.Instance.GetItemStackById("GameEndingNuke")
+		);
+
+		var temp= ItemDatabase.Instance.GetItemStackById("BasilLeaf");
+		GD.Print(customRecipe.CraftResult(new List<ItemStack>{temp}));
 	}
 }

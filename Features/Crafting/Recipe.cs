@@ -12,7 +12,8 @@ public class Recipe
 {
 	public readonly List<IRecipeFilterPart> FilterParts;
 	public readonly ItemStack ResultingItemStack;
-	public MatchType RecipeMatchType { get; private set; }
+	public MatchType RecipeMatchType => ResultingItemStack != null ? MatchType.Specific : MatchType.Generic; 
+	//public MatchType RecipeMatchType { get; private set; } // Change Name
 	public CraftingType RecipeCraftingType { get; private set; }
 	public ComponentList AdditionalComponentsInResultingItem { get; private set; }
 	public ComponentList RemovedComponentsInResultingItem { get; private set; }
@@ -41,7 +42,7 @@ public class Recipe
 		ComponentList additionalComponentsInResultingItem,
 		ComponentList removedComponentsInResultingItem)
 	{
-		RecipeMatchType = matchType;
+		//RecipeMatchType = matchType;
 		RecipeCraftingType = craftingType;
 		FilterParts = filterLists;
 		AdditionalComponentsInResultingItem = additionalComponentsInResultingItem;
@@ -219,7 +220,7 @@ public class Recipe
 				{
 					newComponents.Remove(toRemove);
 				}
-				
+
 				return new ItemStack(newId, name, icon, newDescription, newItemCategory, newMaxStackSize, baseValue, 1, newComponents);
 			}
 
@@ -230,5 +231,11 @@ public class Recipe
 		// With Logger
 		GD.Print("Provided Items do not match recipe requirements.");
 		return null;
+	}
+
+	public override string ToString()
+	{
+		return
+			$"Recipe{{FilterParts: {FilterParts}, ResultingItemStack: {ResultingItemStack}, RecipeMatchType: {RecipeMatchType}, RecipeCraftingType: {RecipeCraftingType}, AdditionalComponentsInResultingItem: {AdditionalComponentsInResultingItem}, RemovedComponentsInResultingItem: {RemovedComponentsInResultingItem}}}";
 	}
 }

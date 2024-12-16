@@ -8,4 +8,8 @@ public abstract partial class AComponent : Resource, IComponent
 {
 	public AComponent() {}
 	public abstract AComponent CombineComponent(AComponent otherComponent);
+	public override string ToString()
+	{
+		return GetType().Name;
+	}
 }
