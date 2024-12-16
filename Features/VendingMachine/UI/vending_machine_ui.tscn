@@ -1,11 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://c108xawc8eseh"]
+[gd_scene load_steps=21 format=3 uid="uid://c108xawc8eseh"]
 
 [ext_resource type="Script" path="res://Features/VendingMachine/UI/VendingMachineUI.cs" id="1_eust6"]
 [ext_resource type="PackedScene" uid="uid://ci3xd0kudwy7k" path="res://Features/VendingMachine/UI/VMItemSlotUI.tscn" id="2_3ain1"]
 [ext_resource type="Texture2D" uid="uid://daewgkls8y0jg" path="res://Features/VendingMachine/UI/gold_coin_pirated.png" id="3_rclpn"]
 [ext_resource type="Texture2D" uid="uid://b04d8mwf8rhjp" path="res://Features/VendingMachine/UI/gold_coin_pirated_many.png" id="4_q7c76"]
-[ext_resource type="Texture2D" uid="uid://cyhjl37v35jg0" path="res://Features/VendingMachine/UI/withdraw.png" id="5_6n24k"]
 [ext_resource type="Texture2D" uid="uid://bpmmqaxhkw5id" path="res://Features/VendingMachine/UI/speech_bubble.png" id="5_40186"]
+[ext_resource type="Texture2D" uid="uid://bopd7g6vsty7t" path="res://Assets/UI/VendingMachine/Hebel.png" id="5_kco5e"]
+[ext_resource type="Texture2D" uid="uid://cu7fp670pmqng" path="res://Assets/UI/VendingMachine/CashRetriever.png" id="6_c23qe"]
 [ext_resource type="Script" path="res://Features/VendingMachine/UI/EmojiTooltip.cs" id="6_puycv"]
 [ext_resource type="Texture2D" uid="uid://b44flee2bca17" path="res://Features/VendingMachine/emojis/tile019.png" id="7_dbben"]
 [ext_resource type="Texture2D" uid="uid://d0177efgg4ejp" path="res://Features/VendingMachine/emojis/tile007.png" id="7_ndc7e"]
@@ -163,6 +164,7 @@ stretch_mode = 4
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_icons/grabber = ExtResource("5_kco5e")
 max_value = 2.0
 step = 0.25
 value = 1.0
@@ -173,7 +175,7 @@ layout_mode = 2
 [node name="WithdrawButton" type="Button" parent="MarginContainer/VBoxContainer/SliderAndWithdrawContainer/WidthdrawContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-icon = ExtResource("5_6n24k")
+icon = ExtResource("6_c23qe")
 icon_alignment = 1
 expand_icon = true
 
