@@ -89,13 +89,16 @@ public partial class WikiItemList : Control
 	private void ScrollToFirstItemOf(ItemCategory category)
 	{
 		var item = _itemViews.Select(iv => iv.ItemStack).FirstOrDefault(its => its.Category == category);
-		ScrollTo(item);
+		if (item != null)
+		{
+			ScrollTo(item);	
+		}
 	}
 	
 	public void ScrollTo(IItemStack itemStack)
 	{
 		var itemView = _itemViews.FirstOrDefault(iv => iv.ItemStack == itemStack);
-		Assert.AssertNotNull(itemView, "Item not found in list");
+		Assert.AssertNotNull(itemView, "Item not found in list: " + itemStack);
 		itemView?.GrabFocus();
 	}
 
