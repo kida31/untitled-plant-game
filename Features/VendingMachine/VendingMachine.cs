@@ -97,12 +97,9 @@ public class VendingMachine
 			_logger.Debug($"itemsellcount={totalSellCount}");
 
 			// Sold items are no longer in container
-			_inventory.RemoveItem(
-				new ItemStack(stack.Id, stack.Name, stack.Icon, stack.Description, stack.Category, stack.MaxStackSize, stack.BaseValue)
-				{
-					Amount = itemSellCount,
-				}
-			);
+			var soldItem = stack.Clone() as ItemStack;
+			soldItem!.Amount = itemSellCount;
+			_inventory.RemoveItem(soldItem);
 
 			_logger.Info($"Sold {stack.Name} x{itemSellCount} for {goldEarned}g");
 			ContentChanged?.Invoke(_inventory);
