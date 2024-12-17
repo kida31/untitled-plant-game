@@ -34,7 +34,6 @@ public partial class FocusIndicator : Control
 		_anchor.TopLevel = true;
 		_anchor.SetHGrowDirection(GrowDirection.Both);
 		_anchor.SetVGrowDirection(GrowDirection.Both);
-		
 	}
 
 	public override void _Process(double delta)
@@ -45,11 +44,6 @@ public partial class FocusIndicator : Control
 		}
 
 		LerpAnimation(_focusedControl, delta);
-	}
-
-	public override void _Input(InputEvent @event)
-	{
-		base._Input(@event);
 	}
 
 	private void OnStateChanged(GameState previous, GameState newState)

@@ -18,14 +18,11 @@ offset_bottom = 171.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qlgnr")
-_inventoryTabs = NodePath("TabbedInventory")
+_inventoryTabs = NodePath("InventoryTabs")
 _playerDetails = NodePath("PlayerDetails")
 metadata/_tab_index = 0
 
-[node name="TabbedInventory" parent="." instance=ExtResource("2_kjjt2")]
-layout_mode = 2
-offset_right = 0.0
-offset_bottom = 342.0
+[node name="InventoryTabs" parent="." instance=ExtResource("2_kjjt2")]
 
 [node name="PlayerDetails" parent="." instance=ExtResource("3_pmlsj")]
 layout_mode = 2
