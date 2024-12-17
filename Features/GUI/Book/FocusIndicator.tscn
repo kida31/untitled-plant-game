@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://ikmkfkp11t0t"]
+
+[ext_resource type="Script" path="res://Features/GUI/FocusIndicator.cs" id="1_63p0k"]
+[ext_resource type="Texture2D" uid="uid://del57edaadvpk" path="res://Assets/UI/BookUI/ItemSelectorLeft.png" id="1_138p4"]
+[ext_resource type="Texture2D" uid="uid://ixhi2w1do3cd" path="res://Assets/UI/BookUI/ItemSelectorRight.png" id="2_8l33a"]
+
+[sub_resource type="Animation" id="Animation_0hsof"]
+resource_name = "Breathing"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LocalDiv:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.98, 0.98), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LocalDiv:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_racpq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LocalDiv:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ls5w"]
+_data = {
+"Breathing": SubResource("Animation_0hsof"),
+"RESET": SubResource("Animation_racpq")
+}
+
+[node name="FocusIndicator" type="Control" node_paths=PackedStringArray("_anchor", "_indicator")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_63p0k")
+_anchor = NodePath("TopLevelAnchor")
+_indicator = NodePath("TopLevelAnchor/LocalDiv")
+
+[node name="TopLevelAnchor" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="LocalDiv" type="BoxContainer" parent="TopLevelAnchor"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Margin" type="MarginContainer" parent="TopLevelAnchor/LocalDiv"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="TextureRect" type="NinePatchRect" parent="TopLevelAnchor/LocalDiv/Margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("1_138p4")
+patch_margin_left = 18
+patch_margin_top = 20
+
+[node name="TextureRect2" type="NinePatchRect" parent="TopLevelAnchor/LocalDiv/Margin"]
+layout_mode = 2
+texture = ExtResource("2_8l33a")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_right = 20
+patch_margin_bottom = 19
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TopLevelAnchor"]
+libraries = {
+"": SubResource("AnimationLibrary_8ls5w")
+}

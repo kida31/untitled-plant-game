@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm0u252xkdw7m"]
+[gd_scene load_steps=8 format=3 uid="uid://3ndp3em1fi7h"]
 
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/VendingMachine/UI/vending_machine_ui.tscn" id="1_iuaq5"]
+[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Book/FocusIndicator.tscn" id="1_mtau6"]
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Features/Cycle/UI/ClockUI.tscn" id="1_tdwvu"]
 [ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="2_y866b"]
 [ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
@@ -32,4 +33,7 @@ offset_bottom = 670.0
 [node name="HUD" parent="." instance=ExtResource("5_gr4nr")]
 
 [node name="BookView" parent="." instance=ExtResource("5_sy5d4")]
+visible = false
+
+[node name="FocusIndicator" parent="." instance=ExtResource("1_mtau6")]
 visible = false
