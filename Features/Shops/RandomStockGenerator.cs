@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Shops;
 
 public class RandomStockGenerator
 {
-	// TODO: Not actually random, just a fixed list. Make this actually random according to some rules
+	private static Random rand = new(7);
+
 	[Obsolete]
 	public List<ItemStack> GetRandom(int n)
 	{
-		return new List<ItemStack>()
+		Assert.AssertTrue(n > 0);
+		var items = new List<ItemStack>()
 		{
 			new("basil", "Basil", null, "This is basil", ItemCategory.Plant, baseValue: 10, amount: 5),
 			new("parsley", "Parsley", null, "This is parsley", ItemCategory.Plant, baseValue: 15, amount: 3),
@@ -28,6 +32,9 @@ public class RandomStockGenerator
 			new("marjoram", "Marjoram", null, "This is marjoram", ItemCategory.Plant, baseValue: 19, amount: 5),
 			new("lemonbalm", "Lemon Balm", null, "This is lemon balm", ItemCategory.Plant, baseValue: 14, amount: 8),
 			new("chervil", "Chervil", null, "This is chervil", ItemCategory.Plant, baseValue: 12, amount: 10),
-		};
+		}
+			.OrderBy(o => rand.Next())
+			.ToList();
+		return items.GetRange(0, Math.Min(items.Count, n));
 	}
 }
