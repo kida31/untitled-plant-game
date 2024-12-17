@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd5klb5px8p8e"]
+
+[ext_resource type="Script" path="res://Features/GUI/Hooks/FollowCursorHook.cs" id="1_5d833"]
+
+[node name="FollowCursorHook" type="Node"]
+script = ExtResource("1_5d833")
