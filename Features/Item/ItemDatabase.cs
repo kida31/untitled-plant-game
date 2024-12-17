@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Godot;
 using System.Threading.Tasks;
+using Godot;
 using Godot.Collections;
 using untitledplantgame.Common;
 using untitledplantgame.Crafting;
@@ -63,6 +63,7 @@ public class ItemDatabase
 			GD.Print(i);
 		}
 	}
+
 	//---Multithreading Testing---//
 
 	/// <summary>
@@ -92,16 +93,13 @@ public class ItemDatabase
 	public List<ItemStack> GetItemStacksWithSpecifiedComponents(List<AComponent> components)
 	{
 		var specificItemStack = new List<ItemStack>();
-		var group1 = components.GroupBy(item => item.GetType())
-			.ToDictionary(g => g.Key, g => g.Count());
+		var group1 = components.GroupBy(item => item.GetType()).ToDictionary(g => g.Key, g => g.Count());
 
 		foreach (var itemStack in ItemStacks)
 		{
-			var group2 = itemStack.Components.GroupBy(item => item.GetType())
-				.ToDictionary(g => g.Key, g => g.Count());
+			var group2 = itemStack.Components.GroupBy(item => item.GetType()).ToDictionary(g => g.Key, g => g.Count());
 
-			if (group1.Count == group2.Count &&
-			    group1.All(kvp => group2.TryGetValue(kvp.Key, out var count) && count == kvp.Value))
+			if (group1.Count == group2.Count && group1.All(kvp => group2.TryGetValue(kvp.Key, out var count) && count == kvp.Value))
 			{
 				specificItemStack.Add(itemStack);
 			}
@@ -128,7 +126,7 @@ public class ItemDatabase
 	 * This method assumes the following: The user will NEVER provide MORE ItemStack than the Recipe needs (Minecraft Crafting Bench).
 	 * But the user will get a list of potential Recipes that require at least the provided ItemStacks, but also the additional ones.
 	 * (Minecraft Inventory Helper)
-	 * 
+	 *
 	 * Crossier's Note: I apologize in advance for the abomination I produced here.
 	 */
 
@@ -136,30 +134,30 @@ public class ItemDatabase
 	public List<Recipe> GetAllRecipesWithItemStacks(List<ItemStack> itemStacks, List<Recipe> externalRecipeList)
 	{
 		var recipeSearchList = externalRecipeList ?? Recipes;
-		
+
 		bool UsesIngredients(Recipe recipe, IReadOnlyCollection<ItemStack> items)
 		{
 			if (items.Count > recipe.Ingredients.Count)
 			{
 				return false;
 			}
-			
+
 			// Check Id match first then components
 			var availableIngredients = new List<IIngredient>()
 				.Concat(recipe.Ingredients.OfType<ItemId>())
-				.Concat(recipe.Ingredients.OfType<ComponentList>()).ToList();
-			
+				.Concat(recipe.Ingredients.OfType<ComponentList>())
+				.ToList();
+
 			// Find a use for each item while not filling the same ingredient twice
 			// Remark: May need to check by ingredient order instead of items, in case it 'takes away' an ingredient
 			return items.All(item =>
 			{
-				var matchingIngredient = availableIngredients.FirstOrDefault(ingredient =>
-					ingredient.IsValidIngredient(item));
+				var matchingIngredient = availableIngredients.FirstOrDefault(ingredient => ingredient.IsValidIngredient(item));
 				if (matchingIngredient == null)
 				{
 					return false;
 				}
-				
+
 				availableIngredients.Remove(matchingIngredient); // Item cannot be used for same ingredient
 				return true;
 			});
@@ -168,9 +166,11 @@ public class ItemDatabase
 		return recipeSearchList.Where(recipe => UsesIngredients(recipe, itemStacks)).ToList();
 	}
 
-
-	public List<Recipe> GetAllRecipesWithItemStacksAndCraftingType(List<ItemStack> itemStacks, List<Recipe> externalRecipeList,
-		Recipe.CraftingType craftingType)
+	public List<Recipe> GetAllRecipesWithItemStacksAndCraftingType(
+		List<ItemStack> itemStacks,
+		List<Recipe> externalRecipeList,
+		Recipe.CraftingType craftingType
+	)
 	{
 		var recipesWithMatchingCraftingType = new List<Recipe>();
 		var recipeSearchList = externalRecipeList ?? Recipes;
@@ -185,6 +185,7 @@ public class ItemDatabase
 
 		return GetAllRecipesWithItemStacks(itemStacks, recipesWithMatchingCraftingType);
 	}
+
 	//---Get Recipes---//
 
 
@@ -198,79 +199,52 @@ public class ItemDatabase
 		{
 			// Generic: Turns single "Leaf" into "DriedLeaf"
 			// Note for Testing: Doesn't work with Sunflower!
-			new(new List<IIngredient>
-				{
-					new ComponentList
-					{
-						new Leaf()
-					}
-				},
-				new ComponentList
-				{
-					new DriedLeaf()
-				},
-				new ComponentList
-				{
-					new Leaf()
-				}, Recipe.CraftingType.Drying),
+			new(
+				new List<IIngredient> { new ComponentList { new Leaf() } },
+				new ComponentList { new DriedLeaf() },
+				new ComponentList { new Leaf() },
+				Recipe.CraftingType.Drying
+			),
 			// Generic; Turns an item with an "Oil" and an item with an "Antioxidant" component into a normal item containing both.
 			// Note for Testing: Just to show that we mix both components together without removing or changing anything.
-			new(new List<IIngredient>
+			new(
+				new List<IIngredient>
 				{
-					new ComponentList
-					{
-						new Oil()
-					},
-					new ComponentList
-					{
-						new Oil()
-					},
+					new ComponentList { new Oil() },
+					new ComponentList { new Oil() },
 					new ItemId("Sunflower"),
-					new ComponentList
-					{
-						new Antioxidant()
-					}
+					new ComponentList { new Antioxidant() },
 				},
 				null,
-				null, Recipe.CraftingType.Brewing),
+				null,
+				Recipe.CraftingType.Brewing
+			),
 			// Generic; Showcase of filtering for itemNames
 			// Note for Testing: Searching for string and component!
-			new(new List<IIngredient>
+			new(
+				new List<IIngredient>
 				{
-					new ComponentList
-					{
-						new Basil()
-					},
+					new ComponentList { new Basil() },
 					new ItemId("MintLeaf"),
 				},
 				null,
-				null, Recipe.CraftingType.Cooking),
+				null,
+				Recipe.CraftingType.Cooking
+			),
 			// Generic; Showcase dynamic nature of Recipes
 			// Note for Testing: TACTICAL NUKE INCOMING. ÜÜEHH-ÜÜEHH-ÜÜEHH
-			new(new List<IIngredient>
+			new(
+				new List<IIngredient>
 				{
-					new ComponentList
-					{
-						new Basil()
-					},
-					new ComponentList
-					{
-						new Lavender()
-					},
-					new ComponentList
-					{
-						new Mint()
-					},
-					new ComponentList
-					{
-						new Rose()
-					},
-					new ComponentList
-					{
-						new Sunflower()
-					}
+					new ComponentList { new Basil() },
+					new ComponentList { new Lavender() },
+					new ComponentList { new Mint() },
+					new ComponentList { new Rose() },
+					new ComponentList { new Sunflower() },
 				},
-				CreateItemStack("GameEndingNuke"), Recipe.CraftingType.Unspecified)
+				CreateItemStack("GameEndingNuke"),
+				Recipe.CraftingType.Unspecified
+			),
 		};
 	}
 
@@ -278,7 +252,7 @@ public class ItemDatabase
 	 * This method has no inherent purpose. It only exists to make the constructor more user-friendly and smaller (as in fewer lines).
 	 *
 	 * NOTE: This method assumes that every single item has a unique ID. The method can have unpredictable consequences if two identical
-	 * items exist in it. 
+	 * items exist in it.
 	 */
 	private List<ItemStack> FillDataBaseItemStackList()
 	{
@@ -292,7 +266,7 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
 				Category = ItemCategory.Plant,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> {"BasilLeaf"},
+				RelatedItemIds = new Array<string> { "BasilLeaf" },
 			},
 			new()
 			{
@@ -303,13 +277,8 @@ public class ItemDatabase
 				MaxStackSize = 64,
 				BaseValue = 5,
 				Amount = 1,
-				Components = new Array<AComponent>
-				{
-					new Basil(),
-					new Leaf(),
-					new Spice()
-				},
-				RelatedItemIds = new Array<string> {"chuuberry"},
+				Components = new Array<AComponent> { new Basil(), new Leaf(), new Spice() },
+				RelatedItemIds = new Array<string> { "chuuberry" },
 			},
 			new(
 				"BasilLeaf",
@@ -318,12 +287,8 @@ public class ItemDatabase
 				"Basil Basil Basil Basil Basil",
 				ItemCategory.Plant,
 				baseValue: 5,
-				components: new Array<AComponent>
-				{
-					new Basil(),
-					new Leaf(),
-					new Spice()
-				}),
+				components: new Array<AComponent> { new Basil(), new Leaf(), new Spice() }
+			),
 			new(
 				"LavenderLeaf",
 				"Lavender",
@@ -332,12 +297,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 5,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>
-				{
-					new Lavender(),
-					new Leaf(),
-					new Sweet()
-				}),
+				amount: 1,
+				components: new Array<AComponent> { new Lavender(), new Leaf(), new Sweet() }
+			),
 			new(
 				"MintLeaf",
 				"Mint",
@@ -346,12 +308,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 5,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>
-				{
-					new Mint(),
-					new Leaf(),
-					new Antioxidant()
-				}),
+				amount: 1,
+				components: new Array<AComponent> { new Mint(), new Leaf(), new Antioxidant() }
+			),
 			new(
 				"RoseLeaf",
 				"Rose",
@@ -360,12 +319,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 5,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>
-				{
-					new Rose(),
-					new Leaf(),
-					new Decoration()
-				}),
+				amount: 1,
+				components: new Array<AComponent> { new Rose(), new Leaf(), new Decoration() }
+			),
 			new(
 				"Sunflower",
 				"Sunflower",
@@ -374,11 +330,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 5,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>
-				{
-					new Sunflower(),
-					new Oil()
-				}),
+				amount: 1,
+				components: new Array<AComponent> { new Sunflower(), new Oil() }
+			),
 			new(
 				"GameEndingNuke",
 				"Nuke",
@@ -387,11 +341,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 30,
 				maxStackSize: 1,
-				amount: 1, components: new Array<AComponent>
-				{
-					new Nuke()
-				}),
-
+				amount: 1,
+				components: new Array<AComponent> { new Nuke() }
+			),
 			//----------------------------------------------------------------------------------------------------------------------------//
 
 			new(
@@ -402,7 +354,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 5,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"secondItem",
 				"oakSapling",
@@ -411,7 +365,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 5,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"thirdItem",
 				"pineCone",
@@ -420,7 +376,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 3,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"fourthItem",
 				"healingHerb",
@@ -429,7 +387,9 @@ public class ItemDatabase
 				ItemCategory.Medicine,
 				baseValue: 10,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"fifthItem",
 				"aloeLeaf",
@@ -438,7 +398,9 @@ public class ItemDatabase
 				ItemCategory.Medicine,
 				baseValue: 15,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"sixthItem",
 				"lavender",
@@ -447,7 +409,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 8,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"seventhItem",
 				"cactusFruit",
@@ -456,7 +420,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 6,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"eighthItem",
 				"bamboo",
@@ -465,7 +431,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 7,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"ninthItem",
 				"coalOre",
@@ -474,7 +442,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 20,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"tenthItem",
 				"ironOre",
@@ -483,7 +453,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 25,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"eleventhItem",
 				"clayLump",
@@ -492,7 +464,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 12,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"twelfthItem",
 				"saltRock",
@@ -501,7 +475,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 10,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"thirteenthItem",
 				"spiderSilk",
@@ -510,7 +486,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 18,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"fourteenthItem",
 				"healingRoot",
@@ -519,7 +497,9 @@ public class ItemDatabase
 				ItemCategory.Medicine,
 				baseValue: 20,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"fifteenthItem",
 				"gingerRoot",
@@ -528,7 +508,9 @@ public class ItemDatabase
 				ItemCategory.Medicine,
 				baseValue: 15,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"sixteenthItem",
 				"peppermintLeaf",
@@ -537,7 +519,9 @@ public class ItemDatabase
 				ItemCategory.Medicine,
 				baseValue: 12,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"seventeenthItem",
 				"ashWood",
@@ -546,7 +530,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 14,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"eighteenthItem",
 				"stoneBlock",
@@ -555,7 +541,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 5,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"nineteenthItem",
 				"wheatPlant",
@@ -564,7 +552,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 8,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"twentiethItem",
 				"carrot",
@@ -573,7 +563,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 5,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"twentyFirstItem",
 				"potato",
@@ -582,7 +574,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 4,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"twentySecondItem",
 				"goldNugget",
@@ -591,7 +585,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 50,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"twentyThirdItem",
 				"silverOre",
@@ -600,7 +596,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 40,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"twentyFourthItem",
 				"oakLeaf",
@@ -609,7 +607,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 3,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"twentyFifthItem",
 				"rosePetal",
@@ -618,7 +618,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 6,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"twentySixthItem",
 				"mushroom",
@@ -627,7 +629,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 7,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"twentySeventhItem",
 				"clover",
@@ -636,7 +640,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 20,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"twentyEighthItem",
 				"amberChunk",
@@ -645,7 +651,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 30,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"twentyNinthItem",
 				"dandelion",
@@ -654,7 +662,9 @@ public class ItemDatabase
 				ItemCategory.Plant,
 				baseValue: 2,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>()),
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 			new(
 				"thirtiethItem",
 				"charcoal",
@@ -663,7 +673,9 @@ public class ItemDatabase
 				ItemCategory.Material,
 				baseValue: 10,
 				maxStackSize: 64,
-				amount: 1, components: new Array<AComponent>())
+				amount: 1,
+				components: new Array<AComponent>()
+			),
 		};
 	}
 	//------------------------------------------------------------------------------------------------------------------------------------//

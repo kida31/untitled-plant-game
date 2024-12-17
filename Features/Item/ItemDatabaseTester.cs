@@ -39,7 +39,7 @@ public partial class ItemDatabaseTester : Node
 		foreach (var recipe in recipes1)
 		{
 			// This still gives us the NUKE recipe (but this has to be the case)
-			// We have: Sunflower x4, MintLeaf x1 => Every Recipe with AT LEAST one Sunflower and MintLeaf 
+			// We have: Sunflower x4, MintLeaf x1 => Every Recipe with AT LEAST one Sunflower and MintLeaf
 			GD.Print(recipe.RecipeCraftingType);
 		}
 		
@@ -90,8 +90,8 @@ public partial class ItemDatabaseTester : Node
 		);
 
 		var craftResult = testingRecipe.CraftResult(
-			new List<ItemStack>{ 
-				ItemDatabase.Instance.GetItemStackById("BasilLeaf"), 
+			new List<ItemStack>{
+				ItemDatabase.Instance.GetItemStackById("BasilLeaf"),
 				ItemDatabase.Instance.GetItemStackById("MintLeaf")}
 			);
 		
@@ -111,12 +111,12 @@ public partial class ItemDatabaseTester : Node
 		GD.Print(dummyItemStack.Amount);
 		GD.Print(dummyItemStack.Category);
 
-		// 3. Get a Recipe based on ItemStack(s) => returns all Recipes containing AT LEAST 
-		List<Recipe> dummyRecipes =
-			ItemDatabase.Instance.GetAllRecipesWithItemStacksAndCraftingType(
-				new List<ItemStack> {dummyItemStack},
-				null,
-				Recipe.CraftingType.Cooking);
+		// 3. Get a Recipe based on ItemStack(s) => returns all Recipes containing AT LEAST
+		List<Recipe> dummyRecipes = ItemDatabase.Instance.GetAllRecipesWithItemStacksAndCraftingType(
+			new List<ItemStack> { dummyItemStack },
+			null,
+			Recipe.CraftingType.Cooking
+		);
 
 		foreach (var recipe in dummyRecipes)
 		{
@@ -124,21 +124,18 @@ public partial class ItemDatabaseTester : Node
 		}
 
 		// 4. Creating a custom Recipe to show how all of it works
-		var customRecipe = new Recipe(new List<IIngredient>
+		var customRecipe = new Recipe(
+			new List<IIngredient>
 			{
-				new ComponentList
-				{
-					new Basil(),
-				},
-				new ComponentList
-				{
-					new Basil(),
-				}
+				new ComponentList { new Basil() },
+				new ComponentList { new Basil() },
 			},
-			ItemDatabase.Instance.CreateItemStack("GameEndingNuke"), Recipe.CraftingType.Unspecified);
+			ItemDatabase.Instance.CreateItemStack("GameEndingNuke"),
+			Recipe.CraftingType.Unspecified
+		);
 
 		var temp = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
-		GD.Print(customRecipe.CraftResult(new List<ItemStack> {temp}));
+		GD.Print(customRecipe.CraftResult(new List<ItemStack> { temp }));
 
 		//--------------------------------------------------------------------------------------------------------------------------------//
 		// Some Tests
@@ -146,82 +143,66 @@ public partial class ItemDatabaseTester : Node
 		GD.Print("---Tests---");
 		{
 			// Should fail, when not enough ingredients
-			var recipe = new Recipe(new List<IIngredient>
+			var recipe = new Recipe(
+				new List<IIngredient>
 				{
-					new ComponentList
-					{
-						new Basil(),
-					},
-					new ComponentList
-					{
-						new Basil(),
-					}
+					new ComponentList { new Basil() },
+					new ComponentList { new Basil() },
 				},
-				ItemDatabase.Instance.CreateItemStack("GameEndingNuke"), Recipe.CraftingType.Unspecified);
+				ItemDatabase.Instance.CreateItemStack("GameEndingNuke"),
+				Recipe.CraftingType.Unspecified
+			);
 
 			var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
-			Assert.AssertNull(recipe.CraftResult(new List<ItemStack> {basil}), "This should be null");
+			Assert.AssertNull(recipe.CraftResult(new List<ItemStack> { basil }), "This should be null");
 			GD.Print("Test 1 passed");
 		}
 
 		{
 			// Should fail, when not wrong ingredients
-			var recipe = new Recipe(new List<IIngredient>
+			var recipe = new Recipe(
+				new List<IIngredient>
 				{
-					new ComponentList
-					{
-						new Basil(),
-					},
-					new ComponentList
-					{
-						new Decoration(),
-						new Antioxidant(),
-					}
+					new ComponentList { new Basil() },
+					new ComponentList { new Decoration(), new Antioxidant() },
 				},
-				ItemDatabase.Instance.CreateItemStack("GameEndingNuke"), Recipe.CraftingType.Unspecified);
+				ItemDatabase.Instance.CreateItemStack("GameEndingNuke"),
+				Recipe.CraftingType.Unspecified
+			);
 
 			var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
-			Assert.AssertNull(recipe.CraftResult(new() {basil, basil}));
+			Assert.AssertNull(recipe.CraftResult(new() { basil, basil }));
 			GD.Print("Test 2 passed");
 		}
 
 		{
 			// Should pass, with two matching ingredients
-			var recipe = new Recipe(new List<IIngredient>
+			var recipe = new Recipe(
+				new List<IIngredient>
 				{
-					new ComponentList
-					{
-						new Basil(),
-					},
-					new ComponentList
-					{
-						new Basil(),
-					}
+					new ComponentList { new Basil() },
+					new ComponentList { new Basil() },
 				},
-				ItemDatabase.Instance.CreateItemStack("GameEndingNuke"), Recipe.CraftingType.Unspecified);
+				ItemDatabase.Instance.CreateItemStack("GameEndingNuke"),
+				Recipe.CraftingType.Unspecified
+			);
 
 			var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
-			Assert.AssertNotNull(recipe.CraftResult(new() {basil, basil}));
+			Assert.AssertNotNull(recipe.CraftResult(new() { basil, basil }));
 			GD.Print("Test 3 passed");
 		}
 
 		// Result should remove component from result
 		{
-			var recipe = new Recipe(new List<IIngredient>
-				{
-					new ComponentList
-					{
-						new Basil(),
-					}
-				},
+			var recipe = new Recipe(
+				new List<IIngredient> { new ComponentList { new Basil() } },
 				null,
-				new ComponentList
-				{
-					new Leaf()
-				}, Recipe.CraftingType.Unspecified);
+				new ComponentList { new Leaf() },
+				Recipe.CraftingType.Unspecified
+			);
 
 			var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
-			var result = recipe.CraftResult(new() {basil});
+			var result = recipe.CraftResult(new() { basil });
 			Assert.AssertNotNull(result);
 			Assert.AssertNull(result.Components.FirstOrDefault(c => c.GetType() == typeof(Leaf)), "Should not have leaf component");
 			GD.Print("Test 4 passed");
@@ -229,35 +210,28 @@ public partial class ItemDatabaseTester : Node
 
 		// Result should keep all component from result since removal does not match
 		{
-			var recipe = new Recipe(new List<IIngredient>
-				{
-					new ComponentList
-					{
-						new Basil(),
-					}
-				},
+			var recipe = new Recipe(
+				new List<IIngredient> { new ComponentList { new Basil() } },
 				null,
-				new ComponentList
-				{
-					new Nuke()
-				}, Recipe.CraftingType.Unspecified);
+				new ComponentList { new Nuke() },
+				Recipe.CraftingType.Unspecified
+			);
 
 			var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
-			var result = recipe.CraftResult(new() {basil});
+			var result = recipe.CraftResult(new() { basil });
 			Assert.AssertNotNull(result);
 			Assert.AssertTrue(
 				result.Components.All(resComp => basil.Components.FirstOrDefault(comp => comp.GetType() == resComp.GetType()) != null),
-				"Should have leaf component");
+				"Should have leaf component"
+			);
 			GD.Print("Test 5 passed");
 		}
-
 
 		var basilComp = new Basil();
 		var dupe = basilComp.Clone();
 		GD.Print(basilComp);
 		GD.Print(dupe);
 		Assert.AssertTrue(dupe.GetType() == typeof(Basil));
-
 
 		{
 			var coal = new ItemStack()
@@ -278,30 +252,36 @@ public partial class ItemDatabaseTester : Node
 				Name = "Torch",
 				Category = ItemCategory.Material,
 			};
-			var torchRecipe = new Recipe(new List<IIngredient>
-				{
-					new ItemId(coal.Id),
-					new ItemId(stick.Id),
-				},
-				torch
-			);
-			
+			var torchRecipe = new Recipe(new List<IIngredient> { new ItemId(coal.Id), new ItemId(stick.Id) }, torch);
+
 			{
-				var recipes = new List<Recipe>() {torchRecipe}.Concat(ItemDatabase.Instance.Recipes).ToList();
-				var res = ItemDatabase.Instance.GetAllRecipesWithItemStacks(new() {stick}, recipes);
+				var recipes = new List<Recipe>() { torchRecipe }
+					.Concat(ItemDatabase.Instance.Recipes)
+					.ToList();
+				var res = ItemDatabase.Instance.GetAllRecipesWithItemStacks(new() { stick }, recipes);
 				Assert.AssertTrue(res.Contains(torchRecipe));
 			}
 			{
-				var recipes = new List<Recipe>() {torchRecipe}; //.Concat(ItemDatabase.Instance.Recipes).ToList();
-				var res = ItemDatabase.Instance.GetAllRecipesWithItemStacks(new() {stick, stick}, recipes);
+				var recipes = new List<Recipe>() { torchRecipe }; //.Concat(ItemDatabase.Instance.Recipes).ToList();
+				var res = ItemDatabase.Instance.GetAllRecipesWithItemStacks(new() { stick, stick }, recipes);
 				Assert.AssertTrue(res.Count == 0, "Expected no recipes for stickx2");
 			}
 			{
-				var recipes = new List<Recipe>() {torchRecipe}; //.Concat(ItemDatabase.Instance.Recipes).ToList();
+				var recipes = new List<Recipe>() { torchRecipe }; //.Concat(ItemDatabase.Instance.Recipes).ToList();
 				var basil = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
-				var res = ItemDatabase.Instance.GetAllRecipesWithItemStacks(new() {basil, stick}, recipes);
+				var res = ItemDatabase.Instance.GetAllRecipesWithItemStacks(new() { basil, stick }, recipes);
 				Assert.AssertTrue(res.Count == 0, "Expected no recipes stick and basil");
 			}
+		}
+
+		{
+			GD.Print("----------TEST---------");
+			var basil = new Basil();
+			var basil1 = new Basil();
+			GD.Print(basil.Equals(basil1)); // should be true
+
+			var lavender = new Lavender();
+			GD.Print(basil.Equals(lavender)); // should be false
 		}
 	}
 }

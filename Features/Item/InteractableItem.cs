@@ -19,7 +19,7 @@ public partial class InteractableItem : AInteractable
 	private ICharacteristic _characteristic;
 
 	public ItemStack ItemStack = new ItemStack("id", "This", null, "des", ItemCategory.Material, maxStackSize: 1);
-	
+
 	public override void Interact()
 	{
 		EventBus.Instance.ItemPickedUp(ItemStack);
@@ -40,9 +40,6 @@ public partial class InteractableItem : AInteractable
 	private string SelectedOption
 	{
 		get => _selectedOption;
-		set
-		{
-			_selectedOption = value;
-		}
+		set { _selectedOption = value; }
 	}
 }
