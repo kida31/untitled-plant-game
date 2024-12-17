@@ -1,4 +1,5 @@
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Shops;
 
 // TODO: Each NPC should not need to be its own class
