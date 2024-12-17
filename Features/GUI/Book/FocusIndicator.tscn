@@ -1,82 +1,45 @@
-[gd_scene load_steps=7 format=3 uid="uid://ikmkfkp11t0t"]
+[gd_scene load_steps=6 format=3 uid="uid://ikmkfkp11t0t"]
 
 [ext_resource type="Script" path="res://Features/GUI/FocusIndicator.cs" id="1_63p0k"]
 [ext_resource type="Texture2D" uid="uid://del57edaadvpk" path="res://Assets/UI/BookUI/ItemSelectorLeft.png" id="1_138p4"]
 [ext_resource type="Texture2D" uid="uid://ixhi2w1do3cd" path="res://Assets/UI/BookUI/ItemSelectorRight.png" id="2_8l33a"]
+[ext_resource type="Script" path="res://Features/GUI/Hooks/CopySizeHook.cs" id="3_hntjl"]
+[ext_resource type="Script" path="res://Features/GUI/Hooks/FollowControlHook.cs" id="3_n0srx"]
 
-[sub_resource type="Animation" id="Animation_0hsof"]
-resource_name = "Breathing"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LocalDiv:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.98, 0.98), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LocalDiv:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-
-[sub_resource type="Animation" id="Animation_racpq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LocalDiv:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ls5w"]
-_data = {
-"Breathing": SubResource("Animation_0hsof"),
-"RESET": SubResource("Animation_racpq")
-}
-
-[node name="FocusIndicator" type="Control" node_paths=PackedStringArray("_anchor", "_indicator")]
+[node name="FocusIndicator" type="Control" node_paths=PackedStringArray("_sizeHook", "_followHook")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_63p0k")
-_anchor = NodePath("TopLevelAnchor")
-_indicator = NodePath("TopLevelAnchor/LocalDiv")
+_sizeHook = NodePath("TopLevelAnchor/LocalDiv/CopySizeHook")
+_followHook = NodePath("TopLevelAnchor/FollowHook")
 
 [node name="TopLevelAnchor" type="Control" parent="."]
+top_level = true
 layout_mode = 1
 anchors_preset = 0
+
+[node name="FollowHook" type="Node" parent="TopLevelAnchor"]
+script = ExtResource("3_n0srx")
+SmoothingFactor = 20.0
 
 [node name="LocalDiv" type="BoxContainer" parent="TopLevelAnchor"]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 5.0
-offset_bottom = 5.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
+
+[node name="CopySizeHook" type="Node" parent="TopLevelAnchor/LocalDiv"]
+script = ExtResource("3_hntjl")
 
 [node name="Margin" type="MarginContainer" parent="TopLevelAnchor/LocalDiv"]
 layout_mode = 2
@@ -101,8 +64,3 @@ texture = ExtResource("2_8l33a")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_right = 20
 patch_margin_bottom = 19
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TopLevelAnchor"]
-libraries = {
-"": SubResource("AnimationLibrary_8ls5w")
-}

@@ -132,7 +132,7 @@ public partial class ItemStack : Resource, IItemStack
 	{
 		// TODO: After the JSON fiasco I absolutely do NOT trust Godot to handle deep copies well (especially looking at the Stats)
 		var newStack = new ItemStack(Id, Name, Icon, Description, Category, baseValue: BaseValue, maxStackSize: MaxStackSize,
-			amount: Amount, components: Components.Duplicate(true));
+			amount: Amount, components: Components?.Duplicate(true) ?? new Array<AComponent>());
 		return newStack;
 	}
 

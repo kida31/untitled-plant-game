@@ -4,9 +4,9 @@ using untitledplantgame.Common;
 namespace untitledplantgame.GUI.Hooks;
 
 /// <summary>
-/// This hook makes parent Control node follow the focused control node.
+/// This hook makes parent Control node follow the targeted control node.
 /// </summary>
-public partial class FollowFocusedHook : Node
+public partial class FollowControlHook : Node
 {
 	public enum PositionMode
 	{
@@ -33,46 +33,50 @@ public partial class FollowFocusedHook : Node
 	/// <para>The smoothing factor for the position change. Values small or equal to 0 make changes instant</para>
 	/// </summary>
 	[Export] public float SmoothingFactor = 10.0f;
-
-	private Control _recentFocused;
+	[Export]
+	public Control Target
+	{
+		get => _target;
+		set => SetTarget(value);
+	}
+	
+	private Control _target;
 	private Control _self;
 	private Logger _logger;
 
 	public override void _Ready()
 	{
 		_self = GetParent<Control>();
-		_recentFocused = null;
+		_target = null;
 		_logger = new Logger(this);
-
-		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
 	}
-
-	private void OnGuiFocusChanged(Control node)
+	
+	private void SetTarget(Control node)
 	{
-		if (_recentFocused != null)
+		if (_target != null)
 		{
 			// Update focus
-			_recentFocused = node;
+			_target = node;
 		}
 		else
 		{
 			// First time focus
-			_recentFocused = node;
+			_target = node;
 			ForcePositionUpdate();
 		}
 	}
 
 	public override void _Process(double delta)
 	{
-		if (_recentFocused == null) return;
-		if (!_recentFocused.HasFocus())
+		if (_target == null) return;
+		if (!_target.HasFocus())
 		{
-			_recentFocused = null;
+			_target = null;
 			_logger.Debug("Focus lost. Stop tracking.");
 			return;
 		}
 
-		var position = CalcFocusedElementPosition(_recentFocused);
+		var position = CalcFocusedElementPosition(_target);
 		position = AddOriginOffset(position);
 		position = SmoothenPosition(position, delta);
 		_self.GlobalPosition = position;
@@ -80,7 +84,7 @@ public partial class FollowFocusedHook : Node
 
 	private void ForcePositionUpdate()
 	{
-		var position = CalcFocusedElementPosition(_recentFocused);
+		var position = CalcFocusedElementPosition(_target);
 		position = AddOriginOffset(position);
 		_self.GlobalPosition = position;
 	}
