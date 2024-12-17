@@ -1,6 +1,5 @@
 [gd_scene load_steps=15 format=3 uid="uid://cv1fhyjs170lk"]
 
-[ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
 [ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://Features/NPC/VendingMachine/VendingMachineNPC.tscn" id="2_ldf7o"]
 [ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://Features/NPC/NPC.tscn" id="2_w1s7m"]
@@ -14,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
 [ext_resource type="SpriteFrames" uid="uid://dldh2xoh0w7ey" path="res://Assets/OverworldAssets/Plant/ChuberySpriteFrames.tres" id="11_voxp1"]
 [ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/GenericItem.tscn" id="12_tpjy1"]
+[ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="14_068r1"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
@@ -65,16 +65,16 @@ sprite_frames = ExtResource("11_voxp1")
 [node name="Soil2" parent="Plants" instance=ExtResource("10_da3hi")]
 position = Vector2(458, 339)
 
-[node name="Player" parent="." instance=ExtResource("1_mh621")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(640, 360)
-
 [node name="NightTint" type="CanvasModulate" parent="."]
 position = Vector2(577.5, 328.625)
 scale = Vector2(1.19896, 1.19896)
 script = ExtResource("6_4ec11")
 _gradientTexture = ExtResource("7_xmbsw")
+
+[node name="Door" parent="." instance=ExtResource("14_068r1")]
+position = Vector2(399, 591)
+pathToNewScene = "res://Scenes/HouseMapScene.tscn"
+entryDoorName = "RoofHouse"
 
 [editable path="Plants/APlantPrefab"]
 [editable path="Plants/APlantPrefab2"]
