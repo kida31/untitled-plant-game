@@ -23,18 +23,18 @@ public partial class ScrollViewController : ScrollContainer
 
 	public override void _Ready()
 	{
-		GetAllScrollViewItems().First().GrabFocusToButton();
+		GetAllScrollViewItems().First().GrabFocus();
 		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
 	}
 
+	/// <summary>
+	/// If selected node belongs to a wiki item view, that item view will be scrolled to.
+	/// Remark: This is a blasphemous solution. I hate it. But it works.
+	/// </summary>
+	/// <param name="node"></param>
 	private void OnGuiFocusChanged(Control node)
 	{
-		if (node is not Button maybeWikiButton)
-		{
-			return;
-		}
-
-		var itemView = GetFirstAncestor<WikiItemView>(maybeWikiButton);
+		var itemView = GetFirstAncestor<WikiItemView>(node);
 		if (itemView == null)
 		{
 			return;

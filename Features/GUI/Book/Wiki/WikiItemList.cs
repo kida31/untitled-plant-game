@@ -8,7 +8,7 @@ using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
 public partial class WikiItemList : Control
 {
-	public event Action<ItemStack> ItemStackPressed; // TODO: Use local events instead of event bus where possible
+	public event Action<IItemStack> ItemStackPressed; // TODO: Use local events instead of event bus where possible
 	/*
 	public event Action PlantButtonPressed;
 	public event Action MaterialButtonPressed;
@@ -52,7 +52,7 @@ public partial class WikiItemList : Control
 	{
 		if (Input.IsKeyPressed(Key.F1))
 		{
-			_itemViews[^1].GrabFocusToButton();
+			_itemViews[^1].GrabFocus();
 		}
 	}
 	
@@ -92,11 +92,11 @@ public partial class WikiItemList : Control
 		ScrollTo(item);
 	}
 	
-	public void ScrollTo(ItemStack itemStack)
+	public void ScrollTo(IItemStack itemStack)
 	{
 		var itemView = _itemViews.FirstOrDefault(iv => iv.ItemStack == itemStack);
 		Assert.AssertNotNull(itemView, "Item not found in list");
-		itemView?.GrabFocusToButton();
+		itemView?.GrabFocus();
 	}
 
 	private void ConnectItemView(WikiItemView itemView)

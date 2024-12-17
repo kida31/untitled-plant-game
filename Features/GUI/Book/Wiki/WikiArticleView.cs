@@ -10,9 +10,9 @@ public partial class WikiArticleView : Node
 	[Export] private Label _itemStats;
 	// TODO show related items
 	
-	private ItemStack _itemStack;
+	private IItemStack _itemStack;
 	
-	public void UpdateItemStack(ItemStack itemStack)
+	public void UpdateItemStack(IItemStack itemStack)
 	{
 		_itemStack = itemStack;
 		// TODO: fetch wiki data here or in controller

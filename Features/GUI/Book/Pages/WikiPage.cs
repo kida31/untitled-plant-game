@@ -7,7 +7,7 @@ using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
 public partial class WikiPage : Control
 {
-	public event Action<ItemStack> ItemStackPressed;
+	public event Action<IItemStack> ItemStackPressed;
 
 	[Export] private WikiItemList _wikiItemList;
 	[Export] private WikiArticleView _wikiArticle;
@@ -22,7 +22,7 @@ public partial class WikiPage : Control
 		_wikiItemList.SetItems(items);
 	}
 
-	public void UpdateArticle(ItemStack content)
+	public void UpdateArticle(IItemStack content)
 	{
 		_wikiArticle.UpdateItemStack(content);
 	}

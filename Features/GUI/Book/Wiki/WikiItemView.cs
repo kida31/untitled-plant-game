@@ -16,8 +16,7 @@ public partial class WikiItemView : Control
 
 	[Export] private Texture2D _temporary;
 
-	private ItemStack _itemStack;
-	public ItemStack ItemStack
+	public IItemStack ItemStack
 	{
 		get => _itemStack;
 		set
@@ -27,24 +26,28 @@ public partial class WikiItemView : Control
 		}
 	}
 
+	/// <summary>
+	/// All focus will be redirected to this element instead
+	/// </summary>
+	private Control _focusAble;
+	private IItemStack _itemStack;
+
 	public override void _Ready()
 	{
-		_detailedWikiItemViewButton.FocusEntered += SetFocusOnThisView;
-		_detailedWikiItemViewButton.Pressed += () => Pressed?.Invoke();
-	}
-	
-	private void OnSetItemStack(ItemStack itemStack)
-	{
+		// Delegate some object as clickable for focus (selector indicator)
+		_focusAble = _iconTextureRect;
+		_focusAble.MouseFilter = MouseFilterEnum.Pass;
+		_focusAble.FocusMode = FocusModeEnum.All;
+		_focusAble.GuiInput += OnGuiInput;
 		
-		_itemName.Text = itemStack.Name;
-		_iconTextureRect.Texture = itemStack.Icon ?? _temporary;
+		// Redirect focus to control
+		FocusMode = FocusModeEnum.All;
+		MouseFilter = MouseFilterEnum.Pass;
+		FocusEntered += _focusAble.GrabFocus;
 	}
 
-	public override void _GuiInput(InputEvent @event)
+	private void OnGuiInput(InputEvent @event)
 	{
-		// We use the button for this, until we have custom highlight for pressed/hovered/selected
-		// Use FocusMode = ALL for this to work
-		return;
 		if (@event is InputEventMouseButton button)
 		{
 			if (button.ButtonIndex == MouseButton.Left && button.Pressed)
@@ -59,13 +62,9 @@ public partial class WikiItemView : Control
 		}
 	}
 
-	public void GrabFocusToButton()
+	private void OnSetItemStack(IItemStack itemStack)
 	{
-		_detailedWikiItemViewButton.GrabFocus();
-	}
-	
-	private void SetFocusOnThisView()
-	{
-		_detailedWikiItemViewButton.GrabFocus();
+		_itemName.Text = itemStack.Name;
+		_iconTextureRect.Texture = itemStack.Icon ?? _temporary;
 	}
 }
