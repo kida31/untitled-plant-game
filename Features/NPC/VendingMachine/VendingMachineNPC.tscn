@@ -1,16 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8w5v0k8jnu41"]
+[gd_scene load_steps=5 format=3 uid="uid://c8w5v0k8jnu41"]
 
 [ext_resource type="Script" path="res://Features/NPC/VendingMachine/VendingMachineInteractable.cs" id="1_34pgk"]
-[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="3_s6syo"]
+[ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/OverworldAssets/vendingMachine_empty.png" id="2_s5npr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_alu6d"]
 radius = 115.7
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bl7xe"]
+size = Vector2(64, 32)
 
 [node name="VendingMachineNPC" type="Area2D"]
 script = ExtResource("1_34pgk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_s6syo")
+position = Vector2(0, -32)
+texture = ExtResource("2_s5npr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_alu6d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 44)
+shape = SubResource("RectangleShape2D_bl7xe")
