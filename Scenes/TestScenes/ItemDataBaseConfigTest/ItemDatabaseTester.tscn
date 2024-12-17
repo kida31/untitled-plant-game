@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://Features/Item/Components/Oil.cs" id="13_js52h"]
 [ext_resource type="Script" path="res://Features/Item/Components/Nuke.cs" id="14_syshd"]
 
-[sub_resource type="Resource" id="Resource_83v16"]
+[sub_resource type="Resource" id="Resource_0uxa0"]
 script = ExtResource("5_81v5p")
 Amount = 0
 Id = "chuuberry"
@@ -29,16 +29,16 @@ _category = "Plant"
 Components = []
 RelatedItemIds = ["BasilLeaf"]
 
-[sub_resource type="Resource" id="Resource_3s7jt"]
+[sub_resource type="Resource" id="Resource_ykrl7"]
 script = ExtResource("2_mrsqr")
 
-[sub_resource type="Resource" id="Resource_l87pk"]
+[sub_resource type="Resource" id="Resource_l5iid"]
 script = ExtResource("3_q24qg")
 
-[sub_resource type="Resource" id="Resource_lmlbb"]
+[sub_resource type="Resource" id="Resource_wm1u3"]
 script = ExtResource("4_7hwfd")
 
-[sub_resource type="Resource" id="Resource_fhcnk"]
+[sub_resource type="Resource" id="Resource_6uu7f"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "BasilLeaf"
@@ -47,19 +47,19 @@ Description = "Basil Basil Basil Basil Basil"
 MaxStackSize = 64
 BaseValue = 5
 _category = "Plant"
-Components = [SubResource("Resource_3s7jt"), SubResource("Resource_l87pk"), SubResource("Resource_lmlbb")]
+Components = [SubResource("Resource_ykrl7"), SubResource("Resource_l5iid"), SubResource("Resource_wm1u3")]
 RelatedItemIds = ["chuuberry"]
 
-[sub_resource type="Resource" id="Resource_bgx86"]
+[sub_resource type="Resource" id="Resource_ean2p"]
 script = ExtResource("2_mrsqr")
 
-[sub_resource type="Resource" id="Resource_c2gvu"]
+[sub_resource type="Resource" id="Resource_8nt5c"]
 script = ExtResource("3_q24qg")
 
-[sub_resource type="Resource" id="Resource_5af16"]
+[sub_resource type="Resource" id="Resource_pjwo1"]
 script = ExtResource("4_7hwfd")
 
-[sub_resource type="Resource" id="Resource_mbsj0"]
+[sub_resource type="Resource" id="Resource_yxir6"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "BasilLeaf"
@@ -68,19 +68,19 @@ Description = "Basil Basil Basil Basil Basil"
 MaxStackSize = 64
 BaseValue = 5
 _category = "Plant"
-Components = [SubResource("Resource_bgx86"), SubResource("Resource_c2gvu"), SubResource("Resource_5af16")]
+Components = [SubResource("Resource_ean2p"), SubResource("Resource_8nt5c"), SubResource("Resource_pjwo1")]
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_hcu0g"]
+[sub_resource type="Resource" id="Resource_mpsmv"]
 script = ExtResource("6_tb5oh")
 
-[sub_resource type="Resource" id="Resource_qwdfx"]
+[sub_resource type="Resource" id="Resource_3o4up"]
 script = ExtResource("3_q24qg")
 
-[sub_resource type="Resource" id="Resource_0r13p"]
+[sub_resource type="Resource" id="Resource_j6xf4"]
 script = ExtResource("7_1tsao")
 
-[sub_resource type="Resource" id="Resource_4l8kn"]
+[sub_resource type="Resource" id="Resource_o3adn"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "LavenderLeaf"
@@ -89,19 +89,19 @@ Description = "Lavender Lavender Lavender Lavender Lavender"
 MaxStackSize = 64
 BaseValue = 5
 _category = "Plant"
-Components = [SubResource("Resource_hcu0g"), SubResource("Resource_qwdfx"), SubResource("Resource_0r13p")]
+Components = [SubResource("Resource_mpsmv"), SubResource("Resource_3o4up"), SubResource("Resource_j6xf4")]
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_xusy3"]
+[sub_resource type="Resource" id="Resource_wrw3r"]
 script = ExtResource("8_xusux")
 
-[sub_resource type="Resource" id="Resource_pwgus"]
+[sub_resource type="Resource" id="Resource_3dhuf"]
 script = ExtResource("3_q24qg")
 
-[sub_resource type="Resource" id="Resource_imxru"]
+[sub_resource type="Resource" id="Resource_orqom"]
 script = ExtResource("9_jt8yv")
 
-[sub_resource type="Resource" id="Resource_lda37"]
+[sub_resource type="Resource" id="Resource_xyrjp"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "MintLeaf"
@@ -110,19 +110,19 @@ Description = "Mint Mint Mint Mint Mint"
 MaxStackSize = 64
 BaseValue = 5
 _category = "Plant"
-Components = [SubResource("Resource_xusy3"), SubResource("Resource_pwgus"), SubResource("Resource_imxru")]
+Components = [SubResource("Resource_wrw3r"), SubResource("Resource_3dhuf"), SubResource("Resource_orqom")]
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_ex7sg"]
+[sub_resource type="Resource" id="Resource_wec6e"]
 script = ExtResource("10_map4w")
 
-[sub_resource type="Resource" id="Resource_fg467"]
+[sub_resource type="Resource" id="Resource_ficvs"]
 script = ExtResource("3_q24qg")
 
-[sub_resource type="Resource" id="Resource_smjfh"]
+[sub_resource type="Resource" id="Resource_lqafc"]
 script = ExtResource("11_8fadd")
 
-[sub_resource type="Resource" id="Resource_xwhwj"]
+[sub_resource type="Resource" id="Resource_8r4it"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "RoseLeaf"
@@ -131,16 +131,16 @@ Description = "Rose Rose Rose Rose Rose"
 MaxStackSize = 64
 BaseValue = 5
 _category = "Plant"
-Components = [SubResource("Resource_ex7sg"), SubResource("Resource_fg467"), SubResource("Resource_smjfh")]
+Components = [SubResource("Resource_wec6e"), SubResource("Resource_ficvs"), SubResource("Resource_lqafc")]
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_6epiq"]
+[sub_resource type="Resource" id="Resource_my0a2"]
 script = ExtResource("12_xnv0r")
 
-[sub_resource type="Resource" id="Resource_c3aie"]
+[sub_resource type="Resource" id="Resource_p7flr"]
 script = ExtResource("13_js52h")
 
-[sub_resource type="Resource" id="Resource_6ymt7"]
+[sub_resource type="Resource" id="Resource_s7h1y"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "Sunflower"
@@ -149,13 +149,13 @@ Description = "Sunflower Sunflower Sunflower Sunflower Sunflower"
 MaxStackSize = 64
 BaseValue = 5
 _category = "Plant"
-Components = [SubResource("Resource_6epiq"), SubResource("Resource_c3aie")]
+Components = [SubResource("Resource_my0a2"), SubResource("Resource_p7flr")]
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_kj6mm"]
+[sub_resource type="Resource" id="Resource_1t1sv"]
 script = ExtResource("14_syshd")
 
-[sub_resource type="Resource" id="Resource_ex17e"]
+[sub_resource type="Resource" id="Resource_h7lm8"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "GameEndingNuke"
@@ -164,10 +164,10 @@ Description = "Unlocks after a 30 kill gun streak and- wait, this isn't Call of 
 MaxStackSize = 1
 BaseValue = 30
 _category = "Material"
-Components = [SubResource("Resource_kj6mm")]
+Components = [SubResource("Resource_1t1sv")]
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_nwovw"]
+[sub_resource type="Resource" id="Resource_no1fk"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "firstItem"
@@ -179,7 +179,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_fwh4m"]
+[sub_resource type="Resource" id="Resource_668a2"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "secondItem"
@@ -191,7 +191,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_s5cxo"]
+[sub_resource type="Resource" id="Resource_3hw85"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "thirdItem"
@@ -203,7 +203,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_nf5ui"]
+[sub_resource type="Resource" id="Resource_pr3se"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "fourthItem"
@@ -215,7 +215,7 @@ _category = "Medicine"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_eurfe"]
+[sub_resource type="Resource" id="Resource_nuew1"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "fifthItem"
@@ -227,7 +227,7 @@ _category = "Medicine"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_kynbn"]
+[sub_resource type="Resource" id="Resource_qvgt1"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "sixthItem"
@@ -239,7 +239,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_7njxi"]
+[sub_resource type="Resource" id="Resource_qroxf"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "seventhItem"
@@ -251,7 +251,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_w8ou0"]
+[sub_resource type="Resource" id="Resource_06jtx"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "eighthItem"
@@ -263,7 +263,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_hp0b7"]
+[sub_resource type="Resource" id="Resource_x74y2"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "ninthItem"
@@ -275,7 +275,7 @@ _category = "Material"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_6y0gm"]
+[sub_resource type="Resource" id="Resource_4d357"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "tenthItem"
@@ -287,7 +287,7 @@ _category = "Material"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_a30n8"]
+[sub_resource type="Resource" id="Resource_4cd7w"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "eleventhItem"
@@ -299,7 +299,7 @@ _category = "Material"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_cs8b1"]
+[sub_resource type="Resource" id="Resource_4sk37"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "twelfthItem"
@@ -311,7 +311,7 @@ _category = "Material"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_6yk1p"]
+[sub_resource type="Resource" id="Resource_hy1eo"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "thirteenthItem"
@@ -323,7 +323,7 @@ _category = "Material"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_jmuj0"]
+[sub_resource type="Resource" id="Resource_0g7wt"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "fourteenthItem"
@@ -335,7 +335,7 @@ _category = "Medicine"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_6048w"]
+[sub_resource type="Resource" id="Resource_60ugv"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "fifteenthItem"
@@ -347,7 +347,7 @@ _category = "Medicine"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_8hd11"]
+[sub_resource type="Resource" id="Resource_u5dmk"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "sixteenthItem"
@@ -359,7 +359,7 @@ _category = "Medicine"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_v02a2"]
+[sub_resource type="Resource" id="Resource_8hus2"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "seventeenthItem"
@@ -371,7 +371,7 @@ _category = "Material"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_ccpo3"]
+[sub_resource type="Resource" id="Resource_a2uu2"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "eighteenthItem"
@@ -383,7 +383,7 @@ _category = "Material"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_i50ln"]
+[sub_resource type="Resource" id="Resource_h7xsv"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "nineteenthItem"
@@ -395,7 +395,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_vlg5j"]
+[sub_resource type="Resource" id="Resource_b1yya"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "twentiethItem"
@@ -407,7 +407,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_ib03y"]
+[sub_resource type="Resource" id="Resource_b3e5t"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "twentyFirstItem"
@@ -419,7 +419,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_asm3v"]
+[sub_resource type="Resource" id="Resource_haumr"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "twentySecondItem"
@@ -431,7 +431,7 @@ _category = "Material"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_4u413"]
+[sub_resource type="Resource" id="Resource_dx03r"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "twentyThirdItem"
@@ -443,7 +443,7 @@ _category = "Material"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_pliu6"]
+[sub_resource type="Resource" id="Resource_mg2rx"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "twentyFourthItem"
@@ -455,7 +455,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_e6dfa"]
+[sub_resource type="Resource" id="Resource_023ft"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "twentyFifthItem"
@@ -467,7 +467,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_67b6p"]
+[sub_resource type="Resource" id="Resource_350ip"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "twentySixthItem"
@@ -479,7 +479,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_h6w7v"]
+[sub_resource type="Resource" id="Resource_kr81n"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "twentySeventhItem"
@@ -491,7 +491,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_8okv4"]
+[sub_resource type="Resource" id="Resource_kpbpq"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "twentyEighthItem"
@@ -503,7 +503,7 @@ _category = "Material"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_2yts3"]
+[sub_resource type="Resource" id="Resource_5d277"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "twentyNinthItem"
@@ -515,7 +515,7 @@ _category = "Plant"
 Components = []
 RelatedItemIds = null
 
-[sub_resource type="Resource" id="Resource_drmbn"]
+[sub_resource type="Resource" id="Resource_iuydh"]
 script = ExtResource("5_81v5p")
 Amount = 1
 Id = "thirtiethItem"
@@ -529,4 +529,4 @@ RelatedItemIds = null
 
 [node name="ItemDatabaseTester" type="Node"]
 script = ExtResource("1_l461o")
-_items = [SubResource("Resource_83v16"), SubResource("Resource_fhcnk"), SubResource("Resource_mbsj0"), SubResource("Resource_4l8kn"), SubResource("Resource_lda37"), SubResource("Resource_xwhwj"), SubResource("Resource_6ymt7"), SubResource("Resource_ex17e"), SubResource("Resource_nwovw"), SubResource("Resource_fwh4m"), SubResource("Resource_s5cxo"), SubResource("Resource_nf5ui"), SubResource("Resource_eurfe"), SubResource("Resource_kynbn"), SubResource("Resource_7njxi"), SubResource("Resource_w8ou0"), SubResource("Resource_hp0b7"), SubResource("Resource_6y0gm"), SubResource("Resource_a30n8"), SubResource("Resource_cs8b1"), SubResource("Resource_6yk1p"), SubResource("Resource_jmuj0"), SubResource("Resource_6048w"), SubResource("Resource_8hd11"), SubResource("Resource_v02a2"), SubResource("Resource_ccpo3"), SubResource("Resource_i50ln"), SubResource("Resource_vlg5j"), SubResource("Resource_ib03y"), SubResource("Resource_asm3v"), SubResource("Resource_4u413"), SubResource("Resource_pliu6"), SubResource("Resource_e6dfa"), SubResource("Resource_67b6p"), SubResource("Resource_h6w7v"), SubResource("Resource_8okv4"), SubResource("Resource_2yts3"), SubResource("Resource_drmbn")]
+_items = [SubResource("Resource_0uxa0"), SubResource("Resource_6uu7f"), SubResource("Resource_yxir6"), SubResource("Resource_o3adn"), SubResource("Resource_xyrjp"), SubResource("Resource_8r4it"), SubResource("Resource_s7h1y"), SubResource("Resource_h7lm8"), SubResource("Resource_no1fk"), SubResource("Resource_668a2"), SubResource("Resource_3hw85"), SubResource("Resource_pr3se"), SubResource("Resource_nuew1"), SubResource("Resource_qvgt1"), SubResource("Resource_qroxf"), SubResource("Resource_06jtx"), SubResource("Resource_x74y2"), SubResource("Resource_4d357"), SubResource("Resource_4cd7w"), SubResource("Resource_4sk37"), SubResource("Resource_hy1eo"), SubResource("Resource_0g7wt"), SubResource("Resource_60ugv"), SubResource("Resource_u5dmk"), SubResource("Resource_8hus2"), SubResource("Resource_a2uu2"), SubResource("Resource_h7xsv"), SubResource("Resource_b1yya"), SubResource("Resource_b3e5t"), SubResource("Resource_haumr"), SubResource("Resource_dx03r"), SubResource("Resource_mg2rx"), SubResource("Resource_023ft"), SubResource("Resource_350ip"), SubResource("Resource_kr81n"), SubResource("Resource_kpbpq"), SubResource("Resource_5d277"), SubResource("Resource_iuydh")]
