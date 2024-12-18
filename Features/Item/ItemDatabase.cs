@@ -260,6 +260,16 @@ public class ItemDatabase
 		{
 			new()
 			{
+				Id = "unknownSeed",
+				Name = "Unknown Seed",
+				ToolTipDescription = "An unknown seed.",
+				WikiDescription = "An unknown seed. Plant it and water it regularly to find out what it produces!",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
+				Category = ItemCategory.Plant,
+				BaseValue = 5,
+			},
+			new()
+			{
 				Id = "chuberrySeed",
 				Name = "Chuberry Seed",
 				ToolTipDescription = "The seeds of a chubery plant.",
