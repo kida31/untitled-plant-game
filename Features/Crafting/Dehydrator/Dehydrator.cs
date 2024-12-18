@@ -1,7 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Common;
+using untitledplantgame.Database;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
+using untitledplantgame.Item.Components;
+using untitledplantgame.Medicine;
 
 namespace untitledplantgame.Crafting;
 
@@ -16,6 +21,8 @@ public partial class Dehydrator : ICraftingStation
 	public CraftingSlot[] CraftingSlots { get; private set; }
 
 	private Logger _logger;
+	private ItemDatabase _itemDatabase = ItemDatabase.Instance;
+	private Recipe.CraftingType _craftingType = Recipe.CraftingType.Drying;
 
 	public Dehydrator()
 	{
@@ -90,7 +97,7 @@ public partial class Dehydrator : ICraftingStation
 
 	private ItemStack ModifyItemComponent(ItemStack item)
 	{
-		// Modify item component here
+		
 		return item;
 	}
 }

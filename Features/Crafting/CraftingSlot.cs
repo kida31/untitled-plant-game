@@ -20,7 +20,6 @@ public partial class CraftingSlot
 	public CraftingSlot()
 	{
 		_logger = new Logger("CraftingSlot");
-		_logger.Debug("hallo empty");
 	}
 
 	public CraftingSlot(ItemStack item)
@@ -28,7 +27,6 @@ public partial class CraftingSlot
 		_isCrafting = false;
 		ItemStack = item;
 		_logger = new Logger("CraftingSlot");
-		_logger.Debug("hallo not empty");
 	}
 
 	public void Process(double delta)
