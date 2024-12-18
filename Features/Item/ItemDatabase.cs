@@ -7,10 +7,10 @@ using Godot.Collections;
 using untitledplantgame.Common;
 using untitledplantgame.Crafting;
 using untitledplantgame.Inventory;
-using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
+using untitledplantgame.Plants;
 
-namespace untitledplantgame.Database;
+namespace untitledplantgame.Item;
 
 [Singleton]
 public class ItemDatabase
@@ -197,11 +197,16 @@ public class ItemDatabase
 	{
 		return new List<Recipe>
 		{
+			new(new List<IIngredient> { new ComponentList { new Plant() } },
+				new ComponentList(),
+				new ComponentList{new Plant()},
+				Recipe.CraftingType.Drying
+			),
 			// Generic: Turns single "Leaf" into "DriedLeaf"
 			// Note for Testing: Doesn't work with Sunflower!
 			new(
 				new List<IIngredient> { new ComponentList { new Leaf() } },
-				new ComponentList { new DriedLeaf() },
+				new ComponentList { new Dried() },
 				new ComponentList { new Leaf() },
 				Recipe.CraftingType.Drying
 			),
