@@ -2,27 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Common;
-using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
-using untitledplantgame.Item.Components;
-using untitledplantgame.Medicine;
 
 namespace untitledplantgame.Crafting;
 
 public partial class Dehydrator : ICraftingStation
 {
-	//private const CraftMethod CraftMethod = Crafting.CraftMethod.Dehydrate;
 	private const int SlotNumber = 6;
 	private const double CraftingTime = 10;
+	private const Recipe.CraftingType CraftingType = Recipe.CraftingType.Drying;
 	public event Action<ItemStack[]> RetrieveAllFinishedItemsAction;
 	public event Action<ItemStack, int> ItemInserted;
 	public event Action<int> ItemRemoved;
 	public CraftingSlot[] CraftingSlots { get; private set; }
 
-	private Logger _logger;
-	private ItemDatabase _itemDatabase = ItemDatabase.Instance;
-	private Recipe.CraftingType _craftingType = Recipe.CraftingType.Drying;
+	private readonly Logger _logger;
+	private readonly ItemDatabase _itemDatabase = ItemDatabase.Instance;
+	private readonly Recipe _dryingRecipe;
 
 	public Dehydrator()
 	{
@@ -33,7 +30,8 @@ public partial class Dehydrator : ICraftingStation
 		{
 			CraftingSlots[i] = new CraftingSlot();
 		}
-
+		
+		_dryingRecipe = _itemDatabase.Recipes.FirstOrDefault(r => r.RecipeCraftingType == CraftingType);
 		_logger.Debug($"Initialized Dehydrator with {CraftingSlots.Length} slots");
 	}
 
@@ -97,7 +95,6 @@ public partial class Dehydrator : ICraftingStation
 
 	private ItemStack ModifyItemComponent(ItemStack item)
 	{
-		
-		return item;
+		return _dryingRecipe.CraftResult(new List<ItemStack> { item });;
 	}
 }
