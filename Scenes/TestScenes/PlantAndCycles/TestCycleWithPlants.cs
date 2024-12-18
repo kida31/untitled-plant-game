@@ -14,7 +14,6 @@ public partial class TestCycleWithPlants : Node2D
 	public override void _Ready()
 	{
 		_timeController = TimeController.Instance;
-		_skipButton.Pressed += OnSkipButtonPressed;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,6 +22,6 @@ public partial class TestCycleWithPlants : Node2D
 
 	void OnSkipButtonPressed()
 	{
-		_timeController.FastForwardFor(5);
+		_timeController.GoToNextDay();
 	}
 }

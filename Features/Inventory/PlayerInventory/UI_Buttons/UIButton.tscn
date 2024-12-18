@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwvye641p7k3x"]
+
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Buttons/SwapInventoryViewUiButton.cs" id="1_ktpke"]
+
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("_nodesToHide", "_button")]
+size_flags_horizontal = 3
+script = ExtResource("1_ktpke")
+_nodesToHide = []
+_button = NodePath("Button")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3

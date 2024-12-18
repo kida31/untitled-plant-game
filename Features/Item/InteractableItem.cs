@@ -1,57 +1,27 @@
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.EntityStatsDataContainer;
-using untitledplantgame.Inventory.GeneralInventory.UI_ItemCategory;
+using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Item;
 
 public partial class InteractableItem : AInteractable
 {
-	[Export]
-	private DataContainer _dataContainer;
+	public override string ActionName => "pickup";
 
-	[Export]
-	public new string ActionName { get; private set; } = "pickup";
+	public ItemStack ItemStack { get; private set; }
 
-	[Export(PropertyHint.Enum, "Herb,Medicine,Seed")]
-	private string _selectedOption;
+	public InteractableItem() : this(null)
+	{
+	}
 
-	public string ItemName => _dataContainer.EntityName; // Convenience property
-	private ICharacteristic _characteristic;
+	public InteractableItem(ItemStack item)
+	{
+		ItemStack = item;
+	}
 
 	public override void Interact()
 	{
-		EventBus.Instance.ItemPickedUp(this);
-		GD.Print("Item picked up");
+		EventBus.Instance.ItemPickedUp(ItemStack);
 		QueueFree();
 	}
-
-	public DataContainer GetItemDataContainer()
-	{
-		return _dataContainer;
-	}
-
-	public ICharacteristic GetICharacteristic()
-	{
-		return _characteristic;
-	}
-
-	private string SelectedOption
-	{
-		get => _selectedOption;
-		set
-		{
-			_selectedOption = value;
-			_characteristic = CreateInstance();
-		}
-	}
-
-	private ICharacteristic CreateInstance() =>
-		_selectedOption switch
-		{
-			"Herb" => new HerbCategory(),
-			"Medicine" => new MedicineCategory(),
-			"Seed" => new SeedCategory(),
-			_ => null,
-		};
 }

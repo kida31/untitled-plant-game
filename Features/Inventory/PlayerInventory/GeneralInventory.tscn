@@ -1,0 +1,243 @@
+[gd_scene load_steps=14 format=3 uid="uid://cca7okqb2j4c7"]
+
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/PlayerInventoryController.cs" id="1_rrual"]
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/TabsController.cs" id="2_eefgp"]
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/SeedsTab.cs" id="2_f80sh"]
+[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.tscn" id="3_5pjti"]
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/HerbsTab.cs" id="3_kyvoe"]
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/MedicineTab.cs" id="4_3lda1"]
+[ext_resource type="PackedScene" uid="uid://msi6pcy22i2y" path="res://Features/Inventory/PlayerInventory/UI_Tabs/TabItemView.tscn" id="6_tsmv5"]
+[ext_resource type="PackedScene" uid="uid://dtgjnb2g3iphl" path="res://Features/Inventory/PlayerInventory/UI_Screens/PlayerDetailsPage.tscn" id="8_6xk6p"]
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Wiki/ScrollViewController.cs" id="8_16ofx"]
+[ext_resource type="PackedScene" uid="uid://b2i7oxcdj4025" path="res://Features/Inventory/PlayerInventory/UI_Wiki/WikiItemView.tscn" id="9_d2c8a"]
+[ext_resource type="PackedScene" uid="uid://bmc1oq8o2if8d" path="res://Features/Inventory/PlayerInventory/UI_Wiki/DetailedWikiItemView.tscn" id="9_dcydr"]
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Wiki/DetailedWikiController.cs" id="9_xuc6d"]
+[ext_resource type="PackedScene" uid="uid://cwvye641p7k3x" path="res://Features/Inventory/PlayerInventory/UI_Buttons/UIButton.tscn" id="11_4t4ka"]
+
+[node name="InventoryCanvas" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -328.0
+offset_right = 600.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Tabs" type="TabContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+script = ExtResource("2_eefgp")
+
+[node name="SeedsTab" type="Control" parent="HBoxContainer/Tabs" node_paths=PackedStringArray("_moving")]
+layout_mode = 2
+script = ExtResource("2_f80sh")
+_inventoryItemScene = ExtResource("3_5pjti")
+_tabItemView = ExtResource("6_tsmv5")
+_moving = NodePath("../../../MovingItemView")
+metadata/_tab_index = 0
+
+[node name="HerbsTab" type="Control" parent="HBoxContainer/Tabs"]
+visible = false
+layout_mode = 2
+script = ExtResource("3_kyvoe")
+_inventoryItemScene = ExtResource("3_5pjti")
+_tabItemView = ExtResource("6_tsmv5")
+metadata/_tab_index = 1
+
+[node name="MedicineTab" type="Control" parent="HBoxContainer/Tabs"]
+visible = false
+layout_mode = 2
+script = ExtResource("4_3lda1")
+_inventoryItemScene = ExtResource("3_5pjti")
+_tabItemView = ExtResource("6_tsmv5")
+metadata/_tab_index = 2
+
+[node name="RightDisplay" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" parent="HBoxContainer/RightDisplay" instance=ExtResource("8_6xk6p")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -328.0
+offset_right = 600.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 128
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Plant"
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "Material"
+
+[node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+text = "Medicine"
+
+[node name="CenterContainer2" type="CenterContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2" node_paths=PackedStringArray("_plantButton", "_materialButton", "_medicineButton", "_scrollViewItems")]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+script = ExtResource("8_16ofx")
+_plantButton = NodePath("../../CenterContainer/HBoxContainer/PanelContainer/Button")
+_materialButton = NodePath("../../CenterContainer/HBoxContainer/PanelContainer2/Button")
+_medicineButton = NodePath("../../CenterContainer/HBoxContainer/PanelContainer3/Button")
+_scrollViewItems = NodePath("CenterContainer/VBoxContainer")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="MarginContainer2" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="MarginContainer3" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="MarginContainer4" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="MarginContainer5" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="MarginContainer6" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="MarginContainer7" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="MarginContainer8" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="MarginContainer9" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="MarginContainer10" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="MarginContainer11" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="MarginContainer12" parent="HBoxContainer2/PanelContainer/VBoxContainer/CenterContainer2/ScrollContainer/CenterContainer/VBoxContainer" instance=ExtResource("9_d2c8a")]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("9_xuc6d")
+_detailedWikiItemView = ExtResource("9_dcydr")
+
+[node name="VBoxContainer" parent="HBoxContainer2/PanelContainer2" instance=ExtResource("9_dcydr")]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 334.0
+offset_right = 74.0
+offset_bottom = 355.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" parent="PanelContainer/HBoxContainer" node_paths=PackedStringArray("_nodeToShow", "_nodesToHide") instance=ExtResource("11_4t4ka")]
+layout_mode = 2
+_buttonName = "Left"
+_nodeToShow = NodePath("../../../HBoxContainer")
+_nodesToHide = [NodePath("../../../HBoxContainer2")]
+
+[node name="PanelContainer2" parent="PanelContainer/HBoxContainer" node_paths=PackedStringArray("_nodeToShow", "_nodesToHide") instance=ExtResource("11_4t4ka")]
+layout_mode = 2
+_buttonName = "Right"
+_nodeToShow = NodePath("../../../HBoxContainer2")
+_nodesToHide = [NodePath("../../../HBoxContainer")]
+
+[node name="MovingItemView" parent="." instance=ExtResource("3_5pjti")]
+visible = false
+layout_mode = 0
+offset_left = -582.0
+offset_top = -255.0
+offset_right = -486.0
+offset_bottom = -159.0
+
+[node name="GeneralInventoryLogic" type="Node" parent="." node_paths=PackedStringArray("_temporarySolution", "_temps", "_tabsController")]
+script = ExtResource("1_rrual")
+_temporarySolution = NodePath("..")
+_temps = NodePath("../PanelContainer/HBoxContainer/PanelContainer")
+_tabsController = NodePath("../HBoxContainer/Tabs")
+_tabInventorySize = 15

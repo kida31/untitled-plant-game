@@ -1,11 +1,14 @@
 using System;
 using Godot;
-using untitledplantgame.Common;
 using untitledplantgame.Crafting;
-using untitledplantgame.EntityStatsDataContainer;
 using untitledplantgame.Item;
+using untitledplantgame.Common.GameStates;
+using untitledplantgame.Dialogue;
+using untitledplantgame.Inventory;
+using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
+using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 using untitledplantgame.Shops;
-using untitledplantgame.VendingMachine;
+namespace untitledplantgame.Common;
 
 /**
  * NOTE:
@@ -46,14 +49,7 @@ public partial class EventBus : Node
 	//---------------------------------------------Legacy Signals---------------------------------------------
 
 
-	public delegate void AddToInventoryEventHandler(InteractableItem interactableItem);
-
-	public event AddToInventoryEventHandler OnItemPickUp;
-
-	public void ItemPickedUp(InteractableItem interactableItem)
-	{
-		OnItemPickUp?.Invoke(interactableItem);
-	}
+	
 
 	public event Action OnSeedshopOpened;
 
@@ -76,11 +72,127 @@ public partial class EventBus : Node
 		OnSeedshopClosed?.Invoke();
 	}
 
-	public event Action<VendingMachine> BeforeVendingMachineOpened;
+	public event Action<VendingMachine.VendingMachine> BeforeVendingMachineOpened;
 
-	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
+	public void BeforeVendingMachineOpen(VendingMachine.VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
+	}
+
+	/// <summary>
+	/// Invoked when a dialogue is starting, passes the dialogue name
+	/// </summary>
+	public event Action<string> StartingDialogue;
+
+	/// <summary>
+	/// Emitted when a dialogue is started for the first time
+	/// </summary>
+	public event Action<IDialogueSystem> InitialiseDialogue;
+
+	public void InvokeStartingDialogue(string obj)
+	{
+		StartingDialogue?.Invoke(obj);
+	}
+
+	public void InvokeInitialiseDialogue(IDialogueSystem obj)
+	{
+		InitialiseDialogue?.Invoke(obj);
+	}
+
+	public event Action<int, int> GoldChanged;
+	public void InvokeGoldChanged(int deltaGold, int newGold)
+	{
+		GoldChanged?.Invoke(deltaGold, newGold);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public delegate InventoryItemView GetItemSlotEventHandler();
+
+	public Action OnInventoryOpen;
+	public event Action<int> OnFaithChange;
+	public event Action<int> OnCurrencyChange;
+	public event Action<WikiItemView> OnScrollContainerViewUpdate; 
+	public event Action<ItemStack> OnTabsUpdate;
+	public event Action<ItemStack> OnItemPickUp;
+	public event Action<ItemStack> OnWikiItemClicked;
+	public event Action<InventoryItemView> OnInventoryItemViewPressed;
+	public event Action<InventoryItemView> OnInventoryItemViewMoved;
+	public event Action<InventoryItemView> OnInventoryItemViewReleased;
+	public event Action<InventoryItemView> OnSetItemSlot;
+	public event Action<ItemStack, InventoryItemView> OnInventoryItemMove;
+	public event GetItemSlotEventHandler OnGetItemSlot;
+
+
+	public void InventoryOpened()
+	{
+		GameStateMachine.Instance.SetState(GameState.Shop);
+		OnInventoryOpen?.Invoke();
+	}
+	
+	public void FaithChanged(int change)
+	{
+		OnFaithChange?.Invoke(change);
+	}
+	
+	public void CurrencyChanged(int change)
+	{
+		OnCurrencyChange?.Invoke(change);
+	}
+
+	public void ScrollContainerViewChanged(WikiItemView scrollContainerElement)
+	{
+		OnScrollContainerViewUpdate?.Invoke(scrollContainerElement);
+	}
+	
+	public void TabsUpdated(ItemStack item)
+	{
+		OnTabsUpdate?.Invoke(item);
+	}
+	
+	public void ItemPickedUp(ItemStack item)
+	{
+		OnItemPickUp?.Invoke(item);
+	}
+	
+	public void UiWikiItemClicked(ItemStack itemStack)
+	{
+		OnWikiItemClicked?.Invoke(itemStack);
+	}
+
+	public void UiInventoryItemViewPressed(InventoryItemView inventoryItemView)
+	{
+		OnInventoryItemViewPressed?.Invoke(inventoryItemView);
+	}
+	
+	public void UiInventoryItemViewMoved(InventoryItemView inventoryItemView)
+	{
+		OnInventoryItemViewMoved?.Invoke(inventoryItemView);
+	}
+	
+	public void UiInventoryItemViewReleased(InventoryItemView inventoryItemView)
+	{
+		OnInventoryItemViewReleased?.Invoke(inventoryItemView);
+	}
+	
+	public void SetItemSlot(InventoryItemView inventoryItemView)
+	{
+		OnSetItemSlot?.Invoke(inventoryItemView);
+	}
+	
+	public void InventoryItemMoved(ItemStack itemStack, InventoryItemView inventoryItemView)
+	{
+		OnInventoryItemMove?.Invoke(itemStack, inventoryItemView);
+	}
+
+	public InventoryItemView GetItemSlot()
+	{
+		return OnGetItemSlot?.Invoke();
 	}
 
 	public event Action<ICraftingStation> BeforeCraftingStationUiOpened;

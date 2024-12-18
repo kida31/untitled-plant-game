@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://msi6pcy22i2y"]
+
+[ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Tabs/TabItemView.cs" id="1_bmy6k"]
+[ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="2_h6p6j"]
+[ext_resource type="Texture2D" uid="uid://jitwrv3dmfn4" path="res://DefaultItemBackground_White.png" id="3_m4xoe"]
+[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/Inventory/PlayerInventory/UI_InventoryItem/InventoryItemView.tscn" id="4_rgnej"]
+
+[node name="CenterContainer" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -150.0
+offset_right = 198.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bmy6k")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_h6p6j")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer/CenterContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("3_m4xoe")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+text = "TESTi
+"
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/CenterContainer2"]
+layout_mode = 2
+columns = 5
+
+[node name="ItemView" parent="VBoxContainer/CenterContainer2/GridContainer" instance=ExtResource("4_rgnej")]
+layout_mode = 2
+
+[node name="ItemView2" parent="VBoxContainer/CenterContainer2/GridContainer" instance=ExtResource("4_rgnej")]
+layout_mode = 2
+
+[node name="ItemView3" parent="VBoxContainer/CenterContainer2/GridContainer" instance=ExtResource("4_rgnej")]
+layout_mode = 2
+
+[node name="ItemView4" parent="VBoxContainer/CenterContainer2/GridContainer" instance=ExtResource("4_rgnej")]
+layout_mode = 2
