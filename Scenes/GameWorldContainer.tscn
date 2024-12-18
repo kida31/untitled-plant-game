@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=16 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
 [ext_resource type="SpriteFrames" uid="uid://d2gf65g8f0am3" path="res://Assets/OverworldAssets/Plant/ChuberySpriteFrames.tres" id="11_voxp1"]
 [ext_resource type="PackedScene" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
+[ext_resource type="PackedScene" uid="uid://cqh8rt43hsmxl" path="res://Features/NPC/Capy.tscn" id="13_b378g"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
@@ -69,6 +70,10 @@ position = Vector2(458, 339)
 z_index = 1
 y_sort_enabled = true
 position = Vector2(640, 360)
+
+[node name="Capy" parent="." instance=ExtResource("13_b378g")]
+position = Vector2(457, 438)
+scale = Vector2(0.75, 0.75)
 
 [node name="NightTint" type="CanvasModulate" parent="."]
 position = Vector2(577.5, 328.625)
