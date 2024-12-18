@@ -6,7 +6,7 @@ using untitledplantgame.Dialogue.Models;
 
 namespace untitledplantgame.Dialogue;
 
-public partial class DialogueUi : Control
+public partial class DialogueUI : Control
 {
 	private IDialogueSystem _dialogueSystem;
 

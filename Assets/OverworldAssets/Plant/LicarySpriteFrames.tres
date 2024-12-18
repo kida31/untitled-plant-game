@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://rlacl8e7glrk"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://8045piqwhrs0"]
 
 [ext_resource type="Texture2D" uid="uid://dxjrcllnnc3s2" path="res://Assets/OverworldAssets/Plant/Licary_SpriteSheet.png" id="1_bv8pc"]
 [ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/OverworldAssets/Plant/DeadPlant.png" id="2_hr04c"]

@@ -16,12 +16,9 @@ position = Vector2(28, 26)
 [node name="Talk_NPC1" parent="GameWorld" instance=ExtResource("3_kjloy")]
 position = Vector2(232, 30)
 script = ExtResource("4_q1cim")
-ActionName = "talk"
 
 [node name="VendingMachineNPC" parent="GameWorld" instance=ExtResource("10_4aktg")]
 position = Vector2(396, 33)
-ActionName = "Open"
-_npcName = "Vending Machine"
 
 [node name="GuiContext" type="CanvasLayer" parent="."]
 
