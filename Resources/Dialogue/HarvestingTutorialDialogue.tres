@@ -29,6 +29,6 @@ dialogueText = "How about you try cutting this Chubery plant that is already bea
 
 [resource]
 script = ExtResource("1_xavc0")
-_dialogueId = ""
+_dialogueId = "gottfriedHarvesting"
 _dialogueText = Array[Object]([SubResource("Resource_esj0x"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_wrtgg")])
 _responses = null

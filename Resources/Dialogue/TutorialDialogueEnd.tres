@@ -35,6 +35,6 @@ dialogueText = "Alright then, see you around!"
 
 [resource]
 script = ExtResource("1_8ng0m")
-_dialogueId = ""
+_dialogueId = "gottfriedBye"
 _dialogueText = Array[Object]([SubResource("Resource_acleb"), SubResource("Resource_tmh6s"), SubResource("Resource_yg4ah"), SubResource("Resource_66we5"), SubResource("Resource_i3e76")])
 _responses = null

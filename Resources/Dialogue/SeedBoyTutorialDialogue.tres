@@ -35,6 +35,6 @@ dialogueText = "Just press A and he’ll talk to you."
 
 [resource]
 script = ExtResource("1_86yub")
-_dialogueId = ""
+_dialogueId = "gottfriedSeeding"
 _dialogueText = Array[Object]([SubResource("Resource_sr1yf"), SubResource("Resource_g71vq"), SubResource("Resource_sqv14"), SubResource("Resource_n5nrh"), SubResource("Resource_t4mgt")])
 _responses = null
