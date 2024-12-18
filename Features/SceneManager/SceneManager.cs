@@ -62,6 +62,18 @@ public partial class SceneManager : Node
 		_logger.Debug("Scene changed");
 		player.Show();
 		loading = false;
+
+ 
+		// _logger.Warn(GetTree(). GetNodesInGroup(GameGroup.Placeholder).ToString());
+
+
+		// GetTree(). GetNodesInGroup("persistent").ForEach(node =>
+		// {
+		// 	if (node is IPersistent persistent)
+		// 	{
+		// 		Logic.checkPersist(persistent);
+		// 	}
+		// });
 	}
 
 	private Node LoadScene(string scenePath)

@@ -1,9 +1,13 @@
-[gd_scene load_steps=16 format=4 uid="uid://bs7jmvcej2bhc"]
+[gd_scene load_steps=20 format=4 uid="uid://bs7jmvcej2bhc"]
 
 [ext_resource type="Texture2D" uid="uid://dvjxp03o22y3l" path="res://Assets/Tilesets/atlas_32x.png" id="1_njfkm"]
 [ext_resource type="Texture2D" uid="uid://h83g282s043x" path="res://Assets/OverworldAssets/GardenDecoration/ladder_tileset_improved.png" id="2_4uw5u"]
 [ext_resource type="Texture2D" uid="uid://4cfy612ib68k" path="res://Assets/IndoorAssets/bed.png" id="3_rc2t2"]
 [ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="4_0j18u"]
+[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="5_t1uyc"]
+[ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://Features/NPC/NPC.tscn" id="6_xaqe8"]
+[ext_resource type="Script" path="res://Features/NPC/SeedBoy.cs" id="7_r2kig"]
+[ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://Features/NPC/VendingMachine/VendingMachineNPC.tscn" id="8_px13s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1url"]
 texture = ExtResource("1_njfkm")
@@ -3095,3 +3099,19 @@ tile_set = SubResource("TileSet_6alp4")
 position = Vector2(400, 592)
 pathToNewScene = "res://Scenes/GameWorldContainer.tscn"
 entryDoorName = "RoofHouse"
+
+[node name="Bed" parent="." instance=ExtResource("5_t1uyc")]
+position = Vector2(592, 546)
+
+[node name="SeedShop" parent="." instance=ExtResource("6_xaqe8")]
+z_index = 2
+y_sort_enabled = true
+position = Vector2(391, 455)
+scale = Vector2(1.02742, 0.910247)
+script = ExtResource("7_r2kig")
+
+[node name="VendingMachineNPC" parent="." instance=ExtResource("8_px13s")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(700, 436)
+scale = Vector2(1.02742, 0.910247)
