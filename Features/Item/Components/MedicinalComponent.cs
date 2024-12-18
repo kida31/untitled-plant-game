@@ -22,7 +22,7 @@ public partial class MedicinalComponent : AComponent
 
 	public override bool Equals(AComponent other)
 	{
-		return base.Equals(other);
+		return other is MedicinalComponent component && Effect == component.Effect;
 	}
 
 	public override MedicinalComponent Clone() => new MedicinalComponent(Effect);
