@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn4fpfuaq40v7"
-path="res://.godot/imported/round_container_currency_hud.png-50f4338dc1171740167830866e27732e.ctex"
+uid="uid://b5hv1i828jc6"
+path="res://.godot/imported/Slider.png-eb495eea3d33e88aaf1378908cfe7db9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/round_container_currency_hud.png"
-dest_files=["res://.godot/imported/round_container_currency_hud.png-50f4338dc1171740167830866e27732e.ctex"]
+source_file="res://Assets/UI/VendingMachine/Slider.png"
+dest_files=["res://.godot/imported/Slider.png-eb495eea3d33e88aaf1378908cfe7db9.ctex"]
 
 [params]
 

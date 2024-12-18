@@ -69,7 +69,7 @@ public static class Assert
 	{
 		if (obj != null)
 		{
-			RaiseError(message);
+			RaiseError(message ?? "Expected Null object, got non-null: " + obj);
 		}
 	}
 	
@@ -82,7 +82,7 @@ public static class Assert
 	{
 		if (obj == null)
 		{
-			RaiseError(message);
+			RaiseError(message ?? "Expected Non-Null object, got null");
 		}
 	}
 
@@ -163,7 +163,7 @@ public static class Assert
 	/// <exception cref="AssertionError"></exception>
 	private static void RaiseError(string message)
 	{
-		if (OS.IsDebugBuild())
+		if (!OS.IsDebugBuild())
 		{
 			return;
 		}

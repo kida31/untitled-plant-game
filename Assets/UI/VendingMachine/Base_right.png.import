@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyhjl37v35jg0"
-path="res://.godot/imported/withdraw.png-ddb61a6c9161dee2aaf367b7b8b098ad.ctex"
+uid="uid://yvo33yjscsag"
+path="res://.godot/imported/Base_right.png-30f63eb55df9e21cf4118363375276ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Features/VendingMachine/UI/withdraw.png"
-dest_files=["res://.godot/imported/withdraw.png-ddb61a6c9161dee2aaf367b7b8b098ad.ctex"]
+source_file="res://Assets/UI/VendingMachine/Base_right.png"
+dest_files=["res://.godot/imported/Base_right.png-30f63eb55df9e21cf4118363375276ca.ctex"]
 
 [params]
 
