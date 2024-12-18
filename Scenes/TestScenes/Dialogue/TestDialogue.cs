@@ -1,4 +1,5 @@
 using Godot;
+using untitledplantgame.Common;
 using DialogueResourceObject = untitledplantgame.Dialogue.Models.DialogueResourceObject;
 using DialogueSystem = untitledplantgame.Dialogue.DialogueSystem;
 

@@ -1,0 +1,532 @@
+[gd_scene load_steps=72 format=3 uid="uid://c7yeloeus6st8"]
+
+[ext_resource type="Script" path="res://Features/Item/ItemDatabaseTester.cs" id="1_l461o"]
+[ext_resource type="Script" path="res://Features/Item/Components/Basil.cs" id="2_mrsqr"]
+[ext_resource type="Texture2D" uid="uid://dsrjntfr6kb41" path="res://Assets/Items/chubery_harvested.png" id="2_q8hsh"]
+[ext_resource type="Script" path="res://Features/Item/Components/Leaf.cs" id="3_q24qg"]
+[ext_resource type="Script" path="res://Features/Item/Components/Spice.cs" id="4_7hwfd"]
+[ext_resource type="Script" path="res://Features/Inventory/ItemStack.cs" id="5_81v5p"]
+[ext_resource type="Script" path="res://Features/Item/Components/Lavender.cs" id="6_tb5oh"]
+[ext_resource type="Script" path="res://Features/Item/Components/Sweet.cs" id="7_1tsao"]
+[ext_resource type="Script" path="res://Features/Item/Components/Mint.cs" id="8_xusux"]
+[ext_resource type="Script" path="res://Features/Item/Components/Antioxidant.cs" id="9_jt8yv"]
+[ext_resource type="Script" path="res://Features/Item/Components/Rose.cs" id="10_map4w"]
+[ext_resource type="Script" path="res://Features/Item/Components/Decoration.cs" id="11_8fadd"]
+[ext_resource type="Script" path="res://Features/Item/Components/Sunflower.cs" id="12_xnv0r"]
+[ext_resource type="Script" path="res://Features/Item/Components/Oil.cs" id="13_js52h"]
+[ext_resource type="Script" path="res://Features/Item/Components/Nuke.cs" id="14_syshd"]
+
+[sub_resource type="Resource" id="Resource_0uxa0"]
+script = ExtResource("5_81v5p")
+Amount = 0
+Id = "chuuberry"
+Name = "Chuuberry"
+Icon = ExtResource("2_q8hsh")
+Description = "A small, red berry that grows in the forest."
+MaxStackSize = 0
+BaseValue = 5
+_category = "Plant"
+Components = []
+RelatedItemIds = ["BasilLeaf"]
+
+[sub_resource type="Resource" id="Resource_ykrl7"]
+script = ExtResource("2_mrsqr")
+
+[sub_resource type="Resource" id="Resource_l5iid"]
+script = ExtResource("3_q24qg")
+
+[sub_resource type="Resource" id="Resource_wm1u3"]
+script = ExtResource("4_7hwfd")
+
+[sub_resource type="Resource" id="Resource_6uu7f"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "BasilLeaf"
+Name = "Basil"
+Description = "Basil Basil Basil Basil Basil"
+MaxStackSize = 64
+BaseValue = 5
+_category = "Plant"
+Components = [SubResource("Resource_ykrl7"), SubResource("Resource_l5iid"), SubResource("Resource_wm1u3")]
+RelatedItemIds = ["chuuberry"]
+
+[sub_resource type="Resource" id="Resource_ean2p"]
+script = ExtResource("2_mrsqr")
+
+[sub_resource type="Resource" id="Resource_8nt5c"]
+script = ExtResource("3_q24qg")
+
+[sub_resource type="Resource" id="Resource_pjwo1"]
+script = ExtResource("4_7hwfd")
+
+[sub_resource type="Resource" id="Resource_yxir6"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "BasilLeaf"
+Name = "Basil"
+Description = "Basil Basil Basil Basil Basil"
+MaxStackSize = 64
+BaseValue = 5
+_category = "Plant"
+Components = [SubResource("Resource_ean2p"), SubResource("Resource_8nt5c"), SubResource("Resource_pjwo1")]
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_mpsmv"]
+script = ExtResource("6_tb5oh")
+
+[sub_resource type="Resource" id="Resource_3o4up"]
+script = ExtResource("3_q24qg")
+
+[sub_resource type="Resource" id="Resource_j6xf4"]
+script = ExtResource("7_1tsao")
+
+[sub_resource type="Resource" id="Resource_o3adn"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "LavenderLeaf"
+Name = "Lavender"
+Description = "Lavender Lavender Lavender Lavender Lavender"
+MaxStackSize = 64
+BaseValue = 5
+_category = "Plant"
+Components = [SubResource("Resource_mpsmv"), SubResource("Resource_3o4up"), SubResource("Resource_j6xf4")]
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_wrw3r"]
+script = ExtResource("8_xusux")
+
+[sub_resource type="Resource" id="Resource_3dhuf"]
+script = ExtResource("3_q24qg")
+
+[sub_resource type="Resource" id="Resource_orqom"]
+script = ExtResource("9_jt8yv")
+
+[sub_resource type="Resource" id="Resource_xyrjp"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "MintLeaf"
+Name = "Mint"
+Description = "Mint Mint Mint Mint Mint"
+MaxStackSize = 64
+BaseValue = 5
+_category = "Plant"
+Components = [SubResource("Resource_wrw3r"), SubResource("Resource_3dhuf"), SubResource("Resource_orqom")]
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_wec6e"]
+script = ExtResource("10_map4w")
+
+[sub_resource type="Resource" id="Resource_ficvs"]
+script = ExtResource("3_q24qg")
+
+[sub_resource type="Resource" id="Resource_lqafc"]
+script = ExtResource("11_8fadd")
+
+[sub_resource type="Resource" id="Resource_8r4it"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "RoseLeaf"
+Name = "Rose"
+Description = "Rose Rose Rose Rose Rose"
+MaxStackSize = 64
+BaseValue = 5
+_category = "Plant"
+Components = [SubResource("Resource_wec6e"), SubResource("Resource_ficvs"), SubResource("Resource_lqafc")]
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_my0a2"]
+script = ExtResource("12_xnv0r")
+
+[sub_resource type="Resource" id="Resource_p7flr"]
+script = ExtResource("13_js52h")
+
+[sub_resource type="Resource" id="Resource_s7h1y"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "Sunflower"
+Name = "Sunflower"
+Description = "Sunflower Sunflower Sunflower Sunflower Sunflower"
+MaxStackSize = 64
+BaseValue = 5
+_category = "Plant"
+Components = [SubResource("Resource_my0a2"), SubResource("Resource_p7flr")]
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_1t1sv"]
+script = ExtResource("14_syshd")
+
+[sub_resource type="Resource" id="Resource_h7lm8"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "GameEndingNuke"
+Name = "Nuke"
+Description = "Unlocks after a 30 kill gun streak and- wait, this isn't Call of Duty...?!"
+MaxStackSize = 1
+BaseValue = 30
+_category = "Material"
+Components = [SubResource("Resource_1t1sv")]
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_no1fk"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "firstItem"
+Name = "theBestItem"
+Description = "It's the first time."
+MaxStackSize = 64
+BaseValue = 5
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_668a2"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "secondItem"
+Name = "oakSapling"
+Description = "A young oak tree ready to be planted."
+MaxStackSize = 64
+BaseValue = 5
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_3hw85"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "thirdItem"
+Name = "pineCone"
+Description = "A pine cone that might grow into a tree."
+MaxStackSize = 64
+BaseValue = 3
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_pr3se"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "fourthItem"
+Name = "healingHerb"
+Description = "A small herb known for its healing properties."
+MaxStackSize = 64
+BaseValue = 10
+_category = "Medicine"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_nuew1"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "fifthItem"
+Name = "aloeLeaf"
+Description = "A leaf with soothing gel inside."
+MaxStackSize = 64
+BaseValue = 15
+_category = "Medicine"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_qvgt1"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "sixthItem"
+Name = "lavender"
+Description = "A fragrant plant used in remedies."
+MaxStackSize = 64
+BaseValue = 8
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_qroxf"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "seventhItem"
+Name = "cactusFruit"
+Description = "A fruit from a desert cactus."
+MaxStackSize = 64
+BaseValue = 6
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_06jtx"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "eighthItem"
+Name = "bamboo"
+Description = "A tall, fast-growing plant."
+MaxStackSize = 64
+BaseValue = 7
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_x74y2"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "ninthItem"
+Name = "coalOre"
+Description = "A chunk of coal ore."
+MaxStackSize = 64
+BaseValue = 20
+_category = "Material"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_4d357"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "tenthItem"
+Name = "ironOre"
+Description = "A chunk of iron ore."
+MaxStackSize = 64
+BaseValue = 25
+_category = "Material"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_4cd7w"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "eleventhItem"
+Name = "clayLump"
+Description = "A lump of soft, malleable clay."
+MaxStackSize = 64
+BaseValue = 12
+_category = "Material"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_4sk37"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "twelfthItem"
+Name = "saltRock"
+Description = "A rock containing crystallized salt."
+MaxStackSize = 64
+BaseValue = 10
+_category = "Material"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_hy1eo"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "thirteenthItem"
+Name = "spiderSilk"
+Description = "Silky thread harvested from spiders."
+MaxStackSize = 64
+BaseValue = 18
+_category = "Material"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_0g7wt"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "fourteenthItem"
+Name = "healingRoot"
+Description = "A root with medicinal properties."
+MaxStackSize = 64
+BaseValue = 20
+_category = "Medicine"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_60ugv"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "fifteenthItem"
+Name = "gingerRoot"
+Description = "A spicy root used for healing and cooking."
+MaxStackSize = 64
+BaseValue = 15
+_category = "Medicine"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_u5dmk"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "sixteenthItem"
+Name = "peppermintLeaf"
+Description = "A refreshing leaf with healing properties."
+MaxStackSize = 64
+BaseValue = 12
+_category = "Medicine"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_8hus2"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "seventeenthItem"
+Name = "ashWood"
+Description = "Wood from an ash tree, useful for crafting."
+MaxStackSize = 64
+BaseValue = 14
+_category = "Material"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_a2uu2"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "eighteenthItem"
+Name = "stoneBlock"
+Description = "A basic stone block for building."
+MaxStackSize = 64
+BaseValue = 5
+_category = "Material"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_h7xsv"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "nineteenthItem"
+Name = "wheatPlant"
+Description = "A fully grown wheat plant."
+MaxStackSize = 64
+BaseValue = 8
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_b1yya"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "twentiethItem"
+Name = "carrot"
+Description = "A nutritious root vegetable."
+MaxStackSize = 64
+BaseValue = 5
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_b3e5t"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "twentyFirstItem"
+Name = "potato"
+Description = "A starchy plant for cooking."
+MaxStackSize = 64
+BaseValue = 4
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_haumr"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "twentySecondItem"
+Name = "goldNugget"
+Description = "A small piece of unrefined gold."
+MaxStackSize = 64
+BaseValue = 50
+_category = "Material"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_dx03r"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "twentyThirdItem"
+Name = "silverOre"
+Description = "A chunk of silver ore."
+MaxStackSize = 64
+BaseValue = 40
+_category = "Material"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_mg2rx"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "twentyFourthItem"
+Name = "oakLeaf"
+Description = "A fresh leaf from an oak tree."
+MaxStackSize = 64
+BaseValue = 3
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_023ft"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "twentyFifthItem"
+Name = "rosePetal"
+Description = "A petal from a beautiful rose."
+MaxStackSize = 64
+BaseValue = 6
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_350ip"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "twentySixthItem"
+Name = "mushroom"
+Description = "An edible mushroom found in the forest."
+MaxStackSize = 64
+BaseValue = 7
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_kr81n"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "twentySeventhItem"
+Name = "clover"
+Description = "A lucky four-leaf clover."
+MaxStackSize = 64
+BaseValue = 20
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_kpbpq"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "twentyEighthItem"
+Name = "amberChunk"
+Description = "A fossilized piece of tree resin."
+MaxStackSize = 64
+BaseValue = 30
+_category = "Material"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_5d277"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "twentyNinthItem"
+Name = "dandelion"
+Description = "A common yellow flower."
+MaxStackSize = 64
+BaseValue = 2
+_category = "Plant"
+Components = []
+RelatedItemIds = null
+
+[sub_resource type="Resource" id="Resource_iuydh"]
+script = ExtResource("5_81v5p")
+Amount = 1
+Id = "thirtiethItem"
+Name = "charcoal"
+Description = "A lightweight material for fuel."
+MaxStackSize = 64
+BaseValue = 10
+_category = "Material"
+Components = []
+RelatedItemIds = null
+
+[node name="ItemDatabaseTester" type="Node"]
+script = ExtResource("1_l461o")
+_items = [SubResource("Resource_0uxa0"), SubResource("Resource_6uu7f"), SubResource("Resource_yxir6"), SubResource("Resource_o3adn"), SubResource("Resource_xyrjp"), SubResource("Resource_8r4it"), SubResource("Resource_s7h1y"), SubResource("Resource_h7lm8"), SubResource("Resource_no1fk"), SubResource("Resource_668a2"), SubResource("Resource_3hw85"), SubResource("Resource_pr3se"), SubResource("Resource_nuew1"), SubResource("Resource_qvgt1"), SubResource("Resource_qroxf"), SubResource("Resource_06jtx"), SubResource("Resource_x74y2"), SubResource("Resource_4d357"), SubResource("Resource_4cd7w"), SubResource("Resource_4sk37"), SubResource("Resource_hy1eo"), SubResource("Resource_0g7wt"), SubResource("Resource_60ugv"), SubResource("Resource_u5dmk"), SubResource("Resource_8hus2"), SubResource("Resource_a2uu2"), SubResource("Resource_h7xsv"), SubResource("Resource_b1yya"), SubResource("Resource_b3e5t"), SubResource("Resource_haumr"), SubResource("Resource_dx03r"), SubResource("Resource_mg2rx"), SubResource("Resource_023ft"), SubResource("Resource_350ip"), SubResource("Resource_kr81n"), SubResource("Resource_kpbpq"), SubResource("Resource_5d277"), SubResource("Resource_iuydh")]

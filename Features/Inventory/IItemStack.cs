@@ -1,4 +1,7 @@
-﻿using Godot;
+﻿using System;
+using Godot;
+using Godot.Collections;
+using untitledplantgame.Item;
 
 namespace untitledplantgame.Inventory;
 
@@ -12,27 +15,29 @@ public interface IItemStack
 	/// <summary>
 	///     The name of the item
 	/// </summary>
-	string Name { get; }
+	string Name { get; set; }
+	
+	Array<AComponent> Components { get; set; }
 
 	/// <summary>
 	///     The icon of the item
 	/// </summary>
-	Texture2D Icon { get; }
+	Texture2D Icon { get; set; }
 
 	/// <summary>
 	///     The description of the item
 	/// </summary>
-	string Description { get; }
+	string Description { get; set; }
 
 	/// <summary>
 	///     The category of the item
 	/// </summary>
-	ItemCategory Category { get; }
+	ItemCategory Category { get; set; }
 
 	/// <summary>
 	///     The base monetary value of the item
 	/// </summary>
-	public int BaseValue { get; }
+	public int BaseValue { get; set; }
 
 	/// <summary>
 	///     The amount of items in this stack
@@ -42,7 +47,7 @@ public interface IItemStack
 	/// <summary>
 	///     The maximum amount of items in this stack
 	/// </summary>
-	int MaxStackSize { get; }
+	int MaxStackSize { get; set; }
 
 	// /// <summary>
 	// /// The components of the item
@@ -55,7 +60,10 @@ public interface IItemStack
 	/// <typeparam name="T">Component type</typeparam>
 	/// <returns>Component of the specified type</returns>
 	T GetComponent<T>()
-		where T : class, IComponent;
+		where T : AComponent;
+	
+	T GetComponent<T>(T component)
+		where T : AComponent => GetComponent<T>();
 
 	/// <summary>
 	///     Adds a component to the item
@@ -63,7 +71,7 @@ public interface IItemStack
 	/// <param name="component">A component</param>
 	/// <typeparam name="T">Component type</typeparam>
 	void AddComponent<T>(T component)
-		where T : class, IComponent;
+		where T : AComponent;
 
 	/// <summary>
 	///     Removes a component from the item
@@ -71,7 +79,7 @@ public interface IItemStack
 	/// <typeparam name="T">Component type</typeparam>
 	/// <returns>Removed component</returns>
 	T RemoveComponent<T>()
-		where T : class, IComponent;
+		where T : AComponent;
 
 	/// <summary>
 	///     Returns whether two item stacks are similar

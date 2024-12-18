@@ -17,7 +17,7 @@ public partial class ClockUi : Control
 		_timeLabel = GetNode<Label>("%TimeLabel");
 		_arrow = GetNode<TextureRect>("%Arrow");
 
-		TimeController.Instance.TimeTick += SetDaytime;
+		TimeController.Instance.MinuteTicked += SetDaytime;
 	}
 
 	private void SetDaytime(int day, int hour, int minute)
