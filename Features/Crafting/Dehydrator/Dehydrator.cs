@@ -95,6 +95,11 @@ public partial class Dehydrator : ICraftingStation
 
 	private ItemStack ModifyItemComponent(ItemStack item)
 	{
-		return _dryingRecipe.CraftResult(new List<ItemStack> { item });;
+		var result = _dryingRecipe.CraftResult(new List<ItemStack> { item });
+		result.Id += "_dried";
+		result.Name = $"Dry {result.Name}";
+		result.Description += " It was dried.";
+		_logger.Debug($"Item modified. Resulting item: {result}");
+		return result;
 	}
 }

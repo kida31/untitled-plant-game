@@ -23,9 +23,26 @@ public partial class TestCrafing : Node2D
 	public override void _Ready()
 	{
 		var texture = GD.Load<Texture2D>("res://Assets/OverworldAssets/Plant/DeadPlant.png");
-		_testItem = new ItemStack("item_id", "Dead Plants", texture,
-			"A dead plant", ItemCategory.Plant, 1, 1, 1,
-			components: new Array<AComponent> {new MedicinalComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int> {{Warming, 1}})});
+		var medicine = new MedicinalComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+		{
+			{Warming, 3},
+			{Antibacterial, 2}
+		});
+		_testItem = new ItemStack(
+			id: "TestDummy",
+			name: "Dead Plant",
+			description: "A plant that died due to your carelessness.",
+			icon: texture,
+			category: ItemCategory.Plant,
+			baseValue: 1,
+			maxStackSize: 1,
+			amount: 1,
+			components: new Array<AComponent>()
+			{
+				new PlantComponent(),
+				medicine
+			}
+		);
 		_dehydrator = new Dehydrator();
 		_index = -1;
 		
