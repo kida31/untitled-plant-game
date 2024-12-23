@@ -1,8 +1,13 @@
 using Godot;
 using System;
+using Godot.Collections;
 using untitledplantgame.Common;
 using untitledplantgame.Crafting;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
+using untitledplantgame.Item.Components;
+using untitledplantgame.Medicine;
+using static untitledplantgame.Medicine.MedicinalEffect;
 
 public partial class TestCrafing : Node2D
 {
@@ -19,7 +24,8 @@ public partial class TestCrafing : Node2D
 	{
 		var texture = GD.Load<Texture2D>("res://Assets/OverworldAssets/Plant/DeadPlant.png");
 		_testItem = new ItemStack("item_id", "Dead Plants", texture,
-			"A dead plant", ItemCategory.Plant, 1, 1);
+			"A dead plant", ItemCategory.Plant, 1, 1, 1,
+			components: new Array<AComponent> {new MedicinalComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int> {{Warming, 1}})});
 		_dehydrator = new Dehydrator();
 		_index = -1;
 		

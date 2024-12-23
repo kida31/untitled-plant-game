@@ -197,59 +197,11 @@ public class ItemDatabase
 	{
 		return new List<Recipe>
 		{
-			new(new List<IIngredient> { new ComponentList { new Plant() } },
+			new(new List<IIngredient> { new ComponentList { new PlantComponent() } },
 				new ComponentList(),
-				new ComponentList{new Plant()},
+				new ComponentList{new PlantComponent()},
 				Recipe.CraftingType.Drying
-			),
-			// Generic: Turns single "Leaf" into "DriedLeaf"
-			// Note for Testing: Doesn't work with Sunflower!
-			new(
-				new List<IIngredient> { new ComponentList { new Leaf() } },
-				new ComponentList { new Dried() },
-				new ComponentList { new Leaf() },
-				Recipe.CraftingType.Drying
-			),
-			// Generic; Turns an item with an "Oil" and an item with an "Antioxidant" component into a normal item containing both.
-			// Note for Testing: Just to show that we mix both components together without removing or changing anything.
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Oil() },
-					new ComponentList { new Oil() },
-					new ItemId("Sunflower"),
-					new ComponentList { new Antioxidant() },
-				},
-				null,
-				null,
-				Recipe.CraftingType.Brewing
-			),
-			// Generic; Showcase of filtering for itemNames
-			// Note for Testing: Searching for string and component!
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Basil() },
-					new ItemId("MintLeaf"),
-				},
-				null,
-				null,
-				Recipe.CraftingType.Cooking
-			),
-			// Generic; Showcase dynamic nature of Recipes
-			// Note for Testing: TACTICAL NUKE INCOMING. ÜÜEHH-ÜÜEHH-ÜÜEHH
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Basil() },
-					new ComponentList { new Lavender() },
-					new ComponentList { new Mint() },
-					new ComponentList { new Rose() },
-					new ComponentList { new Sunflower() },
-				},
-				CreateItemStack("GameEndingNuke"),
-				Recipe.CraftingType.Unspecified
-			),
+			)
 		};
 	}
 
@@ -273,82 +225,6 @@ public class ItemDatabase
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "BasilLeaf" },
 			},
-			new()
-			{
-				Id = "BasilLeaf",
-				Name = "Basil",
-				Description = "Basil Basil Basil Basil Basil",
-				Category = ItemCategory.Plant,
-				MaxStackSize = 64,
-				BaseValue = 5,
-				Amount = 1,
-				Components = new Array<AComponent> { new Basil(), new Leaf(), new Spice() },
-				RelatedItemIds = new Array<string> { "chuuberry" },
-			},
-			new(
-				"BasilLeaf",
-				"Basil",
-				null,
-				"Basil Basil Basil Basil Basil",
-				ItemCategory.Plant,
-				baseValue: 5,
-				components: new Array<AComponent> { new Basil(), new Leaf(), new Spice() }
-			),
-			new(
-				"LavenderLeaf",
-				"Lavender",
-				null,
-				"Lavender Lavender Lavender Lavender Lavender",
-				ItemCategory.Plant,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent> { new Lavender(), new Leaf(), new Sweet() }
-			),
-			new(
-				"MintLeaf",
-				"Mint",
-				null,
-				"Mint Mint Mint Mint Mint",
-				ItemCategory.Plant,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent> { new Mint(), new Leaf(), new Antioxidant() }
-			),
-			new(
-				"RoseLeaf",
-				"Rose",
-				null,
-				"Rose Rose Rose Rose Rose",
-				ItemCategory.Plant,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent> { new Rose(), new Leaf(), new Decoration() }
-			),
-			new(
-				"Sunflower",
-				"Sunflower",
-				null,
-				"Sunflower Sunflower Sunflower Sunflower Sunflower",
-				ItemCategory.Plant,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent> { new Sunflower(), new Oil() }
-			),
-			new(
-				"GameEndingNuke",
-				"Nuke",
-				null,
-				"Unlocks after a 30 kill gun streak and- wait, this isn't Call of Duty...?!",
-				ItemCategory.Material,
-				baseValue: 30,
-				maxStackSize: 1,
-				amount: 1,
-				components: new Array<AComponent> { new Nuke() }
-			),
 			//----------------------------------------------------------------------------------------------------------------------------//
 
 			new(
