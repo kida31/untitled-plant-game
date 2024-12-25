@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ikmkfkp11t0t"]
 
-[ext_resource type="Script" path="res://Features/GUI/FocusIndicator.cs" id="1_63p0k"]
+[ext_resource type="Script" path="res://Features/GUI/UIFocusIcon.cs" id="1_7c43y"]
 [ext_resource type="Texture2D" uid="uid://del57edaadvpk" path="res://Assets/UI/BookUI/ItemSelectorLeft.png" id="1_138p4"]
 [ext_resource type="Texture2D" uid="uid://ixhi2w1do3cd" path="res://Assets/UI/BookUI/ItemSelectorRight.png" id="2_8l33a"]
 [ext_resource type="Script" path="res://Features/GUI/Hooks/CopySizeHook.cs" id="3_hntjl"]
@@ -9,7 +9,7 @@
 [node name="FocusIndicator" type="Control" node_paths=PackedStringArray("_sizeHook", "_followHook")]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_63p0k")
+script = ExtResource("1_7c43y")
 _sizeHook = NodePath("TopLevelAnchor/LocalDiv/CopySizeHook")
 _followHook = NodePath("TopLevelAnchor/FollowHook")
 

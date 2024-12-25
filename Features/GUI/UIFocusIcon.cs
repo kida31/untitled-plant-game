@@ -9,7 +9,7 @@ namespace untitledplantgame.GUI;
 /// <summary>
 /// This is the visual indicator that follows the player's current selection/focus on GUI (in the book in particular)
 /// </summary>
-public partial class FocusIndicator : Control
+public partial class UIFocusIcon : Control
 {
 	[ExportCategory("Hooks")] [Export] private CopySizeHook _sizeHook;
 	[Export] private FollowControlHook _followHook;
@@ -29,7 +29,7 @@ public partial class FocusIndicator : Control
 
 	public override void _Process(double delta)
 	{
-		if (_focusedControl == null || !_focusedControl.HasFocus())
+		if (_focusedControl == null || !_focusedControl.HasFocus() ||!_focusedControl.Visible)
 		{
 			Modulate = new Color(Modulate) {A = 0f};
 		}
