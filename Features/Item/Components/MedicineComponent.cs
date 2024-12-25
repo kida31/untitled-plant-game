@@ -16,8 +16,12 @@ public partial class MedicineComponent : AComponent
 		TheGoodStuff = theGoodStuff;
 		TheBadStuff = theBadStuff;
 	}
-	
-	//used for processing 
+
+	public MedicineComponent()
+	{
+	}
+
+	//I want this logic for processing plants by themselves
 	public override AComponent Combine(AComponent otherComponent)
 	{
 		if (otherComponent is not MedicineComponent component)
@@ -56,7 +60,7 @@ public partial class MedicineComponent : AComponent
 		return this;
 	}
 
-	//used for mixing several plants
+	//I want this logic for when I mix several plants together
 	public MedicineComponent Mix(MedicineComponent component)
 	{
 		var newGoodStuff = new Dictionary<MedicinalEffect, int>(TheGoodStuff);
@@ -79,6 +83,11 @@ public partial class MedicineComponent : AComponent
 		}
 
 		return new MedicineComponent(newGoodStuff, newBadStuff);
+	}
+	
+	public bool isEmpty()
+	{
+		return TheGoodStuff.Count == 0 && TheBadStuff.Count == 0;
 	}
 
 	public override bool Equals(AComponent other)

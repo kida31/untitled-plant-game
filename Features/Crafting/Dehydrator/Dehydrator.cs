@@ -106,17 +106,16 @@ public partial class Dehydrator : ICraftingStation
 	private void OnCraftTimeOut(CraftingSlot slot)
 	{
 		var item = slot.ItemStack;
-		slot.ItemStack = ModifyItemComponent(item);
+		slot.ItemStack = ModifyItem(item);
 	}
 
-	private ItemStack ModifyItemComponent(ItemStack item)
+	private ItemStack ModifyItem(ItemStack item)
 	{
 		//var result = _dryingRecipe.CraftResult(new List<ItemStack> { item });
-		var result = (ItemStack)item.Clone();
+		var result = ModifyComponent(item);
+		
 		result.AddComponent(new DriedComponent());
 		result.RemoveComponent<PlantComponent>();
-
-		ModifyComponent(result, _medicineComponent);
 
 		result.Id += "_dried";
 		result.Name = $"Dry {result.Name}";
@@ -126,21 +125,29 @@ public partial class Dehydrator : ICraftingStation
 		return result;
 	}
 
-	private void ModifyComponent<T>(ItemStack item, T component) where T : AComponent
+	private ItemStack ModifyComponent(ItemStack item)
 	{
-		var comp = item.GetComponent<T>();
-		if (comp == null) return;
+		var comp = item.GetComponent<MedicineComponent>();
+		if (comp == null) return item;
 
-		var combinedComp = comp.Combine(component);
-		
-		if (combinedComp is MedicineComponent medicinalComponent && medicinalComponent.TheGoodStuff.Count == 0)
+		foreach (var (effect, value) in _medicineComponent.TheGoodStuff)
 		{
-			item.RemoveComponent<MedicineComponent>();
-			return;
+			if (!comp.TheGoodStuff.ContainsKey(effect))
+			{
+				comp.TheGoodStuff[effect] += value;
+			}
+		}
+		foreach (var (effect, value) in _medicineComponent.TheBadStuff)
+		{
+			if (!comp.TheBadStuff.ContainsKey(effect))
+			{
+				comp.TheBadStuff[effect] += value;
+			}
 		}
 		
 
-		item.RemoveComponent<T>();
-		item.AddComponent(combinedComp);
+		item.RemoveComponent<MedicineComponent>();
+		item.AddComponent(comp);
+		return item;
 	}
 }
