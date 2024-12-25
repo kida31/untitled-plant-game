@@ -197,54 +197,21 @@ public class ItemDatabase
 	{
 		return new List<Recipe>
 		{
-			// Generic: Turns single "Leaf" into "DriedLeaf"
-			// Note for Testing: Doesn't work with Sunflower!
 			new(
-				new List<IIngredient> { new ComponentList { new Leaf() } },
-				new ComponentList { new DriedLeaf() },
-				new ComponentList { new Leaf() },
-				Recipe.CraftingType.Drying
-			),
-			// Generic; Turns an item with an "Oil" and an item with an "Antioxidant" component into a normal item containing both.
-			// Note for Testing: Just to show that we mix both components together without removing or changing anything.
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Oil() },
-					new ComponentList { new Oil() },
-					new ItemId("Sunflower"),
-					new ComponentList { new Antioxidant() },
-				},
+				new List<IIngredient> { new ItemId("BasilLeaf") },
 				null,
-				null,
-				Recipe.CraftingType.Brewing
-			),
-			// Generic; Showcase of filtering for itemNames
-			// Note for Testing: Searching for string and component!
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Basil() },
-					new ItemId("MintLeaf"),
-				},
-				null,
-				null,
-				Recipe.CraftingType.Cooking
-			),
-			// Generic; Showcase dynamic nature of Recipes
-			// Note for Testing: TACTICAL NUKE INCOMING. ÜÜEHH-ÜÜEHH-ÜÜEHH
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Basil() },
-					new ComponentList { new Lavender() },
-					new ComponentList { new Mint() },
-					new ComponentList { new Rose() },
-					new ComponentList { new Sunflower() },
-				},
-				CreateItemStack("GameEndingNuke"),
+				new ComponentList { new Nuke() },
 				Recipe.CraftingType.Unspecified
 			),
+			new(
+				new List<IIngredient> { new ItemId("coal"), new ItemId("stick") },
+				new ItemStack
+				{
+					Id = "torch",
+					Name = "Torch",
+					Category = ItemCategory.Material,
+				}
+			)
 		};
 	}
 
@@ -268,336 +235,19 @@ public class ItemDatabase
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "BasilLeaf" },
 			},
-			new(
-				"firstItem",
-				"theBestItem",
-				null,
-				"It's the first time.",
-				ItemCategory.Medicine,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"secondItem",
-				"oakSapling",
-				null,
-				"A young oak tree ready to be planted.",
-				ItemCategory.Medicine,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"thirdItem",
-				"pineCone",
-				null,
-				"A pine cone that might grow into a tree.",
-				ItemCategory.Medicine,
-				baseValue: 3,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"fourthItem",
-				"healingHerb",
-				null,
-				"A small herb known for its healing properties.",
-				ItemCategory.Medicine,
-				baseValue: 10,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"fifthItem",
-				"aloeLeaf",
-				null,
-				"A leaf with soothing gel inside.",
-				ItemCategory.Medicine,
-				baseValue: 15,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"sixthItem",
-				"lavender",
-				null,
-				"A fragrant plant used in remedies.",
-				ItemCategory.Medicine,
-				baseValue: 8,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"seventhItem",
-				"cactusFruit",
-				null,
-				"A fruit from a desert cactus.",
-				ItemCategory.Medicine,
-				baseValue: 6,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"eighthItem",
-				"bamboo",
-				null,
-				"A tall, fast-growing plant.",
-				ItemCategory.Medicine,
-				baseValue: 7,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"ninthItem",
-				"coalOre",
-				null,
-				"A chunk of coal ore.",
-				ItemCategory.Material,
-				baseValue: 20,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"tenthItem",
-				"ironOre",
-				null,
-				"A chunk of iron ore.",
-				ItemCategory.Material,
-				baseValue: 25,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"eleventhItem",
-				"clayLump",
-				null,
-				"A lump of soft, malleable clay.",
-				ItemCategory.Material,
-				baseValue: 12,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twelfthItem",
-				"saltRock",
-				null,
-				"A rock containing crystallized salt.",
-				ItemCategory.Material,
-				baseValue: 10,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"thirteenthItem",
-				"spiderSilk",
-				null,
-				"Silky thread harvested from spiders.",
-				ItemCategory.Material,
-				baseValue: 18,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"fourteenthItem",
-				"healingRoot",
-				null,
-				"A root with medicinal properties.",
-				ItemCategory.Medicine,
-				baseValue: 20,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"fifteenthItem",
-				"gingerRoot",
-				null,
-				"A spicy root used for healing and cooking.",
-				ItemCategory.Medicine,
-				baseValue: 15,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"sixteenthItem",
-				"peppermintLeaf",
-				null,
-				"A refreshing leaf with healing properties.",
-				ItemCategory.Medicine,
-				baseValue: 12,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"seventeenthItem",
-				"ashWood",
-				null,
-				"Wood from an ash tree, useful for crafting.",
-				ItemCategory.Material,
-				baseValue: 14,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"eighteenthItem",
-				"stoneBlock",
-				null,
-				"A basic stone block for building.",
-				ItemCategory.Material,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"nineteenthItem",
-				"wheatPlant",
-				null,
-				"A fully grown wheat plant.",
-				ItemCategory.Medicine,
-				baseValue: 8,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentiethItem",
-				"carrot",
-				null,
-				"A nutritious root vegetable.",
-				ItemCategory.Medicine,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyFirstItem",
-				"potato",
-				null,
-				"A starchy plant for cooking.",
-				ItemCategory.Medicine,
-				baseValue: 4,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentySecondItem",
-				"goldNugget",
-				null,
-				"A small piece of unrefined gold.",
-				ItemCategory.Material,
-				baseValue: 50,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyThirdItem",
-				"silverOre",
-				null,
-				"A chunk of silver ore.",
-				ItemCategory.Material,
-				baseValue: 40,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyFourthItem",
-				"oakLeaf",
-				null,
-				"A fresh leaf from an oak tree.",
-				ItemCategory.Medicine,
-				baseValue: 3,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyFifthItem",
-				"rosePetal",
-				null,
-				"A petal from a beautiful rose.",
-				ItemCategory.Medicine,
-				baseValue: 6,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentySixthItem",
-				"mushroom",
-				null,
-				"An edible mushroom found in the forest.",
-				ItemCategory.Medicine,
-				baseValue: 7,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentySeventhItem",
-				"clover",
-				null,
-				"A lucky four-leaf clover.",
-				ItemCategory.Medicine,
-				baseValue: 20,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyEighthItem",
-				"amberChunk",
-				null,
-				"A fossilized piece of tree resin.",
-				ItemCategory.Material,
-				baseValue: 30,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyNinthItem",
-				"dandelion",
-				null,
-				"A common yellow flower.",
-				ItemCategory.Medicine,
-				baseValue: 2,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"thirtiethItem",
-				"charcoal",
-				null,
-				"A lightweight material for fuel.",
-				ItemCategory.Material,
-				baseValue: 10,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
+			new()
+			{
+				Id = "Chuberry_Seed",
+				Name = "Chuberry Seed",
+				Description = "Seed that will produce a Chuberry plant.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
+				Category = ItemCategory.Seed,
+				BaseValue = 5,
+				Components = new Array<AComponent>
+				{
+					new SeedComponent("Chuberry"),
+				}
+			}
 		};
 	}
 	//------------------------------------------------------------------------------------------------------------------------------------//

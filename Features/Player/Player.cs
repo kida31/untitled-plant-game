@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.Database;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 using untitledplantgame.Tools;
 
 namespace untitledplantgame.Player;
@@ -27,9 +30,9 @@ public partial class Player : CharacterBody2D
 	private Vector2 _frontDirection = Vector2.Down; // The direction the player is facing.
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
-	private BigInventory _inventory = new BigInventory(16);
+	private BigInventory _inventory = new(16);
 
-	private Toolbelt _toolbelt = new Toolbelt(
+	private Toolbelt _toolbelt = new (
 		new Tool[]
 		{
 			new Shears(8, 16),
@@ -44,6 +47,8 @@ public partial class Player : CharacterBody2D
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_stateMachine.Initialize(this);
+		var items = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>{new SeedComponent()}); // This is a test
+		_inventory.AddItem(items[0]);
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

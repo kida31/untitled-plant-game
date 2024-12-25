@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
+using untitledplantgame.Plants.Models;
 using untitledplantgame.Plants.Soil;
 
 namespace untitledplantgame.Plants;
@@ -38,9 +39,21 @@ public partial class APlant : StaticBody2D
 	public override void _Ready()
 	{
 		_logger = new Logger(PlantName);
-		_logger.Debug($"Plant {PlantName} has been planted.");
 		AddToGroup(GameGroup.Plants);
 		_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		SetRequirements();
+	}
+
+	public APlant(PlantData plantData)
+	{
+		_logger = new Logger(PlantName);
+		PlantName = plantData.PlantName;
+		AddToGroup(GameGroup.Plants);
+
+		var sprite = new AnimatedSprite2D();
+		AddChild(sprite);
+		_sprite2D = sprite;
+
 		SetRequirements();
 	}
 
@@ -111,10 +124,10 @@ public partial class APlant : StaticBody2D
 	private void SetRequirements()
 	{
 		_logger.Debug($"Setting requirements for plant {PlantName}.");
-		
+
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
 		var plantRequirements = new Dictionary<string, Requirement>();
-		
+
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
@@ -126,7 +139,7 @@ public partial class APlant : StaticBody2D
 		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
 		_absorptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].AbsorptionRate;
 		_consumptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].ConsumptionRate;
-		
+
 		_currentDay = 0;
 		_currentRequirements = plantRequirements;
 		PlantName = plantData.PlantName;

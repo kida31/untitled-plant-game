@@ -1,7 +1,8 @@
-using System;
+using System.Diagnostics;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 using untitledplantgame.Plants;
 using untitledplantgame.Plants.Soil;
@@ -25,13 +26,16 @@ public class SeedBag : Tool
 		var inventory = user.Inventory.GetInventory(ItemCategory.Seed);
 		var items = inventory.GetItems();
 		CurrentSeedItem = items.FirstOrDefault(it => it != null);
+
+		Debug.Assert(CurrentSeedItem != null, nameof(CurrentSeedItem) + " != null");
 		
 		if (CurrentSeedItem.Category != ItemCategory.Seed)
 		{
-			_logger.Error("There should only be plants in the seed bag");
+			_logger.Error("There should only be seeds in the seed bag");
 		}
 		
-		//_currentPlant = PlantDatabase.Instance.GetResourceByName(CurrentSeedItem.Name).CreatePlant();
+		var plantData = PlantDatabase.Instance.GetResourceByName(CurrentSeedItem.Components.OfType<SeedComponent>().First().PlantName);
+		_currentPlant = new APlant(plantData);
 	}
 
 	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
@@ -48,7 +52,10 @@ public class SeedBag : Tool
 		}
 		
 		_currentPlant.PlantOnTile(closestTile);
+		closestTile.AddChild(_currentPlant);
+		
 		_logger.Debug($"Planted seed of {_currentPlant.PlantName} on tile");
+		
 		return true;
 	}
 

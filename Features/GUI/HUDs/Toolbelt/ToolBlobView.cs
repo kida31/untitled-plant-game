@@ -26,6 +26,7 @@ public partial class ToolBlobView : MarginContainer
 	[Export] private Texture2D _wateringCanIcon;
 	[Export] private Texture2D _shovelIcon;
 	[Export] private Texture2D _shearsIcon;
+	[Export] private Texture2D _seedBagIcon;
 
 	public Tool Tool {
 		get => _tool;
@@ -37,8 +38,9 @@ public partial class ToolBlobView : MarginContainer
 				// Placeholder
 				WateringCan => _wateringCanIcon,
 				Shears => _shearsIcon,
+				SeedBag => _seedBagIcon,
 				null => null,
-				_ => _shovelIcon
+				_ => _shovelIcon,
 			};
 		}
 	}
