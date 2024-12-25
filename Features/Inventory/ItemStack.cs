@@ -89,6 +89,7 @@ public partial class ItemStack : Resource, IItemStack
 	public void AddComponent<T>(T component)
 		where T : AComponent
 	{
+		_logger.Debug($"Adding component <{typeof(T).Name}: " + component);
 		if (GetComponent<T>() is not null)
 		{
 			_logger.Warn("Component should only exist once");

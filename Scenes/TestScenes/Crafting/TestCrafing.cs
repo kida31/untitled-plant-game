@@ -8,6 +8,7 @@ using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
 using untitledplantgame.Medicine;
 using static untitledplantgame.Medicine.MedicinalEffect;
+using MedicineComponent = untitledplantgame.Item.Components.MedicineComponent;
 
 public partial class TestCrafing : Node2D
 {
@@ -23,11 +24,16 @@ public partial class TestCrafing : Node2D
 	public override void _Ready()
 	{
 		var texture = GD.Load<Texture2D>("res://Assets/OverworldAssets/Plant/DeadPlant.png");
-		var medicine = new MedicinalComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
-		{
-			{Warming, 3},
-			{Antibacterial, 2}
-		});
+		var medicine = new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+			{
+				{ Warming, 3 },
+				{ Antibacterial, 2 }
+			},
+			new System.Collections.Generic.Dictionary<IllnessEffect, int>
+			{
+				{ IllnessEffect.Indigestion, 3 }
+			}
+		);
 		_testItem = new ItemStack(
 			id: "TestDummy",
 			name: "Dead Plant",
@@ -45,7 +51,7 @@ public partial class TestCrafing : Node2D
 		);
 		_dehydrator = new Dehydrator();
 		_index = -1;
-		
+
 		_openDehydratorButton.Pressed += OpenDehydrator;
 		_addItemButton.Pressed += AddItem;
 		_removeItemButton.Pressed += RemoveItem;
@@ -58,7 +64,7 @@ public partial class TestCrafing : Node2D
 
 	private void RemoveItem()
 	{
-		if(_index < 0) return;
+		if (_index < 0) return;
 		_dehydrator.RemoveItemFromSlot(_index);
 		_index--;
 	}
@@ -66,8 +72,8 @@ public partial class TestCrafing : Node2D
 	private void AddItem()
 	{
 		_index = Math.Min(++_index, _dehydrator.CraftingSlots.Length);
-		
-		if(_index >= _dehydrator.CraftingSlots.Length) return;
+
+		if (_index >= _dehydrator.CraftingSlots.Length) return;
 		_dehydrator.InsertItemToSlot(_testItem, _index);
 	}
 

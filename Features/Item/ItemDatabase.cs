@@ -10,6 +10,7 @@ using untitledplantgame.Inventory;
 using untitledplantgame.Item.Components;
 using untitledplantgame.Medicine;
 using untitledplantgame.Plants;
+using MedicineComponent = untitledplantgame.Item.Components.MedicineComponent;
 
 namespace untitledplantgame.Item;
 
@@ -196,21 +197,7 @@ public class ItemDatabase
 	 */
 	private List<Recipe> FillDataBaseRecipeList()
 	{
-		return new List<Recipe>
-		{
-			new(new List<IIngredient> { new ComponentList { new PlantComponent() } },
-				new ComponentList
-				{
-					new DriedComponent(),
-					new MedicinalComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
-					{
-						{ MedicinalEffect.Warming, 2 },
-					})
-				},
-				new ComponentList { new PlantComponent() },
-				Recipe.CraftingType.Drying
-			)
-		};
+		return new List<Recipe>();
 	}
 
 	/*

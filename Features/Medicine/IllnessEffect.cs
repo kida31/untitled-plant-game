@@ -1,6 +1,6 @@
 ﻿namespace untitledplantgame.Medicine;
 
-public enum Illness
+public enum IllnessEffect
 {
 	Diarrhea,
 	Nausea,
