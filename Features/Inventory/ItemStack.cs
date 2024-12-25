@@ -2,7 +2,6 @@
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Common;
-using untitledplantgame.Database;
 using untitledplantgame.Item;
 
 namespace untitledplantgame.Inventory;
@@ -34,7 +33,7 @@ public partial class ItemStack : Resource, IItemStack
 		{
 			return _category switch
 			{
-				"Plant" => ItemCategory.Plant,
+				"Plant" => ItemCategory.Seed,
 				"Material" => ItemCategory.Material,
 				"Medicine" => ItemCategory.Medicine,
 				_ => null
