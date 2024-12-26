@@ -17,11 +17,14 @@ public partial class InventoryView : Control
 
 	private List<InventoryItemView> _inventoryItemViews;
 
+	private Dictionary<InventoryItemView, Action> _itemViewPressedActions = new();
+
 	public override void _Ready()
 	{
-		
+
 		_inventoryItemViews = _inventoryItemViewContainer.GetChildren().OfType<InventoryItemView>().ToList();
-		_inventoryItemViews.ForEach(iv => {
+		_inventoryItemViews.ForEach(iv =>
+		{
 			iv.FocusEntered += () => OnItemViewFocused(iv);
 		});
 		_itemNameLabel.Text = "";
@@ -30,22 +33,42 @@ public partial class InventoryView : Control
 	public void UpdateInventory(IInventory inventory)
 	{
 		_inventoryItemViews = _inventoryItemViewContainer.GetChildren().OfType<InventoryItemView>().ToList();
-		
+
 		var items = inventory.GetItems();
 		FillTabWithEmptyInventoryItemViews(items.Count);
-		
+
 		// Populate content of the item views
 		for (int i = 0; i < _inventoryItemViews.Count; i++)
 		{
 			var view = _inventoryItemViews[i];
 			view.UpdateItemView(i < items.Count ? items[i] : null);
+
+			// Update actions
+			if (_itemViewPressedActions.ContainsKey(view))
+			{
+				view.Pressed -= _itemViewPressedActions[view];
+			}
+
+			if (i < items.Count)
+			{
+				var curratedIndex = i;
+				void PressedHandler()
+				{
+					// GD.Print($"Handle click on {inventory.Name}[{curratedIndex}/{i}]");
+					CursorInventory.Instance.HandleClick(inventory, curratedIndex);
+				}
+
+				_itemViewPressedActions[view] = PressedHandler;
+				view.Pressed += PressedHandler;
+			}
 		}
 
 		// I dont know where to place this
-		
+
 		// Update item label depending on currently focused item view
 		var owner = GetViewport().GuiGetFocusOwner();
-		if (owner is InventoryItemView itemView) {
+		if (owner is InventoryItemView itemView)
+		{
 			OnItemViewFocused(itemView);
 		}
 	}
@@ -58,7 +81,7 @@ public partial class InventoryView : Control
 	{
 		Assert.AssertTrue(_inventoryItemViews.Count == _inventoryItemViewContainer.GetChildCount(),
 			"Tracked nodes and children of container should be same");
-		
+
 		while (_inventoryItemViews.Count > newCount)
 		{
 			var itemView = _inventoryItemViews[0];
@@ -75,7 +98,8 @@ public partial class InventoryView : Control
 		}
 	}
 
-	private void OnItemViewFocused(InventoryItemView itemView) {
+	private void OnItemViewFocused(InventoryItemView itemView)
+	{
 		_itemNameLabel.Text = itemView.ItemStack?.Name ?? "";
 		// GD.Print("Focused" + itemView.Name);
 	}

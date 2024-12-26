@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://qruua750qmw4"]
+
+[ext_resource type="Script" path="res://Scenes/CursorHandView.cs" id="1_1sskf"]
+[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="2_xsb25"]
+
+[node name="CursorHand" type="Control" node_paths=PackedStringArray("_itemView")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 56.0
+script = ExtResource("1_1sskf")
+_itemView = NodePath("ItemView")
+
+[node name="ItemView" parent="." instance=ExtResource("2_xsb25")]
+layout_mode = 0

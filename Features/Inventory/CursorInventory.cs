@@ -108,11 +108,11 @@ interface ICursorInventory
 }
 
 [Singleton]
-public class CursorHand : ICursorInventory
+public class CursorInventory : ICursorInventory
 {
 	// Singleton (keep this at the top)
-	private static readonly Lazy<CursorHand> LazySingleton = new(() => new CursorHand());
-	public static CursorHand Instance => LazySingleton.Value;
+	private static readonly Lazy<CursorInventory> LazySingleton = new(() => new CursorInventory());
+	public static CursorInventory Instance => LazySingleton.Value;
 	public event Action ContentChanged;
 	public event Action<IItemStack> ItemOrphaned;
 
@@ -124,7 +124,7 @@ public class CursorHand : ICursorInventory
 	private IInventory _pickupOrigin;
 	private int _pickupOriginIndex;
 
-	private CursorHand()
+	private CursorInventory()
 	{
 		_logger = new("Cursor");
 		_pickupOrigin = null;
@@ -191,6 +191,7 @@ public class CursorHand : ICursorInventory
 		_content = item;
 		_pickupOrigin = inventory;
 		_pickupOriginIndex = itemIndex;
+		ContentChanged?.Invoke();
 	}
 
 
@@ -218,6 +219,7 @@ public class CursorHand : ICursorInventory
 	public void Stack(IInventory inventory, int itemIndex)
 	{
 		_content = inventory.AddItemToSlot(itemIndex, _content);
+		ContentChanged?.Invoke();
 	}
 
 	public bool CanSwap(IInventory inventory, int itemIndex)
@@ -247,6 +249,7 @@ public class CursorHand : ICursorInventory
 
 		_content = item;
 		_logger.Info("Swapped item");
+		ContentChanged?.Invoke();
 	}
 
 	public void ReturnPickUp()
@@ -288,5 +291,6 @@ public class CursorHand : ICursorInventory
 		_content = null;
 		_pickupOrigin = null;
 		_pickupOriginIndex = -1;
+		ContentChanged?.Invoke();
 	}
 }

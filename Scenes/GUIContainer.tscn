@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=11 format=3 uid="uid://3ndp3em1fi7h"]
 
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/VendingMachine/UI/vending_machine_ui.tscn" id="1_iuaq5"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Book/UIFocusIcon.tscn" id="1_mtau6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c55xp0xg83mt1" path="res://Features/GUI/HUDs/HUD.tscn" id="5_gr4nr"]
 [ext_resource type="PackedScene" uid="uid://cca7okqb2j4c7" path="res://Features/GUI/Book/BookView.tscn" id="5_sy5d4"]
 [ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="8_v5g76"]
+[ext_resource type="PackedScene" uid="uid://qruua750qmw4" path="res://Features/GUI/CursorHandView.tscn" id="8_xb22b"]
 [ext_resource type="Script" path="res://Features/GUI/GlobalTooltip.cs" id="9_7jd3l"]
 
 [node name="GUIContainer" type="CanvasLayer"]
@@ -40,11 +41,15 @@ visible = false
 [node name="UIFocus" parent="." instance=ExtResource("1_mtau6")]
 visible = false
 
+[node name="CursorHand" parent="." instance=ExtResource("8_xb22b")]
+
 [node name="GlobalTooltip" parent="." instance=ExtResource("8_v5g76")]
 custom_minimum_size = Vector2(96, 32)
-offset_right = 96.0
-offset_bottom = 56.0
+offset_left = 298.0
+offset_top = 180.0
+offset_right = 394.0
+offset_bottom = 236.0
 script = ExtResource("9_7jd3l")
-_modulateLerpFactor = 10.0
+_fadeInSpeed = 1.0
 _delay = 0.3
 _offset = Vector2(0, 0)

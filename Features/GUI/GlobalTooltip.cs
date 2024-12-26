@@ -41,15 +41,26 @@ public partial class GlobalTooltip : TooltipView
 
 	public override void _Process(double delta)
 	{
-		if (_target != null && _target.HasFocus() && _target.IsVisibleInTree() && HasContent) {
+		var targetIsValid = _target != null &&
+			_target.HasFocus() &&
+			_target.IsVisibleInTree();
+		var noOtherGuiActive = CursorInventory.Instance?.Content == null;
+		if (
+			targetIsValid &&
+			HasContent &&
+			noOtherGuiActive
+		)
+		{
 			// Set position
 			var rect = _target.GetGlobalRect();
 			var center = rect.Position + rect.Size / 2;
 			GlobalPosition = center + _offset;
 
-			Modulate = Modulate.Lerp(new Color(Modulate) { A = 1 }, (float) delta * _fadeInSpeed);
+			Modulate = Modulate.Lerp(new Color(Modulate) { A = 1 }, (float)delta * _fadeInSpeed);
 			Show();
-		} else {
+		}
+		else
+		{
 			Hide();
 		}
 	}
