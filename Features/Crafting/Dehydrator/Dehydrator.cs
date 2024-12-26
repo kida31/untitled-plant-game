@@ -10,12 +10,18 @@ using MedicineComponent = untitledplantgame.Item.Components.MedicineComponent;
 
 namespace untitledplantgame.Crafting;
 
-public partial class Dehydrator : ICraftingStation
+public class Dehydrator : ICraftingStation
 {
 	private const int SlotNumber = 6;
-	private const double CraftingTime = 10;
+	private const double CraftingTime = 60; //TODO: find a good value
 	private const Recipe.CraftingType CraftingType = Recipe.CraftingType.Drying;
-	public event Action<ItemStack[]> RetrieveAllFinishedItemsAction;
+	private const double ValueMultiplier = 4.20; //TODO: find a good value
+	
+	private static readonly ItemStack DriedLeaf = ItemDatabase.Instance.CreateItemStack("dried_leaf");
+	private static readonly ItemStack DriedFlower = ItemDatabase.Instance.CreateItemStack("dried_flower");
+	private static readonly ItemStack DriedFruit = ItemDatabase.Instance.CreateItemStack("dried_fruit");
+	
+	public event Action<ItemStack[]> RetrieveAllFinishedItemsAction; //TODO: add items to inventory
 	public event Action<ItemStack, int> ItemInserted;
 	public event Action<int> ItemRemoved;
 	public CraftingSlot[] CraftingSlots { get; private set; }
@@ -111,15 +117,13 @@ public partial class Dehydrator : ICraftingStation
 
 	private ItemStack ModifyItem(ItemStack item)
 	{
-		//var result = _dryingRecipe.CraftResult(new List<ItemStack> { item });
+		var CraftResult = _dryingRecipe.CraftResult(new List<ItemStack> { item });
 		var result = ModifyComponent(item);
 		
-		result.AddComponent(new DriedComponent());
-		result.RemoveComponent<PlantComponent>();
-
-		result.Id += "_dried";
-		result.Name = $"Dry {result.Name}";
-		result.Description += " It was dried.";
+		result.RemoveComponent<DrieableComponent>();
+		
+		//Get Item Template based on whether it's a Leaf, Flower or Fruit
+		result.BaseValue = (int) Math.Floor(item.BaseValue * ValueMultiplier);
 
 		_logger.Debug($"Item modified. Resulting item: {result}");
 		return result;

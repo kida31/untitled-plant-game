@@ -45,7 +45,7 @@ public partial class TestCrafing : Node2D
 			amount: 1,
 			components: new Array<AComponent>()
 			{
-				new PlantComponent(),
+				new DrieableComponent(),
 				medicine
 			}
 		);

@@ -1,9 +1,9 @@
 ﻿namespace untitledplantgame.Item.Components;
 
-public partial class PlantComponent : AComponent
+public partial class DrieableComponent : AComponent
 {
 
-	public PlantComponent()
+	public DrieableComponent()
 	{
 	}
 

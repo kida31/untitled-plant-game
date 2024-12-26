@@ -73,13 +73,16 @@ public class ItemDatabase
 	/// </summary>
 	/// <param name="itemId"></param>
 	/// <returns></returns>
-	public ItemStack CreateItemStack(string itemId)
+	public ItemStack CreateItemStack(string itemId, int amount = 1)
 	{
 		var item = ItemStacks.FirstOrDefault(itemStack => itemStack.Id == itemId)?.Clone();
 		if (item == null)
 		{
 			_logger.Error("Item with ID: " + itemId + " does not exist in the Database.");
+			return null;
 		}
+
+		item.Amount = amount;
 
 		return item as ItemStack;
 	}
@@ -219,6 +222,45 @@ public class ItemDatabase
 				Category = ItemCategory.Plant,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "BasilLeaf" },
+			},
+			new()
+			{
+				Id = "dried_leaf",
+				Name = "Dried ",
+				Description = "Dried Leaf Template",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Leaf.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				Components = new Array<AComponent>
+				{
+					new DriedComponent(), //change this to tags?
+				}
+			},
+			new()
+			{
+				Id = "dried_flower",
+				Name = "Dried ",
+				Description = "Dried Flower Template",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Flower.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				Components = new Array<AComponent>
+				{
+					new DriedComponent(), //change this to tags?
+				}
+			},
+			new()
+			{
+				Id = "dried_fruit",
+				Name = "Dried ",
+				Description = "Dried Fruit Template",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Fruit.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				Components = new Array<AComponent>
+				{
+					new DriedComponent(), //change this to tags?
+				}
 			},
 			//----------------------------------------------------------------------------------------------------------------------------//
 			new(
