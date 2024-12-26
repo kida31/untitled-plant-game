@@ -1,23 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://5oay11tne1l4"]
+[gd_scene load_steps=5 format=3 uid="uid://5oay11tne1l4"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryTabsView.cs" id="1_trxec"]
 [ext_resource type="PackedScene" uid="uid://c8qlvfu5vslvx" path="res://Features/GUI/Book/Inventories/InventoryView.tscn" id="2_xhhtn"]
 [ext_resource type="PackedScene" uid="uid://caiu3dqnnxl28" path="res://Features/GUI/Book/InventoryCategoryTab.tscn" id="3_jnob4"]
 [ext_resource type="Script" path="res://Features/GUI/Components/HBoxTabContainer.cs" id="4_vsx4l"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16fns"]
-draw_center = false
-
-[node name="Control" type="Control" node_paths=PackedStringArray("_tabContainer", "_tabButtonContainer")]
+[node name="Control" type="Control" node_paths=PackedStringArray("_tabButtonContainer", "_inventoryView")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 237.0
 offset_bottom = 314.0
 script = ExtResource("1_trxec")
-_inventoryViewPrefab = ExtResource("2_xhhtn")
 _inventoryCategoryTabPrefab = ExtResource("3_jnob4")
-_tabContainer = NodePath("InventoryTabsView")
 _tabButtonContainer = NodePath("HBoxContainer")
+_inventoryView = NodePath("InventoryView")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 clip_children = 1
@@ -25,9 +21,9 @@ layout_direction = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0548523
-anchor_top = -0.216561
+anchor_top = -0.200637
 anchor_right = 0.949367
-anchor_bottom = 0.00955414
+anchor_bottom = 0.0254777
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = -6
@@ -67,25 +63,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 Text = "Up"
 
-[node name="InventoryTabsView" type="TabContainer" parent="."]
-layout_mode = 0
-offset_right = 256.0
-offset_bottom = 320.0
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_16fns")
-current_tab = 2
-tabs_visible = false
-
-[node name="Plants" parent="InventoryTabsView" instance=ExtResource("2_xhhtn")]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="Medicine" parent="InventoryTabsView" instance=ExtResource("2_xhhtn")]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="Tab3" parent="InventoryTabsView" instance=ExtResource("2_xhhtn")]
-layout_mode = 2
-metadata/_tab_index = 2
+[node name="InventoryView" parent="." instance=ExtResource("2_xhhtn")]
+layout_mode = 1
+offset_left = -118.5
+offset_top = -157.0
+offset_right = 137.5
+offset_bottom = 163.0

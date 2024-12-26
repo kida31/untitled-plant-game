@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Common;
 using untitledplantgame.Common.Inputs.GameActions;
-using untitledplantgame.Inventory.GUI;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 using untitledplantgame.Inventory.PlayerInventory.Views;
 
@@ -12,19 +11,33 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 
 public partial class InventoryTabsView : Control
 {
-	[Export] private PackedScene _inventoryViewPrefab;
+	public event Action<long> TabChanged;
+	// [Export] private PackedScene _inventoryViewPrefab;
 	[Export] private PackedScene _inventoryCategoryTabPrefab;
 
-	[Export] private TabContainer _tabContainer;
+	// [Export] private TabContainer _tabContainer;
 	[Export] private Container _tabButtonContainer;
+	[Export] private InventoryView _inventoryView;
+
+	private int CurrentTab {
+		get => _currentTab;
+		set {
+			_currentTab = Math.Clamp(value, 0, _inventories.Count);
+			TabChanged?.Invoke(_currentTab);
+		}
+	}
+
+	private int _currentTab = 0;
 
 	// public TabContainer TabContainer => GetNode<TabContainer>("."); // Either this or make this class extend TabContainer
 
 	private InventoryItemView _potentialItemSlot;
 	private List<InventoryCategoryTab> _tabButtons;
-	private List<InventoryView> _tabs;
+	// private List<InventoryView> _tabs;
 
 	private Dictionary<InventoryCategoryTab, Action> _buttonActions = new();
+
+	private List<IInventory> _inventories = new();
 
 	public override void _Ready()
 	{
@@ -34,26 +47,23 @@ public partial class InventoryTabsView : Control
 		EventBus.Instance.OnSetItemSlot += SetPotentialItemSlot;
 		EventBus.Instance.OnGetItemSlot += GetPotentialItemSlot;
 
-		_tabs = _tabContainer.GetChildren().OfType<InventoryView>().ToList();
+		// _tabs = _tabContainer.GetChildren().OfType<InventoryView>().ToList();
 		_tabButtons = _tabButtonContainer.GetChildren().OfType<InventoryCategoryTab>().ToList();
 
-		_tabContainer.TabChanged += OnTabChanged;
-		_tabContainer.CurrentTab = 0;
+		// _tabContainer.CurrentTab = 0;
+		TabChanged += OnTabChanged;
 	}
 
 	private void OnTabChanged(long tab)
 	{
 		int activeIndex = (int) tab;
-		if (activeIndex < 0 || activeIndex >= _tabs.Count)
+		if (activeIndex < 0 || activeIndex >= _inventories.Count)
 		{
-			// log error
 			return;
 		}
 
 		for (var i = 0; i < _tabButtons.Count; i++)
 		{
-			// var s = i == activeIndex ? "active" : "inactive";
-			// GD.Print($"{i} as {s}");
 			var button = _tabButtons[i];
 			button.SetIsActive(i == activeIndex);
 		}
@@ -78,42 +88,40 @@ public partial class InventoryTabsView : Control
 
 	private void PreviousTab(bool wrapAround = true)
 	{
-		var tabContainer = _tabContainer;
 		if (wrapAround)
 		{
-			var nextOrFirstTabIndex = (tabContainer.CurrentTab + 1) % tabContainer.GetChildCount();
-			tabContainer.CurrentTab = nextOrFirstTabIndex;
+			var nextOrFirstTabIndex = (CurrentTab + 1) % _inventories.Count;
+			CurrentTab = nextOrFirstTabIndex;
 		}
 		else
 		{
-			tabContainer.CurrentTab = Math.Max(0, tabContainer.CurrentTab - 1);
+			CurrentTab = Math.Max(0, CurrentTab - 1);
 		}
 	}
 
 	private void NextTab(bool wrapAround = true)
 	{
-		var tabContainer = _tabContainer;
-		var count = tabContainer.GetChildCount();
+		var count = _inventories.Count;
 		if (wrapAround)
 		{
-			tabContainer.CurrentTab = (tabContainer.CurrentTab + count - 1) % count;
+			CurrentTab = (CurrentTab + count - 1) % count;
 		}
 		else
 		{
-			tabContainer.CurrentTab = Mathf.Min(tabContainer.CurrentTab + 1, count - 1);
+			CurrentTab = Mathf.Min(CurrentTab + 1, count - 1);
 		}
 	}
 
 	public void UpdateInventories(List<IInventory> inventories)
 	{
 		// Remove excess tabs and buttons
-		while (_tabs.Count > inventories.Count)
-		{
-			var tabToRemove = _tabs.Last();
-			_tabs.Remove(tabToRemove);
-			_tabContainer.RemoveChild(tabToRemove);
-			tabToRemove.QueueFree();
-		}
+		// while (_tabs.Count > inventories.Count)
+		// {
+		// 	var tabToRemove = _tabs.Last();
+		// 	_tabs.Remove(tabToRemove);
+		// 	_tabContainer.RemoveChild(tabToRemove);
+		// 	tabToRemove.QueueFree();
+		// }
 
 		while (_tabButtons.Count > inventories.Count)
 		{
@@ -124,12 +132,12 @@ public partial class InventoryTabsView : Control
 		}
 
 		// Add tabs based on the inventories list
-		while (_tabs.Count < inventories.Count)
-		{
-			var newTab = _inventoryViewPrefab.Instantiate<InventoryView>();
-			_tabContainer.AddChild(newTab);
-			_tabs.Add(newTab);
-		}
+		// while (_tabs.Count < inventories.Count)
+		// {
+		// 	var newTab = _inventoryViewPrefab.Instantiate<InventoryView>();
+		// 	_tabContainer.AddChild(newTab);
+		// 	_tabs.Add(newTab);
+		// }
 
 		while (_tabButtons.Count < inventories.Count)
 		{
@@ -138,14 +146,11 @@ public partial class InventoryTabsView : Control
 			_tabButtons.Add(newButton);
 		}
 
-		Assert.AssertEquals(inventories.Count, _tabs.Count, "Inventories and tabs count mismatch");
+		Assert.AssertEquals(inventories.Count, _tabButtons.Count, "Inventories and tabs count mismatch");
+
 		for (int i = 0; i < inventories.Count; i++)
 		{
-			// Tab
 			var inventory = inventories[i];
-			var tab = _tabs[i];
-			tab.UpdateInventory(inventory);
-			tab.Name = inventory.Name;
 
 			//Button
 			var button = _tabButtons[i];
@@ -160,6 +165,17 @@ public partial class InventoryTabsView : Control
 			_buttonActions[button] = ButtonAction;
 			button.Pressed += ButtonAction;
 		}
+
+		_inventories = inventories;
+		ForceUpdateView();
+	}
+
+	private void ForceUpdateView() {
+
+			// Tab
+			var inventory = _inventories[CurrentTab];
+			_inventoryView.UpdateInventory(inventory);
+			_inventoryView.Name = inventory.Name;
 	}
 
 	private void OnTabButtonPressed(InventoryCategoryTab button)
@@ -171,7 +187,8 @@ public partial class InventoryTabsView : Control
 		}
 		else
 		{
-			_tabContainer.CurrentTab = index;
+			CurrentTab = index;
+			ForceUpdateView();
 		}
 	}
 
