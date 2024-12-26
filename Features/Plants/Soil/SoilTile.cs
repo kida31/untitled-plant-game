@@ -5,8 +5,9 @@ namespace untitledplantgame.Plants.Soil;
 
 public partial class SoilTile : Area2D, IWaterable
 {
-	[Export]
-	public float Hydration { get; private set; }
+	[Export] public float Hydration { get; private set; }
+	public APlant Plant;
+
 	private float _maxHydration = 200;
 	private float Fertilization { get; set; }
 
@@ -21,6 +22,12 @@ public partial class SoilTile : Area2D, IWaterable
 	public void AddWater(float addedWater)
 	{
 		Hydration = Math.Min(Hydration + addedWater, _maxHydration);
+	}
+	
+	public void PlantPlant(APlant plant)
+	{
+		Plant = plant;
+		Plant.PlantOnTile(this);
 	}
 
 	//Do we want this?

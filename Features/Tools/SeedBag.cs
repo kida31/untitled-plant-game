@@ -14,7 +14,6 @@ public class SeedBag : Tool
 {
 	public ItemStack CurrentSeedItem;
 	
-	private APlant _currentPlant;
 	private Logger _logger;
 	
 	public SeedBag(float radius, float range, float channelingTime) : base(radius, range, channelingTime)
@@ -27,15 +26,16 @@ public class SeedBag : Tool
 		var inventory = user.Inventory.GetInventory(ItemCategory.Seed);
 		CurrentSeedItem = inventory.FirstOrDefault();
 
-		Debug.Assert(CurrentSeedItem != null, nameof(CurrentSeedItem) + " != null");
+		if(CurrentSeedItem == null)
+		{
+			_logger.Info("No seeds in the seed bag");
+			return;
+		}
 		
 		if (CurrentSeedItem.Category != ItemCategory.Seed)
 		{
 			_logger.Error("There should only be seeds in the seed bag");
 		}
-
-		var plantName = CurrentSeedItem.Components.OfType<SeedComponent>().First().PlantName;
-		_currentPlant = APlant.Create(plantName);
 	}
 
 	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
@@ -46,19 +46,27 @@ public class SeedBag : Tool
 	protected override bool OnHit(Player.Player user, Node2D[] hits)
 	{
 		var closestTile = hits.OfType<SoilTile>().MinBy(p => p.GlobalPosition.DistanceSquaredTo(user.GlobalPosition));
-		if (closestTile == null)
+		if (closestTile == null || closestTile.Plant != null)
 		{
 			return false;
 		}
+
+		if (CurrentSeedItem.GetComponent<SeedComponent>() == null)
+		{
+			_logger.Error("There's something wrong with this seed." + CurrentSeedItem);
+		}
 		
-		_currentPlant.PlantOnTile(closestTile);
-		closestTile.AddChild(_currentPlant);
+		var plantName = CurrentSeedItem.GetComponent<SeedComponent>().PlantName;
+		var currentPlant = APlant.Create(plantName);
+		
+		closestTile.PlantPlant(currentPlant);
+		closestTile.AddChild(currentPlant);
 		var newSeedItem = (ItemStack) CurrentSeedItem.Clone();
 		newSeedItem.Amount = 1;
 		user.Inventory.RemoveItem(newSeedItem);
 		
 		
-		_logger.Debug($"Planted seed of {_currentPlant.PlantName} on tile");
+		_logger.Debug($"Planted seed of {currentPlant.PlantName} on tile");
 		
 		return true;
 	}
@@ -66,5 +74,6 @@ public class SeedBag : Tool
 	protected override void OnMiss(Player.Player user)
 	{
 		//play animation 
+		//shake head
 	}
 }
