@@ -233,20 +233,21 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "BasilLeaf" },
+				RelatedItemIds = new Array<string> { "chuberry_seed" },
 			},
 			new()
 			{
-				Id = "Chuberry_Seed",
-				Name = "Chuberry Seed",
+				Id = "chubery_seed",
+				Name = "Chubery Seed",
 				Description = "Seed that will produce a Chuberry plant.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
-				Category = ItemCategory.Seed,
 				BaseValue = 3,
 				Amount = 1,
+				MaxStackSize = 69,
+				Category = ItemCategory.Seed,
 				Components = new Array<AComponent>
 				{
-					new SeedComponent("Chuberry"),
+					new SeedComponent("Chubery"),
 				}
 			}
 		};

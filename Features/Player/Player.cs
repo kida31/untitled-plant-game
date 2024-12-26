@@ -38,7 +38,7 @@ public partial class Player : CharacterBody2D
 		{
 			new Shears(8, 16),
 			new WateringCan(50, 1000, true, 12, 24),
-			new SeedBag(8, 16, 1.5f),
+			new SeedBag(8, 24, 1.5f),
 		}
 	);
 
@@ -48,9 +48,14 @@ public partial class Player : CharacterBody2D
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_stateMachine.Initialize(this);
-		//var items = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>{new SeedComponent("Chubery")}); // This is a test
-		//_logger.Debug("Loaded items: " + items[0]);
-		//_inventory.AddItem(items[0]);
+		
+		/*
+		// Testing seed bag
+		var items = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>{new SeedComponent("Chubery")});
+		_logger.Debug("Loaded items: " + items[0]);
+		items[0].Amount = 6;
+		_inventory.AddItem(items[0]);
+		*/
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
