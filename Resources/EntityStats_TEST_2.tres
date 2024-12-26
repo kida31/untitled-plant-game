@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EntityConfiguration" load_steps=4 format=3 uid="uid://n81m3d4rfok5"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://n81m3d4rfok5"]
 
 [ext_resource type="Script" path="res://Features/Statistics/Stat.cs" id="2_07lcu"]
 [ext_resource type="Script" path="res://Features/Entity/EntityConfiguration.cs" id="3_tqmkq"]

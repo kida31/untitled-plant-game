@@ -1,12 +1,13 @@
 using System;
 using Godot;
+using untitledplantgame.Crafting;
+using untitledplantgame.Item;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Dialogue;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 using untitledplantgame.Shops;
-
 namespace untitledplantgame.Common;
 
 /**
@@ -192,5 +193,12 @@ public partial class EventBus : Node
 	public InventoryItemView GetItemSlot()
 	{
 		return OnGetItemSlot?.Invoke();
+	}
+
+	public event Action<ICraftingStation> BeforeCraftingStationUiOpened;
+
+	public void BeforeCraftingStationUiOpen(ICraftingStation craftingStation)
+	{
+		BeforeCraftingStationUiOpened?.Invoke(craftingStation);
 	}
 }
