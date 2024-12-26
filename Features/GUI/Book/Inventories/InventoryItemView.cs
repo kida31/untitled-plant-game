@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using untitledplantgame.Common;
 
@@ -5,10 +6,12 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 
 public partial class InventoryItemView : Control
 {
+	public Action Pressed;
+
 	[Export] private TextureRect _itemTextureRect;
 	[Export] private Label _displayItemName;
 	[Export] private Label _itemCurrentQuantity;
-	[Export] private Button _inventoryItemViewButton;
+	// [Export] private Button _inventoryItemViewButton;
 
 	private Logger _logger;
 	
@@ -19,14 +22,14 @@ public partial class InventoryItemView : Control
 	{
 		_logger = new Logger(this);
 		
-		_inventoryItemViewButton.FocusEntered += () =>
+		FocusEntered += () =>
 		{
-			EventBus.Instance.UiInventoryItemViewMoved(this);
+			// EventBus.Instance.UiInventoryItemViewMoved(this);
 			_logger.Debug($"[{Name}] Entered");
 		};
-		_inventoryItemViewButton.FocusExited += () =>
+		FocusExited += () =>
 		{
-			_logger.Debug($"[{Name}] Entered");
+			_logger.Debug($"[{Name}] Exited");
 		};
 		
 		
@@ -63,38 +66,35 @@ public partial class InventoryItemView : Control
 		else
 		{
 			// Placeholders: 
-			_itemCurrentQuantity.Text = itemStack.Amount.ToString();
 			_displayItemName.Text = itemStack.Name ?? "Placeholder_ItemName";
+			_itemCurrentQuantity.Text = itemStack.Amount.ToString();
+			_itemTextureRect.Texture = itemStack.Icon;
+
 			TooltipText = itemStack.Name ?? "Placeholder_Tooltip";
 
 			ItemStack = itemStack;
 		}
 	}
-	
-	public override void _UnhandledInput(InputEvent @event)
+
+	public override void _GuiInput(InputEvent @event)
 	{
-		if (_inventoryItemViewButton.HasFocus())
+		if (@event is InputEventMouseButton button)
 		{
-			if (@event is InputEventJoypadButton button)
+			if (button.ButtonIndex == MouseButton.Left && button.Pressed)
 			{
-				if (button.Pressed && button.ButtonIndex == JoyButton.A)
-				{
-					if (ItemStack != null)
-					{
-						EventBus.Instance.UiInventoryItemViewPressed(this);
-					}
-					else
-					{
-						EventBus.Instance.UiInventoryItemViewReleased(this);
-					}
-				}
+				Pressed?.Invoke();
 			}
+		}
+		
+		if (@event.IsActionPressed("ui_accept"))
+		{
+			Pressed?.Invoke();
 		}
 	}
 
 	public void SetThisItemViewFocused()
 	{
-		_inventoryItemViewButton.GrabFocus();
+		GrabFocus();
 	}
 	
 	public override Variant _GetDragData(Vector2 atPosition)

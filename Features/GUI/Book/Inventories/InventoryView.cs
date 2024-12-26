@@ -13,12 +13,22 @@ public partial class InventoryView : Control
 {
 	[Export] private PackedScene _inventoryItemViewPrefab;
 	[Export] private Container _inventoryItemViewContainer;
+	[Export] private Label _itemNameLabel;
 
 	private List<InventoryItemView> _inventoryItemViews;
 
+	public override void _Ready()
+	{
+		
+		_inventoryItemViews = _inventoryItemViewContainer.GetChildren().OfType<InventoryItemView>().ToList();
+		_inventoryItemViews.ForEach(iv => {
+			iv.FocusEntered += () => OnItemViewFocused(iv);
+		});
+		_itemNameLabel.Text = "";
+	}
+
 	public void UpdateInventory(IInventory inventory)
 	{
-		// Consider caching children and values instead of querying them every time
 		_inventoryItemViews = _inventoryItemViewContainer.GetChildren().OfType<InventoryItemView>().ToList();
 		
 		var items = inventory.GetItems();
@@ -52,7 +62,13 @@ public partial class InventoryView : Control
 		{
 			var itemView = _inventoryItemViewPrefab.Instantiate<InventoryItemView>();
 			_inventoryItemViewContainer.AddChild(itemView);
+			itemView.FocusEntered += () => OnItemViewFocused(itemView);
 			_inventoryItemViews.Add(itemView);
 		}
+	}
+
+	private void OnItemViewFocused(InventoryItemView itemView) {
+		_itemNameLabel.Text = itemView.ItemStack?.Name ?? "";
+				GD.Print("Focused" + itemView.Name);
 	}
 }
