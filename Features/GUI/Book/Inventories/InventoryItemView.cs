@@ -27,10 +27,10 @@ public partial class InventoryItemView : Control
 			// EventBus.Instance.UiInventoryItemViewMoved(this);
 			_logger.Debug($"[{Name}] Entered");
 		};
-		FocusExited += () =>
-		{
-			_logger.Debug($"[{Name}] Exited");
-		};
+		// FocusExited += () =>
+		// {
+			// _logger.Debug($"[{Name}] Exited");
+		// };
 		
 		
 		// OLD

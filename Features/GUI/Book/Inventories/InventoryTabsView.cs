@@ -67,6 +67,8 @@ public partial class InventoryTabsView : Control
 			var button = _tabButtons[i];
 			button.SetIsActive(i == activeIndex);
 		}
+
+		ForceUpdateView();
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -175,7 +177,7 @@ public partial class InventoryTabsView : Control
 			// Tab
 			var inventory = _inventories[CurrentTab];
 			_inventoryView.UpdateInventory(inventory);
-			_inventoryView.Name = inventory.Name;
+			// _inventoryView.Name = inventory.Name;
 	}
 
 	private void OnTabButtonPressed(InventoryCategoryTab button)
@@ -188,7 +190,6 @@ public partial class InventoryTabsView : Control
 		else
 		{
 			CurrentTab = index;
-			ForceUpdateView();
 		}
 	}
 

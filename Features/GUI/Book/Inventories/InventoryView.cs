@@ -40,6 +40,14 @@ public partial class InventoryView : Control
 			var view = _inventoryItemViews[i];
 			view.UpdateItemView(i < items.Count ? items[i] : null);
 		}
+
+		// I dont know where to place this
+		
+		// Update item label depending on currently focused item view
+		var owner = GetViewport().GuiGetFocusOwner();
+		if (owner is InventoryItemView itemView) {
+			OnItemViewFocused(itemView);
+		}
 	}
 
 	/// <summary>
@@ -69,6 +77,6 @@ public partial class InventoryView : Control
 
 	private void OnItemViewFocused(InventoryItemView itemView) {
 		_itemNameLabel.Text = itemView.ItemStack?.Name ?? "";
-				GD.Print("Focused" + itemView.Name);
+		// GD.Print("Focused" + itemView.Name);
 	}
 }
