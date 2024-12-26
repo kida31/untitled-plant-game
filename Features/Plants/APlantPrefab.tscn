@@ -1,8 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://f7it4seve2en"]
 
 [ext_resource type="Script" path="res://Features/Plants/APlant.cs" id="1_g03kh"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dbrx7"]
+[ext_resource type="SpriteFrames" uid="uid://d2gf65g8f0am3" path="res://Assets/OverworldAssets/Plant/ChuberySpriteFrames.tres" id="2_xm4cq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_053fl"]
 
@@ -12,8 +11,9 @@ y_sort_enabled = true
 script = ExtResource("1_g03kh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_dbrx7")
+position = Vector2(1, -14)
+sprite_frames = ExtResource("2_xm4cq")
+animation = &"Sprouting"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_053fl")
