@@ -68,12 +68,10 @@ public partial class InventoryTabsView : Control
 
 		if (@event.IsActionPressed(Book.BumperLeft))
 		{
-			GD.Print("Left");
 			PreviousTab(false);
 		}
 		else if (@event.IsActionPressed(Book.BumperRight))
 		{
-			GD.Print("Right");
 			NextTab(false);
 		}
 	}

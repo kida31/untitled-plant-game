@@ -26,20 +26,20 @@ public partial class HBoxTabContainer : HBoxContainer
 		VisibilityChanged += ForceSeparationUpdate;
 	}
 	private void SetSeparation(int value) {
-		GD.Print("Overriding separation " + value);
+		// GD.Print("Overriding separation " + value);
 		AddThemeConstantOverride("separation", value);
 	}
 	private void ForceSeparationUpdate() {
 		if (MaxWidth <= 0 || _children.Count <= 1) {
-			GD.Print("No children. Resetting separation");
+			// GD.Print("No children. Resetting separation");
 			SetSeparation(_desiredSeparation); 
 			return;
 		}
 
 		var spaceBetween = MaxWidth - _children.Select(c => c.GetRect().Size.X).Sum();
-		GD.Print($"Spacebetween={spaceBetween}");
+		// GD.Print($"Spacebetween={spaceBetween}");
 		var maxSeparation = (int) spaceBetween / (_children.Count - 1);
-		GD.Print($"maxSpacing={maxSeparation}");
+		// GD.Print($"maxSpacing={maxSeparation}");
 		SetSeparation(Math.Min(maxSeparation, _desiredSeparation));
 	}
 
