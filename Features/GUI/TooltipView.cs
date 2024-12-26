@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Inventory.GUI;
 
@@ -31,6 +32,7 @@ public partial class TooltipView : Control
 		set => SetDescription(value);
 	}
 
+	[MayBeBuggy("Not thoroughly tested")]
 	public List<Control> CustomContent
 	{
 		get => _customContent;

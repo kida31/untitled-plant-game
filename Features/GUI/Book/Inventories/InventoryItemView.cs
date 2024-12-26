@@ -4,7 +4,7 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 
-public partial class InventoryItemView : Control
+public partial class InventoryItemView : Control, ITooltipable
 {
 	public Action Pressed;
 
@@ -17,7 +17,13 @@ public partial class InventoryItemView : Control
 	
 	public int Id;
 	public IItemStack ItemStack;
-	
+
+	public string Title => ItemStack?.Name;
+
+	public string Description => ItemStack?.Description;
+
+	public Control Content => null;
+
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
