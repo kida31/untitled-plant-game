@@ -8,6 +8,7 @@ using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
 using untitledplantgame.Tools;
+using SeedComponent = untitledplantgame.Item.Components.SeedComponent;
 
 namespace untitledplantgame.Player;
 
@@ -47,8 +48,9 @@ public partial class Player : CharacterBody2D
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_stateMachine.Initialize(this);
-		var items = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>{new SeedComponent()}); // This is a test
-		_inventory.AddItem(items[0]);
+		//var items = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>{new SeedComponent("Chubery")}); // This is a test
+		//_logger.Debug("Loaded items: " + items[0]);
+		//_inventory.AddItem(items[0]);
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

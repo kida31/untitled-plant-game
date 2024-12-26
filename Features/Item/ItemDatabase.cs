@@ -242,7 +242,8 @@ public class ItemDatabase
 				Description = "Seed that will produce a Chuberry plant.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
 				Category = ItemCategory.Seed,
-				BaseValue = 5,
+				BaseValue = 3,
+				Amount = 1,
 				Components = new Array<AComponent>
 				{
 					new SeedComponent("Chuberry"),

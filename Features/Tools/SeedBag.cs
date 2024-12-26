@@ -6,6 +6,7 @@ using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 using untitledplantgame.Plants;
 using untitledplantgame.Plants.Soil;
+using SeedComponent = untitledplantgame.Item.Components.SeedComponent;
 
 namespace untitledplantgame.Tools;
 
@@ -24,8 +25,7 @@ public class SeedBag : Tool
 	protected override void OnStart(Player.Player user)
 	{
 		var inventory = user.Inventory.GetInventory(ItemCategory.Seed);
-		var items = inventory.GetItems();
-		CurrentSeedItem = items.FirstOrDefault(it => it != null);
+		CurrentSeedItem = inventory.FirstOrDefault();
 
 		Debug.Assert(CurrentSeedItem != null, nameof(CurrentSeedItem) + " != null");
 		
@@ -33,9 +33,9 @@ public class SeedBag : Tool
 		{
 			_logger.Error("There should only be seeds in the seed bag");
 		}
-		
-		var plantData = PlantDatabase.Instance.GetResourceByName(CurrentSeedItem.Components.OfType<SeedComponent>().First().PlantName);
-		_currentPlant = new APlant(plantData);
+
+		var plantName = CurrentSeedItem.Components.OfType<SeedComponent>().First().PlantName;
+		_currentPlant = APlant.Create(plantName);
 	}
 
 	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
@@ -53,6 +53,10 @@ public class SeedBag : Tool
 		
 		_currentPlant.PlantOnTile(closestTile);
 		closestTile.AddChild(_currentPlant);
+		var newSeedItem = (ItemStack) CurrentSeedItem.Clone();
+		newSeedItem.Amount = 1;
+		user.Inventory.RemoveItem(newSeedItem);
+		
 		
 		_logger.Debug($"Planted seed of {_currentPlant.PlantName} on tile");
 		

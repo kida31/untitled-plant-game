@@ -101,6 +101,9 @@ public class BigInventory : IInventory
 		for (var index = 0; index < items.Length; index++)
 		{
 			var item = items[index];
+			Assert.AssertNotNull(_inventories, "Inventories is null");
+			Assert.AssertNotNull(item, "Item is null");
+			Assert.AssertNotNull(item.Category, "Item category is null");
 			var inventory = _inventories[item.Category];
 			var leftover = inventory.AddItem(item);
 

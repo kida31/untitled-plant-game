@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=16 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
@@ -9,11 +9,12 @@
 [ext_resource type="Script" path="res://Features/Plants/PlantController.cs" id="3_qp075"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
-[ext_resource type="PackedScene" path="res://Features/Plants/APlantPrefab.tscn" id="9_t05jd"]
-[ext_resource type="PackedScene" path="res://Features/Plants/soil.tscn" id="10_da3hi"]
-[ext_resource type="PackedScene" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
+[ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/APlantPrefab.tscn" id="9_t05jd"]
+[ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="10_da3hi"]
+[ext_resource type="SpriteFrames" uid="uid://8045piqwhrs0" path="res://Assets/OverworldAssets/Plant/LicarySpriteFrames.tres" id="10_uefn8"]
+[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
 [ext_resource type="SpriteFrames" uid="uid://d2gf65g8f0am3" path="res://Assets/OverworldAssets/Plant/ChuberySpriteFrames.tres" id="11_voxp1"]
-[ext_resource type="PackedScene" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
+[ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
@@ -51,6 +52,10 @@ position = Vector2(456, 341)
 PlantName = "Licary"
 Tile = NodePath("../Soil")
 
+[node name="AnimatedSprite2D" parent="Plants/APlantPrefab" index="0"]
+sprite_frames = ExtResource("10_uefn8")
+animation = &"Budding"
+
 [node name="Soil" parent="Plants" instance=ExtResource("10_da3hi")]
 position = Vector2(409, 337)
 
@@ -61,6 +66,7 @@ Tile = NodePath("../Soil2")
 
 [node name="AnimatedSprite2D" parent="Plants/APlantPrefab2" index="0"]
 sprite_frames = ExtResource("11_voxp1")
+animation = &"Budding"
 
 [node name="Soil2" parent="Plants" instance=ExtResource("10_da3hi")]
 position = Vector2(458, 339)

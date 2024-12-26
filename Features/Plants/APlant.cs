@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
@@ -21,6 +22,8 @@ public enum GrowthStage
 
 public partial class APlant : StaticBody2D
 {
+	private const string PlantPath = "res://Features/Plants/APlantPrefab.tscn";
+	private static readonly PackedScene PlantScene = GD.Load<PackedScene>(PlantPath);
 	[Export] public string PlantName { get; private set; }
 	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
 	[Export] private SoilTile Tile { get; set; }
@@ -36,24 +39,24 @@ public partial class APlant : StaticBody2D
 	private int _daysToGrow;
 	private int _currentDay;
 
-	public override void _Ready()
+	public APlant()
 	{
-		_logger = new Logger(PlantName);
 		AddToGroup(GameGroup.Plants);
-		_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		SetRequirements();
+		_logger = new Logger(this);
 	}
 
-	public APlant(PlantData plantData)
+	public static APlant Create(string plantName)
 	{
-		_logger = new Logger(PlantName);
-		PlantName = plantData.PlantName;
-		AddToGroup(GameGroup.Plants);
+		var plant = PlantScene.Instantiate<APlant>();
+		plant.PlantName = plantName;
+		return plant;
+	}
 
-		var sprite = new AnimatedSprite2D();
-		AddChild(sprite);
-		_sprite2D = sprite;
-
+	public override void _Ready()
+	{
+		_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		
+		_logger.Debug($"Plant {PlantName} is ready.");
 		SetRequirements();
 	}
 
@@ -126,6 +129,7 @@ public partial class APlant : StaticBody2D
 		_logger.Debug($"Setting requirements for plant {PlantName}.");
 
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
+		_logger.Debug($"{plantData.PlantName} with {plantData.DataForGrowthStages.Length} growth stages and sprite {plantData.Sprite}.");
 		var plantRequirements = new Dictionary<string, Requirement>();
 
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
@@ -144,7 +148,8 @@ public partial class APlant : StaticBody2D
 		_currentRequirements = plantRequirements;
 		PlantName = plantData.PlantName;
 
-		_sprite2D.Play(Stage.ToString());
+		_sprite2D.SetSpriteFrames(plantData.Sprite);
+		_sprite2D.Play($"{Stage}");
 	}
 
 	/// <summary>
