@@ -9,20 +9,16 @@
 [node name="FocusIndicator" type="Control" node_paths=PackedStringArray("_sizeHook", "_followHook")]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_7c43y")
-_sizeHook = NodePath("TopLevelAnchor/LocalDiv/CopySizeHook")
-_followHook = NodePath("TopLevelAnchor/FollowHook")
+_sizeHook = NodePath("LocalDiv/CopySizeHook")
+_followHook = NodePath("FollowHook")
 
-[node name="TopLevelAnchor" type="Control" parent="."]
-top_level = true
-layout_mode = 1
-anchors_preset = 0
-
-[node name="FollowHook" type="Node" parent="TopLevelAnchor"]
+[node name="FollowHook" type="Node" parent="."]
 script = ExtResource("3_n0srx")
 SmoothingFactor = 20.0
 
-[node name="LocalDiv" type="BoxContainer" parent="TopLevelAnchor"]
+[node name="LocalDiv" type="BoxContainer" parent="."]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 1
 anchors_preset = 8
@@ -36,12 +32,13 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
-[node name="CopySizeHook" type="Node" parent="TopLevelAnchor/LocalDiv"]
+[node name="CopySizeHook" type="Node" parent="LocalDiv"]
 script = ExtResource("3_hntjl")
 
-[node name="Margin" type="MarginContainer" parent="TopLevelAnchor/LocalDiv"]
+[node name="Margin" type="MarginContainer" parent="LocalDiv"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -50,7 +47,7 @@ theme_override_constants/margin_top = -8
 theme_override_constants/margin_right = -8
 theme_override_constants/margin_bottom = -8
 
-[node name="TextureRect" type="NinePatchRect" parent="TopLevelAnchor/LocalDiv/Margin"]
+[node name="TextureRect" type="NinePatchRect" parent="LocalDiv/Margin"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -58,7 +55,7 @@ texture = ExtResource("1_138p4")
 patch_margin_left = 18
 patch_margin_top = 20
 
-[node name="TextureRect2" type="NinePatchRect" parent="TopLevelAnchor/LocalDiv/Margin"]
+[node name="TextureRect2" type="NinePatchRect" parent="LocalDiv/Margin"]
 layout_mode = 2
 texture = ExtResource("2_8l33a")
 region_rect = Rect2(0, 0, 32, 32)

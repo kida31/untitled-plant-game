@@ -29,7 +29,7 @@ public partial class UIFocusIcon : Control
 
 	public override void _Process(double delta)
 	{
-		if (_focusedControl == null || !_focusedControl.HasFocus() ||!_focusedControl.Visible)
+		if (_focusedControl == null || !_focusedControl.HasFocus() ||!_focusedControl.IsVisibleInTree())
 		{
 			Modulate = new Color(Modulate) {A = 0f};
 		}
