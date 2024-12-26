@@ -19,9 +19,11 @@ public partial class InventoryView : Control
 
 	private Dictionary<InventoryItemView, Action> _itemViewPressedActions = new();
 
+	private Logger _logger;
+
 	public override void _Ready()
 	{
-
+		_logger = new(this);
 		_inventoryItemViews = _inventoryItemViewContainer.GetChildren().OfType<InventoryItemView>().ToList();
 		_inventoryItemViews.ForEach(iv =>
 		{
@@ -54,7 +56,7 @@ public partial class InventoryView : Control
 				var curratedIndex = i;
 				void PressedHandler()
 				{
-					// GD.Print($"Handle click on {inventory.Name}[{curratedIndex}/{i}]");
+					_logger.Debug($"Handle click on {inventory.Name}[{curratedIndex}/{i}]");
 					CursorInventory.Instance.HandleClick(inventory, curratedIndex);
 				}
 
@@ -101,6 +103,5 @@ public partial class InventoryView : Control
 	private void OnItemViewFocused(InventoryItemView itemView)
 	{
 		_itemNameLabel.Text = itemView.ItemStack?.Name ?? "";
-		// GD.Print("Focused" + itemView.Name);
 	}
 }

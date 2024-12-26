@@ -17,8 +17,8 @@ public partial class CursorHandView : Control
 
 	private void OnContentChanged()
 	{
-		GD.Print("Content Changed");
-		GD.Print(_cursorInventory.Content);
+		// GD.Print("Content Changed");
+		// GD.Print(_cursorInventory.Content);
 		_itemView.UpdateItemView(_cursorInventory.Content);
 	}
 
