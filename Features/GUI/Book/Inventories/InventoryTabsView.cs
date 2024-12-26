@@ -52,6 +52,7 @@ public partial class InventoryTabsView : Control
 
 		// _tabContainer.CurrentTab = 0;
 		TabChanged += OnTabChanged;
+		TabChanged += (_) => CursorInventory.Instance.ReturnPickUp();
 	}
 
 	private void OnTabChanged(long tab)

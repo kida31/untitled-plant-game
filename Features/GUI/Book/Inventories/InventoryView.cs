@@ -9,6 +9,7 @@ using untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 namespace untitledplantgame.Inventory.PlayerInventory.Views;
 
 // View of a single inventory
+// TODO: Consider moving itemview.Pressed handling to root
 public partial class InventoryView : Control
 {
 	[Export] private PackedScene _inventoryItemViewPrefab;
@@ -30,6 +31,12 @@ public partial class InventoryView : Control
 			iv.FocusEntered += () => OnItemViewFocused(iv);
 		});
 		_itemNameLabel.Text = "";
+
+		VisibilityChanged += () => {
+			if (!IsVisibleInTree()) {
+				CursorInventory.Instance.ReturnPickUp();
+			}
+		};
 	}
 
 	public void UpdateInventory(IInventory inventory)
