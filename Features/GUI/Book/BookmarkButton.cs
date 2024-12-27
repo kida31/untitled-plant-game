@@ -11,7 +11,6 @@ public partial class BookmarkButton : Clickable
 		{
 			if (_rectActive != null)
 			{
-				GD.Print("Update inner Texture");
 				_rectActive.Texture = value;
 			}
 		}
@@ -24,7 +23,6 @@ public partial class BookmarkButton : Clickable
 		{
 			if (_rectInactive != null)
 			{
-				GD.Print("Update inner Texture");
 				_rectInactive.Texture = value;
 			}
 		}

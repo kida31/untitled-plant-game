@@ -26,14 +26,6 @@ _playerInventoryPage = NodePath("TabContainer/PlayerInventoryPage")
 _wikiPage = NodePath("TabContainer/WikiPage")
 _tabContainer = NodePath("TabContainer")
 
-[node name="TODO BookmarkButtons" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 149.0
-offset_top = 259.0
-offset_right = 254.0
-offset_bottom = 324.0
-
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
 offset_right = 438.0
