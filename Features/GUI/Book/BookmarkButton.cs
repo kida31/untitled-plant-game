@@ -49,8 +49,8 @@ public partial class BookmarkButton : Clickable
 	}
 
 	[ExportGroup("Hidden")]
-	[Export] private TextureRect _rectActive;
-	[Export] private TextureRect _rectInactive;
+	[Export] private NinePatchRect _rectActive;
+	[Export] private NinePatchRect _rectInactive;
 
 	private bool _active;
 

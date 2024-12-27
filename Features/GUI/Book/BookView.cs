@@ -4,6 +4,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.Inventory.GUI;
 using untitledplantgame.Player;
 using untitledplantgame.Shops;
 
@@ -23,12 +24,12 @@ public partial class BookView : Control
 
 	[ExportGroup("Tabs")]
 	[Export] private TabContainer _tabContainer; // Maybe make bookview the tabcontainer itself
-	[Export] private Button[] _tabButtons;	
+	[Obsolete("Unused. May be any class that has .Pressed event")]
+	[Export] private Button[] _tabButtons = new Button[0];	
 	// TODO add custom tab buttons
 
 	public override void _Ready()
 	{
-		_tabButtons ??= new Button[0];
 		// Subscribe to events
 		EventBus.Instance.OnPlayerInventoryChanged += UpdateInventory;
 		EventBus.Instance.OnInventoryOpen += ShowBook;

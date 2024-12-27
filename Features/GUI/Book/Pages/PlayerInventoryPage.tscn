@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6y60vh6v2ec8"]
+[gd_scene load_steps=8 format=3 uid="uid://c6y60vh6v2ec8"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.cs" id="1_qlgnr"]
 [ext_resource type="PackedScene" uid="uid://5oay11tne1l4" path="res://Features/GUI/Book/Inventories/InventoryTabsView.tscn" id="2_kjjt2"]
 [ext_resource type="PackedScene" uid="uid://dtgjnb2g3iphl" path="res://Features/GUI/Book/PlayerStuff/PlayerDetails.tscn" id="3_pmlsj"]
+[ext_resource type="Texture2D" uid="uid://bqnsis3x5b0tg" path="res://Assets/UI/BookUI/Background/BookRing_Shaded.png" id="4_hudsj"]
+[ext_resource type="PackedScene" uid="uid://blty0r6y6jxn3" path="res://Features/GUI/Book/BookmarkButton.tscn" id="5_wt5sy"]
+[ext_resource type="Texture2D" uid="uid://xdv2ogtl3gnj" path="res://Assets/UI/BookUI/bookmark_orange.png" id="6_xyohf"]
+[ext_resource type="Texture2D" uid="uid://cj8u5g7derdgq" path="res://Assets/UI/BookUI/bookmark_dark_orange.png" id="7_d462m"]
 
 [node name="PlayerInventoryPage" type="Control" node_paths=PackedStringArray("_inventoryTabs", "_playerDetails")]
 layout_mode = 3
@@ -11,10 +15,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -258.0
-offset_top = -171.0
-offset_right = 258.0
-offset_bottom = 171.0
+offset_left = -540.0
+offset_top = -270.0
+offset_right = -86.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qlgnr")
@@ -23,11 +27,49 @@ _playerDetails = NodePath("PlayerDetails")
 metadata/_tab_index = 0
 
 [node name="InventoryTabs" parent="." instance=ExtResource("2_kjjt2")]
+offset_left = -6.0
+offset_top = -4.0
+offset_bottom = 300.0
 
 [node name="PlayerDetails" parent="." instance=ExtResource("3_pmlsj")]
 layout_mode = 2
-offset_left = 219.0
-offset_top = -1.0
-offset_right = 731.0
-offset_bottom = 319.0
+offset_left = 222.0
+offset_top = -3.0
+offset_right = 458.0
+offset_bottom = 286.0
 size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 4.0
+offset_right = 240.0
+offset_bottom = 299.0
+texture = ExtResource("4_hudsj")
+region_rect = Rect2(0, 0, 48, 37)
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="BookmarkButton" parent="." instance=ExtResource("5_wt5sy")]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 245.0
+offset_right = 199.0
+offset_bottom = 329.0
+size_flags_horizontal = 3
+focus_mode = 0
+Active = true
+Disabled = true
+
+[node name="BookmarkButton2" parent="." instance=ExtResource("5_wt5sy")]
+z_index = -1
+layout_mode = 0
+offset_left = 244.0
+offset_top = 239.0
+offset_right = 261.0
+offset_bottom = 323.0
+size_flags_horizontal = 3
+focus_mode = 0
+_textureActive = ExtResource("6_xyohf")
+_textureInactive = ExtResource("7_d462m")
+Disabled = true

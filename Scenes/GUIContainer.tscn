@@ -35,9 +35,6 @@ offset_bottom = 670.0
 
 [node name="HUD" parent="." instance=ExtResource("5_gr4nr")]
 
-[node name="BookUIView" parent="." instance=ExtResource("5_sy5d4")]
-visible = false
-
 [node name="UIFocus" parent="." instance=ExtResource("1_mtau6")]
 visible = false
 
@@ -45,11 +42,21 @@ visible = false
 
 [node name="GlobalTooltip" parent="." instance=ExtResource("8_v5g76")]
 custom_minimum_size = Vector2(96, 32)
-offset_left = 298.0
-offset_top = 180.0
-offset_right = 394.0
-offset_bottom = 236.0
+offset_left = 65.0
+offset_top = 145.0
+offset_right = 161.0
+offset_bottom = 201.0
 script = ExtResource("9_7jd3l")
 _fadeInSpeed = 1.0
 _delay = 0.3
 _offset = Vector2(0, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BookUIView" parent="CenterContainer" instance=ExtResource("5_sy5d4")]
+layout_mode = 2

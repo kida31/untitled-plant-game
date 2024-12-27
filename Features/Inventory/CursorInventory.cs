@@ -126,7 +126,7 @@ public class CursorInventory : ICursorInventory
 
 	private CursorInventory()
 	{
-		_logger = new("Cursor");
+		_logger = new(GetType().Name);
 		_pickupOrigin = null;
 		_pickupOriginIndex = -1;
 		_content = null;
@@ -231,7 +231,7 @@ public class CursorInventory : ICursorInventory
 	{
 		var item = inventory.GetItem(itemIndex)?.Clone();
 		if (item == null || _content == null) {
-			_logger.Error("Nothing here");
+			_logger.Error("Nothing to swap here");
 			return;
 		}
 

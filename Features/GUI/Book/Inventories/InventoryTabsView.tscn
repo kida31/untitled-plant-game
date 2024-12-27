@@ -8,8 +8,8 @@
 [node name="Control" type="Control" node_paths=PackedStringArray("_tabButtonContainer", "_inventoryView")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 237.0
-offset_bottom = 314.0
+offset_right = 216.0
+offset_bottom = 297.0
 script = ExtResource("1_trxec")
 _inventoryCategoryTabPrefab = ExtResource("3_jnob4")
 _tabButtonContainer = NodePath("HBoxContainer")
@@ -26,7 +26,7 @@ anchor_right = 0.949367
 anchor_bottom = 0.0254777
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = -6
+theme_override_constants/separation = -17
 alignment = 1
 script = ExtResource("4_vsx4l")
 MaxWidth = 180.0

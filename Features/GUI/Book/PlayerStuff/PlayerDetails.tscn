@@ -6,19 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="4_n8hnm"]
 
 [node name="PlayerDetails" type="Control"]
-custom_minimum_size = Vector2(256, 320)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 256.0
-offset_bottom = 320.0
+offset_right = 217.0
+offset_bottom = 300.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_88tm0")
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
-offset_right = 384.0
-offset_bottom = 455.0
+offset_left = -18.0
+offset_top = -8.0
+offset_right = 238.0
+offset_bottom = 312.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_xwjqq")
