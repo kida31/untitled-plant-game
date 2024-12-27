@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ikmkfkp11t0t"]
+[gd_scene load_steps=7 format=3 uid="uid://ikmkfkp11t0t"]
 
 [ext_resource type="Script" path="res://Features/GUI/UIFocusIcon.cs" id="1_7c43y"]
 [ext_resource type="Texture2D" uid="uid://del57edaadvpk" path="res://Assets/UI/BookUI/ItemSelectorLeft.png" id="1_138p4"]
 [ext_resource type="Texture2D" uid="uid://ixhi2w1do3cd" path="res://Assets/UI/BookUI/ItemSelectorRight.png" id="2_8l33a"]
 [ext_resource type="Script" path="res://Features/GUI/Hooks/CopySizeHook.cs" id="3_hntjl"]
 [ext_resource type="Script" path="res://Features/GUI/Hooks/FollowControlHook.cs" id="3_n0srx"]
+[ext_resource type="Script" path="res://Features/GUI/DebugNodes/DebugUIFocusIcon.cs" id="6_wrko2"]
 
 [node name="FocusIndicator" type="Control" node_paths=PackedStringArray("_sizeHook", "_followHook")]
 layout_mode = 3
@@ -61,3 +62,14 @@ texture = ExtResource("2_8l33a")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_right = 20
 patch_margin_bottom = 19
+
+[node name="DebugLabel" type="Label" parent="." node_paths=PackedStringArray("_scriptOwner", "_readPosFrom", "_readSizeFrom")]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 14.0
+text = "100x100"
+script = ExtResource("6_wrko2")
+_scriptOwner = NodePath("..")
+_readPosFrom = NodePath("..")
+_readSizeFrom = NodePath("../LocalDiv")

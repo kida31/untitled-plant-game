@@ -13,11 +13,12 @@ public partial class UIFocusIcon : Control
 {
 	[ExportCategory("Hooks")] [Export] private CopySizeHook _sizeHook;
 	[Export] private FollowControlHook _followHook;
+	[Export] private float _modulateLerpFactor = 15.0f;
+
+	public Control FocusedControl => _focusedControl;
 
 	private Control _focusedControl;
 	private Logger _logger;
-
-	[Export] private float _modulateLerpFactor = 15.0f;
 
 	public override void _Ready()
 	{
