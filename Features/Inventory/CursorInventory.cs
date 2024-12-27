@@ -229,7 +229,7 @@ public class CursorInventory : ICursorInventory
 
 	public void Swap(IInventory inventory, int itemIndex)
 	{
-		var item = inventory.GetItem(itemIndex).Clone();
+		var item = inventory.GetItem(itemIndex)?.Clone();
 		if (item == null || _content == null) {
 			_logger.Error("Nothing here");
 			return;
