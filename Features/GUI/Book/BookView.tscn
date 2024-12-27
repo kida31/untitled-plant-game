@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cca7okqb2j4c7"]
+[gd_scene load_steps=9 format=3 uid="uid://cca7okqb2j4c7"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/BookView.cs" id="1_rrual"]
 [ext_resource type="PackedScene" uid="uid://c6y60vh6v2ec8" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.tscn" id="2_tyesk"]
 [ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="3_5pjti"]
 [ext_resource type="PackedScene" uid="uid://e3t5fwq4qne3" path="res://Features/GUI/Book/Pages/WikiPage.tscn" id="4_t387j"]
+[ext_resource type="PackedScene" uid="uid://blty0r6y6jxn3" path="res://Features/GUI/Book/BookmarkButton.tscn" id="4_ycfcm"]
+[ext_resource type="Texture2D" uid="uid://xdv2ogtl3gnj" path="res://Assets/UI/BookUI/bookmark_orange.png" id="5_6ou0m"]
+[ext_resource type="Texture2D" uid="uid://cj8u5g7derdgq" path="res://Assets/UI/BookUI/bookmark_dark_orange.png" id="6_3h2cj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkcs2"]
 draw_center = false
@@ -27,6 +30,29 @@ _wikiPage = NodePath("TabContainer/WikiPage")
 _tabContainer = NodePath("TabContainer")
 _tabButtons = []
 
+[node name="TODO BookmarkButtons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.409259
+anchor_top = 0.807175
+anchor_right = 0.547222
+anchor_bottom = 0.863229
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 32
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BookmarkButton" parent="TODO BookmarkButtons" instance=ExtResource("4_ycfcm")]
+layout_mode = 2
+_textureActive = ExtResource("5_6ou0m")
+_textureInactive = ExtResource("6_3h2cj")
+Active = true
+
+[node name="BookmarkButton2" parent="TODO BookmarkButtons" instance=ExtResource("4_ycfcm")]
+layout_mode = 2
+Active = true
+
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -49,20 +75,6 @@ layout_mode = 2
 [node name="WikiPage" parent="TabContainer" instance=ExtResource("4_t387j")]
 visible = false
 layout_mode = 2
-
-[node name="TODO BookmarkButtons" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -71.0
-offset_top = 203.0
-offset_right = 78.0
-offset_bottom = 224.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="MovingItemView" parent="." instance=ExtResource("3_5pjti")]
 visible = false

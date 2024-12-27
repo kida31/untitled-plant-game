@@ -11,6 +11,8 @@ using untitledplantgame.Inventory.GUI;
 [Tool]
 public partial class Clickable : Control, IPressable, IFocusable
 {
+    [Export]
+    public bool Disabled = false;
     public event Action Pressed;
 
     public Clickable()
@@ -47,6 +49,8 @@ public partial class Clickable : Control, IPressable, IFocusable
 
     private void OnGuiInput(InputEvent @event)
     {
+        if (Disabled) return;
+
         if (@event is InputEventMouseButton button)
         {
             if (button.ButtonIndex == MouseButton.Left && button.Pressed)

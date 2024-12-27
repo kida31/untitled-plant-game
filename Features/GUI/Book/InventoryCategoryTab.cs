@@ -3,10 +3,10 @@ using System;
 using untitledplantgame.Inventory.GUI;
 
 [Tool]
-public partial class InventoryCategoryTab : Control, INavigatable
+public partial class InventoryCategoryTab : Clickable
 {
 	private const string ActivateAnimation = "Activate";
-	public event Action Pressed;
+	// public event Action Pressed;
 	
 	[Export]
 	public string Text
@@ -68,19 +68,4 @@ public partial class InventoryCategoryTab : Control, INavigatable
 		}
 	}
 
-	public override void _GuiInput(InputEvent @event)
-	{
-		if (@event is InputEventMouseButton button)
-		{
-			if (button.ButtonIndex == MouseButton.Left && button.Pressed)
-			{
-				Pressed?.Invoke();
-			}
-		}
-		
-		if (@event.IsAction("ui_accept"))
-		{
-			Pressed?.Invoke();
-		}
-	}
 }
