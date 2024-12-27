@@ -13,3 +13,8 @@ _itemView = NodePath("ItemView")
 
 [node name="ItemView" parent="." instance=ExtResource("2_xsb25")]
 layout_mode = 0
+
+[node name="Background" parent="ItemView" index="0"]
+visible = false
+
+[editable path="ItemView"]
