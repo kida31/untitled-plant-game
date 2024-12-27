@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://dldh2xoh0w7ey"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://d2gf65g8f0am3"]
 
 [ext_resource type="Texture2D" uid="uid://cc08shc1btj02" path="res://Assets/OverworldAssets/Plant/chubery_sheet.png" id="1_eugh0"]
 [ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/OverworldAssets/Plant/DeadPlant.png" id="2_rtutt"]
