@@ -9,11 +9,11 @@
 [ext_resource type="Script" path="res://Features/Plants/PlantController.cs" id="3_qp075"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
-[ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/APlantPrefab.tscn" id="9_t05jd"]
+[ext_resource type="PackedScene" path="res://Features/Plants/APlantPrefab.tscn" id="9_t05jd"]
 [ext_resource type="PackedScene" path="res://Features/Plants/soil.tscn" id="10_da3hi"]
-[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
-[ext_resource type="SpriteFrames" uid="uid://dldh2xoh0w7ey" path="res://Assets/OverworldAssets/Plant/ChuberySpriteFrames.tres" id="11_voxp1"]
-[ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
+[ext_resource type="PackedScene" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
+[ext_resource type="SpriteFrames" uid="uid://d2gf65g8f0am3" path="res://Assets/OverworldAssets/Plant/ChuberySpriteFrames.tres" id="11_voxp1"]
+[ext_resource type="PackedScene" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true

@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cf2xfvp0b25y0"]
 
-[ext_resource type="Texture2D" uid="uid://dhxsj538h0eqk" path="res://Assets/UI/CurrentToolIndicator.png" id="1_av3tc"]
 [ext_resource type="Script" path="res://Features/GUI/HUDs/Toolbelt/ToolBlobView.cs" id="1_ut26e"]
 [ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="2_hn60y"]
 [ext_resource type="Texture2D" uid="uid://c76emfoxjb16l" path="res://Assets/Tools/GardenScissors.png" id="2_i5eui"]
 [ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="3_j2vo2"]
+[ext_resource type="Texture2D" uid="uid://dduwl34jkllwr" path="res://Assets/UI/HUD/CurrentToolIndicator_new.png" id="5_1pscy"]
 
 [sub_resource type="Animation" id="Animation_oyjmf"]
 length = 0.001
@@ -99,7 +99,7 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_av3tc")
+texture = ExtResource("5_1pscy")
 expand_mode = 5
 stretch_mode = 5
 

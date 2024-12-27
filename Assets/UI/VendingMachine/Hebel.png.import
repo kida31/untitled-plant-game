@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhxsj538h0eqk"
-path="res://.godot/imported/CurrentToolIndicator.png-dcfd70d9733fc94c2264674e8d09d173.ctex"
+uid="uid://bopd7g6vsty7t"
+path="res://.godot/imported/Hebel.png-1bdaaca880896aa597a7c3aa6b3de339.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/CurrentToolIndicator.png"
-dest_files=["res://.godot/imported/CurrentToolIndicator.png-dcfd70d9733fc94c2264674e8d09d173.ctex"]
+source_file="res://Assets/UI/VendingMachine/Hebel.png"
+dest_files=["res://.godot/imported/Hebel.png-1bdaaca880896aa597a7c3aa6b3de339.ctex"]
 
 [params]
 
