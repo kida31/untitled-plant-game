@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nma0if271xsr"
-path="res://.godot/imported/FaithFlower.png-c7b2724e9efb31ed66f6ef41b38a11cb.ctex"
+uid="uid://b1v81vwexibp2"
+path="res://.godot/imported/Forth_empty.png-93b81366431910017df0be6ddc272ae1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/BookUI/FaithFlower.png"
-dest_files=["res://.godot/imported/FaithFlower.png-c7b2724e9efb31ed66f6ef41b38a11cb.ctex"]
+source_file="res://Assets/UI/BookUI/FaithFlower/Forth_empty.png"
+dest_files=["res://.godot/imported/Forth_empty.png-93b81366431910017df0be6ddc272ae1.ctex"]
 
 [params]
 
