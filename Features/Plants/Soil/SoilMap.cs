@@ -1,34 +1,49 @@
 using Godot;
+using Godot.Collections;
 using untitledplantgame.Common;
 
 namespace untitledplantgame.Plants;
 
 public partial class SoilMap : Node2D
 {
-	private const int TileSetSourceId = 0;
+	private const int TileSetSourceId = 2;
 	
 	private TileMapLayer _tileLayer;
 	private Logger _logger;
-
+	
 	private enum SoilHydration
 	{
-		Dry = 0,
-		Moist = 1,
-		Wet = 2,
-		Flooded = 3
+		Dry = 50,
+		Moist = 150,
+		Wet = 250,
+		Flooded
 	}
+	
+	private Dictionary<SoilHydration, Vector2I> _hydrationTileMap = new()
+	{
+		{SoilHydration.Dry, new Vector2I(0, 1)},
+		{SoilHydration.Moist, new Vector2I(0, 2)},
+		{SoilHydration.Wet, new Vector2I(0, 3)},
+		{SoilHydration.Flooded, new Vector2I(0, 4)}
+	};
 	
 	public override void _Ready()
 	{
+		_logger = new Logger(this);
+		_logger.Debug("READY");
 		_tileLayer = GetNode<TileMapLayer>("Soil");
+		CallDeferred(nameof(GetSoilTiles));
+	}
+	
+	private void GetSoilTiles()
+	{
 		var tiles = GetTree().GetNodesInGroup(GameGroup.Soil);
 		foreach (var tile in tiles)
 		{
 			if (tile is not SoilTile t) return;
+			_logger.Debug(nameof(t));
 			t.HydrationChanged += OnHydrationChanged;
 		}
-		_logger = new Logger(this);
-		
 	}
 
 	private void OnHydrationChanged(float hydration, SoilTile tile)
@@ -37,20 +52,20 @@ public partial class SoilMap : Node2D
 		var tileMapPosition = _tileLayer.LocalToMap(tilePosition);
 		switch (hydration)
 		{
-			case < 50:
-				_tileLayer.SetCell(tileMapPosition, TileSetSourceId, new Vector2I(0, (int) SoilHydration.Dry));
+			case < (int) SoilHydration.Dry:
+				_tileLayer.SetCell(tileMapPosition, TileSetSourceId, _hydrationTileMap[SoilHydration.Dry]);
 				_logger.Debug($"Tile with hydration {hydration} is dry");
 				break;
-			case < 100:
-				_tileLayer.SetCell(tileMapPosition, TileSetSourceId, new Vector2I(0, (int) SoilHydration.Moist));
+			case < (int) SoilHydration.Moist:
+				_tileLayer.SetCell(tileMapPosition, TileSetSourceId, _hydrationTileMap[SoilHydration.Moist]);
 				_logger.Debug($"Tile with hydration {hydration} is moist");
 				break;
-			case < 200:
-				_tileLayer.SetCell(tileMapPosition, TileSetSourceId, new Vector2I(0, (int) SoilHydration.Wet));
+			case < (int) SoilHydration.Wet:
+				_tileLayer.SetCell(tileMapPosition, TileSetSourceId, _hydrationTileMap[SoilHydration.Wet]);
 				_logger.Debug($"Tile with hydration {hydration} is wet");
 				break;
 			default:
-				_tileLayer.SetCell(tileMapPosition, TileSetSourceId, new Vector2I(0, (int) SoilHydration.Flooded));
+				_tileLayer.SetCell(tileMapPosition, TileSetSourceId, _hydrationTileMap[SoilHydration.Flooded]);
 				_logger.Debug($"Tile with hydration {hydration} is flooded");
 				break;
 		}

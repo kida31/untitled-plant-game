@@ -15,10 +15,11 @@ public partial class SoilTile : Area2D, IWaterable
 
 	public override void _Ready()
 	{
+		AddToGroup(GameGroup.Soil);
 		_logger = new Logger(this);
 		WeatherCycle.Instance.WeatherChanged += OnWeatherChanged;
 		TimeController.Instance.DayChanged += OnDayChanged;
-		AddToGroup(GameGroup.Soil);
+		_logger.Debug("SoilTile is ready.");
 	}
 
 	private void OnDayChanged(int day)
