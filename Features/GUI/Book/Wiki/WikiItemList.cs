@@ -97,7 +97,7 @@ public partial class WikiItemList : Control
 	
 	public void ScrollTo(IItemStack itemStack)
 	{
-		var itemView = _itemViews.FirstOrDefault(iv => iv.ItemStack == itemStack);
+		var itemView = _itemViews.FirstOrDefault(iv => iv.ItemStack?.HasSameId(itemStack) ?? false);
 		Assert.AssertNotNull(itemView, "Item not found in list: " + itemStack);
 		itemView?.GrabFocus();
 	}

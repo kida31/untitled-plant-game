@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiArticleView.cs" id="1_6vmcs"]
 [ext_resource type="Texture2D" uid="uid://bse2hc1dgntl" path="res://Assets/UI/BookUI/Background/EmptyItemDetailsPage.png" id="2_r81nv"]
 [ext_resource type="Texture2D" uid="uid://hqe8ukrnerjw" path="res://Assets/UI/BookUI/Containers&Labels/ItemContainer1.png" id="5_8tctf"]
-[ext_resource type="Script" path="res://Features/GUI/Components/Clickable.cs" id="5_p1mxl"]
+[ext_resource type="PackedScene" uid="uid://rkiq7gr8ft71" path="res://WikiRelatedItemView.tscn" id="5_ptoeu"]
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_wi3q8"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("_iconTextureRect", "_itemNameAndCategory", "_itemDescription", "_itemStats")]
+[node name="Control" type="Control" node_paths=PackedStringArray("_iconTextureRect", "_itemNameAndCategory", "_itemDescription", "_itemStats", "_relatedItemViews")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_6vmcs")
@@ -14,6 +14,7 @@ _iconTextureRect = NodePath("ItemIcon_Div/AspectRatioContainer/ItemIcon")
 _itemNameAndCategory = NodePath("Finetunemargin/VBoxContainer/Name_TextBoxDiv/TextMargin/Label")
 _itemDescription = NodePath("Finetunemargin/VBoxContainer/InfoTexts/Description_DivWithMinSize/TextMargin/Label")
 _itemStats = NodePath("Finetunemargin/VBoxContainer/InfoTexts/Stats_Div/TextMargin/Label")
+_relatedItemViews = [NodePath("Finetunemargin/VBoxContainer/HBoxContainer/RelatedItem"), NodePath("Finetunemargin/VBoxContainer/HBoxContainer/RelatedItem2"), NodePath("Finetunemargin/VBoxContainer/HBoxContainer/RelatedItem3"), NodePath("Finetunemargin/VBoxContainer/HBoxContainer/RelatedItem4")]
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
@@ -99,49 +100,17 @@ theme_override_font_sizes/font_size = 16
 layout_mode = 2
 alignment = 1
 
-[node name="BoxContainer" type="BoxContainer" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
+[node name="RelatedItem" parent="Finetunemargin/VBoxContainer/HBoxContainer" instance=ExtResource("5_ptoeu")]
 layout_mode = 2
-size_flags_horizontal = 6
-focus_mode = 2
-script = ExtResource("5_p1mxl")
 
-[node name="TextureRect" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer/BoxContainer"]
+[node name="RelatedItem2" parent="Finetunemargin/VBoxContainer/HBoxContainer" instance=ExtResource("5_ptoeu")]
 layout_mode = 2
-size_flags_horizontal = 6
-texture = ExtResource("5_8tctf")
 
-[node name="BoxContainer2" type="BoxContainer" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
+[node name="RelatedItem3" parent="Finetunemargin/VBoxContainer/HBoxContainer" instance=ExtResource("5_ptoeu")]
 layout_mode = 2
-size_flags_horizontal = 6
-focus_mode = 2
-script = ExtResource("5_p1mxl")
 
-[node name="TextureRect" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer/BoxContainer2"]
+[node name="RelatedItem4" parent="Finetunemargin/VBoxContainer/HBoxContainer" instance=ExtResource("5_ptoeu")]
 layout_mode = 2
-size_flags_horizontal = 6
-texture = ExtResource("5_8tctf")
-
-[node name="BoxContainer3" type="BoxContainer" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-focus_mode = 2
-script = ExtResource("5_p1mxl")
-
-[node name="TextureRect" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer/BoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 6
-texture = ExtResource("5_8tctf")
-
-[node name="BoxContainer4" type="BoxContainer" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-focus_mode = 2
-script = ExtResource("5_p1mxl")
-
-[node name="TextureRect" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer/BoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 6
-texture = ExtResource("5_8tctf")
 
 [editable path="Finetunemargin/VBoxContainer/Name_TextBoxDiv"]
 [editable path="Finetunemargin/VBoxContainer/InfoTexts/Description_DivWithMinSize"]

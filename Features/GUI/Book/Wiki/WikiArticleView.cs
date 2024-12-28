@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Database;
@@ -13,10 +14,7 @@ public partial class WikiArticleView : Node
 	[Export] private Label _itemNameAndCategory;
 	[Export] private Label _itemDescription;
 	[Export] private Label _itemStats;
-	/// <summary>
-	/// These control objects need to have obj.Texture
-	/// </summary>
-	[Export] private Clickable[] _relatedItemClickables = new Clickable[0];
+	[Export] private WikiRelatedItemView[] _relatedItemViews = new WikiRelatedItemView[0];
 
 	// TODO show related items
 	
@@ -24,12 +22,20 @@ public partial class WikiArticleView : Node
 
 	public override void _Ready()
 	{
-		for(var i = 0; i < _relatedItemClickables.Length; i++){
-			var clickable = _relatedItemClickables[i];
+		for(var i = 0; i < _relatedItemViews.Length; i++){
+			var clickable = _relatedItemViews[i];
 			var capturedIndex = i;
 			void OnPressHandler() {
-				var itemId = (_itemStack as ItemStack)?.RelatedItemIds[capturedIndex];
-				RelatedItemClicked?.Invoke(itemId != null ? ItemDatabase.Instance.CreateItemStack(itemId) : null);
+				if (_itemStack is not ItemStack item || item.RelatedItemIds.Count <= capturedIndex) {
+					return;
+				}
+
+				var itemId = item.RelatedItemIds[capturedIndex];
+				if (itemId == null) {
+					return;
+				}
+
+				RelatedItemClicked?.Invoke(ItemDatabase.Instance.CreateItemStack(itemId));
 			}
 
 			clickable.Pressed += OnPressHandler;
@@ -50,16 +56,15 @@ public partial class WikiArticleView : Node
 		_itemDescription.Text = _itemStack?.Description ?? "";
 		_itemStats.Text = "Stats!... \nStats!... \nStats!...";
 
-		var relatedItems = (_itemStack as ItemStack).RelatedItemIds
-			.Select(id => ItemDatabase.Instance.CreateItemStack(id)).ToList();
+		List<IItemStack> relatedItems = new();		
+		if (_itemStack is ItemStack itemStack) {
+			relatedItems = itemStack.RelatedItemIds.Select(id => ItemDatabase.Instance.CreateItemStack(id) as IItemStack).ToList();
+		}
 
-		for (int i = 0; i < _relatedItemClickables.Length; i++)
+		for (int i = 0; i < _relatedItemViews.Length; i++)
 		{
-			// TODO: Type-safe this
-			var textRect = _relatedItemClickables[i].GetChild<TextureRect>(0);
-			
-			var item = i < relatedItems.Count ? relatedItems[i] : null;
-			textRect.Texture = item?.Icon ?? null;
+			var view = _relatedItemViews[i];
+			view.SetItem(i < relatedItems.Count ? relatedItems[i] : null);
 		}
 	}
 

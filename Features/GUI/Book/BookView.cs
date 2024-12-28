@@ -4,6 +4,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.Database;
 using untitledplantgame.Inventory.GUI;
 using untitledplantgame.Player;
 using untitledplantgame.Shops;
@@ -45,7 +46,7 @@ public partial class BookView : Control
 		// Inventory
 		
 		// Wiki
-		var items = new RandomStockGenerator().GetRandom(20); // Placeholder for loading from database
+		var items = ItemDatabase.Instance.ItemStacks;
 		_wikiPage.UpdateItems(items);
 		
 		_wikiPage.ItemStackPressed += item => _wikiPage.UpdateArticle(item);

@@ -15,6 +15,7 @@ public partial class WikiPage : Control
 	public override void _Ready()
 	{
 		_wikiItemList.ItemStackPressed += i => ItemStackPressed?.Invoke(i);
+		_wikiArticle.RelatedItemClicked += OnRelatedItemClicked;
 	}
 
 	public void UpdateItems(List<ItemStack> items)
@@ -26,4 +27,10 @@ public partial class WikiPage : Control
 	{
 		_wikiArticle.UpdateItemStack(content);
 	}
+
+	private void OnRelatedItemClicked(IItemStack stack)
+	{
+		_wikiItemList.ScrollTo(stack);
+	}
+
 }
