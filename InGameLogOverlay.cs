@@ -15,7 +15,7 @@ public partial class InGameLogOverlay : RichTextLabel
 	private void OnLogged(string obj)
 	{
 		_logQueue.Enqueue(obj);
-		if (_logQueue.Count > 5)
+		if (_logQueue.Count > 8)
 		{
 			_logQueue.Dequeue();
 		}

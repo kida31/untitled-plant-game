@@ -38,7 +38,7 @@ visible = false
 [node name="Label" type="RichTextLabel" parent="."]
 offset_left = 4.0
 offset_top = 122.0
-offset_right = 295.0
+offset_right = 937.0
 offset_bottom = 343.0
 bbcode_enabled = true
 text = "BLABLABLA"

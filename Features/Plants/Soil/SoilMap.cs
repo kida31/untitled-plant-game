@@ -7,7 +7,8 @@ namespace untitledplantgame.Plants;
 public partial class SoilMap : Node2D
 {
 	private const int TileSetSourceId = 2;
-	
+
+	[Export] private Node2D _tester;
 	private TileMapLayer _tileLayer;
 	private Logger _logger;
 	
@@ -21,10 +22,10 @@ public partial class SoilMap : Node2D
 	
 	private Dictionary<SoilHydration, Vector2I> _hydrationTileMap = new()
 	{
-		{SoilHydration.Dry, new Vector2I(0, 1)},
-		{SoilHydration.Moist, new Vector2I(0, 2)},
-		{SoilHydration.Wet, new Vector2I(0, 3)},
-		{SoilHydration.Flooded, new Vector2I(0, 4)}
+		{SoilHydration.Dry, new Vector2I(1, 0)},
+		{SoilHydration.Moist, new Vector2I(2, 0)},
+		{SoilHydration.Wet, new Vector2I(3, 0)},
+		{SoilHydration.Flooded, new Vector2I(4, 0)}
 	};
 	
 	public override void _Ready()
@@ -41,15 +42,26 @@ public partial class SoilMap : Node2D
 		foreach (var tile in tiles)
 		{
 			if (tile is not SoilTile t) return;
-			_logger.Debug(nameof(t));
 			t.HydrationChanged += OnHydrationChanged;
+			OnHydrationChanged(t.Hydration, t);
 		}
 	}
 
 	private void OnHydrationChanged(float hydration, SoilTile tile)
 	{
-		var tilePosition = tile.GlobalPosition;
+		//testing
+		var pos = ToLocal(_tester.GlobalPosition);
+		_logger.Debug($"Tester position: {pos.X:F1}, {pos.Y:F1}");
+		var tilePos = _tileLayer.LocalToMap(pos);
+		_logger.Debug($"Test map position: {tilePos}");
+		_tileLayer.SetCell(tilePos, TileSetSourceId, _hydrationTileMap[SoilHydration.Dry]);
+		//end testing
+		
+		
+		var tilePosition = ToLocal(tile.GlobalPosition);
+		_logger.Debug($"Soil Tile position: {tilePosition.X:F1}, {tilePosition.Y:F1}");
 		var tileMapPosition = _tileLayer.LocalToMap(tilePosition);
+		_logger.Debug($"Tile map position: {tileMapPosition}");
 		switch (hydration)
 		{
 			case < (int) SoilHydration.Dry:
