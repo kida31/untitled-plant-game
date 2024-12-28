@@ -477,7 +477,6 @@ tile_set = SubResource("TileSet_ue6vt")
 z_index = 1
 y_sort_enabled = true
 position = Vector2(0, 10)
-tile_map_data = PackedByteArray("AAALAAkAAgAAAAEAAAABAAMAAgAAAAEAAAACAAAAAgABAAAAAAA=")
 tile_set = SubResource("TileSet_jveog")
 
 [node name="Plants" type="TileMapLayer" parent="."]
