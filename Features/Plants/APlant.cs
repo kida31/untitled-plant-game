@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
-using untitledplantgame.Plants.Soil;
 
 namespace untitledplantgame.Plants;
 

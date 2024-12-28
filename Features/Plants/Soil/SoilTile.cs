@@ -3,12 +3,12 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Cycle.Weather;
 
-namespace untitledplantgame.Plants.Soil;
+namespace untitledplantgame.Plants;
 
 public partial class SoilTile : Area2D, IWaterable
 {
 	[Export] public float Hydration { get; private set; }
-	public event Action<float> HydrationChanged;
+	public event Action<float, SoilTile> HydrationChanged;
 	private float _maxHydration = 250;
 	private float Fertilization { get; set; }
 	private Logger _logger;
@@ -18,6 +18,7 @@ public partial class SoilTile : Area2D, IWaterable
 		_logger = new Logger(this);
 		WeatherCycle.Instance.WeatherChanged += OnWeatherChanged;
 		TimeController.Instance.DayChanged += OnDayChanged;
+		AddToGroup(GameGroup.Soil);
 	}
 
 	private void OnDayChanged(int day)
@@ -53,7 +54,7 @@ public partial class SoilTile : Area2D, IWaterable
 		var prevHydration = Hydration;
 		Hydration = Math.Clamp(Hydration - reductionValue, 0, Hydration);
 
-		HydrationChanged?.Invoke(Hydration);
+		HydrationChanged?.Invoke(Hydration, this);
 
 		return prevHydration - Hydration;
 	}
@@ -61,6 +62,6 @@ public partial class SoilTile : Area2D, IWaterable
 	public void AddWater(float addedWater)
 	{
 		Hydration = Math.Min(Hydration + addedWater, _maxHydration);
-		HydrationChanged?.Invoke(Hydration);
+		HydrationChanged?.Invoke(Hydration, this);
 	}
 }
