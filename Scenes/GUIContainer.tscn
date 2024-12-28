@@ -21,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BookUIView" parent="CenterContainer" instance=ExtResource("5_sy5d4")]
+visible = false
 layout_mode = 2
 
 [node name="VendingMachineUi" parent="." instance=ExtResource("1_iuaq5")]

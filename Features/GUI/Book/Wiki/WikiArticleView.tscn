@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmc1oq8o2if8d"]
+[gd_scene load_steps=6 format=3 uid="uid://bmc1oq8o2if8d"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiArticleView.cs" id="1_6vmcs"]
 [ext_resource type="Texture2D" uid="uid://bse2hc1dgntl" path="res://Assets/UI/BookUI/Background/EmptyItemDetailsPage.png" id="2_r81nv"]
 [ext_resource type="Texture2D" uid="uid://hqe8ukrnerjw" path="res://Assets/UI/BookUI/Containers&Labels/ItemContainer1.png" id="5_8tctf"]
+[ext_resource type="Script" path="res://Features/GUI/Components/Clickable.cs" id="5_p1mxl"]
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_wi3q8"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("_iconTextureRect", "_itemNameAndCategory", "_itemDescription", "_itemStats")]
@@ -98,22 +99,46 @@ theme_override_font_sizes/font_size = 16
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+focus_mode = 2
+script = ExtResource("5_p1mxl")
+
+[node name="TextureRect" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("5_8tctf")
 
-[node name="TextureRect2" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
+[node name="BoxContainer2" type="BoxContainer" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+focus_mode = 2
+script = ExtResource("5_p1mxl")
+
+[node name="TextureRect" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer/BoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("5_8tctf")
 
-[node name="TextureRect3" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
+[node name="BoxContainer3" type="BoxContainer" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+focus_mode = 2
+script = ExtResource("5_p1mxl")
+
+[node name="TextureRect" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer/BoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("5_8tctf")
 
-[node name="TextureRect4" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
+[node name="BoxContainer4" type="BoxContainer" parent="Finetunemargin/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+focus_mode = 2
+script = ExtResource("5_p1mxl")
+
+[node name="TextureRect" type="TextureRect" parent="Finetunemargin/VBoxContainer/HBoxContainer/BoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("5_8tctf")

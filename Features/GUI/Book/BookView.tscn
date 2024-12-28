@@ -31,15 +31,15 @@ layout_mode = 1
 offset_right = 438.0
 offset_bottom = 296.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pkcs2")
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="PlayerInventoryPage" parent="TabContainer" instance=ExtResource("2_tyesk")]
-visible = false
 layout_mode = 2
 mouse_filter = 1
 
 [node name="WikiPage" parent="TabContainer" instance=ExtResource("4_t387j")]
+visible = false
 layout_mode = 2
 mouse_filter = 1
 
