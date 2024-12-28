@@ -82,6 +82,7 @@ theme_override_constants/margin_top = 8
 
 [node name="Label" parent="Finetunemargin/VBoxContainer/InfoTexts/Description_DivWithMinSize/TextMargin" index="0"]
 theme_override_font_sizes/font_size = 16
+autowrap_mode = 2
 
 [node name="Stats_Div" parent="Finetunemargin/VBoxContainer/InfoTexts" instance=ExtResource("5_wi3q8")]
 layout_mode = 2
