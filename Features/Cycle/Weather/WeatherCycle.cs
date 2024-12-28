@@ -19,7 +19,7 @@ public partial class WeatherCycle : Node
 	public Weather CurrentWeather => _currentWeather;
 	public Action<Weather> WeatherChanged;
 
-	private readonly Logger _logger = new ("WeatherCycle");
+	private readonly Logger _logger = new("WeatherCycle");
 	private Weather _currentWeather = Weather.Sunny;
 	private int _nextChangeAtDay;
 

@@ -111,10 +111,10 @@ public partial class APlant : StaticBody2D
 	private void SetRequirements()
 	{
 		_logger.Debug($"Setting requirements for plant {PlantName}.");
-		
+
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
 		var plantRequirements = new Dictionary<string, Requirement>();
-		
+
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
@@ -126,7 +126,7 @@ public partial class APlant : StaticBody2D
 		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
 		_absorptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].AbsorptionRate;
 		_consumptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].ConsumptionRate;
-		
+
 		_currentCycle = 0;
 		_currentRequirements = plantRequirements;
 		PlantName = plantData.PlantName;

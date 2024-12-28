@@ -8,6 +8,7 @@ namespace untitledplantgame.Plants.Soil;
 public partial class SoilTile : Area2D, IWaterable
 {
 	[Export] public float Hydration { get; private set; }
+	public event Action<float> HydrationChanged;
 	private float _maxHydration = 250;
 	private float Fertilization { get; set; }
 	private Logger _logger;
@@ -30,7 +31,7 @@ public partial class SoilTile : Area2D, IWaterable
 		switch (obj)
 		{
 			case Weather.Sunny:
-				EvaporateWater(30);
+				WithdrawHydration(30);
 				break;
 			case Weather.Rainy:
 				AddWater(100);
@@ -39,7 +40,7 @@ public partial class SoilTile : Area2D, IWaterable
 				AddWater(50);
 				break;
 			case Weather.Cloudy:
-				EvaporateWater(20);
+				WithdrawHydration(20);
 				break;
 			default:
 				_logger.Warn("Soil is confused about the weather.");
@@ -52,17 +53,14 @@ public partial class SoilTile : Area2D, IWaterable
 		var prevHydration = Hydration;
 		Hydration = Math.Clamp(Hydration - reductionValue, 0, Hydration);
 
+		HydrationChanged?.Invoke(Hydration);
+
 		return prevHydration - Hydration;
 	}
 
 	public void AddWater(float addedWater)
 	{
 		Hydration = Math.Min(Hydration + addedWater, _maxHydration);
-	}
-
-	//Do we want this?
-	public void EvaporateWater(int amount)
-	{
-		Hydration = Math.Max(Hydration - amount, 0);
+		HydrationChanged?.Invoke(Hydration);
 	}
 }

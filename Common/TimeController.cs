@@ -8,7 +8,7 @@ public partial class TimeController : Node
 {
 	/// Constants for time calculations
 	private const double SecondsPerDay = 24 * 60 * 60;
-	
+
 	private const double InGameToRealTimeMultiplier = 60.0; // 1 second = 1min
 	private const double InGameToRealTimeFastForwardMultiplier = SecondsPerDay; // 24h in 1s
 	private const double StartOfDaySeconds = 7 * 60 * 60;
@@ -88,11 +88,11 @@ public partial class TimeController : Node
 		const double minutesPerDay = 24 * 60;
 		const double minutesPerHour = 60;
 
-		var totalMinutes = (int) (CurrentSeconds / 60);
+		var totalMinutes = (int)(CurrentSeconds / 60);
 
-		var currentDayMinutes = (int) (totalMinutes % minutesPerDay);
-		var hour = (int) (currentDayMinutes / minutesPerHour);
-		var minute = (int) (currentDayMinutes % minutesPerHour);
+		var currentDayMinutes = (int)(totalMinutes % minutesPerDay);
+		var hour = (int)(currentDayMinutes / minutesPerHour);
+		var minute = (int)(currentDayMinutes % minutesPerHour);
 
 		if (CurrentSeconds >= SecondsPerDay)
 		{
@@ -108,7 +108,8 @@ public partial class TimeController : Node
 			_currentMinute = minute;
 			MinuteTicked?.Invoke(_currentDay, hour, minute);
 		}
-		if(currentDayMinutes >= 12 * 60 && !_wasNoon)
+
+		if (currentDayMinutes >= 12 * 60 && !_wasNoon)
 		{
 			_wasNoon = true;
 			NoonOccured?.Invoke();
