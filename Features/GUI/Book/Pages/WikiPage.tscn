@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://e3t5fwq4qne3"]
+[gd_scene load_steps=8 format=3 uid="uid://e3t5fwq4qne3"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Pages/WikiPage.cs" id="1_hckop"]
 [ext_resource type="PackedScene" uid="uid://c77ama5r0mirv" path="res://Features/GUI/Book/Wiki/WikiItemList.tscn" id="1_lyx1a"]
 [ext_resource type="PackedScene" uid="uid://bmc1oq8o2if8d" path="res://Features/GUI/Book/Wiki/WikiArticleView.tscn" id="3_q0eou"]
 [ext_resource type="Texture2D" uid="uid://bqnsis3x5b0tg" path="res://Assets/UI/BookUI/Background/BookRing_Shaded.png" id="4_ac805"]
 [ext_resource type="PackedScene" uid="uid://blty0r6y6jxn3" path="res://Features/GUI/Book/BookmarkButton.tscn" id="5_m1wd8"]
+[ext_resource type="Texture2D" uid="uid://xdv2ogtl3gnj" path="res://Assets/UI/BookUI/bookmark_orange.png" id="6_brsn5"]
+[ext_resource type="Texture2D" uid="uid://cj8u5g7derdgq" path="res://Assets/UI/BookUI/bookmark_dark_orange.png" id="7_7xbs4"]
 
 [node name="WikiPage" type="Control" node_paths=PackedStringArray("_wikiItemList", "_wikiArticle")]
 layout_mode = 3
@@ -70,5 +72,7 @@ offset_right = 257.0
 offset_bottom = 329.0
 size_flags_horizontal = 3
 focus_mode = 0
+_textureActive = ExtResource("6_brsn5")
+_textureInactive = ExtResource("7_7xbs4")
 Active = true
 Disabled = true
