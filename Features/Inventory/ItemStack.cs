@@ -13,20 +13,20 @@ namespace untitledplantgame.Inventory;
 [GlobalClass]
 public partial class ItemStack : Resource, IItemStack
 {
-	[Export] public int Amount { get; set; }
-	[Export] public string Id { get; set; }
-	[Export] public string Name { get; set; }
-	[Export] public Texture2D Icon { get; set; }
-	[Export] public string Description { get; set; }
-	[Export] public int MaxStackSize { get; set; }
-	[Export] public int BaseValue { get; set; }
+	[Export] public int Amount { get; set; } = 1;
+	[Export] public string Id { get; set; } = "";
+	[Export] public string Name { get; set; } = "";
+	[Export] public Texture2D Icon { get; set; } = null;
+	[Export] public string Description { get; set; } = "";
+	[Export] public int MaxStackSize { get; set; } = 64;
+	[Export] public int BaseValue { get; set; } = 0;
 
 	[Export(PropertyHint.Enum, "Plant,Material,Medicine")]
-	private string _category;
+	private string _category = "Plant";
 
-	[Export] public Array<AComponent> Components { get; set; }
+	[Export] public Array<AComponent> Components { get; set; } = new();
 
-	[Export] public Array<string> RelatedItemIds { get; set; }
+	[Export] public Array<string> RelatedItemIds { get; set; } = new();
 
 	public ItemCategory Category
 	{
