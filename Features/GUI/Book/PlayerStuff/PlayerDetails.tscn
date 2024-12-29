@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtgjnb2g3iphl"]
+[gd_scene load_steps=8 format=3 uid="uid://dtgjnb2g3iphl"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/PlayerDetailsView.cs" id="1_88tm0"]
-[ext_resource type="Texture2D" uid="uid://n66o347wemq8" path="res://Assets/UI/BookUI/Background/BookPage_right.png" id="2_3wrb8"]
 [ext_resource type="Texture2D" uid="uid://b7meke8ampnx" path="res://Assets/UI/BookUI/Background/EmptyCharacterPage.png" id="2_xwjqq"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="4_n8hnm"]
+[ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/FaithProgressBar.cs" id="4_tixgw"]
+[ext_resource type="Texture2D" uid="uid://ghfd5ck3sthr" path="res://Assets/UI/BookUI/DemoPages/InventoryMenu.png" id="5_1potc"]
+[ext_resource type="Texture2D" uid="uid://bdif33v6tjipd" path="res://Assets/UI/BookUI/FaithFlower/First_empty.png" id="5_ne1iy"]
+[ext_resource type="Texture2D" uid="uid://wpjq2rlonfx8" path="res://Assets/UI/BookUI/FaithFlower/First_filled.png" id="6_ek4ln"]
 
-[node name="PlayerDetails" type="Control"]
+[node name="PlayerDetails" type="Control" node_paths=PackedStringArray("_faithProgressBar", "label1", "label2", "label3", "label4")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 217.0
@@ -13,6 +16,11 @@ offset_bottom = 300.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_88tm0")
+_faithProgressBar = NodePath("FaithProgressBar")
+label1 = NodePath("VBoxContainer/TextBox")
+label2 = NodePath("VBoxContainer/TextBox2")
+label3 = NodePath("VBoxContainer/TextBox3")
+label4 = NodePath("VBoxContainer/TextBox4")
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
@@ -24,17 +32,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_xwjqq")
 stretch_mode = 2
-
-[node name="TextBox" parent="." instance=ExtResource("4_n8hnm")]
-layout_mode = 2
-offset_left = 109.0
-offset_top = 147.0
-offset_right = 153.0
-offset_bottom = 175.0
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 32
-text = "Faith"
-text_overrun_behavior = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -61,12 +58,90 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-visible = false
+[node name="FaithProgressBar" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 29.0
+offset_right = 53.0
+offset_bottom = 69.0
+script = ExtResource("4_tixgw")
+
+[node name="Example" type="Panel" parent="FaithProgressBar"]
+modulate = Color(1, 1, 1, 0.509804)
+clip_children = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-value = 20.0
+offset_left = 15.0
+offset_top = -20.0
+offset_right = 104.0
+offset_bottom = 138.0
+
+[node name="TextureRect" type="TextureRect" parent="FaithProgressBar/Example"]
+layout_mode = 0
+offset_left = -284.0
+offset_top = -19.0
+offset_right = 228.0
+offset_bottom = 301.0
+texture = ExtResource("5_1potc")
+
+[node name="First" type="TextureProgressBar" parent="FaithProgressBar"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 54.0
+offset_right = 139.0
+offset_bottom = 182.0
+rotation = -0.960169
 fill_mode = 3
-texture_under = ExtResource("2_3wrb8")
-texture_progress = ExtResource("2_xwjqq")
+stretch_margin_left = 96
+stretch_margin_top = 64
+texture_under = ExtResource("5_ne1iy")
+texture_progress = ExtResource("6_ek4ln")
+
+[node name="Second" type="TextureProgressBar" parent="FaithProgressBar"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 30.0
+offset_right = 142.0
+offset_bottom = 158.0
+rotation = -0.411401
+fill_mode = 3
+stretch_margin_left = 96
+stretch_margin_top = 64
+texture_under = ExtResource("5_ne1iy")
+texture_progress = ExtResource("6_ek4ln")
+
+[node name="Third" type="TextureProgressBar" parent="FaithProgressBar"]
+layout_mode = 0
+offset_left = 28.6916
+offset_top = 15.2286
+offset_right = 156.692
+offset_bottom = 143.229
+rotation = -0.0799965
+fill_mode = 3
+stretch_margin_left = 96
+stretch_margin_top = 64
+texture_under = ExtResource("5_ne1iy")
+texture_progress = ExtResource("6_ek4ln")
+
+[node name="Fourth" type="TextureProgressBar" parent="FaithProgressBar"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 11.0
+offset_right = 172.0
+offset_bottom = 139.0
+rotation = -0.0100381
+fill_mode = 3
+stretch_margin_left = 96
+stretch_margin_top = 64
+texture_under = ExtResource("5_ne1iy")
+texture_progress = ExtResource("6_ek4ln")
+
+[node name="TextBox" parent="." instance=ExtResource("4_n8hnm")]
+layout_mode = 2
+offset_left = 82.0
+offset_top = 142.0
+offset_right = 126.0
+offset_bottom = 170.0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Faith"
+text_overrun_behavior = 0
