@@ -98,4 +98,20 @@ public interface IItemStack
 	public bool IsIdentical(IItemStack itemStack);
 
 	IItemStack Clone();
+	
+	// Additionals for convenience
+	public sealed IItemStack Subtract(IItemStack that)
+	{
+		if (!HasSameIdAndProps(that))
+		{
+			throw new System.ArgumentException("Cannot subtract different items");
+		}
+		if (Amount < that.Amount)
+		{
+			throw new System.ArgumentException("Cannot subtract more than available");
+		}
+		var selfClone = Clone();
+		selfClone.Amount -= that.Amount;
+		return selfClone;
+	}
 }
