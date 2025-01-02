@@ -51,7 +51,7 @@ public partial class Player : CharacterBody2D
 		
 		/*
 		// Testing seed bag
-		var items = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>{new SeedComponent("Chubery")});
+		var items = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>{new SeedComponent()});
 		_logger.Debug("Loaded items: " + items[0]);
 		items[0].Amount = 6;
 		_inventory.AddItem(items[0]);

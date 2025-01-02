@@ -96,7 +96,7 @@ public partial class ItemDatabaseTester : Node
 			);
 
 		GD.Print(craftResult.Id);
-		*/
+		
 
 		//--------------------------------------------------------------------------------------------------------------------------------//
 
@@ -283,5 +283,6 @@ public partial class ItemDatabaseTester : Node
 			var lavender = new Lavender();
 			GD.Print(basil.Equals(lavender)); // should be false
 		}
+		*/
 	}
 }
