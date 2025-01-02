@@ -105,7 +105,8 @@ public class Recipe
 		var newId = string.Join("_", itemStacks.Select(item => item.Id).OrderBy(s => s));
 		var name = string.Join("-", itemStacks.Select(item => item.Id).OrderBy(s => s)); // TODO: Combine names
 		var icon = itemStacks[0].Icon;
-		var newDescription = itemStacks[0].Description;
+		var newDescription = itemStacks[0].ToolTipDescription;
+		var newWikiDescription = itemStacks[0].WikiDescription;
 		var newItemCategory = itemStacks[0].Category;
 		var newMaxStackSize = itemStacks[0].MaxStackSize;
 		var baseValue = itemStacks[0].BaseValue;
@@ -148,7 +149,7 @@ public class Recipe
 			.Where(c => RemovedComponentsInResultingItem.All(r => r.GetType() != c.GetType()))
 			.ToArray());
 
-		return new ItemStack(newId, name, icon, newDescription, newItemCategory, baseValue: baseValue, maxStackSize: newMaxStackSize,
+		return new ItemStack(newId, name, icon, newDescription,newWikiDescription, newItemCategory, baseValue: baseValue, maxStackSize: newMaxStackSize,
 			amount: 1, components: newComponents);
 	}
 
