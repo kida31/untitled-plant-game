@@ -47,7 +47,7 @@ script = ExtResource("3_li003")
 script = ExtResource("3_qp075")
 
 [node name="APlantPrefab" parent="Plants" node_paths=PackedStringArray("Tile") instance=ExtResource("9_t05jd")]
-position = Vector2(439, 343)
+position = Vector2(437, 340)
 PlantName = "Licary"
 Tile = NodePath("../Soil")
 
@@ -55,7 +55,7 @@ Tile = NodePath("../Soil")
 position = Vector2(395, 345)
 
 [node name="APlantPrefab2" parent="Plants" node_paths=PackedStringArray("Tile") instance=ExtResource("9_t05jd")]
-position = Vector2(399, 345)
+position = Vector2(400, 341)
 PlantName = "Chubery"
 Tile = NodePath("../Soil2")
 
