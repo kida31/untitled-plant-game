@@ -16,9 +16,10 @@ public enum Weather
 public partial class WeatherCycle : Node
 {
 	public static WeatherCycle Instance { get; private set; }
+	public Weather CurrentWeather => _currentWeather;
 	public Action<Weather> WeatherChanged;
 
-	private readonly Logger _logger = new Logger("WeatherCycle");
+	private readonly Logger _logger = new("WeatherCycle");
 	private Weather _currentWeather = Weather.Sunny;
 	private int _nextChangeAtDay;
 

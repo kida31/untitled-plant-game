@@ -1,7 +1,6 @@
 using Godot;
 using untitledplantgame.Item;
-using APlant = untitledplantgame.Plants.APlant;
-using SoilTile = untitledplantgame.Plants.Soil.SoilTile;
+using untitledplantgame.Plants;
 
 // TODO Test ALL APlant public methods and mechanics
 

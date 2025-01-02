@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
-using untitledplantgame.Plants.Soil;
 
 namespace untitledplantgame.Plants;
 
@@ -32,8 +31,8 @@ public partial class APlant : StaticBody2D
 	private float _absorptionRate;
 	private float _consumptionRate;
 
-	private int _daysToGrow;
-	private int _currentDay;
+	private int _cyclesToGrow;
+	private int _currentCycle;
 
 	public override void _Ready()
 	{
@@ -59,7 +58,7 @@ public partial class APlant : StaticBody2D
 
 		if (CheckRequirements())
 		{
-			_currentDay++;
+			_currentCycle++;
 			AdvanceStage();
 		}
 	}
@@ -111,10 +110,10 @@ public partial class APlant : StaticBody2D
 	private void SetRequirements()
 	{
 		_logger.Debug($"Setting requirements for plant {PlantName}.");
-		
+
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
 		var plantRequirements = new Dictionary<string, Requirement>();
-		
+
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
@@ -122,12 +121,12 @@ public partial class APlant : StaticBody2D
 			plantRequirements[data.Name.ToString()] = new Requirement(data.MaxLevel, data.MinLevel);
 		}
 
-		_daysToGrow = plantData.DataForGrowthStages[(int)Stage].DaysToGrow;
+		_cyclesToGrow = plantData.DataForGrowthStages[(int)Stage].DaysToGrow;
 		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
 		_absorptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].AbsorptionRate;
 		_consumptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].ConsumptionRate;
-		
-		_currentDay = 0;
+
+		_currentCycle = 0;
 		_currentRequirements = plantRequirements;
 		PlantName = plantData.PlantName;
 
@@ -147,7 +146,7 @@ public partial class APlant : StaticBody2D
 				break;
 		}
 
-		_logger.Debug($"Requirement {fulfilled} for stage {Stage}, current day count at {_currentDay} of {_daysToGrow}.");
+		_logger.Debug($"Requirement {fulfilled} for stage {Stage}, current day count at {_currentCycle} of {_cyclesToGrow}.");
 
 		return fulfilled && Stage != GrowthStage.Ripening && Stage != GrowthStage.Dead;
 	}
@@ -169,7 +168,7 @@ public partial class APlant : StaticBody2D
 	/// </summary>
 	private void AdvanceStage()
 	{
-		if (_currentDay < _daysToGrow)
+		if (_currentCycle < _cyclesToGrow)
 			return;
 
 		Stage++;
