@@ -9,11 +9,11 @@
 [ext_resource type="Script" path="res://Features/Plants/PlantController.cs" id="3_qp075"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
-[ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/APlantPrefab.tscn" id="9_t05jd"]
-[ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="10_da3hi"]
-[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
+[ext_resource type="PackedScene" path="res://Features/Plants/APlantPrefab.tscn" id="9_t05jd"]
+[ext_resource type="PackedScene" path="res://Features/Plants/soil.tscn" id="10_da3hi"]
+[ext_resource type="PackedScene" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
 [ext_resource type="SpriteFrames" uid="uid://d2gf65g8f0am3" path="res://Assets/OverworldAssets/Plant/ChuberySpriteFrames.tres" id="11_voxp1"]
-[ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
+[ext_resource type="PackedScene" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
@@ -47,15 +47,15 @@ script = ExtResource("3_li003")
 script = ExtResource("3_qp075")
 
 [node name="APlantPrefab" parent="Plants" node_paths=PackedStringArray("Tile") instance=ExtResource("9_t05jd")]
-position = Vector2(456, 344)
+position = Vector2(439, 343)
 PlantName = "Licary"
 Tile = NodePath("../Soil")
 
 [node name="Soil" parent="Plants" instance=ExtResource("10_da3hi")]
-position = Vector2(409, 346)
+position = Vector2(395, 345)
 
 [node name="APlantPrefab2" parent="Plants" node_paths=PackedStringArray("Tile") instance=ExtResource("9_t05jd")]
-position = Vector2(409, 345)
+position = Vector2(399, 345)
 PlantName = "Chubery"
 Tile = NodePath("../Soil2")
 
@@ -63,7 +63,7 @@ Tile = NodePath("../Soil2")
 sprite_frames = ExtResource("11_voxp1")
 
 [node name="Soil2" parent="Plants" instance=ExtResource("10_da3hi")]
-position = Vector2(458, 346)
+position = Vector2(443, 345)
 
 [node name="Player" parent="." instance=ExtResource("1_mh621")]
 z_index = 1

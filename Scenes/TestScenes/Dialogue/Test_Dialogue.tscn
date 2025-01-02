@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scenes/TestScenes/Dialogue/TestDialogue.cs" id="1_mgpfb"]
 [ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="1_mt3pj"]
-[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/TutorialDialogue.tres" id="2_edm0w"]
-[ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/HarvestingTutorialDialogue.tres" id="3_1xn4x"]
-[ext_resource type="Resource" uid="uid://dopykccwoa5os" path="res://Resources/Dialogue/VendingMachineTutorialDialogue.tres" id="4_aml6b"]
-[ext_resource type="Resource" uid="uid://ds2a5jertu4k4" path="res://Resources/Dialogue/TutorialDialogueEnd.tres" id="5_d1q3v"]
-[ext_resource type="Resource" uid="uid://yg4mwgstm60u" path="res://Resources/Dialogue/SeedBoyTutorialDialogue.tres" id="5_k6w1k"]
+[ext_resource type="Resource" path="res://Resources/Dialogue/TutorialDialogue.tres" id="2_edm0w"]
+[ext_resource type="Resource" path="res://Resources/Dialogue/HarvestingTutorialDialogue.tres" id="3_1xn4x"]
+[ext_resource type="Resource" path="res://Resources/Dialogue/VendingMachineTutorialDialogue.tres" id="4_aml6b"]
+[ext_resource type="Resource" path="res://Resources/Dialogue/TutorialDialogueEnd.tres" id="5_d1q3v"]
+[ext_resource type="Resource" path="res://Resources/Dialogue/SeedBoyTutorialDialogue.tres" id="5_k6w1k"]
 
 [node name="TestDialogue" type="Node2D" node_paths=PackedStringArray("_button")]
 script = ExtResource("1_mgpfb")
