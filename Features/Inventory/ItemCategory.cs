@@ -7,7 +7,7 @@ namespace untitledplantgame.Inventory;
 /// </summary>
 public class ItemCategory
 {
-	public static readonly ItemCategory Plant = new("Plant");
+	public static readonly ItemCategory Seed = new("Seed");
 	public static readonly ItemCategory Material = new("Material");
 	public static readonly ItemCategory Medicine = new("Medicine");
 

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
+using untitledplantgame.Plants.Models;
 using untitledplantgame.Plants.Soil;
 
 namespace untitledplantgame.Plants;
@@ -20,6 +22,8 @@ public enum GrowthStage
 
 public partial class APlant : StaticBody2D
 {
+	private const string PlantPath = "res://Features/Plants/APlantPrefab.tscn";
+	private static readonly PackedScene PlantScene = GD.Load<PackedScene>(PlantPath);
 	[Export] public string PlantName { get; private set; }
 	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
 	[Export] private SoilTile Tile { get; set; }
@@ -35,12 +39,24 @@ public partial class APlant : StaticBody2D
 	private int _daysToGrow;
 	private int _currentDay;
 
+	public APlant()
+	{
+		AddToGroup(GameGroup.Plants);
+		_logger = new Logger(this);
+	}
+
+	public static APlant Create(string plantName)
+	{
+		var plant = PlantScene.Instantiate<APlant>();
+		plant.PlantName = plantName;
+		return plant;
+	}
+
 	public override void _Ready()
 	{
-		_logger = new Logger(PlantName);
-		_logger.Debug($"Plant {PlantName} has been planted.");
-		AddToGroup(GameGroup.Plants);
 		_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		
+		_logger.Debug($"Plant {PlantName} is ready.");
 		SetRequirements();
 	}
 
@@ -111,10 +127,11 @@ public partial class APlant : StaticBody2D
 	private void SetRequirements()
 	{
 		_logger.Debug($"Setting requirements for plant {PlantName}.");
-		
+
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
+		_logger.Debug($"{plantData.PlantName} with {plantData.DataForGrowthStages.Length} growth stages and sprite {plantData.Sprite}.");
 		var plantRequirements = new Dictionary<string, Requirement>();
-		
+
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
@@ -126,12 +143,13 @@ public partial class APlant : StaticBody2D
 		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
 		_absorptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].AbsorptionRate;
 		_consumptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].ConsumptionRate;
-		
+
 		_currentDay = 0;
 		_currentRequirements = plantRequirements;
 		PlantName = plantData.PlantName;
 
-		_sprite2D.Play(Stage.ToString());
+		_sprite2D.SetSpriteFrames(plantData.Sprite);
+		_sprite2D.Play($"{Stage}");
 	}
 
 	/// <summary>
