@@ -1,6 +1,7 @@
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Player;
+
+namespace untitledplantgame.GUI.HUDs;
 
 public partial class ToolbeltView : Control
 {
@@ -10,7 +11,7 @@ public partial class ToolbeltView : Control
 	[Export] private ToolBlobView _leftBlob;
 	[Export] private ToolBlobView _centerBlob;
 	[Export] private ToolBlobView _rightBlob;
-	private Player _player;
+	private Player.Player _player;
 
 	public override void _Ready()
 	{
@@ -23,7 +24,7 @@ public partial class ToolbeltView : Control
 		{
 			if (_player == null)
 			{
-				_player = GetTree().GetFirstNodeInGroup(GameGroup.Player) as Player;
+				_player = GetTree().GetFirstNodeInGroup(GameGroup.Player) as Player.Player;
 				if (_player == null)
 				{
 					return; // Try again

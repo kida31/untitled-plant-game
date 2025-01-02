@@ -50,6 +50,12 @@ public class SeedBag : Tool
 		{
 			return false;
 		}
+		
+		if(CurrentSeedItem == null)
+		{
+			_logger.Info("No seed in the seed bag");
+			return false;
+		}
 
 		if (CurrentSeedItem.GetComponent<SeedComponent>() == null)
 		{

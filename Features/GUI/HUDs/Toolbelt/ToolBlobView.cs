@@ -1,6 +1,8 @@
-using Godot;
 using System;
+using Godot;
 using untitledplantgame.Tools;
+
+namespace untitledplantgame.GUI.HUDs;
 
 public partial class ToolBlobView : MarginContainer
 {
