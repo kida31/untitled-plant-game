@@ -2,6 +2,7 @@ using System;
 using Godot;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Dialogue;
+using untitledplantgame.Dialogue.Models;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
@@ -97,6 +98,11 @@ public partial class EventBus : Node
 	{
 		InitialiseDialogue?.Invoke(obj);
 	}
+	
+	public void DialogueEnded(DialogueResourceObject dialogueId)
+	{
+		OnDialogueEnd?.Invoke(dialogueId);
+	}
 
 	public event Action<int, int> GoldChanged;
 	public void InvokeGoldChanged(int deltaGold, int newGold)
@@ -126,6 +132,7 @@ public partial class EventBus : Node
 	public event Action<InventoryItemView> OnSetItemSlot;
 	public event Action<ItemStack, InventoryItemView> OnInventoryItemMove;
 	public event GetItemSlotEventHandler OnGetItemSlot;
+	public event Action<DialogueResourceObject> OnDialogueEnd;
 
 
 	public void InventoryOpened()
@@ -193,4 +200,5 @@ public partial class EventBus : Node
 	{
 		return OnGetItemSlot?.Invoke();
 	}
+	
 }
