@@ -36,7 +36,7 @@ public partial class PlantDatabase : Node, IDatabase<PlantData>
 
 	public PlantData GetResourceByName(string name)
 	{
-		var pathName = $"{name}/{name}.tres";
+		var pathName = $"{name}.tres";
 		return GD.Load<PlantData>(Path.Join(_dirPath, pathName));
 	}
 

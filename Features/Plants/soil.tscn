@@ -9,5 +9,4 @@ radius = 19.0263
 script = ExtResource("1_0lhsy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_a4san")

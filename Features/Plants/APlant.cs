@@ -19,13 +19,12 @@ public enum GrowthStage
 
 public partial class APlant : StaticBody2D
 {
-	[Export] public string PlantName { get; private set; }
+	[Export(PropertyHint.Enum, "Chuberry,Licary,Drupoleaum")] public string PlantName { get; private set; }
 	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
 	[Export] private SoilTile Tile { get; set; }
 
 	private Dictionary<string, Requirement> _currentRequirements;
 	private Logger _logger;
-	private AnimatedSprite2D _sprite2D;
 
 	private bool _isHarvestable;
 	private float _absorptionRate;
@@ -39,7 +38,7 @@ public partial class APlant : StaticBody2D
 		_logger = new Logger(PlantName);
 		_logger.Debug($"Plant {PlantName} has been planted.");
 		AddToGroup(GameGroup.Plants);
-		_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		//_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		SetRequirements();
 	}
 
@@ -114,6 +113,12 @@ public partial class APlant : StaticBody2D
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
 		var plantRequirements = new Dictionary<string, Requirement>();
 
+		if (plantData.DataForGrowthStages.Length <= (int)Stage)
+		{
+			_logger.Error("Plant data does not contain data for the current stage.");
+			return;
+		}
+		
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
@@ -130,7 +135,7 @@ public partial class APlant : StaticBody2D
 		_currentRequirements = plantRequirements;
 		PlantName = plantData.PlantName;
 
-		_sprite2D.Play(Stage.ToString());
+		//_sprite2D.Play(Stage.ToString());
 	}
 
 	/// <summary>
@@ -218,7 +223,7 @@ public partial class APlant : StaticBody2D
 
 	private void SetUnalive()
 	{
-		_sprite2D.Play("Dead");
+		//_sprite2D.Play("Dead");
 		Stage = GrowthStage.Dead;
 		_isHarvestable = false;
 		_logger.Debug($"Plant {PlantName} has died due to lack of water.");

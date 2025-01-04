@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Common;
@@ -6,6 +7,8 @@ namespace untitledplantgame.Plants;
 
 public partial class PlantController : Node
 {
+	private static Action<APlant> _plantGrown;
+	
 	private Logger _logger;
 	private TimeController _timeController;
 
@@ -37,11 +40,18 @@ public partial class PlantController : Node
 		{
 			var plant = node as APlant;
 			plant?.DoGrowthCycle();
+			_plantGrown?.Invoke(plant);
 		}
 	}
 
 	private Array<Node> GetPlantNodes()
 	{
 		return GetTree().GetNodesInGroup(GameGroup.Plants);
+	}
+	
+	public static event Action<APlant> OnPlantGrown
+	{
+		add => _plantGrown += value;
+		remove => _plantGrown -= value;
 	}
 }

@@ -5,7 +5,7 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.Plants;
 
-public partial class SoilMap : Node2D
+public partial class SoilMap : TileMapLayer
 {
 	private const int TileSetSourceId = 0;
 
@@ -33,7 +33,7 @@ public partial class SoilMap : Node2D
 	{
 		_logger = new Logger(this);
 		_logger.Debug("READY");
-		_tileLayer = GetNode<TileMapLayer>("Soil");
+		_tileLayer = this;
 		CallDeferred(nameof(GetSoilTiles));
 	}
 	
@@ -50,14 +50,13 @@ public partial class SoilMap : Node2D
 
 	private void OnHydrationChanged(float hydration, SoilTile tile)
 	{
-		//testing
+		/*//testing
 		var pos = ToLocal(_tester.GlobalPosition);
 		_logger.Debug($"Tester position: {pos.X:F1}, {pos.Y:F1}");
 		var tilePos = _tileLayer.LocalToMap(pos);
 		_logger.Debug($"Test map position: {tilePos}");
 		_tileLayer.SetCell(tilePos, TileSetSourceId, _hydrationTileMap[SoilHydration.Dry][0]);
-		//end testing
-		
+		//end testing*/
 		
 		var tilePosition = ToLocal(tile.GlobalPosition);
 		_logger.Debug($"Soil Tile position: {tilePosition.X:F1}, {tilePosition.Y:F1}");
@@ -84,10 +83,5 @@ public partial class SoilMap : Node2D
 				_logger.Debug($"Tile with hydration {hydration} is flooded");
 				break;
 		}
-	}
-
-	public override void _Process(double delta)
-	{
-		
 	}
 }
