@@ -107,7 +107,7 @@ public partial class ItemDatabaseTester : Node
 		ItemStack dummyItemStack = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
 		GD.Print(dummyItemStack.Id);
 		GD.Print(dummyItemStack.Name);
-		GD.Print(dummyItemStack.Description);
+		GD.Print(dummyItemStack.ToolTipDescription);
 		GD.Print(dummyItemStack.Amount);
 		GD.Print(dummyItemStack.Category);
 
