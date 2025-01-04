@@ -138,5 +138,5 @@ IsHarvestable = true
 
 [resource]
 script = ExtResource("1_1enty")
-PlantName = "Chubery"
+PlantName = "Chuberry"
 DataForGrowthStages = Array[Object]([SubResource("Resource_bcyye"), SubResource("Resource_3mbrb"), SubResource("Resource_bvi8v"), SubResource("Resource_25js4"), SubResource("Resource_kdsyi"), SubResource("Resource_bxr5s")])
