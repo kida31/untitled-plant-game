@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wdbdoil5oq0k"
-path="res://.godot/imported/soiltiles_tileset.png-58024246a388cc27fea6bed05df51376.ctex"
+uid="uid://dxjrcllnnc3s2"
+path="res://.godot/imported/Licary_SpriteSheet.png-d112ba084aa4c2c2f468adc161aa0160.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OverworldAssets/soiltiles_tileset.png"
-dest_files=["res://.godot/imported/soiltiles_tileset.png-58024246a388cc27fea6bed05df51376.ctex"]
+source_file="res://Assets/Tilesets/Plant/Licary_SpriteSheet.png"
+dest_files=["res://.godot/imported/Licary_SpriteSheet.png-d112ba084aa4c2c2f468adc161aa0160.ctex"]
 
 [params]
 

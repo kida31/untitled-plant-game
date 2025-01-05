@@ -11,7 +11,7 @@ namespace untitledplantgame.Plants;
 /// <summary>
 /// A database singleton for all plant resources.
 /// </summary>
-public partial class PlantDatabase : Node, IDatabase<PlantData>
+public partial class PlantDatabase : Node
 {
 	public static PlantDatabase Instance { get; private set; }
 
@@ -38,11 +38,6 @@ public partial class PlantDatabase : Node, IDatabase<PlantData>
 	{
 		var pathName = $"{name}.tres";
 		return GD.Load<PlantData>(Path.Join(_dirPath, pathName));
-	}
-
-	public PlantData GetResourceById(int id)
-	{
-		throw new NotImplementedException();
 	}
 
 	public PlantData[] GetAllResources()

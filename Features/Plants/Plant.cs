@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Plants;
 
 public enum GrowthStage
 {
+	Seed,
 	Sprouting,
-	Seedling,
 	Vegetating,
 	Budding,
 	Flowering,
@@ -17,14 +18,14 @@ public enum GrowthStage
 	Dead,
 }
 
-public partial class APlant : StaticBody2D
+public partial class Plant : StaticBody2D
 {
 	[Export(PropertyHint.Enum, "Chuberry,Licary,Drupoleaum")] public string PlantName { get; private set; }
-	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
+	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Seed;
 	[Export] private SoilTile Tile { get; set; }
 
-	public event Action<APlant> PlantRemoved;
-	public event Action<APlant> PlantGrown;
+	public event Action<Plant> BeforePlantRemoved;
+	public event Action<Plant> PlantGrown;
 
 	private Dictionary<string, Requirement> _currentRequirements;
 	private Logger _logger;
@@ -100,7 +101,7 @@ public partial class APlant : StaticBody2D
 	/// </summary>
 	private void RemovePlant()
 	{
-		PlantRemoved?.Invoke(this);
+		BeforePlantRemoved?.Invoke(this);
 		QueueFree();
 	}
 
@@ -236,7 +237,9 @@ public partial class APlant : StaticBody2D
 
 	private ItemStack GetHarvestItem()
 	{
-		//get new ItemStack("{PlantName}_{Stage}") from Database
-		return null;
+		if(!_isHarvestable) return null;
+		
+		var itemStack = ItemDatabase.Instance.CreateItemStack($"{PlantName}_{Stage}_harvested");
+		return itemStack;
 	}
 }

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cc08shc1btj02"
-path="res://.godot/imported/chubery_sheet.png-395bf7091d59cf5abfc907601dc52a9e.ctex"
+path="res://.godot/imported/chubery_sheet.png-9689eab8867aac0c27f26029a2c41e15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OverworldAssets/Plant/chubery_sheet.png"
-dest_files=["res://.godot/imported/chubery_sheet.png-395bf7091d59cf5abfc907601dc52a9e.ctex"]
+source_file="res://Assets/Tilesets/Plant/chubery_sheet.png"
+dest_files=["res://.godot/imported/chubery_sheet.png-9689eab8867aac0c27f26029a2c41e15.ctex"]
 
 [params]
 

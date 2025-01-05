@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq3ict6tudlsf"
-path="res://.godot/imported/DeadPlant.png-dd07a85cdd9eb8f69d775e37e8415d7b.ctex"
+uid="uid://wdbdoil5oq0k"
+path="res://.godot/imported/soiltiles_tileset.png-2219332ae8e8c9d2a06c4cb716371d2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OverworldAssets/Plant/DeadPlant.png"
-dest_files=["res://.godot/imported/DeadPlant.png-dd07a85cdd9eb8f69d775e37e8415d7b.ctex"]
+source_file="res://Assets/Tilesets/soiltiles_tileset.png"
+dest_files=["res://.godot/imported/soiltiles_tileset.png-2219332ae8e8c9d2a06c4cb716371d2c.ctex"]
 
 [params]
 

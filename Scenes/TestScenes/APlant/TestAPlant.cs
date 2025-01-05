@@ -10,9 +10,9 @@ public partial class TestAPlant : Node2D
 	private Label _label;
 
 	[Export]
-	private APlant _plant;
+	private Plant _plant;
 	[Export]
-	private APlant _plant2;
+	private Plant _plant2;
 
 	[Export]
 	private SoilTile _soilTile;

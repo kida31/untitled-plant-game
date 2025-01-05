@@ -9,7 +9,7 @@ public partial class SoilTile : Area2D, IWaterable
 {
 	[Export] public float Hydration { get; private set; }
 	public event Action<float, SoilTile> HydrationChanged;
-	private float _maxHydration = 250;
+	private float _maxHydration = 300;
 	private float Fertilization { get; set; }
 	private Logger _logger;
 
@@ -33,7 +33,7 @@ public partial class SoilTile : Area2D, IWaterable
 		switch (obj)
 		{
 			case Weather.Sunny:
-				WithdrawHydration(30);
+				WithdrawHydration(50);
 				break;
 			case Weather.Rainy:
 				AddWater(100);
@@ -42,7 +42,7 @@ public partial class SoilTile : Area2D, IWaterable
 				AddWater(50);
 				break;
 			case Weather.Cloudy:
-				WithdrawHydration(20);
+				WithdrawHydration(30);
 				break;
 			default:
 				_logger.Warn("Soil is confused about the weather.");

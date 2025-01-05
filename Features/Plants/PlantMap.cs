@@ -8,7 +8,6 @@ public partial class PlantMap : TileMapLayer
 	private Logger _logger;
 	private TileMapLayer _tileLayer;
 	
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
@@ -17,7 +16,7 @@ public partial class PlantMap : TileMapLayer
 		CallDeferred(nameof(GetPlantTiles));
 	}
 
-	private void OnPlantGrown(APlant plant)
+	private void OnPlantGrown(Plant plant)
 	{
 		var name = plant.PlantName;
 		var pos = ToLocal(plant.GlobalPosition);
@@ -42,17 +41,21 @@ public partial class PlantMap : TileMapLayer
 		var plantNodes = GetTree().GetNodesInGroup(GameGroup.Plants);
 		foreach (var plant in plantNodes)
 		{
-			if (plant is not APlant p) return;
+			if (plant is not Plant p) return;
+			p.BeforePlantRemoved += OnBeforePlantRemoved;
+			p.PlantGrown += OnPlantGrown;
 			OnPlantGrown(p);
-			p.PlantRemoved += OnPlantRemoved;
 		}
 	}
 
-	private void OnPlantRemoved(APlant plant)
+	//TODO Make it work with shovel tool
+	private void OnBeforePlantRemoved(Plant plant)
 	{
 		var pos = ToLocal(plant.GlobalPosition);
 		var mapPos = _tileLayer.LocalToMap(pos);
 		_tileLayer.EraseCell(mapPos);
+		plant.BeforePlantRemoved -= OnBeforePlantRemoved;
+		plant.PlantGrown -= OnPlantGrown;
 	}
 
 	private int GetTileSetId(string name)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxjrcllnnc3s2"
-path="res://.godot/imported/Licary_SpriteSheet.png-4f52d3822c7302cb2b5982ca48a26015.ctex"
+uid="uid://bq3ict6tudlsf"
+path="res://.godot/imported/DeadPlant.png-134cc5b9a94ae81e0858c116055a8463.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OverworldAssets/Plant/Licary_SpriteSheet.png"
-dest_files=["res://.godot/imported/Licary_SpriteSheet.png-4f52d3822c7302cb2b5982ca48a26015.ctex"]
+source_file="res://Assets/Tilesets/Plant/DeadPlant.png"
+dest_files=["res://.godot/imported/DeadPlant.png-134cc5b9a94ae81e0858c116055a8463.ctex"]
 
 [params]
 

@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Common;
@@ -36,7 +35,7 @@ public partial class PlantController : Node
 		_logger.Debug($"Checking {plantNodes.Count} plant(s)");
 		foreach (var node in plantNodes)
 		{
-			var plant = node as APlant;
+			var plant = node as Plant;
 			plant?.DoGrowthCycle();
 		}
 	}
