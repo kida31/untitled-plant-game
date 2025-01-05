@@ -36,8 +36,14 @@ public partial class PlantDatabase : Node
 
 	public PlantData GetResourceByName(string name)
 	{
-		var pathName = $"{name}.tres";
-		return GD.Load<PlantData>(Path.Join(_dirPath, pathName));
+		var plantName = name.Replace(" ", "_");
+		var resourceName = $"{plantName}.tres";
+		var data = GD.Load<PlantData>(Path.Join(_dirPath, resourceName));
+		if (data == null)
+		{
+			_logger.Error("There is no PlantData resource with the name " + name);
+		}
+		return data;
 	}
 
 	public PlantData[] GetAllResources()

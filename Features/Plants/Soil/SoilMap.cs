@@ -23,10 +23,10 @@ public partial class SoilMap : TileMapLayer
 	
 	private Dictionary<SoilHydration, Array<Vector2I>> _hydrationTileMap = new()
 	{
-		{SoilHydration.Dry, new Array<Vector2I>{new Vector2I(0, 0)}},
-		{SoilHydration.Moist, new Array<Vector2I>{new Vector2I(1, 0), new Vector2I(1, 1), new Vector2I(1, 2), new Vector2I(1, 3), new Vector2I(1, 4), new Vector2I(1, 5), new Vector2I(1, 6), new Vector2I(1, 7)}},
-		{SoilHydration.Wet, new Array<Vector2I>{new Vector2I(2, 0), new Vector2I(2, 1), new Vector2I(2, 2), new Vector2I(2, 3), new Vector2I(2, 4), new Vector2I(2, 5), new Vector2I(2, 6), new Vector2I(2, 7)}},
-		{SoilHydration.Flooded, new Array<Vector2I>{new Vector2I(3, 0), new Vector2I(3, 1), new Vector2I(3, 2), new Vector2I(3, 3), new Vector2I(3, 4), new Vector2I(3, 5), new Vector2I(3, 6), new Vector2I(3 , 7)}}
+		{SoilHydration.Dry, new Array<Vector2I>{new (0, 0)}},
+		{SoilHydration.Moist, new Array<Vector2I>{new (1, 0), new (1, 1), new (1, 2), new (1, 3), new (1, 4), new (1, 5), new (1, 6), new (1, 7)}},
+		{SoilHydration.Wet, new Array<Vector2I>{new (2, 0), new (2, 1), new (2, 2), new (2, 3), new (2, 4), new (2, 5), new (2, 6), new (2, 7)}},
+		{SoilHydration.Flooded, new Array<Vector2I>{new (3, 0), new (3, 1), new (3, 2), new (3, 3), new (3, 4), new (3, 5), new (3, 6), new (3 , 7)}}
 	};
 	
 	public override void _Ready()
@@ -51,6 +51,10 @@ public partial class SoilMap : TileMapLayer
 	private void OnHydrationChanged(float hydration, SoilTile tile)
 	{
 		/*//testing
+		//use the _tester node to test the positioning of the tiles
+		//you can use it to see where global positions are and how they translate to local positions on the tile map
+		//drag the _tester node around the scene and see if the tile map updates on the same position as the _tester node
+		 
 		var pos = ToLocal(_tester.GlobalPosition);
 		_logger.Debug($"Tester position: {pos.X:F1}, {pos.Y:F1}");
 		var tilePos = _tileLayer.LocalToMap(pos);
@@ -59,9 +63,7 @@ public partial class SoilMap : TileMapLayer
 		//end testing*/
 		
 		var tilePosition = ToLocal(tile.GlobalPosition);
-		_logger.Debug($"Soil Tile position: {tilePosition.X:F1}, {tilePosition.Y:F1}");
 		var tileMapPosition = _tileLayer.LocalToMap(tilePosition);
-		_logger.Debug($"Tile map position: {tileMapPosition}");
 		var randomSoilVariation = new Random();
 		
 		switch (hydration)

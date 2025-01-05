@@ -7,9 +7,14 @@ namespace untitledplantgame.Plants;
 
 public partial class SoilTile : Area2D, IWaterable
 {
+	private const float MaxHydration = 300;
+	private const float SunnyEvaporationRate = 50;
+	private const float CloudyEvaporationRate = 50;
+	private const float RainyHydrationRate = 100;
+	private const float SnowyHydrationRate = 50;
+	
 	[Export] public float Hydration { get; private set; }
 	public event Action<float, SoilTile> HydrationChanged;
-	private float _maxHydration = 300;
 	private float Fertilization { get; set; }
 	private Logger _logger;
 
@@ -19,7 +24,14 @@ public partial class SoilTile : Area2D, IWaterable
 		_logger = new Logger(this);
 		WeatherCycle.Instance.WeatherChanged += OnWeatherChanged;
 		TimeController.Instance.DayChanged += OnDayChanged;
+		TimeController.Instance.NoonOccured += OnNoonOccured;
 		_logger.Debug("SoilTile is ready.");
+	}
+
+	private void OnNoonOccured()
+	{
+		var weather = WeatherCycle.Instance.CurrentWeather;
+		OnWeatherChanged(weather);
 	}
 
 	private void OnDayChanged(int day)
@@ -33,16 +45,16 @@ public partial class SoilTile : Area2D, IWaterable
 		switch (obj)
 		{
 			case Weather.Sunny:
-				WithdrawHydration(50);
+				WithdrawHydration(SunnyEvaporationRate);
 				break;
 			case Weather.Rainy:
-				AddWater(100);
+				AddWater(RainyHydrationRate);
 				break;
 			case Weather.Snowy:
-				AddWater(50);
+				AddWater(SnowyHydrationRate);
 				break;
 			case Weather.Cloudy:
-				WithdrawHydration(30);
+				WithdrawHydration(CloudyEvaporationRate);
 				break;
 			default:
 				_logger.Warn("Soil is confused about the weather.");
@@ -62,7 +74,7 @@ public partial class SoilTile : Area2D, IWaterable
 
 	public void AddWater(float addedWater)
 	{
-		Hydration = Math.Min(Hydration + addedWater, _maxHydration);
+		Hydration = Math.Min(Hydration + addedWater, MaxHydration);
 		HydrationChanged?.Invoke(Hydration, this);
 	}
 }
