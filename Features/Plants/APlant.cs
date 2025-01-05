@@ -23,6 +23,9 @@ public partial class APlant : StaticBody2D
 	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Sprouting;
 	[Export] private SoilTile Tile { get; set; }
 
+	public event Action<APlant> PlantRemoved;
+	public event Action<APlant> PlantGrown;
+
 	private Dictionary<string, Requirement> _currentRequirements;
 	private Logger _logger;
 
@@ -95,8 +98,9 @@ public partial class APlant : StaticBody2D
 	/// <summary>
 	/// Removes the plant from the scene.
 	/// </summary>
-	public void RemovePlant()
+	private void RemovePlant()
 	{
+		PlantRemoved?.Invoke(this);
 		QueueFree();
 	}
 
@@ -178,6 +182,7 @@ public partial class APlant : StaticBody2D
 
 		Stage++;
 		_logger.Info($"Plant {PlantName} advanced to {Stage}.");
+		PlantGrown?.Invoke(this);
 		SetRequirements();
 	}
 

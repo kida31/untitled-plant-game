@@ -1,5 +1,4 @@
 using Godot;
-using Godot.Collections;
 using untitledplantgame.Common;
 
 namespace untitledplantgame.Plants;
@@ -16,8 +15,6 @@ public partial class PlantMap : TileMapLayer
 		_logger.Debug("READY");
 		_tileLayer = this;
 		CallDeferred(nameof(GetPlantTiles));
-		
-		PlantController.OnPlantGrown += OnPlantGrown;
 	}
 
 	private void OnPlantGrown(APlant plant)
@@ -47,9 +44,17 @@ public partial class PlantMap : TileMapLayer
 		{
 			if (plant is not APlant p) return;
 			OnPlantGrown(p);
+			p.PlantRemoved += OnPlantRemoved;
 		}
 	}
-	
+
+	private void OnPlantRemoved(APlant plant)
+	{
+		var pos = ToLocal(plant.GlobalPosition);
+		var mapPos = _tileLayer.LocalToMap(pos);
+		_tileLayer.EraseCell(mapPos);
+	}
+
 	private int GetTileSetId(string name)
 	{
 		switch (name.ToLower())

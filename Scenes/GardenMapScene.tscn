@@ -343,46 +343,6 @@ sources/9 = SubResource("TileSetAtlasSource_ib477")
 pattern_0 = SubResource("TileMapPattern_5sudo")
 pattern_1 = SubResource("TileMapPattern_swsaa")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s8vjx"]
-texture = ExtResource("12_ekvqo")
-texture_region_size = Vector2i(32, 32)
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-0:0/0 = 0
-0:1/0 = 0
-0:2/0 = 0
-0:3/0 = 0
-0:6/0 = 0
-0:7/0 = 0
-0:5/0 = 0
-0:4/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_jveog"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_s8vjx")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5oqnr"]
 resource_name = "dead"
 texture = ExtResource("12_h45qb")
@@ -465,6 +425,46 @@ sources/3 = SubResource("TileSetAtlasSource_ipxae")
 sources/0 = SubResource("TileSetAtlasSource_5oqnr")
 sources/1 = SubResource("TileSetAtlasSource_qplcf")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s8vjx"]
+texture = ExtResource("12_ekvqo")
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:6/0 = 0
+0:7/0 = 0
+0:5/0 = 0
+0:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jveog"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_s8vjx")
+
 [node name="Map" type="Node2D"]
 
 [node name="Ground" type="TileMapLayer" parent="."]
@@ -491,18 +491,18 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAALAAUACQAAAAMAAAALAAYACQAAAAAAAAALAAcACQAAAAIAAAALAAgACQAAAAEAAAALAAkACQAAAAMAAAALAAoACQAAAAIAAAALAAsACQAAAAEAAAALAAwACQAAAAIAAAALAA0ACQAAAAAAAAALAA4ACQAAAAIAAAALAA8ACQAAAAAAAAALABAACQAAAAIAAAALABEACQAAAAMAAAALABIACQAAAAAAAAAcABMABwABAAAAAAAcABIACQABAAEAAAAcABEACQABAAMAAAAcABAACQABAAEAAAAcAA8ACQABAAIAAAAcAA4ACQABAAIAAAAcAA0ACQABAAAAAAAcAAwACQABAAAAAAAcAAsACQABAAIAAAAcAAoACQABAAIAAAAcAAkACQABAAAAAAAcAAgACQABAAAAAAAcAAcACQABAAMAAAAcAAYACQABAAMAAAAcAAUACQABAAEAAAALABMABwADAAAAAAAMABMABwACAAAAAAANABMABwADAAAAAAAOABMABwAAAAAAAAAPABMABwADAAAAAAAQABMABwADAAAAAAARABMABwAAAAAAAAASABMABwAAAAAAAAATABMABwACAAAAAAAUABMABwAAAAAAAAAVABMABwABAAAAAAAWABMABwABAAAAAAAXABMABwADAAAAAAAYABMABwACAAAAAAAZABMABwAAAAAAAAAaABMABwABAAAAAAAbABMABwADAAAAAAALAAQABwADAAAAAAAMAAQABwACAAAAAAANAAQABwACAAAAAAAOAAQABwADAAAAAAAPAAQABwADAAAAAAAQAAQABwABAAAAAAARAAQABwABAAAAAAASAAQABwABAAAAAAATAAQABwAAAAAAAAAUAAQABwADAAAAAAAVAAQABwABAAAAAAAWAAQABwABAAAAAAAXAAQABwADAAAAAAAYAAQABwAAAAAAAAAZAAQABwACAAAAAAAaAAQABwACAAAAAAAbAAQABwAAAAAAAAAcAAQABwACAAAAAAA=")
 tile_set = SubResource("TileSet_ue6vt")
 
+[node name="Plants" type="TileMapLayer" parent="."]
+z_index = 1
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAZAAkAAQAGAAAAAAAYAAkAAgAEAAAAAAAZAAwAAwAFAAAAAAAZAA0AAAAAAAAAAAAaAAYAAQABAAAAAAAaAAcAAgABAAAAAAASAAYAAwAGAAAAAAAWABEAAwADAAAAAAAWABAAAQADAAAAAAAZABAAAgAFAAAAAAAaABAAAQACAAAAAAATAAYAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_sor4m")
+script = ExtResource("17_qgpau")
+
 [node name="Soil" type="TileMapLayer" parent="."]
 z_index = 1
 y_sort_enabled = true
 tile_set = SubResource("TileSet_jveog")
 script = ExtResource("1_uo15o")
-
-[node name="Plants" type="TileMapLayer" parent="."]
-z_index = 1
-y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAZAAkAAQAGAAAAAAAYAAkAAgAEAAAAAAAZAAwAAwAFAAAAAAAZAA0AAAAAAAAAAAAaAAYAAQABAAAAAAAaAAcAAgABAAAAAAASAAYAAwAGAAAAAAA=")
-tile_set = SubResource("TileSet_sor4m")
-script = ExtResource("17_qgpau")
 
 [node name="MarkerNode" type="Node2D" parent="."]
 position = Vector2(458, 346)
