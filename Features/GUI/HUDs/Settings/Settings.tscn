@@ -81,14 +81,6 @@ expand_mode = 1
 [node name="OptionButton" type="OptionButton" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 4
-popup/item_0/text = "1280x720"
-popup/item_1/text = "1920x1080"
-popup/item_1/id = 1
-popup/item_2/text = "2560x1440"
-popup/item_2/id = 2
-popup/item_3/text = "3840x2160"
-popup/item_3/id = 3
 script = ExtResource("3_c8ql2")
 
 [node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]

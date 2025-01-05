@@ -1,10 +1,11 @@
+using System.Text.RegularExpressions;
 using Godot;
 
 public partial class Settings : Node
 {
 	[Export] private Button _backButton;
 	[Export] private CheckBox _checkBox;
-	[Export] private ResolutionButton _resolutionButton; // This should be 100% custom logic to handle the elements! Something basic for resolution
+	[Export] private ResolutionButton _resolutionButton;
 
 	private long _lastValidOptionButton;
 	private Vector2I _gameResolution;
@@ -14,6 +15,23 @@ public partial class Settings : Node
 		_backButton.Pressed += () => GetTree().ChangeSceneToFile("res://Features/GUI/HUDs/MainMenu/MainMenu.tscn");
 		_resolutionButton.ItemSelected += GetSelectedItem;
 		_checkBox.Toggled += FullScreenToggled;
+
+		SetResolutionBasedOnInitialWindowSize();
+	}
+
+	private void SetResolutionBasedOnInitialWindowSize()
+	{
+		for (var i = 0; i < _resolutionButton.GetItemCount(); i++)
+		{
+			var currentResolutionString = Regex.Replace(DisplayServer.WindowGetSize()
+				.ToString(), @"[()\s]", "")
+				.Replace(",", "x");
+
+			if (currentResolutionString == _resolutionButton.GetItemText(i))
+			{
+				_resolutionButton.Select(i);
+			}
+		}
 	}
 
 	private void FullScreenToggled(bool fullScreen)
@@ -39,8 +57,8 @@ public partial class Settings : Node
 
 	private void SetGameResolutionFromOptionButtonText(long buttonIndex)
 	{
-		var resolution = _resolutionButton.GetItemText((int)buttonIndex).Replace("#", "");
-		var parts = resolution.Split('x');
+		var resolutionString = _resolutionButton.GetItemText((int)buttonIndex); // Added just for clarification
+		var parts = resolutionString.Split('x');
 		
 		_gameResolution = new Vector2I(int.Parse(parts[0]), int.Parse(parts[1]));
 	}
