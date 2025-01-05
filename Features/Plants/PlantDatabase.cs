@@ -1,17 +1,15 @@
-using System;
 using System.IO;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Plants.Models;
-using untitledplantgame.ResourceData;
 
 namespace untitledplantgame.Plants;
 
 /// <summary>
 /// A database singleton for all plant resources.
 /// </summary>
-public partial class PlantDatabase : Node
+public partial class PlantDatabase : Node, IDatabase<PlantData>
 {
 	public static PlantDatabase Instance { get; private set; }
 
