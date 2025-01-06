@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiArticleView.cs" id="1_6vmcs"]
 [ext_resource type="Texture2D" uid="uid://bse2hc1dgntl" path="res://Assets/UI/BookUI/Background/EmptyItemDetailsPage.png" id="2_r81nv"]
 [ext_resource type="Texture2D" uid="uid://hqe8ukrnerjw" path="res://Assets/UI/BookUI/Containers&Labels/ItemContainer1.png" id="5_8tctf"]
-[ext_resource type="PackedScene" uid="uid://rkiq7gr8ft71" path="res://WikiRelatedItemView.tscn" id="5_ptoeu"]
+[ext_resource type="PackedScene" uid="uid://rkiq7gr8ft71" path="res://Features/GUI/Book/Wiki/WikiRelatedItemView.tscn" id="5_ptoeu"]
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_wi3q8"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("_iconTextureRect", "_itemNameAndCategory", "_itemDescription", "_itemStats", "_relatedItemViews")]
@@ -67,7 +67,6 @@ _iconTextureRect = NodePath("../../ItemIcon_Div/AspectRatioContainer/ItemIcon")
 layout_mode = 2
 
 [node name="Label" parent="Finetunemargin/VBoxContainer/Name_TextBoxDiv/TextMargin" index="0"]
-theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 
 [node name="InfoTexts" type="HBoxContainer" parent="Finetunemargin/VBoxContainer"]
@@ -83,7 +82,6 @@ layout_mode = 2
 theme_override_constants/margin_top = 8
 
 [node name="Label" parent="Finetunemargin/VBoxContainer/InfoTexts/Description_DivWithMinSize/TextMargin" index="0"]
-theme_override_font_sizes/font_size = 16
 autowrap_mode = 2
 
 [node name="Stats_Div" parent="Finetunemargin/VBoxContainer/InfoTexts" instance=ExtResource("5_wi3q8")]
@@ -92,9 +90,6 @@ size_flags_horizontal = 3
 
 [node name="TextMargin" parent="Finetunemargin/VBoxContainer/InfoTexts/Stats_Div" index="1"]
 theme_override_constants/margin_top = 8
-
-[node name="Label" parent="Finetunemargin/VBoxContainer/InfoTexts/Stats_Div/TextMargin" index="0"]
-theme_override_font_sizes/font_size = 16
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Finetunemargin/VBoxContainer"]
 layout_mode = 2
