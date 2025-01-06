@@ -62,11 +62,6 @@ public class Logger
 		else
 		{
 			// Write to (Godot) console
-			if (LogLevel.Warn == level)
-				GD.PushWarning(message);
-			if (LogLevel.Error == level)
-				GD.PushError(message);
-
 			var coloredMessage = level switch
 			{
 				LogLevel.Info => BBColor.Gray.Apply(logMessage),
@@ -75,6 +70,11 @@ public class Logger
 				LogLevel.Error => BBColor.Red.Apply(logMessage),
 				_ => logMessage,
 			};
+			if (LogLevel.Error == level)
+			{
+				GD.PrintErr(logMessage);
+			}
+
 			GD.PrintRich(coloredMessage);
 			MessageLogged?.Invoke(coloredMessage);
 		}

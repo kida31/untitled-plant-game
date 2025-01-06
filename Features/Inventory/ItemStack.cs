@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Common;
@@ -21,8 +22,7 @@ public partial class ItemStack : Resource, IItemStack
 	[Export] public int MaxStackSize { get; set; } = 64;
 	[Export] public int BaseValue { get; set; } = 0;
 
-	[Export(PropertyHint.Enum, "Plant,Material,Medicine")]
-	private string _category = "Plant";
+	[Export(PropertyHint.Enum, "Plant,Material,Medicine")] private string _category = "Plant";
 
 	[Export] public Array<AComponent> Components { get; set; } = new();
 
@@ -45,33 +45,17 @@ public partial class ItemStack : Resource, IItemStack
 
 	private readonly Logger _logger;
 
+	[Obsolete("Use the constructor with the id parameter in code")]
 	public ItemStack()
 	{
 		_logger = new Logger("ItemStack");
 		Components = new();
 	}
 
-	public ItemStack(string id,
-		string name,
-		Texture2D icon,
-		string toolTipDescription,
-		string wikiDescription,
-		ItemCategory category,
-		int baseValue = 1,
-		int maxStackSize = 64,
-		int amount = 1,
-		Array<AComponent> components = null
+	public ItemStack(string id
 	) : this()
 	{
 		Id = id;
-		Name = name;
-		Icon = icon;
-		ToolTipDescription = toolTipDescription;
-		Category = category;
-		MaxStackSize = maxStackSize;
-		BaseValue = baseValue;
-		Amount = amount;
-		Components = components;
 	}
 
 	public T GetComponent<T>()
@@ -121,7 +105,7 @@ public partial class ItemStack : Resource, IItemStack
 	public bool HasSameIdAndProps(IItemStack itemStack)
 	{
 		_logger.Warn("HasSameIdAndProps is not implemented correctly.");
-		return Id == itemStack.Id;
+		return Id == itemStack?.Id;
 	}
 
 	public bool IsIdentical(IItemStack itemStack)
@@ -131,10 +115,19 @@ public partial class ItemStack : Resource, IItemStack
 
 	public IItemStack Clone()
 	{
-		// TODO: After the JSON fiasco I absolutely do NOT trust Godot to handle deep copies well (especially looking at the Stats)
-		var newStack = new ItemStack(Id, Name, Icon, ToolTipDescription, WikiDescription, Category, baseValue: BaseValue, maxStackSize: MaxStackSize,
-			amount: Amount, components: Components.Duplicate(true));
-		return newStack;
+		return new ItemStack(Id)
+		{
+			Name = Name,
+			Icon = Icon,
+			ToolTipDescription = ToolTipDescription,
+			WikiDescription = WikiDescription,
+			Category = Category,
+			BaseValue = BaseValue,
+			MaxStackSize = MaxStackSize,
+			Amount = Amount,
+			// TODO: After the JSON fiasco I absolutely do NOT trust Godot to handle deep copies well (especially looking at the Stats)
+			Components = Components.Duplicate(true)
+		};
 	}
 
 	public override string ToString()

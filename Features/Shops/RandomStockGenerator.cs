@@ -2,40 +2,160 @@
 using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Common;
+using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Shops;
 
 public class RandomStockGenerator
 {
+	private static readonly Random Rand = new(7);
+
 	[Obsolete]
-	private static Random rand = new(7);
-
-	public List<ItemStack> GetRandom(int n)
+	public List<ItemStack> GetRandomPlaceholders(int n)
 	{
-
 		Assert.AssertTrue(n > 0);
 		var items = new List<ItemStack>()
-		{
-			new("basil", "Basil", null, "This is basil", "", ItemCategory.Plant, baseValue: 10, amount: 5),
-			new("parsley", "Parsley", null, "This is parsley", "",ItemCategory.Plant, baseValue: 15, amount: 3),
-			new("mint", "Mint", null, "This is mint", "",ItemCategory.Plant, baseValue: 20, amount: 2),
-			new("cilantro", "Cilantro", null, "This is cilantro","", ItemCategory.Plant, baseValue: 12, amount: 8),
-			new("oregano", "Oregano", null, "This is oregano", "",ItemCategory.Plant, baseValue: 14, amount: 6),
-			new("thyme", "Thyme", null, "This is thyme","", ItemCategory.Plant, baseValue: 18, amount: 4),
-			new("rosemary", "Rosemary", null, "This is rosemary","", ItemCategory.Plant, baseValue: 25, amount: 2),
-			new("sage", "Sage", null, "This is sage","", ItemCategory.Plant, baseValue: 17, amount: 7),
-			new("chives", "Chives", null, "This is chives", "",ItemCategory.Plant, baseValue: 13, amount: 10),
-			new("dill", "Dill", null, "This is dill","", ItemCategory.Plant, baseValue: 11, amount: 9),
-			new("lavender", "Lavender", null, "This is lavender","", ItemCategory.Plant, baseValue: 30, amount: 1),
-			new("tarragon", "Tarragon", null, "This is tarragon", "",ItemCategory.Plant, baseValue: 22, amount: 4),
-			new("fennel", "Fennel", null, "This is fennel","", ItemCategory.Plant, baseValue: 16, amount: 6),
-			new("marjoram", "Marjoram", null, "This is marjoram","", ItemCategory.Plant, baseValue: 19, amount: 5),
-			new("lemonbalm", "Lemon Balm", null, "This is lemon balm", "",ItemCategory.Plant, baseValue: 14, amount: 8),
-			new("chervil", "Chervil", null, "This is chervil", "",ItemCategory.Plant, baseValue: 12, amount: 10),
-		}
-			.OrderBy(o => rand.Next())
+			{
+				new("basil")
+				{
+					Name = "Basil",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is basil",
+					BaseValue = 10,
+					Amount = 5
+				},
+				new("parsley")
+				{
+					Name = "Parsley",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is parsley",
+					BaseValue = 15,
+					Amount = 3
+				},
+				new("mint")
+				{
+					Name = "Mint",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is mint",
+					BaseValue = 20,
+					Amount = 2
+				},
+				new("cilantro")
+				{
+					Name = "Cilantro",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is cilantro",
+					BaseValue = 12,
+					Amount = 8
+				},
+				new("oregano")
+				{
+					Name = "Oregano",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is oregano",
+					BaseValue = 14,
+					Amount = 6
+				},
+				new("thyme")
+				{
+					Name = "Thyme",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is thyme",
+					BaseValue = 18,
+					Amount = 4
+				},
+				new("rosemary")
+				{
+					Name = "Rosemary",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is rosemary",
+					BaseValue = 25,
+					Amount = 2
+				},
+				new("sage")
+				{
+					Name = "Sage",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is sage",
+					BaseValue = 17,
+					Amount = 7
+				},
+				new("chives")
+				{
+					Name = "Chives",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is chives",
+					BaseValue = 13,
+					Amount = 10
+				},
+				new("dill")
+				{
+					Name = "Dill",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is dill",
+					BaseValue = 11,
+					Amount = 9
+				},
+				new("lavender")
+				{
+					Name = "Lavender",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is lavender",
+					BaseValue = 30,
+					Amount = 1
+				},
+				new("tarragon")
+				{
+					Name = "Tarragon",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is tarragon",
+					BaseValue = 22,
+					Amount = 4
+				},
+				new("fennel")
+				{
+					Name = "Fennel",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is fennel",
+					BaseValue = 16,
+					Amount = 6
+				},
+				new("marjoram")
+				{
+					Name = "Marjoram",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is marjoram",
+					BaseValue = 19,
+					Amount = 5
+				},
+				new("lemonbalm")
+				{
+					Name = "Lemon Balm",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is lemon balm",
+					BaseValue = 14,
+					Amount = 8
+				},
+				new("chervil")
+				{
+					Name = "Chervil",
+					Category = ItemCategory.Plant,
+					ToolTipDescription = "This is chervil",
+					BaseValue = 12,
+					Amount = 10
+				},
+			}
+			.OrderBy(o => Rand.Next())
 			.ToList();
+		return items.GetRange(0, Math.Min(items.Count, n));
+	}
+
+	public List<IItemStack> GetRandomItems(int n)
+	{
+		var items = ItemDatabase.Instance.ItemStacks
+			.OrderBy(o => Rand.Next())
+			.ToList<IItemStack>();
 		return items.GetRange(0, Math.Min(items.Count, n));
 	}
 }

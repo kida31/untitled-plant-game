@@ -47,7 +47,7 @@ public class SeedShop : IShop
 
 	public void GenerateRandomShopStock()
 	{
-		var items = new RandomStockGenerator().GetRandom(15);
+		var items = new RandomStockGenerator().GetRandomPlaceholders(15);
 		SetShopContent(items.ToArray());
 	}
 }
