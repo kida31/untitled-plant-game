@@ -37,7 +37,8 @@ public partial class TestCrafing : Node2D
 		_testItem = new ItemStack(
 			id: "TestDummy",
 			name: "Dead Plant",
-			description: "A plant that died due to your carelessness.",
+			toolTipDescription: "A plant that died due to your carelessness.",
+			wikiDescription: "Another cool Description",
 			icon: texture,
 			category: ItemCategory.Plant,
 			baseValue: 1,
