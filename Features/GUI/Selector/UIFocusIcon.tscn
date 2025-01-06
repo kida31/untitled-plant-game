@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://ikmkfkp11t0t"]
 
-[ext_resource type="Script" path="res://Features/GUI/UIFocusIcon.cs" id="1_7c43y"]
+[ext_resource type="Script" path="res://Features/GUI/Selector/UIFocusIcon.cs" id="1_7c43y"]
 [ext_resource type="Texture2D" uid="uid://del57edaadvpk" path="res://Assets/UI/BookUI/ItemSelectorLeft.png" id="1_138p4"]
 [ext_resource type="Texture2D" uid="uid://ixhi2w1do3cd" path="res://Assets/UI/BookUI/ItemSelectorRight.png" id="2_8l33a"]
 [ext_resource type="Script" path="res://Features/GUI/Hooks/CopySizeHook.cs" id="3_hntjl"]
 [ext_resource type="Script" path="res://Features/GUI/Hooks/FollowControlHook.cs" id="3_n0srx"]
-[ext_resource type="Script" path="res://Features/GUI/DebugNodes/DebugUIFocusIcon.cs" id="6_wrko2"]
+[ext_resource type="Script" path="res://Features/GUI/Selector/DebugUIFocusIcon.cs" id="6_wrko2"]
 
 [node name="FocusIndicator" type="Control" node_paths=PackedStringArray("_sizeHook", "_followHook")]
 layout_mode = 3

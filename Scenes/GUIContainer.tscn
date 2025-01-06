@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://3ndp3em1fi7h"]
 
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/VendingMachine/UI/vending_machine_ui.tscn" id="1_iuaq5"]
-[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Book/UIFocusIcon.tscn" id="1_mtau6"]
+[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="1_mtau6"]
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Features/Cycle/UI/ClockUI.tscn" id="1_tdwvu"]
 [ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="2_y866b"]
 [ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
@@ -25,6 +25,22 @@ grow_vertical = 2
 visible = false
 layout_mode = 2
 
+[node name="UIFocus" parent="CenterContainer/BookView" instance=ExtResource("1_mtau6")]
+offset_left = 1.0
+offset_right = 1.0
+
+[node name="TooltipView" parent="CenterContainer/BookView" instance=ExtResource("8_v5g76")]
+offset_left = 1.0
+offset_right = 193.0
+script = ExtResource("9_7jd3l")
+_fadeInSpeed = 1.0
+_delay = 0.5
+_offset = Vector2(0, 0)
+
+[node name="CursorHand" parent="CenterContainer/BookView" instance=ExtResource("8_xb22b")]
+offset_left = 1.0
+offset_right = 97.0
+
 [node name="VendingMachineUi" parent="." instance=ExtResource("1_iuaq5")]
 visible = false
 offset_left = 170.0
@@ -46,16 +62,6 @@ offset_bottom = 670.0
 [node name="Cheats" type="Node" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource("5_gr4nr")]
-
-[node name="UIFocus" parent="." instance=ExtResource("1_mtau6")]
-
-[node name="CursorHand" parent="." instance=ExtResource("8_xb22b")]
-
-[node name="TooltipView" parent="." instance=ExtResource("8_v5g76")]
-script = ExtResource("9_7jd3l")
-_fadeInSpeed = 1.0
-_delay = 0.5
-_offset = Vector2(0, 0)
 
 [node name="DebugOverlays" parent="." instance=ExtResource("11_1dk7k")]
 offset_right = 449.0

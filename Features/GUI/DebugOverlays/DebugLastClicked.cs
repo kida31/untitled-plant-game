@@ -4,32 +4,35 @@ using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Common;
 
-public partial class DebugControlsInTree : Node
+public partial class DebugLastClicked : Label
 {
-	private Logger _logger;
+	private Control _lastClickedControl;
+
 	public override void _Ready()
 	{
-		_logger = new Logger(this);
-		_logger.Debug("Hooking up GuiInput events to all controls in the tree");
-		
 		var root = GetTree().Root;
 		var children = GetChildrenRecursive(root).OfType<Control>();
+
 		foreach (var control in children)
 		{
 			control.GuiInput += (e) => OnControlGuiInput(control, e);
 		}
 	}
 
+	public override void _Process(double delta)
+	{
+		var path = _lastClickedControl?.GetPath().ToString() ?? "";
+		Text = "Last clicked: " + path.Substring(Math.Max(0, path.Length - 48));
+	}
+
 	private void OnControlGuiInput(Control control, InputEvent e)
 	{
-		if (e is InputEventMouseButton button)
+		if (e is not InputEventMouseButton {ButtonIndex: MouseButton.Left, Pressed: true})
 		{
-			if (button.ButtonIndex == MouseButton.Left && button.Pressed)
-			{
-				var path = control.GetPath().ToString();
-				_logger.Debug($"{path.Substring(Math.Max(0, path.Length - 20))} clicked");
-			}
+			return;
 		}
+
+		_lastClickedControl = control;
 	}
 
 	private List<Node> GetChildrenRecursive(Node root)

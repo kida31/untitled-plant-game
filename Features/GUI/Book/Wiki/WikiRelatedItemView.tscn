@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://rkiq7gr8ft71"]
 
-[ext_resource type="Script" path="res://WikiRelatedItemView.cs" id="1_303ur"]
+[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiRelatedItemView.cs" id="1_in5b8"]
 [ext_resource type="Texture2D" uid="uid://hqe8ukrnerjw" path="res://Assets/UI/BookUI/Containers&Labels/ItemContainer1.png" id="2_2e7ll"]
 
 [node name="ItemView" type="MarginContainer" node_paths=PackedStringArray("_iconRect")]
@@ -8,7 +8,7 @@ offset_right = 32.0
 offset_bottom = 32.0
 size_flags_horizontal = 6
 focus_mode = 2
-script = ExtResource("1_303ur")
+script = ExtResource("1_in5b8")
 _iconRect = NodePath("ItemIcon")
 
 [node name="BG" type="TextureRect" parent="."]

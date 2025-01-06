@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class DebugCurrentGuiFocus : Label
+public partial class DebugCurrentFocus : Label
 {
 	private Viewport _viewport;
 	

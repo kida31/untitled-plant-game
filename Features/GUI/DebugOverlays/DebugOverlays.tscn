@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://df0cg0vcow1n2"]
 
-[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentGuiFocus.cs" id="1_weaak"]
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentFocus.cs" id="1_spicd"]
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugLastClicked.cs" id="2_4xlmf"]
 [ext_resource type="Script" path="res://InGameLogOverlay.cs" id="2_lomx1"]
-[ext_resource type="Script" path="res://Scenes/DebugControlsInTree.cs" id="2_xsrvo"]
 
 [node name="DebugOverlays" type="PanelContainer"]
 top_level = true
@@ -19,17 +19,14 @@ layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="CurrentGUIFocus" type="Label" parent="VBoxContainer"]
+[node name="CurrentFocus" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-script = ExtResource("1_weaak")
+script = ExtResource("1_spicd")
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="LastClicked" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Node" type="Node" parent="VBoxContainer"]
-script = ExtResource("2_xsrvo")
+script = ExtResource("2_4xlmf")
 
 [node name="Logs" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
