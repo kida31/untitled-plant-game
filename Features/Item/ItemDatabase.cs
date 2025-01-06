@@ -32,39 +32,7 @@ public class ItemDatabase
 		ItemStacks = FillDataBaseItemStackList();
 		Recipes = FillDataBaseRecipeList();
 	}
-
-	//---Multithreading Testing---//
-	/*
-	 * That's definitely not safe. It probably should be done like this:
-	 *
-	   public async Task MyAsyncFunction(int i, int y)
-		{
-			// Start both tasks without awaiting immediately
-			Task task1 = Task.Run(() => DoMultiThreading(i));
-			Task task2 = Task.Run(() => DoMultiThreading(y));
-
-			// Await both tasks to complete
-			await Task.WhenAll(task1, task2);
-		}
-	 *
-	 * This ensures that the game will only start once the Database is actually loaded, but there is no infrastructure for that, so it
-	 * doesn't really matter for the time being
-	 */
-	public void MyAsyncFunction(int i, int y)
-	{
-		Task.Run(() => DoMultiThreading(i));
-		Task.Run(() => DoMultiThreading(y));
-	}
-
-	private void DoMultiThreading(int amount)
-	{
-		for (int i = 0; i < amount; i++)
-		{
-			GD.Print(i);
-		}
-	}
-
-	//---Multithreading Testing---//
+	
 
 	/// <summary>
 	/// Looks for an ItemStack with the specified ID. Returns a clone of the ItemStack.
@@ -123,17 +91,7 @@ public class ItemDatabase
 	{
 		throw new NotImplementedException();
 	}
-
-	//---Get Recipes---//
-	/*
-	 * This method assumes the following: The user will NEVER provide MORE ItemStack than the Recipe needs (Minecraft Crafting Bench).
-	 * But the user will get a list of potential Recipes that require at least the provided ItemStacks, but also the additional ones.
-	 * (Minecraft Inventory Helper)
-	 *
-	 * Crossier's Note: I apologize in advance for the abomination I produced here.
-	 */
-
-	// Additional Method: Get Recipes with EXACT amount of itemStacks.
+	
 	public List<Recipe> GetAllRecipesWithItemStacks(List<ItemStack> itemStacks, List<Recipe> externalRecipeList)
 	{
 		var recipeSearchList = externalRecipeList ?? Recipes;
@@ -189,24 +147,12 @@ public class ItemDatabase
 		return GetAllRecipesWithItemStacks(itemStacks, recipesWithMatchingCraftingType);
 	}
 
-	//---Get Recipes---//
-
-
-	//------------------------------------------------------------------------------------------------------------------------------------//
-	/*
-	 * This method has no inherent purpose. It only exists to make the constructor more user-friendly and smaller (as in fewer lines).
-	 */
 	private List<Recipe> FillDataBaseRecipeList()
 	{
 		return new List<Recipe>();
 	}
 
-	/*
-	 * This method has no inherent purpose. It only exists to make the constructor more user-friendly and smaller (as in fewer lines).
-	 *
-	 * NOTE: This method assumes that every single item has a unique ID. The method can have unpredictable consequences if two identical
-	 * items exist in it.
-	 */
+	
 	private List<ItemStack> FillDataBaseItemStackList()
 	{
 		return new List<ItemStack>
@@ -373,6 +319,5 @@ public class ItemDatabase
 				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
 			},
 		};
-		//------------------------------------------------------------------------------------------------------------------------------------//
 	}
 }
