@@ -60,11 +60,14 @@ public partial class InventoryView : Control
 
 			if (i < items.Count)
 			{
-				var curratedIndex = i;
+				var snapshotIndex = i;
 				void PressedHandler()
 				{
-					_logger.Debug($"Handle click on {inventory.Name}[{curratedIndex}/{i}]");
-					CursorInventory.Instance.HandleClick(inventory, curratedIndex);
+					_logger.Debug($"Handle click on {inventory.Name}[{snapshotIndex}/{i}]");
+					if (CursorInventory.Instance.CanClick(inventory, snapshotIndex))
+					{
+						CursorInventory.Instance.HandleClick(inventory, snapshotIndex);	
+					}
 				}
 
 				_itemViewPressedActions[view] = PressedHandler;

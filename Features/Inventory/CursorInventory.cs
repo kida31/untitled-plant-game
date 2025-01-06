@@ -134,7 +134,7 @@ public class CursorInventory : ICursorInventory
 
 	public void HandleClick(IInventory inventory, int itemIndex)
 	{
-		Assert.AssertTrue(CanClick(inventory, itemIndex));
+		Assert.AssertTrue(CanClick(inventory, itemIndex), "Cursor could not handle click. Doing nothing. Consider using 'CanClick' before invoking this");
 
 		if (CanPickUp(inventory, itemIndex))
 		{
@@ -159,8 +159,6 @@ public class CursorInventory : ICursorInventory
 			Swap(inventory, itemIndex);
 			return;
 		}
-
-		_logger.Warn("Cursor could not handle click. Doing nothing. Consider using 'CanClick' before invoking this");
 	}
 
 	public bool CanClick(IInventory inventory, int itemIndex)
@@ -224,7 +222,8 @@ public class CursorInventory : ICursorInventory
 
 	public bool CanSwap(IInventory inventory, int itemIndex)
 	{
-		return true; // I don't know why this would not work
+		_logger.Debug($"{_content} <=> {inventory.GetItem(itemIndex)}");
+		return _content != null && inventory.GetItem(itemIndex) != null;
 	}
 
 	public void Swap(IInventory inventory, int itemIndex)
