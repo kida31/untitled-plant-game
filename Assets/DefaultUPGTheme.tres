@@ -9,14 +9,14 @@ variation_transform = Transform2D(1.5, 0, 0, 1, 0, 0)
 spacing_glyph = 1
 
 [resource]
-default_font = ExtResource("1_kqvm5")
-default_font_size = 16
+default_font_size = 6
 HeaderLabel/base_type = &"Label"
 HeaderLabel/font_sizes/font_size = 32
 HeaderMedium/base_type = &"RichTextLabel"
 HeaderMedium/fonts/normal_font = ExtResource("2_ojpsa")
 Label/colors/font_color = Color(0.184314, 0.0941176, 0.0196078, 1)
 Label/colors/font_shadow_color = Color(0.831, 0.514, 0.259, 0.087)
+Label/constants/line_spacing = -2
 RichTextLabel/colors/default_color = Color(0.184314, 0.0941176, 0.0196078, 1)
 RichTextLabel/colors/font_shadow_color = Color(0.831373, 0.513726, 0.258824, 0.0862745)
 RichTextLabel/constants/line_separation = -5
