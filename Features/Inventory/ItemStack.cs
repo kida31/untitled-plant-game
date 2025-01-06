@@ -1,77 +1,115 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Linq;
 using Godot;
+using Godot.Collections;
 using untitledplantgame.Common;
+using untitledplantgame.Item;
 
 namespace untitledplantgame.Inventory;
 
 /// <summary>
 ///     https://github.com/Bukkit/Bukkit/blob/master/src/main/java/org/bukkit/inventory/ItemStack.java
 /// </summary>
-public class ItemStack : IItemStack
+[GlobalClass]
+public partial class ItemStack : Resource, IItemStack
 {
-	public int Amount { get; set; }
-	public string Id { get; }
-	public string Name { get; }
-	public Texture2D Icon { get; }
-	public string Description { get; }
-	public ItemCategory Category { get; }
-	public int MaxStackSize { get; }
-	public int BaseValue { get; }
+	[Export] public int Amount { get; set; }
+	[Export] public string Id { get; set; }
+	[Export] public string Name { get; set; }
+	[Export] public Texture2D Icon { get; set; }
+	[Export] public string ToolTipDescription { get; set; }
+	[Export] public string WikiDescription { get; set; }
+	[Export] public int MaxStackSize { get; set; }
+	[Export] public int BaseValue { get; set; }
 
-	private readonly List<IComponent> _components = new();
-	private readonly Logger _logger = new("ItemStack");
+	[Export(PropertyHint.Enum, "Seed,Material,Medicine")]
+	private string _category;
 
-	public ItemStack(
-		string id,
+	[Export] public Array<AComponent> Components { get; set; }
+
+	[Export] public Array<string> RelatedItemIds { get; set; }
+
+	public ItemCategory Category
+	{
+		get
+		{
+			return _category switch
+			{
+				"Seed" => ItemCategory.Seed,
+				"Material" => ItemCategory.Material,
+				"Medicine" => ItemCategory.Medicine,
+				_ => null
+			};
+		}
+		set => _category = value.Name;
+	}
+
+	private readonly Logger _logger;
+
+	public ItemStack()
+	{
+		_logger = new Logger("ItemStack");
+		Components = new();
+	}
+
+	public ItemStack(string id,
 		string name,
 		Texture2D icon,
-		string description,
+		string toolTipDescription,
+		string wikiDescription,
 		ItemCategory category,
-		int maxStackSize,
-		int baseValue,
-		int amount = 1
-	)
+		int baseValue = 1,
+		int maxStackSize = 64,
+		int amount = 1,
+		Array<AComponent> components = null
+	) : this()
 	{
 		Id = id;
 		Name = name;
 		Icon = icon;
-		Description = description;
+		ToolTipDescription = toolTipDescription;
 		Category = category;
 		MaxStackSize = maxStackSize;
 		BaseValue = baseValue;
 		Amount = amount;
+		Components = components;
 	}
 
 	public T GetComponent<T>()
-		where T : class, IComponent
+		where T : AComponent
 	{
-		var idx = _components.FindIndex(component => component is T);
-		return idx != -1 ? (T)_components[idx] : null;
+		var idx = Components.ToList().FindIndex(component => component is T);
+		if (idx != -1)
+		{
+			var blah = Components[idx];
+			return (T) blah;
+		}
+
+		return null;
 	}
 
 	public void AddComponent<T>(T component)
-		where T : class, IComponent
+		where T : AComponent
 	{
 		if (GetComponent<T>() is not null)
 		{
 			_logger.Warn("Component should only exist once");
 			return;
 		}
-		_components.Add(component);
+
+		Components.Add(component);
 	}
 
 	public T RemoveComponent<T>()
-		where T : class, IComponent
+		where T : AComponent
 	{
-		var idx = _components.FindIndex(component => component is T);
+		var idx = Components.ToList().FindIndex(component => component is T);
 		if (idx == -1)
 		{
 			return null;
 		}
 
-		var component = (T)_components[idx];
-		_components.RemoveAt(idx);
+		var component = (T) Components[idx];
+		Components.RemoveAt(idx);
 		return component;
 	}
 
@@ -82,8 +120,17 @@ public class ItemStack : IItemStack
 
 	public bool HasSameIdAndProps(IItemStack itemStack)
 	{
-		_logger.Warn("HasSameIdAndProps is not implemented correctly.");
-		return Id == itemStack.Id;
+		if (itemStack == null) return false;
+		return Id == itemStack.Id &&
+		       /*
+		       Name == itemStack.Name &&
+		       Icon == itemStack.Icon &&
+		       Description == itemStack.Description &&
+		       Category == itemStack.Category &&
+		       BaseValue == itemStack.BaseValue &&
+		       MaxStackSize == itemStack.MaxStackSize &&
+		       */
+		       Components.All(c => c.Equals(itemStack.GetComponent(c)));
 	}
 
 	public bool IsIdentical(IItemStack itemStack)
@@ -93,8 +140,15 @@ public class ItemStack : IItemStack
 
 	public IItemStack Clone()
 	{
-		var newStack = new ItemStack(Id, Name, Icon, Description, Category, MaxStackSize, BaseValue);
-		newStack.Amount = Amount;
+		// TODO: After the JSON fiasco I absolutely do NOT trust Godot to handle deep copies well (especially looking at the Stats)
+		var newStack = new ItemStack(Id, Name, Icon, ToolTipDescription, WikiDescription, Category, baseValue: BaseValue, maxStackSize: MaxStackSize,
+			amount: Amount, components: Components.Duplicate(true));
 		return newStack;
+	}
+
+	public override string ToString()
+	{
+		return
+			$"ItemStack{{Name={Name}, Id={Id}, Amount={Amount}, Category={Category}, Description={ToolTipDescription}, MaxStackSize={MaxStackSize}, BaseValue={BaseValue}, Components={Components}}}";
 	}
 }

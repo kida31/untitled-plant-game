@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7yeloeus6st8"]
+
+[ext_resource type="Script" path="res://Features/Item/ItemDatabaseTester.cs" id="1_l461o"]
+[ext_resource type="Texture2D" uid="uid://dsrjntfr6kb41" path="res://Assets/Items/chubery_harvested.png" id="2_q8hsh"]
+[ext_resource type="Script" path="res://Features/Item/Components/SeedComponent.cs" id="4_l7ng7"]
+[ext_resource type="Script" path="res://Features/Inventory/ItemStack.cs" id="5_81v5p"]
+
+[sub_resource type="Resource" id="Resource_dd7qx"]
+script = ExtResource("5_81v5p")
+Amount = 0
+Id = "chuuberry"
+Name = "Chuuberry"
+Icon = ExtResource("2_q8hsh")
+Description = "A small, red berry that grows in the forest."
+MaxStackSize = 0
+BaseValue = 5
+_category = "Medicine"
+Components = []
+RelatedItemIds = ["BasilLeaf"]
+
+[sub_resource type="Resource" id="Resource_cit6w"]
+script = ExtResource("4_l7ng7")
+
+[sub_resource type="Resource" id="Resource_5a55g"]
+script = ExtResource("5_81v5p")
+Amount = 0
+Id = "Chuberry_Seed"
+Name = "Chuberry Seed"
+Icon = ExtResource("2_q8hsh")
+Description = "Seed that will produce a Chuberry plant."
+MaxStackSize = 0
+BaseValue = 5
+_category = "Seed"
+Components = [SubResource("Resource_cit6w")]
+RelatedItemIds = null
+
+[node name="ItemDatabaseTester" type="Node"]
+script = ExtResource("1_l461o")
+_items = [SubResource("Resource_dd7qx"), SubResource("Resource_5a55g")]

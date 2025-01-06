@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://cme58rltegywh"]
 
 [ext_resource type="Script" path="res://Features/GUI/HUDs/BookButton.cs" id="1_5gn83"]
-[ext_resource type="Texture2D" uid="uid://8dl5qnkwvq52" path="res://Assets/UI/InventoryIndicator_open.png" id="2_tw7lo"]
-[ext_resource type="Texture2D" uid="uid://drxtvnvduooxl" path="res://Assets/UI/InventoryIndicator_close.png" id="3_d23kw"]
+[ext_resource type="Texture2D" uid="uid://8dl5qnkwvq52" path="res://Assets/UI/HUD/InventoryIndicator_open.png" id="2_tw7lo"]
+[ext_resource type="Texture2D" uid="uid://drxtvnvduooxl" path="res://Assets/UI/HUD/InventoryIndicator_close.png" id="3_d23kw"]
 [ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="4_vdcxf"]
 
 [sub_resource type="Animation" id="Animation_ulokh"]

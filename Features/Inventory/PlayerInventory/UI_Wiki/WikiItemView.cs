@@ -25,8 +25,9 @@ public partial class WikiItemView : Control
 			"seeds",
 			"Wonder's Seed", 
 			_temporary, 
-			"Long Description with a lot of text. Like lots and lots and lots and lots... oh, a butterfly!", 
-			ItemCategory.Plant,
+			"Long Description with a lot of text. Like lots and lots and lots and lots... oh, a butterfly!",
+			"Short Description",
+			ItemCategory.Seed,
 			1,
 			1
 			);
