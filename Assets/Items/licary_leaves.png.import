@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq3ict6tudlsf"
-path="res://.godot/imported/DeadPlant.png-dd07a85cdd9eb8f69d775e37e8415d7b.ctex"
+uid="uid://c214jedkgbtbj"
+path="res://.godot/imported/licary_leaves.png-8ed01e8a5c755c3d05a9e32b0b61a1e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OverworldAssets/Plant/DeadPlant.png"
-dest_files=["res://.godot/imported/DeadPlant.png-dd07a85cdd9eb8f69d775e37e8415d7b.ctex"]
+source_file="res://Assets/Items/licary_leaves.png"
+dest_files=["res://.godot/imported/licary_leaves.png-8ed01e8a5c755c3d05a9e32b0b61a1e5.ctex"]
 
 [params]
 
