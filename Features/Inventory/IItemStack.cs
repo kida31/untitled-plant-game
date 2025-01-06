@@ -25,9 +25,14 @@ public interface IItemStack
 	Texture2D Icon { get; set; }
 
 	/// <summary>
-	///     The description of the item
+	///     The short description of the item
 	/// </summary>
 	string ToolTipDescription { get; set; }
+	
+	/// <summary>
+	///     The long description of the item
+	/// </summary>
+	string WikiDescription { get; set; }
 
 	/// <summary>
 	///     The category of the item

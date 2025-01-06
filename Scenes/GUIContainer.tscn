@@ -1,14 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=13 format=3 uid="uid://3ndp3em1fi7h"]
 
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/VendingMachine/UI/vending_machine_ui.tscn" id="1_iuaq5"]
+[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Book/UIFocusIcon.tscn" id="1_mtau6"]
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Features/Cycle/UI/ClockUI.tscn" id="1_tdwvu"]
 [ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="2_y866b"]
 [ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
 [ext_resource type="PackedScene" uid="uid://c55xp0xg83mt1" path="res://Features/GUI/HUDs/HUD.tscn" id="5_gr4nr"]
-[ext_resource type="PackedScene" uid="uid://cca7okqb2j4c7" path="res://Features/Inventory/PlayerInventory/GeneralInventory.tscn" id="5_sy5d4"]
+[ext_resource type="PackedScene" uid="uid://cca7okqb2j4c7" path="res://Features/GUI/Book/BookView.tscn" id="5_sy5d4"]
 [ext_resource type="Script" path="res://InGameLogOverlay.cs" id="7_dei6g"]
+[ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="8_v5g76"]
+[ext_resource type="PackedScene" uid="uid://ceosooljxonp2" path="res://Features/GUI/CursorHandView.tscn" id="8_xb22b"]
+[ext_resource type="Script" path="res://Features/GUI/GlobalTooltip.cs" id="9_7jd3l"]
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentGuiFocus.cs" id="12_i3ugj"]
 
 [node name="GUIContainer" type="CanvasLayer"]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BookView" parent="CenterContainer" instance=ExtResource("5_sy5d4")]
+visible = false
+layout_mode = 2
 
 [node name="VendingMachineUi" parent="." instance=ExtResource("1_iuaq5")]
 visible = false
@@ -32,14 +48,32 @@ offset_bottom = 670.0
 
 [node name="HUD" parent="." instance=ExtResource("5_gr4nr")]
 
-[node name="InventoryCanvas" parent="." instance=ExtResource("5_sy5d4")]
-visible = false
+[node name="UIFocus" parent="." instance=ExtResource("1_mtau6")]
 
-[node name="Label" type="RichTextLabel" parent="."]
+[node name="CursorHand" parent="." instance=ExtResource("8_xb22b")]
+
+[node name="TooltipView" parent="." instance=ExtResource("8_v5g76")]
+script = ExtResource("9_7jd3l")
+_fadeInSpeed = 1.0
+_delay = 0.5
+_offset = Vector2(0, 0)
+
+[node name="DebugOverlays" type="PanelContainer" parent="."]
+top_level = true
 offset_left = 4.0
 offset_top = 122.0
-offset_right = 937.0
-offset_bottom = 343.0
+offset_right = 44.0
+offset_bottom = 162.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugOverlays"]
+layout_mode = 2
+
+[node name="CurrentGUIFocus" type="Label" parent="DebugOverlays/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("12_i3ugj")
+
+[node name="Logs" type="RichTextLabel" parent="DebugOverlays/VBoxContainer"]
+layout_mode = 2
 bbcode_enabled = true
 text = "BLABLABLA"
 script = ExtResource("7_dei6g")

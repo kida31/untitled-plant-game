@@ -20,7 +20,7 @@ public partial class InventoryItemView : Clickable, ITooltipable
 
 	public string Title => ItemStack?.Name;
 
-	public string Description => ItemStack?.Description;
+	public string Description => ItemStack?.ToolTipDescription;
 
 	public Control Content => null;
 
