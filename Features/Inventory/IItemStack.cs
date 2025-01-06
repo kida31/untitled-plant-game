@@ -27,7 +27,7 @@ public interface IItemStack
 	/// <summary>
 	///     The description of the item
 	/// </summary>
-	string Description { get; set; }
+	string ToolTipDescription { get; set; }
 
 	/// <summary>
 	///     The category of the item

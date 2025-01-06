@@ -1,10 +1,8 @@
-using System;
 using System.IO;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Plants.Models;
-using untitledplantgame.ResourceData;
 
 namespace untitledplantgame.Plants;
 
@@ -36,13 +34,14 @@ public partial class PlantDatabase : Node, IDatabase<PlantData>
 
 	public PlantData GetResourceByName(string name)
 	{
-		var pathName = $"{name}/{name}.tres";
-		return GD.Load<PlantData>(Path.Join(_dirPath, pathName));
-	}
-
-	public PlantData GetResourceById(int id)
-	{
-		throw new NotImplementedException();
+		var plantName = name.Replace(" ", "_");
+		var resourceName = $"{plantName}.tres";
+		var data = GD.Load<PlantData>(Path.Join(_dirPath, resourceName));
+		if (data == null)
+		{
+			_logger.Error("There is no PlantData resource with the name " + name);
+		}
+		return data;
 	}
 
 	public PlantData[] GetAllResources()
