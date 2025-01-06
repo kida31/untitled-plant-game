@@ -107,14 +107,14 @@ public partial class BookView : Control
 
 	private void ShowBook()
 	{
+		GameStateMachine.Instance.SetState(GameState.Book);
 		UpdateInventory(Game.Player, Game.Player.Inventory);
 		Show();
-		GameStateMachine.Instance.SetState(GameState.Book);
 	}
 
 	private void HideBook()
 	{
-		Hide();
 		GameStateMachine.Instance.SetState(GameState.FreeRoam);
+		Hide();
 	}
 }

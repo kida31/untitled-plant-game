@@ -56,36 +56,4 @@ public partial class InventoryItemView : Clickable, ITooltipable
 			ItemStack = itemStack;
 		}
 	}
-
-	// public override Variant _GetDragData(Vector2 atPosition)
-	// {
-	// 	// This is your custom method generating the preview of the drag data. Can be any Control node.
-	// 	var textureRect = new TextureRect();
-	// 	textureRect.Texture = _itemTextureRect.Texture;
-	// 	textureRect.PivotOffset = textureRect.Size / 2;
-	// 	SetDragPreview(textureRect);
-	// 	
-	// 	_itemTextureRect.Texture = null; // simulate drag; 
-	// 	return this;
-	// }
-
-	// public override bool _CanDropData(Vector2 atPosition, Variant data)
-	// {
-	// 	return true;
-	// }
-	//
-	//
-	// public override void _DropData(Vector2 atPosition, Variant data)
-	
-	// {
-	// 	var previousSlot = (InventoryItemView) data;
-	// 	EventBus.Instance.InventoryItemMoved(previousSlot.ItemStack, EventBus.Instance.GetItemSlot()); // Remember, this has to be searched for!
-	// 	
-	// 	previousSlot.ClearItemViewData();
-	// }
-
-	// private void ClearItemViewData()
-	// {
-	// 	UpdateItemView(null);
-	// }
 }

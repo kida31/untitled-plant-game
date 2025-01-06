@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=13 format=3 uid="uid://3ndp3em1fi7h"]
 
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/VendingMachine/UI/vending_machine_ui.tscn" id="1_iuaq5"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Book/UIFocusIcon.tscn" id="1_mtau6"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ceosooljxonp2" path="res://Features/GUI/CursorHandView.tscn" id="8_xb22b"]
 [ext_resource type="Script" path="res://Features/GUI/GlobalTooltip.cs" id="9_7jd3l"]
 [ext_resource type="Script" path="res://Scenes/DebugControlTree.cs" id="11_env7g"]
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentGuiFocus.cs" id="12_i3ugj"]
 
 [node name="GUIContainer" type="CanvasLayer"]
 
@@ -64,5 +65,18 @@ _fadeInSpeed = 1.0
 _delay = 0.3
 _offset = Vector2(0, 0)
 
-[node name="Node" type="Node" parent="."]
+[node name="DebugOverlays" type="PanelContainer" parent="."]
+offset_right = 185.0
+offset_bottom = 151.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="CurrentGuiFocus" type="Label" parent="DebugOverlays"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "CurrentGuiFocus:Blah"
+script = ExtResource("12_i3ugj")
+
+[node name="Node" type="Node" parent="DebugOverlays"]
 script = ExtResource("11_env7g")

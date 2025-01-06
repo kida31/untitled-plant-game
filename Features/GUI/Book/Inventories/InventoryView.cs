@@ -34,7 +34,19 @@ public partial class InventoryView : Control
 
 		VisibilityChanged += () => {
 			if (!IsVisibleInTree()) {
+				// Became invisible
 				CursorInventory.Instance.ReturnPickUp();
+			}
+			else
+			{
+				// Became visible
+				
+				
+				if ( GetViewport().GuiGetFocusOwner() == null)
+				{
+					// Focus first item view if nothing is focused
+					GrabFocus();
+				}
 			}
 		};
 	}
@@ -83,6 +95,14 @@ public partial class InventoryView : Control
 		{
 			OnItemViewFocused(itemView);
 		}
+	}
+
+	/// <summary>
+	/// Focuses the first item view
+	/// </summary>
+	public new void GrabFocus()
+	{
+		_inventoryItemViews.FirstOrDefault()?.GrabFocus();
 	}
 
 	/// <summary>
