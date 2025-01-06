@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxjrcllnnc3s2"
-path="res://.godot/imported/Licary_SpriteSheet.png-4f52d3822c7302cb2b5982ca48a26015.ctex"
+path="res://.godot/imported/Licary_SpriteSheet.png-d112ba084aa4c2c2f468adc161aa0160.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OverworldAssets/Plant/Licary_SpriteSheet.png"
-dest_files=["res://.godot/imported/Licary_SpriteSheet.png-4f52d3822c7302cb2b5982ca48a26015.ctex"]
+source_file="res://Assets/Tilesets/Plant/Licary_SpriteSheet.png"
+dest_files=["res://.godot/imported/Licary_SpriteSheet.png-d112ba084aa4c2c2f468adc161aa0160.ctex"]
 
 [params]
 

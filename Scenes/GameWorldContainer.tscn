@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=14 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
@@ -9,10 +9,9 @@
 [ext_resource type="Script" path="res://Features/Plants/PlantController.cs" id="3_qp075"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
-[ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/APlantPrefab.tscn" id="9_t05jd"]
-[ext_resource type="PackedScene" path="res://Features/Plants/soil.tscn" id="10_da3hi"]
+[ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/PlantPrefab.tscn" id="9_t05jd"]
+[ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="10_da3hi"]
 [ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
-[ext_resource type="SpriteFrames" uid="uid://dldh2xoh0w7ey" path="res://Assets/OverworldAssets/Plant/ChuberySpriteFrames.tres" id="11_voxp1"]
 [ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
 
 [node name="GameWorldContainer" type="Node2D"]
@@ -47,23 +46,42 @@ script = ExtResource("3_li003")
 script = ExtResource("3_qp075")
 
 [node name="APlantPrefab" parent="Plants" node_paths=PackedStringArray("Tile") instance=ExtResource("9_t05jd")]
-position = Vector2(456, 341)
-PlantName = "Licary"
+position = Vector2(442, 340)
+PlantName = "Chuberry"
 Tile = NodePath("../Soil")
 
-[node name="Soil" parent="Plants" instance=ExtResource("10_da3hi")]
-position = Vector2(409, 337)
+[node name="APlantPrefab3" parent="Plants" node_paths=PackedStringArray("Tile") instance=ExtResource("9_t05jd")]
+position = Vector2(561, 401)
+PlantName = "Chuberry"
+Tile = NodePath("../Soil3")
+
+[node name="APlantPrefab4" parent="Plants" node_paths=PackedStringArray("Tile") instance=ExtResource("9_t05jd")]
+position = Vector2(561, 438)
+PlantName = "Licary"
+Tile = NodePath("../Soil4")
 
 [node name="APlantPrefab2" parent="Plants" node_paths=PackedStringArray("Tile") instance=ExtResource("9_t05jd")]
-position = Vector2(409, 341)
-PlantName = "Chubery"
+position = Vector2(396, 340)
+PlantName = "Drupoleaum"
 Tile = NodePath("../Soil2")
 
-[node name="AnimatedSprite2D" parent="Plants/APlantPrefab2" index="0"]
-sprite_frames = ExtResource("11_voxp1")
+[node name="Soil" parent="Plants" instance=ExtResource("10_da3hi")]
+position = Vector2(395, 343)
+
+[node name="Soil3" parent="Plants" instance=ExtResource("10_da3hi")]
+position = Vector2(561, 400)
+
+[node name="Soil5" parent="Plants" instance=ExtResource("10_da3hi")]
+position = Vector2(464, 528)
+
+[node name="Soil6" parent="Plants" instance=ExtResource("10_da3hi")]
+position = Vector2(464, 566)
+
+[node name="Soil4" parent="Plants" instance=ExtResource("10_da3hi")]
+position = Vector2(560, 438)
 
 [node name="Soil2" parent="Plants" instance=ExtResource("10_da3hi")]
-position = Vector2(458, 339)
+position = Vector2(443, 345)
 
 [node name="Player" parent="." instance=ExtResource("1_mh621")]
 z_index = 1
@@ -75,6 +93,3 @@ position = Vector2(577.5, 328.625)
 scale = Vector2(1.19896, 1.19896)
 script = ExtResource("6_4ec11")
 _gradientTexture = ExtResource("7_xmbsw")
-
-[editable path="Plants/APlantPrefab"]
-[editable path="Plants/APlantPrefab2"]
