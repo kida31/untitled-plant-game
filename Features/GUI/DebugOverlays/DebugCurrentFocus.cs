@@ -16,6 +16,6 @@ public partial class DebugCurrentFocus : Label
 	public override void _Process(double delta)
 	{
 		var owner = _viewport?.GuiGetFocusOwner();
-		Text = "GUI Focus: " + owner?.Name;
+		Text = "CurrentFocus: " + owner?.Name;
 	}
 }

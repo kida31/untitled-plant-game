@@ -99,11 +99,12 @@ public partial class ItemStack : Resource, IItemStack
 
 	public bool HasSameId(IItemStack itemStack)
 	{
-		return Id == itemStack.Id;
+		return Id == itemStack?.Id;
 	}
 
 	public bool HasSameIdAndProps(IItemStack itemStack)
 	{
+		// TODO: Implement
 		_logger.Warn("HasSameIdAndProps is not implemented correctly.");
 		return Id == itemStack?.Id;
 	}

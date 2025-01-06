@@ -22,10 +22,12 @@ mouse_filter = 2
 [node name="CurrentFocus" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+text = "CurrentFocus"
 script = ExtResource("1_spicd")
 
 [node name="LastClicked" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+text = "LastClicked"
 script = ExtResource("2_4xlmf")
 
 [node name="Logs" type="RichTextLabel" parent="VBoxContainer"]
@@ -33,8 +35,7 @@ layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 bbcode_enabled = true
-text = "BLABLABLA
-AWFHJKAWHFKJE"
+text = "LogMessages"
 fit_content = true
 scroll_following = true
 autowrap_mode = 2

@@ -22,7 +22,7 @@ public partial class DebugLastClicked : Label
 	public override void _Process(double delta)
 	{
 		var path = _lastClickedControl?.GetPath().ToString() ?? "";
-		Text = "Last clicked: " + path.Substring(Math.Max(0, path.Length - 48));
+		Text = "LastClicked: " + path.Substring(Math.Max(0, path.Length - 48));
 	}
 
 	private void OnControlGuiInput(Control control, InputEvent e)
