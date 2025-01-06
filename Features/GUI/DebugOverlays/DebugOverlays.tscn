@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://df0cg0vcow1n2"]
+
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentGuiFocus.cs" id="1_weaak"]
+[ext_resource type="Script" path="res://InGameLogOverlay.cs" id="2_lomx1"]
+[ext_resource type="Script" path="res://Scenes/DebugControlsInTree.cs" id="2_xsrvo"]
+
+[node name="DebugOverlays" type="PanelContainer"]
+top_level = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+offset_right = 425.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="CurrentGUIFocus" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+script = ExtResource("1_weaak")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Node" type="Node" parent="VBoxContainer"]
+script = ExtResource("2_xsrvo")
+
+[node name="Logs" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+bbcode_enabled = true
+text = "BLABLABLA
+AWFHJKAWHFKJE"
+fit_content = true
+scroll_following = true
+autowrap_mode = 2
+tab_size = 2
+script = ExtResource("2_lomx1")

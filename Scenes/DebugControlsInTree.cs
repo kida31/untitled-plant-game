@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Common;
 
-public partial class DebugControlTree : Node
+public partial class DebugControlsInTree : Node
 {
 	private Logger _logger;
 	public override void _Ready()
@@ -12,7 +12,7 @@ public partial class DebugControlTree : Node
 		_logger = new Logger(this);
 		_logger.Debug("Hooking up GuiInput events to all controls in the tree");
 		
-		var root = GetParent();
+		var root = GetTree().Root;
 		var children = GetChildrenRecursive(root).OfType<Control>();
 		foreach (var control in children)
 		{
@@ -27,7 +27,7 @@ public partial class DebugControlTree : Node
 			if (button.ButtonIndex == MouseButton.Left && button.Pressed)
 			{
 				var path = control.GetPath().ToString();
-				_logger.Debug($"Control {path.Substring(Math.Max(0, path.Length - 20))} clicked");
+				_logger.Debug($"{path.Substring(Math.Max(0, path.Length - 20))} clicked");
 			}
 		}
 	}
