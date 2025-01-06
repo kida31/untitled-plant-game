@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=23 format=3 uid="uid://dn244n0kq2shv"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=22 format=3 uid="uid://dn244n0kq2shv"]
 
 [ext_resource type="Script" path="res://Features/Plants/Models/PlantData.cs" id="1_77ck6"]
 [ext_resource type="Script" path="res://Features/Plants/Models/RequirementData.cs" id="1_oaorh"]
 [ext_resource type="Script" path="res://Features/Plants/Models/RequirementDataForGrowthStage.cs" id="2_8l48c"]
-[ext_resource type="SpriteFrames" uid="uid://8045piqwhrs0" path="res://Assets/OverworldAssets/Plant/LicarySpriteFrames.tres" id="3_c5i7f"]
 
 [sub_resource type="Resource" id="Resource_hktni"]
 script = ExtResource("1_oaorh")
@@ -141,4 +140,3 @@ IsHarvestable = true
 script = ExtResource("1_77ck6")
 PlantName = "Licary"
 DataForGrowthStages = Array[Object]([SubResource("Resource_wqbh2"), SubResource("Resource_ecvvi"), SubResource("Resource_prixi"), SubResource("Resource_egv7k"), SubResource("Resource_7q8v8"), SubResource("Resource_o7pu8")])
-Sprite = ExtResource("3_c5i7f")

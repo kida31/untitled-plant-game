@@ -37,16 +37,16 @@ public class SeedBag : Tool
 
 	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
 	{
+		var closestTile = hits.OfType<SoilTile>().MinBy(p => p.GlobalPosition.DistanceSquaredTo(user.GlobalPosition));
+		if (closestTile == null || IsSoilOccupied(closestTile)) return false;
+		
 		return hits.OfType<SoilTile>().Any();
 	}
 
 	protected override bool OnHit(Player.Player user, Node2D[] hits)
 	{
 		var closestTile = hits.OfType<SoilTile>().MinBy(p => p.GlobalPosition.DistanceSquaredTo(user.GlobalPosition));
-		if (closestTile == null || closestTile.Plant != null)
-		{
-			return false;
-		}
+		if (closestTile == null || IsSoilOccupied(closestTile)) return false;
 		
 		if(CurrentSeedItem == null)
 		{
@@ -61,17 +61,21 @@ public class SeedBag : Tool
 		
 		var plantName = CurrentSeedItem.GetComponent<SeedComponent>().PlantName;
 		var currentPlant = Plant.Create(plantName);
-		
 		closestTile.PlantSeed(currentPlant);
-		closestTile.AddChild(currentPlant);
+		
 		var newSeedItem = (ItemStack) CurrentSeedItem.Clone();
 		newSeedItem.Amount = 1;
 		user.Inventory.RemoveItem(newSeedItem);
 		
-		
 		_logger.Debug($"Planted seed of {currentPlant.PlantName} on tile");
 		
 		return true;
+	}
+
+	private static bool IsSoilOccupied(SoilTile closestTile)
+	{
+		var plants = closestTile.GetTree().GetNodesInGroup(GameGroup.Plants).OfType<Plant>();
+		return plants.Any(plant => plant.Tile == closestTile);
 	}
 
 	protected override void OnMiss(Player.Player user)
