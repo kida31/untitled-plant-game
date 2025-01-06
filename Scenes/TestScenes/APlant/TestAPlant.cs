@@ -28,8 +28,8 @@ public partial class TestAPlant : Node2D
 		harvestButton.Pressed += OnHarvestButtonPressed;
 		_label = GetNode<Label>("VBoxContainer/Label");
 
-		_plant.PlantOnTile(_soilTile);
-		_plant2.PlantOnTile(_soilTile2);
+		//_plant.PlantOnTile(_soilTile);
+		//_plant2.PlantOnTile(_soilTile2);
 	}
 	public override void _Process(double delta)
 	{

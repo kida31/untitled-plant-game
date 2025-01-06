@@ -96,10 +96,10 @@ public partial class ItemDatabaseTester : Node
 			);
 
 		GD.Print(craftResult.Id);
-		*/
+		
 
 		//--------------------------------------------------------------------------------------------------------------------------------//
-		/*
+
 		// 1. Potential multithreaded solution:
 		//ItemDatabase.Instance.MyAsyncFunction(1000, 1000);
 
@@ -124,7 +124,6 @@ public partial class ItemDatabaseTester : Node
 		}
 
 		// 4. Creating a custom Recipe to show how all of it works
-
 		var customRecipe = new Recipe(
 			new List<IIngredient>
 			{
@@ -283,7 +282,7 @@ public partial class ItemDatabaseTester : Node
 
 			var lavender = new Lavender();
 			GD.Print(basil.Equals(lavender)); // should be false
-			}
-			*/
+		}
+		*/
 	}
 }

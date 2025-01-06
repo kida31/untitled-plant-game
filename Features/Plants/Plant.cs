@@ -11,6 +11,7 @@ public enum GrowthStage
 {
 	Seed,
 	Sprouting,
+	Seedling,
 	Vegetating,
 	Budding,
 	Flowering,
@@ -20,15 +21,17 @@ public enum GrowthStage
 
 public partial class Plant : StaticBody2D
 {
+	private const string PlantPath = "res://Features/Plants/PlantPrefab.tscn";
+	private static readonly PackedScene PlantScene = GD.Load<PackedScene>(PlantPath);
 	[Export(PropertyHint.Enum, "Chuberry,Licary,Drupoleaum")] public string PlantName { get; private set; }
 	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Seed;
-	[Export] private SoilTile Tile { get; set; }
+	[Export] public SoilTile Tile { get; set; }
 
 	public event Action<Plant> BeforePlantRemoved;
 	public event Action<Plant> PlantGrown;
 
 	private Dictionary<string, Requirement> _currentRequirements;
-	private Logger _logger;
+	private readonly Logger _logger;
 
 	private bool _isHarvestable;
 	private float _absorptionRate;
@@ -37,12 +40,24 @@ public partial class Plant : StaticBody2D
 	private int _cyclesToGrow;
 	private int _currentCycle;
 
-	public override void _Ready()
+	public Plant()
 	{
-		_logger = new Logger(PlantName);
+		_logger = new Logger(this);
 		_logger.Debug($"Plant {PlantName} has been planted.");
 		AddToGroup(GameGroup.Plants);
-		//_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_logger = new Logger(this);
+	}
+
+	public static Plant Create(string plantName)
+	{
+		var plant = PlantScene.Instantiate<Plant>();
+		plant.PlantName = plantName;
+		return plant;
+	}
+
+	public override void _Ready()
+	{
+		_logger.Debug($"Plant {PlantName} is ready.");
 		SetRequirements();
 	}
 
@@ -64,15 +79,6 @@ public partial class Plant : StaticBody2D
 			_currentCycle++;
 			AdvanceStage();
 		}
-	}
-
-	/// <summary>
-	/// sets the plant on a tile
-	/// </summary>
-	/// <param name="soilTile"></param> the tile the plant is planted on
-	public void PlantOnTile(SoilTile soilTile)
-	{
-		Tile = soilTile;
 	}
 
 	/// <summary>
@@ -109,7 +115,6 @@ public partial class Plant : StaticBody2D
 	/// Updates the requirements for the plant to grow for current stage.
 	/// sets the days to grow and the current day count to 0.
 	/// sets the plant name.
-	/// sets the sprite to the current stage.
 	/// </summary>
 	private void SetRequirements()
 	{
@@ -139,8 +144,6 @@ public partial class Plant : StaticBody2D
 		_currentCycle = 0;
 		_currentRequirements = plantRequirements;
 		PlantName = plantData.PlantName;
-
-		//_sprite2D.Play(Stage.ToString());
 	}
 
 	/// <summary>
@@ -229,7 +232,6 @@ public partial class Plant : StaticBody2D
 
 	private void SetUnalive()
 	{
-		//_sprite2D.Play("Dead");
 		Stage = GrowthStage.Dead;
 		_isHarvestable = false;
 		_logger.Debug($"Plant {PlantName} has died due to lack of water.");

@@ -164,7 +164,7 @@ public class ItemDatabase
 				ToolTipDescription = "An unknown seed.",
 				WikiDescription = "An unknown seed. Plant it and water it regularly to find out what it produces!",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
-				Category = ItemCategory.Plant,
+				Category = ItemCategory.Seed,
 				BaseValue = 5,
 			},
 			new()
@@ -175,9 +175,10 @@ public class ItemDatabase
 				WikiDescription =
 					"The seeds of a chubery plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
-				Category = ItemCategory.Plant,
+				Category = ItemCategory.Seed,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "chuberryFruit", "chuberryDried" },
+				Components = new Array<AComponent> {new SeedComponent("Chuberry")},
 			},
 			new()
 			{
@@ -187,7 +188,7 @@ public class ItemDatabase
 				WikiDescription =
 					"The berries of a chubery plant. While the plant itself looks quite gnarly, the berries are surprisingly juicy. It can be pressed into juice, though most people just dry them and eat them as a snack or ingredient in cooking and baking. It helps boost the immune system, so it’s a widely used plant by many in Tawas. Use it preventive or as an acute immune booster. ",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
-				Category = ItemCategory.Material,
+				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryDried" },
 			},
@@ -199,7 +200,7 @@ public class ItemDatabase
 				WikiDescription =
 					"The seeds of a Drupoleaum plant. They have to be planted in soil and watered regularly. It will grow up a stalk.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Flowers.png"), //TODO: add seed icon
-				Category = ItemCategory.Plant,
+				Category = ItemCategory.Seed,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumFruits" },
 			},
@@ -235,7 +236,7 @@ public class ItemDatabase
 				WikiDescription =
 					"The seeds of a Licary plant. They have to be planted in soil and watered regularly to reward you with multiple harvestable Items.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"), //TODO add icon
-				Category = ItemCategory.Plant,
+				Category = ItemCategory.Seed,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit", "licaryLeaf", "licaryLeafDried" },
 			},
