@@ -12,6 +12,7 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 public partial class InventoryTabsView : Control
 {
 	public event Action<long> TabChanged;
+
 	// [Export] private PackedScene _inventoryViewPrefab;
 	[Export] private PackedScene _inventoryCategoryTabPrefab;
 
@@ -19,19 +20,22 @@ public partial class InventoryTabsView : Control
 	[Export] private Container _tabButtonContainer;
 	[Export] private InventoryView _inventoryView;
 
-	private int CurrentTab {
+	private int CurrentTab
+	{
 		get => _currentTab;
-		set {
+		set
+		{
 			_currentTab = Math.Clamp(value, 0, _inventories.Count);
 			TabChanged?.Invoke(_currentTab);
 		}
 	}
 
-	private int _currentTab = 0;
+	private int _currentTab = -1;
 
 	// public TabContainer TabContainer => GetNode<TabContainer>("."); // Either this or make this class extend TabContainer
 
 	private InventoryItemView _potentialItemSlot;
+
 	private List<InventoryCategoryTab> _tabButtons;
 	// private List<InventoryView> _tabs;
 
@@ -117,15 +121,6 @@ public partial class InventoryTabsView : Control
 
 	public void UpdateInventories(List<IInventory> inventories)
 	{
-		// Remove excess tabs and buttons
-		// while (_tabs.Count > inventories.Count)
-		// {
-		// 	var tabToRemove = _tabs.Last();
-		// 	_tabs.Remove(tabToRemove);
-		// 	_tabContainer.RemoveChild(tabToRemove);
-		// 	tabToRemove.QueueFree();
-		// }
-
 		while (_tabButtons.Count > inventories.Count)
 		{
 			var buttonToRemove = _tabButtons.Last();
@@ -170,21 +165,32 @@ public partial class InventoryTabsView : Control
 		}
 
 		_inventories = inventories;
-		CurrentTab = 0;
-		ForceUpdateView();
+		if (CurrentTab < 0 || CurrentTab >= inventories.Count)
+		{
+			CurrentTab = 0;
+		}
+		else
+		{
+			ForceUpdateView();
+		}
 	}
 
 	public new void GrabFocus()
 	{
 		_inventoryView.GrabFocus();
 	}
-		
-	private void ForceUpdateView() {
 
-			// Tab
+	private void ForceUpdateView()
+	{
+		try
+		{
 			var inventory = _inventories[CurrentTab];
 			_inventoryView.UpdateInventory(inventory);
-			// _inventoryView.Name = inventory.Name;
+		} catch (ArgumentOutOfRangeException e)
+		{
+			GD.PrintErr("Inventory tab index out of range");
+			// Log error
+		}
 	}
 
 	private void OnTabButtonPressed(InventoryCategoryTab button)
