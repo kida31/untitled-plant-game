@@ -226,7 +226,8 @@ public class ItemDatabase
 				Id = "chuberrySeed",
 				Name = "Chuberry Seed",
 				ToolTipDescription = "The seeds of a chubery plant.",
-				WikiDescription = "The seeds of a chubery plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
+				WikiDescription =
+					"The seeds of a chubery plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
 				Category = ItemCategory.Plant,
 				BaseValue = 5,
@@ -237,7 +238,8 @@ public class ItemDatabase
 				Id = "chuberryFruit",
 				Name = "Chuberry Fruit",
 				ToolTipDescription = "The fruits of a chubery plant.",
-				WikiDescription = "The berries of a chubery plant. While the plant itself looks quite gnarly, the berries are surprisingly juicy. It can be pressed into juice, though most people just dry them and eat them as a snack or ingredient in cooking and baking. It helps boost the immune system, so it’s a widely used plant by many in Tawas. Use it preventive or as an acute immune booster. ",
+				WikiDescription =
+					"The berries of a chubery plant. While the plant itself looks quite gnarly, the berries are surprisingly juicy. It can be pressed into juice, though most people just dry them and eat them as a snack or ingredient in cooking and baking. It helps boost the immune system, so it’s a widely used plant by many in Tawas. Use it preventive or as an acute immune booster. ",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
 				Category = ItemCategory.Material,
 				BaseValue = 5,
@@ -248,7 +250,8 @@ public class ItemDatabase
 				Id = "drupoleaumSeed",
 				Name = "Drupoleaum Seed",
 				ToolTipDescription = "The seeds of a Drupoleaum plant.",
-				WikiDescription = "The seeds of a Drupoleaum plant. They have to be planted in soil and watered regularly. It will grow up a stalk.",
+				WikiDescription =
+					"The seeds of a Drupoleaum plant. They have to be planted in soil and watered regularly. It will grow up a stalk.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Flowers.png"), //TODO: add seed icon
 				Category = ItemCategory.Plant,
 				BaseValue = 5,
@@ -259,7 +262,8 @@ public class ItemDatabase
 				Id = "drupoleaumFlower",
 				Name = "Drupoleaum Flower",
 				ToolTipDescription = "The flowers of a Drupoleaum plant.",
-				WikiDescription = "The flowers of a drupoleaum plant. Traditionally the people of Liyor held a flower festival to celebrate the blooming of the first Drupolearum flower. As the wild variations of drupoleaum vined up trees, a popular game was to find the highest growing flower and offer it to the goddess’s shrine. Nowadays, the flowers are a popular tea variant and help with finding sleep.",
+				WikiDescription =
+					"The flowers of a drupoleaum plant. Traditionally the people of Liyor held a flower festival to celebrate the blooming of the first Drupolearum flower. As the wild variations of drupoleaum vined up trees, a popular game was to find the highest growing flower and offer it to the goddess’s shrine. Nowadays, the flowers are a popular tea variant and help with finding sleep.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
@@ -270,8 +274,9 @@ public class ItemDatabase
 				Id = "drupoleaumFruits",
 				Name = "Drupoleaum Fruit",
 				ToolTipDescription = "The fruits of a Drupoleaum plant.",
-				WikiDescription = "The berries of a drupoleaum plant. For a long time, the use of drupoleaum berries wasn’t common, as the majority of flowers got picked before ever developing into fruits. Just recently their anti-inflammatory effects have become known which led to a high demand for berries after the Big Flooding.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Fruits.png"), 
+				WikiDescription =
+					"The berries of a drupoleaum plant. For a long time, the use of drupoleaum berries wasn’t common, as the majority of flowers got picked before ever developing into fruits. Just recently their anti-inflammatory effects have become known which led to a high demand for berries after the Big Flooding.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Fruits.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumSeed" },
@@ -281,7 +286,8 @@ public class ItemDatabase
 				Id = "licarySeed",
 				Name = "Licary Seed",
 				ToolTipDescription = "The seeds of a Licary plant.",
-				WikiDescription = "The seeds of a Licary plant. They have to be planted in soil and watered regularly to reward you with multiple harvestable Items.",
+				WikiDescription =
+					"The seeds of a Licary plant. They have to be planted in soil and watered regularly to reward you with multiple harvestable Items.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"), //TODO add icon
 				Category = ItemCategory.Plant,
 				BaseValue = 5,
@@ -292,8 +298,9 @@ public class ItemDatabase
 				Id = "licaryFlowers",
 				Name = "Licary Flowers",
 				ToolTipDescription = "The flowers of a Licary plant.",
-				WikiDescription = "The flowers of a licary plant. Their four bright yellow leaves often get associated with the power of the sun so a tea made out of these flowers is a popular morning drink. Whenever the colder days arrive, people stock up on these flowers to always have the sun around.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"), 
+				WikiDescription =
+					"The flowers of a licary plant. Their four bright yellow leaves often get associated with the power of the sun so a tea made out of these flowers is a popular morning drink. Whenever the colder days arrive, people stock up on these flowers to always have the sun around.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit", "licaryLeaf", "licaryLeafDried" },
@@ -303,28 +310,30 @@ public class ItemDatabase
 				Id = "licaryFruit",
 				Name = "Licary Fruit",
 				ToolTipDescription = "The fruits of a Licary plant.",
-				WikiDescription = "The fruits of a licary plant. The small but bright orange fruit has a hard outer skin that makes it uncomfortable to eat. It’s anti-oxidant effect makes it a popular juice though. Parents usually pack small bottles of Licary juice as lunch drinks for their kids at school.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_harvested.png"), 
+				WikiDescription =
+					"The fruits of a licary plant. The small but bright orange fruit has a hard outer skin that makes it uncomfortable to eat. It’s anti-oxidant effect makes it a popular juice though. Parents usually pack small bottles of Licary juice as lunch drinks for their kids at school.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers", "licaryLeaf", "licaryLeafDried"},
+				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers", "licaryLeaf", "licaryLeafDried" },
 			},
 			new()
 			{
 				Id = "licaryLeaf",
 				Name = "Licary Leaves",
 				ToolTipDescription = "The leaves of a Licary plant.",
-				WikiDescription = "The leaves of a licary plant. While it’s other produce shines bright, the pain-reducing effect of the licary leaves is often overlooked. A tea made from this leaf was first seen used by the women of the Tsaa tribe to ease menstrual pain.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_leaves.png"), 
+				WikiDescription =
+					"The leaves of a licary plant. While it’s other produce shines bright, the pain-reducing effect of the licary leaves is often overlooked. A tea made from this leaf was first seen used by the women of the Tsaa tribe to ease menstrual pain.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_leaves.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers", "licaryFruit", "licaryLeafDried"},
+				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers", "licaryFruit", "licaryLeafDried" },
 			},
 			new()
 			{
 				Id = "dried_fruit",
 				Name = "Dried ",
-				Description = "Dried Fruit Template",
+				WikiDescription = "It was dried.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Fruit.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
@@ -337,14 +346,14 @@ public class ItemDatabase
 			{
 				Id = "dried_flower",
 				Name = "Dried ",
-				Description = "Dried Flower Template",
+				WikiDescription = "It was dried.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Flower.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				Components = new Array<AComponent>
 				{
 					new DriedComponent(), //change this to tags?
-				}
+				},
 				Amount = 1,
 				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
 			},
@@ -352,16 +361,18 @@ public class ItemDatabase
 			{
 				Id = "dried_leaves",
 				Name = "Dried ",
-				Description = "Dried leaf Template",
+				WikiDescription = "It was dried.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Leaves.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				Components = new Array<AComponent>
 				{
 					new DriedComponent(), //change this to tags?
-				}
+				},
 				Amount = 1,
 				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
 			},
-	//------------------------------------------------------------------------------------------------------------------------------------//
+		};
+		//------------------------------------------------------------------------------------------------------------------------------------//
+	}
 }
