@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfexqs7ryr05k"]
+
+[ext_resource type="PackedScene" uid="uid://y78tki415ik5" path="res://Features/Crafting/Dehydrator/DehydratorUi.tscn" id="1_5x2mp"]
+[ext_resource type="Script" path="res://Scenes/TestScenes/Crafting/TestCrafing.cs" id="1_w2l7d"]
+
+[node name="TestCrafing" type="Node2D" node_paths=PackedStringArray("_dehydratorUi", "_openDehydratorButton", "_addItemButton", "_removeItemButton")]
+script = ExtResource("1_w2l7d")
+_dehydratorUi = NodePath("CanvasLayer/DehydratorUi")
+_openDehydratorButton = NodePath("CanvasLayer/VBoxContainer/Button3")
+_addItemButton = NodePath("CanvasLayer/VBoxContainer/Button")
+_removeItemButton = NodePath("CanvasLayer/VBoxContainer/Button2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DehydratorUi" parent="CanvasLayer" instance=ExtResource("1_5x2mp")]
+visible = false
+offset_left = 468.0
+offset_top = 211.0
+offset_right = 468.0
+offset_bottom = 211.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 22.0
+offset_right = 140.0
+offset_bottom = 98.0
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Add Item"
+
+[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Remove Item"
+
+[node name="Button3" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Open Dehydrator"
