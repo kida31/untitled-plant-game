@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Plants;
@@ -21,7 +22,6 @@ public partial class Plant : StaticBody2D
 {
 	private const string PlantPath = "res://Features/Plants/APlantPrefab.tscn";
 	private static readonly PackedScene PlantScene = GD.Load<PackedScene>(PlantPath);
-	[Export] public string PlantName { get; private set; }
 	[Export(PropertyHint.Enum, "Chuberry,Licary,Drupoleaum")] public string PlantName { get; private set; }
 	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Seed;
 	[Export] private SoilTile Tile { get; set; }
@@ -44,7 +44,6 @@ public partial class Plant : StaticBody2D
 		_logger = new Logger(PlantName);
 		_logger.Debug($"Plant {PlantName} has been planted.");
 		AddToGroup(GameGroup.Plants);
-		//_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_logger = new Logger(this);
 	}
 
@@ -57,8 +56,6 @@ public partial class Plant : StaticBody2D
 
 	public override void _Ready()
 	{
-		_sprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		
 		_logger.Debug($"Plant {PlantName} is ready.");
 		SetRequirements();
 	}
@@ -81,15 +78,6 @@ public partial class Plant : StaticBody2D
 			_currentCycle++;
 			AdvanceStage();
 		}
-	}
-
-	/// <summary>
-	/// sets the plant on a tile
-	/// </summary>
-	/// <param name="soilTile"></param> the tile the plant is planted on
-	public void PlantOnTile(SoilTile soilTile)
-	{
-		Tile = soilTile;
 	}
 
 	/// <summary>

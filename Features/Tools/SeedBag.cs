@@ -1,11 +1,8 @@
-using System.Diagnostics;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 using untitledplantgame.Plants;
-using untitledplantgame.Plants.Soil;
 using SeedComponent = untitledplantgame.Item.Components.SeedComponent;
 
 namespace untitledplantgame.Tools;
@@ -63,9 +60,9 @@ public class SeedBag : Tool
 		}
 		
 		var plantName = CurrentSeedItem.GetComponent<SeedComponent>().PlantName;
-		var currentPlant = APlant.Create(plantName);
+		var currentPlant = Plant.Create(plantName);
 		
-		closestTile.PlantPlant(currentPlant);
+		closestTile.PlantSeed(currentPlant);
 		closestTile.AddChild(currentPlant);
 		var newSeedItem = (ItemStack) CurrentSeedItem.Clone();
 		newSeedItem.Amount = 1;
