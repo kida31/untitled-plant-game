@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cca7okqb2j4c7"]
+[gd_scene load_steps=5 format=3 uid="uid://cca7okqb2j4c7"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/BookView.cs" id="1_rrual"]
 [ext_resource type="PackedScene" uid="uid://c6y60vh6v2ec8" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.tscn" id="2_tyesk"]
-[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="3_5pjti"]
 [ext_resource type="PackedScene" uid="uid://e3t5fwq4qne3" path="res://Features/GUI/Book/Pages/WikiPage.tscn" id="4_t387j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkcs2"]
@@ -42,11 +41,3 @@ mouse_filter = 1
 visible = false
 layout_mode = 2
 mouse_filter = 1
-
-[node name="MovingItemView" parent="." instance=ExtResource("3_5pjti")]
-visible = false
-layout_mode = 0
-offset_left = -582.0
-offset_top = -255.0
-offset_right = -486.0
-offset_bottom = -159.0
