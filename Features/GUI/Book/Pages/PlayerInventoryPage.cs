@@ -20,7 +20,7 @@ public partial class PlayerInventoryPage : Control
 	{
 		if (IsVisibleInTree())
 		{
-			_inventoryTabs.GrabFocus();;
+			_inventoryTabs.GrabFocus();
 		}
 	}
 

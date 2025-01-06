@@ -15,18 +15,17 @@ public partial class WikiItemList : Control
 	public event Action MedicineButtonPressed;
 	public event Action OtherButtonPressed;
 	*/
-	
+
 	[Export] private PackedScene _itemViewPrefab;
 	[Export] private VBoxContainer _itemViewContainer;
-	
-	[ExportCategory("SectionButtons")]
-	[Export] private Button _plantButton;
+
+	[ExportCategory("SectionButtons")] [Export] private Button _plantButton;
 	[Export] private Button _materialButton;
 	[Export] private Button _medicineButton;
 	[Export] private Button _otherButton;
-	
+
 	private List<WikiItemView> _itemViews;
-	
+
 	public override void _Ready()
 	{
 		// Initialize list
@@ -34,7 +33,7 @@ public partial class WikiItemList : Control
 
 		// Removes placeholders
 		_itemViewContainer.GetChildren().ToList().ForEach(c => c.Free());
-		
+
 		// TODO this could be delegated to upper layer
 		/*
 		_plantButton.Pressed += () => PlantButtonPressed?.Invoke();
@@ -55,7 +54,7 @@ public partial class WikiItemList : Control
 			_itemViews[^1].GrabFocus();
 		}
 	}
-	
+
 	public void SetItems(List<ItemStack> items)
 	{
 		Assert.AssertTrue(_itemViews.Count == _itemViewContainer.GetChildCount(), "Tracked views and actual are not equal");
@@ -85,16 +84,21 @@ public partial class WikiItemList : Control
 		}
 	}
 
+	public new void GrabFocus()
+	{
+		_itemViews.FirstOrDefault()?.GrabFocus();
+	}
+
 	// Temporary solution
 	private void ScrollToFirstItemOf(ItemCategory category)
 	{
 		var item = _itemViews.Select(iv => iv.ItemStack).FirstOrDefault(its => its.Category == category);
 		if (item != null)
 		{
-			ScrollTo(item);	
+			ScrollTo(item);
 		}
 	}
-	
+
 	public void ScrollTo(IItemStack itemStack)
 	{
 		var itemView = _itemViews.FirstOrDefault(iv => iv.ItemStack?.HasSameId(itemStack) ?? false);

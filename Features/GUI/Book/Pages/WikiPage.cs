@@ -16,6 +16,16 @@ public partial class WikiPage : Control
 	{
 		_wikiItemList.ItemStackPressed += i => ItemStackPressed?.Invoke(i);
 		_wikiArticle.RelatedItemClicked += OnRelatedItemClicked;
+		
+		VisibilityChanged += OnVisibilityChanged;
+	}
+
+	private void OnVisibilityChanged()
+	{
+		if (IsVisibleInTree())
+		{
+			_wikiItemList.GrabFocus();
+		}
 	}
 
 	public void UpdateItems(List<ItemStack> items)
