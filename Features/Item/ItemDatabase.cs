@@ -195,57 +195,7 @@ public class ItemDatabase
 	 */
 	private List<Recipe> FillDataBaseRecipeList()
 	{
-		return new List<Recipe>
-		{
-			// Generic: Turns single "Leaf" into "DriedLeaf"
-			// Note for Testing: Doesn't work with Sunflower!
-			new(
-				new List<IIngredient> { new ComponentList { new Leaf() } },
-				new ComponentList { new DriedLeaf() },
-				new ComponentList { new Leaf() },
-				Recipe.CraftingType.Drying
-			),
-			// Generic; Turns an item with an "Oil" and an item with an "Antioxidant" component into a normal item containing both.
-			// Note for Testing: Just to show that we mix both components together without removing or changing anything.
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Oil() },
-					new ComponentList { new Oil() },
-					new ItemId("Sunflower"),
-					new ComponentList { new Antioxidant() },
-				},
-				null,
-				null,
-				Recipe.CraftingType.Brewing
-			),
-			// Generic; Showcase of filtering for itemNames
-			// Note for Testing: Searching for string and component!
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Basil() },
-					new ItemId("MintLeaf"),
-				},
-				null,
-				null,
-				Recipe.CraftingType.Cooking
-			),
-			// Generic; Showcase dynamic nature of Recipes
-			// Note for Testing: TACTICAL NUKE INCOMING. ÜÜEHH-ÜÜEHH-ÜÜEHH
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Basil() },
-					new ComponentList { new Lavender() },
-					new ComponentList { new Mint() },
-					new ComponentList { new Rose() },
-					new ComponentList { new Sunflower() },
-				},
-				CreateItemStack("GameEndingNuke"),
-				Recipe.CraftingType.Unspecified
-			),
-		};
+		return new List<Recipe>();
 	}
 
 	/*
@@ -265,7 +215,7 @@ public class ItemDatabase
 				ToolTipDescription = "An unknown seed.",
 				WikiDescription = "An unknown seed. Plant it and water it regularly to find out what it produces!",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
-				Category = ItemCategory.Plant,
+				Category = ItemCategory.Seed,
 				BaseValue = 5,
 			},
 			new()
@@ -275,9 +225,10 @@ public class ItemDatabase
 				ToolTipDescription = "The seeds of a chubery plant.",
 				WikiDescription = "The seeds of a chubery plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
-				Category = ItemCategory.Plant,
+				Category = ItemCategory.Seed,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "chuberryFruit", "chuberryDried" },
+				Components = new Array<AComponent> {new SeedComponent("Chuberry")},
 			},
 			new()
 			{
@@ -286,7 +237,7 @@ public class ItemDatabase
 				ToolTipDescription = "The fruits of a chubery plant.",
 				WikiDescription = "The berries of a chubery plant. While the plant itself looks quite gnarly, the berries are surprisingly juicy. It can be pressed into juice, though most people just dry them and eat them as a snack or ingredient in cooking and baking. It helps boost the immune system, so it’s a widely used plant by many in Tawas. Use it preventive or as an acute immune booster. ",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
-				Category = ItemCategory.Material,
+				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryDried" },
 			},
@@ -311,7 +262,7 @@ public class ItemDatabase
 				ToolTipDescription = "The seeds of a Drupoleaum plant.",
 				WikiDescription = "The seeds of a Drupoleaum plant. They have to be planted in soil and watered regularly. It will grow up a stalk.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Flowers.png"), //TODO: add seed icon
-				Category = ItemCategory.Plant,
+				Category = ItemCategory.Seed,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumFruits" },
 			},
@@ -344,7 +295,7 @@ public class ItemDatabase
 				ToolTipDescription = "The seeds of a Licary plant.",
 				WikiDescription = "The seeds of a Licary plant. They have to be planted in soil and watered regularly to reward you with multiple harvestable Items.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"), //TODO add icon
-				Category = ItemCategory.Plant,
+				Category = ItemCategory.Seed,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit", "licaryLeaf", "licaryLeafDried" },
 			},

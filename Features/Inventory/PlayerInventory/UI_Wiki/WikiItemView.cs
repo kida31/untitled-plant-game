@@ -27,7 +27,7 @@ public partial class WikiItemView : Control
 			_temporary, 
 			"Long Description with a lot of text. Like lots and lots and lots and lots... oh, a butterfly!",
 			"Short Description",
-			ItemCategory.Plant,
+			ItemCategory.Seed,
 			1,
 			1
 			);

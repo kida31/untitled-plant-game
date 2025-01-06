@@ -2,10 +2,10 @@ using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Plants;
-using untitledplantgame.Player;
-using untitledplantgame.Tools;
 
 // NOTE: Make APlant implement IHarvestable instead of we have multiple harvestable objects
+namespace untitledplantgame.Tools;
+
 public class Shears : Tool
 {
 	private Logger _logger;
@@ -15,12 +15,12 @@ public class Shears : Tool
 		_logger = new("Shears");
 	}
 
-	protected override bool OnInitialHit(Player user, Node2D[] hits)
+	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
 	{
 		return hits.OfType<Plant>().Any();
 	}
 
-	protected override bool OnHit(Player user, Node2D[] hits)
+	protected override bool OnHit(Player.Player user, Node2D[] hits)
 	{
 		var closestPlant = hits.OfType<Plant>().MinBy(p => p.GlobalPosition.DistanceSquaredTo(user.GlobalPosition));
 		if (closestPlant == null)
@@ -34,12 +34,12 @@ public class Shears : Tool
 		return true;
 	}
 
-	protected override void OnMiss(Player user)
+	protected override void OnMiss(Player.Player user)
 	{
 		// pass
 	}
 
-	protected override void OnStart(Player user)
+	protected override void OnStart(Player.Player user)
 	{
 		_logger.Debug("Schnippschnapp...");
 	}

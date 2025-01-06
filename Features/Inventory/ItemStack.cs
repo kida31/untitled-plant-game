@@ -21,7 +21,7 @@ public partial class ItemStack : Resource, IItemStack
 	[Export] public int MaxStackSize { get; set; }
 	[Export] public int BaseValue { get; set; }
 
-	[Export(PropertyHint.Enum, "Plant,Material,Medicine")]
+	[Export(PropertyHint.Enum, "Seed,Material,Medicine")]
 	private string _category;
 
 	[Export] public Array<AComponent> Components { get; set; }
@@ -34,7 +34,7 @@ public partial class ItemStack : Resource, IItemStack
 		{
 			return _category switch
 			{
-				"Plant" => ItemCategory.Plant,
+				"Seed" => ItemCategory.Seed,
 				"Material" => ItemCategory.Material,
 				"Medicine" => ItemCategory.Medicine,
 				_ => null
@@ -120,8 +120,17 @@ public partial class ItemStack : Resource, IItemStack
 
 	public bool HasSameIdAndProps(IItemStack itemStack)
 	{
-		_logger.Warn("HasSameIdAndProps is not implemented correctly.");
-		return Id == itemStack.Id;
+		if (itemStack == null) return false;
+		return Id == itemStack.Id &&
+		       /*
+		       Name == itemStack.Name &&
+		       Icon == itemStack.Icon &&
+		       Description == itemStack.Description &&
+		       Category == itemStack.Category &&
+		       BaseValue == itemStack.BaseValue &&
+		       MaxStackSize == itemStack.MaxStackSize &&
+		       */
+		       Components.All(c => c.Equals(itemStack.GetComponent(c)));
 	}
 
 	public bool IsIdentical(IItemStack itemStack)

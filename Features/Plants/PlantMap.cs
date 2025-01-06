@@ -13,6 +13,7 @@ public partial class PlantMap : TileMapLayer
 		_logger = new Logger(this);
 		_logger.Debug("READY");
 		_tileLayer = this;
+		EventBus.Instance.OnSeedPlanted += OnSeedPlanted;
 		CallDeferred(nameof(GetPlantTiles));
 	}
 
@@ -20,6 +21,7 @@ public partial class PlantMap : TileMapLayer
 	{
 		var name = plant.PlantName;
 		var pos = ToLocal(plant.GlobalPosition);
+		_logger.Debug($"plant {name} at {pos}");
 		
 		var mapPos = _tileLayer.LocalToMap(pos);
 		var tileSetId = GetTileSetId(name);
@@ -46,6 +48,13 @@ public partial class PlantMap : TileMapLayer
 			p.PlantGrown += OnPlantGrown;
 			OnPlantGrown(p);
 		}
+	}
+
+	private void OnSeedPlanted(Plant obj)
+	{
+		obj.BeforePlantRemoved += OnBeforePlantRemoved;
+		obj.PlantGrown += OnPlantGrown;
+		OnPlantGrown(obj);
 	}
 
 	//TODO Make it work with shovel tool
