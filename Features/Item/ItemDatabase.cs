@@ -159,13 +159,14 @@ public class ItemDatabase
 		{
 			new()
 			{
-				Id = "unknownSeed",
+				Id = "unknownSeedTemplate",
 				Name = "Unknown Seed",
 				ToolTipDescription = "An unknown seed.",
 				WikiDescription = "An unknown seed. Plant it and water it regularly to find out what it produces!",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
+				Components = new Array<AComponent> {new SeedComponent("")},
 			},
 			new()
 			{
@@ -191,6 +192,10 @@ public class ItemDatabase
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryDried" },
+				Components = new ()
+				{
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+				}
 			},
 			new()
 			{
@@ -203,6 +208,10 @@ public class ItemDatabase
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumFruits" },
+				Components = new Array<AComponent>
+				{
+					new SeedComponent("Drupoleaum")
+				}
 			},
 			new()
 			{
@@ -215,6 +224,10 @@ public class ItemDatabase
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "drupoleaumSeed", "drupoleaumFruits" },
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower)
+				}
 			},
 			new()
 			{
@@ -227,6 +240,10 @@ public class ItemDatabase
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumSeed" },
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+				}
 			},
 			new()
 			{
@@ -238,7 +255,11 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"), //TODO add icon
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit", "licaryLeaf", "licaryLeafDried" },
+				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit", "licaryLeaf" },
+				Components = new Array<AComponent>
+				{
+					new SeedComponent("Licary")
+				}
 			},
 			new()
 			{
@@ -251,6 +272,10 @@ public class ItemDatabase
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit", "licaryLeaf", "licaryLeafDried" },
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower)
+				}
 			},
 			new()
 			{
@@ -263,30 +288,22 @@ public class ItemDatabase
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers", "licaryLeaf", "licaryLeafDried" },
-			},
-			new()
-			{
-				Id = "licaryLeaf",
-				Name = "Licary Leaves",
-				ToolTipDescription = "The leaves of a Licary plant.",
-				WikiDescription =
-					"The leaves of a licary plant. While it’s other produce shines bright, the pain-reducing effect of the licary leaves is often overlooked. A tea made from this leaf was first seen used by the women of the Tsaa tribe to ease menstrual pain.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_leaves.png"),
-				Category = ItemCategory.Medicine,
-				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers", "licaryFruit", "licaryLeafDried" },
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+				}
 			},
 			new()
 			{
 				Id = "dried_fruit",
 				Name = "Dried ",
 				WikiDescription = "It was dried.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Fruit.png"),
+				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				Components = new Array<AComponent>
 				{
-					new DriedComponent(), //change this to tags?
+					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFruit)
 				}
 			},
 			new()
@@ -294,12 +311,12 @@ public class ItemDatabase
 				Id = "dried_flower",
 				Name = "Dried ",
 				WikiDescription = "It was dried.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Flower.png"),
+				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				Components = new Array<AComponent>
 				{
-					new DriedComponent(), //change this to tags?
+					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFlower),
 				},
 				Amount = 1,
 				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
@@ -309,12 +326,12 @@ public class ItemDatabase
 				Id = "dried_leaves",
 				Name = "Dried ",
 				WikiDescription = "It was dried.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Leaves.png"),
+				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				Components = new Array<AComponent>
 				{
-					new DriedComponent(), //change this to tags?
+					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsLeaf)
 				},
 				Amount = 1,
 				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },

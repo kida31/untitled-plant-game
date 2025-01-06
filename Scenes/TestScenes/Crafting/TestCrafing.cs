@@ -23,7 +23,7 @@ public partial class TestCrafing : Node2D
 
 	public override void _Ready()
 	{
-		var texture = GD.Load<Texture2D>("res://Assets/OverworldAssets/Plant/DeadPlant.png");
+		var texture = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Fruits.png");
 		var medicine = new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
 			{
 				{ Warming, 3 },
@@ -40,13 +40,13 @@ public partial class TestCrafing : Node2D
 			toolTipDescription: "A plant that died due to your carelessness.",
 			wikiDescription: "Another cool Description",
 			icon: texture,
-			category: ItemCategory.Plant,
+			category: ItemCategory.Medicine,
 			baseValue: 1,
 			maxStackSize: 1,
 			amount: 1,
 			components: new Array<AComponent>()
 			{
-				new DrieableComponent(),
+				new TagsComponent(TagsComponent.Tags.IsDrieable),
 				medicine
 			}
 		);

@@ -4,7 +4,6 @@ using System.Linq;
 using untitledplantgame.Common;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
-using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
 using untitledplantgame.Medicine;
 using MedicineComponent = untitledplantgame.Item.Components.MedicineComponent;
@@ -14,7 +13,7 @@ namespace untitledplantgame.Crafting;
 public class Dehydrator : ICraftingStation
 {
 	private const int SlotNumber = 6;
-	private const double CraftingTime = 60; //TODO: find a good value
+	private const double CraftingTime = 10; //TODO: find a good value
 	private const Recipe.CraftingType CraftingType = Recipe.CraftingType.Drying;
 	private const double ValueMultiplier = 4.20; //TODO: find a good value
 	
@@ -72,6 +71,9 @@ public class Dehydrator : ICraftingStation
 	{
 		_logger.Debug($"Checking slot {slotIndex} : {CraftingSlots[slotIndex].ItemStack}");
 		var slot = CraftingSlots[slotIndex];
+		
+		var tags = item.GetComponent<TagsComponent>();
+		if (!tags.Contains(TagsComponent.Tags.IsDrieable)) return;
 
 		if (slot.ItemStack != null)
 		{
@@ -80,8 +82,10 @@ public class Dehydrator : ICraftingStation
 		}
 
 		_logger.Debug($"Inserting item {item.Name} to slot {slotIndex}");
-
-		slot.ItemStack = item;
+		var insertedItem = item.Clone();
+		
+		insertedItem.Amount = 1;
+		slot.ItemStack = (ItemStack) insertedItem;
 		slot.AddItemAndStartCrafting(item, CraftingTime);
 		slot.CraftTimeOut += OnCraftTimeOut; // TODO: Ready
 
@@ -118,10 +122,7 @@ public class Dehydrator : ICraftingStation
 
 	private ItemStack ModifyItem(ItemStack item)
 	{
-		var CraftResult = _dryingRecipe.CraftResult(new List<ItemStack> { item });
 		var result = ModifyComponent(item);
-		
-		result.RemoveComponent<DrieableComponent>();
 		
 		//Get Item Template based on whether it's a Leaf, Flower or Fruit
 		result.BaseValue = (int) Math.Floor(item.BaseValue * ValueMultiplier);
@@ -132,7 +133,7 @@ public class Dehydrator : ICraftingStation
 
 	private ItemStack ModifyComponent(ItemStack item)
 	{
-		var comp = item.GetComponent<MedicineComponent>();
+		var comp = item.GetComponent<MedicineComponent>().Clone();
 		if (comp == null) return item;
 
 		foreach (var (effect, value) in _medicineComponent.TheGoodStuff)
@@ -153,6 +154,14 @@ public class Dehydrator : ICraftingStation
 
 		item.RemoveComponent<MedicineComponent>();
 		item.AddComponent(comp);
+		
+		var tags = item.GetComponent<TagsComponent>().Clone();
+		tags.Add(TagsComponent.Tags.IsDried);
+		tags.Remove(TagsComponent.Tags.IsDrieable);
+		
+		item.RemoveComponent<TagsComponent>();
+		item.AddComponent(tags);
+		
 		return item;
 	}
 }

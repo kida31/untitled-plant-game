@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
