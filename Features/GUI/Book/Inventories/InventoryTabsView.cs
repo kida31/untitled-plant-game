@@ -174,6 +174,11 @@ public partial class InventoryTabsView : Control
 		ForceUpdateView();
 	}
 
+	public new void GrabFocus()
+	{
+		_inventoryView.GrabFocus();
+	}
+		
 	private void ForceUpdateView() {
 
 			// Tab

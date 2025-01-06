@@ -32,21 +32,15 @@ public partial class InventoryView : Control
 		});
 		_itemNameLabel.Text = "";
 
-		VisibilityChanged += () => {
-			if (!IsVisibleInTree()) {
-				// Became invisible
-				CursorInventory.Instance.ReturnPickUp();
+		VisibilityChanged += () =>
+		{
+			if (IsVisibleInTree())
+			{
+				OnVisiblityOn();
 			}
 			else
 			{
-				// Became visible
-				
-				
-				if ( GetViewport().GuiGetFocusOwner() == null)
-				{
-					// Focus first item view if nothing is focused
-					GrabFocus();
-				}
+				OnVisibilityOff();
 			}
 		};
 	}
@@ -133,5 +127,15 @@ public partial class InventoryView : Control
 	private void OnItemViewFocused(InventoryItemView itemView)
 	{
 		_itemNameLabel.Text = itemView.ItemStack?.Name ?? "";
+	}
+
+	private void OnVisibilityOff()
+	{
+		CursorInventory.Instance.ReturnPickUp();
+	}
+
+	private void OnVisiblityOn()
+	{
+		
 	}
 }
