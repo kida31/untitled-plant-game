@@ -59,8 +59,9 @@ public partial class Clickable : Control, IPressable, IFocusable
             }
         }
 
-        if (@event.IsAction("ui_accept"))
+        if (@event.IsActionPressed("ui_accept"))
         {
+	        GD.Print("Pressed");
             Pressed?.Invoke();
         }
     }

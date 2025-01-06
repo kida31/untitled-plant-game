@@ -74,6 +74,7 @@ offset_left = 15.0
 offset_top = -20.0
 offset_right = 104.0
 offset_bottom = 138.0
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="FaithProgressBar/Example"]
 layout_mode = 0
@@ -81,6 +82,7 @@ offset_left = -284.0
 offset_top = -19.0
 offset_right = 228.0
 offset_bottom = 301.0
+mouse_filter = 2
 texture = ExtResource("5_1potc")
 
 [node name="First" type="TextureProgressBar" parent="FaithProgressBar"]

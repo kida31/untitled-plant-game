@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://5oay11tne1l4" path="res://Features/GUI/Book/Inventories/InventoryTabsView.tscn" id="2_kjjt2"]
 [ext_resource type="PackedScene" uid="uid://dtgjnb2g3iphl" path="res://Features/GUI/Book/PlayerStuff/PlayerDetails.tscn" id="3_pmlsj"]
 [ext_resource type="Texture2D" uid="uid://bqnsis3x5b0tg" path="res://Assets/UI/BookUI/Background/BookRing_Shaded.png" id="4_hudsj"]
-[ext_resource type="PackedScene" uid="uid://blty0r6y6jxn3" path="res://Features/GUI/Book/BookmarkButton.tscn" id="5_wt5sy"]
+[ext_resource type="PackedScene" path="res://Features/GUI/Book/BookmarkButton.tscn" id="5_wt5sy"]
 [ext_resource type="Texture2D" uid="uid://xdv2ogtl3gnj" path="res://Assets/UI/BookUI/bookmark_orange.png" id="6_xyohf"]
 [ext_resource type="Texture2D" uid="uid://cj8u5g7derdgq" path="res://Assets/UI/BookUI/bookmark_dark_orange.png" id="7_d462m"]
 

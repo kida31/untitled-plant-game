@@ -266,7 +266,7 @@ public class CursorInventory : ICursorInventory
 			ItemOrphaned?.Invoke(_content);
 		}
 
-		var destination = _pickupOrigin.GetItem(_pickupOriginIndex);
+		var destination = _pickupOrigin?.GetItem(_pickupOriginIndex);
 
 		if (destination != null)
 		{
