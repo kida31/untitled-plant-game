@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=12 format=3 uid="uid://3ndp3em1fi7h"]
 
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/VendingMachine/UI/vending_machine_ui.tscn" id="1_iuaq5"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Book/UIFocusIcon.tscn" id="1_mtau6"]
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Features/Cycle/UI/ClockUI.tscn" id="1_tdwvu"]
 [ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="2_y866b"]
-[ext_resource type="PackedScene" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
+[ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
 [ext_resource type="PackedScene" uid="uid://c55xp0xg83mt1" path="res://Features/GUI/HUDs/HUD.tscn" id="5_gr4nr"]
 [ext_resource type="PackedScene" uid="uid://cca7okqb2j4c7" path="res://Features/GUI/Book/BookView.tscn" id="5_sy5d4"]
 [ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="8_v5g76"]
-[ext_resource type="PackedScene" uid="uid://qruua750qmw4" path="res://Features/GUI/CursorHandView.tscn" id="8_xb22b"]
+[ext_resource type="PackedScene" uid="uid://ceosooljxonp2" path="res://Features/GUI/CursorHandView.tscn" id="8_xb22b"]
 [ext_resource type="Script" path="res://Features/GUI/GlobalTooltip.cs" id="9_7jd3l"]
+[ext_resource type="Script" path="res://Scenes/DebugControlTree.cs" id="11_env7g"]
 
 [node name="GUIContainer" type="CanvasLayer"]
 
@@ -62,3 +63,6 @@ script = ExtResource("9_7jd3l")
 _fadeInSpeed = 1.0
 _delay = 0.3
 _offset = Vector2(0, 0)
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("11_env7g")
