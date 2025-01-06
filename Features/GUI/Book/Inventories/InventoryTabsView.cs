@@ -170,6 +170,7 @@ public partial class InventoryTabsView : Control
 		}
 
 		_inventories = inventories;
+		CurrentTab = 0;
 		ForceUpdateView();
 	}
 

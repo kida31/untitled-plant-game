@@ -30,7 +30,7 @@ public partial class InventoryCategoryTab : Clickable
 			// if is editor, skip animation
 			if (Engine.IsEditorHint())
 			{
-				SetIsActive(value, true);
+				SetIsActive(value);
 			}
 			else
 			{
@@ -47,7 +47,7 @@ public partial class InventoryCategoryTab : Clickable
 
 	private bool _isActive;
 
-	public void SetIsActive(bool value, bool instantAnimation = false)
+	public void SetIsActive(bool value)
 	{
 		if (_isActive == value)
 		{
