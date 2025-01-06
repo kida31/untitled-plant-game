@@ -245,42 +245,6 @@ public class ItemDatabase
 			},
 			new()
 			{
-				Id = "chuberryDried",
-				Name = "Dried Chuberry",
-				ToolTipDescription = "The dried berries of a chubery plant.",
-				WikiDescription = "The dried berries of a chubery plant. Since berries can’t be kept forever and these particular ones are liked to be eaten all year round, the practice of drying them became a standard. ",
-				Category = ItemCategory.Medicine,
-				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add dried icon
-				MaxStackSize = 64,
-				Id = "dried_leaf",
-				Name = "Dried ",
-				Description = "Dried Leaf Template",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Leaf.png"),
-				Category = ItemCategory.Medicine,
-				BaseValue = 5,
-				Components = new Array<AComponent>
-				{
-					new DriedComponent(), //change this to tags?
-				}
-			},
-			new()
-			{
-				Id = "dried_flower",
-				Name = "Dried ",
-				Description = "Dried Flower Template",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Flower.png"),
-				Category = ItemCategory.Medicine,
-				BaseValue = 5,
-				Components = new Array<AComponent>
-				{
-					new DriedComponent(), //change this to tags?
-				}
-				Amount = 1,
-				//Components = new Array<AComponent> { new Basil(), new Leaf(), new Spice() },
-				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
-			},
-			new()
-			{
 				Id = "drupoleaumSeed",
 				Name = "Drupoleaum Seed",
 				ToolTipDescription = "The seeds of a Drupoleaum plant.",
@@ -369,6 +333,35 @@ public class ItemDatabase
 					new DriedComponent(), //change this to tags?
 				}
 			},
-			
+			new()
+			{
+				Id = "dried_flower",
+				Name = "Dried ",
+				Description = "Dried Flower Template",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Flower.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				Components = new Array<AComponent>
+				{
+					new DriedComponent(), //change this to tags?
+				}
+				Amount = 1,
+				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
+			},
+			new()
+			{
+				Id = "dried_leaves",
+				Name = "Dried ",
+				Description = "Dried leaf Template",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Dried_Leaves.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				Components = new Array<AComponent>
+				{
+					new DriedComponent(), //change this to tags?
+				}
+				Amount = 1,
+				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
+			},
 	//------------------------------------------------------------------------------------------------------------------------------------//
 }
