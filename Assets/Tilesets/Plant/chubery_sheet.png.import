@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq3ict6tudlsf"
-path="res://.godot/imported/DeadPlant.png-dd07a85cdd9eb8f69d775e37e8415d7b.ctex"
+uid="uid://cc08shc1btj02"
+path="res://.godot/imported/chubery_sheet.png-9689eab8867aac0c27f26029a2c41e15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OverworldAssets/Plant/DeadPlant.png"
-dest_files=["res://.godot/imported/DeadPlant.png-dd07a85cdd9eb8f69d775e37e8415d7b.ctex"]
+source_file="res://Assets/Tilesets/Plant/chubery_sheet.png"
+dest_files=["res://.godot/imported/chubery_sheet.png-9689eab8867aac0c27f26029a2c41e15.ctex"]
 
 [params]
 

@@ -17,12 +17,12 @@ public class Shears : Tool
 
 	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
 	{
-		return hits.OfType<APlant>().Any();
+		return hits.OfType<Plant>().Any();
 	}
 
 	protected override bool OnHit(Player.Player user, Node2D[] hits)
 	{
-		var closestPlant = hits.OfType<APlant>().MinBy(p => p.GlobalPosition.DistanceSquaredTo(user.GlobalPosition));
+		var closestPlant = hits.OfType<Plant>().MinBy(p => p.GlobalPosition.DistanceSquaredTo(user.GlobalPosition));
 		if (closestPlant == null)
 		{
 			return false;

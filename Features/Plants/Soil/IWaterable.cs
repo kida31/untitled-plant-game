@@ -1,4 +1,4 @@
-﻿namespace untitledplantgame.Plants.Soil;
+﻿namespace untitledplantgame.Plants;
 
 public interface IWaterable
 {
