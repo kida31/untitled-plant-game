@@ -53,8 +53,8 @@ public partial class WikiArticleView : Node
 	{
 		_iconTextureRect.Texture = _itemStack?.Icon ?? null;
 		_itemNameAndCategory.Text = _itemStack != null ? $"{_itemStack.Name} - {_itemStack.Category.Name}": "";
-		_itemDescription.Text = _itemStack?.ToolTipDescription ?? "";
-		_itemStats.Text = "Stats!... \nStats!... \nStats!...";
+		_itemDescription.Text = _itemStack?.WikiDescription ?? "";
+		_itemStats.Text = "Stats!... \nStats!... \nStats!..."; // TODO:
 
 		List<IItemStack> relatedItems = new();		
 		if (_itemStack is ItemStack itemStack) {
