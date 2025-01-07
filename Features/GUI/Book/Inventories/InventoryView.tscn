@@ -196,11 +196,12 @@ stretch_mode = 5
 
 [node name="SquiggleDecoLeft2" type="NinePatchRect" parent="."]
 layout_mode = 2
-offset_left = 41.0
-offset_top = 18.0
-offset_right = 57.0
-offset_bottom = 193.0
+anchor_left = 0.160156
+anchor_top = 0.05625
+anchor_right = 0.222656
+anchor_bottom = 0.603125
 size_flags_horizontal = 3
 texture = ExtResource("7_knbye")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true

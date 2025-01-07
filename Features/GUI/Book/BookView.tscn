@@ -8,16 +8,11 @@
 draw_center = false
 
 [node name="BookView" type="Control" node_paths=PackedStringArray("_playerInventoryPage", "_wikiPage", "_tabContainer")]
-custom_minimum_size = Vector2(440, 295)
+custom_minimum_size = Vector2(512, 320)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_right = -641.0
-offset_bottom = -245.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 440.0
+offset_bottom = 295.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_rrual")
@@ -27,8 +22,11 @@ _tabContainer = NodePath("TabContainer")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
-offset_right = 438.0
-offset_bottom = 296.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pkcs2")
 current_tab = 0
 tabs_visible = false
