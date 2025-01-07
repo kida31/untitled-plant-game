@@ -1,3 +1,5 @@
+using Godot;
+using System;
 using untitledplantgame.Common;
 
 // This namespace is for stuff that should not be talked about (should not be referenced)
@@ -19,4 +21,20 @@ public partial class VendingMachineInteractable : AInteractable
 
 		EventBus.Instance.BeforeVendingMachineOpen(_vendingMachine);
 	}
+
+	// public override void _Ready()
+	// {
+	// 	EventBus.Instance.OnSceneChange += OnSceneChange;
+	// }
+
+	// public override void _ExitTree()
+	// {
+	// 	EventBus.Instance.OnSceneChange -= OnSceneChange;
+	// }
+
+	// private void OnSceneChange(Node from, Node to)
+	// {
+	// 	_logger.Debug("Scene changed from " + from.Name + " to " + to.Name);
+	// 	// _vendingMachine = null;
+	// }
 }

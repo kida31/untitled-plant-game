@@ -10,12 +10,13 @@ public partial class SceneManager : Node
 	private Node loadInto;
 	private bool loading = false;
 
+
 	public override void _Ready()
 	{
 		if (Instance == null)
 		{
 			Instance = this;
-			loadInto = GetTree().Root.GetNode("Main");
+			loadInto = GetTree().Root.GetNode("Main").GetNode("GameWorldContainer");
 			//TODO: Load Map with bed in it
 		}
 		else
@@ -47,15 +48,18 @@ public partial class SceneManager : Node
 		var connectingDoor = FindConnectingDoor(newScene, currentDoor.entryDoorName);
 		if (connectingDoor == null)
 		{
-			_logger.Warn("Failed to find connecting door");
+			_logger.Warn("Failed to find connecting door " + currentDoor.entryDoorName);
 			loading = false;
 			return;
 		}
+
+		var sceneToUnload = currentDoor.GetParent();
+		EventBus.Instance.SceneChange(sceneToUnload, newScene);
+
 		player.Hide();
 		player.GlobalPosition = connectingDoor.GlobalPosition;
 		player.Rotation = connectingDoor.Rotation;
 
-		var sceneToUnload = currentDoor.GetParent();
 		sceneToUnload.QueueFree();
 		loadInto.AddChild(newScene);
 
@@ -102,3 +106,27 @@ public partial class SceneManager : Node
 		return null;
 	}
 }
+
+
+// backmerge
+
+// scene change event
+
+
+// Bei scenen wechsel, gameworld objecte nicht ausladen
+// durch persistent(tag) objekte durchgehen, wenn existieren in neuer map, move there
+
+// Soil Persistent, darin is plant und soil placeholder einfach hin moven
+// placeholder haben auch tag
+
+// look for persistent tag
+// look for placeholder tag
+// move persistent to placeholder
+
+
+// Main
+// - GameWorld
+// - Map
+// - Player
+
+

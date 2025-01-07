@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://ciy3cfmtd600v"]
+[gd_scene load_steps=47 format=4 uid="uid://ciy3cfmtd600v"]
 
 [ext_resource type="Texture2D" uid="uid://capj2kjiyfndo" path="res://Assets/Tilesets/TX Tileset Grass.png" id="1_y6de5"]
 [ext_resource type="Texture2D" uid="uid://h83g282s043x" path="res://Assets/OverworldAssets/GardenDecoration/ladder_tileset_improved.png" id="3_rcpjb"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://dxjrcllnnc3s2" path="res://Assets/OverworldAssets/Plant/Licary_SpriteSheet.png" id="14_eauha"]
 [ext_resource type="Texture2D" uid="uid://c7ek706h8ajmu" path="res://Assets/OverworldAssets/GardenDecoration/fence_front_variations_improved.png" id="15_00ojb"]
 [ext_resource type="Texture2D" uid="uid://ma3gcmjjv50o" path="res://Assets/OverworldAssets/GardenDecoration/fence_side_less_shine.png" id="16_khlja"]
+[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="17_nuf3i"]
+[ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="18_hfqu8"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_jas7t"]
 tile_data = PackedInt32Array(0, 2, 0, 65536, 2, 1, 1, 65538, 0, 65537, 65538, 1)
@@ -416,7 +418,7 @@ sources/9 = SubResource("TileSetAtlasSource_ib477")
 pattern_0 = SubResource("TileMapPattern_5sudo")
 pattern_1 = SubResource("TileMapPattern_swsaa")
 
-[node name="Map" type="Node2D"]
+[node name="GardenMapScene" type="Node2D"]
 
 [node name="Ground" type="TileMapLayer" parent="."]
 z_index = -1
@@ -451,3 +453,11 @@ z_index = 1
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAALAAUACQAAAAMAAAALAAYACQAAAAAAAAALAAcACQAAAAIAAAALAAgACQAAAAEAAAALAAkACQAAAAMAAAALAAoACQAAAAIAAAALAAsACQAAAAEAAAALAAwACQAAAAIAAAALAA0ACQAAAAAAAAALAA4ACQAAAAIAAAALAA8ACQAAAAAAAAALABAACQAAAAIAAAALABEACQAAAAMAAAALABIACQAAAAAAAAAcABMABwABAAAAAAAcABIACQABAAEAAAAcABEACQABAAMAAAAcABAACQABAAEAAAAcAA8ACQABAAIAAAAcAA4ACQABAAIAAAAcAA0ACQABAAAAAAAcAAwACQABAAAAAAAcAAsACQABAAIAAAAcAAoACQABAAIAAAAcAAkACQABAAAAAAAcAAgACQABAAAAAAAcAAcACQABAAMAAAAcAAYACQABAAMAAAAcAAUACQABAAEAAAALABMABwADAAAAAAAMABMABwACAAAAAAANABMABwADAAAAAAAOABMABwAAAAAAAAAPABMABwADAAAAAAAQABMABwADAAAAAAARABMABwAAAAAAAAASABMABwAAAAAAAAATABMABwACAAAAAAAUABMABwAAAAAAAAAVABMABwABAAAAAAAWABMABwABAAAAAAAXABMABwADAAAAAAAYABMABwACAAAAAAAZABMABwAAAAAAAAAaABMABwABAAAAAAAbABMABwADAAAAAAALAAQABwADAAAAAAAMAAQABwACAAAAAAANAAQABwACAAAAAAAOAAQABwADAAAAAAAPAAQABwADAAAAAAAQAAQABwABAAAAAAARAAQABwABAAAAAAASAAQABwABAAAAAAATAAQABwAAAAAAAAAUAAQABwADAAAAAAAVAAQABwABAAAAAAAWAAQABwABAAAAAAAXAAQABwADAAAAAAAYAAQABwAAAAAAAAAZAAQABwACAAAAAAAaAAQABwACAAAAAAAbAAQABwAAAAAAAAAcAAQABwACAAAAAAA=")
 tile_set = SubResource("TileSet_ue6vt")
+
+[node name="Bed" parent="." instance=ExtResource("17_nuf3i")]
+position = Vector2(888, 177)
+
+[node name="Door" parent="." instance=ExtResource("18_hfqu8")]
+position = Vector2(399, 591)
+pathToNewScene = "res://Scenes/HouseMapScene.tscn"
+entryDoorName = "RoofHouse"
