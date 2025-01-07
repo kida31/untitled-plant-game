@@ -11,13 +11,13 @@
 [node name="PlayerInventoryPage" type="Control" node_paths=PackedStringArray("_inventoryTabs", "_playerDetails")]
 custom_minimum_size = Vector2(511, 320)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 511.0
-offset_bottom = 320.0
+anchor_right = 0.473148
+anchor_bottom = 0.592593
 script = ExtResource("1_qlgnr")
 _inventoryTabs = NodePath("InventoryTabs")
 _playerDetails = NodePath("PlayerDetails")
 metadata/_tab_index = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="InventoryTabs" parent="." instance=ExtResource("2_kjjt2")]
 layout_mode = 1

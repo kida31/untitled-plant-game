@@ -5,16 +5,20 @@
 
 [node name="CursorHand" type="Control" node_paths=PackedStringArray("_itemView")]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 96.0
-offset_bottom = 56.0
+anchor_right = 0.0296296
+anchor_bottom = 0.0592593
 mouse_filter = 2
 script = ExtResource("1_1sskf")
 _itemView = NodePath("ItemView")
+metadata/_edit_use_anchors_ = true
 
 [node name="ItemView" parent="." instance=ExtResource("2_xsb25")]
-layout_mode = 0
-tooltip_text = ""
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_mode = 0
 mouse_filter = 2
 Disabled = true

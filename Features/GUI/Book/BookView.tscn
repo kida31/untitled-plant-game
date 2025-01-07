@@ -10,15 +10,17 @@ draw_center = false
 [node name="BookView" type="Control" node_paths=PackedStringArray("_playerInventoryPage", "_wikiPage", "_tabContainer")]
 custom_minimum_size = Vector2(512, 320)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 440.0
-offset_bottom = 295.0
+anchor_right = 0.474074
+anchor_bottom = 0.592593
+offset_right = -72.0
+offset_bottom = -25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_rrual")
 _playerInventoryPage = NodePath("TabContainer/PlayerInventoryPage")
 _wikiPage = NodePath("TabContainer/WikiPage")
 _tabContainer = NodePath("TabContainer")
+metadata/_edit_use_anchors_ = true
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
