@@ -56,7 +56,7 @@ public partial class Player : CharacterBody2D
 		{
 			EventBus.Instance.PlayerInventoryChanged(this, _inventory);
 		};
-		_inventory.AddItem(rand.GetRandomPlaceholders(12).ToArray());
+		_inventory.AddItem(rand.GetRandomItems(12).ToArray());
 	}
 
 	private void OnItemPickUp(ItemStack obj)
