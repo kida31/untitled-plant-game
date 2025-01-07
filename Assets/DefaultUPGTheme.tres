@@ -11,7 +11,7 @@ spacing_glyph = 1
 
 [resource]
 default_font = ExtResource("3_pgtec")
-default_font_size = 10
+default_font_size = 16
 HeaderLabel/base_type = &"Label"
 HeaderLabel/font_sizes/font_size = 32
 HeaderMedium/base_type = &"RichTextLabel"
