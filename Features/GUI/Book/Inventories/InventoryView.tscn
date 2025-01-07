@@ -194,14 +194,29 @@ size_flags_horizontal = 3
 texture = ExtResource("6_eklgx")
 stretch_mode = 5
 
-[node name="SquiggleDecoLeft2" type="NinePatchRect" parent="."]
-layout_mode = 2
+[node name="SquigglesLeft" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_left = 0.160156
 anchor_top = 0.05625
 anchor_right = 0.222656
-anchor_bottom = 0.603125
-size_flags_horizontal = 3
-texture = ExtResource("7_knbye")
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
+anchor_bottom = 0.65625
+theme_override_constants/separation = 0
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="SquigglesLeft"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7_knbye")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="SquigglesLeft"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7_knbye")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="SquigglesLeft"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7_knbye")
+stretch_mode = 5
