@@ -41,7 +41,6 @@ public partial class InputRemapper : Node
 			.ToArray();
 
 		// Make placeholder actions for all game states
-		// and remove original
 		foreach (var gs in GameState.GetValues())
 		{
 			foreach (var actionName in _actionNames)

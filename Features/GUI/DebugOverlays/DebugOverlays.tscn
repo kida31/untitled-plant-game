@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://df0cg0vcow1n2"]
+[gd_scene load_steps=5 format=3 uid="uid://df0cg0vcow1n2"]
 
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugKeybindings.cs" id="1_2qjov"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentFocus.cs" id="1_spicd"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugLastClicked.cs" id="2_4xlmf"]
 [ext_resource type="Script" path="res://InGameLogOverlay.cs" id="2_lomx1"]
@@ -18,6 +19,11 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
+
+[node name="Keybindings" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Keybinds"
+script = ExtResource("1_2qjov")
 
 [node name="CurrentFocus" type="Label" parent="VBoxContainer"]
 layout_mode = 2
