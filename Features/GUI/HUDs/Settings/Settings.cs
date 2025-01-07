@@ -1,10 +1,12 @@
 using System.Text.RegularExpressions;
 using Godot;
+using untitledplantgame.GUI.HUDs.Settings;
 
 public partial class Settings : Node
 {
 	[Export] private Button _backButton;
 	[Export] private CheckBox _checkBox;
+	[Export] private LabelForCheckButton _debugMode;
 	[Export] private ResolutionButton _resolutionButton;
 
 	private long _lastValidOptionButton;
@@ -15,7 +17,8 @@ public partial class Settings : Node
 		_backButton.Pressed += () => GetTree().ChangeSceneToFile("res://Features/GUI/HUDs/MainMenu/MainMenu.tscn");
 		_resolutionButton.ItemSelected += GetSelectedItem;
 		_checkBox.Toggled += FullScreenToggled;
-
+		_debugMode.SetDescriptiveLabelForCheckButton("ON", "OFF");
+		
 		SetResolutionBasedOnInitialWindowSize();
 	}
 

@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4ep57f02jim7"]
+[gd_scene load_steps=6 format=3 uid="uid://b4ep57f02jim7"]
 
 [ext_resource type="Texture2D" uid="uid://jitwrv3dmfn4" path="res://DefaultItemBackground_White.png" id="1_dfpnd"]
 [ext_resource type="Script" path="res://Features/GUI/HUDs/Settings/Settings.cs" id="1_i2qoj"]
 [ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="3_4hutb"]
 [ext_resource type="Script" path="res://Features/GUI/HUDs/Settings/ResolutionButton.cs" id="3_c8ql2"]
+[ext_resource type="Script" path="res://Features/GUI/HUDs/Settings/LabelForCheckButton.cs" id="4_nvt3e"]
 
-[node name="Settings" type="Control" node_paths=PackedStringArray("_backButton", "_checkBox", "_resolutionButton")]
+[node name="Settings" type="Control" node_paths=PackedStringArray("_backButton", "_checkBox", "_debugMode", "_resolutionButton")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -13,6 +14,7 @@ offset_bottom = 40.0
 script = ExtResource("1_i2qoj")
 _backButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/Button")
 _checkBox = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/CheckBox")
+_debugMode = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer/HBoxContainer/Label")
 _resolutionButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/OptionButton")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -93,7 +95,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
-text = "AnotherSetting"
+text = "Debug Mode"
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
 custom_minimum_size = Vector2(2, 0)
@@ -105,143 +107,24 @@ expand_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer/HBoxContainer" node_paths=PackedStringArray("_checkButton")]
 layout_mode = 2
 text = "OFF"
+script = ExtResource("4_nvt3e")
+_checkButton = NodePath("../CheckButton")
 
 [node name="CheckButton" type="CheckButton" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
-text = "AnotherSetting"
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
-custom_minimum_size = Vector2(2, 0)
-layout_mode = 2
-texture = ExtResource("1_dfpnd")
-expand_mode = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "OFF"
-
-[node name="CheckButton" type="CheckButton" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-
-[node name="PanelContainer5" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer5"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer5/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
-text = "AnotherSetting"
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer5/HBoxContainer"]
-custom_minimum_size = Vector2(2, 0)
-layout_mode = 2
-texture = ExtResource("1_dfpnd")
-expand_mode = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer5/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer5/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "ON"
-
-[node name="CheckButton" type="CheckButton" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer5/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-button_pressed = true
-
-[node name="PanelContainer6" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
-text = "AnotherSetting"
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6/HBoxContainer"]
-custom_minimum_size = Vector2(2, 0)
-layout_mode = 2
-texture = ExtResource("1_dfpnd")
-expand_mode = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "ON"
-
-[node name="CheckButton" type="CheckButton" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-button_pressed = true
-
-[node name="PanelContainer7" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer7"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer7/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.5
-text = "AnotherSetting"
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer7/HBoxContainer"]
-custom_minimum_size = Vector2(2, 0)
-layout_mode = 2
-texture = ExtResource("1_dfpnd")
-expand_mode = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer7/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer7/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "ON"
-
-[node name="CheckButton" type="CheckButton" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer7/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-button_pressed = true
-
 [node name="Control" type="Control" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.05
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 

@@ -2,6 +2,8 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Godot;
 
+namespace untitledplantgame.GUI.HUDs.Settings;
+
 public partial class ResolutionButton : OptionButton
 {
 	private List<Vector2> _resolution;
