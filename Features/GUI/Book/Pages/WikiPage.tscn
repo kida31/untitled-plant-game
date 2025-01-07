@@ -11,7 +11,7 @@
 [node name="WikiPage" type="Control" node_paths=PackedStringArray("_wikiItemList", "_wikiArticle")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 511.0
+offset_right = 512.0
 offset_bottom = 320.0
 script = ExtResource("1_hckop")
 _wikiItemList = NodePath("WikiItemList")
@@ -21,27 +21,29 @@ metadata/_tab_index = 1
 [node name="WikiItemList" parent="." instance=ExtResource("1_lyx1a")]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.500978
+anchor_right = 0.5
 anchor_bottom = 1.0
 offset_right = 0.0
 offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="WikiArticleView" parent="." instance=ExtResource("3_q0eou")]
 layout_mode = 1
-anchor_left = 0.500978
-anchor_right = 1.00196
+anchor_left = 0.496094
+anchor_right = 0.996094
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Rings" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.451076
+anchor_left = 0.451172
 anchor_top = 0.034375
-anchor_right = 0.54501
-anchor_bottom = 0.946875
+anchor_right = 0.544922
+anchor_bottom = 0.94375
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 
@@ -95,7 +97,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BookmarkButton" parent="." instance=ExtResource("5_m1wd8")]
 z_index = -1
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.422701
 anchor_top = 0.775
 anchor_right = 0.455969
@@ -108,7 +111,8 @@ Disabled = true
 metadata/_edit_use_anchors_ = true
 
 [node name="BookmarkButton2" parent="." instance=ExtResource("5_m1wd8")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.53816
 anchor_top = 0.79375
 anchor_right = 0.571429
