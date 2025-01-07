@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c77ama5r0mirv"]
+[gd_scene load_steps=6 format=3 uid="uid://c77ama5r0mirv"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/ScrollViewController.cs" id="1_2ipb1"]
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiItemList.cs" id="1_lt328"]
 [ext_resource type="PackedScene" uid="uid://b2i7oxcdj4025" path="res://Features/GUI/Book/Wiki/WikiItemView.tscn" id="2_kax1w"]
-[ext_resource type="Texture2D" uid="uid://cdlpjv222kodg" path="res://Assets/UI/BookUI/Background/BookPage_left.png" id="3_t4j6v"]
-[ext_resource type="Texture2D" uid="uid://ckpaa387440l2" path="res://Assets/UI/BookUI/Background/EncyclopediaInfoPageDemo.png" id="4_l1kwy"]
+[ext_resource type="Texture2D" uid="uid://4tn6e6pueea1" path="res://Assets/UI/BookUI/BookPage_Left_Empty.png" id="3_whi5d"]
 [ext_resource type="Texture2D" uid="uid://b0udl2fbk1ct8" path="res://Assets/UI/BookUI/Containers&Labels/ToolContainer.png" id="5_58xx7"]
 
 [node name="WikiItemList" type="Control" node_paths=PackedStringArray("_itemViewContainer", "_plantButton", "_materialButton", "_medicineButton", "_otherButton")]
@@ -17,66 +16,50 @@ offset_bottom = 320.0
 size_flags_horizontal = 3
 script = ExtResource("1_lt328")
 _itemViewPrefab = ExtResource("2_kax1w")
-_itemViewContainer = NodePath("MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer")
-_plantButton = NodePath("MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div/Button")
-_materialButton = NodePath("MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div2/Button")
-_medicineButton = NodePath("MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div3/Button")
-_otherButton = NodePath("MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div4/Button")
+_itemViewContainer = NodePath("VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer")
+_plantButton = NodePath("VBoxContainer/SectionsButtons/Div/Button")
+_materialButton = NodePath("VBoxContainer/SectionsButtons/Div2/Button")
+_medicineButton = NodePath("VBoxContainer/SectionsButtons/Div3/Button")
+_otherButton = NodePath("VBoxContainer/SectionsButtons/Div4/Button")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(256, 320)
 layout_mode = 2
-offset_right = 256.0
-offset_bottom = 320.0
-texture = ExtResource("3_t4j6v")
-stretch_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("3_whi5d")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
-[node name="plceholder" type="TextureRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(256, 320)
-layout_mode = 2
-offset_left = -26.0
-offset_top = -3.0
-offset_right = 486.0
-offset_bottom = 317.0
-texture = ExtResource("4_l1kwy")
-stretch_mode = 2
-
-[node name="MarginTopLeft" type="MarginContainer" parent="."]
-layout_mode = 2
-offset_right = 227.0
-offset_bottom = 305.0
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 40
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginTopLeft"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.171875
+anchor_top = 0.046875
+anchor_right = 0.902344
+anchor_bottom = 0.921875
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 8
+metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginTopLeft/VBoxContainer"]
+[node name="SectionsButtons" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 4
-
-[node name="Spacer" type="Control" parent="MarginTopLeft/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(42, 0)
-layout_mode = 2
-
-[node name="SectionsButtons" type="HBoxContainer" parent="MarginTopLeft/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 6
 theme_override_constants/separation = 5
+alignment = 1
 
-[node name="Div" type="MarginContainer" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons"]
+[node name="Div" type="MarginContainer" parent="VBoxContainer/SectionsButtons"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SectionsButtons/Div"]
 layout_mode = 2
 texture = ExtResource("5_58xx7")
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div"]
+[node name="Button" type="Button" parent="VBoxContainer/SectionsButtons/Div"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Plants"
@@ -84,17 +67,17 @@ flat = true
 clip_text = true
 icon_alignment = 1
 
-[node name="Div2" type="MarginContainer" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons"]
+[node name="Div2" type="MarginContainer" parent="VBoxContainer/SectionsButtons"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div2"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SectionsButtons/Div2"]
 layout_mode = 2
 texture = ExtResource("5_58xx7")
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div2"]
+[node name="Button" type="Button" parent="VBoxContainer/SectionsButtons/Div2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Material"
@@ -102,17 +85,17 @@ flat = true
 clip_text = true
 icon_alignment = 1
 
-[node name="Div3" type="MarginContainer" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons"]
+[node name="Div3" type="MarginContainer" parent="VBoxContainer/SectionsButtons"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div3"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SectionsButtons/Div3"]
 layout_mode = 2
 texture = ExtResource("5_58xx7")
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div3"]
+[node name="Button" type="Button" parent="VBoxContainer/SectionsButtons/Div3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Medicine"
@@ -120,18 +103,18 @@ flat = true
 clip_text = true
 icon_alignment = 1
 
-[node name="Div4" type="MarginContainer" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons"]
+[node name="Div4" type="MarginContainer" parent="VBoxContainer/SectionsButtons"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div4"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SectionsButtons/Div4"]
 layout_mode = 2
 texture = ExtResource("5_58xx7")
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="MarginTopLeft/VBoxContainer/HBoxContainer/SectionsButtons/Div4"]
+[node name="Button" type="Button" parent="VBoxContainer/SectionsButtons/Div4"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "-"
@@ -139,62 +122,62 @@ flat = true
 clip_text = true
 icon_alignment = 1
 
-[node name="MarginRight" type="MarginContainer" parent="MarginTopLeft/VBoxContainer"]
+[node name="MarginRight" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_right = 16
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginTopLeft/VBoxContainer/MarginRight" node_paths=PackedStringArray("_scrollViewItems")]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginRight" node_paths=PackedStringArray("_scrollViewItems")]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 script = ExtResource("1_2ipb1")
 _scrollViewItems = NodePath("MarginAll/ItemViewContainer")
 
-[node name="MarginAll" type="MarginContainer" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer"]
+[node name="MarginAll" type="MarginContainer" parent="VBoxContainer/MarginRight/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 4
 
-[node name="ItemViewContainer" type="VBoxContainer" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll"]
+[node name="ItemViewContainer" type="VBoxContainer" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer2" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer2" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer3" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer3" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer4" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer4" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer5" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer5" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer6" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer6" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer7" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer7" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer8" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer8" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer9" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer9" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer10" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer10" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer11" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer11" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
 
-[node name="MarginContainer12" parent="MarginTopLeft/VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+[node name="MarginContainer12" parent="VBoxContainer/MarginRight/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 layout_mode = 2
