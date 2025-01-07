@@ -17,6 +17,7 @@ public sealed class GameState
 	public static readonly GameState Dialogue = new("dialogue");
 	public static readonly GameState Shop = new("shop");
 	public static readonly GameState VendingMachine = new("VendingMachine");
+	public static readonly GameState Crafting = new("crafting");
 
 	public readonly string Name;
 
@@ -27,7 +28,7 @@ public sealed class GameState
 
 	public static IEnumerable<GameState> GetValues()
 	{
-		return new[] { FreeRoam, Book, Config, Dialogue, Shop };
+		return new[] { FreeRoam, Book, Config, Dialogue, Shop, Crafting, VendingMachine };
 	}
 
 	public override string ToString()
