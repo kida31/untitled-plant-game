@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryView.cs" id="1_p2s7o"]
 [ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="2_6vgaw"]
-[ext_resource type="Texture2D" uid="uid://cdlpjv222kodg" path="res://Assets/UI/BookUI/Background/BookPage_left.png" id="3_x0x3i"]
+[ext_resource type="Texture2D" uid="uid://4tn6e6pueea1" path="res://Assets/UI/BookUI/BookPage_Left_Empty.png" id="3_ucqj6"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="4_ukuta"]
 [ext_resource type="Texture2D" uid="uid://ducp8fk43ftki" path="res://Assets/UI/BookUI/Background/BookDecor1.png" id="5_jxk7b"]
 [ext_resource type="Texture2D" uid="uid://b0udl2fbk1ct8" path="res://Assets/UI/BookUI/Containers&Labels/ToolContainer.png" id="6_eklgx"]
@@ -11,17 +11,9 @@
 [node name="InventoryView" type="Control" node_paths=PackedStringArray("_inventoryItemViewContainer", "_itemNameLabel")]
 custom_minimum_size = Vector2(256, 320)
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -427.0
-offset_top = -240.0
-offset_right = -171.0
-offset_bottom = 80.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 320.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_p2s7o")
@@ -30,65 +22,34 @@ _inventoryItemViewContainer = NodePath("Content/ItemGrid")
 _itemNameLabel = NodePath("Content/TextBox")
 metadata/_tab_index = 3
 
-[node name="BG" type="NinePatchRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -258.0
-offset_top = -206.0
-offset_right = 258.0
-offset_bottom = 206.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_x0x3i")
-region_rect = Rect2(0, 0, 240, 320)
-patch_margin_left = 32
-patch_margin_top = 16
-patch_margin_right = 32
-patch_margin_bottom = 40
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-
 [node name="BG2" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -160.0
-offset_right = 128.0
-offset_bottom = 160.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_x0x3i")
+texture = ExtResource("3_ucqj6")
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="Content" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -94.0
-offset_top = -135.0
-offset_right = 76.0
-offset_bottom = 133.0
+anchors_preset = -1
+anchor_left = 0.242188
+anchor_top = 0.053125
+anchor_right = 0.90625
+anchor_bottom = 0.890625
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ItemGrid" type="GridContainer" parent="Content"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
@@ -96,63 +57,103 @@ columns = 4
 
 [node name="ItemView" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView2" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView3" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView4" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView5" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView6" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView7" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView8" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView9" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView10" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView11" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView12" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView13" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView14" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView15" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView16" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView17" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView18" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView19" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ItemView20" parent="Content/ItemGrid" instance=ExtResource("2_6vgaw")]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="TextBox" parent="Content" instance=ExtResource("4_ukuta")]
 custom_minimum_size = Vector2(32, 0)
@@ -171,30 +172,34 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Content/ToolsSection"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 texture = ExtResource("6_eklgx")
+stretch_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="Content/ToolsSection"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 texture = ExtResource("6_eklgx")
+stretch_mode = 5
 
 [node name="TextureRect3" type="TextureRect" parent="Content/ToolsSection"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 texture = ExtResource("6_eklgx")
+stretch_mode = 5
 
 [node name="TextureRect4" type="TextureRect" parent="Content/ToolsSection"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 texture = ExtResource("6_eklgx")
+stretch_mode = 5
 
 [node name="SquiggleDecoLeft2" type="NinePatchRect" parent="."]
 layout_mode = 2
-offset_left = 22.0
-offset_top = 25.0
-offset_right = 38.0
-offset_bottom = 200.0
+offset_left = 41.0
+offset_top = 18.0
+offset_right = 57.0
+offset_bottom = 193.0
 size_flags_horizontal = 3
 texture = ExtResource("7_knbye")
 axis_stretch_horizontal = 1

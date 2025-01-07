@@ -9,67 +9,127 @@
 [ext_resource type="Texture2D" uid="uid://cj8u5g7derdgq" path="res://Assets/UI/BookUI/bookmark_dark_orange.png" id="7_d462m"]
 
 [node name="PlayerInventoryPage" type="Control" node_paths=PackedStringArray("_inventoryTabs", "_playerDetails")]
+custom_minimum_size = Vector2(511, 320)
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -270.0
-offset_right = -86.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 511.0
+offset_bottom = 320.0
 script = ExtResource("1_qlgnr")
 _inventoryTabs = NodePath("InventoryTabs")
 _playerDetails = NodePath("PlayerDetails")
 metadata/_tab_index = 0
 
 [node name="InventoryTabs" parent="." instance=ExtResource("2_kjjt2")]
-offset_left = -6.0
-offset_top = -4.0
-offset_bottom = 300.0
+layout_mode = 1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="PlayerDetails" parent="." instance=ExtResource("3_pmlsj")]
 layout_mode = 2
-offset_left = 222.0
-offset_top = -3.0
-offset_right = 458.0
-offset_bottom = 286.0
+anchor_left = 0.496094
+anchor_right = 0.996094
+anchor_bottom = 1.0
+offset_left = 0.496094
+offset_right = 0.996094
+offset_bottom = 0.0
 size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 196.0
-offset_top = 4.0
-offset_right = 240.0
-offset_bottom = 299.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.451076
+anchor_top = 0.034375
+anchor_right = 0.54501
+anchor_bottom = 0.946875
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 texture = ExtResource("4_hudsj")
-region_rect = Rect2(0, 0, 48, 37)
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings2" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_hudsj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings3" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_hudsj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings4" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_hudsj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings5" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_hudsj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings6" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_hudsj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings7" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_hudsj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings8" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_hudsj")
+metadata/_edit_use_anchors_ = true
 
 [node name="BookmarkButton" parent="." instance=ExtResource("5_wt5sy")]
-layout_mode = 0
-offset_left = 182.0
-offset_top = 245.0
-offset_right = 199.0
-offset_bottom = 329.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.422701
+anchor_top = 0.83125
+anchor_right = 0.455969
+anchor_bottom = 1.09375
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 3
 focus_mode = 0
 Active = true
 Disabled = true
+metadata/_edit_use_anchors_ = true
 
 [node name="BookmarkButton2" parent="." instance=ExtResource("5_wt5sy")]
 z_index = -1
-layout_mode = 0
-offset_left = 244.0
-offset_top = 239.0
-offset_right = 261.0
-offset_bottom = 323.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.542074
+anchor_top = 0.771875
+anchor_right = 0.575342
+anchor_bottom = 1.03437
+offset_right = 0.0
+offset_bottom = 0.0
 size_flags_horizontal = 3
 focus_mode = 0
 _textureActive = ExtResource("6_xyohf")
 _textureInactive = ExtResource("7_d462m")
 Disabled = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

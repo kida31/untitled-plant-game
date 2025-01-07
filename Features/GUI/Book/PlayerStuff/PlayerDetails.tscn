@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dtgjnb2g3iphl"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/PlayerDetailsView.cs" id="1_88tm0"]
-[ext_resource type="Texture2D" uid="uid://b7meke8ampnx" path="res://Assets/UI/BookUI/Background/EmptyCharacterPage.png" id="2_xwjqq"]
+[ext_resource type="Texture2D" uid="uid://djnyvkxjxcm5u" path="res://Assets/UI/BookUI/BookPage_RightCharacterPage.png" id="2_bchjd"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="4_n8hnm"]
 [ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/FaithProgressBar.cs" id="4_tixgw"]
 [ext_resource type="Texture2D" uid="uid://ghfd5ck3sthr" path="res://Assets/UI/BookUI/DemoPages/InventoryMenu.png" id="5_1potc"]
@@ -24,13 +24,11 @@ label4 = NodePath("VBoxContainer/TextBox4")
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
-offset_left = -18.0
-offset_top = -8.0
-offset_right = 238.0
-offset_bottom = 312.0
+offset_right = 256.0
+offset_bottom = 320.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("2_xwjqq")
+texture = ExtResource("2_bchjd")
 stretch_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
