@@ -82,30 +82,18 @@ public class Recipe
 		}
 
 		// If the resulting ItemStack was directly specified, return that, else create dynamic result
-		return ResultingItemStack ?? CreateDynamicCraftResult(itemStacks);
+		return ResultingItemStack;
 	}
 
-	/// <summary>
-	/// Craft the resulting ItemStack, Merge components. Craft resulting ItemStack based on components
-	/// <list type="number">
-	/// <item><description>Make id unique by adding them in a particular way</description></item>
-	/// <item><description>Combine Names (rule outside this scope) ⇒ Default to add names together</description></item>
-	/// <item><description>Icon (rule outside this scope) ⇒ Default to using first Icon provided</description></item>
-	/// <item><description>Category (rule outside this scope) ⇒ Default to using the first category</description></item>
-	/// <item><description>maxStackSize (rule outside this scope) ⇒ Default to using the first number provided</description></item>
-	/// <item><description>baseValue (rule outside this scope) ⇒ Default to using the first number provided</description></item>
-	/// <item><description>amount will always be one as a result</description></item>
-	/// <item><description>components: will be added and compared via component-interface</description></item>
-	/// </list>
-	/// </summary>
-	/// <param name="itemStacks"></param>
-	/// <returns></returns>
+	
+	/*
 	private ItemStack CreateDynamicCraftResult(List<ItemStack> itemStacks)
 	{
 		var newId = string.Join("_", itemStacks.Select(item => item.Id).OrderBy(s => s));
-		var name = string.Join("-", itemStacks.Select(item => item.Id).OrderBy(s => s)); // TODO: Combine names
+		var name = string.Join("-", itemStacks.Select(item => item.Id).OrderBy(s => s));
 		var icon = itemStacks[0].Icon;
-		var newDescription = itemStacks[0].Description;
+		var newDescription = itemStacks[0].ToolTipDescription;
+		var newWikiDescription = itemStacks[0].WikiDescription;
 		var newItemCategory = itemStacks[0].Category;
 		var newMaxStackSize = itemStacks[0].MaxStackSize;
 		var baseValue = itemStacks[0].BaseValue;
@@ -119,12 +107,10 @@ public class Recipe
 				var matchingComponent = newComponents.FirstOrDefault(c => c.GetType() == aComponent.GetType());
 				if (matchingComponent != null)
 				{
-					// Combine components if a match is found
 					newComponents.Add(matchingComponent.Combine(aComponent));
 				}
 				else
 				{
-					// Add the component to ListA if no match is found
 					newComponents.Add(aComponent);
 				}
 			}
@@ -148,10 +134,10 @@ public class Recipe
 			.Where(c => RemovedComponentsInResultingItem.All(r => r.GetType() != c.GetType()))
 			.ToArray());
 
-		return new ItemStack(newId, name, icon, newDescription, newItemCategory, baseValue: baseValue, maxStackSize: newMaxStackSize,
+		return new ItemStack(newId, name, icon, newDescription,newWikiDescription, newItemCategory, baseValue: baseValue, maxStackSize: newMaxStackSize,
 			amount: 1, components: newComponents);
 	}
-
+	*/
 	/// <summary>
 	/// Check if items fulfill ingredient requirements
 	/// </summary>
