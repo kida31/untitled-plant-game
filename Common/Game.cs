@@ -1,8 +1,7 @@
-﻿#nullable enable
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace untitledplantgame.Player;
+namespace untitledplantgame.Common;
 
 /// <summary>
 /// Global game object. Service locator like.
@@ -17,9 +16,9 @@ public class Game
 	public static Game Instance => LazySingleton.Value;
 
 	// Fields
-	public static Player Player => Instance.GetPlayer();
+	public static Player.Player Player => Instance.GetPlayer();
 
-	private Player _player;
+	private Player.Player _player;
 
 	// FlexField for any other service providers. Just abused this if you want to try something quickly.
 	private static Dictionary<Type, object> _services = new();
@@ -28,12 +27,12 @@ public class Game
 	{
 	}
 
-	public void Provide(Player player)
+	public void Provide(Player.Player player)
 	{
 		_player = player;
 	}
 
-	public Player GetPlayer()
+	public Player.Player GetPlayer()
 	{
 		return Instance._player;
 	}
@@ -47,8 +46,4 @@ public class Game
 	{
 		_services[typeof(T)] = service;
 	}
-}
-
-internal class Dictionary<T>
-{
 }
