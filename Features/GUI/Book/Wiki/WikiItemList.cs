@@ -4,7 +4,8 @@ using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
-using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
+
+namespace untitledplantgame.GUI.Book.Wiki;
 
 /// <summary>
 ///     This node is a control that displays a list of items in the wiki.

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Database;
+using untitledplantgame.Inventory;
 
-namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
+namespace untitledplantgame.GUI.Book.Wiki;
 
 /// <summary>
 ///     This node is a control that displays a single article in the wiki.

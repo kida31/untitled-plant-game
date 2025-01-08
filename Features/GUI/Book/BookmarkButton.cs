@@ -1,5 +1,7 @@
 using Godot;
 
+namespace untitledplantgame.GUI.Book;
+
 /// <summary>
 ///     This GUI Component represents a bookmark button.
 ///     It can be clicked and toggles between active and inactive state.
@@ -15,7 +17,7 @@ public partial class BookmarkButton : Clickable
 	[Export] private NinePatchRect _rectInactive;
 
 	[Export]
-	private Texture2D _textureActive
+	private Texture2D TextureActive
 	{
 		get => _rectActive?.Texture;
 		set
@@ -28,7 +30,7 @@ public partial class BookmarkButton : Clickable
 	}
 
 	[Export]
-	private Texture2D _textureInactive
+	private Texture2D TextureInactive
 	{
 		get => _rectInactive?.Texture;
 		set

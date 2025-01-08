@@ -4,8 +4,8 @@ using untitledplantgame.Common.GameStates;
 using untitledplantgame.Crafting;
 using untitledplantgame.Dialogue;
 using untitledplantgame.GUI.Book.Inventories;
+using untitledplantgame.GUI.Book.Wiki;
 using untitledplantgame.Inventory;
-using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 using untitledplantgame.Plants;
 using untitledplantgame.Shops;
 

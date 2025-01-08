@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using untitledplantgame.GUI.Book.Wiki;
 using untitledplantgame.Inventory;
-using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
 namespace untitledplantgame.GUI.Book.Pages;
 

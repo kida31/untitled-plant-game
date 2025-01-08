@@ -1,6 +1,8 @@
 using Godot;
 using untitledplantgame.Inventory;
 
+namespace untitledplantgame.GUI.Book.Wiki;
+
 /// <summary>
 ///     Displays an item in the wiki.
 /// </summary>

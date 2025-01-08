@@ -3,9 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
-using untitledplantgame.Common;
 
-namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
+namespace untitledplantgame.GUI.Book.Wiki;
 
 /// <summary>
 /// Manages the scrolling state of the list of items in the wiki.

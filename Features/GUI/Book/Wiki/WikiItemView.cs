@@ -1,7 +1,8 @@
 using System;
 using Godot;
+using untitledplantgame.Inventory;
 
-namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
+namespace untitledplantgame.GUI.Book.Wiki;
 
 /// <summary>
 ///     This node is a control that displays a single item in the wiki.
