@@ -5,7 +5,7 @@ namespace untitledplantgame.VendingMachine;
 
 /// <summary>
 /// Represents Cursor "storage" for the player when picking up items from some inventory
-/// Functional + UI
+///		Functional + UI
 /// </summary>
 public partial class CursorFriend : Control
 {

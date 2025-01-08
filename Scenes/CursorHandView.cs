@@ -2,10 +2,17 @@ using Godot;
 using untitledplantgame.GUI.Book.Inventories;
 using untitledplantgame.Inventory;
 
+namespace untitledplantgame.Scenes;
+
+/// <summary>
+///     This is the cursor hand view that shows the item that the player is currently holding.
+/// </summary>
 public partial class CursorHandView : Control
 {
 	[Export] private InventoryItemView _itemView;
 
+	// Does not match property naming rule, because the singleton is just an example ref placeholder.
+	// Future implementation may have own cursor inventories for different purposes.
 	private CursorInventory _cursorInventory => CursorInventory.Instance;
 
 	public override void _Ready()

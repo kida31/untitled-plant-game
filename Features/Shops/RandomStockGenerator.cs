@@ -7,10 +7,18 @@ using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Shops;
 
+/// <summary>
+///     Generates random stock for shops. And provides misc. random item generation.
+/// </summary>
 public class RandomStockGenerator
 {
 	private static readonly Random Rand = new(7);
 
+	/// <summary>
+	///     Generates random placeholder items. These do not exist in the game.
+	/// </summary>
+	/// <param name="n"></param>
+	/// <returns></returns>
 	[Obsolete]
 	public List<ItemStack> GetRandomPlaceholders(int n)
 	{
@@ -151,6 +159,11 @@ public class RandomStockGenerator
 		return items.GetRange(0, Math.Min(items.Count, n));
 	}
 
+	/// <summary>
+	///     Generates random items from the item database.
+	/// </summary>
+	/// <param name="n"></param>
+	/// <returns></returns>
 	public List<IItemStack> GetRandomItems(int n)
 	{
 		var items = ItemDatabase.Instance.ItemStacks

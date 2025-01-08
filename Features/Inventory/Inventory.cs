@@ -6,9 +6,11 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.Inventory;
 
+/// <summary>
+///     Base implementation of an inventory.
+/// </summary>
 public class Inventory : IInventory
 {
-
 	public event Action InventoryChanged;
 	public event Action<IItemStack> ItemAdded;
 	public event Action<IItemStack> ItemRemoved;

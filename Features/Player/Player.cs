@@ -1,16 +1,11 @@
 using System;
-using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Inventory;
 using untitledplantgame.Shops;
-using untitledplantgame.Database;
-using untitledplantgame.Inventory;
-using untitledplantgame.Item;
 using untitledplantgame.Tools;
-using SeedComponent = untitledplantgame.Item.Components.SeedComponent;
 
 namespace untitledplantgame.Player;
 
@@ -56,6 +51,7 @@ public partial class Player : CharacterBody2D
 		
 		EventBus.Instance.OnItemPickUp += OnItemPickUp;
 
+		// Initialize inventory
 		var rand = new RandomStockGenerator();
 		_inventory = new();
 		_inventory.InventoryChanged += () =>

@@ -48,6 +48,7 @@ interface ICursorInventory
 	/// <param name="itemIndex"></param>
 	/// <returns></returns>
 	bool CanPickUp(IInventory inventory, int itemIndex);
+
 	/// <summary>
 	/// Adds the targeted item to cursor content.
 	/// </summary>
@@ -117,6 +118,10 @@ public class CursorInventory : ICursorInventory
 	private static readonly Lazy<CursorInventory> LazySingleton = new(() => new CursorInventory());
 	public static CursorInventory Instance => LazySingleton.Value;
 	public event Action ContentChanged;
+
+	/// <summary>
+	///     Invoked when an item is orphaned during any process. Game should drop the item to the ground.
+	/// </summary>
 	public event Action<IItemStack> ItemOrphaned;
 
 	public IItemStack Content => _content;
@@ -137,7 +142,8 @@ public class CursorInventory : ICursorInventory
 
 	public void HandleClick(IInventory inventory, int itemIndex)
 	{
-		Assert.AssertTrue(CanClick(inventory, itemIndex), "Cursor could not handle click. Doing nothing. Consider using 'CanClick' before invoking this");
+		Assert.AssertTrue(CanClick(inventory, itemIndex),
+			"Cursor could not handle click. Doing nothing. Consider using 'CanClick' before invoking this");
 
 		if (CanPickUp(inventory, itemIndex))
 		{
@@ -166,7 +172,7 @@ public class CursorInventory : ICursorInventory
 
 	public bool CanClick(IInventory inventory, int itemIndex)
 	{
-		return new List<Func<IInventory, int, bool>>() { CanPickUp, CanPutDown, CanStack, CanSwap }.Any(f => f(inventory, itemIndex));
+		return new List<Func<IInventory, int, bool>> {CanPickUp, CanPutDown, CanStack, CanSwap}.Any(f => f(inventory, itemIndex));
 	}
 
 	public bool CanPickUp(IInventory inventory, int itemIndex)
@@ -177,13 +183,15 @@ public class CursorInventory : ICursorInventory
 	public void PickUp(IInventory inventory, int itemIndex)
 	{
 		var item = inventory.GetItem(itemIndex).Clone();
-		if (item == null) {
+		if (item == null)
+		{
 			_logger.Error("");
 			return;
 		}
 
 		var result = inventory.RemoveItem(item);
-		if (result.Count != 0) {
+		if (result.Count != 0)
+		{
 			_logger.Error("");
 			return;
 		}
@@ -204,11 +212,13 @@ public class CursorInventory : ICursorInventory
 	public void PutDown(IInventory inventory, int itemIndex)
 	{
 		var remainder = inventory.AddItemToSlot(itemIndex, _content);
-		if (remainder != null) {
+		if (remainder != null)
+		{
 			// dupe exploit lol
 			_logger.Error("Failed to put down item");
 			return;
 		}
+
 		ClearContent();
 	}
 
@@ -232,19 +242,22 @@ public class CursorInventory : ICursorInventory
 	public void Swap(IInventory inventory, int itemIndex)
 	{
 		var item = inventory.GetItem(itemIndex)?.Clone();
-		if (item == null || _content == null) {
+		if (item == null || _content == null)
+		{
 			_logger.Error("Nothing to swap here");
 			return;
 		}
 
 		var result = inventory.RemoveItem(item);
-		if (result.Count > 0) {
+		if (result.Count > 0)
+		{
 			_logger.Error("Could not get item out of target inventory");
 			return;
 		}
 
 		var remainder = inventory.AddItemToSlot(itemIndex, _content);
-		if (remainder != null) {
+		if (remainder != null)
+		{
 			_logger.Error("Failed to put content into inventory during swap.");
 			ItemOrphaned?.Invoke(_content);
 		}
@@ -289,7 +302,8 @@ public class CursorInventory : ICursorInventory
 		_logger.Info("Returned item back to origin");
 	}
 
-	private void ClearContent() {
+	private void ClearContent()
+	{
 		_content = null;
 		_pickupOrigin = null;
 		_pickupOriginIndex = -1;

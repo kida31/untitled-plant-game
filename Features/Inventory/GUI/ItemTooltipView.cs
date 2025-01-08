@@ -2,6 +2,9 @@
 
 namespace untitledplantgame.Inventory.GUI;
 
+/// <summary>
+///     Tooltip view for items.
+/// </summary>
 public partial class ItemTooltipView : TooltipView
 {
 	public IItemStack ItemStack
