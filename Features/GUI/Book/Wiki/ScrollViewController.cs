@@ -49,25 +49,25 @@ public partial class ScrollViewController : ScrollContainer
 	/// <param name="maxDepth"></param>
 	/// <typeparam name="T"></typeparam>
 	/// <returns></returns>
-	private T GetFirstAncestor<T>(Node child, int maxDepth = 5) where T : class
+	private static T GetFirstAncestor<T>(Node child, int maxDepth = 5) where T : class
 	{
-		if (maxDepth <= 0)
+		while (maxDepth > 0)
 		{
-			return null;
+			var parent = child.GetParent();
+			switch (parent)
+			{
+				case null:
+					return null;
+				case T parentOfType:
+					return parentOfType;
+				default:
+					child = parent;
+					maxDepth -= 1;
+					break;
+			}
 		}
 
-		var parent = child.GetParent();
-		if (parent == null)
-		{
-			return null;
-		}
-
-		if (parent is T parentOfType)
-		{
-			return parentOfType;
-		}
-
-		return GetFirstAncestor<T>(parent, maxDepth - 1);
+		return null;
 	}
 
 	public override void _Process(double delta)
@@ -94,13 +94,14 @@ public partial class ScrollViewController : ScrollContainer
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		// Delete after MVP
-		// Are you sure?
-		if (@event is InputEventMouseButton mouseEvent)
+		if (@event is not InputEventMouseButton mouseEvent)
 		{
-			if (mouseEvent.ButtonIndex == MouseButton.WheelUp || mouseEvent.ButtonIndex == MouseButton.WheelDown)
-			{
-				_isRunning = false;
-			}
+			return;
+		}
+
+		if (mouseEvent.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelDown)
+		{
+			_isRunning = false;
 		}
 	}
 
