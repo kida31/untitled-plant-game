@@ -4,9 +4,9 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.addons.upg_utils;
 
-public class Settings
+public static class Settings
 {
-	public class Logging
+	public static class Logging
 	{
 		private const string LogLevelKey = Logger.LogLevelSetting;
 	
