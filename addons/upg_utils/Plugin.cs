@@ -1,54 +1,31 @@
 #if TOOLS
 using Godot;
 using System;
+using untitledplantgame.addons.upg_utils.Components;
 
 namespace untitledplantgame.addons.upg_utils;
 
 [Tool]
 public partial class Plugin : EditorPlugin
 {
-	public const string RootProjectSettingsPath = "plugins/untitledplantgame_utils";
-	
+	[Obsolete("Unused")]
 	private const string MainPanelPath = "res://addons/upg_utils/MainPanel.tscn";
+	private const string LogLevelDropdownPath = "res://addons/upg_utils/LogLevelDropdown.tscn";
+	private const CustomControlContainer LogLevelDropdownContainer = CustomControlContainer.Toolbar;
 
-	private Control _mainPanelInstance;
+	private Control _logLevelDropdown;
 
 	public override void _EnterTree()
 	{
-		var mainPanel = ResourceLoader.Load<PackedScene>(MainPanelPath);
-		_mainPanelInstance = (Control) mainPanel.Instantiate();
-		// Add the main panel to the editor's main viewport.
-		EditorInterface.Singleton.GetEditorMainScreen().AddChild(_mainPanelInstance);
-		// Hide the main panel. Very much required.
-		_MakeVisible(false);
+		// Log Level Thingy in toolbar
+		_logLevelDropdown = ResourceLoader.Load<PackedScene>(LogLevelDropdownPath).Instantiate<Control>();
+		AddControlToContainer(LogLevelDropdownContainer, _logLevelDropdown);
 	}
 
 	public override void _ExitTree()
 	{
-		if (IsInstanceValid(_mainPanelInstance))
-		{
-			_mainPanelInstance.QueueFree();
-		}
-	}
-
-	public override bool _HasMainScreen()
-	{
-		return true;
-	}
-
-	public override void _MakeVisible(bool visible)
-	{
-		if (IsInstanceValid(_mainPanelInstance))
-		{
-			_mainPanelInstance.Visible = visible;
-		}
-	}
-
-	public override string _GetPluginName() => "UntitledPlantGame";
-
-	public override Texture2D _GetPluginIcon()
-	{
-		return EditorInterface.Singleton.GetEditorTheme().GetIcon("Node", "EditorIcons");
+		RemoveControlFromContainer(LogLevelDropdownContainer, _logLevelDropdown);
+		_logLevelDropdown.QueueFree();
 	}
 }
 #endif

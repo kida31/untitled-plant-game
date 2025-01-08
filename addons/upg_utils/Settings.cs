@@ -29,7 +29,7 @@ public static class Settings
 		public static void SetLogLevel(LogLevel logLevel)
 		{
 			ProjectSettings.SetSetting(LogLevelKey, logLevel.ToString());
-			GD.Print($"Project Settings: Set log level to \"{logLevel.ToString()}\"");
+			GD.Print($"Set log level to \"{logLevel.ToString()}\"");
 		}
 	}
 }
