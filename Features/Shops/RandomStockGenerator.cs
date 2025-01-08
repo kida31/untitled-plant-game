@@ -20,7 +20,7 @@ public class RandomStockGenerator
 				new("basil")
 				{
 					Name = "Basil",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is basil",
 					BaseValue = 10,
 					Amount = 5
@@ -28,7 +28,7 @@ public class RandomStockGenerator
 				new("parsley")
 				{
 					Name = "Parsley",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is parsley",
 					BaseValue = 15,
 					Amount = 3
@@ -36,7 +36,7 @@ public class RandomStockGenerator
 				new("mint")
 				{
 					Name = "Mint",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is mint",
 					BaseValue = 20,
 					Amount = 2
@@ -44,7 +44,7 @@ public class RandomStockGenerator
 				new("cilantro")
 				{
 					Name = "Cilantro",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is cilantro",
 					BaseValue = 12,
 					Amount = 8
@@ -52,7 +52,7 @@ public class RandomStockGenerator
 				new("oregano")
 				{
 					Name = "Oregano",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is oregano",
 					BaseValue = 14,
 					Amount = 6
@@ -60,7 +60,7 @@ public class RandomStockGenerator
 				new("thyme")
 				{
 					Name = "Thyme",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is thyme",
 					BaseValue = 18,
 					Amount = 4
@@ -68,7 +68,7 @@ public class RandomStockGenerator
 				new("rosemary")
 				{
 					Name = "Rosemary",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is rosemary",
 					BaseValue = 25,
 					Amount = 2
@@ -76,7 +76,7 @@ public class RandomStockGenerator
 				new("sage")
 				{
 					Name = "Sage",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is sage",
 					BaseValue = 17,
 					Amount = 7
@@ -84,7 +84,7 @@ public class RandomStockGenerator
 				new("chives")
 				{
 					Name = "Chives",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is chives",
 					BaseValue = 13,
 					Amount = 10
@@ -92,7 +92,7 @@ public class RandomStockGenerator
 				new("dill")
 				{
 					Name = "Dill",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is dill",
 					BaseValue = 11,
 					Amount = 9
@@ -100,7 +100,7 @@ public class RandomStockGenerator
 				new("lavender")
 				{
 					Name = "Lavender",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is lavender",
 					BaseValue = 30,
 					Amount = 1
@@ -108,7 +108,7 @@ public class RandomStockGenerator
 				new("tarragon")
 				{
 					Name = "Tarragon",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is tarragon",
 					BaseValue = 22,
 					Amount = 4
@@ -116,7 +116,7 @@ public class RandomStockGenerator
 				new("fennel")
 				{
 					Name = "Fennel",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is fennel",
 					BaseValue = 16,
 					Amount = 6
@@ -124,7 +124,7 @@ public class RandomStockGenerator
 				new("marjoram")
 				{
 					Name = "Marjoram",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is marjoram",
 					BaseValue = 19,
 					Amount = 5
@@ -132,7 +132,7 @@ public class RandomStockGenerator
 				new("lemonbalm")
 				{
 					Name = "Lemon Balm",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is lemon balm",
 					BaseValue = 14,
 					Amount = 8
@@ -140,7 +140,7 @@ public class RandomStockGenerator
 				new("chervil")
 				{
 					Name = "Chervil",
-					Category = ItemCategory.Plant,
+					Category = ItemCategory.Seed,
 					ToolTipDescription = "This is chervil",
 					BaseValue = 12,
 					Amount = 10

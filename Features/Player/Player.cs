@@ -17,7 +17,7 @@ namespace untitledplantgame.Player;
 public partial class Player : CharacterBody2D
 {
 	private readonly Logger _logger = new Logger("Player");
-
+	
 	// Input direction(?)
 	public Vector2 Direction = Vector2.Zero;
 
@@ -33,7 +33,7 @@ public partial class Player : CharacterBody2D
 	private Vector2 _frontDirection = Vector2.Down; // The direction the player is facing.
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
-	private BigInventory _inventory = new(16);
+	private BigInventory _inventory = new(20);
 
 	private Toolbelt _toolbelt = new (
 		new Tool[]
@@ -43,11 +43,6 @@ public partial class Player : CharacterBody2D
 			new SeedBag(8, 24, 1.5f),
 		}
 	);
-	
-	public BigInventory Inventory => _inventory;
-	private BigInventory _inventory;
-
-	public Toolbelt Toolbelt => _toolbelt;
 
 	public override void _Ready()
 	{
@@ -90,8 +85,7 @@ public partial class Player : CharacterBody2D
 		InteractionManager.Instance.PerformInteraction();
 	}
 
-	public void GetSetInputDirection()
-	{
+	public void GetSetInputDirection() {
 		Direction = Input.GetVector(FreeRoam.Left, FreeRoam.Right, FreeRoam.Up, FreeRoam.Down).Normalized();
 	}
 
@@ -142,23 +136,16 @@ public partial class Player : CharacterBody2D
 	/// Horizontal directions have priority. If horizontal direction is zero, vertical direction is chosen.
 	/// If there is no input direction, keep latest front direction value.
 	/// </summary>
-	private void UpdateFrontDirection()
-	{
-		if (Direction == Vector2.Zero)
-		{
+	private void UpdateFrontDirection() {
+		if (Direction == Vector2.Zero) {
 			return;
 		}
-
 		_frontDirection = Direction;
-		if (Direction.X != 0)
-		{
+		if (Direction.X != 0) {
 			_frontDirection.Y = 0;
-		}
-		else
-		{
+		} else {
 			_frontDirection.X = 0;
 		}
-
 		_frontDirection = _frontDirection.Normalized();
 	}
 
