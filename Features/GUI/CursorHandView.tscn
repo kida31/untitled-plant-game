@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceosooljxonp2"]
+[gd_scene load_steps=3 format=3 uid="uid://c081aytpm7hwb"]
 
 [ext_resource type="Script" path="res://Scenes/CursorHandView.cs" id="1_1sskf"]
 [ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="2_xsb25"]

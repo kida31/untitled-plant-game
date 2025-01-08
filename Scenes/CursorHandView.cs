@@ -29,7 +29,7 @@ public partial class CursorHandView : Control
 		}
 	}
 
-	public override void _UnhandledInput(InputEvent @event)
+	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseMotion mouseMotion) {
 			GlobalPosition = mouseMotion.Position;
