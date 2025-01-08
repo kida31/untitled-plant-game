@@ -75,7 +75,7 @@ public partial class SoilTile : Area2D, IWaterable
 	public void AddWater(float addedWater)
 	{
 		Hydration = Math.Min(Hydration + addedWater, MaxHydration);
-		HydrationChanged?.Invoke(addedWater, this);
+		HydrationChanged?.Invoke(Hydration, this);
 	}
 	
 	public void PlantSeed(Plant plant)
