@@ -32,52 +32,23 @@ public class ItemDatabase
 		ItemStacks = FillDataBaseItemStackList();
 		Recipes = FillDataBaseRecipeList();
 	}
-
-	//---Multithreading Testing---//
-	/*
-	 * That's definitely not safe. It probably should be done like this:
-	 *
-	   public async Task MyAsyncFunction(int i, int y)
-		{
-			// Start both tasks without awaiting immediately
-			Task task1 = Task.Run(() => DoMultiThreading(i));
-			Task task2 = Task.Run(() => DoMultiThreading(y));
-
-			// Await both tasks to complete
-			await Task.WhenAll(task1, task2);
-		}
-	 *
-	 * This ensures that the game will only start once the Database is actually loaded, but there is no infrastructure for that, so it
-	 * doesn't really matter for the time being
-	 */
-	public void MyAsyncFunction(int i, int y)
-	{
-		Task.Run(() => DoMultiThreading(i));
-		Task.Run(() => DoMultiThreading(y));
-	}
-
-	private void DoMultiThreading(int amount)
-	{
-		for (int i = 0; i < amount; i++)
-		{
-			GD.Print(i);
-		}
-	}
-
-	//---Multithreading Testing---//
+	
 
 	/// <summary>
 	/// Looks for an ItemStack with the specified ID. Returns a clone of the ItemStack.
 	/// </summary>
 	/// <param name="itemId"></param>
 	/// <returns></returns>
-	public ItemStack CreateItemStack(string itemId)
+	public ItemStack CreateItemStack(string itemId, int amount = 1)
 	{
 		var item = ItemStacks.FirstOrDefault(itemStack => itemStack.Id == itemId)?.Clone();
 		if (item == null)
 		{
 			_logger.Error("Item with ID: " + itemId + " does not exist in the Database.");
+			return null;
 		}
+
+		item.Amount = amount;
 
 		return item as ItemStack;
 	}
@@ -120,17 +91,7 @@ public class ItemDatabase
 	{
 		throw new NotImplementedException();
 	}
-
-	//---Get Recipes---//
-	/*
-	 * This method assumes the following: The user will NEVER provide MORE ItemStack than the Recipe needs (Minecraft Crafting Bench).
-	 * But the user will get a list of potential Recipes that require at least the provided ItemStacks, but also the additional ones.
-	 * (Minecraft Inventory Helper)
-	 *
-	 * Crossier's Note: I apologize in advance for the abomination I produced here.
-	 */
-
-	// Additional Method: Get Recipes with EXACT amount of itemStacks.
+	
 	public List<Recipe> GetAllRecipesWithItemStacks(List<ItemStack> itemStacks, List<Recipe> externalRecipeList)
 	{
 		var recipeSearchList = externalRecipeList ?? Recipes;
@@ -186,497 +147,195 @@ public class ItemDatabase
 		return GetAllRecipesWithItemStacks(itemStacks, recipesWithMatchingCraftingType);
 	}
 
-	//---Get Recipes---//
-
-
-	//------------------------------------------------------------------------------------------------------------------------------------//
-	/*
-	 * This method has no inherent purpose. It only exists to make the constructor more user-friendly and smaller (as in fewer lines).
-	 */
 	private List<Recipe> FillDataBaseRecipeList()
 	{
-		return new List<Recipe>
-		{
-			// Generic: Turns single "Leaf" into "DriedLeaf"
-			// Note for Testing: Doesn't work with Sunflower!
-			new(
-				new List<IIngredient> { new ComponentList { new Leaf() } },
-				new ComponentList { new DriedLeaf() },
-				new ComponentList { new Leaf() },
-				Recipe.CraftingType.Drying
-			),
-			// Generic; Turns an item with an "Oil" and an item with an "Antioxidant" component into a normal item containing both.
-			// Note for Testing: Just to show that we mix both components together without removing or changing anything.
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Oil() },
-					new ComponentList { new Oil() },
-					new ItemId("Sunflower"),
-					new ComponentList { new Antioxidant() },
-				},
-				null,
-				null,
-				Recipe.CraftingType.Brewing
-			),
-			// Generic; Showcase of filtering for itemNames
-			// Note for Testing: Searching for string and component!
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Basil() },
-					new ItemId("MintLeaf"),
-				},
-				null,
-				null,
-				Recipe.CraftingType.Cooking
-			),
-			// Generic; Showcase dynamic nature of Recipes
-			// Note for Testing: TACTICAL NUKE INCOMING. ÜÜEHH-ÜÜEHH-ÜÜEHH
-			new(
-				new List<IIngredient>
-				{
-					new ComponentList { new Basil() },
-					new ComponentList { new Lavender() },
-					new ComponentList { new Mint() },
-					new ComponentList { new Rose() },
-					new ComponentList { new Sunflower() },
-				},
-				CreateItemStack("GameEndingNuke"),
-				Recipe.CraftingType.Unspecified
-			),
-		};
+		return new List<Recipe>();
 	}
 
-	/*
-	 * This method has no inherent purpose. It only exists to make the constructor more user-friendly and smaller (as in fewer lines).
-	 *
-	 * NOTE: This method assumes that every single item has a unique ID. The method can have unpredictable consequences if two identical
-	 * items exist in it.
-	 */
+	
 	private List<ItemStack> FillDataBaseItemStackList()
 	{
 		return new List<ItemStack>
 		{
 			new()
 			{
-				Id = "chuuberry",
-				Name = "Chuuberry",
-				Description = "A small, red berry that grows in the forest.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
-				Category = ItemCategory.Plant,
+				Id = "unknownSeedTemplate",
+				Name = "Unknown Seed",
+				ToolTipDescription = "An unknown seed.",
+				WikiDescription = "An unknown seed. Plant it and water it regularly to find out what it produces!",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
+				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "BasilLeaf" },
+				Components = new Array<AComponent> {new SeedComponent("")},
 			},
 			new()
 			{
-				Id = "BasilLeaf",
-				Name = "Basil",
-				Description = "Basil Basil Basil Basil Basil",
-				Category = ItemCategory.Plant,
-				MaxStackSize = 64,
+				Id = "chuberrySeed",
+				Name = "Chuberry Seed",
+				ToolTipDescription = "The seeds of a chubery plant.",
+				WikiDescription =
+					"The seeds of a chubery plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
+				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				Amount = 1,
-				Components = new Array<AComponent> { new Basil(), new Leaf(), new Spice() },
-				RelatedItemIds = new Array<string> { "chuuberry" },
+				RelatedItemIds = new Array<string> { "chuberryFruit", "chuberryDried" },
+				Components = new Array<AComponent> {new SeedComponent("Chuberry")},
 			},
-			new(
-				"BasilLeaf",
-				"Basil",
-				null,
-				"Basil Basil Basil Basil Basil",
-				ItemCategory.Plant,
-				baseValue: 5,
-				components: new Array<AComponent> { new Basil(), new Leaf(), new Spice() }
-			),
-			new(
-				"LavenderLeaf",
-				"Lavender",
-				null,
-				"Lavender Lavender Lavender Lavender Lavender",
-				ItemCategory.Plant,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent> { new Lavender(), new Leaf(), new Sweet() }
-			),
-			new(
-				"MintLeaf",
-				"Mint",
-				null,
-				"Mint Mint Mint Mint Mint",
-				ItemCategory.Plant,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent> { new Mint(), new Leaf(), new Antioxidant() }
-			),
-			new(
-				"RoseLeaf",
-				"Rose",
-				null,
-				"Rose Rose Rose Rose Rose",
-				ItemCategory.Plant,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent> { new Rose(), new Leaf(), new Decoration() }
-			),
-			new(
-				"Sunflower",
-				"Sunflower",
-				null,
-				"Sunflower Sunflower Sunflower Sunflower Sunflower",
-				ItemCategory.Plant,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent> { new Sunflower(), new Oil() }
-			),
-			new(
-				"GameEndingNuke",
-				"Nuke",
-				null,
-				"Unlocks after a 30 kill gun streak and- wait, this isn't Call of Duty...?!",
-				ItemCategory.Material,
-				baseValue: 30,
-				maxStackSize: 1,
-				amount: 1,
-				components: new Array<AComponent> { new Nuke() }
-			),
-			//----------------------------------------------------------------------------------------------------------------------------//
-
-			new(
-				"firstItem",
-				"theBestItem",
-				null,
-				"It's the first time.",
-				ItemCategory.Plant,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"secondItem",
-				"oakSapling",
-				null,
-				"A young oak tree ready to be planted.",
-				ItemCategory.Plant,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"thirdItem",
-				"pineCone",
-				null,
-				"A pine cone that might grow into a tree.",
-				ItemCategory.Plant,
-				baseValue: 3,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"fourthItem",
-				"healingHerb",
-				null,
-				"A small herb known for its healing properties.",
-				ItemCategory.Medicine,
-				baseValue: 10,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"fifthItem",
-				"aloeLeaf",
-				null,
-				"A leaf with soothing gel inside.",
-				ItemCategory.Medicine,
-				baseValue: 15,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"sixthItem",
-				"lavender",
-				null,
-				"A fragrant plant used in remedies.",
-				ItemCategory.Plant,
-				baseValue: 8,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"seventhItem",
-				"cactusFruit",
-				null,
-				"A fruit from a desert cactus.",
-				ItemCategory.Plant,
-				baseValue: 6,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"eighthItem",
-				"bamboo",
-				null,
-				"A tall, fast-growing plant.",
-				ItemCategory.Plant,
-				baseValue: 7,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"ninthItem",
-				"coalOre",
-				null,
-				"A chunk of coal ore.",
-				ItemCategory.Material,
-				baseValue: 20,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"tenthItem",
-				"ironOre",
-				null,
-				"A chunk of iron ore.",
-				ItemCategory.Material,
-				baseValue: 25,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"eleventhItem",
-				"clayLump",
-				null,
-				"A lump of soft, malleable clay.",
-				ItemCategory.Material,
-				baseValue: 12,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twelfthItem",
-				"saltRock",
-				null,
-				"A rock containing crystallized salt.",
-				ItemCategory.Material,
-				baseValue: 10,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"thirteenthItem",
-				"spiderSilk",
-				null,
-				"Silky thread harvested from spiders.",
-				ItemCategory.Material,
-				baseValue: 18,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"fourteenthItem",
-				"healingRoot",
-				null,
-				"A root with medicinal properties.",
-				ItemCategory.Medicine,
-				baseValue: 20,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"fifteenthItem",
-				"gingerRoot",
-				null,
-				"A spicy root used for healing and cooking.",
-				ItemCategory.Medicine,
-				baseValue: 15,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"sixteenthItem",
-				"peppermintLeaf",
-				null,
-				"A refreshing leaf with healing properties.",
-				ItemCategory.Medicine,
-				baseValue: 12,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"seventeenthItem",
-				"ashWood",
-				null,
-				"Wood from an ash tree, useful for crafting.",
-				ItemCategory.Material,
-				baseValue: 14,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"eighteenthItem",
-				"stoneBlock",
-				null,
-				"A basic stone block for building.",
-				ItemCategory.Material,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"nineteenthItem",
-				"wheatPlant",
-				null,
-				"A fully grown wheat plant.",
-				ItemCategory.Plant,
-				baseValue: 8,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentiethItem",
-				"carrot",
-				null,
-				"A nutritious root vegetable.",
-				ItemCategory.Plant,
-				baseValue: 5,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyFirstItem",
-				"potato",
-				null,
-				"A starchy plant for cooking.",
-				ItemCategory.Plant,
-				baseValue: 4,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentySecondItem",
-				"goldNugget",
-				null,
-				"A small piece of unrefined gold.",
-				ItemCategory.Material,
-				baseValue: 50,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyThirdItem",
-				"silverOre",
-				null,
-				"A chunk of silver ore.",
-				ItemCategory.Material,
-				baseValue: 40,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyFourthItem",
-				"oakLeaf",
-				null,
-				"A fresh leaf from an oak tree.",
-				ItemCategory.Plant,
-				baseValue: 3,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyFifthItem",
-				"rosePetal",
-				null,
-				"A petal from a beautiful rose.",
-				ItemCategory.Plant,
-				baseValue: 6,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentySixthItem",
-				"mushroom",
-				null,
-				"An edible mushroom found in the forest.",
-				ItemCategory.Plant,
-				baseValue: 7,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentySeventhItem",
-				"clover",
-				null,
-				"A lucky four-leaf clover.",
-				ItemCategory.Plant,
-				baseValue: 20,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyEighthItem",
-				"amberChunk",
-				null,
-				"A fossilized piece of tree resin.",
-				ItemCategory.Material,
-				baseValue: 30,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"twentyNinthItem",
-				"dandelion",
-				null,
-				"A common yellow flower.",
-				ItemCategory.Plant,
-				baseValue: 2,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
-			new(
-				"thirtiethItem",
-				"charcoal",
-				null,
-				"A lightweight material for fuel.",
-				ItemCategory.Material,
-				baseValue: 10,
-				maxStackSize: 64,
-				amount: 1,
-				components: new Array<AComponent>()
-			),
+			new()
+			{
+				Id = "chuberryFruit",
+				Name = "Chuberry Fruit",
+				ToolTipDescription = "The fruits of a chubery plant.",
+				WikiDescription =
+					"The berries of a chubery plant. While the plant itself looks quite gnarly, the berries are surprisingly juicy. It can be pressed into juice, though most people just dry them and eat them as a snack or ingredient in cooking and baking. It helps boost the immune system, so it’s a widely used plant by many in Tawas. Use it preventive or as an acute immune booster. ",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryDried" },
+				Components = new ()
+				{
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+				}
+			},
+			new()
+			{
+				Id = "drupoleaumSeed",
+				Name = "Drupoleaum Seed",
+				ToolTipDescription = "The seeds of a Drupoleaum plant.",
+				WikiDescription =
+					"The seeds of a Drupoleaum plant. They have to be planted in soil and watered regularly. It will grow up a stalk.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Flowers.png"), //TODO: add seed icon
+				Category = ItemCategory.Seed,
+				BaseValue = 5,
+				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumFruits" },
+				Components = new Array<AComponent>
+				{
+					new SeedComponent("Drupoleaum")
+				}
+			},
+			new()
+			{
+				Id = "drupoleaumFlower",
+				Name = "Drupoleaum Flower",
+				ToolTipDescription = "The flowers of a Drupoleaum plant.",
+				WikiDescription =
+					"The flowers of a drupoleaum plant. Traditionally the people of Liyor held a flower festival to celebrate the blooming of the first Drupolearum flower. As the wild variations of drupoleaum vined up trees, a popular game was to find the highest growing flower and offer it to the goddess’s shrine. Nowadays, the flowers are a popular tea variant and help with finding sleep.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Flowers.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				RelatedItemIds = new Array<string> { "drupoleaumSeed", "drupoleaumFruits" },
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower)
+				}
+			},
+			new()
+			{
+				Id = "drupoleaumFruits",
+				Name = "Drupoleaum Fruit",
+				ToolTipDescription = "The fruits of a Drupoleaum plant.",
+				WikiDescription =
+					"The berries of a drupoleaum plant. For a long time, the use of drupoleaum berries wasn’t common, as the majority of flowers got picked before ever developing into fruits. Just recently their anti-inflammatory effects have become known which led to a high demand for berries after the Big Flooding.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Fruits.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumSeed" },
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+				}
+			},
+			new()
+			{
+				Id = "licarySeed",
+				Name = "Licary Seed",
+				ToolTipDescription = "The seeds of a Licary plant.",
+				WikiDescription =
+					"The seeds of a Licary plant. They have to be planted in soil and watered regularly to reward you with multiple harvestable Items.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"), //TODO add icon
+				Category = ItemCategory.Seed,
+				BaseValue = 5,
+				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit", "licaryLeaf" },
+				Components = new Array<AComponent>
+				{
+					new SeedComponent("Licary")
+				}
+			},
+			new()
+			{
+				Id = "licaryFlowers",
+				Name = "Licary Flowers",
+				ToolTipDescription = "The flowers of a Licary plant.",
+				WikiDescription =
+					"The flowers of a licary plant. Their four bright yellow leaves often get associated with the power of the sun so a tea made out of these flowers is a popular morning drink. Whenever the colder days arrive, people stock up on these flowers to always have the sun around.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit", "licaryLeaf", "licaryLeafDried" },
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower)
+				}
+			},
+			new()
+			{
+				Id = "licaryFruit",
+				Name = "Licary Fruit",
+				ToolTipDescription = "The fruits of a Licary plant.",
+				WikiDescription =
+					"The fruits of a licary plant. The small but bright orange fruit has a hard outer skin that makes it uncomfortable to eat. It’s anti-oxidant effect makes it a popular juice though. Parents usually pack small bottles of Licary juice as lunch drinks for their kids at school.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_harvested.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers", "licaryLeaf", "licaryLeafDried" },
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+				}
+			},
+			new()
+			{
+				Id = "dried_fruit",
+				Name = "Dried ",
+				WikiDescription = "It was dried.",
+				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFruit)
+				}
+			},
+			new()
+			{
+				Id = "dried_flower",
+				Name = "Dried ",
+				WikiDescription = "It was dried.",
+				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFlower),
+				},
+				Amount = 1,
+				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
+			},
+			new()
+			{
+				Id = "dried_leaves",
+				Name = "Dried ",
+				WikiDescription = "It was dried.",
+				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 5,
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsLeaf)
+				},
+				Amount = 1,
+				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
+			},
 		};
 	}
-	//------------------------------------------------------------------------------------------------------------------------------------//
 }

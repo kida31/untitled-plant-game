@@ -9,7 +9,7 @@ public class Toolbelt
 	public event Action<Tool> ToolChanged;
 	
 	public Tool CurrentTool => _toolIndex < 0 ? null : _tools[_toolIndex];
-	public Tool LeftTool => _toolIndex < 0 ? null : (_toolIndex - 1 >= 0 ? _tools[_toolIndex - 1] : _tools[_tools.Length - 1]);
+	public Tool LeftTool => _toolIndex < 0 ? null : (_toolIndex - 1 >= 0 ? _tools[_toolIndex - 1] : _tools[^1]);
 	public Tool RightTool => _toolIndex < 0 ? null : (_toolIndex + 1 < _tools.Length ? _tools[_toolIndex + 1] : _tools[0]);
 
 	private Tool[] _tools;
@@ -25,7 +25,7 @@ public class Toolbelt
     {
         _tools = tools;
         _toolIndex = tools.Length - 1; // -1 if it's empty
-        _logger = new("Toolbelt");
+        _logger = new Logger("Toolbelt");
     }
 
     public void GoToNext()
@@ -46,7 +46,7 @@ public class Toolbelt
 
     public void GoToPrevious()
     {
-        // I feel like theres some smarter math to do here
+        // I feel like there's some smarter math to do here
         if ((_tools?.Length ?? 0) <= 0)
         {
             _toolIndex = -1;
