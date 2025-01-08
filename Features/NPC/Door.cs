@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Godot;
+using untitledplantgame.Common;
 
 public partial class Door : AInteractable
 {
@@ -12,6 +13,7 @@ public partial class Door : AInteractable
 
 	public override void Interact()
 	{
-		SceneManager.Instance.SwapScenes(pathToNewScene, this);
+		// SceneManager.Instance.SwapScenes(pathToNewScene, this);
+		SceneManager.Instance.TPP(this);
 	}
 }

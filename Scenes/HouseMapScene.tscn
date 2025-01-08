@@ -3093,9 +3093,10 @@ tile_map_data = PackedByteArray("AAANAAsAAAAOAAAAAAANAAwAAAAOAAEAAAAOAAsAAAAPAAA
 tile_set = SubResource("TileSet_6alp4")
 
 [node name="Door" parent="." instance=ExtResource("4_0j18u")]
-position = Vector2(400, 592)
+position = Vector2(400, 567)
 pathToNewScene = "res://Scenes/GardenMapScene.tscn"
 entryDoorName = "RoofHouse"
 
 [node name="Bed" parent="." instance=ExtResource("5_t1uyc")]
-position = Vector2(592, 546)
+position = Vector2(592, 585)
+rotation = -1.5708

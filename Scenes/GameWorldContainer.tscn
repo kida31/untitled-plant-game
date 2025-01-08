@@ -1,5 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cv1fhyjs170lk"]
 
+[ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
 [ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://Features/NPC/VendingMachine/VendingMachineNPC.tscn" id="2_ldf7o"]
 [ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://Features/NPC/NPC.tscn" id="2_w1s7m"]
@@ -7,33 +8,11 @@
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
-[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
+[ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
 [ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
-
-[node name="Map" parent="." instance=ExtResource("1_ouy3g")]
-y_sort_enabled = true
-
-[node name="GenericItem" parent="." instance=ExtResource("12_tpjy1")]
-position = Vector2(750, 429)
-
-[node name="Bed" parent="." instance=ExtResource("11_33dsb")]
-position = Vector2(888, 177)
-
-[node name="SeedShop" parent="." instance=ExtResource("2_w1s7m")]
-z_index = 2
-y_sort_enabled = true
-position = Vector2(465, 195)
-script = ExtResource("3_orgm4")
-
-[node name="VendingMachineNPC" parent="." instance=ExtResource("2_ldf7o")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(730, 160)
-
-[node name="Plants" parent="." instance=ExtResource("7_36aju")]
 
 [node name="Player" parent="." instance=ExtResource("1_mh621")]
 z_index = 1
@@ -45,3 +24,27 @@ position = Vector2(577.5, 328.625)
 scale = Vector2(1.19896, 1.19896)
 script = ExtResource("6_4ec11")
 _gradientTexture = ExtResource("7_xmbsw")
+
+[node name="persistent" type="Node2D" parent="."]
+
+[node name="GenericItem" parent="persistent" instance=ExtResource("12_tpjy1")]
+position = Vector2(750, 429)
+
+[node name="SeedShop" parent="persistent" instance=ExtResource("2_w1s7m")]
+z_index = 2
+y_sort_enabled = true
+position = Vector2(465, 195)
+script = ExtResource("3_orgm4")
+
+[node name="VendingMachineNPC" parent="persistent" instance=ExtResource("2_ldf7o")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(730, 160)
+
+[node name="Plants" parent="persistent" instance=ExtResource("7_36aju")]
+
+[node name="GardenMapScene" parent="." instance=ExtResource("1_ouy3g")]
+y_sort_enabled = true
+
+[node name="HouseMapScene" parent="." instance=ExtResource("10_t60bx")]
+position = Vector2(1775, 3)

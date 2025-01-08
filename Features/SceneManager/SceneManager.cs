@@ -25,9 +25,10 @@ public partial class SceneManager : Node
 		}
 	}
 
+	// currently uneccessary like most other methods here except TPP
 	public void SwapScenes(string sceneToLoad, Door currentDoor)
 	{
-		var player = GetTree().Root.GetNode("Main").GetNode<Player>("Player");
+		var player = GetTree().GetNodesInGroup(GameGroup.Player)[0] as Player;
 		if (loading)
 		{
 			_logger.Warn("SceneManager is already loading something");
@@ -80,6 +81,34 @@ public partial class SceneManager : Node
 		// });
 	}
 
+	//Tele Port Player
+	public void TPP(Door currentDoor)
+	{
+		var player = GetTree().GetNodesInGroup(GameGroup.Player)[0] as Player;
+		var interactables = GetTree().GetNodesInGroup(GameGroup.Interactables);
+		Vector2 targetPosition = Vector2.Zero;
+
+		foreach(Node node in interactables)
+		{
+			if(node is Door door && door.entryDoorName == currentDoor.entryDoorName && door != currentDoor)
+			{
+				// _logger.Debug($"TPP to {door.GlobalPosition}");
+				targetPosition = door.GlobalPosition;
+				break;
+			}
+		}
+
+        if (targetPosition != Vector2.Zero)
+        {
+            player.GlobalPosition = targetPosition;
+            _logger.Debug($"Player moved to {targetPosition}");
+        }
+        else
+        {
+            _logger.Warn("No matching door found to move the player");
+        }
+	}
+
 	private Node LoadScene(string scenePath)
 	{
 		if (ResourceLoader.Exists(scenePath))
@@ -106,27 +135,3 @@ public partial class SceneManager : Node
 		return null;
 	}
 }
-
-
-// backmerge
-
-// scene change event
-
-
-// Bei scenen wechsel, gameworld objecte nicht ausladen
-// durch persistent(tag) objekte durchgehen, wenn existieren in neuer map, move there
-
-// Soil Persistent, darin is plant und soil placeholder einfach hin moven
-// placeholder haben auch tag
-
-// look for persistent tag
-// look for placeholder tag
-// move persistent to placeholder
-
-
-// Main
-// - GameWorld
-// - Map
-// - Player
-
-
