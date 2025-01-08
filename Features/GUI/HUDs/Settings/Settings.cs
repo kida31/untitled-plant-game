@@ -33,6 +33,7 @@ public partial class Settings : Node
 			if (currentResolutionString == _resolutionButton.GetItemText(i))
 			{
 				_resolutionButton.Select(i);
+				_lastValidOptionButton = i;
 			}
 		}
 	}
