@@ -42,7 +42,7 @@ public partial class WikiItemList : Control
 		_otherButton.Pressed += () => OtherButtonPressed?.Invoke();
 		*/
 
-		_plantButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Plant);
+		_plantButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Seed);
 		_materialButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Material);
 		_medicineButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Medicine);
 	}
