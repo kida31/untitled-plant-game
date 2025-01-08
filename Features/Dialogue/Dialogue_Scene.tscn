@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cc8tr4q35n0q8"]
 
-[ext_resource type="Script" path="res://Features/Dialogue/DialogueUI.cs" id="1_hawac"]
+[ext_resource type="Script" path="res://Features/Dialogue/DialogueUi.cs" id="2_6qnof"]
 [ext_resource type="Texture2D" uid="uid://o4fvncrv04mo" path="res://Assets/Sprites/damage.png" id="2_cnal3"]
 [ext_resource type="Texture2D" uid="uid://be34y66w0usqf" path="res://Assets/UI/chatbox_rounded.png" id="3_2ukc1"]
 [ext_resource type="Texture2D" uid="uid://dvg3mpwor2ux0" path="res://Assets/UI/BookUI/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]
@@ -59,7 +59,7 @@ animations = [{
 [node name="DialogueView" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_hawac")
+script = ExtResource("2_6qnof")
 
 [node name="Portrait" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

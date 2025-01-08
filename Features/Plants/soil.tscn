@@ -6,6 +6,7 @@
 radius = 19.0263
 
 [node name="Soil" type="Area2D"]
+position = Vector2(276, 175)
 script = ExtResource("1_0lhsy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

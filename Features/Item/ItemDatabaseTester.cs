@@ -42,7 +42,7 @@ public partial class ItemDatabaseTester : Node
 			// We have: Sunflower x4, MintLeaf x1 => Every Recipe with AT LEAST one Sunflower and MintLeaf
 			GD.Print(recipe.RecipeCraftingType);
 		}
-
+		
 		var recipe5 = new Recipe(
 			Recipe.CraftingType.Unspecified,
 			new List<IRecipeFilterPart>
@@ -54,15 +54,15 @@ public partial class ItemDatabaseTester : Node
 			},
 			ItemDatabase.Instance.GetItemStackById("GameEndingNuke")
 		);
-
+		
 		GD.Print(recipe5.CraftResult(new List<ItemStack>{ItemDatabase.Instance.GetItemStackById("BasilLeaf")}).Description);
 
-
+		
 		var e1 = new EntityConfiguration();
 		e1.Stats.Add(new Stat(10, new Currency(), false));
 		e1.Stats.Add(new Stat(10, new Faith(), false));
 		e1.Stats.Add(new Stat(10, new MovementSpeed(), false));
-
+		
 		var e2 = new EntityConfiguration();
 		e2.Stats.Add(new Stat(1, new Currency(), false));
 		e2.Stats.Add(new Stat(1, new Health(), false));
@@ -94,9 +94,9 @@ public partial class ItemDatabaseTester : Node
 				ItemDatabase.Instance.GetItemStackById("BasilLeaf"),
 				ItemDatabase.Instance.GetItemStackById("MintLeaf")}
 			);
-
-		GD.Print(craftResult.Id);
 		
+		GD.Print(craftResult.Id);
+		*/
 
 		//--------------------------------------------------------------------------------------------------------------------------------//
 
@@ -107,7 +107,7 @@ public partial class ItemDatabaseTester : Node
 		ItemStack dummyItemStack = ItemDatabase.Instance.CreateItemStack("BasilLeaf");
 		GD.Print(dummyItemStack.Id);
 		GD.Print(dummyItemStack.Name);
-		GD.Print(dummyItemStack.ToolTipDescription);
+		GD.Print(dummyItemStack.Description);
 		GD.Print(dummyItemStack.Amount);
 		GD.Print(dummyItemStack.Category);
 
@@ -283,6 +283,5 @@ public partial class ItemDatabaseTester : Node
 			var lavender = new Lavender();
 			GD.Print(basil.Equals(lavender)); // should be false
 		}
-		*/
 	}
 }

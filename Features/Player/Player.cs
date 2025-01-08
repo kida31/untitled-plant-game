@@ -1,21 +1,16 @@
 using System;
-using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
-using untitledplantgame.Database;
-using untitledplantgame.Inventory;
-using untitledplantgame.Item;
 using untitledplantgame.Tools;
-using SeedComponent = untitledplantgame.Item.Components.SeedComponent;
 
 namespace untitledplantgame.Player;
 
 public partial class Player : CharacterBody2D
 {
 	private readonly Logger _logger = new Logger("Player");
-
+	
 	// Input direction(?)
 	public Vector2 Direction = Vector2.Zero;
 
@@ -24,23 +19,19 @@ public partial class Player : CharacterBody2D
 	/// </summary>
 	public Vector2 FrontDirection => _frontDirection;
 
-	public BigInventory Inventory => _inventory;
-	public Toolbelt Toolbelt => _toolbelt;
-
 	private Vector2 _cardinalDirection = Vector2.Down;
 	private Vector2 _frontDirection = Vector2.Down; // The direction the player is facing.
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
-	private BigInventory _inventory = new(16);
 
-	private Toolbelt _toolbelt = new (
-		new Tool[]
-		{
+	private Toolbelt _toolbelt = new Toolbelt(
+		new Tool[] {
 			new Shears(8, 16),
 			new WateringCan(50, 1000, true, 12, 24),
-			new SeedBag(8, 24, 1.5f),
 		}
 	);
+
+	public Toolbelt Toolbelt => _toolbelt;
 
 	public override void _Ready()
 	{
@@ -48,14 +39,6 @@ public partial class Player : CharacterBody2D
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_stateMachine.Initialize(this);
-		
-		/*
-		// Testing seed bag
-		var items = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>{new SeedComponent()});
-		_logger.Debug("Loaded items: " + items[0]);
-		items[0].Amount = 6;
-		_inventory.AddItem(items[0]);
-		*/
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -69,8 +52,7 @@ public partial class Player : CharacterBody2D
 		InteractionManager.Instance.PerformInteraction();
 	}
 
-	public void GetSetInputDirection()
-	{
+	public void GetSetInputDirection() {
 		Direction = Input.GetVector(FreeRoam.Left, FreeRoam.Right, FreeRoam.Up, FreeRoam.Down).Normalized();
 	}
 
@@ -121,23 +103,16 @@ public partial class Player : CharacterBody2D
 	/// Horizontal directions have priority. If horizontal direction is zero, vertical direction is chosen.
 	/// If there is no input direction, keep latest front direction value.
 	/// </summary>
-	private void UpdateFrontDirection()
-	{
-		if (Direction == Vector2.Zero)
-		{
+	private void UpdateFrontDirection() {
+		if (Direction == Vector2.Zero) {
 			return;
 		}
-
 		_frontDirection = Direction;
-		if (Direction.X != 0)
-		{
+		if (Direction.X != 0) {
 			_frontDirection.Y = 0;
-		}
-		else
-		{
+		} else {
 			_frontDirection.X = 0;
 		}
-
 		_frontDirection = _frontDirection.Normalized();
 	}
 

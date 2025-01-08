@@ -1,7 +1,8 @@
-using System.Linq;
+﻿using System.Linq;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Common;
+using untitledplantgame.Database;
 using untitledplantgame.Item;
 
 namespace untitledplantgame.Inventory;
@@ -16,12 +17,11 @@ public partial class ItemStack : Resource, IItemStack
 	[Export] public string Id { get; set; }
 	[Export] public string Name { get; set; }
 	[Export] public Texture2D Icon { get; set; }
-	[Export] public string ToolTipDescription { get; set; }
-	[Export] public string WikiDescription { get; set; }
+	[Export] public string Description { get; set; }
 	[Export] public int MaxStackSize { get; set; }
 	[Export] public int BaseValue { get; set; }
 
-	[Export(PropertyHint.Enum, "Seed,Material,Medicine")]
+	[Export(PropertyHint.Enum, "Plant,Material,Medicine")]
 	private string _category;
 
 	[Export] public Array<AComponent> Components { get; set; }
@@ -34,7 +34,7 @@ public partial class ItemStack : Resource, IItemStack
 		{
 			return _category switch
 			{
-				"Seed" => ItemCategory.Seed,
+				"Plant" => ItemCategory.Plant,
 				"Material" => ItemCategory.Material,
 				"Medicine" => ItemCategory.Medicine,
 				_ => null
@@ -54,8 +54,7 @@ public partial class ItemStack : Resource, IItemStack
 	public ItemStack(string id,
 		string name,
 		Texture2D icon,
-		string toolTipDescription,
-		string wikiDescription,
+		string description,
 		ItemCategory category,
 		int baseValue = 1,
 		int maxStackSize = 64,
@@ -66,7 +65,7 @@ public partial class ItemStack : Resource, IItemStack
 		Id = id;
 		Name = name;
 		Icon = icon;
-		ToolTipDescription = toolTipDescription;
+		Description = description;
 		Category = category;
 		MaxStackSize = maxStackSize;
 		BaseValue = baseValue;
@@ -90,7 +89,6 @@ public partial class ItemStack : Resource, IItemStack
 	public void AddComponent<T>(T component)
 		where T : AComponent
 	{
-		_logger.Debug($"Adding component <{typeof(T).Name}: " + component);
 		if (GetComponent<T>() is not null)
 		{
 			_logger.Warn("Component should only exist once");
@@ -121,17 +119,8 @@ public partial class ItemStack : Resource, IItemStack
 
 	public bool HasSameIdAndProps(IItemStack itemStack)
 	{
-		if (itemStack == null) return false;
-		return Id == itemStack.Id &&
-		       /*
-		       Name == itemStack.Name &&
-		       Icon == itemStack.Icon &&
-		       Description == itemStack.Description &&
-		       Category == itemStack.Category &&
-		       BaseValue == itemStack.BaseValue &&
-		       MaxStackSize == itemStack.MaxStackSize &&
-		       */
-		       Components.All(c => c.Equals(itemStack.GetComponent(c)));
+		_logger.Warn("HasSameIdAndProps is not implemented correctly.");
+		return Id == itemStack.Id;
 	}
 
 	public bool IsIdentical(IItemStack itemStack)
@@ -142,7 +131,7 @@ public partial class ItemStack : Resource, IItemStack
 	public IItemStack Clone()
 	{
 		// TODO: After the JSON fiasco I absolutely do NOT trust Godot to handle deep copies well (especially looking at the Stats)
-		var newStack = new ItemStack(Id, Name, Icon, ToolTipDescription, WikiDescription, Category, baseValue: BaseValue, maxStackSize: MaxStackSize,
+		var newStack = new ItemStack(Id, Name, Icon, Description, Category, baseValue: BaseValue, maxStackSize: MaxStackSize,
 			amount: Amount, components: Components.Duplicate(true));
 		return newStack;
 	}
@@ -150,6 +139,6 @@ public partial class ItemStack : Resource, IItemStack
 	public override string ToString()
 	{
 		return
-			$"ItemStack{{Name={Name}, Id={Id}, Amount={Amount}, Category={Category}, Description={ToolTipDescription}, MaxStackSize={MaxStackSize}, BaseValue={BaseValue}, Components={Components}}}";
+			$"ItemStack{{Name={Name}, Id={Id}, Amount={Amount}, Category={Category}, Description={Description}, MaxStackSize={MaxStackSize}, BaseValue={BaseValue}, Components={Components}}}";
 	}
 }

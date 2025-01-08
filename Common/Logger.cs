@@ -13,8 +13,6 @@ enum LogLevel
 
 public class Logger
 {
-	public static Action<string> MessageLogged;
-	
 	private readonly string _logFilePath;
 	private readonly string _name;
 
@@ -76,7 +74,6 @@ public class Logger
 				_ => logMessage,
 			};
 			GD.PrintRich(coloredMessage);
-			MessageLogged?.Invoke(coloredMessage);
 		}
 	}
 

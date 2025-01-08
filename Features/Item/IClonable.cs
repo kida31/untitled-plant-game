@@ -1,6 +1,4 @@
-﻿using untitledplantgame.Item.Components;
-
-namespace untitledplantgame.Item;
+﻿namespace untitledplantgame.Item;
 
 public interface IClonable<T>
 	where T : IClonable<T>

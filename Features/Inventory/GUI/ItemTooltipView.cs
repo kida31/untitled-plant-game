@@ -14,6 +14,6 @@ public partial class ItemTooltipView : TooltipView
 	{
 		_itemStack = value;
 		Title = _itemStack?.Name ?? "";
-		Description = _itemStack?.ToolTipDescription ?? "";
+		Description = _itemStack?.Description ?? "";
 	}
 }

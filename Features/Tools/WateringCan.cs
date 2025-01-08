@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Plants;
+using untitledplantgame.Plants.Soil;
 
 namespace untitledplantgame.Tools;
 

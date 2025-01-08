@@ -14,7 +14,7 @@ public partial class DetailedWikiItemView : Node
 	{
 		_iconTextureRect.Texture = itemStack.Icon;
 		_itemNameAndCategory.Text = itemStack.Name + ", of Type: " + itemStack.Category.Name;
-		_itemDescription.Text = itemStack.ToolTipDescription;
+		_itemDescription.Text = itemStack.Description;
 		_itemStats.Text = "Stats!... \nStats!... \nStats!...";
 		_bottomTextureRect.Texture = null; // Also not sure where to pull these from. 
 	}

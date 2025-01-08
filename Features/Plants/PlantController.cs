@@ -13,29 +13,23 @@ public partial class PlantController : Node
 	{
 		_timeController = TimeController.Instance;
 		_timeController.DayChanged += DayPassed;
-		_timeController.NoonOccured += NoonOccured;
 		_logger = new Logger(this);
-	}
-
-	private void NoonOccured()
-	{
-		_logger.Debug("Noon occured. Updating plants.");
-		LetPlantsGrow();
 	}
 
 	private void DayPassed(int day)
 	{
 		_logger.Debug($"Updating plants. Day {day}");
-		LetPlantsGrow();
+		var plantNodes = GetPlantNodes();
+
+		LetPlantsGrow(plantNodes);
 	}
 
-	private void LetPlantsGrow()
+	private void LetPlantsGrow(Array<Node> plantNodes)
 	{
-		var plantNodes = GetPlantNodes();
 		_logger.Debug($"Checking {plantNodes.Count} plant(s)");
 		foreach (var node in plantNodes)
 		{
-			var plant = node as Plant;
+			var plant = node as APlant;
 			plant?.DoGrowthCycle();
 		}
 	}

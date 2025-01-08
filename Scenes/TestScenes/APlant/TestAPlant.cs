@@ -1,6 +1,7 @@
 using Godot;
 using untitledplantgame.Item;
-using untitledplantgame.Plants;
+using APlant = untitledplantgame.Plants.APlant;
+using SoilTile = untitledplantgame.Plants.Soil.SoilTile;
 
 // TODO Test ALL APlant public methods and mechanics
 
@@ -10,9 +11,9 @@ public partial class TestAPlant : Node2D
 	private Label _label;
 
 	[Export]
-	private Plant _plant;
+	private APlant _plant;
 	[Export]
-	private Plant _plant2;
+	private APlant _plant2;
 
 	[Export]
 	private SoilTile _soilTile;
@@ -28,8 +29,8 @@ public partial class TestAPlant : Node2D
 		harvestButton.Pressed += OnHarvestButtonPressed;
 		_label = GetNode<Label>("VBoxContainer/Label");
 
-		//_plant.PlantOnTile(_soilTile);
-		//_plant2.PlantOnTile(_soilTile2);
+		_plant.PlantOnTile(_soilTile);
+		_plant2.PlantOnTile(_soilTile2);
 	}
 	public override void _Process(double delta)
 	{

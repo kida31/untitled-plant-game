@@ -26,5 +26,4 @@ public class GameGroup
 	public const string Interactables = "interactables";
 	public const string Plants = "plants";
 	public const string Placeholder = "placeholder";
-	public const string Soil = "soil";
 }

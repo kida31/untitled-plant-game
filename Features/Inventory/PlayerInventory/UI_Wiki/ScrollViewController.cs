@@ -149,7 +149,7 @@ public partial class ScrollViewController : ScrollContainer
 		{
 			if (controlNode is WikiItemView wikiItemView)
 			{
-				if (wikiItemView.ItemStack.Category == ItemCategory.Seed)
+				if (wikiItemView.ItemStack.Category == ItemCategory.Plant)
 				{
 					//ScrollToY(controlNode.Position.Y);
 					ScrollToY(0);
@@ -165,7 +165,7 @@ public partial class ScrollViewController : ScrollContainer
 		{
 			if (controlNode is WikiItemView wikiItemView)
 			{
-				if (wikiItemView.ItemStack.Category == ItemCategory.Seed) // Currently no Material Item
+				if (wikiItemView.ItemStack.Category == ItemCategory.Plant) // Currently no Material Item
 				{
 					//ScrollToY(controlNode.Position.Y);
 					ScrollToY(164);
@@ -181,7 +181,7 @@ public partial class ScrollViewController : ScrollContainer
 		{
 			if (controlNode is WikiItemView wikiItemView)
 			{
-				if (wikiItemView.ItemStack.Category == ItemCategory.Seed) // Currently no Medicine Item
+				if (wikiItemView.ItemStack.Category == ItemCategory.Plant) // Currently no Medicine Item
 				{
 					//ScrollToY(controlNode.Position.Y);
 					ScrollToY(328);

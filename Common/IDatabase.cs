@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace untitledplantgame.Common;
+namespace untitledplantgame.ResourceData;
 
 public interface IDatabase<T>
 	where T : Resource
@@ -15,6 +15,13 @@ public interface IDatabase<T>
 	/// <param name="name"></param>
 	/// <returns></returns>
 	T GetResourceByName(string name);
+
+	/// <summary>
+	/// Get resource of type T by id. If no resource is found, return null.
+	/// </summary>
+	/// <param name="id"></param>
+	/// <returns></returns>
+	T GetResourceById(int id);
 
 	/// <summary>
 	/// Get all resources of type T. If no resources are found, return an empty array.

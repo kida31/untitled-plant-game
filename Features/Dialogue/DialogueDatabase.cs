@@ -1,8 +1,10 @@
+using System;
 using System.IO;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Dialogue.Models;
+using untitledplantgame.ResourceData;
 
 namespace untitledplantgame.Dialogue;
 
@@ -38,6 +40,11 @@ public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 	{
 		var dialogues = GetAllResources();
 		return dialogues.FirstOrDefault(dialogue => dialogue._dialogueId == name);
+	}
+
+	public DialogueResourceObject GetResourceById(int id)
+	{
+		throw new NotImplementedException();
 	}
 
 	/// <summary>

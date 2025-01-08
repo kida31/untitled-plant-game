@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Common;
 
@@ -8,7 +9,7 @@ public partial class TimeController : Node
 {
 	/// Constants for time calculations
 	private const double SecondsPerDay = 24 * 60 * 60;
-
+	
 	private const double InGameToRealTimeMultiplier = 60.0; // 1 second = 1min
 	private const double InGameToRealTimeFastForwardMultiplier = SecondsPerDay; // 24h in 1s
 	private const double StartOfDaySeconds = 7 * 60 * 60;
@@ -20,7 +21,6 @@ public partial class TimeController : Node
 	public delegate void DayChangedHandler(int day);
 
 	public event DayChangedHandler DayChanged;
-	public event Action NoonOccured;
 
 	public delegate void MinuteTickedHandler(int day, int hour, int minute);
 
@@ -37,7 +37,6 @@ public partial class TimeController : Node
 	private int _currentMinute = -1; // For reference for MinuteTicked event
 	private double _fastForwardDuration = -1; // Gotta go fast juice. -1 means not fast forwarding. Consumed while fast forwarding
 	private double _currentTimeMultiplier = InGameToRealTimeMultiplier; // Multiplier for time speed
-	private bool _wasNoon;
 
 	public override void _Ready()
 	{
@@ -50,7 +49,6 @@ public partial class TimeController : Node
 
 		Instance = this;
 		CurrentSeconds = StartOfDaySeconds;
-		_wasNoon = false;
 		_logger = new Logger(this);
 		_logger.Debug($"Time initialized with {CurrentSeconds}");
 	}
@@ -88,11 +86,11 @@ public partial class TimeController : Node
 		const double minutesPerDay = 24 * 60;
 		const double minutesPerHour = 60;
 
-		var totalMinutes = (int)(CurrentSeconds / 60);
+		var totalMinutes = (int) (CurrentSeconds / 60);
 
-		var currentDayMinutes = (int)(totalMinutes % minutesPerDay);
-		var hour = (int)(currentDayMinutes / minutesPerHour);
-		var minute = (int)(currentDayMinutes % minutesPerHour);
+		var currentDayMinutes = (int) (totalMinutes % minutesPerDay);
+		var hour = (int) (currentDayMinutes / minutesPerHour);
+		var minute = (int) (currentDayMinutes % minutesPerHour);
 
 		if (CurrentSeconds >= SecondsPerDay)
 		{
@@ -100,19 +98,12 @@ public partial class TimeController : Node
 			DayChanged?.Invoke(_currentDay);
 			_currentDay += 1;
 			CurrentSeconds = 0;
-			_wasNoon = false;
 		}
 
 		if (_currentMinute != minute)
 		{
 			_currentMinute = minute;
 			MinuteTicked?.Invoke(_currentDay, hour, minute);
-		}
-
-		if (currentDayMinutes >= 12 * 60 && !_wasNoon)
-		{
-			_wasNoon = true;
-			NoonOccured?.Invoke();
 		}
 	}
 
