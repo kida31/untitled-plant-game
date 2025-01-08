@@ -159,7 +159,9 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+text = "Abc12abc12"
 horizontal_alignment = 1
+text_overrun_behavior = 0
 
 [node name="Decoration" type="TextureRect" parent="Content"]
 layout_mode = 2
