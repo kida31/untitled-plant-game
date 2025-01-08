@@ -6,9 +6,16 @@ using untitledplantgame.Common.GameStates;
 namespace untitledplantgame.Common.Inputs;
 
 /// <summary>
+/// This Singleton class is responsible for remapping inputs based on the current game state.
+/// Input will only trigger actions corresponding to the current game state.
+/// This way objects do not have to check the game state themselves.
 /// </summary>
 public partial class InputRemapper : Node
 {
+	/// <summary>
+	/// NOTE: This is a workaround to map the south button to the accept action.
+	/// Alternatively directly map ui_accept in Godot Input maps, but do not forget to match it to base_south
+	/// </summary>
 	private const bool MapSouthToAccept = true;
 	
 	/// <summary>
@@ -62,11 +69,7 @@ public partial class InputRemapper : Node
 
 		GameStateMachine.Instance.StateChanged += OnGameStateChanged;
 	}
-
-	/// <summary>
-	/// NOTE: This is a workaround to map the south button to the accept action.
-	/// Alternatively directly map ui_accept in Godot Input maps, but do not forget to match it to base_south
-	/// </summary>
+	
 	private void BindSouthAsAccept()
 	{
 		const string southAction = "base_south";

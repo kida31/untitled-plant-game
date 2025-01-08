@@ -1,10 +1,14 @@
-﻿using System;
-using Godot;
+﻿#nullable enable
+using System;
+using System.Collections.Generic;
 
 namespace untitledplantgame.Player;
 
 /// <summary>
 /// Global game object. Service locator like.
+/// This singleton provides access to commonly used references.
+/// E.g. Player object
+/// The relevant objects usually register themselves
 /// </summary>
 public class Game
 {
@@ -16,6 +20,9 @@ public class Game
 	public static Player Player => Instance.GetPlayer();
 
 	private Player _player;
+
+	// FlexField for any other service providers. Just abused this if you want to try something quickly.
+	private static Dictionary<Type, object> _services = new();
 
 	private Game()
 	{
@@ -30,4 +37,18 @@ public class Game
 	{
 		return Instance._player;
 	}
+
+	public T? Get<T>() where T : class
+	{
+		return _services.GetValueOrDefault(typeof(T), null) as T;
+	}
+
+	public void Provide<T>(T service)
+	{
+		_services[typeof(T)] = service;
+	}
+}
+
+internal class Dictionary<T>
+{
 }

@@ -14,6 +14,11 @@ namespace untitledplantgame.GUI.Book;
 
 // Reminder: C# doesn't copy objects inside of lists, but rather creates an additional reference!
 // - crisscrossmaster
+/// <summary>
+/// This class represents the book view, which is a GUI element that displays the player's inventory and a wiki.
+/// Functionally it is a tab container with two tabs: Inventory and Wiki.
+/// This class is responsible for updating the content of the tabs and switching between them.
+/// </summary>
 public partial class BookView : Control
 {
 	[ExportGroup("Page References")]
