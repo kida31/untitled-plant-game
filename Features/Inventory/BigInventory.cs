@@ -33,7 +33,7 @@ public class BigInventory : IInventory
 	private readonly Logger _logger = new("BigInventory");
 
 	public BigInventory()
-		: this(15) { }
+		: this(20) { }
 
 	public BigInventory(int size)
 	{
