@@ -9,6 +9,8 @@ namespace untitledplantgame.Common.Inputs;
 /// </summary>
 public partial class InputRemapper : Node
 {
+	private const bool MapSouthToAccept = true;
+	
 	/// <summary>
 	/// Returns they Key that is mapped to this action
 	/// </summary>
@@ -51,10 +53,30 @@ public partial class InputRemapper : Node
 			}
 		}
 
+		if (MapSouthToAccept)
+		{
+			BindSouthAsAccept();
+		}
 		// Bind inputs to actions for current context
 		BindInputEvents(GameStateMachine.Instance.CurrentState);
 
 		GameStateMachine.Instance.StateChanged += OnGameStateChanged;
+	}
+
+	/// <summary>
+	/// NOTE: This is a workaround to map the south button to the accept action.
+	/// Alternatively directly map ui_accept in Godot Input maps, but do not forget to match it to base_south
+	/// </summary>
+	private void BindSouthAsAccept()
+	{
+		const string southAction = "base_south";
+		const string acceptAction = "ui_accept";
+		
+		var inputs = InputMap.ActionGetEvents(southAction);
+		foreach (var e in inputs)
+		{
+			InputMap.ActionAddEvent(acceptAction, e);
+		}
 	}
 
 	private void BindInputEvents(GameState context)
