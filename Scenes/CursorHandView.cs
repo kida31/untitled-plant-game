@@ -1,13 +1,12 @@
 using Godot;
-using System;
+using untitledplantgame.GUI.Book.Inventories;
 using untitledplantgame.Inventory;
-using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 
 public partial class CursorHandView : Control
 {
-	[Export]
-	private InventoryItemView _itemView;
-	CursorInventory _cursorInventory => CursorInventory.Instance;
+	[Export] private InventoryItemView _itemView;
+
+	private CursorInventory _cursorInventory => CursorInventory.Instance;
 
 	public override void _Ready()
 	{
@@ -22,16 +21,20 @@ public partial class CursorHandView : Control
 
 	public override void _Process(double delta)
 	{
-		if (_cursorInventory.Content != null) {
+		if (_cursorInventory.Content != null)
+		{
 			Show();
-		} else {
+		}
+		else
+		{
 			Hide();
 		}
 	}
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event is InputEventMouseMotion mouseMotion) {
+		if (@event is InputEventMouseMotion mouseMotion)
+		{
 			GlobalPosition = mouseMotion.Position;
 		}
 	}

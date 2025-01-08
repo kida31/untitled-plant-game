@@ -1,8 +1,19 @@
 using Godot;
 
+/// <summary>
+///     This GUI Component represents a bookmark button.
+///     It can be clicked and toggles between active and inactive state.
+///     The state is represented by two textures.
+/// </summary>
 [Tool]
 public partial class BookmarkButton : Clickable
 {
+	private bool _active;
+
+	[ExportGroup("Hidden")] [Export] private NinePatchRect _rectActive;
+
+	[Export] private NinePatchRect _rectInactive;
+
 	[Export]
 	private Texture2D _textureActive
 	{
@@ -15,6 +26,7 @@ public partial class BookmarkButton : Clickable
 			}
 		}
 	}
+
 	[Export]
 	private Texture2D _textureInactive
 	{
@@ -45,12 +57,6 @@ public partial class BookmarkButton : Clickable
 			}
 		}
 	}
-
-	[ExportGroup("Hidden")]
-	[Export] private NinePatchRect _rectActive;
-	[Export] private NinePatchRect _rectInactive;
-
-	private bool _active;
 
 	private void TransitionIn()
 	{

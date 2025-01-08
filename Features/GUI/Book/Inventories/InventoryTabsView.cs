@@ -1,24 +1,38 @@
 using System;
-using Godot;
 using System.Collections.Generic;
 using System.Linq;
+using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Common.Inputs.GameActions;
-using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
-using untitledplantgame.Inventory.PlayerInventory.Views;
+using untitledplantgame.Inventory;
 
-namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
+namespace untitledplantgame.GUI.Book.Inventories;
 
+/// <summary>
+///     This class is a view for the inventory tabs. It displays the tabs for the different inventories and a single view
+///     for the currently selected inventory. The view updates depending on the selected tab.
+/// </summary>
 public partial class InventoryTabsView : Control
 {
-	public event Action<long> TabChanged;
+	// private List<InventoryView> _tabs;
+
+	private readonly Dictionary<InventoryCategoryTab, Action> _buttonActions = new();
+
+	private int _currentTab = -1;
+
+	private List<IInventory> _inventories = new();
 
 	// [Export] private PackedScene _inventoryViewPrefab;
 	[Export] private PackedScene _inventoryCategoryTabPrefab;
+	[Export] private InventoryView _inventoryView;
+
+	// public TabContainer TabContainer => GetNode<TabContainer>("."); // Either this or make this class extend TabContainer
+
+	private InventoryItemView _potentialItemSlot;
 
 	// [Export] private TabContainer _tabContainer;
 	[Export] private Container _tabButtonContainer;
-	[Export] private InventoryView _inventoryView;
+
+	private List<InventoryCategoryTab> _tabButtons;
 
 	private int CurrentTab
 	{
@@ -30,38 +44,22 @@ public partial class InventoryTabsView : Control
 		}
 	}
 
-	private int _currentTab = -1;
-
-	// public TabContainer TabContainer => GetNode<TabContainer>("."); // Either this or make this class extend TabContainer
-
-	private InventoryItemView _potentialItemSlot;
-
-	private List<InventoryCategoryTab> _tabButtons;
-	// private List<InventoryView> _tabs;
-
-	private Dictionary<InventoryCategoryTab, Action> _buttonActions = new();
-
-	private List<IInventory> _inventories = new();
+	public event Action<long> TabChanged;
 
 	public override void _Ready()
 	{
-		// EventBus.Instance.OnTabsUpdate += AddItemToCorrespondingTab;
-		// EventBus.Instance.OnInventoryItemMove += DropInventoryItemToNewSlot; // different
-
 		EventBus.Instance.OnSetItemSlot += SetPotentialItemSlot;
 		EventBus.Instance.OnGetItemSlot += GetPotentialItemSlot;
 
-		// _tabs = _tabContainer.GetChildren().OfType<InventoryView>().ToList();
 		_tabButtons = _tabButtonContainer.GetChildren().OfType<InventoryCategoryTab>().ToList();
 
-		// _tabContainer.CurrentTab = 0;
 		TabChanged += OnTabChanged;
-		TabChanged += (_) => CursorInventory.Instance.ReturnPickUp();
+		TabChanged += _ => CursorInventory.Instance.ReturnPickUp();
 	}
 
 	private void OnTabChanged(long tab)
 	{
-		int activeIndex = (int) tab;
+		var activeIndex = (int) tab;
 		if (activeIndex < 0 || activeIndex >= _inventories.Count)
 		{
 			return;
@@ -83,11 +81,11 @@ public partial class InventoryTabsView : Control
 			return;
 		}
 
-		if (@event.IsActionPressed(Book.BumperLeft))
+		if (@event.IsActionPressed(Common.Inputs.GameActions.Book.BumperLeft))
 		{
 			PreviousTab(false);
 		}
-		else if (@event.IsActionPressed(Book.BumperRight))
+		else if (@event.IsActionPressed(Common.Inputs.GameActions.Book.BumperRight))
 		{
 			NextTab(false);
 		}
@@ -146,7 +144,7 @@ public partial class InventoryTabsView : Control
 
 		Assert.AssertEquals(inventories.Count, _tabButtons.Count, "Inventories and tabs count mismatch");
 
-		for (int i = 0; i < inventories.Count; i++)
+		for (var i = 0; i < inventories.Count; i++)
 		{
 			var inventory = inventories[i];
 
@@ -159,7 +157,11 @@ public partial class InventoryTabsView : Control
 				button.Pressed -= _buttonActions[button];
 			}
 
-			void ButtonAction() => OnTabButtonPressed(button);
+			void ButtonAction()
+			{
+				OnTabButtonPressed(button);
+			}
+
 			_buttonActions[button] = ButtonAction;
 			button.Pressed += ButtonAction;
 		}
@@ -186,7 +188,8 @@ public partial class InventoryTabsView : Control
 		{
 			var inventory = _inventories[CurrentTab];
 			_inventoryView.UpdateInventory(inventory);
-		} catch (ArgumentOutOfRangeException e)
+		}
+		catch (ArgumentOutOfRangeException e)
 		{
 			GD.PrintErr("Inventory tab index out of range");
 			// Log error

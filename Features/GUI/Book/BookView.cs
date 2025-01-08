@@ -6,7 +6,6 @@ using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory;
-using untitledplantgame.Player;
 
 namespace untitledplantgame.GUI.Book;
 
@@ -15,29 +14,30 @@ namespace untitledplantgame.GUI.Book;
 // Reminder: C# doesn't copy objects inside of lists, but rather creates an additional reference!
 // - crisscrossmaster
 /// <summary>
-/// This class represents the book view, which is a GUI element that displays the player's inventory and a wiki.
-/// Functionally it is a tab container with two tabs: Inventory and Wiki.
-/// This class is responsible for updating the content of the tabs and switching between them.
+///     This class represents the book view, which is a GUI element that displays the player's inventory and a wiki.
+///     Functionally it is a tab container with two tabs: Inventory and Wiki.
+///     This class is responsible for updating the content of the tabs and switching between them.
 /// </summary>
 public partial class BookView : Control
 {
+	private Logger _logger;
+
 	[ExportGroup("Page References")]
 	// Page references for updating content
 	[Export]
 	private PlayerInventoryPage _playerInventoryPage;
 
-	[Export] private WikiPage _wikiPage;
-
-	[ExportGroup("Tabs")] [Export] private TabContainer _tabContainer; // Maybe make bookview the tabcontainer itself
 	[Obsolete("Unused. May be any class that has .Pressed event")] [Export] private Button[] _tabButtons = new Button[0];
 
-	private Logger _logger;
+	[ExportGroup("Tabs")] [Export] private TabContainer _tabContainer; // Maybe make bookview the tabcontainer itself
+
+	[Export] private WikiPage _wikiPage;
 
 	public override void _Ready()
 	{
 		// 1. Init self
-		_logger = new(this);
-		
+		_logger = new Logger(this);
+
 		// 1.1. Subscribe to events
 		EventBus.Instance.OnPlayerInventoryChanged += UpdateInventory;
 		EventBus.Instance.OnInventoryOpen += ShowBook;
@@ -68,10 +68,13 @@ public partial class BookView : Control
 			ShowBook();
 			return;
 		}
-		
+
 		// Book is open
-		if (!IsVisibleInTree()) return;
-		
+		if (!IsVisibleInTree())
+		{
+			return;
+		}
+
 		// Close book
 		if (@event.IsActionPressed(Common.Inputs.GameActions.Book.Back) || @event.IsActionPressed(Common.Inputs.GameActions.Book.CloseBook))
 		{
@@ -92,7 +95,7 @@ public partial class BookView : Control
 			_tabContainer.CurrentTab = nextOrFirstTabIndex;
 			return;
 		}
-		
+
 		// Switch main tab left
 		if (@event.IsActionPressed(Common.Inputs.GameActions.Book.TriggerLeft))
 		{
@@ -104,7 +107,6 @@ public partial class BookView : Control
 			var count = _tabContainer.GetChildCount();
 			var prevOrLastTabIndex = (_tabContainer.CurrentTab - 1 + count) % count;
 			_tabContainer.CurrentTab = prevOrLastTabIndex;
-			return;
 		}
 	}
 

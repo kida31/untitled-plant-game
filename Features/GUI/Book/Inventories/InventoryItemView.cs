@@ -1,37 +1,30 @@
-using System;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Inventory;
 
-namespace untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
+namespace untitledplantgame.GUI.Book.Inventories;
 
+/// <summary>
+///     This class is a view for an inventory item. It displays the name, quantity, and icon.
+///     Note: The name is currently hidden per default.
+/// </summary>
 public partial class InventoryItemView : Clickable, ITooltipable
 {
-	// public Action Pressed;
-
-	[Export] private TextureRect _itemTextureRect;
 	[Export] private Label _displayItemName;
 	[Export] private Label _itemCurrentQuantity;
-	// [Export] private Button _inventoryItemViewButton;
+	[Export] private TextureRect _itemTextureRect;
 
 	private Logger _logger;
-	
-	public int Id;
 	public IItemStack ItemStack;
-
 	public string Title => ItemStack?.Name;
-
 	public string Description => ItemStack?.ToolTipDescription;
-
 	public Control Content => null;
 
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
-		
-		FocusEntered += () =>
-		{
-			_logger.Debug($"[{Name}] Entered");
-		};
+
+		FocusEntered += () => { _logger.Debug($"[{Name}] Entered"); };
 	}
 
 	public void UpdateItemView(IItemStack itemStack)

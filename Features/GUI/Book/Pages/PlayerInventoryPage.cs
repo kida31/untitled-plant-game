@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Godot;
-using untitledplantgame.Common.Inputs.GameActions;
-using untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
+using untitledplantgame.GUI.Book.Inventories;
 
 namespace untitledplantgame.Inventory.PlayerInventory;
 

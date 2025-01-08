@@ -3,33 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
-using untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
+using untitledplantgame.Inventory;
 
-namespace untitledplantgame.Inventory.PlayerInventory.Views;
+namespace untitledplantgame.GUI.Book.Inventories;
 
-// View of a single inventory
-// TODO: Consider moving itemview.Pressed handling to root
+/// <summary>
+///     This class is a view for the inventory. It displays the items in the inventory and allows the player to interact with them.
+/// </summary>
 public partial class InventoryView : Control
 {
-	[Export] private PackedScene _inventoryItemViewPrefab;
+	private readonly Dictionary<InventoryItemView, Action> _itemViewPressedActions = new();
 	[Export] private Container _inventoryItemViewContainer;
-	[Export] private Label _itemNameLabel;
+	[Export] private PackedScene _inventoryItemViewPrefab;
 
 	private List<InventoryItemView> _inventoryItemViews;
-
-	private Dictionary<InventoryItemView, Action> _itemViewPressedActions = new();
+	[Export] private Label _itemNameLabel;
 
 	private Logger _logger;
 
 	public override void _Ready()
 	{
-		_logger = new(this);
+		_logger = new Logger(this);
 		_inventoryItemViews = _inventoryItemViewContainer.GetChildren().OfType<InventoryItemView>().ToList();
-		_inventoryItemViews.ForEach(iv =>
-		{
-			iv.FocusEntered += () => OnItemViewFocused(iv);
-		});
+		_inventoryItemViews.ForEach(iv => { iv.FocusEntered += () => OnItemViewFocused(iv); });
 		_itemNameLabel.Text = "";
 
 		VisibilityChanged += () =>
@@ -53,7 +49,7 @@ public partial class InventoryView : Control
 		FillTabWithEmptyInventoryItemViews(items.Count);
 
 		// Populate content of the item views
-		for (int i = 0; i < _inventoryItemViews.Count; i++)
+		for (var i = 0; i < _inventoryItemViews.Count; i++)
 		{
 			var view = _inventoryItemViews[i];
 			view.UpdateItemView(i < items.Count ? items[i] : null);
@@ -67,12 +63,13 @@ public partial class InventoryView : Control
 			if (i < items.Count)
 			{
 				var snapshotIndex = i;
+
 				void PressedHandler()
 				{
 					_logger.Debug($"Handle click on {inventory.Name}[{snapshotIndex}/{i}]");
 					if (CursorInventory.Instance.CanClick(inventory, snapshotIndex))
 					{
-						CursorInventory.Instance.HandleClick(inventory, snapshotIndex);	
+						CursorInventory.Instance.HandleClick(inventory, snapshotIndex);
 					}
 				}
 
@@ -92,7 +89,7 @@ public partial class InventoryView : Control
 	}
 
 	/// <summary>
-	/// Focuses the first item view
+	///     Focuses the first item view
 	/// </summary>
 	public new void GrabFocus()
 	{
@@ -100,7 +97,7 @@ public partial class InventoryView : Control
 	}
 
 	/// <summary>
-	/// Removes or adds item views to match the new item count
+	///     Removes or adds item views to match the new item count
 	/// </summary>
 	/// <param name="newCount"></param>
 	private void FillTabWithEmptyInventoryItemViews(int newCount)
@@ -136,6 +133,5 @@ public partial class InventoryView : Control
 
 	private void OnVisiblityOn()
 	{
-		
 	}
 }
