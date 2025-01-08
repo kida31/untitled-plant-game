@@ -22,7 +22,6 @@ namespace untitledplantgame.Inventory;
 /// </summary>
 public class BigInventory : IInventory
 {
-
 	public event Action InventoryChanged;
 	public event Action<IItemStack> ItemAdded;
 	public event Action<IItemStack> ItemRemoved;

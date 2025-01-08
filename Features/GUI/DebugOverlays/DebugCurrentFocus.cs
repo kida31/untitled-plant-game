@@ -1,5 +1,10 @@
 using Godot;
 
+namespace untitledplantgame.GUI.DebugOverlays;
+
+/// <summary>
+///     Displays the current focus owner.
+/// </summary>
 public partial class DebugCurrentFocus : Label
 {
 	private Viewport _viewport;

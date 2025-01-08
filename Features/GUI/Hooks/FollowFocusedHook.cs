@@ -4,7 +4,7 @@ using untitledplantgame.Common;
 namespace untitledplantgame.GUI.Hooks;
 
 /// <summary>
-/// This hook makes parent Control node follow the focused control node.
+///		This hook makes parent Control node follow the focused control node.
 /// </summary>
 public partial class FollowFocusedHook : Node
 {

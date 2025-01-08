@@ -3,11 +3,11 @@ using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.GUI.Hooks;
 
-namespace untitledplantgame.GUI;
+namespace untitledplantgame.GUI.Selector;
 
 // TODO: Move modulate out of class
 /// <summary>
-/// This is the visual indicator that follows the player's current selection/focus on GUI (in the book in particular)
+///		This is the visual indicator that follows the player's current selection/focus on GUI (in the book in particular)
 /// </summary>
 public partial class UIFocusIcon : Control
 {

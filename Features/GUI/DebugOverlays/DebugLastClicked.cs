@@ -1,9 +1,11 @@
-using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using untitledplantgame.Common;
+using Godot;
 
+/// <summary>
+///     Displays the path of the last clicked control.
+/// </summary>
 public partial class DebugLastClicked : Label
 {
 	private Control _lastClickedControl;

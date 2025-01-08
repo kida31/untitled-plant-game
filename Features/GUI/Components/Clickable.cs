@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using untitledplantgame.Inventory.GUI;
+using untitledplantgame.GUI.Components;
 
 /// <summary>
-/// A clickable control element. Similar to a button but without predefined highlight/selection features.
-/// Inherit from this to extend any clickable behaviour.
+///		A clickable control element. Similar to a button but without predefined highlight/selection features.
+///		Inherit from this to extend any clickable behaviour.
 /// </summary>
 [Tool]
 public partial class Clickable : Control, IPressable, IFocusable

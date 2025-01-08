@@ -4,6 +4,9 @@ using untitledplantgame.Common.Inputs;
 
 namespace untitledplantgame.GUI.DebugOverlays;
 
+/// <summary>
+///     Displays the current keybindings.
+/// </summary>
 public partial class DebugKeybindings : Label
 {
 	private static readonly string[] Actions =

@@ -1,4 +1,6 @@
-﻿namespace untitledplantgame.Inventory.GUI;
+﻿using untitledplantgame.GUI;
+
+namespace untitledplantgame.Inventory.GUI;
 
 public partial class ItemTooltipView : TooltipView
 {

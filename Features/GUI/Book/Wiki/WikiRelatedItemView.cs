@@ -1,8 +1,9 @@
 using Godot;
-using System;
-using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 
+/// <summary>
+///     Displays an item in the wiki.
+/// </summary>
 public partial class WikiRelatedItemView : Clickable, ITooltipable
 {
 	[Export]

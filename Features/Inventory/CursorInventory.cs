@@ -1,4 +1,3 @@
-using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,6 +106,10 @@ interface ICursorInventory
 	void ReturnPickUp();
 }
 
+/// <summary>
+///     Represents a cursor and its inventory (one item stack). This is used when navigating the inventory
+///     and moving around items.
+/// </summary>
 [Singleton]
 public class CursorInventory : ICursorInventory
 {

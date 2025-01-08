@@ -1,11 +1,14 @@
-using Godot;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Godot;
 using untitledplantgame.Common;
 
-namespace untitledplantgame.Inventory.GUI;
+namespace untitledplantgame.GUI;
 
+/// <summary>
+///     This control provides a tooltip-like view with a title, description and custom content.
+/// </summary>
 public partial class TooltipView : Control
 {
 	private const bool AutomaticallyFreeOldContent = true;
@@ -114,7 +117,7 @@ public partial class TooltipView : Control
 	{
 		var newWidth = Math.Min(_referenceLabel.GetRect().Size.X, MaxWidth);
 		_titleLabel.CustomMinimumSize = new Vector2(newWidth, 0);
-		SetDeferred(PropertyName.Size, Vector2.Zero);
+		SetDeferred(Control.PropertyName.Size, Vector2.Zero);
 	}
 
 	/// <summary>

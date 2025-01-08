@@ -1,10 +1,10 @@
-using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Godot;
 
 /// <summary>
-/// This box tracks changes in its children and adjusts its own spacing to negative 
+///  This box tracks changes in its children and adjusts its own spacing to negative 
 /// </summary>
 [Tool]
 public partial class HBoxTabContainer : HBoxContainer

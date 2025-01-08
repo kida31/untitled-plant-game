@@ -1,11 +1,10 @@
 ﻿using System;
 using Godot;
-using untitledplantgame.Common;
 
 namespace untitledplantgame.GUI.Hooks;
 
 /// <summary>
-/// This hook makes parent Control adjust its own size according to target node.
+///		This hook makes parent Control adjust its own size according to target node.
 /// </summary>
 public partial class CopySizeHook : Node
 {
@@ -20,7 +19,6 @@ public partial class CopySizeHook : Node
 
 	private Control _target;
 	private Control _self;
-	private Logger _logger;
 	private Vector2 _originalCenterPosition;
 
 	public override void _Ready()
@@ -28,7 +26,6 @@ public partial class CopySizeHook : Node
 		_self = GetParent<Control>();
 		_originalCenterPosition = _self.Position + _self.Size / 2;
 		_target = null;
-		_logger = new Logger(this);
 	}
 
 	public override void _Process(double delta)

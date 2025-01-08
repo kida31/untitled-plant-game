@@ -2,6 +2,9 @@ using Godot;
 
 namespace untitledplantgame.GUI.Hooks;
 
+/// <summary>
+///     This hook makes parent Control node follow the cursor.
+/// </summary>
 public partial class FollowCursorHook : Node
 {
 	private enum AdjustPositionType

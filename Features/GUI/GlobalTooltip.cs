@@ -1,10 +1,10 @@
-using System;
 using Godot;
+using untitledplantgame.Inventory;
 
-namespace untitledplantgame.Inventory.GUI;
+namespace untitledplantgame.GUI;
 
 /// <summary>
-/// Tracks global GUI focus to show tooltips for any control that implements ITooltipable
+///		 Tracks global GUI focus to show tooltips for any control that implements ITooltipable
 /// </summary>
 public partial class GlobalTooltip : TooltipView
 {

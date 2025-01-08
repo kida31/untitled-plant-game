@@ -1,7 +1,10 @@
 ﻿using System;
 
-namespace untitledplantgame.Inventory.GUI;
+namespace untitledplantgame.GUI.Components;
 
+/// <summary>
+///     An element that can be pressed.
+/// </summary>
 public interface IPressable
 {
 	public event Action Pressed;

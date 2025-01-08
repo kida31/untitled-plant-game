@@ -1,6 +1,9 @@
 using Godot;
-using untitledplantgame.GUI;
+using untitledplantgame.GUI.Selector;
 
+/// <summary>
+///     Displays the position and size of the target node. Used for debugging.
+/// </summary>
 public partial class DebugUIFocusIcon : Label
 {
 	[Export] private UIFocusIcon _scriptOwner;
