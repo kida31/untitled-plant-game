@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://caiu3dqnnxl28"]
 
 [ext_resource type="Texture2D" uid="uid://d21mfgg0d06iu" path="res://Assets/UI/BookUI/tab_active.png" id="1_hwmaf"]
-[ext_resource type="Script" path="res://Features/GUI/Book/InventoryCategoryTab.cs" id="1_o154g"]
+[ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryCategoryTab.cs" id="1_o154g"]
 [ext_resource type="Texture2D" uid="uid://cpx15eo4s36tm" path="res://Assets/UI/BookUI/tab_inactive.png" id="2_trrk0"]
 
 [sub_resource type="Animation" id="Animation_sdava"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryTabsView.cs" id="1_trxec"]
 [ext_resource type="PackedScene" uid="uid://c8qlvfu5vslvx" path="res://Features/GUI/Book/Inventories/InventoryView.tscn" id="2_xhhtn"]
-[ext_resource type="PackedScene" uid="uid://caiu3dqnnxl28" path="res://Features/GUI/Book/InventoryCategoryTab.tscn" id="3_jnob4"]
+[ext_resource type="PackedScene" uid="uid://caiu3dqnnxl28" path="res://Features/GUI/Book/Inventories/InventoryCategoryTab.tscn" id="3_jnob4"]
 [ext_resource type="Script" path="res://Features/GUI/Components/HBoxTabContainer.cs" id="4_vsx4l"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("_tabButtonContainer", "_inventoryView")]
