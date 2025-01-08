@@ -104,7 +104,14 @@ public interface IItemStack
 
 	IItemStack Clone();
 	
-	// Additionals for convenience
+	// Extras for convenience
+	
+	/// <summary>
+	///		Subtracts the amount of the given item stack from this item stack. Returns a new item stack with the result.
+	/// </summary>
+	/// <param name="that"></param>
+	/// <returns></returns>
+	/// <exception cref="ArgumentException"></exception>
 	public sealed IItemStack Subtract(IItemStack that)
 	{
 		if (!HasSameIdAndProps(that))
