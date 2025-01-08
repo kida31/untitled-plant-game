@@ -1,47 +1,38 @@
-using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
+/// <summary>
+///     This node is a control that displays a list of items in the wiki.
+/// </summary>
 public partial class WikiItemList : Control
 {
-	public event Action<IItemStack> ItemStackPressed; // TODO: Use local events instead of event bus where possible
-	/*
-	public event Action PlantButtonPressed;
-	public event Action MaterialButtonPressed;
-	public event Action MedicineButtonPressed;
-	public event Action OtherButtonPressed;
-	*/
-
-	[Export] private PackedScene _itemViewPrefab;
 	[Export] private VBoxContainer _itemViewContainer;
 
-	[ExportCategory("SectionButtons")] [Export] private Button _plantButton;
+	[Export] private PackedScene _itemViewPrefab;
+
+	private List<WikiItemView> _itemViews;
 	[Export] private Button _materialButton;
 	[Export] private Button _medicineButton;
 	[Export] private Button _otherButton;
 
-	private List<WikiItemView> _itemViews;
+	[ExportCategory("SectionButtons")] [Export] private Button _plantButton;
+	public event Action<IItemStack> ItemStackPressed; // TODO: Use local events instead of event bus where possible
 
 	public override void _Ready()
 	{
 		// Initialize list
-		_itemViews = new();
+		_itemViews = new List<WikiItemView>();
 
 		// Removes placeholders
 		_itemViewContainer.GetChildren().ToList().ForEach(c => c.Free());
 
+		// Connect inputs
 		// TODO this could be delegated to upper layer
-		/*
-		_plantButton.Pressed += () => PlantButtonPressed?.Invoke();
-		_materialButton.Pressed += () => MaterialButtonPressed?.Invoke();
-		_medicineButton.Pressed += () => MedicineButtonPressed?.Invoke();
-		_otherButton.Pressed += () => OtherButtonPressed?.Invoke();
-		*/
-
 		_plantButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Seed);
 		_materialButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Material);
 		_medicineButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Medicine);

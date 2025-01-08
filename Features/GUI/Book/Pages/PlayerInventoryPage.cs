@@ -1,9 +1,14 @@
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.GUI.Book.Inventories;
+using untitledplantgame.GUI.Book.PlayerStuff;
+using untitledplantgame.Inventory;
 
-namespace untitledplantgame.Inventory.PlayerInventory;
+namespace untitledplantgame.GUI.Book.Pages;
 
+/// <summary>
+///     PlayerInventoryPage is a page that displays the player's inventory and various other stats.
+/// </summary>
 public partial class PlayerInventoryPage : Control
 {
 	[Export] private InventoryTabsView _inventoryTabs;

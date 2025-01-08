@@ -1,18 +1,24 @@
 using System;
 using Godot;
-using untitledplantgame.Common;
 
 namespace untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
-// Make a string, so you can change up the category and jump to that. 
+/// <summary>
+///     This node is a control that displays a single item in the wiki.
+/// </summary>
 public partial class WikiItemView : Control
 {
-	// TODO: Make item view focusable instead of using button. Easier to track focus
-	public event Action Pressed;
+	[Export] private BaseButton _detailedWikiItemViewButton;
+
+	/// <summary>
+	///     All focus will be redirected to this element instead
+	/// </summary>
+	private Control _focusAble;
+
+	[Export] private TextureRect _iconTextureRect;
 
 	[Export] private Label _itemName;
-	[Export] private BaseButton _detailedWikiItemViewButton;
-	[Export] private TextureRect _iconTextureRect;
+	private IItemStack _itemStack;
 
 	[Export] private Texture2D _temporary;
 
@@ -26,11 +32,8 @@ public partial class WikiItemView : Control
 		}
 	}
 
-	/// <summary>
-	/// All focus will be redirected to this element instead
-	/// </summary>
-	private Control _focusAble;
-	private IItemStack _itemStack;
+	// TODO: Make item view focusable instead of using button. Easier to track focus
+	public event Action Pressed;
 
 	public override void _Ready()
 	{
@@ -39,7 +42,7 @@ public partial class WikiItemView : Control
 		_focusAble.MouseFilter = MouseFilterEnum.Pass;
 		_focusAble.FocusMode = FocusModeEnum.All;
 		_focusAble.GuiInput += OnGuiInput;
-		
+
 		// Redirect focus to control
 		FocusMode = FocusModeEnum.All;
 		MouseFilter = MouseFilterEnum.Pass;
@@ -55,7 +58,7 @@ public partial class WikiItemView : Control
 				Pressed?.Invoke();
 			}
 		}
-		
+
 		if (@event.IsAction("ui_accept"))
 		{
 			Pressed?.Invoke();

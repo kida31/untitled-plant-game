@@ -1,5 +1,11 @@
 using Godot;
 
+namespace untitledplantgame.GUI.Book.PlayerStuff;
+
+/// <summary>
+///     This class is a control that displays player details. It is visually represented as
+///     right hand side of the book.
+/// </summary>
 public partial class PlayerDetailsView : Control
 {
 	[Export] private FaithProgressBar _faithProgressBar;
@@ -8,7 +14,8 @@ public partial class PlayerDetailsView : Control
 	[Export] private Label label3;
 	[Export] private Label label4;
 
-	public override void _Ready() {
+	public override void _Ready()
+	{
 		SetPlayerDetails(null);
 	}
 

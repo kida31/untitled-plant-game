@@ -6,18 +6,22 @@ using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
 
 namespace untitledplantgame.GUI.Book.Pages;
 
+/// <summary>
+///     This class represents a page in the wiki that displays a list of items and an article
+///     for the currently selected item.
+/// </summary>
 public partial class WikiPage : Control
 {
-	public event Action<IItemStack> ItemStackPressed;
+	[Export] private WikiArticleView _wikiArticle;
 
 	[Export] private WikiItemList _wikiItemList;
-	[Export] private WikiArticleView _wikiArticle;
+	public event Action<IItemStack> ItemStackPressed;
 
 	public override void _Ready()
 	{
 		_wikiItemList.ItemStackPressed += i => ItemStackPressed?.Invoke(i);
 		_wikiArticle.RelatedItemClicked += OnRelatedItemClicked;
-		
+
 		VisibilityChanged += OnVisibilityChanged;
 	}
 
@@ -43,5 +47,4 @@ public partial class WikiPage : Control
 	{
 		_wikiItemList.ScrollTo(stack);
 	}
-
 }

@@ -3,12 +3,19 @@ using Godot;
 namespace untitledplantgame.GUI.Book;
 
 /// <summary>
-///		InventoryCategoryTab is a clickable button that represents a category in the inventory.
+///     InventoryCategoryTab is a clickable button that represents a category in the inventory.
 /// </summary>
 [Tool]
 public partial class InventoryCategoryTab : Clickable
 {
 	private const string ActivateAnimation = "Activate";
+
+	[ExportGroup("Hidden")] [Export] private TextureRect _activeIcon;
+	[Export] private AnimationPlayer _animationPlayer;
+	[Export] private TextureRect _inactiveIcon;
+
+	private bool _isActive;
+	[Export] private Label _textLabel;
 
 	[Export]
 	public string Text
@@ -40,13 +47,6 @@ public partial class InventoryCategoryTab : Clickable
 			}
 		}
 	}
-
-	[ExportGroup("Hidden")] [Export] private TextureRect _activeIcon;
-	[Export] private TextureRect _inactiveIcon;
-	[Export] private Label _textLabel;
-	[Export] private AnimationPlayer _animationPlayer;
-
-	private bool _isActive;
 
 	public void SetIsActive(bool value)
 	{
