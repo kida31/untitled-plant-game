@@ -19,7 +19,7 @@ public partial class PlayerDetailsView : Control
 		SetPlayerDetails(null);
 	}
 
-	public void SetPlayerDetails(object obj)
+	public void SetPlayerDetails(object _)
 	{
 		label1.Text = "Total Gold: 0";
 		label2.Text = "Items Sold: 0";

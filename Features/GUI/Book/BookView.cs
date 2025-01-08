@@ -27,7 +27,7 @@ public partial class BookView : Control
 	[Export]
 	private PlayerInventoryPage _playerInventoryPage;
 
-	[Obsolete("Unused. May be any class that has .Pressed event")] [Export] private Button[] _tabButtons = new Button[0];
+	[Obsolete("Unused. May be any class that has .Pressed event")] [Export] private Button[] _tabButtons = Array.Empty<Button>();
 
 	[ExportGroup("Tabs")] [Export] private TabContainer _tabContainer; // Maybe make bookview the tabcontainer itself
 

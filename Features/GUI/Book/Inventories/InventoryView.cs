@@ -32,7 +32,7 @@ public partial class InventoryView : Control
 		{
 			if (IsVisibleInTree())
 			{
-				OnVisiblityOn();
+				OnVisibilityOn();
 			}
 			else
 			{
@@ -60,22 +60,24 @@ public partial class InventoryView : Control
 				view.Pressed -= _itemViewPressedActions[view];
 			}
 
-			if (i < items.Count)
+			if (i >= items.Count)
 			{
-				var snapshotIndex = i;
-
-				void PressedHandler()
-				{
-					_logger.Debug($"Handle click on {inventory.Name}[{snapshotIndex}/{i}]");
-					if (CursorInventory.Instance.CanClick(inventory, snapshotIndex))
-					{
-						CursorInventory.Instance.HandleClick(inventory, snapshotIndex);
-					}
-				}
-
-				_itemViewPressedActions[view] = PressedHandler;
-				view.Pressed += PressedHandler;
+				continue;
 			}
+
+			var snapshotIndex = i;
+
+			void PressedHandler()
+			{
+				_logger.Debug($"Handle click on {inventory.Name}[{snapshotIndex}/{i}]");
+				if (CursorInventory.Instance.CanClick(inventory, snapshotIndex))
+				{
+					CursorInventory.Instance.HandleClick(inventory, snapshotIndex);
+				}
+			}
+
+			_itemViewPressedActions[view] = PressedHandler;
+			view.Pressed += PressedHandler;
 		}
 
 		// I dont know where to place this
@@ -131,7 +133,7 @@ public partial class InventoryView : Control
 		CursorInventory.Instance.ReturnPickUp();
 	}
 
-	private void OnVisiblityOn()
+	private void OnVisibilityOn()
 	{
 	}
 }
