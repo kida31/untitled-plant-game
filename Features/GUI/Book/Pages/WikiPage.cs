@@ -1,9 +1,10 @@
-using Godot;
 using System;
 using System.Collections.Generic;
-using untitledplantgame.Common;
+using Godot;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
+
+namespace untitledplantgame.GUI.Book.Pages;
 
 public partial class WikiPage : Control
 {

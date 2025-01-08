@@ -1,13 +1,15 @@
 using Godot;
-using System;
-using untitledplantgame.Inventory.GUI;
 
+namespace untitledplantgame.GUI.Book;
+
+/// <summary>
+///		InventoryCategoryTab is a clickable button that represents a category in the inventory.
+/// </summary>
 [Tool]
 public partial class InventoryCategoryTab : Clickable
 {
 	private const string ActivateAnimation = "Activate";
-	// public event Action Pressed;
-	
+
 	[Export]
 	public string Text
 	{
@@ -16,7 +18,7 @@ public partial class InventoryCategoryTab : Clickable
 		{
 			if (_textLabel != null)
 			{
-				_textLabel.Text = value;	
+				_textLabel.Text = value;
 			}
 		}
 	}
@@ -34,13 +36,12 @@ public partial class InventoryCategoryTab : Clickable
 			}
 			else
 			{
-				SetIsActive(value);	
+				SetIsActive(value);
 			}
 		}
 	}
-	
-	[ExportGroup("Hidden")]
-	[Export] private TextureRect _activeIcon;
+
+	[ExportGroup("Hidden")] [Export] private TextureRect _activeIcon;
 	[Export] private TextureRect _inactiveIcon;
 	[Export] private Label _textLabel;
 	[Export] private AnimationPlayer _animationPlayer;
@@ -53,9 +54,9 @@ public partial class InventoryCategoryTab : Clickable
 		{
 			return;
 		}
-		
+
 		_isActive = value;
-		
+
 		if (_isActive)
 		{
 			_animationPlayer.Play(ActivateAnimation);
@@ -67,5 +68,4 @@ public partial class InventoryCategoryTab : Clickable
 			// Play animation
 		}
 	}
-
 }

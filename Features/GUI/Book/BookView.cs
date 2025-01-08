@@ -4,8 +4,8 @@ using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Database;
+using untitledplantgame.GUI.Book.Pages;
 using untitledplantgame.Inventory;
-using untitledplantgame.Inventory.PlayerInventory;
 
 namespace untitledplantgame.GUI.Book;
 
