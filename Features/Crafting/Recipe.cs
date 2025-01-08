@@ -134,18 +134,8 @@ public class Recipe
 			.Where(c => RemovedComponentsInResultingItem.All(r => r.GetType() != c.GetType()))
 			.ToArray());
 
-		return new ItemStack(newId)
-		{
-			Name = name,
-			Icon = icon,
-			ToolTipDescription = newDescription,
-			WikiDescription = newWikiDescription,
-			Category = newItemCategory,
-			BaseValue = baseValue,
-			MaxStackSize = newMaxStackSize,
-			Amount = 1,
-			Components = newComponents
-		};
+		return new ItemStack(newId, name, icon, newDescription,newWikiDescription, newItemCategory, baseValue: baseValue, maxStackSize: newMaxStackSize,
+			amount: 1, components: newComponents);
 	}
 	*/
 	/// <summary>
