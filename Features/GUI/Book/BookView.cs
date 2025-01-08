@@ -1,15 +1,14 @@
 using System;
-using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Database;
-using untitledplantgame.Inventory.GUI;
+using untitledplantgame.Inventory;
+using untitledplantgame.Inventory.PlayerInventory;
 using untitledplantgame.Player;
-using untitledplantgame.Shops;
 
-namespace untitledplantgame.Inventory.PlayerInventory;
+namespace untitledplantgame.GUI.Book;
 
 // TODO: Consider flattening the component tree
 
@@ -19,84 +18,88 @@ public partial class BookView : Control
 {
 	[ExportGroup("Page References")]
 	// Page references for updating content
+	[Export]
+	private PlayerInventoryPage _playerInventoryPage;
 
-	[Export] private PlayerInventoryPage _playerInventoryPage;
 	[Export] private WikiPage _wikiPage;
 
-	[ExportGroup("Tabs")]
-	[Export] private TabContainer _tabContainer; // Maybe make bookview the tabcontainer itself
-	[Obsolete("Unused. May be any class that has .Pressed event")]
-	[Export] private Button[] _tabButtons = new Button[0];	
-	// TODO add custom tab buttons
+	[ExportGroup("Tabs")] [Export] private TabContainer _tabContainer; // Maybe make bookview the tabcontainer itself
+	[Obsolete("Unused. May be any class that has .Pressed event")] [Export] private Button[] _tabButtons = new Button[0];
+
+	private Logger _logger;
 
 	public override void _Ready()
 	{
-		// Subscribe to events
+		// 1. Init self
+		_logger = new(this);
+		
+		// 1.1. Subscribe to events
 		EventBus.Instance.OnPlayerInventoryChanged += UpdateInventory;
 		EventBus.Instance.OnInventoryOpen += ShowBook;
 
-		// Connect tab buttons to trigger tabs
-		for (var index = 0; index < _tabButtons.Length; index++)
-		{
-			var button = _tabButtons[index];
-			var capturedIndex = index;
-			button.Pressed += () => _tabContainer.CurrentTab = capturedIndex;
-		}
-		
-		// Inventory
-		
-		// Wiki
+		// TODO: UNUSED. We currently only use trigger buttons to switch tabs
+		// 1.2 Connect tab buttons to trigger tabs
+		// for (var index = 0; index < _tabButtons.Length; index++)
+		// {
+		// 	var button = _tabButtons[index];
+		// 	var capturedIndex = index;
+		// 	button.Pressed += () => _tabContainer.CurrentTab = capturedIndex;
+		// }
+
+		// 2. Init Inventory
+
+		// 3. Init Wiki
 		var items = ItemDatabase.Instance.ItemStacks;
 		_wikiPage.UpdateItems(items);
-		
 		_wikiPage.ItemStackPressed += item => _wikiPage.UpdateArticle(item);
 	}
 
 
-
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		// I want to do If-return for readability because i think if-else reads like crap
-		// But if some dimwit forgets the return it would cause some bugs
-
-		// Open book
-		
+		// Book is closed -> Open book
 		if (@event.IsActionPressed(FreeRoam.OpenBook))
 		{
 			ShowBook();
-			
+			return;
 		}
+		
+		// Book is open
+		if (!IsVisibleInTree()) return;
 		
 		// Close book
-		
-		else if (@event.IsAction(Book.Back) || @event.IsActionPressed(Book.CloseBook))
+		if (@event.IsActionPressed(Common.Inputs.GameActions.Book.Back) || @event.IsActionPressed(Common.Inputs.GameActions.Book.CloseBook))
 		{
-			// TODO: The back button might have to do different things depending on context
 			HideBook();
-			
+			return;
 		}
-		
-		// Switch main tabs
-		
-		else if (@event.IsActionPressed(Book.TriggerRight))
+
+		// Switch main tab right
+		if (@event.IsActionPressed(Common.Inputs.GameActions.Book.TriggerRight))
 		{
-			if (Math.Abs(@event.GetActionStrength(Book.TriggerRight) - 1.0) > double.Epsilon)
+			if (Math.Abs(@event.GetActionStrength(Common.Inputs.GameActions.Book.TriggerRight) - 1.0) > double.Epsilon)
 			{
 				// Triggers will fire release and press events for each little bit of the trigger
 				return;
 			}
+
 			var nextOrFirstTabIndex = (_tabContainer.CurrentTab + 1) % _tabContainer.GetChildCount();
 			_tabContainer.CurrentTab = nextOrFirstTabIndex;
+			return;
 		}
-		else if (@event.IsActionPressed(Book.TriggerLeft))
+		
+		// Switch main tab left
+		if (@event.IsActionPressed(Common.Inputs.GameActions.Book.TriggerLeft))
 		{
-			if (Math.Abs(@event.GetActionStrength(Book.TriggerLeft) - 1.0) > double.Epsilon)
+			if (Math.Abs(@event.GetActionStrength(Common.Inputs.GameActions.Book.TriggerLeft) - 1.0) > double.Epsilon)
 			{
 				return;
 			}
+
 			var count = _tabContainer.GetChildCount();
 			var prevOrLastTabIndex = (_tabContainer.CurrentTab - 1 + count) % count;
 			_tabContainer.CurrentTab = prevOrLastTabIndex;
+			return;
 		}
 	}
 
@@ -107,6 +110,7 @@ public partial class BookView : Control
 
 	private void ShowBook()
 	{
+		_logger.Info("Opening...");
 		GameStateMachine.Instance.SetState(GameState.Book);
 		UpdateInventory(Game.Player, Game.Player.Inventory);
 		Show();
@@ -114,6 +118,7 @@ public partial class BookView : Control
 
 	private void HideBook()
 	{
+		_logger.Info("Hiding...");
 		GameStateMachine.Instance.SetState(GameState.FreeRoam);
 		Hide();
 	}

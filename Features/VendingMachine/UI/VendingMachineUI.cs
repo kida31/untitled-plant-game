@@ -60,11 +60,13 @@ public partial class VendingMachineUI : Control
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
+		if (!IsVisibleInTree()) return;
 		if (@event.IsActionPressed(Book.Back))
 		{
-			CloseThis();
+			CloseThis();	
 		}
 	}
+	
 	private void OpenThis(VendingMachine vendingMachine)
 	{
 		GameStateMachine.Instance.SetState(GameState.Book);
