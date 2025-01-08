@@ -40,9 +40,9 @@ public class BigInventory : IInventory
 	{
 		_inventories = new Dictionary<ItemCategory, IInventory>
 		{
-			{ ItemCategory.Plant, new Inventory(size, "Seeds") },
-			{ ItemCategory.Medicine, new Inventory(size, "Medicine") },
-			{ ItemCategory.Material, new Inventory(size, "Materials") },
+			{ ItemCategory.Seed, new Inventory(size, "Seed Inventory") },
+			{ ItemCategory.Medicine, new Inventory(size, "Fertilizer Inventory") },
+			{ ItemCategory.Material, new Inventory(size, "Plant Inventory") },
 		};
 		
 		foreach (var (_, inventory) in _inventories)
@@ -119,6 +119,9 @@ public class BigInventory : IInventory
 		for (var index = 0; index < items.Length; index++)
 		{
 			var item = items[index];
+			Assert.AssertNotNull(_inventories, "Inventories is null");
+			Assert.AssertNotNull(item, "Item is null");
+			Assert.AssertNotNull(item.Category, "Item category is null");
 			var inventory = _inventories[item.Category];
 			var leftover = inventory.AddItem(item);
 

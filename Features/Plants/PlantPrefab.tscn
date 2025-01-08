@@ -9,6 +9,7 @@ radius = 20.0
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_ixu4t")
+PlantName = "Chuberry"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_68yvc")

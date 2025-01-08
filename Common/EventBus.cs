@@ -1,10 +1,13 @@
 using System;
 using Godot;
+using untitledplantgame.Crafting;
+using untitledplantgame.Item;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Dialogue;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
+using untitledplantgame.Plants;
 using untitledplantgame.Shops;
 
 namespace untitledplantgame.Common;
@@ -78,6 +81,8 @@ public partial class EventBus : Node
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
 	}
 
+	//Dialogue
+
 	/// <summary>
 	/// Invoked when a dialogue is starting, passes the dialogue name
 	/// </summary>
@@ -98,11 +103,24 @@ public partial class EventBus : Node
 		InitialiseDialogue?.Invoke(obj);
 	}
 
+	//Plants
+	
+	public event Action<Plant> OnSeedPlanted;
+	
+	public void SeedPlanted(Plant plant)
+	{
+		OnSeedPlanted?.Invoke(plant);
+	}
+	
+	//HUD
+
 	public event Action<int, int> GoldChanged;
 	public void InvokeGoldChanged(int deltaGold, int newGold)
 	{
 		GoldChanged?.Invoke(deltaGold, newGold);
 	}
+	
+	//Inventory
 	
 	public delegate InventoryItemView GetItemSlotEventHandler();
 
@@ -190,5 +208,12 @@ public partial class EventBus : Node
 	public void PlayerInventoryChanged(Player.Player player, IInventory inventory)
 	{
 		OnPlayerInventoryChanged?.Invoke(player, inventory);
+	}
+
+	public event Action<ICraftingStation> BeforeCraftingStationUiOpened;
+
+	public void BeforeCraftingStationUiOpen(ICraftingStation craftingStation)
+	{
+		BeforeCraftingStationUiOpened?.Invoke(craftingStation);
 	}
 }
