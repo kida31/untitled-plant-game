@@ -13,7 +13,8 @@ public partial class SoilTile : Area2D, IWaterable
 	private const float RainyHydrationRate = 100;
 	private const float SnowyHydrationRate = 50;
 
-	[Export] public float Hydration { get; private set; }
+	[Export]
+	public float Hydration { get; private set; }
 	public event Action<float, SoilTile> HydrationChanged;
 	private float Fertilization { get; set; }
 	private Vector2 _originalPosition;
@@ -77,24 +78,24 @@ public partial class SoilTile : Area2D, IWaterable
 	{
 		Hydration = Math.Min(Hydration + addedWater, MaxHydration);
 	}
-	
+
 	public void PlantSeed(Plant plant)
 	{
 		plant.Tile = this;
 		AddChild(plant);
-		
+
 		EventBus.Instance.SeedPlanted(plant);
 	}
 
-	// currently irrelevant event handling code when scene is changed, because we dont unload 
+	// currently irrelevant event handling code when scene is changed, because we dont unload
 	// the scene but just teleport player
 	// public override void _ExitTree()
 	// {
 	// 	EventBus.Instance.OnSceneChange -= OnSceneChange;
 	// }
 
-    // private void OnSceneChange(Node from, Node to)
-    // {
+	// private void OnSceneChange(Node from, Node to)
+	// {
 	// 	if (from.Name == "GardenMapScene")
 	// 	{
 	// 		GlobalPosition += new Vector2(10, -10);
@@ -106,8 +107,7 @@ public partial class SoilTile : Area2D, IWaterable
 	// 		GlobalPosition += _originalPosition;
 	// 		// _logger.Debug("second, Move to " + _originalPosition);
 	// 	}
-    //     // _logger.Debug("Scene changed from " + from.Name + " to " + to.Name);
+	//     // _logger.Debug("Scene changed from " + from.Name + " to " + to.Name);
 
-    // }
-
+	// }
 }

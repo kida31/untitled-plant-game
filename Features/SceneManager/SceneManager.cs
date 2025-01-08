@@ -10,7 +10,6 @@ public partial class SceneManager : Node
 	private Node loadInto;
 	private bool loading = false;
 
-
 	public override void _Ready()
 	{
 		if (Instance == null)
@@ -68,7 +67,6 @@ public partial class SceneManager : Node
 		player.Show();
 		loading = false;
 
- 
 		// _logger.Warn(GetTree(). GetNodesInGroup(GameGroup.Placeholder).ToString());
 
 
@@ -82,15 +80,17 @@ public partial class SceneManager : Node
 	}
 
 	//Tele Port Player
-	public void TPP(Door currentDoor)
+	async public void TPP(Door currentDoor)
 	{
 		var player = GetTree().GetNodesInGroup(GameGroup.Player)[0] as Player;
+		var camera = player.GetNode<Camera2D>("Camera2D");
 		var interactables = GetTree().GetNodesInGroup(GameGroup.Interactables);
 		Vector2 targetPosition = Vector2.Zero;
+		var trans = GetTree().Root.GetNode("Main").GetNode("GUIContainer").GetNode<SceneTransition>("SceneTransition");
 
-		foreach(Node node in interactables)
+		foreach (Node node in interactables)
 		{
-			if(node is Door door && door.entryDoorName == currentDoor.entryDoorName && door != currentDoor)
+			if (node is Door door && door.entryDoorName == currentDoor.entryDoorName && door != currentDoor)
 			{
 				// _logger.Debug($"TPP to {door.GlobalPosition}");
 				targetPosition = door.GlobalPosition;
@@ -98,15 +98,28 @@ public partial class SceneManager : Node
 			}
 		}
 
-        if (targetPosition != Vector2.Zero)
-        {
-            player.GlobalPosition = targetPosition;
-            _logger.Debug($"Player moved to {targetPosition}");
-        }
-        else
-        {
-            _logger.Warn("No matching door found to move the player");
-        }
+		if (targetPosition != Vector2.Zero)
+		{
+			_logger.Debug("start");
+			await trans.FadeIn();
+			_logger.Debug("finish");
+
+			camera.PositionSmoothingEnabled = false;
+			player.GlobalPosition = targetPosition;
+			camera.GlobalPosition = targetPosition;
+			camera.ForceUpdateScroll();
+			camera.PositionSmoothingEnabled = true;
+
+			_logger.Debug("start");
+			await trans.FadeOut();
+			_logger.Debug("finish");
+
+			_logger.Debug($"Player moved to {targetPosition}");
+		}
+		else
+		{
+			_logger.Warn("No matching door found to move the player");
+		}
 	}
 
 	private Node LoadScene(string scenePath)
