@@ -166,7 +166,7 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				// Components = new Array<AComponent> {new SeedComponent("")},
+				Components = new Array<AComponent> {new SeedComponent("")},
 			},
 			new()
 			{

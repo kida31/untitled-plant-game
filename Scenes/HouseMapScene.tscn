@@ -3094,7 +3094,6 @@ tile_set = SubResource("TileSet_6alp4")
 
 [node name="Door" parent="." instance=ExtResource("4_0j18u")]
 position = Vector2(400, 567)
-pathToNewScene = "res://Scenes/GardenMapScene.tscn"
 entryDoorName = "RoofHouse"
 
 [node name="Bed" parent="." instance=ExtResource("5_t1uyc")]

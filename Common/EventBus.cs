@@ -203,12 +203,6 @@ public partial class EventBus : Node
 	{
 		return OnGetItemSlot?.Invoke();
 	}
-
-	public event Action<Node, Node> OnSceneChange;
-	public void SceneChange(Node from, Node to)
-	{
-		OnSceneChange?.Invoke(from, to);
-	}
 	
 	public event Action<ICraftingStation> BeforeCraftingStationUiOpened;
 

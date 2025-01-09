@@ -510,5 +510,4 @@ position = Vector2(458, 346)
 
 [node name="Door" parent="." instance=ExtResource("18_eh65c")]
 position = Vector2(401, 569)
-pathToNewScene = "res://Scenes/HouseMapScene.tscn"
 entryDoorName = "RoofHouse"
