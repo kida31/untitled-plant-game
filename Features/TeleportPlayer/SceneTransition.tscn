@@ -40,8 +40,6 @@ _data = {
 }
 
 [node name="SceneTransition" type="CanvasLayer"]
-scale = Vector2(0.9969, 1)
-transform = Transform2D(0.9969, 0, 0, 1, 0, 0)
 script = ExtResource("1_uv84e")
 
 [node name="ColorRect" type="ColorRect" parent="."]
