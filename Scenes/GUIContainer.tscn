@@ -46,3 +46,4 @@ text = "BLABLABLA"
 script = ExtResource("7_dei6g")
 
 [node name="SceneTransition" parent="." instance=ExtResource("8_jtjsl")]
+scale = Vector2(0.9969, 1)
