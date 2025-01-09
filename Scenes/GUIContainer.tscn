@@ -1,15 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=8 format=3 uid="uid://3ndp3em1fi7h"]
 
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/VendingMachine/UI/vending_machine_ui.tscn" id="1_iuaq5"]
-[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="1_mtau6"]
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Features/Cycle/UI/ClockUI.tscn" id="1_tdwvu"]
 [ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="2_y866b"]
 [ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
 [ext_resource type="PackedScene" uid="uid://c55xp0xg83mt1" path="res://Features/GUI/HUDs/HUD.tscn" id="5_gr4nr"]
 [ext_resource type="PackedScene" uid="uid://cca7okqb2j4c7" path="res://Features/GUI/Book/BookView.tscn" id="5_sy5d4"]
-[ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="8_v5g76"]
-[ext_resource type="PackedScene" uid="uid://ceosooljxonp2" path="res://Features/GUI/CursorHandView.tscn" id="8_xb22b"]
-[ext_resource type="Script" path="res://Features/GUI/GlobalTooltip.cs" id="9_7jd3l"]
 [ext_resource type="PackedScene" uid="uid://df0cg0vcow1n2" path="res://Features/GUI/DebugOverlays/DebugOverlays.tscn" id="11_1dk7k"]
 
 [node name="GUIContainer" type="CanvasLayer"]
@@ -24,27 +20,6 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="UIFocus" parent="BookView" instance=ExtResource("1_mtau6")]
-offset_left = 1.0
-offset_right = 1.0
-
-[node name="TooltipView" parent="BookView" instance=ExtResource("8_v5g76")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 1.0
-offset_right = 193.0
-script = ExtResource("9_7jd3l")
-_fadeInSpeed = 1.0
-_delay = 0.5
-_offset = Vector2(0, 0)
-
-[node name="CursorHand" parent="BookView" instance=ExtResource("8_xb22b")]
-layout_mode = 1
-offset_left = 1.0
-offset_right = 97.0
 
 [node name="VendingMachineUi" parent="." instance=ExtResource("1_iuaq5")]
 visible = false

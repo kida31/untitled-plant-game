@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cca7okqb2j4c7"]
+[gd_scene load_steps=9 format=3 uid="uid://cca7okqb2j4c7"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/BookView.cs" id="1_rrual"]
 [ext_resource type="PackedScene" uid="uid://c6y60vh6v2ec8" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.tscn" id="2_tyesk"]
+[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="4_pgjhc"]
 [ext_resource type="PackedScene" uid="uid://e3t5fwq4qne3" path="res://Features/GUI/Book/Pages/WikiPage.tscn" id="4_t387j"]
+[ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="5_75ox1"]
+[ext_resource type="Script" path="res://Features/GUI/GlobalTooltip.cs" id="6_qmcko"]
+[ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="7_vpmxr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkcs2"]
 draw_center = false
 
-[node name="BookView" type="Control" node_paths=PackedStringArray("_playerInventoryPage", "_wikiPage", "_tabContainer")]
+[node name="BookView" type="Control" node_paths=PackedStringArray("_playerInventoryPage", "_tabContainer", "_wikiPage")]
 custom_minimum_size = Vector2(512, 320)
 layout_mode = 3
 anchor_right = 0.474074
@@ -18,8 +22,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_rrual")
 _playerInventoryPage = NodePath("TabContainer/PlayerInventoryPage")
-_wikiPage = NodePath("TabContainer/WikiPage")
 _tabContainer = NodePath("TabContainer")
+_wikiPage = NodePath("TabContainer/WikiPage")
 metadata/_edit_use_anchors_ = true
 
 [node name="TabContainer" type="TabContainer" parent="."]
@@ -41,3 +45,23 @@ mouse_filter = 1
 visible = false
 layout_mode = 2
 mouse_filter = 1
+
+[node name="UIFocus" parent="." instance=ExtResource("4_pgjhc")]
+offset_left = 1.0
+offset_right = 1.0
+
+[node name="GlobalTooltip" parent="." instance=ExtResource("5_75ox1")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1.0
+offset_right = 193.0
+script = ExtResource("6_qmcko")
+_fadeInSpeed = 1.0
+_delay = 0.5
+_offset = Vector2(0, 0)
+
+[node name="CursorHand" parent="." instance=ExtResource("7_vpmxr")]
+layout_mode = 1
+offset_left = 1.0
+offset_right = 97.0
