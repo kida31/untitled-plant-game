@@ -10,6 +10,12 @@ public static class Settings
 	{
 		private const string LogLevelKey = Logger.LogLevelSetting;
 	
+		/// <summary>
+		/// Returns the current LogLevel defined in ProjectSettings. Returns null if nothing is defined.
+		/// 
+		/// This is a wrapper for ProjectSettings.GetSetting(...) that casts the value to the enum value.
+		/// </summary>
+		/// <returns></returns>
 		public static LogLevel? GetLogLevel()
 		{
 			if (!ProjectSettings.HasSetting(LogLevelKey))
@@ -26,6 +32,12 @@ public static class Settings
 			return null;
 		}
 	
+		/// <summary>
+		/// Sets the LogLevel in ProjectSettings.
+		///
+		/// This is a wrapper for ProjectSettings.SetSetting(...) that sets the value as a string.
+		/// </summary>
+		/// <param name="logLevel"></param>
 		public static void SetLogLevel(LogLevel logLevel)
 		{
 			ProjectSettings.SetSetting(LogLevelKey, logLevel.ToString());
