@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://rkiq7gr8ft71"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiRelatedItemView.cs" id="1_in5b8"]
-[ext_resource type="Texture2D" uid="uid://hqe8ukrnerjw" path="res://Assets/UI/BookUI/Containers&Labels/ItemContainer1.png" id="2_2e7ll"]
+[ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="2_rwejx"]
 
 [node name="ItemView" type="MarginContainer" node_paths=PackedStringArray("_iconRect")]
 anchors_preset = -1
@@ -15,7 +15,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("2_2e7ll")
+texture = ExtResource("2_rwejx")
 stretch_mode = 5
 
 [node name="ItemIcon" type="TextureRect" parent="."]
