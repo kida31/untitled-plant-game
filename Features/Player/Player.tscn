@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=49 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="Texture2D" uid="uid://xmkgwv2sjtus" path="res://Assets/Sprites/ExamplePlayerSprite.png" id="2_ii4t3"]
@@ -7,6 +7,10 @@
 [ext_resource type="Script" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
 [ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
 [ext_resource type="Script" path="res://Features/Player/InteractablesManager.cs" id="7_pko3m"]
+[ext_resource type="Texture2D" uid="uid://cybfjnbld1w7n" path="res://Assets/Emotes/Angry-Sheet.png" id="8_r6024"]
+[ext_resource type="Texture2D" uid="uid://cjqcdj3vldfpd" path="res://Assets/Emotes/Exclamation-Sheet.png" id="9_20jv2"]
+[ext_resource type="Texture2D" uid="uid://bsytxjetn2peb" path="res://Assets/Emotes/SweatDrop-Sheet.png" id="10_1rc7y"]
+[ext_resource type="Script" path="res://Features/Player/EmotionPopup.cs" id="11_n5fxs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uchbd"]
 size = Vector2(26, 12)
@@ -273,6 +277,66 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ryxll"]
 radius = 34.0147
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_trbf2"]
+atlas = ExtResource("8_r6024")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewlps"]
+atlas = ExtResource("8_r6024")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ey8t"]
+atlas = ExtResource("9_20jv2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km7mp"]
+atlas = ExtResource("9_20jv2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4rat"]
+atlas = ExtResource("10_1rc7y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3884"]
+atlas = ExtResource("10_1rc7y")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vwit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trbf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewlps")
+}],
+"loop": true,
+"name": &"Angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ey8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km7mp")
+}],
+"loop": true,
+"name": &"Excited",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4rat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3884")
+}],
+"loop": true,
+"name": &"Sweat",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ypuiu")
 
@@ -309,3 +373,11 @@ _player = NodePath("../..")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
+
+[node name="EmotionPopup" type="AnimatedSprite2D" parent="."]
+position = Vector2(-12, -56)
+sprite_frames = SubResource("SpriteFrames_1vwit")
+animation = &"Sweat"
+frame = 1
+frame_progress = 0.773772
+script = ExtResource("11_n5fxs")
