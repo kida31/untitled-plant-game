@@ -53,6 +53,20 @@ public partial class ItemStack : Resource, IItemStack
 		Components = new();
 	}
 
+	public ItemStack(IItemStack item)
+	{
+		Id = item.Id;
+		Name = item.Name;
+		Icon = item.Icon;
+		ToolTipDescription = item.ToolTipDescription;
+		WikiDescription = item.WikiDescription;
+		Category = item.Category;
+		MaxStackSize = item.MaxStackSize;
+		BaseValue = item.BaseValue;
+		Amount = item.Amount;
+		Components = item.Components.Duplicate(true); // I doubt this actually deep copies
+	}
+
 	public ItemStack(string id,
 		string name,
 		Texture2D icon,
