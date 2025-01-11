@@ -61,7 +61,7 @@ public partial class Player : CharacterBody2D
 		_inventory.AddItem(rand.GetRandomItems(12).ToArray());
 	}
 
-	private void OnItemPickUp(ItemStack obj)
+	private void OnItemPickUp(IItemStack obj)
 	{
 		var leftovers = _inventory.AddItem(obj);
 		if (leftovers.Count > 0)

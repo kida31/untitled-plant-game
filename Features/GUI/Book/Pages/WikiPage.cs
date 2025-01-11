@@ -33,7 +33,7 @@ public partial class WikiPage : Control
 		}
 	}
 
-	public void UpdateItems(List<ItemStack> items)
+	public void UpdateItems(List<IItemStack> items)
 	{
 		_wikiItemList.SetItems(items);
 	}

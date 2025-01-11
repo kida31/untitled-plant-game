@@ -129,7 +129,7 @@ public partial class EventBus : Node
 	public event Action<WikiItemView> OnScrollContainerViewUpdate; 
 	public event Action<IItemStack> OnTabsUpdate;
 	public event Action<IItemStack> OnItemPickUp;
-	public event Action<ItemStack> OnWikiItemClicked;
+	public event Action<IItemStack> OnWikiItemClicked;
 	public event Action<InventoryItemView> OnInventoryItemViewPressed;
 	public event Action<InventoryItemView> OnInventoryItemViewMoved;
 	public event Action<InventoryItemView> OnInventoryItemViewReleased;

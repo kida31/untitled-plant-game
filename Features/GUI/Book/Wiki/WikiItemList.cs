@@ -47,7 +47,7 @@ public partial class WikiItemList : Control
 		}
 	}
 
-	public void SetItems(List<ItemStack> items)
+	public void SetItems(List<IItemStack> items)
 	{
 		Assert.AssertTrue(_itemViews.Count == _itemViewContainer.GetChildCount(), "Tracked views and actual are not equal");
 
