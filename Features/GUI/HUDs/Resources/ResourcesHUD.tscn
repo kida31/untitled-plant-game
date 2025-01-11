@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Features/GUI/HUDs/Resources/ResourcesHUD.cs" id="1_abjfc"]
 [ext_resource type="Texture2D" uid="uid://bn4fpfuaq40v7" path="res://Assets/UI/HUD/round_container_currency_hud.png" id="2_83nbu"]
-[ext_resource type="Texture2D" uid="uid://cgnox3kn0n8xm" path="res://Assets/UI/BookUI/Icons/CoinIcon.png" id="4_8d1op"]
+[ext_resource type="Texture2D" uid="uid://cgnox3kn0n8xm" path="res://Assets/UI/Book/Icons/CoinIcon.png" id="4_8d1op"]
 
 [node name="ResourcesHUD" type="MarginContainer" node_paths=PackedStringArray("_gridContainer")]
 offset_right = 98.0

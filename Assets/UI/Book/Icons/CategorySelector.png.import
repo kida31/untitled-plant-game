@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dduwl34jkllwr"
-path="res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"
+uid="uid://ofx6q27kjhd5"
+path="res://.godot/imported/CategorySelector.png-9ad08bb398e146b0a50d6ec3a532eb46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/HUD/CurrentToolIndicator.png"
-dest_files=["res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"]
+source_file="res://Assets/UI/Book/Icons/CategorySelector.png"
+dest_files=["res://.godot/imported/CategorySelector.png-9ad08bb398e146b0a50d6ec3a532eb46.ctex"]
 
 [params]
 

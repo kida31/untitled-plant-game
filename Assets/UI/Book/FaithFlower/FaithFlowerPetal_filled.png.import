@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dduwl34jkllwr"
-path="res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"
+uid="uid://bdpoln30dwxu5"
+path="res://.godot/imported/FaithFlowerPetal_filled.png-2969e26f2be6bb618972bd26f620a778.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/HUD/CurrentToolIndicator.png"
-dest_files=["res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"]
+source_file="res://Assets/UI/Book/FaithFlower/FaithFlowerPetal_filled.png"
+dest_files=["res://.godot/imported/FaithFlowerPetal_filled.png-2969e26f2be6bb618972bd26f620a778.ctex"]
 
 [params]
 

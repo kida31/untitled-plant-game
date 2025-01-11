@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dduwl34jkllwr"
-path="res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"
+uid="uid://cvtdiy8q3a7b3"
+path="res://.godot/imported/Ency_ItemNameLabel.png-07787fc99a6afc153fdda6e4efc98934.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/HUD/CurrentToolIndicator.png"
-dest_files=["res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"]
+source_file="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png"
+dest_files=["res://.godot/imported/Ency_ItemNameLabel.png-07787fc99a6afc153fdda6e4efc98934.ctex"]
 
 [params]
 
