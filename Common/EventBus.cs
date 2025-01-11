@@ -1,10 +1,8 @@
 using System;
 using Godot;
-using untitledplantgame.Common.GameStates;
 using untitledplantgame.Crafting;
 using untitledplantgame.Dialogue;
 using untitledplantgame.GUI.Book.Inventories;
-using untitledplantgame.GUI.Book.Wiki;
 using untitledplantgame.Inventory;
 using untitledplantgame.Plants;
 using untitledplantgame.Shops;
@@ -20,15 +18,6 @@ namespace untitledplantgame.Common;
  */
 public partial class EventBus : Node
 {
-	//Inventory
-
-	public delegate InventoryItemView GetItemSlotEventHandler();
-
-	//---------------------------------------------Legacy Signals---------------------------------------------
-	[Signal]
-	[Obsolete]
-	public delegate void NPCInteractedEventHandler(Node npc); //Replace with C# Action
-
 	private readonly Logger _logger = new("EventBus");
 
 	public Action OnInventoryOpen;
@@ -47,6 +36,12 @@ public partial class EventBus : Node
 		}
 	}
 
+	//---------------------------------------------Legacy Signals---------------------------------------------
+	
+	[Signal]
+	[Obsolete]
+	public delegate void NPCInteractedEventHandler(Node npc); //Replace with C# Action
+	
 	[Obsolete]
 	public void NotifyNPCInteracted(Node npc)
 	{
@@ -54,8 +49,7 @@ public partial class EventBus : Node
 	}
 
 	//---------------------------------------------Legacy Signals---------------------------------------------
-
-
+	
 	public event Action OnSeedshopOpened;
 
 	public void SeedshopOpened()
