@@ -126,16 +126,7 @@ public partial class EventBus : Node
 
 	public event Action<int> OnFaithChange;
 	public event Action<int> OnCurrencyChange;
-	public event Action<WikiItemView> OnScrollContainerViewUpdate; 
-	public event Action<IItemStack> OnTabsUpdate;
 	public event Action<IItemStack> OnItemPickUp;
-	public event Action<IItemStack> OnWikiItemClicked;
-	public event Action<InventoryItemView> OnInventoryItemViewPressed;
-	public event Action<InventoryItemView> OnInventoryItemViewMoved;
-	public event Action<InventoryItemView> OnInventoryItemViewReleased;
-	public event Action<InventoryItemView> OnSetItemSlot;
-	public event Action<IItemStack, InventoryItemView> OnInventoryItemMove;
-	public event GetItemSlotEventHandler OnGetItemSlot;
 
 	public void InventoryOpened()
 	{
@@ -153,54 +144,9 @@ public partial class EventBus : Node
 		OnCurrencyChange?.Invoke(change);
 	}
 
-	public void ScrollContainerViewChanged(WikiItemView scrollContainerElement)
-	{
-		OnScrollContainerViewUpdate?.Invoke(scrollContainerElement);
-	}
-	
-	public void TabsUpdated(IItemStack item)
-	{
-		OnTabsUpdate?.Invoke(item);
-	}
-	
 	public void ItemPickedUp(IItemStack item)
 	{
 		OnItemPickUp?.Invoke(item);
-	}
-
-	public void UiWikiItemClicked(IItemStack itemStack)
-	{
-		OnWikiItemClicked?.Invoke(itemStack);
-	}
-
-	public void UiInventoryItemViewPressed(InventoryItemView inventoryItemView)
-	{
-		OnInventoryItemViewPressed?.Invoke(inventoryItemView);
-	}
-
-	public void UiInventoryItemViewMoved(InventoryItemView inventoryItemView)
-	{
-		OnInventoryItemViewMoved?.Invoke(inventoryItemView);
-	}
-
-	public void UiInventoryItemViewReleased(InventoryItemView inventoryItemView)
-	{
-		OnInventoryItemViewReleased?.Invoke(inventoryItemView);
-	}
-
-	public void SetItemSlot(InventoryItemView inventoryItemView)
-	{
-		OnSetItemSlot?.Invoke(inventoryItemView);
-	}
-	
-	public void InventoryItemMoved(IItemStack itemStack, InventoryItemView inventoryItemView)
-	{
-		OnInventoryItemMove?.Invoke(itemStack, inventoryItemView);
-	}
-
-	public InventoryItemView GetItemSlot()
-	{
-		return OnGetItemSlot?.Invoke();
 	}
 
 	public event Action<Player.Player, IInventory> OnPlayerInventoryChanged;

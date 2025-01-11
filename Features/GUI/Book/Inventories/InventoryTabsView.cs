@@ -21,15 +21,9 @@ public partial class InventoryTabsView : Control
 
 	private List<IInventory> _inventories = new();
 
-	// [Export] private PackedScene _inventoryViewPrefab;
 	[Export] private PackedScene _inventoryCategoryTabPrefab;
 	[Export] private InventoryView _inventoryView;
 
-	// public TabContainer TabContainer => GetNode<TabContainer>("."); // Either this or make this class extend TabContainer
-
-	private InventoryItemView _potentialItemSlot;
-
-	// [Export] private TabContainer _tabContainer;
 	[Export] private Container _tabButtonContainer;
 
 	private List<InventoryCategoryTab> _tabButtons;
@@ -48,9 +42,6 @@ public partial class InventoryTabsView : Control
 
 	public override void _Ready()
 	{
-		EventBus.Instance.OnSetItemSlot += SetPotentialItemSlot;
-		EventBus.Instance.OnGetItemSlot += GetPotentialItemSlot;
-
 		_tabButtons = _tabButtonContainer.GetChildren().OfType<InventoryCategoryTab>().ToList();
 
 		TabChanged += OnTabChanged;
@@ -207,15 +198,5 @@ public partial class InventoryTabsView : Control
 		{
 			CurrentTab = index;
 		}
-	}
-
-	private void SetPotentialItemSlot(InventoryItemView inventoryItemView)
-	{
-		_potentialItemSlot = inventoryItemView;
-	}
-
-	private InventoryItemView GetPotentialItemSlot()
-	{
-		return _potentialItemSlot;
 	}
 }
