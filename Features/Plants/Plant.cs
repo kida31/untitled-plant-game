@@ -105,7 +105,7 @@ public partial class Plant : StaticBody2D
 	/// <summary>
 	/// Removes the plant from the scene.
 	/// </summary>
-	private void RemovePlant()
+	public void RemovePlant()
 	{
 		BeforePlantRemoved?.Invoke(this);
 		QueueFree();
