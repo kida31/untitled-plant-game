@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://caiu3dqnnxl28"]
 
-[ext_resource type="Texture2D" uid="uid://d21mfgg0d06iu" path="res://Assets/UI/BookUI/tab_active.png" id="1_hwmaf"]
 [ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryCategoryTab.cs" id="1_o154g"]
-[ext_resource type="Texture2D" uid="uid://cpx15eo4s36tm" path="res://Assets/UI/BookUI/tab_inactive.png" id="2_trrk0"]
+[ext_resource type="Texture2D" uid="uid://ovau2703fwu" path="res://Assets/UI/Book/Icons/tab_active.png" id="2_k56mi"]
+[ext_resource type="Texture2D" uid="uid://vfe1oe30gphi" path="res://Assets/UI/Book/Icons/tab_inactive.png" id="3_jpn00"]
 
 [sub_resource type="Animation" id="Animation_sdava"]
 resource_name = "Activate"
@@ -137,16 +137,16 @@ _data = {
 "RESET": SubResource("Animation_5yn7d")
 }
 
-[node name="Div" type="MarginContainer" node_paths=PackedStringArray("_activeIcon", "_inactiveIcon", "_textLabel", "_animationPlayer")]
+[node name="Div" type="MarginContainer" node_paths=PackedStringArray("_activeIcon", "_animationPlayer", "_inactiveIcon", "_textLabel")]
 offset_right = 50.0
 offset_bottom = 55.0
 focus_mode = 2
 script = ExtResource("1_o154g")
-Text = "Plants"
 _activeIcon = NodePath("VBoxContainer/Div/Active")
+_animationPlayer = NodePath("AnimationPlayer")
 _inactiveIcon = NodePath("VBoxContainer/Div/Inactive")
 _textLabel = NodePath("MarginContainer/Label")
-_animationPlayer = NodePath("AnimationPlayer")
+Text = "Plants"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -164,11 +164,11 @@ size_flags_vertical = 8
 
 [node name="Active" type="TextureRect" parent="VBoxContainer/Div"]
 layout_mode = 2
-texture = ExtResource("1_hwmaf")
+texture = ExtResource("2_k56mi")
 
 [node name="Inactive" type="TextureRect" parent="VBoxContainer/Div"]
 layout_mode = 2
-texture = ExtResource("2_trrk0")
+texture = ExtResource("3_jpn00")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

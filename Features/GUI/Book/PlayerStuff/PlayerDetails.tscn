@@ -1,19 +1,19 @@
 [gd_scene load_steps=8 format=3 uid="uid://dtgjnb2g3iphl"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/PlayerDetailsView.cs" id="1_88tm0"]
-[ext_resource type="Texture2D" uid="uid://djnyvkxjxcm5u" path="res://Assets/UI/BookUI/BookPage_RightCharacterPage.png" id="2_bchjd"]
+[ext_resource type="Texture2D" uid="uid://ijkype7hlovv" path="res://Assets/UI/Book/Pages/RightInventory_empty.png" id="2_srt7k"]
+[ext_resource type="Texture2D" uid="uid://cj2g8kcrdsod8" path="res://Assets/UI/Book/Pages/Demo/RightInventory_filled.png" id="3_nof0m"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="4_n8hnm"]
 [ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/FaithProgressBar.cs" id="4_tixgw"]
-[ext_resource type="Texture2D" uid="uid://ghfd5ck3sthr" path="res://Assets/UI/BookUI/DemoPages/InventoryMenu.png" id="5_1potc"]
-[ext_resource type="Texture2D" uid="uid://bdif33v6tjipd" path="res://Assets/UI/BookUI/FaithFlower/First_empty.png" id="5_ne1iy"]
-[ext_resource type="Texture2D" uid="uid://wpjq2rlonfx8" path="res://Assets/UI/BookUI/FaithFlower/First_filled.png" id="6_ek4ln"]
+[ext_resource type="Texture2D" uid="uid://dprdoudpd6aaf" path="res://Assets/UI/Book/FaithFlower/FaithFlowerPetal_empty.png" id="5_158xj"]
+[ext_resource type="Texture2D" uid="uid://bdpoln30dwxu5" path="res://Assets/UI/Book/FaithFlower/FaithFlowerPetal_filled.png" id="5_khkp4"]
 
 [node name="PlayerDetails" type="Control" node_paths=PackedStringArray("_faithProgressBar", "label1", "label2", "label3", "label4")]
 layout_mode = 3
 anchor_right = 0.200926
 anchor_bottom = 0.555556
-offset_right = 39.0
-offset_bottom = 20.0
+offset_right = 6.99991
+offset_bottom = 3.99976
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_88tm0")
@@ -33,136 +33,147 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("2_bchjd")
-stretch_mode = 4
+texture = ExtResource("2_srt7k")
 metadata/_edit_use_anchors_ = true
+
+[node name="BG2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+offset_right = 224.0
+offset_bottom = 304.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_nof0m")
+stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-anchor_left = 0.160156
-anchor_top = 0.596875
-anchor_right = 0.371094
-anchor_bottom = 0.921875
+anchor_left = 0.169643
+anchor_top = 0.618421
+anchor_right = 0.464286
+anchor_bottom = 0.921053
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 metadata/_edit_use_anchors_ = true
 
-[node name="TextBox" parent="VBoxContainer" instance=ExtResource("4_n8hnm")]
+[node name="TextBox" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
+theme_override_font_sizes/font_size = 16
+text = "Abc12"
+vertical_alignment = 1
+text_overrun_behavior = 3
 
-[node name="TextBox2" parent="VBoxContainer" instance=ExtResource("4_n8hnm")]
+[node name="TextBox2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
+theme_override_font_sizes/font_size = 16
+text = "Abc12"
+vertical_alignment = 1
+text_overrun_behavior = 3
 
-[node name="TextBox3" parent="VBoxContainer" instance=ExtResource("4_n8hnm")]
+[node name="TextBox3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
+theme_override_font_sizes/font_size = 16
+text = "Abc12"
+vertical_alignment = 1
+text_overrun_behavior = 3
 
-[node name="TextBox4" parent="VBoxContainer" instance=ExtResource("4_n8hnm")]
+[node name="TextBox4" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
+theme_override_font_sizes/font_size = 16
+text = "Abc12"
+vertical_alignment = 1
+text_overrun_behavior = 3
 
 [node name="FaithProgressBar" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.0599078
-anchor_top = 0.0966667
-anchor_right = 0.24424
-anchor_bottom = 0.23
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_tixgw")
-metadata/_edit_use_anchors_ = true
-
-[node name="Example" type="Panel" parent="FaithProgressBar"]
-modulate = Color(1, 1, 1, 0.509804)
-clip_children = 1
-layout_mode = 0
-anchor_left = 0.375
-anchor_top = -0.5
-anchor_right = 2.6
-anchor_bottom = 3.45
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="FaithProgressBar/Example"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -3.19101
-anchor_top = -0.120253
-anchor_right = 2.5618
-anchor_bottom = 1.90506
-offset_right = -1.52588e-05
-mouse_filter = 2
-texture = ExtResource("5_1potc")
+Value = 14.82
 metadata/_edit_use_anchors_ = true
 
 [node name="First" type="TextureProgressBar" parent="FaithProgressBar"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.35
-anchor_top = 0.892
-anchor_right = 1.276
-anchor_bottom = 1.884
-offset_top = 21.32
-offset_right = -5.04
-offset_bottom = 13.64
+anchor_left = 0.138393
+anchor_top = 0.25118
+anchor_right = 0.334759
+anchor_bottom = 0.25118
+offset_top = 10.6412
+offset_right = -11.986
+offset_bottom = 42.6412
 rotation = -1.02276
+value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
-texture_under = ExtResource("5_ne1iy")
-texture_progress = ExtResource("6_ek4ln")
+texture_under = ExtResource("5_158xj")
+texture_progress = ExtResource("5_khkp4")
 metadata/_edit_use_anchors_ = true
 
 [node name="Second" type="TextureProgressBar" parent="FaithProgressBar"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.412
-anchor_top = 0.58
-anchor_right = 1.149
-anchor_bottom = 1.257
-offset_left = -2.48
-offset_top = 6.8
-offset_right = 0.0399971
-offset_bottom = 11.72
+anchor_left = 0.151786
+anchor_top = 0.200658
+anchor_right = 0.339851
+anchor_bottom = 0.255044
+offset_right = -10.1266
+offset_bottom = 15.4666
 rotation = -0.411401
+value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
-texture_under = ExtResource("5_ne1iy")
-texture_progress = ExtResource("6_ek4ln")
+texture_under = ExtResource("5_158xj")
+texture_progress = ExtResource("5_khkp4")
 metadata/_edit_use_anchors_ = true
 
 [node name="Third" type="TextureProgressBar" parent="FaithProgressBar"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.71729
-anchor_top = 0.380715
-anchor_right = 1.573
-anchor_bottom = 1.044
-offset_right = -2.2284
-offset_bottom = 5.4686
+anchor_left = 0.21875
+anchor_top = 0.148026
+anchor_right = 0.372566
+anchor_bottom = 0.244541
+offset_right = -2.45482
+offset_bottom = 2.6595
 rotation = -0.0799965
+value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
-texture_under = ExtResource("5_ne1iy")
-texture_progress = ExtResource("6_ek4ln")
+texture_under = ExtResource("5_158xj")
+texture_progress = ExtResource("5_khkp4")
 metadata/_edit_use_anchors_ = true
 
 [node name="Fourth" type="TextureProgressBar" parent="FaithProgressBar"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.1
-anchor_top = 0.275
-anchor_right = 1.907
-anchor_bottom = 0.991
-offset_right = -0.279999
-offset_bottom = 3.36
+anchor_left = 0.285714
+anchor_top = 0.131579
+anchor_right = 0.429998
+anchor_bottom = 0.23578
+offset_right = -0.319633
+offset_bottom = 0.32283
 rotation = -0.0100381
+value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
-texture_under = ExtResource("5_ne1iy")
-texture_progress = ExtResource("6_ek4ln")
+texture_under = ExtResource("5_158xj")
+texture_progress = ExtResource("5_khkp4")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextBox" parent="." instance=ExtResource("4_n8hnm")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.359375
