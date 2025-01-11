@@ -10,7 +10,7 @@
 script = ExtResource("1_ktggq")
 speakerName = "Pan Dan"
 DialogueExpression = 1
-dialogueText = "*grins* I found these seeds, do you wanna see?"
+dialogueText = "*grins* I found these seeds. If you give me something for it they are yours."
 
 [sub_resource type="Resource" id="Resource_sige0"]
 script = ExtResource("3_o66ve")
