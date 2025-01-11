@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://be34y66w0usqf" path="res://Assets/UI/chatbox_rounded.png" id="1_jll0i"]
 [ext_resource type="Script" path="res://Features/Crafting/Dehydrator/DehydratorUi.cs" id="1_p40jb"]
 [ext_resource type="PackedScene" uid="uid://dafhmyiy5jrym" path="res://Features/Crafting/crafting_slot.tscn" id="3_licfq"]
-[ext_resource type="Texture2D" uid="uid://cijiyf45lano7" path="res://Assets/UI/close_x.png" id="4_3hx0v"]
-[ext_resource type="Texture2D" uid="uid://ul05y63enrxn" path="res://Assets/UI/arrow_down.png" id="5_r8hdp"]
+[ext_resource type="Texture2D" path="res://Assets/UI/close_x.png" id="4_3hx0v"]
+[ext_resource type="Texture2D" path="res://Assets/UI/arrow_down.png" id="5_r8hdp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yasrd"]
 

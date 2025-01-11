@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://Features/VendingMachine/UI/ItemSlot.tscn" id="1_5jnsj"]
 [ext_resource type="Script" path="res://Features/Crafting/CraftingSlotUi.cs" id="2_3k3fw"]
-[ext_resource type="Texture2D" uid="uid://cbwcajw24ox4e" path="res://Assets/UI/BookUI/Icons/NewItemIndicator.png" id="3_8b24n"]
+[ext_resource type="Texture2D" uid="uid://cbwcajw24ox4e" path="res://Assets/UI/Book/Icons/NewItemIndicator.png" id="3_8b24n"]
 
 [node name="ItemSlot" node_paths=PackedStringArray("_progressBar", "_craftingCompleteTexture") instance=ExtResource("1_5jnsj")]
 script = ExtResource("2_3k3fw")

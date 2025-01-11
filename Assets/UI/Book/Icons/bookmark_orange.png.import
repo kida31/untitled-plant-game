@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dduwl34jkllwr"
-path="res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"
+uid="uid://bgyw30yltk4py"
+path="res://.godot/imported/bookmark_orange.png-2b63f6243a7eb9d67d4309fa662d3212.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/HUD/CurrentToolIndicator.png"
-dest_files=["res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"]
+source_file="res://Assets/UI/Book/Icons/bookmark_orange.png"
+dest_files=["res://.godot/imported/bookmark_orange.png-2b63f6243a7eb9d67d4309fa662d3212.ctex"]
 
 [params]
 
