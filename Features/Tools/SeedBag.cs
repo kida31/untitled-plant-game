@@ -1,5 +1,6 @@
 using System.Linq;
 using Godot;
+using Godot.NativeInterop;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.Plants;
@@ -38,7 +39,15 @@ public class SeedBag : Tool
 	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
 	{
 		var closestTile = hits.OfType<SoilTile>().MinBy(p => p.GlobalPosition.DistanceSquaredTo(user.GlobalPosition));
-		if (closestTile == null || IsSoilOccupied(closestTile)) return false;
+		if (closestTile == null)
+		{
+			_logger.Warn("There is no soil tile to plant on");
+			return false;
+		}
+		if (IsSoilOccupied(closestTile))
+		{
+			return false;
+		}
 		
 		return hits.OfType<SoilTile>().Any();
 	}
@@ -46,7 +55,15 @@ public class SeedBag : Tool
 	protected override bool OnHit(Player.Player user, Node2D[] hits)
 	{
 		var closestTile = hits.OfType<SoilTile>().MinBy(p => p.GlobalPosition.DistanceSquaredTo(user.GlobalPosition));
-		if (closestTile == null || IsSoilOccupied(closestTile)) return false;
+		if (closestTile == null)
+		{
+			_logger.Warn("There is no soil tile to plant on");
+			return false;
+		}
+		if (IsSoilOccupied(closestTile))
+		{
+			return false;
+		}
 		
 		if(CurrentSeedItem == null)
 		{
@@ -72,10 +89,16 @@ public class SeedBag : Tool
 		return true;
 	}
 
-	private static bool IsSoilOccupied(SoilTile closestTile)
+	private bool IsSoilOccupied(SoilTile closestTile)
 	{
 		var plants = closestTile.GetTree().GetNodesInGroup(GameGroup.Plants).OfType<Plant>();
-		return plants.Any(plant => plant.Tile == closestTile);
+		var enumerable = plants as Plant[] ?? plants.ToArray();
+		var b = enumerable.Any(plant => plant.Tile == closestTile);
+		if (b)
+		{
+			_logger.Warn($"Soil tile is already occupied by {enumerable.First().PlantName}");
+		}
+		return b;
 	}
 
 	protected override void OnMiss(Player.Player user)
