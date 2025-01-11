@@ -18,9 +18,7 @@ namespace untitledplantgame.Common;
 public partial class EventBus : Node
 {
 	public static EventBus Instance { get; private set; }
-
-	public Action OnInventoryOpen;
-
+	
 	private readonly Logger _logger = new("EventBus");
 
 	public override void _Ready()
@@ -51,6 +49,7 @@ public partial class EventBus : Node
 	//---------------------------------------------Legacy Signals---------------------------------------------
 	
 	public event Action OnSeedshopOpened;
+	public event Action OnInventoryOpen;
 
 	public void SeedshopOpened()
 	{

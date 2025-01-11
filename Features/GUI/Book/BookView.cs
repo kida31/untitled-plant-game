@@ -42,14 +42,7 @@ public partial class BookView : Control
 		EventBus.Instance.OnPlayerInventoryChanged += UpdateInventory;
 		EventBus.Instance.OnInventoryOpen += ShowBook;
 
-		// TODO: UNUSED. We currently only use trigger buttons to switch tabs
-		// 1.2 Connect tab buttons to trigger tabs
-		// for (var index = 0; index < _tabButtons.Length; index++)
-		// {
-		// 	var button = _tabButtons[index];
-		// 	var capturedIndex = index;
-		// 	button.Pressed += () => _tabContainer.CurrentTab = capturedIndex;
-		// }
+		// TODO: UNUSED. We currently only use trigger buttons to switch between wiki and player page
 
 		// 2. Init Inventory
 
