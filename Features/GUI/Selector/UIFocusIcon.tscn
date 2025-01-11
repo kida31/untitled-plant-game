@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ikmkfkp11t0t"]
 
 [ext_resource type="Script" path="res://Features/GUI/Selector/UIFocusIcon.cs" id="1_7c43y"]
-[ext_resource type="Texture2D" uid="uid://del57edaadvpk" path="res://Assets/UI/BookUI/ItemSelectorLeft.png" id="1_138p4"]
-[ext_resource type="Texture2D" uid="uid://ixhi2w1do3cd" path="res://Assets/UI/BookUI/ItemSelectorRight.png" id="2_8l33a"]
 [ext_resource type="Script" path="res://Features/GUI/Hooks/CopySizeHook.cs" id="3_hntjl"]
 [ext_resource type="Script" path="res://Features/GUI/Hooks/FollowControlHook.cs" id="3_n0srx"]
+[ext_resource type="Texture2D" uid="uid://dro7ag82k0lgb" path="res://Assets/UI/Book/Icons/ItemSelectorLeft.png" id="4_rj1ek"]
+[ext_resource type="Texture2D" uid="uid://1kh2uoaq4d68" path="res://Assets/UI/Book/Icons/ItemSelectorRight.png" id="5_iw1x1"]
 [ext_resource type="Script" path="res://Features/GUI/Selector/DebugUIFocusIcon.cs" id="6_wrko2"]
 
 [node name="FocusIndicator" type="Control" node_paths=PackedStringArray("_sizeHook", "_followHook")]
@@ -52,13 +52,13 @@ theme_override_constants/margin_bottom = -8
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource("1_138p4")
+texture = ExtResource("4_rj1ek")
 patch_margin_left = 18
 patch_margin_top = 20
 
 [node name="TextureRect2" type="NinePatchRect" parent="LocalDiv/Margin"]
 layout_mode = 2
-texture = ExtResource("2_8l33a")
+texture = ExtResource("5_iw1x1")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_right = 20
 patch_margin_bottom = 19
