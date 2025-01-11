@@ -10,12 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://dempy0e7dsgb7" path="res://Assets/OverworldAssets/GardenDecoration/small_planter_round.png" id="9_8wk0d"]
 [ext_resource type="Texture2D" uid="uid://5d8yf6rhn855" path="res://Assets/OverworldAssets/GardenDecoration/planters_tileset_rgb.png" id="11_a5t2s"]
 [ext_resource type="Texture2D" uid="uid://cc08shc1btj02" path="res://Assets/Tilesets/Plant/chubery_sheet.png" id="11_r31rj"]
-[ext_resource type="Texture2D" uid="uid://wdbdoil5oq0k" path="res://Assets/Tilesets/soiltiles_tileset.png" id="12_ekvqo"]
 [ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/Tilesets/Plant/DeadPlant.png" id="12_h45qb"]
 [ext_resource type="Texture2D" uid="uid://dgr1wagj37jdb" path="res://Assets/Tilesets/Plant/drupoleaum_sheet.png" id="13_agfdp"]
 [ext_resource type="Texture2D" uid="uid://dxjrcllnnc3s2" path="res://Assets/Tilesets/Plant/Licary_SpriteSheet.png" id="14_eauha"]
 [ext_resource type="Texture2D" uid="uid://c7ek706h8ajmu" path="res://Assets/OverworldAssets/GardenDecoration/fence_front_variations_improved.png" id="15_00ojb"]
 [ext_resource type="Texture2D" uid="uid://ma3gcmjjv50o" path="res://Assets/OverworldAssets/GardenDecoration/fence_side_less_shine.png" id="16_khlja"]
+[ext_resource type="Texture2D" uid="uid://cv6hjqm0nnrau" path="res://Assets/Tilesets/soiltiles_tileset_better_rgb.png" id="16_mugcb"]
 [ext_resource type="Script" path="res://Features/Plants/PlantMap.cs" id="17_qgpau"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_jas7t"]
@@ -343,6 +343,46 @@ sources/9 = SubResource("TileSetAtlasSource_ib477")
 pattern_0 = SubResource("TileMapPattern_5sudo")
 pattern_1 = SubResource("TileMapPattern_swsaa")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw5e7"]
+texture = ExtResource("16_mugcb")
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+0:6/0 = 0
+0:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jveog"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_lw5e7")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5oqnr"]
 resource_name = "dead"
 texture = ExtResource("12_h45qb")
@@ -425,46 +465,6 @@ sources/3 = SubResource("TileSetAtlasSource_ipxae")
 sources/0 = SubResource("TileSetAtlasSource_5oqnr")
 sources/1 = SubResource("TileSetAtlasSource_qplcf")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s8vjx"]
-texture = ExtResource("12_ekvqo")
-texture_region_size = Vector2i(32, 32)
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-0:0/0 = 0
-0:1/0 = 0
-0:2/0 = 0
-0:3/0 = 0
-0:6/0 = 0
-0:7/0 = 0
-0:5/0 = 0
-0:4/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_jveog"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_s8vjx")
-
 [node name="Map" type="Node2D"]
 
 [node name="Ground" type="TileMapLayer" parent="."]
@@ -491,18 +491,18 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAALAAUACQAAAAMAAAALAAYACQAAAAAAAAALAAcACQAAAAIAAAALAAgACQAAAAEAAAALAAkACQAAAAMAAAALAAoACQAAAAIAAAALAAsACQAAAAEAAAALAAwACQAAAAIAAAALAA0ACQAAAAAAAAALAA4ACQAAAAIAAAALAA8ACQAAAAAAAAALABAACQAAAAIAAAALABEACQAAAAMAAAALABIACQAAAAAAAAAcABMABwABAAAAAAAcABIACQABAAEAAAAcABEACQABAAMAAAAcABAACQABAAEAAAAcAA8ACQABAAIAAAAcAA4ACQABAAIAAAAcAA0ACQABAAAAAAAcAAwACQABAAAAAAAcAAsACQABAAIAAAAcAAoACQABAAIAAAAcAAkACQABAAAAAAAcAAgACQABAAAAAAAcAAcACQABAAMAAAAcAAYACQABAAMAAAAcAAUACQABAAEAAAALABMABwADAAAAAAAMABMABwACAAAAAAANABMABwADAAAAAAAOABMABwAAAAAAAAAPABMABwADAAAAAAAQABMABwADAAAAAAARABMABwAAAAAAAAASABMABwAAAAAAAAATABMABwACAAAAAAAUABMABwAAAAAAAAAVABMABwABAAAAAAAWABMABwABAAAAAAAXABMABwADAAAAAAAYABMABwACAAAAAAAZABMABwAAAAAAAAAaABMABwABAAAAAAAbABMABwADAAAAAAALAAQABwADAAAAAAAMAAQABwACAAAAAAANAAQABwACAAAAAAAOAAQABwADAAAAAAAPAAQABwADAAAAAAAQAAQABwABAAAAAAARAAQABwABAAAAAAASAAQABwABAAAAAAATAAQABwAAAAAAAAAUAAQABwADAAAAAAAVAAQABwABAAAAAAAWAAQABwABAAAAAAAXAAQABwADAAAAAAAYAAQABwAAAAAAAAAZAAQABwACAAAAAAAaAAQABwACAAAAAAAbAAQABwAAAAAAAAAcAAQABwACAAAAAAA=")
 tile_set = SubResource("TileSet_ue6vt")
 
+[node name="Soil" type="TileMapLayer" parent="."]
+z_index = 1
+y_sort_enabled = true
+tile_set = SubResource("TileSet_jveog")
+script = ExtResource("1_uo15o")
+
 [node name="Plants" type="TileMapLayer" parent="."]
 z_index = 1
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAZAAkAAQAGAAAAAAAYAAkAAgAEAAAAAAAZAAwAAwAFAAAAAAAZAA0AAAAAAAAAAAAaAAYAAQABAAAAAAAaAAcAAgABAAAAAAASAAYAAwAGAAAAAAAWABEAAwADAAAAAAAWABAAAQADAAAAAAAZABAAAgAFAAAAAAAaABAAAQACAAAAAAATAAYAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_sor4m")
 script = ExtResource("17_qgpau")
-
-[node name="Soil" type="TileMapLayer" parent="."]
-z_index = 1
-y_sort_enabled = true
-tile_set = SubResource("TileSet_jveog")
-script = ExtResource("1_uo15o")
 
 [node name="MarkerNode" type="Node2D" parent="."]
 position = Vector2(458, 346)
