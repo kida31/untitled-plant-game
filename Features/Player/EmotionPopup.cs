@@ -5,6 +5,12 @@ namespace untitledplantgame.Player;
 
 public partial class EmotionPopup : AnimatedSprite2D
 {
+	private AnimationPlayer _animationPlayer;
+	public override void _Ready()
+	{
+		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+	}
+
 	public enum PlayerEmotion
 	{
 		Sweat,
@@ -29,5 +35,6 @@ public partial class EmotionPopup : AnimatedSprite2D
 			default:
 				throw new ArgumentOutOfRangeException(nameof(emotion), emotion, null);
 		}
+		_animationPlayer.Play();
 	}
 }
