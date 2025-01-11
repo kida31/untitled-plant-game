@@ -29,6 +29,9 @@ offset_right = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Button" parent="WikiItemList/SectionsButtons/Div3" index="1"]
+focus_neighbor_right = NodePath("../../../../WikiArticleView/RelatedStuff/RelatedItem")
+
 [node name="WikiArticleView" parent="." instance=ExtResource("3_q0eou")]
 layout_mode = 1
 anchor_left = 0.5
@@ -37,6 +40,9 @@ anchor_bottom = 1.0
 offset_right = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="RelatedItem" parent="WikiArticleView/RelatedStuff" index="0"]
+focus_neighbor_left = NodePath("../../../WikiItemList/SectionsButtons/Div3/Button")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -133,3 +139,9 @@ TextureInactive = ExtResource("8_20ivq")
 Active = true
 Disabled = true
 metadata/_edit_use_anchors_ = true
+
+[editable path="WikiItemList"]
+[editable path="WikiArticleView"]
+[editable path="WikiArticleView/Name"]
+[editable path="WikiArticleView/Description"]
+[editable path="WikiArticleView/Stats"]
