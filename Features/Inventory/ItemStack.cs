@@ -1,3 +1,4 @@
+﻿using System;
 using System.Linq;
 using Godot;
 using Godot.Collections;
@@ -10,6 +11,7 @@ namespace untitledplantgame.Inventory;
 ///     https://github.com/Bukkit/Bukkit/blob/master/src/main/java/org/bukkit/inventory/ItemStack.java
 /// </summary>
 [GlobalClass]
+[Obsolete("Did you mean to use the interface IItemStack? (This is not really obsolete)")]
 public partial class ItemStack : Resource, IItemStack
 {
 	[Export] public int Amount { get; set; }
