@@ -2,7 +2,6 @@ using System;
 using Godot;
 using untitledplantgame.Crafting;
 using untitledplantgame.Dialogue;
-using untitledplantgame.GUI.Book.Inventories;
 using untitledplantgame.Inventory;
 using untitledplantgame.Plants;
 using untitledplantgame.Shops;
@@ -18,10 +17,11 @@ namespace untitledplantgame.Common;
  */
 public partial class EventBus : Node
 {
-	private readonly Logger _logger = new("EventBus");
+	public static EventBus Instance { get; private set; }
 
 	public Action OnInventoryOpen;
-	public static EventBus Instance { get; private set; }
+
+	private readonly Logger _logger = new("EventBus");
 
 	public override void _Ready()
 	{
