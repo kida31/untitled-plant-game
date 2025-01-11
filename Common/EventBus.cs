@@ -13,7 +13,7 @@ namespace untitledplantgame.Common;
 
 /**
  * NOTE:
- * 
+ *
  * Using something like "public event Action PerformedAction;" would be viable, but in order to keep things simple and
  * uniform, I decided to not use "Actions". However, this can change at any point in time if the code demands to be
  * simplified even further.
@@ -126,9 +126,9 @@ public partial class EventBus : Node
 
 	public event Action<int> OnFaithChange;
 	public event Action<int> OnCurrencyChange;
-	public event Action<WikiItemView> OnScrollContainerViewUpdate;
-	public event Action<ItemStack> OnTabsUpdate;
-	public event Action<ItemStack> OnItemPickUp;
+	public event Action<WikiItemView> OnScrollContainerViewUpdate; 
+	public event Action<IItemStack> OnTabsUpdate;
+	public event Action<IItemStack> OnItemPickUp;
 	public event Action<ItemStack> OnWikiItemClicked;
 	public event Action<InventoryItemView> OnInventoryItemViewPressed;
 	public event Action<InventoryItemView> OnInventoryItemViewMoved;
@@ -157,18 +157,18 @@ public partial class EventBus : Node
 	{
 		OnScrollContainerViewUpdate?.Invoke(scrollContainerElement);
 	}
-
-	public void TabsUpdated(ItemStack item)
+	
+	public void TabsUpdated(IItemStack item)
 	{
 		OnTabsUpdate?.Invoke(item);
 	}
-
-	public void ItemPickedUp(ItemStack item)
+	
+	public void ItemPickedUp(IItemStack item)
 	{
 		OnItemPickUp?.Invoke(item);
 	}
 
-	public void UiWikiItemClicked(ItemStack itemStack)
+	public void UiWikiItemClicked(IItemStack itemStack)
 	{
 		OnWikiItemClicked?.Invoke(itemStack);
 	}
@@ -192,7 +192,7 @@ public partial class EventBus : Node
 	{
 		OnSetItemSlot?.Invoke(inventoryItemView);
 	}
-
+	
 	public void InventoryItemMoved(IItemStack itemStack, InventoryItemView inventoryItemView)
 	{
 		OnInventoryItemMove?.Invoke(itemStack, inventoryItemView);

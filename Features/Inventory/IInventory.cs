@@ -27,29 +27,29 @@ public interface IInventory : IEnumerable<IItemStack>
 	public string Name { get; }
 
 	/// <summary>
-	///     Returns the ItemStack found in the slot at the given index
+	///     Returns the IItemStack found in the slot at the given index
 	/// </summary>
-	/// <param name="index">The index of the Slot's ItemStack to return</param>
-	/// <returns>The ItemStack in the slot</returns>
+	/// <param name="index">The index of the Slot's IItemStack to return</param>
+	/// <returns>The IItemStack in the slot</returns>
 	public IItemStack GetItem(int index);
 
 	/// <summary>
-	///     Stores the ItemStack at the given index of the inventory.
+	///     Stores the IItemStack at the given index of the inventory.
 	/// </summary>
-	/// <param name="index">The index where to put the ItemStack</param>
-	/// <param name="item">The ItemStack to set</param>
+	/// <param name="index">The index where to put the IItemStack</param>
+	/// <param name="item">The IItemStack to set</param>
 	public void SetItem(int index, IItemStack item);
 
 	/// <summary>
-	///     Stores the given ItemStacks in the inventory. This will try to fill
+	///     Stores the given IItemStacks in the inventory. This will try to fill
 	///     existing stacks and empty slots as well as it can.
 	///     <para>
 	///         The returned HashMap contains what it couldn't store, where the key is
-	///         the index of the parameter, and the value is the ItemStack at that
+	///         the index of the parameter, and the value is the IItemStack at that
 	///         index of the varargs parameter. If all items are stored, it will return
 	///         an empty HashMap.
 	///         <para>
-	///             If you pass in ItemStacks which exceed the maximum stack size for the
+	///             If you pass in IItemStacks which exceed the maximum stack size for the
 	///             Material, first they will be added to partial stacks where
 	///             Material.getMaxStackSize() is not exceeded, up to
 	///             Material.getMaxStackSize(). When there are no partial stacks left
@@ -59,38 +59,38 @@ public interface IInventory : IEnumerable<IItemStack>
 	/// </para>
 	/// </para>
 	/// </summary>
-	/// <param name="items">The ItemStacks to add</param>
+	/// <param name="items">The IItemStacks to add</param>
 	/// <returns>A HashMap containing items that didn't fit.</returns>
 	public Dictionary<int, IItemStack> AddItem(params IItemStack[] items);
 
 	/// <summary>
-	///     Removes the given ItemStacks from the inventory.
+	///     Removes the given IItemStacks from the inventory.
 	///     <para>
 	///         It will try to remove 'as much as possible' from the types and amounts
 	///         you give as arguments.
 	///
 	///         <para>
 	///             The returned HashMap contains what it couldn't remove, where the key is
-	///             the index of the parameter, and the value is the ItemStack at that
-	///             index of the varargs parameter. If all the given ItemStacks are
+	///             the index of the parameter, and the value is the IItemStack at that
+	///             index of the varargs parameter. If all the given IItemStacks are
 	///             removed, it will return an empty HashMap.
 	///             @throws IllegalArgumentException if items is null
 	/// </para>
 	/// </para>
 	/// </summary>
-	/// <param name="items">The ItemStacks to remove</param>
+	/// <param name="items">The IItemStacks to remove</param>
 	/// <returns>A HashMap containing items that couldn't be removed.</returns>
 	public Dictionary<int, IItemStack> RemoveItem(params IItemStack[] items);
 
 	/// <summary>
-	///     Returns all ItemStacks from the inventory
+	///     Returns all IItemStacks from the inventory
 	/// </summary>
-	/// <returns>An array of ItemStacks from the inventory.</returns>
+	/// <returns>An array of IItemStacks from the inventory.</returns>
 	public List<IItemStack> GetItems();
 
 	/// <summary>
 	///     Completely replaces the inventory's contents. Removes all existing
-	///     contents and replaces it with the ItemStacks given in the array.
+	///     contents and replaces it with the IItemStacks given in the array.
 	///     @throws IllegalArgumentException If the array has more items than the
 	///     inventory.
 	/// </summary>
@@ -99,81 +99,81 @@ public interface IInventory : IEnumerable<IItemStack>
 	public void SetContents(List<IItemStack> items);
 
 	/// <summary>
-	///     Checks if the inventory contains any ItemStacks with the given
+	///     Checks if the inventory contains any IItemStacks with the given
 	///     id.
 	///     @throws IllegalArgumentException if material is null
 	/// </summary>
 	/// <param name="itemId">The material to check for</param>
-	/// <returns>true if an ItemStack is found with the given Material</returns>
+	/// <returns>true if an IItemStack is found with the given Material</returns>
 	public bool Contains(string itemId);
 
 	/// <summary>
-	///     Checks if the inventory contains any ItemStacks matching the given
-	///     ItemStack.
+	///     Checks if the inventory contains any IItemStacks matching the given
+	///     IItemStack.
 	///     <para>
 	///         This will only return true if both the type and the amount of the stack
 	///         match.
 	/// </para>
 	/// </summary>
-	/// <param name="item">item The ItemStack to match against</param>
-	/// <returns> false if item is null, true if any exactly matching ItemStacks were found</returns>
+	/// <param name="item">item The IItemStack to match against</param>
+	/// <returns> false if item is null, true if any exactly matching IItemStacks were found</returns>
 	public bool Contains(IItemStack item);
 
 	/// <summary>
-	///     Checks if the inventory contains any ItemStacks with the given
+	///     Checks if the inventory contains any IItemStacks with the given
 	///     material, adding to at least the minimum amount specified.
 	///     @throws IllegalArgumentException if material is null
 	/// </summary>
 	/// <param name="itemId">The material to check for</param>
 	/// <param name="amount">The minimum amount</param>
-	/// <returns>true if amount is less than 1, true if enough ItemStacks were
+	/// <returns>true if amount is less than 1, true if enough IItemStacks were
 	///     found to add to the given amount</returns>
 	public bool Contains(string itemId, int amount);
 
 	/// <summary>
 	///     Checks if the inventory contains at least the minimum amount specified
-	///     of exactly matching ItemStacks.
+	///     of exactly matching IItemStacks.
 	///     <para>
-	///         An ItemStack only counts if both the type and the amount of the stack
+	///         An IItemStack only counts if both the type and the amount of the stack
 	///         match.
 	/// </para>
 	/// </summary>
-	/// <param name="item">the ItemStack to match against</param>
+	/// <param name="item">the IItemStack to match against</param>
 	/// <param name="amount">how many identical stacks to check for</param>
 	/// <returns>false if item is null, true if amount less than 1, true if
-	///         amount of exactly matching ItemStacks were found</returns>
+	///         amount of exactly matching IItemStacks were found</returns>
 	public bool Contains(IItemStack item, int amount);
 
 	/// <summary>
-	///     Returns a HashMap with all slots and ItemStacks in the inventory with
+	///     Returns a HashMap with all slots and IItemStacks in the inventory with
 	///     the given Material.
 	///     <para>
 	///         The HashMap contains entries where, the key is the slot index, and the
-	///         value is the ItemStack in that slot. If no matching ItemStack with the
+	///         value is the IItemStack in that slot. If no matching IItemStack with the
 	///         given Material is found, an empty map is returned.
 	///         @throws IllegalArgumentException if material is null
 	///     </para>
 	/// </summary>
 	/// <param name="itemId">The material to look for</param>
-	/// <returns>A HashMap containing the slot index, ItemStack pairs</returns>
+	/// <returns>A HashMap containing the slot index, IItemStack pairs</returns>
 	public Dictionary<int, IItemStack> All(string itemId);
 
 	/// <summary>
-	///     Finds all slots in the inventory containing any ItemStacks with the
-	///     given ItemStack. This will only match slots if both the type and the
+	///     Finds all slots in the inventory containing any IItemStacks with the
+	///     given IItemStack. This will only match slots if both the type and the
 	///     amount of the stack match
 	///     <para>
 	///         The HashMap contains entries where, the key is the slot index, and the
-	///         value is the ItemStack in that slot. If no matching ItemStack with the
+	///         value is the IItemStack in that slot. If no matching IItemStack with the
 	///         given Material is found, an empty map is returned.
 	/// </para>
 	/// </summary>
-	/// <param name="item">The ItemStack to match against</param>
+	/// <param name="item">The IItemStack to match against</param>
 	/// <returns>A map from slot indexes to item at index</returns>
 	public Dictionary<int, IItemStack> All(IItemStack item);
 
 	/// <summary>
-	///     Finds the first slot in the inventory containing an ItemStack with the
+	///     Finds the first slot in the inventory containing an IItemStack with the
 	///     given material
 	///     @throws IllegalArgumentException if material is null
 	/// </summary>
@@ -182,12 +182,12 @@ public interface IInventory : IEnumerable<IItemStack>
 	public int First(string itemId);
 
 	/// <summary>
-	///     Returns the first slot in the inventory containing an ItemStack with
+	///     Returns the first slot in the inventory containing an IItemStack with
 	///     the given stack. This will only match a slot if both the type and the
 	///     amount of the stack match
 	/// </summary>
-	/// <param name="item"> The ItemStack to match against</param>
-	/// <returns>The slot index of the given ItemStack or -1 if not found</returns>
+	/// <param name="item"> The IItemStack to match against</param>
+	/// <returns>The slot index of the given IItemStack or -1 if not found</returns>
 	public int First(IItemStack item);
 
 	/// <summary>
@@ -204,7 +204,7 @@ public interface IInventory : IEnumerable<IItemStack>
 	///         stack match
 	/// </para>
 	/// </summary>
-	/// <param name="item">The ItemStack to match against</param>
+	/// <param name="item">The IItemStack to match against</param>
 	public void RemoveAll(IItemStack item);
 
 	/// <summary>
@@ -234,7 +234,7 @@ public interface IInventory : IEnumerable<IItemStack>
 
 
 	/// <summary>
-	///     Returns all ItemStacks of the given category.
+	///     Returns all IItemStacks of the given category.
 	/// </summary>
 	/// <param name="category"></param>
 	/// <returns></returns>

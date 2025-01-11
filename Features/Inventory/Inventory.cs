@@ -23,7 +23,7 @@ public class Inventory : IInventory
 
 	public Inventory(int size, string name)
 	{
-		_items = new ItemStack[size];
+		_items = new IItemStack[size];
 		Name = name;
 		
 		ItemAdded += (_) => InventoryChanged?.Invoke();
@@ -148,8 +148,8 @@ public class Inventory : IInventory
 		{
 			if (_items[i]?.Id == itemId)
 			{
-				ItemRemoved?.Invoke(_items[i]);
 				_items[i] = null;
+				ItemRemoved?.Invoke(_items[i]);
 			}
 		}
 	}
@@ -160,8 +160,8 @@ public class Inventory : IInventory
 		{
 			if (_items[i]?.HasSameIdAndProps(item) ?? false)
 			{
-				ItemRemoved?.Invoke(_items[i]);
 				_items[i] = null;
+				ItemRemoved?.Invoke(_items[i]);
 			}
 		}
 	}
@@ -262,7 +262,7 @@ public class Inventory : IInventory
 		}
 
 		var originalItem = item.Clone();
-		item = (item.Clone() as IItemStack)!;
+		item = item.Clone();
 
 		// Try to fill up existing item stacks
 		var nonFullStackIdx = GetFirstNonFull(item);
@@ -323,7 +323,7 @@ public class Inventory : IInventory
 		}
 
 		var originalItem = item.Clone();
-		item = item.Clone() as IItemStack;
+		item = item.Clone();
 
 		var itemIndex = First(item!.Id);
 		while (itemIndex != -1)

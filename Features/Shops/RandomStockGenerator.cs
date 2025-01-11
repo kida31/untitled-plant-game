@@ -20,12 +20,12 @@ public class RandomStockGenerator
 	/// <param name="n"></param>
 	/// <returns></returns>
 	[Obsolete]
-	public List<ItemStack> GetRandomPlaceholders(int n)
+	public List<IItemStack> GetRandomPlaceholders(int n)
 	{
 		Assert.AssertTrue(n > 0);
-		var items = new List<ItemStack>()
+		var items = new List<IItemStack>()
 			{
-				new("basil")
+				new ItemStack("basil")
 				{
 					Name = "Basil",
 					Category = ItemCategory.Seed,
@@ -33,7 +33,7 @@ public class RandomStockGenerator
 					BaseValue = 10,
 					Amount = 5
 				},
-				new("parsley")
+				new ItemStack("parsley")
 				{
 					Name = "Parsley",
 					Category = ItemCategory.Seed,
@@ -41,7 +41,7 @@ public class RandomStockGenerator
 					BaseValue = 15,
 					Amount = 3
 				},
-				new("mint")
+				new ItemStack("mint")
 				{
 					Name = "Mint",
 					Category = ItemCategory.Seed,
@@ -49,7 +49,7 @@ public class RandomStockGenerator
 					BaseValue = 20,
 					Amount = 2
 				},
-				new("cilantro")
+				new ItemStack("cilantro")
 				{
 					Name = "Cilantro",
 					Category = ItemCategory.Seed,
@@ -57,7 +57,7 @@ public class RandomStockGenerator
 					BaseValue = 12,
 					Amount = 8
 				},
-				new("oregano")
+				new ItemStack("oregano")
 				{
 					Name = "Oregano",
 					Category = ItemCategory.Seed,
@@ -65,7 +65,7 @@ public class RandomStockGenerator
 					BaseValue = 14,
 					Amount = 6
 				},
-				new("thyme")
+				new ItemStack("thyme")
 				{
 					Name = "Thyme",
 					Category = ItemCategory.Seed,
@@ -73,7 +73,7 @@ public class RandomStockGenerator
 					BaseValue = 18,
 					Amount = 4
 				},
-				new("rosemary")
+				new ItemStack("rosemary")
 				{
 					Name = "Rosemary",
 					Category = ItemCategory.Seed,
@@ -81,7 +81,7 @@ public class RandomStockGenerator
 					BaseValue = 25,
 					Amount = 2
 				},
-				new("sage")
+				new ItemStack("sage")
 				{
 					Name = "Sage",
 					Category = ItemCategory.Seed,
@@ -89,7 +89,7 @@ public class RandomStockGenerator
 					BaseValue = 17,
 					Amount = 7
 				},
-				new("chives")
+				new ItemStack("chives")
 				{
 					Name = "Chives",
 					Category = ItemCategory.Seed,
@@ -97,7 +97,7 @@ public class RandomStockGenerator
 					BaseValue = 13,
 					Amount = 10
 				},
-				new("dill")
+				new ItemStack("dill")
 				{
 					Name = "Dill",
 					Category = ItemCategory.Seed,
@@ -105,7 +105,7 @@ public class RandomStockGenerator
 					BaseValue = 11,
 					Amount = 9
 				},
-				new("lavender")
+				new ItemStack("lavender")
 				{
 					Name = "Lavender",
 					Category = ItemCategory.Seed,
@@ -113,7 +113,7 @@ public class RandomStockGenerator
 					BaseValue = 30,
 					Amount = 1
 				},
-				new("tarragon")
+				new ItemStack("tarragon")
 				{
 					Name = "Tarragon",
 					Category = ItemCategory.Seed,
@@ -121,7 +121,7 @@ public class RandomStockGenerator
 					BaseValue = 22,
 					Amount = 4
 				},
-				new("fennel")
+				new ItemStack("fennel")
 				{
 					Name = "Fennel",
 					Category = ItemCategory.Seed,
@@ -129,7 +129,7 @@ public class RandomStockGenerator
 					BaseValue = 16,
 					Amount = 6
 				},
-				new("marjoram")
+				new ItemStack("marjoram")
 				{
 					Name = "Marjoram",
 					Category = ItemCategory.Seed,
@@ -137,7 +137,7 @@ public class RandomStockGenerator
 					BaseValue = 19,
 					Amount = 5
 				},
-				new("lemonbalm")
+				new ItemStack("lemonbalm")
 				{
 					Name = "Lemon Balm",
 					Category = ItemCategory.Seed,
@@ -145,7 +145,7 @@ public class RandomStockGenerator
 					BaseValue = 14,
 					Amount = 8
 				},
-				new("chervil")
+				new ItemStack("chervil")
 				{
 					Name = "Chervil",
 					Category = ItemCategory.Seed,

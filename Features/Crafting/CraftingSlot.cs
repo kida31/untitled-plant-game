@@ -10,7 +10,7 @@ public partial class CraftingSlot
 	// We cooked.
 	public event Action<CraftingSlot> CraftTimeOut;
 	public event Action<double> ProgressChanged;
-	public ItemStack ItemStack { get; set; }
+	public IItemStack ItemStack { get; set; }
 	public bool IsCraftingComplete;
 	private bool _isCrafting; 
 	private double _currentTime;
@@ -22,7 +22,7 @@ public partial class CraftingSlot
 		_logger = new Logger("CraftingSlot");
 	}
 
-	public CraftingSlot(ItemStack item)
+	public CraftingSlot(IItemStack item)
 	{
 		_isCrafting = false;
 		ItemStack = item;
@@ -50,7 +50,7 @@ public partial class CraftingSlot
 		ProgressChanged?.Invoke(timeProgress);
 	}
 
-	public void AddItemAndStartCrafting(ItemStack itemStack, double craftTime)
+	public void AddItemAndStartCrafting(IItemStack itemStack, double craftTime)
 	{
 		ItemStack = itemStack;
 		_totalCraftTime = craftTime;

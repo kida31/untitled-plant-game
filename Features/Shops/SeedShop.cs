@@ -38,7 +38,7 @@ public class SeedShop : IShop
 
 	public IItemStack BuyItem(int slotIndex)
 	{
-		var item = _shopInventory.GetItem(slotIndex).Clone() as ItemStack;
+		var item = _shopInventory.GetItem(slotIndex).Clone() as IItemStack;
 		item!.Amount = 1;
 		ShopStockChanged?.Invoke(_shopInventory.GetItems());
 		_logger.Debug("[Buy] ShopStockChanged");
