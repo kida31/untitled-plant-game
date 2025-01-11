@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dduwl34jkllwr"
-path="res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"
+uid="uid://ddbxhrxrxirqa"
+path="res://.godot/imported/LeftInventory_filled.png-8470f3b7a28fb6c854710dbc4ff873dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/HUD/CurrentToolIndicator.png"
-dest_files=["res://.godot/imported/CurrentToolIndicator.png-a32fbecb17f288b167e221314d709710.ctex"]
+source_file="res://Assets/UI/Book/Pages/Demo/LeftInventory_filled.png"
+dest_files=["res://.godot/imported/LeftInventory_filled.png-8470f3b7a28fb6c854710dbc4ff873dd.ctex"]
 
 [params]
 

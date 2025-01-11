@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Features/Dialogue/DialogueUI.cs" id="1_hawac"]
 [ext_resource type="Texture2D" uid="uid://o4fvncrv04mo" path="res://Assets/Sprites/damage.png" id="2_cnal3"]
 [ext_resource type="Texture2D" uid="uid://be34y66w0usqf" path="res://Assets/UI/chatbox_rounded.png" id="3_2ukc1"]
-[ext_resource type="Texture2D" uid="uid://dvg3mpwor2ux0" path="res://Assets/UI/BookUI/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]
+[ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_soyak"]
 atlas = ExtResource("2_cnal3")
