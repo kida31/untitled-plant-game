@@ -11,7 +11,7 @@ namespace untitledplantgame.Inventory;
 ///     https://github.com/Bukkit/Bukkit/blob/master/src/main/java/org/bukkit/inventory/ItemStack.java
 /// </summary>
 [GlobalClass]
-[Obsolete("Did you mean to use the interface IItemStack? (This is not really obsolete)")]
+[Obsolete("Did you mean to use the interface IItemStack? (This is not really obsolete. Just a reminder)")]
 public partial class ItemStack : Resource, IItemStack
 {
 	[Export] public int Amount { get; set; }
