@@ -6,6 +6,7 @@ using Godot;
 /// </summary>
 public interface ITooltipable
 {
+	bool TooltipEnabled { get; }
 	string Title { get; }
 	string Description { get; }
 	Control Content { get; }

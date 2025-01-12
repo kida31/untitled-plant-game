@@ -17,6 +17,7 @@ public partial class InventoryItemView : Clickable, ITooltipable
 
 	private Logger _logger;
 	public IItemStack ItemStack;
+	public bool TooltipEnabled => ItemStack != null;
 	public string Title => ItemStack?.Name;
 	public string Description => ItemStack?.ToolTipDescription;
 	public Control Content => null;

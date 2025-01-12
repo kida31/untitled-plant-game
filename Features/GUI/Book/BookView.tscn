@@ -58,8 +58,9 @@ anchor_bottom = 0.0
 offset_left = 1.0
 offset_right = 193.0
 script = ExtResource("6_qmcko")
-_fadeInSpeed = 1.0
-_delay = 0.5
+_fadeInSpeed = 22.0
+_fadeOutSpeed = 5.0
+_delay = 0.0
 _offset = Vector2(0, 0)
 
 [node name="CursorHand" parent="." instance=ExtResource("7_vpmxr")]
