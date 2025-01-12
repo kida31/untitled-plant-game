@@ -28,7 +28,7 @@ public partial class Player : CharacterBody2D
 	private Vector2 _frontDirection = Vector2.Down; // The direction the player is facing.
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
-	private BigInventory _inventory = new(20);
+	private BigInventory _inventory;
 
 	private Toolbelt _toolbelt = new (
 		new Tool[]
@@ -53,7 +53,7 @@ public partial class Player : CharacterBody2D
 
 		// Initialize inventory
 		var rand = new RandomStockGenerator();
-		_inventory = new();
+		_inventory = new(20);
 		_inventory.InventoryChanged += () =>
 		{
 			EventBus.Instance.PlayerInventoryChanged(this, _inventory);

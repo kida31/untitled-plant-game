@@ -31,10 +31,7 @@ public class BigInventory : IInventory
 	
 	private readonly Dictionary<ItemCategory, IInventory> _inventories;
 	private readonly Logger _logger = new("BigInventory");
-
-	public BigInventory()
-		: this(20) { }
-
+	
 	public BigInventory(int size)
 	{
 		_inventories = new Dictionary<ItemCategory, IInventory>
