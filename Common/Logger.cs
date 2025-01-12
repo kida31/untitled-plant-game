@@ -1,12 +1,14 @@
-﻿using System;
+using System;
 using Godot;
 
 namespace untitledplantgame.Common;
 
+//TODO: Revert changes here before merge
+
 enum LogLevel
 {
-	Info, // Grey
 	Debug, // Blue
+	Info, // Grey
 	Warn, // Yellow
 	Error, // Red
 }
@@ -51,6 +53,7 @@ public class Logger
 
 	private void Log(LogLevel level, string message)
 	{
+		if (level < LogLevel.Info) return;
 		var logMessage = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} [{level}] |{_name}| {message}";
 
 		if (_logFilePath != null)
