@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://e3t5fwq4qne3" path="res://Features/GUI/Book/Pages/WikiPage.tscn" id="4_t387j"]
 [ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="5_75ox1"]
 [ext_resource type="Script" path="res://Features/GUI/GlobalTooltip.cs" id="6_qmcko"]
-[ext_resource type="PackedScene" path="res://Features/GUI/CursorHandView.tscn" id="7_vpmxr"]
+[ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="7_vpmxr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkcs2"]
 draw_center = false
