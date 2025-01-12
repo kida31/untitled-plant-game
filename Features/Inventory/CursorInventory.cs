@@ -170,6 +170,87 @@ public class CursorInventory : ICursorInventory
 		}
 	}
 
+	// Handle RMB
+	public void HandleSecondary(IInventory inventory, int itemIndex)
+	{
+		var targetItem = inventory.GetItem(itemIndex);
+		
+		// Empty Hand, Empty Slot
+		// LMB - Nothing
+		// RMB - Nothing
+		if (_content == null && targetItem == null)
+		{
+			return;
+		}
+		
+		// Empty Hand, 50 Slot
+		// LMB - Take 50
+		// RMB - Take 1
+		if (_content == null && targetItem != null)
+		{
+			var result = inventory.PopItemFromSlot(itemIndex, 1);
+			if (result == null)
+			{
+				_logger.Error("Failed to pick up item");
+				return;
+			}
+
+			_content = result;
+			ContentChanged?.Invoke();
+			return;
+		}
+
+		// 50 Hand, 50 Slot
+		// LMB - Drop 50 (stack) or swap or do nothing
+		// RMB - Take 1 (stack) or nothing
+		if (_content != null && targetItem != null)
+		{
+			// is stackable in hand?
+			if (!_content.HasSameIdAndProps(targetItem))
+			{
+				// swap or do nothing
+				return;
+			}
+			
+			var item = inventory.PopItemFromSlot(itemIndex, 1);
+			if (item == null)
+			{
+				_logger.Error("Failed to pick up item");
+				return;
+			}
+
+			_content.Amount += 1;
+			ContentChanged?.Invoke();
+			return;
+		}
+
+		// 50 Hand, Empty Slot
+		// LMB - Drop 50
+		// RMB - Drop 1
+		if (_content != null && inventory.GetItem(itemIndex) == null)
+		{
+			var addedItem = _content.Clone();
+			addedItem.Amount = 1;
+			
+			var remainder = inventory.AddItemToSlot(itemIndex, addedItem);
+			if (remainder != null)
+			{
+				_logger.Error("Failed to put down item");
+				return;
+			}
+
+			_content.Amount -= 1;
+			if (_content.Amount == 0)
+			{
+				ClearContent();
+			}
+			ContentChanged?.Invoke();
+			return;
+		}
+		
+		_logger.Debug("Secondary -> Nothing to do here");
+	}
+
 	public bool CanClick(IInventory inventory, int itemIndex)
 	{
 		return new List<Func<IInventory, int, bool>> {CanPickUp, CanPutDown, CanStack, CanSwap}.Any(f => f(inventory, itemIndex));
@@ -189,13 +270,12 @@ public class CursorInventory : ICursorInventory
 			return;
 		}
 
-		var result = inventory.RemoveItem(item);
-		if (result.Count != 0)
+		var result = inventory.RemoveItemFromSlot(itemIndex, item);
+		if (result != null)
 		{
 			_logger.Error("");
 			return;
 		}
-
 
 		_content = item;
 		_pickupOrigin = inventory;

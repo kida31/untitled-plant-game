@@ -69,6 +69,14 @@ public partial class Clickable : Control, IPressable, IFocusable, ISeconaryPress
 			Pressed?.Invoke();
 		}
 
+		if (@event is InputEventMouseButton rmb)
+		{
+			if (rmb.ButtonIndex == MouseButton.Right && rmb.Pressed)
+			{
+				SecondaryPressed?.Invoke();
+			}
+		}
+		
 		if (@event.IsActionPressed(UINavigation.SecondaryAccept))
 		{
 			SecondaryPressed?.Invoke();
