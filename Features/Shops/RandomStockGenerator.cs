@@ -12,7 +12,7 @@ namespace untitledplantgame.Shops;
 /// </summary>
 public class RandomStockGenerator
 {
-	private static readonly Random Rand = new(7);
+	private static readonly Random Rand = new(34);
 
 	/// <summary>
 	///     Generates random placeholder items. These do not exist in the game.
