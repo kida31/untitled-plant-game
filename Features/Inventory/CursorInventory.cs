@@ -210,13 +210,6 @@ public class CursorInventory : ICursorInventory
 		// RMB - Take 1 (stack) or nothing
 		if (_content != null && targetItem != null)
 		{
-			// is stackable in hand?
-			if (!_content.HasSameIdAndProps(targetItem))
-			{
-				// do nothing (could consider swapping)
-				return;
-			}
-
 			TryTakeOne();
 			return;
 		}
@@ -248,6 +241,13 @@ public class CursorInventory : ICursorInventory
 
 		void TryTakeOne()
 		{
+			// !(is stackable in hand or hand is empty)
+			if (_content != null && !_content.HasSameIdAndProps(targetItem))
+			{
+				// do nothing (could consider swapping)
+				return;
+			}
+			
 			var itemStack = inventory.PopItemFromSlot(itemIndex, 1);
 			if (itemStack == null)
 			{
@@ -255,7 +255,15 @@ public class CursorInventory : ICursorInventory
 				return;
 			}
 
-			_content = itemStack;
+			if (_content == null)
+			{
+				_content = itemStack;	
+			}
+			else
+			{
+				_content.Amount += 1;
+			}
+			
 			ContentChanged?.Invoke();
 		}
 	}
@@ -330,15 +338,15 @@ public class CursorInventory : ICursorInventory
 
 	public void Swap(IInventory inventory, int itemIndex)
 	{
-		var item = inventory.GetItem(itemIndex)?.Clone();
-		if (item == null || _content == null)
+		var itemAtDestination = inventory.GetItem(itemIndex)?.Clone();
+		if (itemAtDestination == null || _content == null)
 		{
 			_logger.Error("Nothing to swap here");
 			return;
 		}
 
-		var result = inventory.RemoveItem(item);
-		if (result.Count > 0)
+		var result = inventory.RemoveItemFromSlot(itemIndex, itemAtDestination);
+		if (result != null)
 		{
 			_logger.Error("Could not get item out of target inventory");
 			return;
@@ -351,7 +359,7 @@ public class CursorInventory : ICursorInventory
 			ItemOrphaned?.Invoke(_content);
 		}
 
-		_content = item;
+		_content = itemAtDestination;
 		_logger.Info("Swapped item");
 		ContentChanged?.Invoke();
 	}
