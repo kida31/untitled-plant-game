@@ -1,4 +1,5 @@
 using Godot;
+using untitledplantgame.GUI.Components;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.GUI.Book.Wiki;
@@ -6,7 +7,7 @@ namespace untitledplantgame.GUI.Book.Wiki;
 /// <summary>
 ///     Displays an item in the wiki.
 /// </summary>
-public partial class WikiRelatedItemView : Components.Clickable, ITooltipable
+public partial class WikiRelatedItemView : Clickable, ITooltipable
 {
 	[Export]
 	private TextureRect _iconRect;

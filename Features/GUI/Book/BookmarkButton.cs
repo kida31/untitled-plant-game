@@ -1,4 +1,5 @@
 using Godot;
+using untitledplantgame.GUI.Components;
 
 namespace untitledplantgame.GUI.Book;
 
@@ -8,7 +9,7 @@ namespace untitledplantgame.GUI.Book;
 ///     The state is represented by two textures.
 /// </summary>
 [Tool]
-public partial class BookmarkButton : Components.Clickable
+public partial class BookmarkButton : Clickable
 {
 	private bool _active;
 

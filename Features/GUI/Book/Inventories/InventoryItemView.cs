@@ -1,5 +1,6 @@
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.GUI.Components;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.GUI.Book.Inventories;
@@ -8,7 +9,7 @@ namespace untitledplantgame.GUI.Book.Inventories;
 ///     This class is a view for an inventory item. It displays the name, quantity, and icon.
 ///     Note: The name is currently hidden per default.
 /// </summary>
-public partial class InventoryItemView : Components.Clickable, ITooltipable
+public partial class InventoryItemView : Clickable, ITooltipable
 {
 	[Export] private Label _displayItemName;
 	[Export] private Label _itemCurrentQuantity;
