@@ -13,56 +13,39 @@ namespace untitledplantgame.GUI.Book.Inventories;
 /// </summary>
 public partial class InventoryTabsView : Control
 {
-	// private List<InventoryView> _tabs;
-
-	private readonly Dictionary<InventoryCategoryTab, Action> _buttonActions = new();
-
-	private int _currentTab = -1;
-
-	private List<IInventory> _inventories = new();
-
+	public event Action<long> TabChanged;
+	
 	[Export] private PackedScene _inventoryCategoryTabPrefab;
 	[Export] private InventoryView _inventoryView;
-
 	[Export] private Container _tabButtonContainer;
-
-	private List<InventoryCategoryTab> _tabButtons;
 
 	private int CurrentTab
 	{
 		get => _currentTab;
 		set
 		{
+			var oldValue = _currentTab;
 			_currentTab = Math.Clamp(value, 0, _inventories.Count);
-			TabChanged?.Invoke(_currentTab);
+			if (oldValue != _currentTab)
+			{
+				TabChanged?.Invoke(_currentTab);
+			}
 		}
 	}
 
-	public event Action<long> TabChanged;
+	private int _currentTab;
+	private List<IInventory> _inventories = new();
+	private readonly Dictionary<InventoryCategoryTab, Action> _buttonActions = new();
+	private List<InventoryCategoryTab> _tabButtons;
+	private Logger _logger;
 
 	public override void _Ready()
 	{
+		_logger = new(this);
 		_tabButtons = _tabButtonContainer.GetChildren().OfType<InventoryCategoryTab>().ToList();
 
-		TabChanged += OnTabChanged;
+		TabChanged += _ => ForceUpdateView();
 		TabChanged += _ => CursorInventory.Instance.ReturnPickUp();
-	}
-
-	private void OnTabChanged(long tab)
-	{
-		var activeIndex = (int) tab;
-		if (activeIndex < 0 || activeIndex >= _inventories.Count)
-		{
-			return;
-		}
-
-		for (var i = 0; i < _tabButtons.Count; i++)
-		{
-			var button = _tabButtons[i];
-			button.SetIsActive(i == activeIndex);
-		}
-
-		ForceUpdateView();
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -157,15 +140,13 @@ public partial class InventoryTabsView : Control
 			button.Pressed += ButtonAction;
 		}
 
-		_inventories = inventories;
-		if (CurrentTab < 0 || CurrentTab >= inventories.Count)
+		if (_inventories == null || _inventories.Count == 0)
 		{
+			// First initialization
 			CurrentTab = 0;
 		}
-		else
-		{
-			ForceUpdateView();
-		}
+		_inventories = inventories;
+		ForceUpdateView();
 	}
 
 	public new void GrabFocus()
@@ -177,6 +158,11 @@ public partial class InventoryTabsView : Control
 	{
 		try
 		{
+			for (var i = 0; i < _tabButtons.Count; i++)
+			{
+				_tabButtons[i].SetIsActive(i == CurrentTab);
+			}
+			
 			var inventory = _inventories[CurrentTab];
 			_inventoryView.UpdateInventory(inventory);
 		}
