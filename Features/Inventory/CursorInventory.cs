@@ -170,31 +170,39 @@ public class CursorInventory : ICursorInventory
 		}
 	}
 
-	// Handle RMB
+	/// <summary>
+	///     Handles secondary transaction/feature on some other inventory
+	///     If cursor has content and target inventory has item, it will try to take one item if stackable
+	///     If cursor has no item and target inventory has item, it will try to take one item.
+	///     If cursor has content and target inventory has no empty, it will try to put down one item.
+	///     If cursor has no item and target inventory has no item, it will do nothing.
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
 	public void HandleSecondary(IInventory inventory, int itemIndex)
 	{
 		var targetItem = inventory.GetItem(itemIndex);
-		
+
 		// Empty Hand, Empty Slot
 		// RMB - Nothing
 		if (_content == null && targetItem == null)
 		{
 			return;
 		}
-		
+
+		// 50 Hand, Empty Slot
+		// RMB - Drop 1
+		if (_content != null && targetItem == null)
+		{
+			TryDropOne();
+			return;
+		}
+
 		// Empty Hand, 50 Slot
 		// RMB - Take 1
 		if (_content == null && targetItem != null)
 		{
-			var result = inventory.PopItemFromSlot(itemIndex, 1);
-			if (result == null)
-			{
-				_logger.Error("Failed to pick up item");
-				return;
-			}
-
-			_content = result;
-			ContentChanged?.Invoke();
+			TryTakeOne();
 			return;
 		}
 
@@ -205,29 +213,23 @@ public class CursorInventory : ICursorInventory
 			// is stackable in hand?
 			if (!_content.HasSameIdAndProps(targetItem))
 			{
-				// swap or do nothing
-				return;
-			}
-			
-			var item = inventory.PopItemFromSlot(itemIndex, 1);
-			if (item == null)
-			{
-				_logger.Error("Failed to pick up item");
+				// do nothing (could consider swapping)
 				return;
 			}
 
-			_content.Amount += 1;
-			ContentChanged?.Invoke();
+			TryTakeOne();
 			return;
 		}
 
-		// 50 Hand, Empty Slot
-		// RMB - Drop 1
-		if (_content != null && inventory.GetItem(itemIndex) == null)
+		_logger.Debug("Secondary -> Nothing to do here");
+		return;
+
+		// Helpers
+		void TryDropOne()
 		{
 			var addedItem = _content.Clone();
 			addedItem.Amount = 1;
-			
+
 			var remainder = inventory.AddItemToSlot(itemIndex, addedItem);
 			if (remainder != null)
 			{
@@ -240,16 +242,27 @@ public class CursorInventory : ICursorInventory
 			{
 				ClearContent();
 			}
+
 			ContentChanged?.Invoke();
-			return;
 		}
-		
-		_logger.Debug("Secondary -> Nothing to do here");
+
+		void TryTakeOne()
+		{
+			var itemStack = inventory.PopItemFromSlot(itemIndex, 1);
+			if (itemStack == null)
+			{
+				_logger.Error("Failed to pick up item");
+				return;
+			}
+
+			_content = itemStack;
+			ContentChanged?.Invoke();
+		}
 	}
 
 	public bool CanClick(IInventory inventory, int itemIndex)
 	{
-		return new List<Func<IInventory, int, bool>> {CanPickUp, CanPutDown, CanStack, CanSwap}.Any(f => f(inventory, itemIndex));
+		return new List<Func<IInventory, int, bool>> { CanPickUp, CanPutDown, CanStack, CanSwap }.Any(f => f(inventory, itemIndex));
 	}
 
 	public bool CanPickUp(IInventory inventory, int itemIndex)
