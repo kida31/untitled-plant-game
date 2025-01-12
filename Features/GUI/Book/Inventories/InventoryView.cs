@@ -30,11 +30,7 @@ public partial class InventoryView : Control
 
 		VisibilityChanged += () =>
 		{
-			if (IsVisibleInTree())
-			{
-				OnVisibilityOn();
-			}
-			else
+			if (!IsVisibleInTree())
 			{
 				OnVisibilityOff();
 			}
@@ -131,9 +127,5 @@ public partial class InventoryView : Control
 	private void OnVisibilityOff()
 	{
 		CursorInventory.Instance.ReturnPickUp();
-	}
-
-	private void OnVisibilityOn()
-	{
 	}
 }
