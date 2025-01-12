@@ -8,7 +8,7 @@ namespace untitledplantgame.GUI.Book;
 ///     The state is represented by two textures.
 /// </summary>
 [Tool]
-public partial class BookmarkButton : Clickable
+public partial class BookmarkButton : Components.Clickable
 {
 	private bool _active;
 
