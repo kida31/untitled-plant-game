@@ -6,7 +6,7 @@ namespace untitledplantgame.GUI.Book.Wiki;
 /// <summary>
 ///     Displays an item in the wiki.
 /// </summary>
-public partial class WikiRelatedItemView : Clickable, ITooltipable
+public partial class WikiRelatedItemView : Components.Clickable, ITooltipable
 {
 	[Export]
 	private TextureRect _iconRect;

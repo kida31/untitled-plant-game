@@ -8,7 +8,7 @@ namespace untitledplantgame.GUI.Book.Inventories;
 ///     This class is a view for an inventory item. It displays the name, quantity, and icon.
 ///     Note: The name is currently hidden per default.
 /// </summary>
-public partial class InventoryItemView : Clickable, ITooltipable
+public partial class InventoryItemView : Components.Clickable, ITooltipable
 {
 	[Export] private Label _displayItemName;
 	[Export] private Label _itemCurrentQuantity;

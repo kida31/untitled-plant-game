@@ -1,12 +1,12 @@
 using Godot;
 
-namespace untitledplantgame.GUI.Book;
+namespace untitledplantgame.GUI.Book.Inventories;
 
 /// <summary>
 ///     InventoryCategoryTab is a clickable button that represents a category in the inventory.
 /// </summary>
 [Tool]
-public partial class InventoryCategoryTab : Clickable
+public partial class InventoryCategoryTab : Components.Clickable
 {
 	private const string ActivateAnimation = "Activate";
 
