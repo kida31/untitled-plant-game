@@ -40,7 +40,7 @@ public partial class InventoryItemView : Clickable, ITooltipable
 		else
 		{
 			// Placeholders: 
-			_displayItemName.Text = itemStack.Name ?? "Placeholder_ItemName";
+			_displayItemName.Text = itemStack.Name;
 			_itemCurrentQuantity.Text = itemStack.Amount.ToString();
 			_itemTextureRect.Texture = itemStack.Icon;
 
