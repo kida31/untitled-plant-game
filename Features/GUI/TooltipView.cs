@@ -35,7 +35,7 @@ public partial class TooltipView : Control
 		set => SetDescription(value);
 	}
 
-	[MayBeBuggy("Not thoroughly tested")]
+	[Unstable("Not thoroughly tested")]
 	public List<Control> CustomContent
 	{
 		get => _customContent;
