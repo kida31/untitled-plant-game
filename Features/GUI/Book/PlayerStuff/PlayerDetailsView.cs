@@ -16,16 +16,35 @@ public partial class PlayerDetailsView : Control
 
 	public override void _Ready()
 	{
-		SetPlayerDetails(null);
+		UpdateGold(0);
+		UpdateItemsSold(0);
+		UpdatePlantsHarvested(0);
+		UpdatePlantsDied(0);
+		UpdateFaith(0);
 	}
-
-	public void SetPlayerDetails(object _)
+	
+	public void UpdateGold(int value)
 	{
-		label1.Text = "Total Gold: 0";
-		label2.Text = "Items Sold: 0";
-		label3.Text = "Plants harvested: 0";
-		label4.Text = "Plants died: 0";
-
-		_faithProgressBar.Value = 2.66;
+		label1.Text = $"Total Gold: {value}";
+	}
+	
+	public void UpdateItemsSold(int value)
+	{
+		label2.Text = $"Items Sold: {value}";
+	}
+	
+	public void UpdatePlantsHarvested(int value)
+	{
+		label3.Text = $"Plants harvested: {value}";
+	}
+	
+	public void UpdatePlantsDied(int value)
+	{
+		label4.Text = $"Plants died: {value}";
+	}
+	
+	public void UpdateFaith(float value)
+	{
+		_faithProgressBar.Value = value;
 	}
 }

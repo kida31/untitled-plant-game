@@ -34,6 +34,10 @@ public partial class PlayerInventoryPage : Control
 
 	public void UpdatePlayerDetails(object obj)
 	{
-		_playerDetails.SetPlayerDetails(obj);
+		_playerDetails.UpdateGold(0);
+		_playerDetails.UpdateItemsSold(0);
+		_playerDetails.UpdatePlantsHarvested(0);
+		_playerDetails.UpdatePlantsDied(0);
+		_playerDetails.UpdateFaith(0);
 	}
 }
