@@ -176,7 +176,6 @@ public class CursorInventory : ICursorInventory
 		var targetItem = inventory.GetItem(itemIndex);
 		
 		// Empty Hand, Empty Slot
-		// LMB - Nothing
 		// RMB - Nothing
 		if (_content == null && targetItem == null)
 		{
@@ -184,7 +183,6 @@ public class CursorInventory : ICursorInventory
 		}
 		
 		// Empty Hand, 50 Slot
-		// LMB - Take 50
 		// RMB - Take 1
 		if (_content == null && targetItem != null)
 		{
@@ -201,7 +199,6 @@ public class CursorInventory : ICursorInventory
 		}
 
 		// 50 Hand, 50 Slot
-		// LMB - Drop 50 (stack) or swap or do nothing
 		// RMB - Take 1 (stack) or nothing
 		if (_content != null && targetItem != null)
 		{
@@ -225,7 +222,6 @@ public class CursorInventory : ICursorInventory
 		}
 
 		// 50 Hand, Empty Slot
-		// LMB - Drop 50
 		// RMB - Drop 1
 		if (_content != null && inventory.GetItem(itemIndex) == null)
 		{
