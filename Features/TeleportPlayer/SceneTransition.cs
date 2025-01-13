@@ -1,8 +1,7 @@
-using System;
 using System.Threading.Tasks;
 using Godot;
 
-public partial class SceneTransition : CanvasLayer
+public partial class SceneTransition : Control
 {
 	private AnimationPlayer animationPlayer;
 
