@@ -13,8 +13,7 @@ public partial class SoilTile : Area2D, IWaterable
 	private const float RainyHydrationRate = 100;
 	private const float SnowyHydrationRate = 50;
 
-	[Export]
-	public float Hydration { get; private set; }
+	[Export] public float Hydration { get; private set; }
 	public event Action<float, SoilTile> HydrationChanged;
 	private float Fertilization { get; set; }
 	private Logger _logger;
@@ -76,14 +75,14 @@ public partial class SoilTile : Area2D, IWaterable
 	public void AddWater(float addedWater)
 	{
 		Hydration = Math.Min(Hydration + addedWater, MaxHydration);
+		HydrationChanged?.Invoke(Hydration, this);
 	}
-
+	
 	public void PlantSeed(Plant plant)
 	{
 		plant.Tile = this;
 		AddChild(plant);
-
+		
 		EventBus.Instance.SeedPlanted(plant);
 	}
-
 }

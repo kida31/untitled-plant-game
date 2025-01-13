@@ -19,5 +19,4 @@ public partial class VendingMachineInteractable : AInteractable
 
 		EventBus.Instance.BeforeVendingMachineOpen(_vendingMachine);
 	}
-
 }

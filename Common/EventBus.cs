@@ -203,7 +203,7 @@ public partial class EventBus : Node
 	{
 		return OnGetItemSlot?.Invoke();
 	}
-	
+
 	public event Action<ICraftingStation> BeforeCraftingStationUiOpened;
 
 	public void BeforeCraftingStationUiOpen(ICraftingStation craftingStation)
