@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckpxuei42sa5c"]
 
 [ext_resource type="PackedScene" uid="uid://3ndp3em1fi7h" path="res://Scenes/GUIContainer.tscn" id="1_c43ed"]
-[ext_resource type="PackedScene" uid="uid://cv1fhyjs170lk" path="res://Scenes/GameWorldContainer.tscn" id="1_ojx0t"]
+[ext_resource type="PackedScene" uid="uid://cv1fhyjs170lk" path="res://Scenes/GameWorldContainer.tscn" id="3_m582q"]
 
 [node name="Main" type="Node"]
 
-[node name="GameWorldContainer" parent="." instance=ExtResource("1_ojx0t")]
-
 [node name="GUIContainer" parent="." instance=ExtResource("1_c43ed")]
+
+[node name="GameWorldContainer" parent="." instance=ExtResource("3_m582q")]

@@ -74,7 +74,7 @@ public partial class VendingMachineUI : Control
 
 	private void CloseThis()
 	{
-		GameStateMachine.Instance.RevertState();
+		GameStateMachine.Instance.ChangeState(GameState.FreeRoam);
 		Hide();
 	}
 

@@ -39,6 +39,7 @@ DialogueDatabase="*res://Features/Dialogue/DialogueDatabase.cs"
 CollisionManager="*res://Features/Player/CollisionManager.cs"
 DialogueSystem="*res://Features/Dialogue/DialogueSystem.cs"
 CurrencyFaithOfficer="*res://Features/Systems/CurrencyFaithOfficer.cs"
+TeleportPlayer="*res://Features/TeleportPlayer/TeleportPlayer.cs"
 
 [display]
 
