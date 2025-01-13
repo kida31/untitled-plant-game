@@ -39,6 +39,7 @@ DialogueDatabase="*res://Features/Dialogue/DialogueDatabase.cs"
 CollisionManager="*res://Features/Player/CollisionManager.cs"
 DialogueSystem="*res://Features/Dialogue/DialogueSystem.cs"
 CurrencyFaithOfficer="*res://Features/Systems/CurrencyFaithOfficer.cs"
+TeleportPlayer="*res://Features/TeleportPlayer/TeleportPlayer.cs"
 
 [display]
 
@@ -52,7 +53,7 @@ project/assembly_name="untitled-plant-game"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/upg_utils/plugin.cfg")
 
 [global_group]
 
