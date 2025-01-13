@@ -1,4 +1,5 @@
 using untitledplantgame.Common;
+using untitledplantgame.NPC;
 
 // This namespace is for stuff that should not be talked about (should not be referenced)
 namespace untitledplantgame.donottalktome;

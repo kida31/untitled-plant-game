@@ -1,6 +1,7 @@
-// using System.Text.RegularExpressions;
 using Godot;
 using untitledplantgame.Common;
+
+namespace untitledplantgame.NPC;
 
 // Alternative name AAreaInteractable, to emphasize that it is using an Area
 /// <summary>

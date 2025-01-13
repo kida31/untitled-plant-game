@@ -1,6 +1,7 @@
 using System.Threading;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.NPC;
 
 // TODO: Each NPC should not need to be its own class
 // TODO: Refactor to use a single NPC class with a property for the NPC's name and other common properties
