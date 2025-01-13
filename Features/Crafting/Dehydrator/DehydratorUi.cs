@@ -71,7 +71,7 @@ public partial class DehydratorUi : Control
 		Visible = false;
 	}
 
-	private void OnCraftingStationUiItemInserted(IItemStack item, int slotIndex)
+	private void OnCraftingStationUiItemInserted(ItemStack item, int slotIndex)
 	{
 		var slot = _craftingStation.CraftingSlots[slotIndex];
 		Assert.AssertEquals(slot.ItemStack, item);

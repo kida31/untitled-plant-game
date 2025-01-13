@@ -1,4 +1,3 @@
-﻿using System;
 using System.Linq;
 using Godot;
 using Godot.Collections;
@@ -11,7 +10,6 @@ namespace untitledplantgame.Inventory;
 ///     https://github.com/Bukkit/Bukkit/blob/master/src/main/java/org/bukkit/inventory/ItemStack.java
 /// </summary>
 [GlobalClass]
-[Obsolete("Did you mean to use the interface IItemStack? (This is not really obsolete. Just a reminder)")]
 public partial class ItemStack : Resource, IItemStack
 {
 	[Export] public int Amount { get; set; }
@@ -51,20 +49,6 @@ public partial class ItemStack : Resource, IItemStack
 	{
 		_logger = new Logger("ItemStack");
 		Components = new();
-	}
-
-	public ItemStack(IItemStack item)
-	{
-		Id = item.Id;
-		Name = item.Name;
-		Icon = item.Icon;
-		ToolTipDescription = item.ToolTipDescription;
-		WikiDescription = item.WikiDescription;
-		Category = item.Category;
-		MaxStackSize = item.MaxStackSize;
-		BaseValue = item.BaseValue;
-		Amount = item.Amount;
-		Components = item.Components.Duplicate(true); // I doubt this actually deep copies
 	}
 
 	public ItemStack(string id,

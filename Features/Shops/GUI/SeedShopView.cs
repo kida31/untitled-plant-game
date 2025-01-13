@@ -140,7 +140,7 @@ public partial class SeedShopView : Control
 		_tooltipView.Show();
 	}
 
-	private void SetShopUIContent(List<IItemStack> items)
+	private void SetShopUIContent(List<ItemStack> items)
 	{
 		for (var i = 0; i < _shopSlots.Count; i++)
 		{

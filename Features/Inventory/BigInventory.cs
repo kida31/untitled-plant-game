@@ -50,7 +50,7 @@ public class BigInventory : IInventory
 		return _inventories[category];
 	}
 
-	public IEnumerator<IItemStack> GetEnumerator()
+	public IEnumerator<ItemStack> GetEnumerator()
 	{
 		return _inventories.Values.SelectMany(inventory => inventory).GetEnumerator();
 	}
@@ -66,7 +66,7 @@ public class BigInventory : IInventory
 	/// </summary>
 	/// <param name="index"></param>
 	/// <returns></returns>
-	public IItemStack GetItem(int index)
+	public ItemStack GetItem(int index)
 	{
 		foreach (var inventory in _inventories.Values)
 		{
@@ -81,7 +81,7 @@ public class BigInventory : IInventory
 		return null;
 	}
 
-	public void SetItem(int index, IItemStack item)
+	public void SetItem(int index, ItemStack item)
 	{
 		foreach (var inventory in _inventories.Values)
 		{
@@ -95,9 +95,9 @@ public class BigInventory : IInventory
 		}
 	}
 
-	public Dictionary<int, IItemStack> AddItem(params IItemStack[] items)
+	public Dictionary<int, ItemStack> AddItem(params ItemStack[] items)
 	{
-		var overflow = new Dictionary<int, IItemStack>();
+		var overflow = new Dictionary<int, ItemStack>();
 		for (var index = 0; index < items.Length; index++)
 		{
 			var item = items[index];
@@ -124,9 +124,9 @@ public class BigInventory : IInventory
 		return overflow;
 	}
 
-	public Dictionary<int, IItemStack> RemoveItem(params IItemStack[] items)
+	public Dictionary<int, ItemStack> RemoveItem(params ItemStack[] items)
 	{
-		var remainders = new Dictionary<int, IItemStack>();
+		var remainders = new Dictionary<int, ItemStack>();
 		for (var index = 0; index < items.Length; index++)
 		{
 			var item = items[index];
@@ -150,12 +150,12 @@ public class BigInventory : IInventory
 		return remainders;
 	}
 
-	public List<IItemStack> GetItems()
+	public List<ItemStack> GetItems()
 	{
 		return _inventories.Values.SelectMany(inventory => inventory.GetItems()).ToList();
 	}
 
-	public void SetContents(List<IItemStack> items)
+	public void SetContents(List<ItemStack> items)
 	{
 		if (items.Count > Size)
 		{
@@ -177,7 +177,7 @@ public class BigInventory : IInventory
 		return _inventories.Values.Any(inventory => inventory.Contains(itemId));
 	}
 
-	public bool Contains(IItemStack item)
+	public bool Contains(ItemStack item)
 	{
 		return _inventories[item.Category].Contains(item);
 	}
@@ -187,14 +187,14 @@ public class BigInventory : IInventory
 		return _inventories.Values.Any(inventory => inventory.Contains(itemId, amount));
 	}
 
-	public bool Contains(IItemStack item, int amount)
+	public bool Contains(ItemStack item, int amount)
 	{
 		return _inventories[item.Category].Contains(item, amount);
 	}
 
-	public Dictionary<int, IItemStack> All(string itemId)
+	public Dictionary<int, ItemStack> All(string itemId)
 	{
-		var results = new Dictionary<int, IItemStack>();
+		var results = new Dictionary<int, ItemStack>();
 		var index = 0;
 		foreach (var inventory in _inventories.Values)
 		{
@@ -210,10 +210,10 @@ public class BigInventory : IInventory
 		return results;
 	}
 
-	public Dictionary<int, IItemStack> All(IItemStack item)
+	public Dictionary<int, ItemStack> All(ItemStack item)
 	{
 		var indexOffset = 0;
-		var results = new Dictionary<int, IItemStack>();
+		var results = new Dictionary<int, ItemStack>();
 		foreach (var (category, inventory) in _inventories)
 		{
 			
@@ -251,7 +251,7 @@ public class BigInventory : IInventory
 		return -1;
 	}
 
-	public int First(IItemStack item)
+	public int First(ItemStack item)
 	{
 		var indexOffset = 0;
 		foreach (var (category, inventory) in _inventories)
@@ -281,7 +281,7 @@ public class BigInventory : IInventory
 		}
 	}
 
-	public void RemoveAll(IItemStack item)
+	public void RemoveAll(ItemStack item)
 	{
 		foreach (var inventory in _inventories.Values)
 		{
@@ -311,9 +311,9 @@ public class BigInventory : IInventory
 		}
 	}
 
-	public Dictionary<int, IItemStack> GetItemsOfCategory(ItemCategory category)
+	public Dictionary<int, ItemStack> GetItemsOfCategory(ItemCategory category)
 	{
-		var results = new Dictionary<int, IItemStack>();
+		var results = new Dictionary<int, ItemStack>();
 		var indexOffset = 0;
 		var localResults = _inventories[category].GetItemsOfCategory(category);
 		foreach (var (index, stack) in localResults)
@@ -333,7 +333,7 @@ public class BigInventory : IInventory
 		}
 	}
 
-	public IItemStack AddItemToSlot(int slotIdx, IItemStack item)
+	public ItemStack AddItemToSlot(int slotIdx, ItemStack item)
 	{
 		foreach (var inventory in _inventories.Values)
 		{

@@ -5,6 +5,6 @@ namespace untitledplantgame.VendingMachine;
 
 public interface IItemSlotUI
 {
-	IItemStack ItemStack { get; set; }
+	ItemStack ItemStack { get; set; }
 	public event Action Pressed;
 }

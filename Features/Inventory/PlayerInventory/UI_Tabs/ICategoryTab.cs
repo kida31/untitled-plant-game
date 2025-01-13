@@ -5,6 +5,6 @@ namespace untitledplantgame.Inventory.PlayerInventory.UI_Tabs;
 public interface ICategoryTab
 {
 	void SetTabInventorySize(int inventorySize);
-	void UpdateTabUi(IItemStack item);
-	void DropInventoryItemToNewSlot(IItemStack item, int slot);
+	void UpdateTabUi(ItemStack item);
+	void DropInventoryItemToNewSlot(ItemStack item, int slot);
 }

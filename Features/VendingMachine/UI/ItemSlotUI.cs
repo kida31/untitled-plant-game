@@ -21,13 +21,13 @@ public partial class ItemSlotUI : Control, IItemSlotUI
 	[Export]
 	private CanvasItem _highlight;
 
-	public IItemStack ItemStack
+	public ItemStack ItemStack
 	{
 		get => _itemStack;
 		set => SetItemStack(value);
 	}
 
-	private IItemStack _itemStack;
+	private ItemStack _itemStack;
 	private Logger _logger;
 
 	public override void _Ready()
@@ -49,7 +49,7 @@ public partial class ItemSlotUI : Control, IItemSlotUI
 		GuiInput += OnGuiInput;
 	}
 
-	protected virtual void SetItemStack(IItemStack itemStack)
+	protected virtual void SetItemStack(ItemStack itemStack)
 	{
 		_itemStack = itemStack;
 		if (_itemStack == null)

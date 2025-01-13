@@ -8,13 +8,13 @@ public partial class InteractableItem : AInteractable
 {
 	public override string ActionName => "pickup";
 
-	public IItemStack ItemStack { get; private set; }
+	public ItemStack ItemStack { get; private set; }
 
 	public InteractableItem() : this(null)
 	{
 	}
 
-	public InteractableItem(IItemStack item)
+	public InteractableItem(ItemStack item)
 	{
 		ItemStack = item;
 	}

@@ -14,7 +14,7 @@ public partial class InventoryItemView : Control
 	private Logger _logger;
 	
 	public int Id;
-	public IItemStack ItemStack;
+	public ItemStack ItemStack;
 	
 	public override void _Ready()
 	{
@@ -51,7 +51,7 @@ public partial class InventoryItemView : Control
 		*/
 	}
 
-	public void UpdateItemView(IItemStack itemStack)
+	public void UpdateItemView(ItemStack itemStack)
 	{
 		if (itemStack == null)
 		{

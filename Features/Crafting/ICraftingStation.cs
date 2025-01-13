@@ -7,6 +7,6 @@ namespace untitledplantgame.Crafting;
 /// </summary>
 public interface ICraftingStation
 {
-	void InsertItemToSlot(IItemStack item, int slotIndex);
-	IItemStack RemoveItemFromSlot(int slotIndex);
+	void InsertItemToSlot(ItemStack item, int slotIndex);
+	ItemStack RemoveItemFromSlot(int slotIndex);
 }

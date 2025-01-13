@@ -39,7 +39,7 @@ public partial class SeedsTab : Node, ICategoryTab
 		FillTabWithEmptyInventoryItemViews();
 	}
 	
-	public void UpdateTabUi(IItemStack seedItem)
+	public void UpdateTabUi(ItemStack seedItem)
 	{
 		foreach (var inventoryItemView in _inventoryItemViews)
 		{
@@ -51,7 +51,7 @@ public partial class SeedsTab : Node, ICategoryTab
 		}
 	}
 	
-	public void DropInventoryItemToNewSlot(IItemStack item, int slot)
+	public void DropInventoryItemToNewSlot(ItemStack item, int slot)
 	{
 		foreach (var inventoryItemView in _inventoryItemViews)
 		{

@@ -28,11 +28,6 @@ public interface IItemStack
 	///     The description of the item
 	/// </summary>
 	string ToolTipDescription { get; set; }
-	
-	/// <summary>
-	///     The long description of the item
-	/// </summary>
-	string WikiDescription { get; set; }
 
 	/// <summary>
 	///     The category of the item

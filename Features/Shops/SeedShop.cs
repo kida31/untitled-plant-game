@@ -8,9 +8,9 @@ namespace untitledplantgame.Shops;
 
 public class SeedShop : IShop
 {
-	public event Action<List<IItemStack>> ShopStockChanged;
+	public event Action<List<ItemStack>> ShopStockChanged;
 
-	public IItemStack[] CurrentStock => _shopInventory.GetItems().ToArray();
+	public ItemStack[] CurrentStock => _shopInventory.GetItems().ToArray();
 
 	private Inventory.Inventory _shopInventory;
 	private Logger _logger = new Logger("SeedShopShop");
@@ -20,14 +20,14 @@ public class SeedShop : IShop
 		_shopInventory = new Inventory.Inventory(16, "Seedshop");
 	}
 
-	public void SetShopContent(IItemStack[] items)
+	public void SetShopContent(ItemStack[] items)
 	{
-		_shopInventory.SetContents(new List<IItemStack>(items));
+		_shopInventory.SetContents(new List<ItemStack>(items));
 		ShopStockChanged?.Invoke(_shopInventory.GetItems());
 		_logger.Debug("[Set] ShopStockChanged");
 	}
 
-	public IItemStack BuyItem(IItemStack item)
+	public ItemStack BuyItem(ItemStack item)
 	{
 		Assert.AssertTrue(_shopInventory.Contains(item), "items did not exist");
 		_shopInventory.RemoveItem(item);
@@ -36,9 +36,9 @@ public class SeedShop : IShop
 		return item;
 	}
 
-	public IItemStack BuyItem(int slotIndex)
+	public ItemStack BuyItem(int slotIndex)
 	{
-		var item = _shopInventory.GetItem(slotIndex).Clone() as IItemStack;
+		var item = _shopInventory.GetItem(slotIndex).Clone() as ItemStack;
 		item!.Amount = 1;
 		ShopStockChanged?.Invoke(_shopInventory.GetItems());
 		_logger.Debug("[Buy] ShopStockChanged");

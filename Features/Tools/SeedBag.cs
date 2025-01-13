@@ -9,7 +9,7 @@ namespace untitledplantgame.Tools;
 
 public class SeedBag : Tool
 {
-	public IItemStack CurrentSeedItem;
+	public ItemStack CurrentSeedItem;
 	
 	private Logger _logger;
 	

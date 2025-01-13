@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvvxi812gtpbr"]
 
 [ext_resource type="Script" path="res://Features/GUI/TooltipView.cs" id="1_ejofp"]
-[ext_resource type="Texture2D" uid="uid://cd4b3rboo30" path="res://Assets/UI/Book/Containers&Labels/tooltip_noDiv_horns.png" id="2_ydwn8"]
+[ext_resource type="Texture2D" uid="uid://cd4b3rboo30" path="res://Assets/UI/tooltip_noDiv_horns.png" id="2_ydwn8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5jbk"]
 draw_center = false
