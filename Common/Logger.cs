@@ -3,18 +3,21 @@ using Godot;
 
 namespace untitledplantgame.Common;
 
-enum LogLevel
+public enum LogLevel
 {
-	Info, // Grey
 	Debug, // Blue
+	Info, // Grey
 	Warn, // Yellow
 	Error, // Red
 }
 
 public class Logger
 {
+	// Config Stuff
+	public const string LogLevelSetting = "untitled_plant_game/logging/log_level"; // TODO: Make private
+	private const LogLevel DefaultConsoleLogLevel = LogLevel.Info;
+
 	public static Action<string> MessageLogged;
-	
 	private readonly string _logFilePath;
 	private readonly string _name;
 
@@ -61,6 +64,11 @@ public class Logger
 		}
 		else
 		{
+			if (ConsoleLogLevelInSettings > level)
+			{
+				return;
+			}
+
 			// Write to (Godot) console
 			if (LogLevel.Warn == level)
 				GD.PushWarning(message);
@@ -98,5 +106,23 @@ public class Logger
 	public void Error(string message)
 	{
 		Log(LogLevel.Error, message);
+	}
+
+	// Get log level from project settings or default to Info
+	private LogLevel ConsoleLogLevelInSettings
+	{
+		get
+		{
+			if (ProjectSettings.HasSetting(LogLevelSetting))
+			{
+				var logLevelName = ProjectSettings.GetSetting(LogLevelSetting).AsString();
+				if (Enum.TryParse(logLevelName, out LogLevel logLevel))
+				{
+					return logLevel;
+				}
+			}
+
+			return DefaultConsoleLogLevel;
+		}
 	}
 }

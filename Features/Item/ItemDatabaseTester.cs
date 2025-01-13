@@ -18,7 +18,7 @@ public partial class ItemDatabaseTester : Node
 	[Export]
 	private ItemStack[] _items
 	{
-		get => ItemDatabase.Instance?.ItemStacks.ToArray();
+		get => ItemDatabase.Instance?.ItemStacks.Select(it => new ItemStack(it)).ToArray();
 		set { }
 	}
 

@@ -14,7 +14,7 @@ public partial class VMItemSlotUI : Control
 	[Export]
 	private ItemSlotUI _itemSlot;
 
-	public ItemStack ItemStack
+	public IItemStack ItemStack
 	{
 		get => _itemSlot.ItemStack;
 		set => SetItemStack(value);
@@ -37,7 +37,7 @@ public partial class VMItemSlotUI : Control
 		_itemSlot.Pressed += () => Pressed?.Invoke();
 	}
 
-	private void SetItemStack(ItemStack itemStack)
+	private void SetItemStack(IItemStack itemStack)
 	{
 		_itemSlot.ItemStack = itemStack;
 		if (itemStack != null)
