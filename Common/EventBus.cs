@@ -127,14 +127,14 @@ public partial class EventBus : Node
 	public event Action<int> OnFaithChange;
 	public event Action<int> OnCurrencyChange;
 	public event Action<WikiItemView> OnScrollContainerViewUpdate; 
-	public event Action<ItemStack> OnTabsUpdate;
-	public event Action<ItemStack> OnItemPickUp;
+	public event Action<IItemStack> OnTabsUpdate;
+	public event Action<IItemStack> OnItemPickUp;
 	public event Action<ItemStack> OnWikiItemClicked;
 	public event Action<InventoryItemView> OnInventoryItemViewPressed;
 	public event Action<InventoryItemView> OnInventoryItemViewMoved;
 	public event Action<InventoryItemView> OnInventoryItemViewReleased;
 	public event Action<InventoryItemView> OnSetItemSlot;
-	public event Action<ItemStack, InventoryItemView> OnInventoryItemMove;
+	public event Action<IItemStack, InventoryItemView> OnInventoryItemMove;
 	public event GetItemSlotEventHandler OnGetItemSlot;
 
 
@@ -159,12 +159,12 @@ public partial class EventBus : Node
 		OnScrollContainerViewUpdate?.Invoke(scrollContainerElement);
 	}
 	
-	public void TabsUpdated(ItemStack item)
+	public void TabsUpdated(IItemStack item)
 	{
 		OnTabsUpdate?.Invoke(item);
 	}
 	
-	public void ItemPickedUp(ItemStack item)
+	public void ItemPickedUp(IItemStack item)
 	{
 		OnItemPickUp?.Invoke(item);
 	}
@@ -194,7 +194,7 @@ public partial class EventBus : Node
 		OnSetItemSlot?.Invoke(inventoryItemView);
 	}
 	
-	public void InventoryItemMoved(ItemStack itemStack, InventoryItemView inventoryItemView)
+	public void InventoryItemMoved(IItemStack itemStack, InventoryItemView inventoryItemView)
 	{
 		OnInventoryItemMove?.Invoke(itemStack, inventoryItemView);
 	}

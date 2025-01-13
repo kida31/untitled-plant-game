@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://c714ii64jw17x"]
+
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_crx1v"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_nss8p"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_ti1ut"]
+
+[sub_resource type="Resource" id="Resource_i0uay"]
+script = ExtResource("1_crx1v")
+speakerName = "Vending Machine"
+DialogueExpression = 0
+dialogueText = "Do you ever wonder how I’m powered?"
+
+[sub_resource type="Resource" id="Resource_bf2ec"]
+script = ExtResource("1_crx1v")
+speakerName = "Vending Machine"
+DialogueExpression = 0
+dialogueText = "Maybe I’ll tell you after you sell 1000000 medicines."
+
+[sub_resource type="Resource" id="Resource_k61xe"]
+script = ExtResource("1_crx1v")
+speakerName = "Vending Machine"
+DialogueExpression = 0
+dialogueText = "Do you want to sell some medicine?"
+
+[sub_resource type="Resource" id="Resource_g0300"]
+script = ExtResource("2_nss8p")
+_responseButton = "Yes"
+
+[sub_resource type="Resource" id="Resource_yjfxv"]
+script = ExtResource("2_nss8p")
+_responseButton = "No"
+
+[resource]
+script = ExtResource("2_ti1ut")
+_dialogueId = "VM_init_4"
+_dialogueText = Array[Object]([SubResource("Resource_i0uay"), SubResource("Resource_bf2ec"), SubResource("Resource_k61xe")])
+_responses = Array[Object]([SubResource("Resource_g0300"), SubResource("Resource_yjfxv")])

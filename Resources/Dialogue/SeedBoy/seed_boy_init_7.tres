@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://bo66u5m63r7f1"]
+
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_jf3wj"]
+[ext_resource type="Resource" uid="uid://cuvp2yskrub5t" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes.tres" id="2_tdbub"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_lsmr8"]
+[ext_resource type="Resource" uid="uid://cvpas48y18q5h" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_no.tres" id="4_hcooh"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_dep4n"]
+
+[sub_resource type="Resource" id="Resource_m4ye3"]
+script = ExtResource("1_jf3wj")
+speakerName = "Pan Dan"
+DialogueExpression = 1
+dialogueText = "You won’t believe what I found! Seeds!! Let me show you!"
+
+[sub_resource type="Resource" id="Resource_sige0"]
+script = ExtResource("3_lsmr8")
+_responseButton = "Sure, let me see!"
+_responseDialogue = ExtResource("2_tdbub")
+
+[sub_resource type="Resource" id="Resource_2rnp0"]
+script = ExtResource("3_lsmr8")
+_responseButton = "Umm maybe not now."
+_responseDialogue = ExtResource("4_hcooh")
+
+[resource]
+script = ExtResource("5_dep4n")
+_dialogueId = "seed_boy_init_7"
+_dialogueText = Array[Object]([SubResource("Resource_m4ye3")])
+_responses = Array[Object]([SubResource("Resource_sige0"), SubResource("Resource_2rnp0")])

@@ -17,12 +17,12 @@ public class Dehydrator : ICraftingStation
 	private const Recipe.CraftingType CraftingType = Recipe.CraftingType.Drying;
 	private const double ValueMultiplier = 4.20; //TODO: find a good value
 	
-	private static readonly ItemStack DriedLeaf = ItemDatabase.Instance.CreateItemStack("dried_leaf");
-	private static readonly ItemStack DriedFlower = ItemDatabase.Instance.CreateItemStack("dried_flower");
-	private static readonly ItemStack DriedFruit = ItemDatabase.Instance.CreateItemStack("dried_fruit");
+	private static readonly IItemStack DriedLeaf = ItemDatabase.Instance.CreateItemStack("dried_leaf");
+	private static readonly IItemStack DriedFlower = ItemDatabase.Instance.CreateItemStack("dried_flower");
+	private static readonly IItemStack DriedFruit = ItemDatabase.Instance.CreateItemStack("dried_fruit");
 	
-	public event Action<ItemStack[]> RetrieveAllFinishedItemsAction; //TODO: add items to inventory
-	public event Action<ItemStack, int> ItemInserted;
+	public event Action<IItemStack[]> RetrieveAllFinishedItemsAction; //TODO: add items to inventory
+	public event Action<IItemStack, int> ItemInserted;
 	public event Action<int> ItemRemoved;
 	public CraftingSlot[] CraftingSlots { get; private set; }
 
@@ -67,7 +67,7 @@ public class Dehydrator : ICraftingStation
 		}
 	}
 
-	public void InsertItemToSlot(ItemStack item, int slotIndex)
+	public void InsertItemToSlot(IItemStack item, int slotIndex)
 	{
 		_logger.Debug($"Checking slot {slotIndex} : {CraftingSlots[slotIndex].ItemStack}");
 		var slot = CraftingSlots[slotIndex];
@@ -85,7 +85,7 @@ public class Dehydrator : ICraftingStation
 		var insertedItem = item.Clone();
 		
 		insertedItem.Amount = 1;
-		slot.ItemStack = (ItemStack) insertedItem;
+		slot.ItemStack = insertedItem;
 		slot.AddItemAndStartCrafting(item, CraftingTime);
 		slot.CraftTimeOut += OnCraftTimeOut; // TODO: Ready
 
@@ -93,7 +93,7 @@ public class Dehydrator : ICraftingStation
 		ItemInserted?.Invoke(item, slotIndex);
 	}
 
-	public ItemStack RemoveItemFromSlot(int slotIndex)
+	public IItemStack RemoveItemFromSlot(int slotIndex)
 	{
 		_logger.Debug($"Removing item from slot {slotIndex}");
 		var item = CraftingSlots[slotIndex].ItemStack;
@@ -120,7 +120,7 @@ public class Dehydrator : ICraftingStation
 		slot.ItemStack = ModifyItem(item);
 	}
 
-	private ItemStack ModifyItem(ItemStack item)
+	private IItemStack ModifyItem(IItemStack item)
 	{
 		var result = ModifyComponent(item);
 		
@@ -131,7 +131,7 @@ public class Dehydrator : ICraftingStation
 		return result;
 	}
 
-	private ItemStack ModifyComponent(ItemStack item)
+	private IItemStack ModifyComponent(IItemStack item)
 	{
 		var comp = item.GetComponent<MedicineComponent>().Clone();
 		if (comp == null) return item;
