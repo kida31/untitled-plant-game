@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf2xfvp0b25y0"]
+[gd_scene load_steps=11 format=3 uid="uid://cf2xfvp0b25y0"]
 
 [ext_resource type="Script" path="res://Features/GUI/HUDs/Toolbelt/ToolBlobView.cs" id="1_ut26e"]
 [ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="2_hn60y"]
 [ext_resource type="Texture2D" uid="uid://c76emfoxjb16l" path="res://Assets/Tools/GardenScissors.png" id="2_i5eui"]
 [ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="3_j2vo2"]
-[ext_resource type="Texture2D" uid="uid://dduwl34jkllwr" path="res://Assets/UI/HUD/CurrentToolIndicator_new.png" id="5_1pscy"]
+[ext_resource type="Texture2D" uid="uid://dduwl34jkllwr" path="res://Assets/UI/HUD/CurrentToolIndicator.png" id="5_1pscy"]
+[ext_resource type="Texture2D" uid="uid://cddp1h65h56vi" path="res://Assets/Tools/SeedBag.png" id="5_vbk3w"]
 
 [sub_resource type="Animation" id="Animation_oyjmf"]
 length = 0.001
@@ -86,6 +87,7 @@ _toolIcon = NodePath("ToolIconSize/ToolIcon")
 _wateringCanIcon = ExtResource("2_hn60y")
 _shovelIcon = ExtResource("3_j2vo2")
 _shearsIcon = ExtResource("2_i5eui")
+_seedBagIcon = ExtResource("5_vbk3w")
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

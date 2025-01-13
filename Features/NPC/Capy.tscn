@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqh8rt43hsmxl"]
+[gd_scene load_steps=18 format=3 uid="uid://dpl5hjydrlj8y"]
 
 [ext_resource type="Script" path="res://Features/NPC/GeneralNPC.cs" id="1_rpv87"]
 [ext_resource type="Texture2D" uid="uid://bnbpxhugl2h0n" path="res://Assets/Sprites/charlieTheCapybaraAnimationSheet.png" id="2_xpm0l"]

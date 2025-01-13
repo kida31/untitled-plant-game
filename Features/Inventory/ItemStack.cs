@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Common;
@@ -10,6 +11,7 @@ namespace untitledplantgame.Inventory;
 ///     https://github.com/Bukkit/Bukkit/blob/master/src/main/java/org/bukkit/inventory/ItemStack.java
 /// </summary>
 [GlobalClass]
+[Obsolete("Did you mean to use the interface IItemStack? (This is not really obsolete. Just a reminder)")]
 public partial class ItemStack : Resource, IItemStack
 {
 	[Export] public int Amount { get; set; }
@@ -21,7 +23,7 @@ public partial class ItemStack : Resource, IItemStack
 	[Export] public int MaxStackSize { get; set; }
 	[Export] public int BaseValue { get; set; }
 
-	[Export(PropertyHint.Enum, "Plant,Material,Medicine")]
+	[Export(PropertyHint.Enum, "Seed,Material,Medicine")]
 	private string _category;
 
 	[Export] public Array<AComponent> Components { get; set; }
@@ -34,7 +36,7 @@ public partial class ItemStack : Resource, IItemStack
 		{
 			return _category switch
 			{
-				"Plant" => ItemCategory.Plant,
+				"Seed" => ItemCategory.Seed,
 				"Material" => ItemCategory.Material,
 				"Medicine" => ItemCategory.Medicine,
 				_ => null
@@ -49,6 +51,20 @@ public partial class ItemStack : Resource, IItemStack
 	{
 		_logger = new Logger("ItemStack");
 		Components = new();
+	}
+
+	public ItemStack(IItemStack item)
+	{
+		Id = item.Id;
+		Name = item.Name;
+		Icon = item.Icon;
+		ToolTipDescription = item.ToolTipDescription;
+		WikiDescription = item.WikiDescription;
+		Category = item.Category;
+		MaxStackSize = item.MaxStackSize;
+		BaseValue = item.BaseValue;
+		Amount = item.Amount;
+		Components = item.Components.Duplicate(true); // I doubt this actually deep copies
 	}
 
 	public ItemStack(string id,
@@ -90,6 +106,7 @@ public partial class ItemStack : Resource, IItemStack
 	public void AddComponent<T>(T component)
 		where T : AComponent
 	{
+		_logger.Debug($"Adding component <{typeof(T).Name}: " + component);
 		if (GetComponent<T>() is not null)
 		{
 			_logger.Warn("Component should only exist once");
@@ -120,8 +137,17 @@ public partial class ItemStack : Resource, IItemStack
 
 	public bool HasSameIdAndProps(IItemStack itemStack)
 	{
-		_logger.Warn("HasSameIdAndProps is not implemented correctly.");
-		return Id == itemStack.Id;
+		if (itemStack == null) return false;
+		return Id == itemStack.Id &&
+		       /*
+		       Name == itemStack.Name &&
+		       Icon == itemStack.Icon &&
+		       Description == itemStack.Description &&
+		       Category == itemStack.Category &&
+		       BaseValue == itemStack.BaseValue &&
+		       MaxStackSize == itemStack.MaxStackSize &&
+		       */
+		       Components.All(c => c.Equals(itemStack.GetComponent(c)));
 	}
 
 	public bool IsIdentical(IItemStack itemStack)

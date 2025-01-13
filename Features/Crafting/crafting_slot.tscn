@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dafhmyiy5jrym"]
+
+[ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://Features/VendingMachine/UI/ItemSlot.tscn" id="1_5jnsj"]
+[ext_resource type="Script" path="res://Features/Crafting/CraftingSlotUi.cs" id="2_3k3fw"]
+[ext_resource type="Texture2D" uid="uid://cbwcajw24ox4e" path="res://Assets/UI/Book/Icons/NewItemIndicator.png" id="3_8b24n"]
+
+[node name="ItemSlot" node_paths=PackedStringArray("_progressBar", "_craftingCompleteTexture") instance=ExtResource("1_5jnsj")]
+script = ExtResource("2_3k3fw")
+_progressBar = NodePath("CenterContainer/ProgressBar")
+_craftingCompleteTexture = NodePath("CraftingCompleteIndicator")
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+fill_mode = 3
+show_percentage = false
+
+[node name="QuantityLabel" parent="." index="1"]
+visible = false
+
+[node name="CraftingCompleteIndicator" type="TextureRect" parent="." index="3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_8b24n")

@@ -1,13 +1,14 @@
 using System;
 using Godot;
+using untitledplantgame.Crafting;
+using untitledplantgame.Item;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Dialogue;
-using untitledplantgame.Dialogue.Models;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.PlayerInventory.UI_InventoryItem;
 using untitledplantgame.Inventory.PlayerInventory.UI_Wiki;
+using untitledplantgame.Plants;
 using untitledplantgame.Shops;
-
 namespace untitledplantgame.Common;
 
 /**
@@ -78,6 +79,8 @@ public partial class EventBus : Node
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
 	}
+	
+	//Dialogue
 
 	/// <summary>
 	/// Invoked when a dialogue is starting, passes the dialogue name
@@ -99,10 +102,16 @@ public partial class EventBus : Node
 		InitialiseDialogue?.Invoke(obj);
 	}
 	
-	public void DialogueEnded(DialogueResourceObject dialogueId)
+	//Plants
+	
+	public event Action<Plant> OnSeedPlanted;
+	
+	public void SeedPlanted(Plant plant)
 	{
-		OnDialogueEnd?.Invoke(dialogueId);
+		OnSeedPlanted?.Invoke(plant);
 	}
+	
+	//HUD
 
 	public event Action<int, int> GoldChanged;
 	public void InvokeGoldChanged(int deltaGold, int newGold)
@@ -110,12 +119,7 @@ public partial class EventBus : Node
 		GoldChanged?.Invoke(deltaGold, newGold);
 	}
 	
-	
-	
-	
-	
-	
-	
+	//Inventory
 	
 	public delegate InventoryItemView GetItemSlotEventHandler();
 
@@ -123,16 +127,15 @@ public partial class EventBus : Node
 	public event Action<int> OnFaithChange;
 	public event Action<int> OnCurrencyChange;
 	public event Action<WikiItemView> OnScrollContainerViewUpdate; 
-	public event Action<ItemStack> OnTabsUpdate;
-	public event Action<ItemStack> OnItemPickUp;
+	public event Action<IItemStack> OnTabsUpdate;
+	public event Action<IItemStack> OnItemPickUp;
 	public event Action<ItemStack> OnWikiItemClicked;
 	public event Action<InventoryItemView> OnInventoryItemViewPressed;
 	public event Action<InventoryItemView> OnInventoryItemViewMoved;
 	public event Action<InventoryItemView> OnInventoryItemViewReleased;
 	public event Action<InventoryItemView> OnSetItemSlot;
-	public event Action<ItemStack, InventoryItemView> OnInventoryItemMove;
+	public event Action<IItemStack, InventoryItemView> OnInventoryItemMove;
 	public event GetItemSlotEventHandler OnGetItemSlot;
-	public event Action<DialogueResourceObject> OnDialogueEnd;
 
 
 	public void InventoryOpened()
@@ -156,12 +159,12 @@ public partial class EventBus : Node
 		OnScrollContainerViewUpdate?.Invoke(scrollContainerElement);
 	}
 	
-	public void TabsUpdated(ItemStack item)
+	public void TabsUpdated(IItemStack item)
 	{
 		OnTabsUpdate?.Invoke(item);
 	}
 	
-	public void ItemPickedUp(ItemStack item)
+	public void ItemPickedUp(IItemStack item)
 	{
 		OnItemPickUp?.Invoke(item);
 	}
@@ -191,7 +194,7 @@ public partial class EventBus : Node
 		OnSetItemSlot?.Invoke(inventoryItemView);
 	}
 	
-	public void InventoryItemMoved(ItemStack itemStack, InventoryItemView inventoryItemView)
+	public void InventoryItemMoved(IItemStack itemStack, InventoryItemView inventoryItemView)
 	{
 		OnInventoryItemMove?.Invoke(itemStack, inventoryItemView);
 	}
@@ -200,5 +203,11 @@ public partial class EventBus : Node
 	{
 		return OnGetItemSlot?.Invoke();
 	}
-	
+
+	public event Action<ICraftingStation> BeforeCraftingStationUiOpened;
+
+	public void BeforeCraftingStationUiOpen(ICraftingStation craftingStation)
+	{
+		BeforeCraftingStationUiOpened?.Invoke(craftingStation);
+	}
 }

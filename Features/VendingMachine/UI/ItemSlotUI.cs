@@ -10,7 +10,7 @@ public partial class ItemSlotUI : Control, IItemSlotUI
 	public event Action Pressed;
 
 	[Export]
-	private TextureRect _itemTexture;
+	public TextureRect ItemTexture;
 
 	[Export]
 	private Texture2D _placeholderIcon;
@@ -21,13 +21,13 @@ public partial class ItemSlotUI : Control, IItemSlotUI
 	[Export]
 	private CanvasItem _highlight;
 
-	public ItemStack ItemStack
+	public IItemStack ItemStack
 	{
 		get => _itemStack;
 		set => SetItemStack(value);
 	}
 
-	private ItemStack _itemStack;
+	private IItemStack _itemStack;
 	private Logger _logger;
 
 	public override void _Ready()
@@ -49,17 +49,19 @@ public partial class ItemSlotUI : Control, IItemSlotUI
 		GuiInput += OnGuiInput;
 	}
 
-	protected virtual void SetItemStack(ItemStack itemStack)
+	protected virtual void SetItemStack(IItemStack itemStack)
 	{
 		_itemStack = itemStack;
 		if (_itemStack == null)
 		{
-			_itemTexture.Texture = _placeholderIcon;
+			_logger.Debug("ItemStack is null");
+			ItemTexture.Texture = null;
 			_quantityLabel.Text = "";
 		}
 		else
 		{
-			_itemTexture.Texture = _itemStack.Icon;
+			_logger.Debug("setting itemstack");
+			ItemTexture.Texture = _itemStack.Icon ?? _placeholderIcon;
 			_quantityLabel.Text = _itemStack.Amount.ToString();
 		}
 	}
