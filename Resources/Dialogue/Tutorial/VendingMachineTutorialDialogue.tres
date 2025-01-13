@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://dopykccwoa5os"]
+
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_454lr"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_hsvq2"]
+
+[sub_resource type="Resource" id="Resource_iey8o"]
+script = ExtResource("1_454lr")
+speakerName = "Gottfried the first Priest"
+DialogueExpression = 0
+dialogueText = "Did you know that chubery fruits are really popular? "
+
+[sub_resource type="Resource" id="Resource_wieva"]
+script = ExtResource("1_454lr")
+speakerName = "Gottfried the first Priest"
+DialogueExpression = 0
+dialogueText = "I bet if you put it on sale in that vending machine over there, people will come buy it."
+
+[sub_resource type="Resource" id="Resource_w4rvn"]
+script = ExtResource("1_454lr")
+speakerName = "Gottfried the first Priest"
+DialogueExpression = 0
+dialogueText = "The previous owner used to fill the machine up every day but these days it’s just empty."
+
+[sub_resource type="Resource" id="Resource_tapf8"]
+script = ExtResource("1_454lr")
+speakerName = "Gottfried the first Priest"
+DialogueExpression = 0
+dialogueText = "I’ll tell the people that you will take care of the machine again!"
+
+[sub_resource type="Resource" id="Resource_cyjdd"]
+script = ExtResource("1_454lr")
+speakerName = "Gottfried the first Priest"
+DialogueExpression = 0
+dialogueText = "Oh. Just press A to open it. "
+
+[sub_resource type="Resource" id="Resource_p8ncf"]
+script = ExtResource("1_454lr")
+speakerName = "Gottfried the first Priest"
+DialogueExpression = 0
+dialogueText = "You can decide the price yourself but the people will have an opinion about the price…"
+
+[sub_resource type="Resource" id="Resource_gojdt"]
+script = ExtResource("1_454lr")
+speakerName = "Gottfried the first Priest"
+DialogueExpression = 0
+dialogueText = "Best not to anger them, right? First impressions and all that…. *chuckles* "
+
+[resource]
+script = ExtResource("1_hsvq2")
+_dialogueId = "gottfriedVending"
+_dialogueText = Array[Object]([SubResource("Resource_iey8o"), SubResource("Resource_wieva"), SubResource("Resource_w4rvn"), SubResource("Resource_tapf8"), SubResource("Resource_cyjdd"), SubResource("Resource_p8ncf"), SubResource("Resource_gojdt")])
+_responses = null

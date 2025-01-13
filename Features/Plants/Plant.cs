@@ -84,7 +84,7 @@ public partial class Plant : StaticBody2D
 	/// <summary>
 	/// Harvests the plant if it is harvestable.
 	/// </summary>
-	public ItemStack Harvest()
+	public IItemStack Harvest()
 	{
 		if (_isHarvestable)
 		{
@@ -237,7 +237,7 @@ public partial class Plant : StaticBody2D
 		_logger.Debug($"Plant {PlantName} has died due to lack of water.");
 	}
 
-	private ItemStack GetHarvestItem()
+	private IItemStack GetHarvestItem()
 	{
 		if(!_isHarvestable) return null;
 		

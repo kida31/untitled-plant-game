@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=2 format=3 uid="uid://cak24kibqtypv"]
+
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_x70p1"]
+
+[resource]
+script = ExtResource("1_x70p1")
+_dialogueId = ""
+_dialogueText = null
+_responses = null

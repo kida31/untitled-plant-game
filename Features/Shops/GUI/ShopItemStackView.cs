@@ -20,9 +20,9 @@ public partial class ShopItemStackView : Control, IItemSlotUI
 	[Export]
 	private Label _priceLabel;
 
-	private ItemStack _itemStack;
+	private IItemStack _itemStack;
 
-	public ItemStack ItemStack
+	public IItemStack ItemStack
 	{
 		get => _itemStack;
 		set

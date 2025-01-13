@@ -49,7 +49,7 @@ public partial class PlayerInventoryController : Node
 		}
 	}
 
-	private void UpdateTabs(ItemStack item)
+	private void UpdateTabs(IItemStack item)
 	{
 		EventBus.Instance.TabsUpdated(item);
 	}
