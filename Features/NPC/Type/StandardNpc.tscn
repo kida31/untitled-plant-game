@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7xvqy48jfh5q"]
+
+[ext_resource type="Script" path="res://Features/NPC/Type/StandardNpc.cs" id="1_6ipep"]
+[ext_resource type="Texture2D" uid="uid://bklcso0wn7iqr" path="res://Assets/Sprites/idle.png" id="2_4g0uj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g1ada"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33y27"]
+atlas = ExtResource("2_4g0uj")
+region = Rect2(0, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d2ij"]
+atlas = ExtResource("2_4g0uj")
+region = Rect2(80, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6fyv"]
+atlas = ExtResource("2_4g0uj")
+region = Rect2(160, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0ki3"]
+atlas = ExtResource("2_4g0uj")
+region = Rect2(240, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn8o6"]
+atlas = ExtResource("2_4g0uj")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6f3x"]
+atlas = ExtResource("2_4g0uj")
+region = Rect2(80, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_355y4"]
+atlas = ExtResource("2_4g0uj")
+region = Rect2(160, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6nbc"]
+atlas = ExtResource("2_4g0uj")
+region = Rect2(240, 160, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_raf7f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33y27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d2ij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6fyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0ki3")
+}],
+"loop": true,
+"name": &"Idle_State_Backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn8o6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6f3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_355y4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6nbc")
+}],
+"loop": true,
+"name": &"Idle_State_Forward",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_6ipep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_g1ada")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_raf7f")
+animation = &"Idle_State_Forward"
