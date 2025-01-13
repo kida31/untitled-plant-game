@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dvjxp03o22y3l" path="res://Assets/Tilesets/atlas_32x.png" id="1_njfkm"]
 [ext_resource type="Texture2D" uid="uid://h83g282s043x" path="res://Assets/OverworldAssets/GardenDecoration/ladder_tileset_improved.png" id="2_4uw5u"]
 [ext_resource type="Texture2D" uid="uid://4cfy612ib68k" path="res://Assets/IndoorAssets/bed.png" id="3_rc2t2"]
-[ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="4_0j18u"]
+[ext_resource type="PackedScene" uid="uid://kbp0gwcc5gja" path="res://Features/NPC/Door.tscn" id="4_0j18u"]
 [ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="5_t1uyc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1url"]
