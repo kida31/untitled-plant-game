@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://djkgxlqpnhr00"]
+
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_7b3gf"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_rx6l3"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_aghnh"]
+
+[sub_resource type="Resource" id="Resource_i0uay"]
+script = ExtResource("1_rx6l3")
+speakerName = "Vending Machine"
+DialogueExpression = 0
+dialogueText = "One medicine a day keeps the doctor away!"
+
+[sub_resource type="Resource" id="Resource_bf2ec"]
+script = ExtResource("1_rx6l3")
+speakerName = "Vending Machine"
+DialogueExpression = 0
+dialogueText = "Do you want to sell some?"
+
+[sub_resource type="Resource" id="Resource_g0300"]
+script = ExtResource("2_aghnh")
+_responseButton = "Yes"
+
+[sub_resource type="Resource" id="Resource_yjfxv"]
+script = ExtResource("2_aghnh")
+_responseButton = "No"
+
+[resource]
+script = ExtResource("1_7b3gf")
+_dialogueId = "VM_init_1"
+_dialogueText = Array[Object]([SubResource("Resource_i0uay"), SubResource("Resource_bf2ec")])
+_responses = Array[Object]([SubResource("Resource_g0300"), SubResource("Resource_yjfxv")])
