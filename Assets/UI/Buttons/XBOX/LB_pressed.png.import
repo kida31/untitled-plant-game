@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<<< HEAD:Assets/UI/Buttons/XBOX/LB_pressed.png.import
 uid="uid://b0ub156m0xm51"
 path="res://.godot/imported/LB_pressed.png-7e67d00a3fa2ef832d2ea74828f9dd45.ctex"
+========
+uid="uid://cau3g6e5xdjb1"
+path="res://.godot/imported/RightWiki_empty.png-1bc3ac9b3cd7c7892430721ffc856750.ctex"
+>>>>>>>> main:Assets/UI/Book/Pages/RightWiki_empty.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:Assets/UI/Buttons/XBOX/LB_pressed.png.import
 source_file="res://Assets/UI/Buttons/XBOX/LB_pressed.png"
 dest_files=["res://.godot/imported/LB_pressed.png-7e67d00a3fa2ef832d2ea74828f9dd45.ctex"]
+========
+source_file="res://Assets/UI/Book/Pages/RightWiki_empty.png"
+dest_files=["res://.godot/imported/RightWiki_empty.png-1bc3ac9b3cd7c7892430721ffc856750.ctex"]
+>>>>>>>> main:Assets/UI/Book/Pages/RightWiki_empty.png.import
 
 [params]
 

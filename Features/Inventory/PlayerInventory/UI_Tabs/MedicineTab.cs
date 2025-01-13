@@ -12,7 +12,7 @@ public partial class MedicineTab : Node, ICategoryTab
 	[Export] private PackedScene _tabItemView;
 
 	private TabItemView _medicineItemView;
-	private ItemStack[] _itemStacks;
+	private IItemStack[] _itemStacks;
 	private InventoryItemView[] _inventoryItemViews;
 
 	public override void _EnterTree()
@@ -31,7 +31,7 @@ public partial class MedicineTab : Node, ICategoryTab
 		FillTabWithEmptyInventoryItemViews();
 	}
 	
-	public void UpdateTabUi(ItemStack seedItem)
+	public void UpdateTabUi(IItemStack seedItem)
 	{
 		for (var i = 0; i < _itemStacks.Length; i++)
 		{
@@ -43,12 +43,12 @@ public partial class MedicineTab : Node, ICategoryTab
 		}
 	}
 	
-	public void DropInventoryItemToNewSlot(ItemStack item, int slot)
+	public void DropInventoryItemToNewSlot(IItemStack item, int slot)
 	{
 		
 	}
 
-	public ItemStack[] GetItemsInCategoryTab()
+	public IItemStack[] GetItemsInCategoryTab()
 	{
 		return _itemStacks;
 	}

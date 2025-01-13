@@ -13,14 +13,14 @@ public class CategoryInventory : Inventory
 		_category = category;
 	}
 
-	public bool CanStore(ItemStack item)
+	public bool CanStore(IItemStack item)
 	{
 		return item.Category.Equals(_category);
 	}
 
-	public override Dictionary<int, ItemStack> AddItem(params ItemStack[] items)
+	public override Dictionary<int, IItemStack> AddItem(params IItemStack[] items)
 	{
-		Dictionary<int, ItemStack> invalids = new();
+		Dictionary<int, IItemStack> invalids = new();
 		for (var i = 0; i < items.Length; i++)
 		{
 			if (!CanStore(items[i]))
