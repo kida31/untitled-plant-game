@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b831oarbk32ug"
-path="res://.godot/imported/X_default.png-3e9c0d17768b2cdb0b1dd6be53a0af30.ctex"
+uid="uid://ub55y2eyhgq5"
+path="res://.godot/imported/Duck.png-e98bb6f33171aea6d9e92179c95c901f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Buttons/XBOX/X_default.png"
-dest_files=["res://.godot/imported/X_default.png-3e9c0d17768b2cdb0b1dd6be53a0af30.ctex"]
+source_file="res://Assets/Items/Duck.png"
+dest_files=["res://.godot/imported/Duck.png-e98bb6f33171aea6d9e92179c95c901f.ctex"]
 
 [params]
 

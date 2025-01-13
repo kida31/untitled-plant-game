@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b831oarbk32ug"
-path="res://.godot/imported/X_default.png-3e9c0d17768b2cdb0b1dd6be53a0af30.ctex"
+uid="uid://b7i7fmuumaqc2"
+path="res://.godot/imported/Fish12.png-01b5f586f771dc2b0eacff809dcbeaa0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Buttons/XBOX/X_default.png"
-dest_files=["res://.godot/imported/X_default.png-3e9c0d17768b2cdb0b1dd6be53a0af30.ctex"]
+source_file="res://Assets/Items/FishingMyFishies/Fish12.png"
+dest_files=["res://.godot/imported/Fish12.png-01b5f586f771dc2b0eacff809dcbeaa0.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b831oarbk32ug"
-path="res://.godot/imported/X_default.png-3e9c0d17768b2cdb0b1dd6be53a0af30.ctex"
+uid="uid://sjf3tm7va8re"
+path="res://.godot/imported/Dehydrator.png-c9c972b33ce690517dfc5430ce8158ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Buttons/XBOX/X_default.png"
-dest_files=["res://.godot/imported/X_default.png-3e9c0d17768b2cdb0b1dd6be53a0af30.ctex"]
+source_file="res://Assets/IndoorAssets/Dehydrator.png"
+dest_files=["res://.godot/imported/Dehydrator.png-c9c972b33ce690517dfc5430ce8158ac.ctex"]
 
 [params]
 
