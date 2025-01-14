@@ -44,6 +44,7 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
+		EventBus.Instance.OnPlayerInitialize += InitializePlayer;
 		_logger.Info("! Ready !");
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -56,6 +57,11 @@ public partial class Player : CharacterBody2D
 		items[0].Amount = 6;
 		_inventory.AddItem(items[0]);
 		*/
+	}
+
+	private Player InitializePlayer()
+	{
+		return this;
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

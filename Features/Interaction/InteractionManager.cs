@@ -24,19 +24,12 @@ public partial class InteractionManager : Node2D
 	private string BaseText => $"[{InputRemapper.GetButton(FreeRoam.Interact).ToString()}] ";
 	private bool _canInteract = true;
 	private const int BaseTextYTransform = 50;
-	private Node2D _player;
+	private Node2D Player => EventBus.Instance.PlayerInitialized();
 	private readonly List<IInteractable> _activeAreas = new();
 	private readonly Logger _logger = new("InteractionManager");
 
 	public override void _Ready()
 	{
-		_player = (Node2D)GetTree().GetFirstNodeInGroup(GameGroup.Player);
-
-		if (_player == null)
-		{
-			_logger.Error("Player node not found.");
-		}
-
 		if (Instance == null)
 		{
 			Instance = this;
@@ -102,14 +95,16 @@ public partial class InteractionManager : Node2D
 			return int.MaxValue;
 		}
 
-		if (_player == null)
+		if (Player == null)
 		{
 			_logger.Error("Player is null.");
 			return int.MaxValue;
 		}
 
-		float distance1 = _player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
-		float distance2 = _player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
+		
+		float distance1 = Player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
+		float distance2 = Player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
+		GD.PrintRich(distance2);
 		return distance1.CompareTo(distance2);
 	}
 }
