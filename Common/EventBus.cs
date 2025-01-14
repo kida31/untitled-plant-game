@@ -19,6 +19,8 @@ public partial class EventBus : Node
 {
 	public static EventBus Instance { get; private set; }
 	
+	public static bool DisplayLog; // TODO: This may or may not be a good place to store this variable...
+	
 	private readonly Logger _logger = new("EventBus");
 
 	public override void _Ready()
@@ -35,7 +37,6 @@ public partial class EventBus : Node
 	}
 
 	//---------------------------------------------Legacy Signals---------------------------------------------
-	
 	[Signal]
 	[Obsolete]
 	public delegate void NPCInteractedEventHandler(Node npc); //Replace with C# Action
@@ -117,6 +118,11 @@ public partial class EventBus : Node
 		GoldChanged?.Invoke(deltaGold, newGold);
 	}
 
+	//Inventory
+	
+	public delegate InventoryItemView GetItemSlotEventHandler();
+	public delegate Player.Player OnPlayerInitializeEventHandler();
+
 	public event Action<int> OnFaithChange;
 	public event Action<int> OnCurrencyChange;
 	public event Action<IItemStack> OnItemPickUp;
@@ -147,7 +153,7 @@ public partial class EventBus : Node
 	{
 		OnPlayerInventoryChanged?.Invoke(player, inventory);
 	}
-
+	
 	public event Action<ICraftingStation> BeforeCraftingStationUiOpened;
 
 	public void BeforeCraftingStationUiOpen(ICraftingStation craftingStation)

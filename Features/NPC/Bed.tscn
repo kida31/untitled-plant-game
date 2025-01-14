@@ -18,6 +18,7 @@ size_flags_vertical = 4
 color = Color(0.845178, 0.802162, 0.800774, 1)
 
 [node name="Pillow" type="ColorRect" parent="Bed"]
+layout_mode = 0
 offset_left = 45.0
 offset_top = 4.0
 offset_right = 61.0
@@ -25,6 +26,7 @@ offset_bottom = 28.0
 color = Color(0.939127, 0.927722, 0.963788, 1)
 
 [node name="Sheets" type="ColorRect" parent="Bed"]
+layout_mode = 0
 offset_left = -1.0
 offset_top = -1.0
 offset_right = 39.0
@@ -32,4 +34,5 @@ offset_bottom = 33.0
 color = Color(0.937255, 0.929412, 0.964706, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 5)
 shape = SubResource("RectangleShape2D_p5sl4")

@@ -41,6 +41,7 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
+		EventBus.Instance.OnPlayerInitialize += InitializePlayer;
 		_logger.Info("! Ready !");
 		
 		Game.Instance.Provide(this);
@@ -70,6 +71,11 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
+	private Player InitializePlayer()
+	{
+		return this;
+	}
+
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (GameStateMachine.Instance.CurrentState != GameState.FreeRoam)
@@ -81,7 +87,8 @@ public partial class Player : CharacterBody2D
 		InteractionManager.Instance.PerformInteraction();
 	}
 
-	public void GetSetInputDirection() {
+	public void GetSetInputDirection()
+	{
 		Direction = Input.GetVector(FreeRoam.Left, FreeRoam.Right, FreeRoam.Up, FreeRoam.Down).Normalized();
 	}
 
@@ -132,16 +139,23 @@ public partial class Player : CharacterBody2D
 	/// Horizontal directions have priority. If horizontal direction is zero, vertical direction is chosen.
 	/// If there is no input direction, keep latest front direction value.
 	/// </summary>
-	private void UpdateFrontDirection() {
-		if (Direction == Vector2.Zero) {
+	private void UpdateFrontDirection()
+	{
+		if (Direction == Vector2.Zero)
+		{
 			return;
 		}
+
 		_frontDirection = Direction;
-		if (Direction.X != 0) {
+		if (Direction.X != 0)
+		{
 			_frontDirection.Y = 0;
-		} else {
+		}
+		else
+		{
 			_frontDirection.X = 0;
 		}
+
 		_frontDirection = _frontDirection.Normalized();
 	}
 

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://d3jy31245b6n7"]
+
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_22i3p"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_klwbj"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_r0g6c"]
+
+[sub_resource type="Resource" id="Resource_i0uay"]
+script = ExtResource("1_22i3p")
+speakerName = "Vending Machine"
+DialogueExpression = 0
+dialogueText = "One time there was a huge wave and now there are seashells on me."
+
+[sub_resource type="Resource" id="Resource_bf2ec"]
+script = ExtResource("1_22i3p")
+speakerName = "Vending Machine"
+DialogueExpression = 0
+dialogueText = "Do you want to sell some medicine?"
+
+[sub_resource type="Resource" id="Resource_g0300"]
+script = ExtResource("2_r0g6c")
+_responseButton = "Yes"
+
+[sub_resource type="Resource" id="Resource_yjfxv"]
+script = ExtResource("2_r0g6c")
+_responseButton = "No"
+
+[resource]
+script = ExtResource("2_klwbj")
+_dialogueId = "VM_init_7"
+_dialogueText = Array[Object]([SubResource("Resource_i0uay"), SubResource("Resource_bf2ec")])
+_responses = Array[Object]([SubResource("Resource_g0300"), SubResource("Resource_yjfxv")])
