@@ -1,6 +1,5 @@
 using System.Linq;
 using Godot;
-using Godot.NativeInterop;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.Plants;
@@ -80,7 +79,7 @@ public class SeedBag : Tool
 		var currentPlant = Plant.Create(plantName);
 		closestTile.PlantSeed(currentPlant);
 		
-		var newSeedItem = (ItemStack) CurrentSeedItem.Clone();
+		var newSeedItem = CurrentSeedItem.Clone();
 		newSeedItem.Amount = 1;
 		user.Inventory.RemoveItem(newSeedItem);
 		
@@ -91,14 +90,19 @@ public class SeedBag : Tool
 
 	private bool IsSoilOccupied(SoilTile closestTile)
 	{
-		var plants = closestTile.GetTree().GetNodesInGroup(GameGroup.Plants).OfType<Plant>();
-		var enumerable = plants as Plant[] ?? plants.ToArray();
-		var b = enumerable.Any(plant => plant.Tile == closestTile);
-		if (b)
+		var plants = closestTile.GetTree().GetNodesInGroup(GameGroup.Plants).OfType<Plant>().ToArray();
+		foreach (var plant in plants)
 		{
-			_logger.Warn($"Soil tile is already occupied by {enumerable.First().PlantName}");
+			if (plant.Tile != closestTile)
+			{
+				continue;
+			}
+
+			_logger.Warn($"Soil tile is already occupied by {plant.PlantName}");
+			return true;
 		}
-		return b;
+
+		return false;
 	}
 
 	protected override void OnMiss(Player.Player user)
