@@ -168,7 +168,7 @@ public partial class InventoryTabsView : Control
 		}
 		catch (ArgumentOutOfRangeException e)
 		{
-			GD.PrintErr("Inventory tab index out of range");
+			_logger.Error("Inventory tab index out of range");
 			// Log error
 		}
 	}
