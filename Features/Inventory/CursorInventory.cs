@@ -130,13 +130,11 @@ public class CursorInventory : ICursorInventory
 	private IItemStack _content;
 	private readonly Logger _logger;
 	private IInventory _mostRecentInventoryPickup;
-	private int _pickupOriginIndex;
 
 	private CursorInventory()
 	{
 		_logger = new(GetType().Name);
 		_mostRecentInventoryPickup = null;
-		_pickupOriginIndex = -1;
 		_content = null;
 	}
 
@@ -296,7 +294,6 @@ public class CursorInventory : ICursorInventory
 
 		_content = item;
 		_mostRecentInventoryPickup = inventory;
-		_pickupOriginIndex = itemIndex;
 		ContentChanged?.Invoke();
 	}
 
@@ -372,17 +369,9 @@ public class CursorInventory : ICursorInventory
 			return;
 		}
 
-		if (_mostRecentInventoryPickup == null || _pickupOriginIndex < 0)
+		if (_mostRecentInventoryPickup == null)
 		{
 			_logger.Warn("No origin location saved to return item to");
-			ItemOrphaned?.Invoke(_content);
-		}
-
-		var destination = _mostRecentInventoryPickup?.GetItem(_pickupOriginIndex);
-
-		if (destination != null)
-		{
-			_logger.Error("Original space is occupied");
 			ItemOrphaned?.Invoke(_content);
 		}
 
@@ -390,8 +379,8 @@ public class CursorInventory : ICursorInventory
 
 		if (remainder != null && remainder.Count > 0)
 		{
-			// This might be the case with items that have special inventory restrictions
-			_logger.Error("Could not put item back to origin although destination is free. Unexpected Error");
+			// This might be the case with items that have special inventory restrictions or space was occupied somehow
+			_logger.Error("Could not put item back to origin although destination is free.");
 			ItemOrphaned?.Invoke(_content);
 		}
 
@@ -403,7 +392,6 @@ public class CursorInventory : ICursorInventory
 	{
 		_content = null;
 		_mostRecentInventoryPickup = null;
-		_pickupOriginIndex = -1;
 		ContentChanged?.Invoke();
 	}
 }
