@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtgjnb2g3iphl"]
 
-[ext_resource type="Texture2D" uid="uid://dary2k7vaser5" path="res://DefaultItemBackground_Black.png" id="1_1a5b1"]
+[ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="1_1a5b1"]
 [ext_resource type="PackedScene" uid="uid://bje8khf7odu6w" path="res://Features/Inventory/PlayerInventory/PlayerDetailStat.tscn" id="2_w3347"]
 
 [node name="VBoxContainer" type="VBoxContainer"]

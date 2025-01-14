@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmc1oq8o2if8d"]
 
 [ext_resource type="Script" path="res://Features/Inventory/PlayerInventory/UI_Wiki/DetailedWikiItemView.cs" id="1_pqqg3"]
-[ext_resource type="Texture2D" uid="uid://b0qgnfhemkwdq" path="res://DefaultItemBackground_Black.png" id="1_uqtxd"]
 [ext_resource type="Texture2D" uid="uid://jitwrv3dmfn4" path="res://DefaultItemBackground_White.png" id="2_mkqgj"]
+[ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="3_d0xjo"]
 
 [node name="VBoxContainer" type="VBoxContainer" node_paths=PackedStringArray("_iconTextureRect", "_itemNameAndCategory", "_itemDescription", "_itemStats", "_bottomTextureRect")]
 script = ExtResource("1_pqqg3")
@@ -39,7 +39,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer2/PanelContainer"]
 layout_mode = 2
-texture = ExtResource("1_uqtxd")
+texture = ExtResource("3_d0xjo")
 expand_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer2/PanelContainer"]
@@ -112,7 +112,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer4/PanelContainer"]
 layout_mode = 2
-texture = ExtResource("1_uqtxd")
+texture = ExtResource("3_d0xjo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer4/PanelContainer"]
 layout_mode = 2
