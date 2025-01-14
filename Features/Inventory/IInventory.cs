@@ -11,6 +11,11 @@ namespace untitledplantgame.Inventory;
 /// </summary>
 public interface IInventory : IEnumerable<IItemStack>
 {
+	// TODO verify if these events make sense
+	public event Action InventoryChanged;
+	public event Action<IItemStack> ItemAdded;
+	public event Action<IItemStack> ItemRemoved;
+	
 	/// <summary>
 	///     Returns the size of the inventory
 	/// </summary>

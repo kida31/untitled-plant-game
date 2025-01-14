@@ -22,7 +22,7 @@ public class SeedBag : Tool
 	protected override void OnStart(Player.Player user)
 	{
 		var inventory = user.Inventory.GetInventory(ItemCategory.Seed);
-		CurrentSeedItem = inventory.FirstOrDefault();
+		CurrentSeedItem = inventory.FirstOrDefault() as ItemStack; // This might break if ItemStack is not properly updated (independent of IItemstack)
 
 		if(CurrentSeedItem == null)
 		{

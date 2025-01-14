@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://nyv2tqdcvli1"]
+
+[ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryItemView.cs" id="1_753u5"]
+[ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="2_ey3cn"]
+[ext_resource type="Texture2D" uid="uid://dsrjntfr6kb41" path="res://Assets/Items/chubery_harvested.png" id="3_p0h3l"]
+
+[node name="ItemView" type="AspectRatioContainer" node_paths=PackedStringArray("_displayItemName", "_itemCurrentQuantity", "_itemTextureRect")]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = -1
+anchor_right = 0.0296296
+anchor_bottom = 0.0592593
+size_flags_horizontal = 6
+size_flags_vertical = 6
+focus_mode = 2
+script = ExtResource("1_753u5")
+_displayItemName = NodePath("MarginContainer/ItemName")
+_itemCurrentQuantity = NodePath("MarginContainer/ItemQuantity")
+_itemTextureRect = NodePath("MarginContainer/ImagePadding/ItemIcon")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_ey3cn")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ImagePadding" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/ImagePadding"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_p0h3l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemName" type="Label" parent="MarginContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.4)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="ItemQuantity" type="Label" parent="MarginContainer"]
+modulate = Color(1, 1, 1, 0.4)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 16
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 2
+autowrap_mode = 2
+justification_flags = 162

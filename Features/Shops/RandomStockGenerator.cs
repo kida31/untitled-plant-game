@@ -1,33 +1,174 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using untitledplantgame.Common;
+using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Shops;
 
+/// <summary>
+///     Generates random stock for shops. And provides misc. random item generation.
+/// </summary>
 public class RandomStockGenerator
 {
-	// TODO: Not actually random, just a fixed list. Make this actually random according to some rules
+	private static readonly Random Rand = new(7);
+
+	/// <summary>
+	///     Generates random placeholder items. These do not exist in the game.
+	/// </summary>
+	/// <param name="n"></param>
+	/// <returns></returns>
 	[Obsolete]
-	public List<IItemStack> GetRandom(int n)
+	public List<IItemStack> GetRandomPlaceholders(int n)
 	{
-		return new List<IItemStack>()
-		{
-			new ItemStack("basil", "Basil", null, "This is basil", "", ItemCategory.Seed, baseValue: 10, amount: 5),
-			new ItemStack("parsley", "Parsley", null, "This is parsley", "",ItemCategory.Seed, baseValue: 15, amount: 3),
-			new ItemStack("mint", "Mint", null, "This is mint", "",ItemCategory.Seed, baseValue: 20, amount: 2),
-			new ItemStack("cilantro", "Cilantro", null, "This is cilantro","", ItemCategory.Seed, baseValue: 12, amount: 8),
-			new ItemStack("oregano", "Oregano", null, "This is oregano", "",ItemCategory.Seed, baseValue: 14, amount: 6),
-			new ItemStack("thyme", "Thyme", null, "This is thyme","", ItemCategory.Seed, baseValue: 18, amount: 4),
-			new ItemStack("rosemary", "Rosemary", null, "This is rosemary","", ItemCategory.Seed, baseValue: 25, amount: 2),
-			new ItemStack("sage", "Sage", null, "This is sage","", ItemCategory.Seed, baseValue: 17, amount: 7),
-			new ItemStack("chives", "Chives", null, "This is chives", "",ItemCategory.Seed, baseValue: 13, amount: 10),
-			new ItemStack("dill", "Dill", null, "This is dill","", ItemCategory.Seed, baseValue: 11, amount: 9),
-			new ItemStack("lavender", "Lavender", null, "This is lavender","", ItemCategory.Seed, baseValue: 30, amount: 1),
-			new ItemStack("tarragon", "Tarragon", null, "This is tarragon", "",ItemCategory.Seed, baseValue: 22, amount: 4),
-			new ItemStack("fennel", "Fennel", null, "This is fennel","", ItemCategory.Seed, baseValue: 16, amount: 6),
-			new ItemStack("marjoram", "Marjoram", null, "This is marjoram","", ItemCategory.Seed, baseValue: 19, amount: 5),
-			new ItemStack("lemonbalm", "Lemon Balm", null, "This is lemon balm", "",ItemCategory.Seed, baseValue: 14, amount: 8),
-			new ItemStack("chervil", "Chervil", null, "This is chervil", "",ItemCategory.Seed, baseValue: 12, amount: 10),
-		};
+		Assert.AssertTrue(n > 0);
+		var items = new List<IItemStack>()
+			{
+				new ItemStack("basil")
+				{
+					Name = "Basil",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is basil",
+					BaseValue = 10,
+					Amount = 5
+				},
+				new ItemStack("parsley")
+				{
+					Name = "Parsley",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is parsley",
+					BaseValue = 15,
+					Amount = 3
+				},
+				new ItemStack("mint")
+				{
+					Name = "Mint",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is mint",
+					BaseValue = 20,
+					Amount = 2
+				},
+				new ItemStack("cilantro")
+				{
+					Name = "Cilantro",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is cilantro",
+					BaseValue = 12,
+					Amount = 8
+				},
+				new ItemStack("oregano")
+				{
+					Name = "Oregano",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is oregano",
+					BaseValue = 14,
+					Amount = 6
+				},
+				new ItemStack("thyme")
+				{
+					Name = "Thyme",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is thyme",
+					BaseValue = 18,
+					Amount = 4
+				},
+				new ItemStack("rosemary")
+				{
+					Name = "Rosemary",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is rosemary",
+					BaseValue = 25,
+					Amount = 2
+				},
+				new ItemStack("sage")
+				{
+					Name = "Sage",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is sage",
+					BaseValue = 17,
+					Amount = 7
+				},
+				new ItemStack("chives")
+				{
+					Name = "Chives",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is chives",
+					BaseValue = 13,
+					Amount = 10
+				},
+				new ItemStack("dill")
+				{
+					Name = "Dill",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is dill",
+					BaseValue = 11,
+					Amount = 9
+				},
+				new ItemStack("lavender")
+				{
+					Name = "Lavender",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is lavender",
+					BaseValue = 30,
+					Amount = 1
+				},
+				new ItemStack("tarragon")
+				{
+					Name = "Tarragon",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is tarragon",
+					BaseValue = 22,
+					Amount = 4
+				},
+				new ItemStack("fennel")
+				{
+					Name = "Fennel",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is fennel",
+					BaseValue = 16,
+					Amount = 6
+				},
+				new ItemStack("marjoram")
+				{
+					Name = "Marjoram",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is marjoram",
+					BaseValue = 19,
+					Amount = 5
+				},
+				new ItemStack("lemonbalm")
+				{
+					Name = "Lemon Balm",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is lemon balm",
+					BaseValue = 14,
+					Amount = 8
+				},
+				new ItemStack("chervil")
+				{
+					Name = "Chervil",
+					Category = ItemCategory.Seed,
+					ToolTipDescription = "This is chervil",
+					BaseValue = 12,
+					Amount = 10
+				},
+			}
+			.OrderBy(o => Rand.Next())
+			.ToList();
+		return items.GetRange(0, Math.Min(items.Count, n));
+	}
+
+	/// <summary>
+	///     Generates random items from the item database.
+	/// </summary>
+	/// <param name="n"></param>
+	/// <returns></returns>
+	public List<IItemStack> GetRandomItems(int n)
+	{
+		var items = ItemDatabase.Instance.ItemStacks
+			.OrderBy(o => Rand.Next())
+			.ToList<IItemStack>();
+		return items.GetRange(0, Math.Min(items.Count, n));
 	}
 }
