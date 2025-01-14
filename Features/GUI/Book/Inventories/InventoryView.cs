@@ -13,6 +13,7 @@ namespace untitledplantgame.GUI.Book.Inventories;
 public partial class InventoryView : Control
 {
 	private readonly Dictionary<InventoryItemView, Action> _itemViewPressedActions = new();
+	private readonly Dictionary<InventoryItemView, Action> _itemViewSecondaryPressedActions = new();
 	[Export] private Container _inventoryItemViewContainer;
 	[Export] private PackedScene _inventoryItemViewPrefab;
 
@@ -53,7 +54,10 @@ public partial class InventoryView : Control
 			// Update actions
 			if (_itemViewPressedActions.ContainsKey(view))
 			{
+				// unbind LMB
 				view.Pressed -= _itemViewPressedActions[view];
+				// unbind RMB
+				view.SecondaryPressed -= _itemViewSecondaryPressedActions[view];
 			}
 
 			if (i >= items.Count)
@@ -65,15 +69,25 @@ public partial class InventoryView : Control
 
 			void PressedHandler()
 			{
-				_logger.Debug($"Handle click on {inventory.Name}[{snapshotIndex}/{i}]");
+				_logger.Debug($"Handle click on {inventory.Name}[{snapshotIndex}]");
 				if (CursorInventory.Instance.CanClick(inventory, snapshotIndex))
 				{
 					CursorInventory.Instance.HandleClick(inventory, snapshotIndex);
 				}
 			}
 
+			void SecondaryPressedHandler()
+			{
+				_logger.Debug($"Handle secondary click on {inventory.Name}[{snapshotIndex}]");
+				CursorInventory.Instance.HandleSecondary(inventory, snapshotIndex);
+			}
+
+			// Bind LMB
 			_itemViewPressedActions[view] = PressedHandler;
 			view.Pressed += PressedHandler;
+			// Bind RMB
+			_itemViewSecondaryPressedActions[view] = SecondaryPressedHandler;
+			view.SecondaryPressed += SecondaryPressedHandler;
 		}
 
 		// I dont know where to place this
