@@ -1,4 +1,6 @@
+using System;
 using Godot;
+using untitledplantgame.Common;
 
 public partial class MainMenu : Control
 {
@@ -18,6 +20,6 @@ public partial class MainMenu : Control
 	
 	private void OpenSettings()
 	{
-		GetTree().ChangeSceneToFile("res://Features/GUI/HUDs/Settings/Settings.tscn");
+		GetTree().ChangeSceneToFile("res://Features/GUI/HUDs/SettingsMenu/Settings.tscn");
 	}
 }
