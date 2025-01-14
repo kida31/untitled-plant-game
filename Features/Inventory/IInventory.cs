@@ -265,5 +265,31 @@ public interface IInventory : IEnumerable<IItemStack>
 	/// <param name="item"></param>
 	/// <returns></returns>
 	IItemStack AddItemToSlot(int slotIdx, IItemStack item);
+
+	/// <summary>
+	///     Remove an item from the specified slot and returns the remaining stack that could not be deducted.
+	/// <para>
+	/// If the slot index is invalid, the item will not be removed and the item will be returned.
+	/// If the destination item stack is of different type, all items will be returned as well.
+	/// If the destination has less items than requested, all items will be returned as well.
+	/// </para>
+	/// </summary>
+	/// <param name="slotIdx"></param>
+	/// <param name="item"></param>
+	/// <returns></returns>
+	IItemStack RemoveItemFromSlot(int slotIdx, IItemStack item);
+	
+	/// <summary>
+	///     Pops a specified amount of an item from the specified slot and returns the popped item stack.
+	/// <para>
+	/// If the slot index is invalid, the item will not be removed and null will be returned.
+	/// If the destination item stack is of different type, null will be returned as well.
+	/// If the destination has fewer items than requested, null will be returned as well.
+	/// </para>
+	/// </summary>
+	/// <param name="slotIdx"></param>
+	/// <param name="amount"></param>
+	/// <returns></returns>
+	IItemStack PopItemFromSlot(int slotIdx, int amount);
 }
 // TODO: Replace javadoc @tags with c# xml variant

@@ -361,4 +361,34 @@ public class BigInventory : IInventory
 
 		return null;
 	}
+
+	public IItemStack RemoveItemFromSlot(int slotIdx, IItemStack item)
+	{
+		foreach (var inventory in _inventories.Values)
+		{
+			if (slotIdx < inventory.Size)
+			{
+				return inventory.RemoveItemFromSlot(slotIdx, item);
+			}
+
+			slotIdx -= inventory.Size;
+		}
+
+		return null;
+	}
+
+	public IItemStack PopItemFromSlot(int slotIdx, int amount)
+	{
+		foreach (var inventory in _inventories.Values)
+		{
+			if (slotIdx < inventory.Size)
+			{
+				return inventory.PopItemFromSlot(slotIdx, amount);
+			}
+
+			slotIdx -= inventory.Size;
+		}
+
+		return null;
+	}
 }

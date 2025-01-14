@@ -12,7 +12,7 @@ namespace untitledplantgame.Shops;
 /// </summary>
 public class RandomStockGenerator
 {
-	private static readonly Random Rand = new(7);
+	private static readonly Random Rand = new(34);
 
 	/// <summary>
 	///     Generates random placeholder items. These do not exist in the game.
@@ -169,6 +169,7 @@ public class RandomStockGenerator
 		var items = ItemDatabase.Instance.ItemStacks
 			.OrderBy(o => Rand.Next())
 			.ToList<IItemStack>();
+		items.ForEach(it => it.Amount = Rand.Next(1, it.MaxStackSize));
 		return items.GetRange(0, Math.Min(items.Count, n));
 	}
 }

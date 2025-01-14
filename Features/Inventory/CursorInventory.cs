@@ -129,14 +129,12 @@ public class CursorInventory : ICursorInventory
 
 	private IItemStack _content;
 	private readonly Logger _logger;
-	private IInventory _pickupOrigin;
-	private int _pickupOriginIndex;
+	private IInventory _mostRecentInventoryPickup;
 
 	private CursorInventory()
 	{
 		_logger = new(GetType().Name);
-		_pickupOrigin = null;
-		_pickupOriginIndex = -1;
+		_mostRecentInventoryPickup = null;
 		_content = null;
 	}
 
@@ -170,9 +168,107 @@ public class CursorInventory : ICursorInventory
 		}
 	}
 
+	/// <summary>
+	///     Handles secondary transaction/feature on some other inventory
+	///     If cursor has content and target inventory has item, it will try to take one item if stackable
+	///     If cursor has no item and target inventory has item, it will try to take one item.
+	///     If cursor has content and target inventory has no empty, it will try to put down one item.
+	///     If cursor has no item and target inventory has no item, it will do nothing.
+	/// </summary>
+	/// <param name="inventory"></param>
+	/// <param name="itemIndex"></param>
+	public void HandleSecondary(IInventory inventory, int itemIndex)
+	{
+		var targetItem = inventory.GetItem(itemIndex);
+
+		// Empty Hand, Empty Slot
+		// RMB - Nothing
+		if (_content == null && targetItem == null)
+		{
+			return;
+		}
+
+		// 50 Hand, Empty Slot
+		// RMB - Drop 1
+		if (_content != null && targetItem == null)
+		{
+			TryDropOne();
+			return;
+		}
+
+		// Empty Hand, 50 Slot
+		// RMB - Take 1
+		if (_content == null && targetItem != null)
+		{
+			TryTakeOne();
+			return;
+		}
+
+		// 50 Hand, 50 Slot
+		// RMB - Take 1 (stack) or nothing
+		if (_content != null && targetItem != null)
+		{
+			TryTakeOne();
+			return;
+		}
+
+		_logger.Debug("Secondary -> Nothing to do here");
+		return;
+
+		// Helpers
+		void TryDropOne()
+		{
+			var addedItem = _content.Clone();
+			addedItem.Amount = 1;
+
+			var remainder = inventory.AddItemToSlot(itemIndex, addedItem);
+			if (remainder != null)
+			{
+				_logger.Error("Failed to put down item");
+				return;
+			}
+
+			_content.Amount -= 1;
+			if (_content.Amount == 0)
+			{
+				ClearContent();
+			}
+
+			ContentChanged?.Invoke();
+		}
+
+		void TryTakeOne()
+		{
+			// !(is stackable in hand or hand is empty)
+			if (_content != null && !_content.HasSameIdAndProps(targetItem))
+			{
+				// do nothing (could consider swapping)
+				return;
+			}
+			
+			var itemStack = inventory.PopItemFromSlot(itemIndex, 1);
+			if (itemStack == null)
+			{
+				_logger.Error("Failed to pick up item");
+				return;
+			}
+
+			if (_content == null)
+			{
+				_content = itemStack;
+			}
+			else
+			{
+				_content.Amount += 1;
+			}
+			_mostRecentInventoryPickup = inventory;
+			ContentChanged?.Invoke();
+		}
+	}
+
 	public bool CanClick(IInventory inventory, int itemIndex)
 	{
-		return new List<Func<IInventory, int, bool>> {CanPickUp, CanPutDown, CanStack, CanSwap}.Any(f => f(inventory, itemIndex));
+		return new List<Func<IInventory, int, bool>> { CanPickUp, CanPutDown, CanStack, CanSwap }.Any(f => f(inventory, itemIndex));
 	}
 
 	public bool CanPickUp(IInventory inventory, int itemIndex)
@@ -189,17 +285,15 @@ public class CursorInventory : ICursorInventory
 			return;
 		}
 
-		var result = inventory.RemoveItem(item);
-		if (result.Count != 0)
+		var result = inventory.RemoveItemFromSlot(itemIndex, item);
+		if (result != null)
 		{
 			_logger.Error("");
 			return;
 		}
 
-
 		_content = item;
-		_pickupOrigin = inventory;
-		_pickupOriginIndex = itemIndex;
+		_mostRecentInventoryPickup = inventory;
 		ContentChanged?.Invoke();
 	}
 
@@ -241,15 +335,15 @@ public class CursorInventory : ICursorInventory
 
 	public void Swap(IInventory inventory, int itemIndex)
 	{
-		var item = inventory.GetItem(itemIndex)?.Clone();
-		if (item == null || _content == null)
+		var itemAtDestination = inventory.GetItem(itemIndex)?.Clone();
+		if (itemAtDestination == null || _content == null)
 		{
 			_logger.Error("Nothing to swap here");
 			return;
 		}
 
-		var result = inventory.RemoveItem(item);
-		if (result.Count > 0)
+		var result = inventory.RemoveItemFromSlot(itemIndex, itemAtDestination);
+		if (result != null)
 		{
 			_logger.Error("Could not get item out of target inventory");
 			return;
@@ -262,7 +356,7 @@ public class CursorInventory : ICursorInventory
 			ItemOrphaned?.Invoke(_content);
 		}
 
-		_content = item;
+		_content = itemAtDestination;
 		_logger.Info("Swapped item");
 		ContentChanged?.Invoke();
 	}
@@ -275,26 +369,18 @@ public class CursorInventory : ICursorInventory
 			return;
 		}
 
-		if (_pickupOrigin == null || _pickupOriginIndex < 0)
+		if (_mostRecentInventoryPickup == null)
 		{
 			_logger.Warn("No origin location saved to return item to");
 			ItemOrphaned?.Invoke(_content);
 		}
 
-		var destination = _pickupOrigin?.GetItem(_pickupOriginIndex);
+		var remainder = _mostRecentInventoryPickup?.AddItem(_content);
 
-		if (destination != null)
+		if (remainder != null && remainder.Count > 0)
 		{
-			_logger.Error("Original space is occupied");
-			ItemOrphaned?.Invoke(_content);
-		}
-
-		var remainder = _pickupOrigin.AddItemToSlot(_pickupOriginIndex, _content);
-
-		if (remainder != null)
-		{
-			// This might be the case with items that have special inventory restrictions
-			_logger.Error("Could not put item back to origin although destination is free. Unexpected Error");
+			// This might be the case with items that have special inventory restrictions or space was occupied somehow
+			_logger.Error("Could not put item back to origin although destination is free.");
 			ItemOrphaned?.Invoke(_content);
 		}
 
@@ -305,8 +391,7 @@ public class CursorInventory : ICursorInventory
 	private void ClearContent()
 	{
 		_content = null;
-		_pickupOrigin = null;
-		_pickupOriginIndex = -1;
+		_mostRecentInventoryPickup = null;
 		ContentChanged?.Invoke();
 	}
 }
