@@ -1,27 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbpdq5274ohk8"]
+[gd_scene load_steps=7 format=3 uid="uid://bbpdq5274ohk8"]
 
-[ext_resource type="Script" path="res://Features/NPC/NpcHandler.cs" id="1_h5fkf"]
-[ext_resource type="PackedScene" uid="uid://b7xvqy48jfh5q" path="res://Features/NPC/Type/StandardNpc.tscn" id="2_u15al"]
-[ext_resource type="PackedScene" uid="uid://lufeqnjeabjx" path="res://Features/NPC/Checkpoint/Checkpoint.tscn" id="3_q8nv8"]
+[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="2_7jprp"]
+[ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="2_p24nj"]
+[ext_resource type="PackedScene" uid="uid://lufeqnjeabjx" path="res://Features/NPC/NpcTask/MovementTaskTarget.tscn" id="3_q8nv8"]
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="4_ajjof"]
-[ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/InteractableItemPrefab.tscn" id="5_pjqks"]
+[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_s323p"]
+[ext_resource type="PackedScene" uid="uid://bwxru3xolfihy" path="res://Features/NPC/NpcTask/TalkToPlayerTask.tscn" id="6_fwegf"]
 
 [node name="NpcTestingScenes" type="Node2D"]
 
-[node name="NpcHandler" type="Node" parent="." node_paths=PackedStringArray("_routines")]
-script = ExtResource("1_h5fkf")
-_routines = []
+[node name="TalkRoutine" type="Node" parent="."]
+script = ExtResource("4_s323p")
 
-[node name="Area2D" parent="NpcHandler" instance=ExtResource("2_u15al")]
+[node name="TalkToPlayerTask" parent="TalkRoutine" instance=ExtResource("6_fwegf")]
+_text = "First Text"
 
-[node name="Area2D2" parent="NpcHandler" instance=ExtResource("3_q8nv8")]
-position = Vector2(134, 0)
+[node name="WalkAndTalkRoutine" type="Node" parent="."]
+script = ExtResource("4_s323p")
 
-[node name="Area2D3" parent="NpcHandler" instance=ExtResource("3_q8nv8")]
-position = Vector2(137, 46)
+[node name="MovementTaskTarget" parent="WalkAndTalkRoutine" instance=ExtResource("3_q8nv8")]
+position = Vector2(194, -1)
+
+[node name="TalkToPlayerTask" parent="WalkAndTalkRoutine" instance=ExtResource("6_fwegf")]
+_text = "Second"
+
+[node name="MovementTaskTarget2" parent="WalkAndTalkRoutine" instance=ExtResource("3_q8nv8")]
+position = Vector2(194, 53)
+
+[node name="RoutinePlanner" type="Node" parent="." node_paths=PackedStringArray("_routines")]
+script = ExtResource("2_7jprp")
+_routines = [NodePath("../TalkRoutine"), NodePath("../WalkAndTalkRoutine")]
+
+[node name="NpcBody2D" parent="." node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("2_p24nj")]
+_routinePlanner = NodePath("../RoutinePlanner")
 
 [node name="Player" parent="." instance=ExtResource("4_ajjof")]
 position = Vector2(29, 121)
-
-[node name="GenericItem" parent="." instance=ExtResource("5_pjqks")]
-position = Vector2(77, 74)

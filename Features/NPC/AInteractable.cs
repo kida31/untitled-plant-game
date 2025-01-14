@@ -29,13 +29,24 @@ public abstract partial class AInteractable : Area2D, IInteractable
 
 	public abstract void Interact();
 
-	protected virtual void OnBodyExited(Node body)
-	{
-		InteractionManager.Instance.UnregisterArea(this);
-	}
-
+	
 	private void OnBodyEntered(Node body)
 	{
+		if (!body.IsInGroup("player"))
+		{
+			return;
+		}
+		
 		InteractionManager.Instance.RegisterArea(this);
+	}
+	
+	protected virtual void OnBodyExited(Node body)
+	{
+		if (!body.IsInGroup("player"))
+		{
+			return;
+		}
+		
+		InteractionManager.Instance.UnregisterArea(this);
 	}
 }

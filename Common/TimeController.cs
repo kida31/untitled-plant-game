@@ -17,6 +17,8 @@ public partial class TimeController : Node
 	/// Singleton instance that's accessible from anywhere
 	public static TimeController Instance { get; private set; }
 
+	public long TimeOfDayInMinutes;
+	
 	public delegate void DayChangedHandler(int day);
 
 	public event DayChangedHandler DayChanged;
@@ -89,8 +91,8 @@ public partial class TimeController : Node
 		const double minutesPerHour = 60;
 
 		var totalMinutes = (int)(CurrentSeconds / 60);
-
 		var currentDayMinutes = (int)(totalMinutes % minutesPerDay);
+		TimeOfDayInMinutes = currentDayMinutes;
 		var hour = (int)(currentDayMinutes / minutesPerHour);
 		var minute = (int)(currentDayMinutes % minutesPerHour);
 
@@ -113,6 +115,12 @@ public partial class TimeController : Node
 		{
 			_wasNoon = true;
 			NoonOccured?.Invoke();
+		}
+
+		if (TimeOfDayInMinutes >= 24 * 60)
+		{
+			
+			TimeOfDayInMinutes = 0;
 		}
 	}
 

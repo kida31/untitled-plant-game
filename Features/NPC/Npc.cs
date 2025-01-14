@@ -2,7 +2,7 @@ using Godot;
 
 namespace untitledplantgame.NPC;
 
-public abstract partial class Npc : AInteractable
+public abstract partial class Npc : CharacterBody2D
 {
 	public abstract string GetNpcName();
 	public abstract bool IsNpcInteractable();
