@@ -129,13 +129,13 @@ public class CursorInventory : ICursorInventory
 
 	private IItemStack _content;
 	private readonly Logger _logger;
-	private IInventory _pickupOrigin;
+	private IInventory _mostRecentInventoryPickup;
 	private int _pickupOriginIndex;
 
 	private CursorInventory()
 	{
 		_logger = new(GetType().Name);
-		_pickupOrigin = null;
+		_mostRecentInventoryPickup = null;
 		_pickupOriginIndex = -1;
 		_content = null;
 	}
@@ -257,13 +257,13 @@ public class CursorInventory : ICursorInventory
 
 			if (_content == null)
 			{
-				_content = itemStack;	
+				_content = itemStack;
 			}
 			else
 			{
 				_content.Amount += 1;
 			}
-			
+			_mostRecentInventoryPickup = inventory;
 			ContentChanged?.Invoke();
 		}
 	}
@@ -295,7 +295,7 @@ public class CursorInventory : ICursorInventory
 		}
 
 		_content = item;
-		_pickupOrigin = inventory;
+		_mostRecentInventoryPickup = inventory;
 		_pickupOriginIndex = itemIndex;
 		ContentChanged?.Invoke();
 	}
@@ -372,13 +372,13 @@ public class CursorInventory : ICursorInventory
 			return;
 		}
 
-		if (_pickupOrigin == null || _pickupOriginIndex < 0)
+		if (_mostRecentInventoryPickup == null || _pickupOriginIndex < 0)
 		{
 			_logger.Warn("No origin location saved to return item to");
 			ItemOrphaned?.Invoke(_content);
 		}
 
-		var destination = _pickupOrigin?.GetItem(_pickupOriginIndex);
+		var destination = _mostRecentInventoryPickup?.GetItem(_pickupOriginIndex);
 
 		if (destination != null)
 		{
@@ -386,9 +386,9 @@ public class CursorInventory : ICursorInventory
 			ItemOrphaned?.Invoke(_content);
 		}
 
-		var remainder = _pickupOrigin.AddItemToSlot(_pickupOriginIndex, _content);
+		var remainder = _mostRecentInventoryPickup?.AddItem(_content);
 
-		if (remainder != null)
+		if (remainder != null && remainder.Count > 0)
 		{
 			// This might be the case with items that have special inventory restrictions
 			_logger.Error("Could not put item back to origin although destination is free. Unexpected Error");
@@ -402,7 +402,7 @@ public class CursorInventory : ICursorInventory
 	private void ClearContent()
 	{
 		_content = null;
-		_pickupOrigin = null;
+		_mostRecentInventoryPickup = null;
 		_pickupOriginIndex = -1;
 		ContentChanged?.Invoke();
 	}
