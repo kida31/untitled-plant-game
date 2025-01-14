@@ -1,22 +1,19 @@
 using System;
-using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
-using untitledplantgame.Database;
-using untitledplantgame.Inventory;
-using untitledplantgame.Item;
 using untitledplantgame.Interaction;
+using untitledplantgame.Inventory;
+using untitledplantgame.Shops;
 using untitledplantgame.Tools;
-using SeedComponent = untitledplantgame.Item.Components.SeedComponent;
 
 namespace untitledplantgame.Player;
 
 public partial class Player : CharacterBody2D
 {
 	private readonly Logger _logger = new Logger("Player");
-
+	
 	// Input direction(?)
 	public Vector2 Direction = Vector2.Zero;
 
@@ -32,31 +29,52 @@ public partial class Player : CharacterBody2D
 	private Vector2 _frontDirection = Vector2.Down; // The direction the player is facing.
 	private AnimatedSprite2D _animatedSprite2D;
 	private PlayerStateMachine _stateMachine;
-	private BigInventory _inventory = new(16);
+	private BigInventory _inventory;
 
 	private Toolbelt _toolbelt = new (
 		new Tool[]
 		{
 			new Shears(8, 16),
 			new WateringCan(50, 1000, true, 12, 24),
+			new SeedBag(8, 24, 1.5f),
 		}
 	);
 
 	public override void _Ready()
 	{
-		EventBus.Instance.OnPlayerInitialize += InitializePlayer;
 		_logger.Info("! Ready !");
+		
+		Game.Instance.Provide(this);
+		
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_stateMachine.Initialize(this);
 		
-		/*
-		// Testing seed bag
-		var items = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>{new SeedComponent()});
-		_logger.Debug("Loaded items: " + items[0]);
-		items[0].Amount = 6;
-		_inventory.AddItem(items[0]);
-		*/
+		EventBus.Instance.OnItemPickUp += OnItemPickUp;
+
+		// Initialize inventory
+		var rand = new RandomStockGenerator();
+		_inventory = new(20);
+		_inventory.InventoryChanged += () =>
+		{
+			EventBus.Instance.PlayerInventoryChanged(this, _inventory);
+		};
+		_inventory.AddItem(rand.GetRandomItems(12).ToArray());
+	}
+
+	private void OnItemPickUp(IItemStack obj)
+	{
+		if (obj == null)
+		{
+			_logger.Error("Item is null, cannot pick up.");
+			return;
+		}
+		
+		var leftovers = _inventory.AddItem(obj);
+		if (leftovers.Count > 0)
+		{
+			_logger.Warn("Inventory full, could not pick up all items. This is not handled");
+		}
 	}
 
 	private Player InitializePlayer()

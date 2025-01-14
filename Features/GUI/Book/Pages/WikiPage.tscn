@@ -1,0 +1,147 @@
+[gd_scene load_steps=10 format=3 uid="uid://e3t5fwq4qne3"]
+
+[ext_resource type="Script" path="res://Features/GUI/Book/Pages/WikiPage.cs" id="1_hckop"]
+[ext_resource type="PackedScene" uid="uid://c77ama5r0mirv" path="res://Features/GUI/Book/Wiki/WikiItemList.tscn" id="1_lyx1a"]
+[ext_resource type="PackedScene" uid="uid://bmc1oq8o2if8d" path="res://Features/GUI/Book/Wiki/WikiArticleView.tscn" id="3_q0eou"]
+[ext_resource type="Texture2D" uid="uid://cf1pnxii18btx" path="res://Assets/UI/Book/Decoration/BookRing.png" id="4_8y4ml"]
+[ext_resource type="Texture2D" uid="uid://ydf8deuohr84" path="res://Assets/UI/Book/Icons/bookmark_green.png" id="5_8r2uy"]
+[ext_resource type="PackedScene" uid="uid://blty0r6y6jxn3" path="res://Features/GUI/Book/BookmarkButton.tscn" id="5_m1wd8"]
+[ext_resource type="Texture2D" uid="uid://hcpqqw3gvvii" path="res://Assets/UI/Book/Icons/bookmark_dark_green.png" id="6_tkp70"]
+[ext_resource type="Texture2D" uid="uid://bgyw30yltk4py" path="res://Assets/UI/Book/Icons/bookmark_orange.png" id="7_40vse"]
+[ext_resource type="Texture2D" uid="uid://bu34q0380jo67" path="res://Assets/UI/Book/Icons/bookmark_dark_orange.png" id="8_20ivq"]
+
+[node name="WikiPage" type="Control" node_paths=PackedStringArray("_wikiArticle", "_wikiItemList")]
+custom_minimum_size = Vector2(448, 304)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 448.0
+offset_bottom = 304.0
+script = ExtResource("1_hckop")
+_wikiArticle = NodePath("WikiArticleView")
+_wikiItemList = NodePath("WikiItemList")
+metadata/_tab_index = 1
+
+[node name="WikiItemList" parent="." instance=ExtResource("1_lyx1a")]
+layout_mode = 1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" parent="WikiItemList/SectionsButtons/Div3" index="1"]
+focus_neighbor_right = NodePath("../../../../WikiArticleView/RelatedStuff/RelatedItem")
+
+[node name="WikiArticleView" parent="." instance=ExtResource("3_q0eou")]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RelatedItem" parent="WikiArticleView/RelatedStuff" index="0"]
+focus_neighbor_left = NodePath("../../../WikiItemList/SectionsButtons/Div3/Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = 3.0
+offset_right = 24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rings" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_8y4ml")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings2" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_8y4ml")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings3" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_8y4ml")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings4" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_8y4ml")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings5" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_8y4ml")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings6" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_8y4ml")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Rings7" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_8y4ml")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="BookmarkButton" parent="." instance=ExtResource("5_m1wd8")]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.413772
+anchor_top = 0.775
+anchor_right = 0.451719
+anchor_bottom = 1.0375
+offset_right = 0.0
+offset_bottom = 0.0
+size_flags_horizontal = 3
+focus_mode = 0
+TextureActive = ExtResource("5_8r2uy")
+TextureInactive = ExtResource("6_tkp70")
+Disabled = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BookmarkButton2" parent="." instance=ExtResource("5_m1wd8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.547089
+anchor_top = 0.820066
+anchor_right = 0.585035
+anchor_bottom = 1.08257
+offset_right = 0.0
+offset_bottom = 0.0
+size_flags_horizontal = 3
+focus_mode = 0
+TextureActive = ExtResource("7_40vse")
+TextureInactive = ExtResource("8_20ivq")
+Active = true
+Disabled = true
+metadata/_edit_use_anchors_ = true
+
+[editable path="WikiItemList"]
+[editable path="WikiArticleView"]
+[editable path="WikiArticleView/Name"]
+[editable path="WikiArticleView/Description"]
+[editable path="WikiArticleView/Stats"]

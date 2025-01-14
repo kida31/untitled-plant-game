@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://df0cg0vcow1n2"]
+
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugKeybindings.cs" id="1_2qjov"]
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentFocus.cs" id="1_spicd"]
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugLastClicked.cs" id="2_4xlmf"]
+[ext_resource type="Script" path="res://InGameLogOverlay.cs" id="2_lomx1"]
+
+[node name="DebugOverlays" type="PanelContainer"]
+top_level = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 318.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Keybindings" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Keybinds"
+script = ExtResource("1_2qjov")
+
+[node name="CurrentFocus" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "CurrentFocus"
+script = ExtResource("1_spicd")
+
+[node name="LastClicked" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "LastClicked"
+script = ExtResource("2_4xlmf")
+
+[node name="Logs" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+bbcode_enabled = true
+text = "LogMessages"
+fit_content = true
+scroll_following = true
+autowrap_mode = 2
+tab_size = 2
+script = ExtResource("2_lomx1")

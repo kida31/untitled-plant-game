@@ -24,7 +24,7 @@ public partial class InteractionManager : Node2D
 	private string BaseText => $"[{InputRemapper.GetButton(FreeRoam.Interact).ToString()}] ";
 	private bool _canInteract = true;
 	private const int BaseTextYTransform = 50;
-	private Node2D Player => EventBus.Instance.PlayerInitialized();
+	private Node2D _player;
 	private readonly List<IInteractable> _activeAreas = new();
 	private readonly Logger _logger = new("InteractionManager");
 
@@ -47,7 +47,9 @@ public partial class InteractionManager : Node2D
 	/// <param name="delta"></param>
 	public override void _Process(double delta)
 	{
-		if (AreaCount > 0 && _canInteract)
+		_player ??= Game.Instance.GetPlayer();
+
+		if (AreaCount > 0 && _canInteract & _player != null)
 		{
 			_activeAreas.Sort(SortByDistanceToPlayer);
 			_label.Text = BaseText + _activeAreas[0].ActionName;
@@ -95,15 +97,15 @@ public partial class InteractionManager : Node2D
 			return int.MaxValue;
 		}
 
-		if (Player == null)
+		if (_player == null)
 		{
 			_logger.Error("Player is null.");
 			return int.MaxValue;
 		}
 
 		
-		float distance1 = Player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
-		float distance2 = Player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
+		float distance1 = _player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
+		float distance2 = _player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
 		GD.PrintRich(distance2);
 		return distance1.CompareTo(distance2);
 	}

@@ -6,8 +6,15 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.Inventory;
 
+/// <summary>
+///     Base implementation of an inventory.
+/// </summary>
 public class Inventory : IInventory
 {
+	public event Action InventoryChanged;
+	public event Action<IItemStack> ItemAdded;
+	public event Action<IItemStack> ItemRemoved;
+	
 	private readonly IItemStack[] _items;
 	private readonly Logger _logger = new("Inventory");
 
@@ -18,6 +25,9 @@ public class Inventory : IInventory
 	{
 		_items = new IItemStack[size];
 		Name = name;
+		
+		ItemAdded += (_) => InventoryChanged?.Invoke();
+		ItemRemoved += (_) => InventoryChanged?.Invoke();
 	}
 
 	public IItemStack GetItem(int index)
@@ -35,7 +45,7 @@ public class Inventory : IInventory
 		Dictionary<int, IItemStack> overflow = new();
 		for (var i = 0; i < items.Length; i++)
 		{
-			var leftover = AddItem(items[i]);
+			var leftover = AddOneItem(items[i]);
 			if (leftover != null)
 			{
 				overflow.Add(i, leftover);
@@ -77,6 +87,8 @@ public class Inventory : IInventory
 		{
 			_items[i] = i < items.Count ? items[i] : null;
 		}
+		
+		InventoryChanged?.Invoke();
 	}
 
 	public bool Contains(string itemId)
@@ -134,9 +146,10 @@ public class Inventory : IInventory
 	{
 		for (var i = 0; i < _items.Length; i++)
 		{
-			if (_items[i].Id == itemId)
+			if (_items[i]?.Id == itemId)
 			{
 				_items[i] = null;
+				ItemRemoved?.Invoke(_items[i]);
 			}
 		}
 	}
@@ -145,9 +158,10 @@ public class Inventory : IInventory
 	{
 		for (var i = 0; i < _items.Length; i++)
 		{
-			if (_items[i].HasSameIdAndProps(item))
+			if (_items[i]?.HasSameIdAndProps(item) ?? false)
 			{
 				_items[i] = null;
+				ItemRemoved?.Invoke(_items[i]);
 			}
 		}
 	}
@@ -155,6 +169,7 @@ public class Inventory : IInventory
 	public void Clear(int index)
 	{
 		_items[index] = null;
+		InventoryChanged?.Invoke();
 	}
 
 	public void Clear()
@@ -163,6 +178,7 @@ public class Inventory : IInventory
 		{
 			_items[i] = null;
 		}
+		InventoryChanged?.Invoke();
 	}
 	
 	public Dictionary<int, IItemStack> GetItemsOfCategory(ItemCategory category)
@@ -184,6 +200,7 @@ public class Inventory : IInventory
 				_items[i] = leftover.ContainsKey(i) ? leftover[i] : null;
 			}
 		}
+		InventoryChanged?.Invoke();
 	}
 
 	public IItemStack AddItemToSlot(int slotIdx, IItemStack item)
@@ -194,29 +211,35 @@ public class Inventory : IInventory
 			return item;
 		}
 
+		// Empty slot
 		var existingItem = _items[slotIdx];
 		if (existingItem == null)
 		{
 			_items[slotIdx] = item;
+			ItemAdded?.Invoke(item);
 			return null;
 		}
 
-		// Check if stackable item
+		// Slot has no stackable item, do nothing
 		if (!existingItem.HasSameIdAndProps(item))
 		{
 			return item;
 		}
-
+		
+		// Fully transfered
 		var transferableAmount = existingItem.MaxStackSize - existingItem.Amount;
 		if (transferableAmount >= item.Amount)
 		{
 			existingItem.Amount += item.Amount;
+			ItemAdded?.Invoke(existingItem);
 			return null;
 		}
 
-		var leftover = item.Clone() as IItemStack;
+		// Partial transfer
+		var leftover = item.Clone();
 		existingItem.Amount += transferableAmount;
 		leftover!.Amount -= transferableAmount;
+		ItemAdded?.Invoke(item.Subtract(leftover));
 		return leftover;
 	}
 
@@ -230,14 +253,16 @@ public class Inventory : IInventory
 		return GetEnumerator();
 	}
 
-	private IItemStack AddItem(IItemStack item)
+	private IItemStack AddOneItem(IItemStack item)
 	{
+		_logger.Debug("Adding one item stack " + item);
 		if (item == null)
 		{
 			return null;
 		}
 
-		item = (item.Clone() as IItemStack)!;
+		var originalItem = item.Clone();
+		item = item.Clone();
 
 		// Try to fill up existing item stacks
 		var nonFullStackIdx = GetFirstNonFull(item);
@@ -251,6 +276,8 @@ public class Inventory : IInventory
 			{
 				destination.Amount += item.Amount;
 				item.Amount = 0;
+				_logger.Debug("Added item to existing stack");
+				ItemAdded?.Invoke(originalItem);
 				return null;
 			}
 
@@ -264,10 +291,14 @@ public class Inventory : IInventory
 		var emptyIdx = FirstEmpty();
 		if (emptyIdx == -1)
 		{
+			_logger.Debug("Inventory full, could not add item completely");
+			ItemAdded?.Invoke(originalItem.Subtract(item));
 			return item;
 		}
 
 		_items[emptyIdx] = item;
+		_logger.Debug("Added item to empty slot");
+		ItemAdded?.Invoke(originalItem);
 		return null;
 	}
 
@@ -291,7 +322,8 @@ public class Inventory : IInventory
 			return null;
 		}
 
-		item = item.Clone() as IItemStack;
+		var originalItem = item.Clone();
+		item = item.Clone();
 
 		var itemIndex = First(item!.Id);
 		while (itemIndex != -1)
@@ -311,12 +343,14 @@ public class Inventory : IInventory
 			item.Amount -= deducibleAmount;
 			if (item.Amount == 0)
 			{
+				ItemRemoved?.Invoke(originalItem);
 				return null;
 			}
 
 			itemIndex = First(item.Id);
 		}
 
+		ItemRemoved?.Invoke(originalItem.Subtract(item));
 		return item;
 	}
 }
