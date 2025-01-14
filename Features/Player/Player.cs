@@ -7,6 +7,7 @@ using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
+using untitledplantgame.Interaction;
 using untitledplantgame.Tools;
 using SeedComponent = untitledplantgame.Item.Components.SeedComponent;
 
@@ -38,12 +39,12 @@ public partial class Player : CharacterBody2D
 		{
 			new Shears(8, 16),
 			new WateringCan(50, 1000, true, 12, 24),
-			new SeedBag(8, 24, 1.5f),
 		}
 	);
 
 	public override void _Ready()
 	{
+		EventBus.Instance.OnPlayerInitialize += InitializePlayer;
 		_logger.Info("! Ready !");
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -56,6 +57,11 @@ public partial class Player : CharacterBody2D
 		items[0].Amount = 6;
 		_inventory.AddItem(items[0]);
 		*/
+	}
+
+	private Player InitializePlayer()
+	{
+		return this;
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

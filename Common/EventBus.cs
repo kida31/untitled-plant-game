@@ -21,6 +21,7 @@ namespace untitledplantgame.Common;
 public partial class EventBus : Node
 {
 	public static EventBus Instance { get; private set; }
+	public static bool DisplayLog; // TODO: This may or may not be a good place to store this variable...
 	private readonly Logger _logger = new("EventBus");
 
 	public override void _Ready()
@@ -122,7 +123,9 @@ public partial class EventBus : Node
 	//Inventory
 	
 	public delegate InventoryItemView GetItemSlotEventHandler();
-
+	public delegate Player.Player OnPlayerInitializeEventHandler();
+	
+	
 	public Action OnInventoryOpen;
 	public event Action<int> OnFaithChange;
 	public event Action<int> OnCurrencyChange;
@@ -134,9 +137,16 @@ public partial class EventBus : Node
 	public event Action<InventoryItemView> OnInventoryItemViewMoved;
 	public event Action<InventoryItemView> OnInventoryItemViewReleased;
 	public event Action<InventoryItemView> OnSetItemSlot;
+	public event Action<ICraftingStation> BeforeCraftingStationUiOpened;
 	public event Action<IItemStack, InventoryItemView> OnInventoryItemMove;
 	public event GetItemSlotEventHandler OnGetItemSlot;
+	public event OnPlayerInitializeEventHandler OnPlayerInitialize;
 
+
+	public Player.Player PlayerInitialized()
+	{
+		return OnPlayerInitialize?.Invoke();
+	}
 
 	public void InventoryOpened()
 	{
@@ -194,6 +204,11 @@ public partial class EventBus : Node
 		OnSetItemSlot?.Invoke(inventoryItemView);
 	}
 	
+	public void BeforeCraftingStationUiOpen(ICraftingStation craftingStation)
+	{
+		BeforeCraftingStationUiOpened?.Invoke(craftingStation);
+	}
+	
 	public void InventoryItemMoved(IItemStack itemStack, InventoryItemView inventoryItemView)
 	{
 		OnInventoryItemMove?.Invoke(itemStack, inventoryItemView);
@@ -202,12 +217,5 @@ public partial class EventBus : Node
 	public InventoryItemView GetItemSlot()
 	{
 		return OnGetItemSlot?.Invoke();
-	}
-
-	public event Action<ICraftingStation> BeforeCraftingStationUiOpened;
-
-	public void BeforeCraftingStationUiOpen(ICraftingStation craftingStation)
-	{
-		BeforeCraftingStationUiOpened?.Invoke(craftingStation);
 	}
 }

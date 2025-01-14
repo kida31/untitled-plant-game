@@ -24,6 +24,9 @@ position = Vector2(-3, 1372)
 [node name="GenericItem" parent="." instance=ExtResource("12_tpjy1")]
 position = Vector2(750, 429)
 
+[node name="GenericItem2" parent="." instance=ExtResource("12_tpjy1")]
+position = Vector2(757, 448)
+
 [node name="Bed" parent="." instance=ExtResource("11_33dsb")]
 position = Vector2(888, 177)
 

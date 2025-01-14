@@ -22,7 +22,7 @@ resources_spreadsheet_view/context_menu_on_leftclick=false
 
 config/name="untitled-plant-game"
 config/version="0.1.2"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Features/GUI/HUDs/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -46,7 +46,6 @@ TeleportPlayer="*res://Features/TeleportPlayer/TeleportPlayer.cs"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 
 [dotnet]
 
@@ -154,3 +153,7 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+
+[untitled_plant_game]
+
+logging/log_level="Debug"
