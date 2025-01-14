@@ -46,10 +46,10 @@ metadata/_edit_use_anchors_ = true
 [node name="TextBox" parent="." instance=ExtResource("4_ukuta")]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-anchor_left = 0.419643
-anchor_top = 0.690789
-anchor_right = 0.625
-anchor_bottom = 0.733553
+anchor_left = 0.232143
+anchor_top = 0.6875
+anchor_right = 0.8125
+anchor_bottom = 0.730263
 offset_right = 0.0
 offset_bottom = 0.0
 size_flags_horizontal = 4
