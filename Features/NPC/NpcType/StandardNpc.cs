@@ -1,25 +1,25 @@
 using Godot;
-using untitledplantgame.Common;
+using untitledplantgame.NPC.NpcInteraction;
+using untitledplantgame.NPC.RoutinePlanner;
 
-namespace untitledplantgame.NPC.Type;
+namespace untitledplantgame.NPC.NpcType;
 
+/**
+ * A classic implementation of an NPC. Has a name, a portrait and a bunch of routines and dialogue options.
+ */
 public partial class StandardNpc : Npc
 {
 	[Export] private string _name;
 	[Export] private Texture2D _defaultPortrait;
-	//[Export] private Array<Routine> _routines;
-	
-	public override string ActionName => "pickup";
+	[Export] private NpcPlayerInteraction _npcPlayerInteraction;
+	[Export] private NpcRoutinePlanner _routinePlanner;
 
 	public override void _Ready()
 	{
-		base._Ready(); // Yeah, I mean, that makes sense... I override the AInteractable... but I need it, lol
-		GD.Print("Testing");
-	}
-
-	public override void Interact()
-	{
-		GD.Print("I just wanna check");
+		base._Ready();
+		
+		//GD.Print(GetType());
+		//GD.Print("Testing");
 	}
 
 	public override string GetNpcName()

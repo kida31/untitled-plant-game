@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7xvqy48jfh5q"]
+[gd_scene load_steps=16 format=3 uid="uid://1wnuc03ll3y"]
 
-[ext_resource type="Script" path="res://Features/NPC/Type/StandardNpc.cs" id="1_6ipep"]
+[ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_6ipep"]
 [ext_resource type="Texture2D" uid="uid://bklcso0wn7iqr" path="res://Assets/Sprites/idle.png" id="2_4g0uj"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_435mo"]
+[ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="3_mu2uu"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g1ada"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvi7q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_33y27"]
 atlas = ExtResource("2_4g0uj")
@@ -37,7 +39,7 @@ region = Rect2(160, 160, 80, 80)
 atlas = ExtResource("2_4g0uj")
 region = Rect2(240, 160, 80, 80)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_raf7f"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_s0wvy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -74,12 +76,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Area2D" type="Area2D"]
-script = ExtResource("1_6ipep")
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlqdi"]
+radius = 23.0217
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_g1ada")
+[node name="NpcBody2D" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction")]
+script = ExtResource("1_6ipep")
+_name = "Jeff the Landshark"
+_defaultPortrait = ExtResource("2_435mo")
+_npcPlayerInteraction = NodePath("Area2D")
+
+[node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_fvi7q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_raf7f")
+sprite_frames = SubResource("SpriteFrames_s0wvy")
 animation = &"Idle_State_Forward"
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_mu2uu")
+
+[node name="InteractionCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_jlqdi")
