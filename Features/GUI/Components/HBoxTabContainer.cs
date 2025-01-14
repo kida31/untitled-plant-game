@@ -26,12 +26,10 @@ public partial class HBoxTabContainer : HBoxContainer
 		VisibilityChanged += ForceSeparationUpdate;
 	}
 	private void SetSeparation(int value) {
-		// GD.Print("Overriding separation " + value);
 		AddThemeConstantOverride("separation", value);
 	}
 	private void ForceSeparationUpdate() {
 		if (MaxWidth <= 0 || _children.Count <= 1) {
-			// GD.Print("No children. Resetting separation");
 			SetSeparation(_desiredSeparation); 
 			return;
 		}
