@@ -242,6 +242,84 @@ public class Inventory : IInventory
 		ItemAdded?.Invoke(item.Subtract(leftover));
 		return leftover;
 	}
+	
+	public IItemStack RemoveItemFromSlot(int slotIdx, IItemStack item)
+	{
+		if (slotIdx < 0 || slotIdx >= _items.Length)
+		{
+			_logger.Error("Invalid slot index");
+			return item;
+		}
+
+		// Empty slot
+		var existingItem = _items[slotIdx];
+		if (existingItem == null)
+		{
+			_logger.Error("Trying to remove item from empty slot");
+			return item;
+		}
+
+		// Slot does not have compatible item, do nothing
+		if (!existingItem.HasSameIdAndProps(item))
+		{
+			return item;
+		}
+		
+		
+		// Note: We do not remove partial stacks. This is a design decision.
+		// If more items are requested than exist, we return with full item stack
+		if (existingItem.Amount < item.Amount)
+		{
+			return item;
+		}
+		
+		// Full deduction
+		existingItem.Amount -= item.Amount;
+		if (existingItem.Amount == 0) // Checking <= 0 would be a better fallback, but would hide potential bugs
+		{
+			_items[slotIdx] = null;
+		}
+
+		ItemRemoved?.Invoke(item);
+		return null;
+	}
+
+	public IItemStack PopItemFromSlot(int slotIdx, int amount)
+	{
+		if (slotIdx < 0 || slotIdx >= _items.Length)
+		{
+			_logger.Error("Invalid slot index");
+			return null;
+		}
+
+		// Empty slot
+		var existingItem = _items[slotIdx];
+		if (existingItem == null)
+		{
+			_logger.Error("Trying to remove item from empty slot");
+			return null;
+		}
+		
+		// Note: We do not remove partial stacks. This is a design decision.
+		// If more items are requested than exist, we return with full item stack
+		if (existingItem.Amount < amount)
+		{
+			return null;
+		}
+		
+		// Full deduction
+		var poppedItem = existingItem.Clone();
+		poppedItem.Amount = amount;
+		
+		existingItem.Amount -= amount;
+		if (existingItem.Amount == 0) // Checking <= 0 would be a better fallback, but would hide potential bugs
+		{
+			_items[slotIdx] = null;
+		}
+
+		ItemRemoved?.Invoke(poppedItem);
+		return poppedItem;
+	}
 
 	public IEnumerator<IItemStack> GetEnumerator()
 	{
