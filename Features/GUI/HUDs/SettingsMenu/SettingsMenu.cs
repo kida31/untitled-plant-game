@@ -1,13 +1,15 @@
 using System.Text.RegularExpressions;
 using Godot;
-using untitledplantgame.GUI.HUDs.Settings;
 
-public partial class Settings : Node
+namespace untitledplantgame.GUI.HUDs.SettingsMenu;
+
+public partial class SettingsMenu : Node
 {
 	[Export] private Button _backButton;
 	[Export] private CheckBox _checkBox;
 	[Export] private LabelForCheckButton _debugMode;
 	[Export] private ResolutionButton _resolutionButton;
+	[Export] private DebugButton _debugButton;
 
 	private long _lastValidOptionButton;
 	private Vector2I _gameResolution;

@@ -1,6 +1,6 @@
 using Godot;
 
-namespace untitledplantgame.GUI.HUDs.Settings;
+namespace untitledplantgame.GUI.HUDs.SettingsMenu;
 
 public partial class LabelForCheckButton : Label
 {

@@ -1,21 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4ep57f02jim7"]
+[gd_scene load_steps=7 format=3 uid="uid://b4ep57f02jim7"]
 
+[ext_resource type="Script" path="res://Features/GUI/HUDs/SettingsMenu/SettingsMenu.cs" id="1_1el8a"]
 [ext_resource type="Texture2D" uid="uid://jitwrv3dmfn4" path="res://DefaultItemBackground_White.png" id="1_dfpnd"]
-[ext_resource type="Script" path="res://Features/GUI/HUDs/Settings/Settings.cs" id="1_i2qoj"]
 [ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="3_4hutb"]
-[ext_resource type="Script" path="res://Features/GUI/HUDs/Settings/ResolutionButton.cs" id="3_c8ql2"]
-[ext_resource type="Script" path="res://Features/GUI/HUDs/Settings/LabelForCheckButton.cs" id="4_nvt3e"]
+[ext_resource type="Script" path="res://Features/GUI/HUDs/SettingsMenu/ResolutionButton.cs" id="3_c8ql2"]
+[ext_resource type="Script" path="res://Features/GUI/HUDs/SettingsMenu/LabelForCheckButton.cs" id="4_nvt3e"]
+[ext_resource type="Script" path="res://Features/GUI/HUDs/SettingsMenu/DebugButton.cs" id="5_mke2j"]
 
-[node name="Settings" type="Control" node_paths=PackedStringArray("_backButton", "_checkBox", "_debugMode", "_resolutionButton")]
+[node name="Settings" type="Control" node_paths=PackedStringArray("_backButton", "_checkBox", "_debugMode", "_resolutionButton", "_debugButton")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_i2qoj")
+script = ExtResource("1_1el8a")
 _backButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/Button")
 _checkBox = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/CheckBox")
 _debugMode = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer/HBoxContainer/Label")
 _resolutionButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/OptionButton")
+_debugButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4/HBoxContainer/OptionButton")
+metadata/_edit_vertical_guides_ = [695.0]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(1280, 720)
@@ -86,6 +89,7 @@ size_flags_horizontal = 3
 script = ExtResource("3_c8ql2")
 
 [node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer3"]
@@ -116,6 +120,29 @@ _checkButton = NodePath("../CheckButton")
 [node name="CheckButton" type="CheckButton" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+
+[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+text = "Debug Mode"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+texture = ExtResource("1_dfpnd")
+expand_mode = 1
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_mke2j")
 
 [node name="Control" type="Control" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 visible = false

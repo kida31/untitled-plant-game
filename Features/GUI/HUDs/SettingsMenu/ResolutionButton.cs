@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Godot;
 
-namespace untitledplantgame.GUI.HUDs.Settings;
+namespace untitledplantgame.GUI.HUDs.SettingsMenu;
 
 public partial class ResolutionButton : OptionButton
 {
@@ -12,7 +12,12 @@ public partial class ResolutionButton : OptionButton
 	{
 		//GetPopup().MaxSize = new Vector2I((int)Size.X * 5, 160); //Size.X = 160, BUT (int) Size.X = 32 ...? WHAT???
 		GetPopup().MaxSize = new Vector2I(160, 160);
-		
+		FillResolutionList();
+		CreateResolutions();
+	}
+
+	private void FillResolutionList()
+	{
 		_resolution = new List<Vector2>
 		{
 			new(640, 480), // 4:3
@@ -48,10 +53,8 @@ public partial class ResolutionButton : OptionButton
 			new(5120, 2160), // 21:9
 			new(7680, 4320), // 16:9
 		};
-		
-		CreateResolutions();
 	}
-
+	
 	private string ConvertVectorToResolutionString(Vector2 vector2)
 	{
 		return Regex.Replace(vector2.ToString(), @"[()\s]", "").Replace(",", "x");
