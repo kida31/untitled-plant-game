@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using untitledplantgame.Common.Inputs.GameActions;
 
 namespace untitledplantgame.GUI.Components;
 
@@ -10,11 +11,11 @@ namespace untitledplantgame.GUI.Components;
 ///		Inherit from this to extend any clickable behaviour.
 /// </summary>
 [Tool]
-public partial class Clickable : Control, IPressable, IFocusable
+public partial class Clickable : Control, IPressable, IFocusable, ISeconaryPressable
 {
-	[Export]
-	public bool Disabled = false;
+	[Export] public bool Disabled = false;
 	public event Action Pressed;
+	public event Action SecondaryPressed;
 
 	public Clickable()
 	{
@@ -40,10 +41,13 @@ public partial class Clickable : Control, IPressable, IFocusable
 			var grandChildren = children.SelectMany(c => CollectChildren(c));
 			return children.Concat(grandChildren).OfType<Control>().ToList();
 		}
-		foreach (var c in CollectChildren(this).Where(c => c.MouseFilter == MouseFilterEnum.Stop))
-		{
-			messages.Add($"Child \"{c.Name}\" is set to MouseFilter.Stop. This may block clicks on this node");
-		}
+
+		var recursiveChildren = CollectChildren(this);
+		messages.AddRange(
+			recursiveChildren
+				.Where(c => c.MouseFilter == MouseFilterEnum.Stop)
+				.Select(c => $"Child \"{c.Name}\" is set to MouseFilter.Stop. This may block clicks on this node")
+		);
 
 		return messages.ToArray();
 	}
@@ -60,9 +64,22 @@ public partial class Clickable : Control, IPressable, IFocusable
 			}
 		}
 
-		if (@event.IsActionPressed("ui_accept"))
+		if (@event.IsActionPressed(UINavigation.Accept))
 		{
 			Pressed?.Invoke();
+		}
+
+		if (@event is InputEventMouseButton rmb)
+		{
+			if (rmb.ButtonIndex == MouseButton.Right && rmb.Pressed)
+			{
+				SecondaryPressed?.Invoke();
+			}
+		}
+		
+		if (@event.IsActionPressed(UINavigation.SecondaryAccept))
+		{
+			SecondaryPressed?.Invoke();
 		}
 	}
 }
