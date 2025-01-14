@@ -3,6 +3,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.Interaction;
 using untitledplantgame.Inventory;
 using untitledplantgame.Shops;
 using untitledplantgame.Tools;
@@ -41,7 +42,6 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
-		EventBus.Instance.OnPlayerInitialize += InitializePlayer;
 		_logger.Info("! Ready !");
 		
 		Game.Instance.Provide(this);
@@ -64,6 +64,12 @@ public partial class Player : CharacterBody2D
 
 	private void OnItemPickUp(IItemStack obj)
 	{
+		if (obj == null)
+		{
+			_logger.Error("Item is null, cannot pick up.");
+			return;
+		}
+		
 		var leftovers = _inventory.AddItem(obj);
 		if (leftovers.Count > 0)
 		{

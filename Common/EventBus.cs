@@ -119,9 +119,6 @@ public partial class EventBus : Node
 	}
 
 	//Inventory
-	
-	public delegate InventoryItemView GetItemSlotEventHandler();
-	public delegate Player.Player OnPlayerInitializeEventHandler();
 
 	public event Action<int> OnFaithChange;
 	public event Action<int> OnCurrencyChange;
