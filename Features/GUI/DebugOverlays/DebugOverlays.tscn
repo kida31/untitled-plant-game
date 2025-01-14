@@ -10,8 +10,8 @@ top_level = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -59.0
-offset_right = 425.0
+offset_top = -64.0
+offset_right = 318.0
 grow_vertical = 0
 mouse_filter = 2
 
