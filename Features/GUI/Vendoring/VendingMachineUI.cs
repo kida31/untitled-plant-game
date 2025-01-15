@@ -124,8 +124,7 @@ public partial class VendingMachineUI : Control
 
 	private void OnPriceMultChanged(float obj)
 	{
-		_vendingMachine.SetPriceSlider(obj);
-		_inventoryChangedHandler?.Invoke(); // UpdateContent(_inventory)
+		UpdateItemPricesSPAGHETTI();
 	}
 
 
@@ -134,18 +133,26 @@ public partial class VendingMachineUI : Control
 		var items = inventory.GetItems();
 		for (var index = 0; index < _itemSlots.Count && index < items.Count; index++)
 		{
-			var vendingItemView = _itemSlots[index];
-			var item = items[index];
-			// vendingItemView.UpdateItemView(item);
-			var effectivePrice = _vendingMachine.CalculateItemPrice(item);
-			vendingItemView.Price = effectivePrice > 0 ? $"{effectivePrice}g" : "";
-			if (item != null && effectivePrice != item.BaseValue)
-			{
-				vendingItemView.Price += $" ({item.BaseValue}g)";
-			}
+			var itemView = _itemSlots[index];
+			itemView.Inventory = inventory;
+			itemView.SlotIndex = index;
+		}
+		UpdateItemPricesSPAGHETTI();
+	}
 
-			vendingItemView.Inventory = inventory;
-			vendingItemView.SlotIndex = index;
+	private void UpdateItemPricesSPAGHETTI()
+	{
+		foreach (var slot in _itemSlots)
+		{
+			var item = slot.ItemStack;
+			if (item is null)
+			{
+				slot.Price = "";
+				continue;
+			}
+			
+			var price = _vendingMachine.CalculateItemPrice(item);
+			slot.Price = item.BaseValue == price ? $"{price}g" : $"{price}g ({item.BaseValue}g)";
 		}
 	}
 
