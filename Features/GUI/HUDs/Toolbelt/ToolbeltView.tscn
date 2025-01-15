@@ -198,16 +198,16 @@ _data = {
 
 [node name="ToolbeltView" type="Control" node_paths=PackedStringArray("_animationPlayer", "_leftBlob", "_centerBlob", "_rightBlob")]
 layout_mode = 3
-anchors_preset = 0
-offset_left = -134.0
-offset_top = -54.0
-offset_right = 136.0
-offset_bottom = 54.0
+anchor_right = 0.2
+anchor_bottom = 0.177778
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_qssme")
 _animationPlayer = NodePath("AnimationPlayer")
 _leftBlob = NodePath("Left")
 _centerBlob = NodePath("Center")
 _rightBlob = NodePath("Right")
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -217,50 +217,42 @@ libraries = {
 [node name="Left" parent="." instance=ExtResource("1_x7d1f")]
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 1
-anchor_left = 0.1625
-anchor_top = 0.126562
-anchor_right = 0.4425
-anchor_bottom = 0.826562
+anchor_left = -0.225
+anchor_top = 0.05
+anchor_right = 0.125
+anchor_bottom = 0.750001
 offset_left = -19.2
 offset_top = -19.2
-offset_right = 19.2
-offset_bottom = 19.2
+offset_bottom = 1.90735e-05
 scale = Vector2(0.7, 0.7)
 BlobStyle = 0
 
 [node name="Right" parent="." instance=ExtResource("1_x7d1f")]
 modulate = Color(1, 1, 1, 0.501961)
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.5625
-anchor_top = 0.126562
-anchor_right = 0.8425
-anchor_bottom = 0.826562
+layout_mode = 1
+anchor_left = 0.4
+anchor_top = 0.05
+anchor_right = 0.750002
+anchor_bottom = 0.75
 offset_left = -19.2
 offset_top = -19.2
-offset_right = 19.2
-offset_bottom = 19.2
+offset_right = 9.15527e-05
 scale = Vector2(0.7, 0.7)
 BlobStyle = 0
 
 [node name="Center" parent="." instance=ExtResource("1_x7d1f")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.3025
-anchor_top = -0.0234375
-anchor_right = 0.7025
-anchor_bottom = 0.976563
+layout_mode = 1
+anchor_right = 0.5
+anchor_bottom = 1.0
 BlobStyle = 0
 
 [node name="ButtonIndicators (Placeholder)" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.01875
-anchor_top = 0.257813
-anchor_right = 0.98125
-anchor_bottom = 0.757813
-offset_top = 10.0
-offset_bottom = -10.0
+anchor_left = -0.421875
+anchor_top = 0.125
+anchor_right = 0.90625
+anchor_bottom = 0.625
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -274,5 +266,3 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 10
 PrefabBoundAction = "freeroam_rb"
-
-[editable path="Center"]
