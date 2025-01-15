@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c108xawc8eseh"]
+[gd_scene load_steps=21 format=3 uid="uid://c108xawc8eseh"]
 
 [ext_resource type="Script" path="res://Features/GUI/Vendoring/VendingMachineUI.cs" id="1_eust6"]
 [ext_resource type="PackedScene" uid="uid://ci3xd0kudwy7k" path="res://Features/GUI/Vendoring/VendingItemView.tscn" id="2_3ain1"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cbnhdlyagqmm5" path="res://Features/VendingMachine/emojis/tile009.png" id="9_i45gt"]
 [ext_resource type="Texture2D" uid="uid://4ykaypmenmc0" path="res://Features/VendingMachine/emojis/tile016.png" id="13_ouufr"]
 [ext_resource type="Texture2D" uid="uid://tgbymc1dhq68" path="res://Features/VendingMachine/emojis/tile005.png" id="17_k3tbp"]
+[ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="20_flujb"]
 [ext_resource type="Texture2D" uid="uid://cplq3q4e7qr6v" path="res://Features/VendingMachine/emojis/tile000.png" id="22_aw1gf"]
 [ext_resource type="Texture2D" uid="uid://c5jrdiftxlpc4" path="res://Features/VendingMachine/emojis/tile003.png" id="25_md3i7"]
 [ext_resource type="Texture2D" uid="uid://cuoen5pevumf6" path="res://Features/VendingMachine/emojis/tile033.png" id="28_g7jpj"]
@@ -261,3 +262,6 @@ mouse_filter = 2
 texture = ExtResource("7_dbben")
 
 [node name="Timer" type="Timer" parent="VendingMachine/IndepentendRoot/EmojiTooltip"]
+
+[node name="CursorHand" parent="." instance=ExtResource("20_flujb")]
+layout_mode = 1

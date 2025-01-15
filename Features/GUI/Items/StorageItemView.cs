@@ -69,7 +69,6 @@ public partial class StorageItemView : InventoryItemView
 			return;
 		}
 		
-		_logger.Debug("Updating content");
 		UpdateItemView(Inventory.GetItem(SlotIndex));
 	}
 
@@ -86,7 +85,8 @@ public partial class StorageItemView : InventoryItemView
 			_logger.Error("Press: Inventory not set");
 			return;
 		}
-
+		
+		_logger.Debug($"Handle click on {_inventory.Name}[{_slotIndex}]");
 		CursorInventory.Instance.HandleClick(_inventory, _slotIndex);
 	}
 
@@ -104,6 +104,7 @@ public partial class StorageItemView : InventoryItemView
 			return;
 		}
 
+		_logger.Debug($"Handle secondary click on {_inventory.Name}[{_slotIndex}]");
 		CursorInventory.Instance.HandleSecondary(_inventory, _slotIndex);
 	}
 }
