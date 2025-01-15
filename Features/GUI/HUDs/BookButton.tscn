@@ -12,7 +12,7 @@ step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen/VBoxContainer/BookIconOpen:modulate")
+tracks/0/path = NodePath("BookIconOpen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Offcenter/AspectRatioContainer/ContainerBookClosed/BookIconClosed:modulate")
+tracks/1/path = NodePath("BookIconClosed:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -32,66 +32,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen:theme_override_constants/margin_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [16, 32]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen:theme_override_constants/margin_bottom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [16, 24]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Offcenter/AspectRatioContainer/ContainerBookClosed:theme_override_constants/margin_top")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [48, 24]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Offcenter/AspectRatioContainer/ContainerBookClosed:theme_override_constants/margin_bottom")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [48, 24]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, -0.0349066, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_ppi45"]
@@ -101,7 +41,7 @@ step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen/VBoxContainer/BookIconOpen:modulate")
+tracks/0/path = NodePath("BookIconOpen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -113,7 +53,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Offcenter/AspectRatioContainer/ContainerBookClosed/BookIconClosed:modulate")
+tracks/1/path = NodePath("BookIconClosed:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -122,61 +62,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen:theme_override_constants/margin_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [32, 16]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen:theme_override_constants/margin_bottom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [24, 16]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Offcenter/AspectRatioContainer/ContainerBookClosed:theme_override_constants/margin_top")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [24, 48]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Offcenter/AspectRatioContainer/ContainerBookClosed:theme_override_constants/margin_bottom")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [24, 48]
-}
 
 [sub_resource type="Animation" id="Animation_w3ev7"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen/VBoxContainer/BookIconOpen:modulate")
+tracks/0/path = NodePath("BookIconOpen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -188,7 +80,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Offcenter/AspectRatioContainer/ContainerBookClosed/BookIconClosed:modulate")
+tracks/1/path = NodePath("BookIconClosed:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -196,66 +88,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen:theme_override_constants/margin_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [16]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen:theme_override_constants/margin_bottom")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [16]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Offcenter/AspectRatioContainer/ContainerBookClosed:theme_override_constants/margin_top")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [24]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Offcenter/AspectRatioContainer/ContainerBookClosed:theme_override_constants/margin_bottom")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [24]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Offcenter/AspectRatioContainer/Control/ContainerBookOpen:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wh6ab"]
@@ -273,117 +105,62 @@ corner_radius_top_right = 512
 corner_radius_bottom_right = 512
 corner_radius_bottom_left = 512
 
-[node name="BookButton" type="AspectRatioContainer" node_paths=PackedStringArray("_animationPlayer")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -80.0
-offset_right = 120.0
-offset_bottom = 80.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
+[node name="BookButton" type="Control" node_paths=PackedStringArray("_animationPlayer")]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 3
+anchor_right = 0.15
+anchor_bottom = 0.266667
 script = ExtResource("1_5gn83")
 _animationPlayer = NodePath("AnimationPlayer")
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wh6ab")
 }
 
-[node name="Offcenter" type="MarginContainer" parent="."]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 16
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Offcenter"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="CircleBG" type="Panel" parent="Offcenter/AspectRatioContainer"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
+[node name="CircleBG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1jxlk")
 
-[node name="ContainerBookClosed" type="MarginContainer" parent="Offcenter/AspectRatioContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="BookIconClosed" type="TextureRect" parent="Offcenter/AspectRatioContainer/ContainerBookClosed"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("3_d23kw")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Control" type="Control" parent="Offcenter/AspectRatioContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="ContainerBookOpen" type="MarginContainer" parent="Offcenter/AspectRatioContainer/Control"]
+[node name="BookIconClosed" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -80.0
-offset_right = 128.0
-offset_bottom = 80.0
+anchors_preset = -1
+anchor_left = 0.166667
+anchor_top = 0.166667
+anchor_right = 0.833333
+anchor_bottom = 0.833333
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.96, 0.96)
-pivot_offset = Vector2(128, 80)
 mouse_filter = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+texture = ExtResource("3_d23kw")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Offcenter/AspectRatioContainer/Control/ContainerBookOpen"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="BookIconOpen" type="TextureRect" parent="Offcenter/AspectRatioContainer/Control/ContainerBookOpen/VBoxContainer"]
+[node name="BookIconOpen" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 mouse_filter = 2
 texture = ExtResource("2_tw7lo")
-expand_mode = 3
-stretch_mode = 4
+stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="InputIndicator" parent="." instance=ExtResource("4_vdcxf")]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="EmptyFlexBoxChild" type="Control" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-mouse_filter = 2
-
-[node name="InputIndicator2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_vdcxf")]
-layout_mode = 2
-PrefabBoundAction = "freeroam_north"
-
-[node name="EmptyFlexBoxChild" type="Control" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
+anchors_preset = 0
+anchor_left = -0.15625
+anchor_top = 0.572917
+anchor_right = 0.177083
+anchor_bottom = 0.90625
+Button = 3
