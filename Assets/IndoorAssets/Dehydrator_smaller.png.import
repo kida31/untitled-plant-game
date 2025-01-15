@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sjf3tm7va8re"
-path="res://.godot/imported/Dehydrator.png-c9c972b33ce690517dfc5430ce8158ac.ctex"
+uid="uid://14cqlajvxk5b"
+path="res://.godot/imported/Dehydrator_smaller.png-642de8a3b3c0240e3cd4a62b7ce061e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/IndoorAssets/Dehydrator.png"
-dest_files=["res://.godot/imported/Dehydrator.png-c9c972b33ce690517dfc5430ce8158ac.ctex"]
+source_file="res://Assets/IndoorAssets/Dehydrator_smaller.png"
+dest_files=["res://.godot/imported/Dehydrator_smaller.png-642de8a3b3c0240e3cd4a62b7ce061e3.ctex"]
 
 [params]
 
