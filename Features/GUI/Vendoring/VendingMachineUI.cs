@@ -27,21 +27,24 @@ public partial class VendingMachineUI : Control
 
 	private untitledplantgame.VendingMachine.VendingMachine _vendingMachine;
 	private List<VendingItemView> _itemSlots;
+	private Logger _logger;
 
 	public override void _Ready()
 	{
+		_logger = new Logger(this);
 		_itemSlots = _itemStackContainer.GetChildren().Cast<VendingItemView>().ToList();
 		_slider.ValueChanged += OnSliderValueChanged;
 
 		for (var i = 0; i < _itemSlots.Count; i++)
 		{
 			var s = _itemSlots[i];
-			s.Pressed += OnItemSlotPressedCurry(i);
+			s.Pressed += GenerateOnPressDelegate(i);
+			s.SecondaryPressed += GenerateOnSecondaryPressDelegate(i);
 		}
 
 		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
+		
 		_withdrawButton.Pressed += () => _vendingMachine.WithdrawGold();
-
 		EventBus.Instance.BeforeVendingMachineOpened += OpenThis;
 	}
 
@@ -106,19 +109,30 @@ public partial class VendingMachineUI : Control
 		}
 	}
 
-	private Action OnItemSlotPressedCurry(int idx)
+	private Action GenerateOnPressDelegate(int idx)
 	{
-		return () =>
+		return delegate
 		{
 			if (CursorInventory.Instance is null)
 				return;
 
 			if (CursorInventory.Instance.CanClick(_vendingMachine.Inventory, idx))
 			{
-				GD.Print($"CursorInventory.Instance.HandleClick(_vendingMachine.Inventory, {idx});");
-				// CursorInventory.Instance.HandleClick(_vendingMachine.Inventory, idx);	
+				CursorInventory.Instance.HandleClick(_vendingMachine.Inventory, idx);
 			}
-			
+
+			UpdateContent(_vendingMachine.Inventory);
+		};
+	}
+	
+	private Action GenerateOnSecondaryPressDelegate(int idx)
+	{
+		return delegate
+		{
+			if (CursorInventory.Instance is null)
+				return;
+
+			CursorInventory.Instance.HandleSecondary(_vendingMachine.Inventory, idx);
 			UpdateContent(_vendingMachine.Inventory);
 		};
 	}
@@ -138,7 +152,7 @@ public partial class VendingMachineUI : Control
 		var items = inventory.GetItems();
 		for (var index = 0; index < _itemSlots.Count && index < items.Count; index++)
 		{
-			_itemSlots[index].ItemStack = items[index];
+			_itemSlots[index].UpdateItemView(items[index]);
 		}
 	}
 

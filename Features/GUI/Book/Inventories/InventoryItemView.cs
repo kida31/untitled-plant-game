@@ -16,7 +16,7 @@ public partial class InventoryItemView : Clickable, ITooltipable
 	[Export] private TextureRect _itemTextureRect;
 
 	private Logger _logger;
-	public IItemStack ItemStack;
+	public IItemStack ItemStack { get; private set; }
 	public string Title => ItemStack?.Name;
 	public string Description => ItemStack?.ToolTipDescription;
 	public Control Content => null;

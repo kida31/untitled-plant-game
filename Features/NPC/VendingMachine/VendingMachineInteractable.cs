@@ -16,7 +16,9 @@ public partial class VendingMachineInteractable : AInteractable
 		{
 			_logger.Info("Creating new vending machine");
 			_vendingMachine = new VendingMachine.VendingMachine();
+			_logger.Info("Set vending content....");
 			_vendingMachine.Inventory.SetContents(new RandomStockGenerator().GetRandomItems(5));
+			_logger.Info("Vendign content:" + _vendingMachine.Inventory.GetItems());
 		}
 
 		EventBus.Instance.BeforeVendingMachineOpen(_vendingMachine);

@@ -12,10 +12,10 @@
 
 [node name="VendingMachineUi" parent="." instance=ExtResource("1_iuaq5")]
 visible = false
-offset_left = 170.0
+offset_left = 42.0
 offset_top = 24.0
-offset_right = 506.0
-offset_bottom = 712.0
+offset_right = 298.0
+offset_bottom = 344.0
 
 [node name="SeedShopView" parent="." instance=ExtResource("2_y866b")]
 visible = false

@@ -24,12 +24,18 @@ public class VendingMachine
 	public int Gold => _gold;
 
 	// Private
-	private readonly Inventory.Inventory _inventory = new(12, "Vending Machine");
+	private readonly Inventory.Inventory _inventory;
 	private int _gold = 0;
 	private float _priceMultiplier = 1.0f;
 	private float _faithMultiplier = 1.0f;
 	private int _salesRemaining = MaxSalesCount;
 	private Logger _logger = new("VendingMachine");
+
+	public VendingMachine()
+	{
+		_inventory = new(12, "Vending Machine");
+		_inventory.InventoryChanged += () => ContentChanged?.Invoke(_inventory);
+	}
 
 	/// <summary>
 	/// Sells a random item from the vending machine's inventory.
@@ -62,7 +68,7 @@ public class VendingMachine
 		}
 
 		// Sales count for this transaction is a percent of current supply, but at least one.
-		var totalSellCount = (int)Math.Ceiling(Math.Max(SalesPercentPerInterval * itemStacks.Count, 1));
+		var totalSellCount = (int) Math.Ceiling(Math.Max(SalesPercentPerInterval * itemStacks.Count, 1));
 
 		// Sort by price descending, sell most expensive first.
 		var itemsByPrice = _inventory.OrderByDescending(stack => stack?.BaseValue ?? 0).ToList();
@@ -88,8 +94,8 @@ public class VendingMachine
 			_logger.Debug($"{stack.Name}: {totalSellCount} vs. {quantity} => {itemSellCount}");
 
 			// Prices after multiplier are rounded up.
-			var goldEarned = Math.Max(1, (int)Math.Ceiling(stack.BaseValue * _priceMultiplier));
-			_gold += (int)goldEarned * itemSellCount;
+			var goldEarned = Math.Max(1, (int) Math.Ceiling(stack.BaseValue * _priceMultiplier));
+			_gold += (int) goldEarned * itemSellCount;
 
 			// Actual sell count has to be deducted from remaining sales
 			_salesRemaining -= itemSellCount;
@@ -109,7 +115,7 @@ public class VendingMachine
 	public void SetPriceSlider(float f)
 	{
 		_priceMultiplier = f;
-		_faithMultiplier = (float)1.0 / f;
+		_faithMultiplier = (float) 1.0 / f;
 
 		PriceMultChanged?.Invoke(_priceMultiplier);
 		FaithMultChanged?.Invoke(_faithMultiplier);
