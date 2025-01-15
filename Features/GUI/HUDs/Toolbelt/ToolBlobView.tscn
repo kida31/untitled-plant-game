@@ -79,8 +79,10 @@ corner_radius_bottom_left = 512
 [node name="ToolBlob" type="AspectRatioContainer" node_paths=PackedStringArray("_animationPlayer", "_toolIcon")]
 custom_minimum_size = Vector2(32, 32)
 anchors_preset = -1
-anchor_right = 0.1
-anchor_bottom = 0.177778
+anchor_right = 0.0984375
+anchor_bottom = 0.175
+offset_right = 1.0
+offset_bottom = 1.0
 pivot_offset = Vector2(64, 64)
 script = ExtResource("1_ut26e")
 BlobStyle = 1
@@ -101,6 +103,7 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("5_1pscy")
+expand_mode = 1
 
 [node name="CircleBG" type="Panel" parent="."]
 layout_mode = 2
@@ -120,5 +123,6 @@ anchor_bottom = 0.875
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_hn60y")
+expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true

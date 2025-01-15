@@ -5,6 +5,11 @@ using untitledplantgame.Common.Inputs.GameActions;
 
 public partial class ButtonIndicator : Control
 {
+	enum Button
+	{
+		
+	}
+	
 	private const string PressedAnimationName = "Pressed";
 	private const string ReleasedAnimationName = "Released";
 	
@@ -45,16 +50,16 @@ public partial class ButtonIndicator : Control
 		_boundAction = action;
 		if (_boundAction != null)
 		{
-			var button = InputRemapper.GetButton(_boundAction);
-			_textLabel.Text = button switch
-			{
-				JoyButton.LeftShoulder => " LB ",
-				JoyButton.RightShoulder => " RB ",
-				_ => button.ToString()
-			};
+
 		}
 	}
 	
 	private string _boundAction;
 	private bool _isPressed = false;
+	
+	// Helper
+	private static Texture2D ButtonAsImage(JoyButton button)
+	{
+		return null;
+	}
 }
