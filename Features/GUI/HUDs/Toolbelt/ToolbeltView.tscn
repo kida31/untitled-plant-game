@@ -256,28 +256,32 @@ libraries = {
 [node name="Left" parent="." instance=ExtResource("1_x7d1f")]
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.123529
 anchor_top = 0.03125
 anchor_right = 0.405882
-anchor_bottom = 0.78125
-offset_right = -7.62939e-06
+anchor_bottom = 0.781249
+offset_right = 0.0
 offset_bottom = 0.0
-grow_vertical = 2
 pivot_offset = Vector2(0, 0)
 BlobStyle = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Right" parent="." instance=ExtResource("1_x7d1f")]
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 1
-anchor_left = 0.582353
+anchors_preset = -1
+anchor_left = 0.6
 anchor_top = 0.03125
-anchor_right = 0.845884
-anchor_bottom = 0.731251
-offset_left = 6.0
-offset_right = 9.19972
-offset_bottom = 3.19994
+anchor_right = 0.882353
+anchor_bottom = 0.781249
+offset_left = 3.0
+offset_right = 3.0
+offset_bottom = 0.0
+grow_horizontal = 0
 pivot_offset = Vector2(0, 0)
 BlobStyle = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Center" parent="." instance=ExtResource("1_x7d1f")]
 layout_mode = 1
@@ -285,11 +289,12 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 0.0
-offset_bottom = 0.0
+offset_bottom = -8.39233e-05
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(0, 0)
 BlobStyle = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="InputIndicator" parent="." instance=ExtResource("3_sqscx")]
 layout_mode = 1
