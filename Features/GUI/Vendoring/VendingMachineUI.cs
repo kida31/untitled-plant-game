@@ -20,12 +20,13 @@ public partial class VendingMachineUI : Control
 
 	[Export] private Label _moneyLabel;
 
-	[Export] private Label _itemNameLabel;
-
 	[Export] private Button _withdrawButton;
 
-	private untitledplantgame.VendingMachine.VendingMachine _vendingMachine;
+	[Export] private SimplerInventoryView _inventoryView;
+
+	private VendingMachine.VendingMachine _vendingMachine;
 	private List<VendingItemView> _itemSlots;
+	private Action _inventoryChangedHandler;
 	private Logger _logger;
 
 	public override void _Ready()
@@ -34,16 +35,8 @@ public partial class VendingMachineUI : Control
 		_itemSlots = _itemStackContainer.GetChildren().Cast<VendingItemView>().ToList();
 		_slider.ValueChanged += OnSliderValueChanged;
 
-		for (var i = 0; i < _itemSlots.Count; i++)
-		{
-			var s = _itemSlots[i];
-			s.Pressed += GenerateOnPressDelegate(i);
-			s.SecondaryPressed += GenerateOnSecondaryPressDelegate(i);
-		}
-
-		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
-
 		_withdrawButton.Pressed += () => _vendingMachine.WithdrawGold();
+
 		EventBus.Instance.BeforeVendingMachineOpened += OpenThis;
 	}
 
@@ -66,11 +59,34 @@ public partial class VendingMachineUI : Control
 		}
 	}
 
-	private void OpenThis(untitledplantgame.VendingMachine.VendingMachine vendingMachine)
+	private void OpenThis(VendingMachine.VendingMachine vendingMachine)
 	{
 		GameStateMachine.Instance.SetState(GameState.Book);
+		// Set vending
 		SetVendingMachine(vendingMachine);
+
+		// Set player inv. This only needs to happen once. Multiple ways to do it.
+		// Arbitrary solution: Save the onchange handler, and check whether we have already subscribed
+		var playerMedicineInventory = Game.Instance.GetPlayer().Inventory.GetInventory(ItemCategory.Medicine);
+		if (_inventoryChangedHandler == null)
+		{
+			_inventoryChangedHandler = () => _inventoryView.UpdateInventory(playerMedicineInventory);
+			playerMedicineInventory.InventoryChanged += _inventoryChangedHandler;
+		}
+
+		_inventoryView.UpdateInventory(playerMedicineInventory);
+
 		Show();
+	}
+
+	private void Foo(BigInventory playerInv)
+	{
+		throw new NotImplementedException();
+	}
+
+	private Action GenerateOnInventoryChanged(IInventory inventory)
+	{
+		return delegate { _inventoryView.UpdateInventory(inventory); };
 	}
 
 	private void CloseThis()
@@ -79,7 +95,7 @@ public partial class VendingMachineUI : Control
 		Hide();
 	}
 
-	private void SetVendingMachine(untitledplantgame.VendingMachine.VendingMachine vendingMachine)
+	private void SetVendingMachine(VendingMachine.VendingMachine vendingMachine)
 	{
 		if (_vendingMachine is not null)
 		{
@@ -100,42 +116,6 @@ public partial class VendingMachineUI : Control
 		UpdateContent(_vendingMachine.Inventory);
 	}
 
-	private void OnGuiFocusChanged(Control node)
-	{
-		if (node is InventoryItemView slot)
-		{
-			_itemNameLabel!.Text = slot.ItemStack?.Name ?? "";
-		}
-	}
-
-	private Action GenerateOnPressDelegate(int idx)
-	{
-		return delegate
-		{
-			if (CursorInventory.Instance is null)
-				return;
-
-			if (CursorInventory.Instance.CanClick(_vendingMachine.Inventory, idx))
-			{
-				CursorInventory.Instance.HandleClick(_vendingMachine.Inventory, idx);
-			}
-
-			UpdateContent(_vendingMachine.Inventory);
-		};
-	}
-
-	private Action GenerateOnSecondaryPressDelegate(int idx)
-	{
-		return delegate
-		{
-			if (CursorInventory.Instance is null)
-				return;
-
-			CursorInventory.Instance.HandleSecondary(_vendingMachine.Inventory, idx);
-			UpdateContent(_vendingMachine.Inventory);
-		};
-	}
-
 	private void OnFaithMultChanged(float obj)
 	{
 		// TODO:
@@ -153,8 +133,11 @@ public partial class VendingMachineUI : Control
 		{
 			var vendingItemView = _itemSlots[index];
 			var item = items[index];
-			vendingItemView.UpdateItemView(item);
+			// vendingItemView.UpdateItemView(item);
 			vendingItemView.Price = _vendingMachine.CalculateItemPrice(item);
+
+			vendingItemView.Inventory = inventory;
+			vendingItemView.SlotIndex = index;
 		}
 	}
 

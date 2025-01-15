@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://c108xawc8eseh"]
+[gd_scene load_steps=20 format=3 uid="uid://c108xawc8eseh"]
 
 [ext_resource type="Script" path="res://Features/GUI/Vendoring/VendingMachineUI.cs" id="1_eust6"]
 [ext_resource type="PackedScene" uid="uid://ci3xd0kudwy7k" path="res://Features/GUI/Vendoring/VendingItemView.tscn" id="2_3ain1"]
 [ext_resource type="Texture2D" uid="uid://yvo33yjscsag" path="res://Assets/UI/VendingMachine/Base_right.png" id="2_j6e25"]
+[ext_resource type="PackedScene" uid="uid://dy2bsx4d7l35p" path="res://Features/GUI/Vendoring/MiniInventory.tscn" id="2_l2w0f"]
 [ext_resource type="Texture2D" uid="uid://daewgkls8y0jg" path="res://Features/VendingMachine/UI/gold_coin_pirated.png" id="3_rclpn"]
 [ext_resource type="Texture2D" uid="uid://b04d8mwf8rhjp" path="res://Features/VendingMachine/UI/gold_coin_pirated_many.png" id="4_q7c76"]
 [ext_resource type="Texture2D" uid="uid://bpmmqaxhkw5id" path="res://Features/VendingMachine/UI/speech_bubble.png" id="5_40186"]
@@ -19,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c5jrdiftxlpc4" path="res://Features/VendingMachine/emojis/tile003.png" id="25_md3i7"]
 [ext_resource type="Texture2D" uid="uid://cuoen5pevumf6" path="res://Features/VendingMachine/emojis/tile033.png" id="28_g7jpj"]
 
-[node name="VendingMachineUi" type="Control" node_paths=PackedStringArray("_itemStackContainer", "_emojiTooltip", "_slider", "_moneyLabel", "_itemNameLabel", "_withdrawButton")]
+[node name="VendingMachineUi" type="Control" node_paths=PackedStringArray("_itemStackContainer", "_emojiTooltip", "_slider", "_moneyLabel", "_withdrawButton", "_inventoryView")]
 custom_minimum_size = Vector2(256, 320)
 layout_mode = 3
 anchors_preset = 15
@@ -32,8 +33,11 @@ _itemStackContainer = NodePath("VendingMachine/Items")
 _emojiTooltip = NodePath("VendingMachine/IndepentendRoot/EmojiTooltip")
 _slider = NodePath("VendingMachine/GoldSlider")
 _moneyLabel = NodePath("VendingMachine/WidthdrawContainer/Label")
-_itemNameLabel = NodePath("VendingMachine/NameLabel")
 _withdrawButton = NodePath("VendingMachine/WidthdrawContainer/WithdrawButton")
+_inventoryView = NodePath("MinInventory")
+
+[node name="MinInventory" parent="." instance=ExtResource("2_l2w0f")]
+layout_mode = 1
 
 [node name="VendingMachine" type="Control" parent="."]
 custom_minimum_size = Vector2(256, 320)

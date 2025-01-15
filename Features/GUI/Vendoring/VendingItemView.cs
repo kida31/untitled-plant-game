@@ -1,9 +1,9 @@
 using Godot;
-using untitledplantgame.GUI.Book.Inventories;
+using untitledplantgame.GUI.Items;
 
 namespace untitledplantgame.GUI.Vendoring;
 
-public partial class VendingItemView : InventoryItemView
+public partial class VendingItemView : StorageItemView
 {
 	[Export] private Label _priceLabel;
 

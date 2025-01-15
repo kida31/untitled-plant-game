@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy2bsx4d7l35p"]
+
+[ext_resource type="Script" path="res://Features/GUI/Vendoring/SimplerInventoryView.cs" id="1_g0giq"]
+[ext_resource type="Texture2D" uid="uid://bxc00meevdgul" path="res://Assets/UI/Book/Pages/mini_inventory.png" id="3_lxhd0"]
+[ext_resource type="Texture2D" uid="uid://ddbxhrxrxirqa" path="res://Assets/UI/Book/Pages/Demo/LeftInventory_filled.png" id="4_0sw75"]
+[ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="5_lewg4"]
+[ext_resource type="PackedScene" uid="uid://dph8f75f6i3md" path="res://Features/GUI/Items/StorageItemView.tscn" id="6_06f1t"]
+
+[node name="MiniInventory" type="Control" node_paths=PackedStringArray("_inventoryItemViewContainer", "_itemNameLabel")]
+custom_minimum_size = Vector2(223, 235)
+layout_mode = 3
+anchor_left = 0.5875
+anchor_top = 0.0888889
+anchor_right = 0.9375
+anchor_bottom = 0.741667
+offset_right = 1.52588e-05
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_g0giq")
+_inventoryItemViewContainer = NodePath("ItemGrid")
+_inventoryItemViewPrefab = ExtResource("6_06f1t")
+_itemNameLabel = NodePath("TextBox")
+metadata/_tab_index = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lxhd0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Reference" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0sw75")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextBox" parent="." instance=ExtResource("5_lewg4")]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+anchor_left = 0.232143
+anchor_top = 0.874734
+anchor_right = 0.8125
+anchor_bottom = 0.930053
+offset_right = 0.0
+offset_bottom = 0.0
+size_flags_horizontal = 4
+text = "Abc12abc12"
+horizontal_alignment = 1
+text_overrun_behavior = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ItemGrid" type="GridContainer" parent="."]
+layout_mode = 2
+anchor_left = 0.196429
+anchor_top = 0.0657895
+anchor_right = 0.848214
+anchor_bottom = 0.671053
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="StorageItemView" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView2" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView3" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView4" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView5" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView6" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView7" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView8" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView9" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView10" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView11" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView12" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView13" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView14" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView15" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView16" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView17" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView18" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView19" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
+
+[node name="StorageItemView20" parent="ItemGrid" instance=ExtResource("6_06f1t")]
+layout_mode = 2
