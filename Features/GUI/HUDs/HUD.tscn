@@ -15,6 +15,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ClockUI" parent="." instance=ExtResource("1_313dl")]
+layout_mode = 1
 
 [node name="ToolbeltView" parent="." instance=ExtResource("2_fhqom")]
 layout_mode = 1

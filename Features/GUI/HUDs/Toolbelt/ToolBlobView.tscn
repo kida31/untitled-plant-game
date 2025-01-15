@@ -76,14 +76,16 @@ corner_radius_top_right = 512
 corner_radius_bottom_right = 512
 corner_radius_bottom_left = 512
 
-[node name="ToolBlob" type="MarginContainer" node_paths=PackedStringArray("_animationPlayer", "_toolIcon")]
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ToolBlob" type="AspectRatioContainer" node_paths=PackedStringArray("_animationPlayer", "_toolIcon")]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 0.177778
 pivot_offset = Vector2(64, 64)
 script = ExtResource("1_ut26e")
 BlobStyle = 1
 _animationPlayer = NodePath("AnimationPlayer")
-_toolIcon = NodePath("ToolIconSize/ToolIcon")
+_toolIcon = NodePath("MarginPercent/ToolIcon")
 _wateringCanIcon = ExtResource("2_hn60y")
 _shovelIcon = ExtResource("3_j2vo2")
 _shearsIcon = ExtResource("2_i5eui")
@@ -97,30 +99,26 @@ libraries = {
 
 [node name="MainBG" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 texture = ExtResource("5_1pscy")
-expand_mode = 5
-stretch_mode = 5
 
 [node name="CircleBG" type="Panel" parent="."]
-custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f2ott")
 
-[node name="ToolIconSize" type="MarginContainer" parent="."]
+[node name="MarginPercent" type="Control" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
 
-[node name="ToolIcon" type="TextureRect" parent="ToolIconSize"]
-layout_mode = 2
-expand_mode = 3
+[node name="ToolIcon" type="TextureRect" parent="MarginPercent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.125
+anchor_right = 0.875
+anchor_bottom = 0.875
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hn60y")
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
