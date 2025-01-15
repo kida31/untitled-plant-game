@@ -22,19 +22,29 @@
 [node name="VendingMachineUi" type="Control" node_paths=PackedStringArray("_itemStackContainer", "_emojiTooltip", "_slider", "_moneyLabel", "_itemNameLabel", "_withdrawButton")]
 custom_minimum_size = Vector2(256, 320)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 256.0
-offset_bottom = 320.0
-scale = Vector2(1.00627, 0.973425)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_eust6")
-_itemStackContainer = NodePath("Items")
-_emojiTooltip = NodePath("IndepentendRoot/EmojiTooltip")
-_slider = NodePath("GoldSlider")
-_moneyLabel = NodePath("WidthdrawContainer/Label")
-_itemNameLabel = NodePath("NameLabel")
-_withdrawButton = NodePath("WidthdrawContainer/WithdrawButton")
+_itemStackContainer = NodePath("VendingMachine/Items")
+_emojiTooltip = NodePath("VendingMachine/IndepentendRoot/EmojiTooltip")
+_slider = NodePath("VendingMachine/GoldSlider")
+_moneyLabel = NodePath("VendingMachine/WidthdrawContainer/Label")
+_itemNameLabel = NodePath("VendingMachine/NameLabel")
+_withdrawButton = NodePath("VendingMachine/WidthdrawContainer/WithdrawButton")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="VendingMachine" type="Control" parent="."]
+custom_minimum_size = Vector2(256, 320)
+layout_mode = 1
+anchor_left = 0.078125
+anchor_top = 0.0611111
+anchor_right = 0.478125
+anchor_bottom = 0.95
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="VendingMachine"]
 modulate = Color(1, 1, 1, 0.47)
 layout_mode = 1
 anchors_preset = 15
@@ -45,66 +55,68 @@ grow_vertical = 2
 texture = ExtResource("2_j6e25")
 stretch_mode = 5
 
-[node name="Items" type="GridContainer" parent="."]
+[node name="Items" type="GridContainer" parent="VendingMachine"]
 layout_mode = 2
 anchor_left = 0.0625
 anchor_top = 0.184375
-anchor_right = 0.625
-anchor_bottom = 0.796875
+anchor_right = 0.333984
+anchor_bottom = 0.470313
+offset_right = 73.5
+offset_bottom = 103.5
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="VMItemSlotUI" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="VMItemSlotUI2" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI2" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="VMItemSlotUI3" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI3" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="VMItemSlotUI4" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI4" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="VMItemSlotUI5" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI5" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="VMItemSlotUI6" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI6" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="VMItemSlotUI7" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI7" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="VMItemSlotUI8" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI8" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="VMItemSlotUI9" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI9" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="VMItemSlotUI10" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI10" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="VMItemSlotUI11" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI11" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="VMItemSlotUI12" parent="Items" instance=ExtResource("2_3ain1")]
+[node name="VMItemSlotUI12" parent="VendingMachine/Items" instance=ExtResource("2_3ain1")]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="VendingMachine"]
 visible = false
 custom_minimum_size = Vector2(128, 24)
 layout_mode = 2
@@ -118,29 +130,32 @@ text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GoldSlider" type="HSlider" parent="."]
+[node name="GoldSlider" type="HSlider" parent="VendingMachine"]
 layout_mode = 2
-offset_left = 35.0
-offset_top = 263.0
-offset_right = 141.0
-offset_bottom = 279.0
+anchor_left = 0.136719
+anchor_top = 0.821875
+anchor_right = 0.550781
+anchor_bottom = 0.871875
+offset_top = 3.05176e-05
+offset_bottom = 3.05176e-05
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_icons/grabber = ExtResource("5_kco5e")
 max_value = 2.0
 step = 0.25
 value = 1.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="VendingMachine"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
-anchors_preset = 0
-offset_left = 15.9003
-offset_top = 262.989
-offset_right = 159.9
-offset_bottom = 278.989
+anchor_left = 0.0621105
+anchor_top = 0.821841
+anchor_right = 0.624609
+anchor_bottom = 0.871841
+metadata/_edit_use_anchors_ = true
 
-[node name="MinIcon" type="TextureRect" parent="Control"]
+[node name="MinIcon" type="TextureRect" parent="VendingMachine/Control"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -155,7 +170,7 @@ expand_mode = 5
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="MaxIcon" type="TextureRect" parent="Control"]
+[node name="MaxIcon" type="TextureRect" parent="VendingMachine/Control"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
 anchors_preset = -1
@@ -172,34 +187,36 @@ expand_mode = 5
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="WidthdrawContainer" type="VBoxContainer" parent="."]
+[node name="WidthdrawContainer" type="VBoxContainer" parent="VendingMachine"]
 layout_mode = 2
-offset_left = 192.791
-offset_top = 231.143
-offset_right = 239.791
-offset_bottom = 280.143
+anchor_left = 0.75309
+anchor_top = 0.722322
+anchor_right = 0.936684
+anchor_bottom = 0.875447
+offset_left = 3.05176e-05
+offset_right = 3.05176e-05
+metadata/_edit_use_anchors_ = true
 
-[node name="WithdrawButton" type="Button" parent="WidthdrawContainer"]
+[node name="WithdrawButton" type="Button" parent="VendingMachine/WidthdrawContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 icon = ExtResource("6_c23qe")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Label" type="Label" parent="WidthdrawContainer"]
+[node name="Label" type="Label" parent="VendingMachine/WidthdrawContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Coins: 0"
 
-[node name="IndepentendRoot" type="Control" parent="."]
+[node name="IndepentendRoot" type="Control" parent="VendingMachine"]
 visible = false
-layout_mode = 2
+layout_mode = 1
 anchors_preset = 0
-offset_right = 256.0
-offset_bottom = 320.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="EmojiTooltip" type="Control" parent="IndepentendRoot" node_paths=PackedStringArray("_emojiTexture", "_slider", "_fadeTimer")]
+[node name="EmojiTooltip" type="Control" parent="VendingMachine/IndepentendRoot" node_paths=PackedStringArray("_emojiTexture", "_slider", "_fadeTimer")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -218,7 +235,7 @@ _sadFaces = Array[Texture2D]([ExtResource("7_ndc7e"), ExtResource("8_ntp46"), Ex
 _neutralFaces = Array[Texture2D]([ExtResource("17_k3tbp")])
 _happyFaces = Array[Texture2D]([ExtResource("22_aw1gf"), ExtResource("25_md3i7"), ExtResource("28_g7jpj")])
 
-[node name="Bubble" type="TextureRect" parent="IndepentendRoot/EmojiTooltip"]
+[node name="Bubble" type="TextureRect" parent="VendingMachine/IndepentendRoot/EmojiTooltip"]
 layout_mode = 1
 offset_left = 4.0
 offset_top = 101.0
@@ -229,7 +246,7 @@ mouse_filter = 2
 texture = ExtResource("5_40186")
 expand_mode = 1
 
-[node name="Emoji" type="TextureRect" parent="IndepentendRoot/EmojiTooltip"]
+[node name="Emoji" type="TextureRect" parent="VendingMachine/IndepentendRoot/EmojiTooltip"]
 layout_mode = 1
 offset_left = 28.0
 offset_top = 25.0
@@ -239,4 +256,4 @@ scale = Vector2(0.6, 0.6)
 mouse_filter = 2
 texture = ExtResource("7_dbben")
 
-[node name="Timer" type="Timer" parent="IndepentendRoot/EmojiTooltip"]
+[node name="Timer" type="Timer" parent="VendingMachine/IndepentendRoot/EmojiTooltip"]
