@@ -5,7 +5,6 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.GUI.Book.Inventories;
-using untitledplantgame.GUI.VendingMachine;
 using untitledplantgame.Inventory;
 using untitledplantgame.VendingMachine;
 
@@ -43,7 +42,7 @@ public partial class VendingMachineUI : Control
 		}
 
 		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
-		
+
 		_withdrawButton.Pressed += () => _vendingMachine.WithdrawGold();
 		EventBus.Instance.BeforeVendingMachineOpened += OpenThis;
 	}
@@ -124,7 +123,7 @@ public partial class VendingMachineUI : Control
 			UpdateContent(_vendingMachine.Inventory);
 		};
 	}
-	
+
 	private Action GenerateOnSecondaryPressDelegate(int idx)
 	{
 		return delegate
@@ -152,7 +151,10 @@ public partial class VendingMachineUI : Control
 		var items = inventory.GetItems();
 		for (var index = 0; index < _itemSlots.Count && index < items.Count; index++)
 		{
-			_itemSlots[index].UpdateItemView(items[index]);
+			var vendingItemView = _itemSlots[index];
+			var item = items[index];
+			vendingItemView.UpdateItemView(item);
+			vendingItemView.Price = _vendingMachine.CalculateItemPrice(item);
 		}
 	}
 

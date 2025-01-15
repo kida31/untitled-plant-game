@@ -1,7 +1,7 @@
 using Godot;
 using untitledplantgame.GUI.Book.Inventories;
 
-namespace untitledplantgame.GUI.VendingMachine;
+namespace untitledplantgame.GUI.Vendoring;
 
 public partial class VendingItemView : InventoryItemView
 {
@@ -13,7 +13,7 @@ public partial class VendingItemView : InventoryItemView
 		set
 		{
 			_price = value;
-			_priceLabel.Text = $"{_price}g";
+			_priceLabel.Text = _price > 0 ? $"{_price}g" : "";
 		}
 	}
 

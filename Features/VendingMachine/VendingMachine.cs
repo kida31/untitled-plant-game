@@ -121,6 +121,12 @@ public class VendingMachine
 		FaithMultChanged?.Invoke(_faithMultiplier);
 	}
 
+	public int CalculateItemPrice(IItemStack item)
+	{
+		var baseValue = item?.BaseValue ?? 0;
+		return (int) Math.Ceiling(baseValue * _priceMultiplier);
+	}
+
 	public int WithdrawGold()
 	{
 		var deducedGold = _gold;
