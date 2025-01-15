@@ -524,7 +524,7 @@ anchor_right = 0.188235
 anchor_bottom = 0.625
 grow_vertical = 2
 size_flags_horizontal = 3
-Button = 9
+Button = 4
 
 [node name="InputIndicatorRight" parent="." instance=ExtResource("3_sqscx")]
 layout_mode = 1
@@ -535,4 +535,4 @@ anchor_bottom = 0.625
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 3
-Button = 10
+Button = 5

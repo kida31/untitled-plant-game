@@ -79,5 +79,6 @@ libraries = {
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2
+toggle_mode = true
 texture_normal = ExtResource("2_emypu")
 texture_pressed = ExtResource("3_bs1oq")

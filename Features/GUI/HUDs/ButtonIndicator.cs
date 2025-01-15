@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.Inputs.GameActions;
@@ -18,10 +19,27 @@ public partial class ButtonIndicator : Control
 		Xbox,
 		Playstation,
 	}
-	
+
+	/// <summary>
+	/// Combines Joybutton and JoyAxis
+	/// </summary>
+	public enum SimpleButton
+	{
+		South_A_X,
+		East_B_O,
+		West_X_Square,
+		North_Y_Triangle,
+		LeftShoulder_LB_L1,
+		RightShoulder_RB_R1,
+		LeftTrigger_LT_L2,
+		RightTrigger_RT_R2,
+		Start,
+		Select,
+	}
+
 	private const string PressedAnimationName = "Pressed";
 	private const string ReleasedAnimationName = "Released";
-	
+
 	/// <summary>
 	/// Gamepad type for displayed button. This is a read only property
 	/// </summary>
@@ -36,7 +54,7 @@ public partial class ButtonIndicator : Control
 	}
 
 	[Export]
-	public JoyButton Button
+	public SimpleButton Button
 	{
 		get => _button;
 		set
@@ -46,7 +64,6 @@ public partial class ButtonIndicator : Control
 		}
 	}
 
-	[Export] private TextureButton _textureButton;
 	[Export] private AnimationPlayer _animationPlayer;
 
 	public bool IsPressed
@@ -55,7 +72,9 @@ public partial class ButtonIndicator : Control
 		set => _textureButton.SetPressed(value);
 	}
 
-	private JoyButton _button;
+	[Export] private TextureButton _textureButton;
+
+	private SimpleButton _button;
 	private StringName _action;
 
 	private Logger _logger;
@@ -71,15 +90,7 @@ public partial class ButtonIndicator : Control
 	{
 		if (@event.IsAction(_action))
 		{
-			IsPressed = !@event.IsReleased();
-		}
-	}
-
-	public override void _Input(InputEvent @event)
-	{
-		if (@event is InputEventJoypadButton button)
-		{
-			GD.Print(button.AsText());
+			IsPressed = !@event.IsActionReleased(_action);
 		}
 	}
 
@@ -89,130 +100,107 @@ public partial class ButtonIndicator : Control
 		AssignButtonImage(_button, Gamepad);
 	}
 
-	private StringName ButtonAsAction(JoyButton button)
+	private StringName ButtonAsAction(SimpleButton button)
 	{
 		switch (button)
 		{
-			case JoyButton.A:
+			case SimpleButton.South_A_X:
 				return Base.South;
-			case JoyButton.B:
+			case SimpleButton.East_B_O:
 				return Base.East;
-			case JoyButton.X:
+			case SimpleButton.West_X_Square:
 				return Base.West;
-			case JoyButton.Y:
+			case SimpleButton.North_Y_Triangle:
 				return Base.North;
 
-			case JoyButton.Start:
+			case SimpleButton.Start:
 				return Base.Start;
+			case SimpleButton.Select:
+				return Base.Select;
 
-			case JoyButton.LeftShoulder:
+			case SimpleButton.LeftShoulder_LB_L1:
 				return Base.BumperLeft;
-			case JoyButton.RightShoulder:
+			case SimpleButton.RightShoulder_RB_R1:
 				return Base.BumperRight;
 
-			case JoyButton.DpadUp:
-				return Base.Up;
-			case JoyButton.DpadDown:
-				return Base.Down;
-			case JoyButton.DpadLeft:
-				return Base.Left;
-			case JoyButton.DpadRight:
-				return Base.Right;
-			default:
-				_logger.Error("No action found for button: " + button);
-				return null;
+			case SimpleButton.LeftTrigger_LT_L2:
+				return Base.TriggerLeft;
+			case SimpleButton.RightTrigger_RT_R2:
+				return Base.TriggerRight;
 		}
+
+		_logger.Error("No action found for button: " + button);
+		return null;
 	}
 
-	private void AssignButtonImage(JoyButton button, GamepadType gamepadType)
+	private void AssignButtonImage(SimpleButton button, GamepadType gamepadType)
 	{
-		switch (gamepadType)
+		switch (gamepadType, button)
 		{
-			case GamepadType.Xbox:
-				switch (button)
-				{
-					case JoyButton.A:
-						_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "A_default.png");
-						_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "A_pressed.png");
-						return;
-					case JoyButton.B:
-						_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "B_default.png");
-						_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "B_pressed.png");
-						return;
-					case JoyButton.X:
-						_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "X_default.png");
-						_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "X_pressed.png");
-						return;
-					case JoyButton.Y:
-						_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "Y_default.png");
-						_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "Y_pressed.png");
-						return;
-					case JoyButton.LeftShoulder:
-						_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "LB_default.png");
-						_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "LB_pressed.png");
-						return;
-					case JoyButton.RightShoulder:
-						_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "RB_default.png");
-						_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "RB_pressed.png");
-						return;
-					case JoyButton.Invalid:
-					case JoyButton.Back:
-					case JoyButton.Guide:
-					case JoyButton.Start:
-					case JoyButton.LeftStick:
-					case JoyButton.RightStick:
-					case JoyButton.DpadUp:
-					case JoyButton.DpadDown:
-					case JoyButton.DpadLeft:
-					case JoyButton.DpadRight:
-					case JoyButton.Misc1:
-					case JoyButton.Paddle1:
-					case JoyButton.Paddle2:
-					case JoyButton.Paddle3:
-					case JoyButton.Paddle4:
-					case JoyButton.Touchpad:
-					case JoyButton.SdlMax:
-					case JoyButton.Max:
-					default:
-						_logger.Error("Button not found: " + button);
-						return;
-				}
-			case GamepadType.Playstation:
-				switch (button)
-				{
-					case JoyButton.A:
-						return;
-					case JoyButton.Invalid:
-					case JoyButton.B:
-					case JoyButton.X:
-					case JoyButton.Y:
-					case JoyButton.Back:
-					case JoyButton.Guide:
-					case JoyButton.Start:
-					case JoyButton.LeftStick:
-					case JoyButton.RightStick:
-					case JoyButton.LeftShoulder:
-					case JoyButton.RightShoulder:
-					case JoyButton.DpadUp:
-					case JoyButton.DpadDown:
-					case JoyButton.DpadLeft:
-					case JoyButton.DpadRight:
-					case JoyButton.Misc1:
-					case JoyButton.Paddle1:
-					case JoyButton.Paddle2:
-					case JoyButton.Paddle3:
-					case JoyButton.Paddle4:
-					case JoyButton.Touchpad:
-					case JoyButton.SdlMax:
-					case JoyButton.Max:
-					default:
-						_logger.Error("Button not found: " + button);
-						return;
-				}
-			default:
-				_logger.Error($"Gamepad Button not found {gamepadType}::{button}");
+			case (GamepadType.Xbox, SimpleButton.South_A_X):
+				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "A_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "A_pressed.png");
 				return;
+			case (GamepadType.Xbox, SimpleButton.East_B_O):
+				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "B_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "B_pressed.png");
+				return;
+			case (GamepadType.Xbox, SimpleButton.West_X_Square):
+				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "X_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "X_pressed.png");
+				return;
+			case (GamepadType.Xbox, SimpleButton.North_Y_Triangle):
+				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "Y_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "Y_pressed.png");
+				return;
+			case (GamepadType.Xbox, SimpleButton.LeftShoulder_LB_L1):
+				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "LB_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "LB_pressed.png");
+				return;
+			case (GamepadType.Xbox, SimpleButton.RightShoulder_RB_R1):
+				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "RB_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "RB_pressed.png");
+				return;
+
+			case (GamepadType.Xbox, SimpleButton.LeftTrigger_LT_L2):
+			case (GamepadType.Xbox, SimpleButton.RightTrigger_RT_R2):
+			case (GamepadType.Xbox, SimpleButton.Start):
+			case (GamepadType.Xbox, SimpleButton.Select):
+				break;
+
+			case (GamepadType.Playstation, SimpleButton.South_A_X):
+				_textureButton.TextureNormal = TryLoadOrLogError(PlaystationButtonAssetsRoot + "X_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(PlaystationButtonAssetsRoot + "X_pressed.png");
+				return;
+			case (GamepadType.Playstation, SimpleButton.East_B_O):
+				_textureButton.TextureNormal = TryLoadOrLogError(PlaystationButtonAssetsRoot + "circle_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(PlaystationButtonAssetsRoot + "circle_pressed.png");
+				return;
+			case (GamepadType.Playstation, SimpleButton.West_X_Square):
+				_textureButton.TextureNormal = TryLoadOrLogError(PlaystationButtonAssetsRoot + "square_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(PlaystationButtonAssetsRoot + "square_pressed.png");
+				return;
+			case (GamepadType.Playstation, SimpleButton.North_Y_Triangle):
+				_textureButton.TextureNormal = TryLoadOrLogError(PlaystationButtonAssetsRoot + "triangle_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(PlaystationButtonAssetsRoot + "triangle_pressed.png");
+				return;
+			case (GamepadType.Playstation, SimpleButton.LeftShoulder_LB_L1):
+				_textureButton.TextureNormal = TryLoadOrLogError(PlaystationButtonAssetsRoot + "L1_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(PlaystationButtonAssetsRoot + "L1_pressed.png");
+				return;
+			case (GamepadType.Playstation, SimpleButton.RightShoulder_RB_R1):
+				_textureButton.TextureNormal = TryLoadOrLogError(PlaystationButtonAssetsRoot + "R1_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(PlaystationButtonAssetsRoot + "R1_pressed.png");
+				return;
+
+			case (GamepadType.Playstation, SimpleButton.LeftTrigger_LT_L2):
+			case (GamepadType.Playstation, SimpleButton.RightTrigger_RT_R2):
+			case (GamepadType.Playstation, SimpleButton.Start):
+			case (GamepadType.Playstation, SimpleButton.Select):
+				break;
 		}
+
+		_logger.Error($"Gamepad Button not defined {gamepadType}::{button}");
 	}
 
 	private Texture2D TryLoadOrLogError(string resourcePath)
