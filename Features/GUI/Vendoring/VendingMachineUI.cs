@@ -5,6 +5,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.GUI.Book.Inventories;
+using untitledplantgame.GUI.Items;
 using untitledplantgame.Inventory;
 using untitledplantgame.VendingMachine;
 
@@ -123,8 +124,10 @@ public partial class VendingMachineUI : Control
 
 	private void OnPriceMultChanged(float obj)
 	{
-		_itemSlots.ForEach(s => s.Price = (int) Math.Ceiling((s.ItemStack?.BaseValue ?? 0) * obj));
+		_vendingMachine.SetPriceSlider(obj);
+		_inventoryChangedHandler?.Invoke(); // UpdateContent(_inventory)
 	}
+
 
 	private void UpdateContent(IInventory inventory)
 	{
@@ -134,7 +137,12 @@ public partial class VendingMachineUI : Control
 			var vendingItemView = _itemSlots[index];
 			var item = items[index];
 			// vendingItemView.UpdateItemView(item);
-			vendingItemView.Price = _vendingMachine.CalculateItemPrice(item);
+			var effectivePrice = _vendingMachine.CalculateItemPrice(item);
+			vendingItemView.Price = effectivePrice > 0 ? $"{effectivePrice}g" : "";
+			if (item != null && effectivePrice != item.BaseValue)
+			{
+				vendingItemView.Price += $" ({item.BaseValue}g)";
+			}
 
 			vendingItemView.Inventory = inventory;
 			vendingItemView.SlotIndex = index;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using untitledplantgame.GUI.Items;
 
@@ -7,15 +8,11 @@ public partial class VendingItemView : StorageItemView
 {
 	[Export] private Label _priceLabel;
 
-	public int Price
+	public string Price
 	{
 		get => _price;
-		set
-		{
-			_price = value;
-			_priceLabel.Text = _price > 0 ? $"{_price}g" : "";
-		}
+		set => _priceLabel.Text = value;
 	}
 
-	private int _price;
+	private string _price;
 }
