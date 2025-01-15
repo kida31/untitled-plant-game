@@ -4,7 +4,7 @@ using untitledplantgame.Tools;
 
 namespace untitledplantgame.GUI.HUDs;
 
-public partial class ToolBlobView : MarginContainer
+public partial class ToolBlobView : Control
 {
 	private const string ToPrimaryAnimationName = "TransitionToPrimary";
 
