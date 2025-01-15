@@ -6,7 +6,7 @@ namespace untitledplantgame.donottalktome;
 public partial class VendingMachineInteractable : AInteractable
 {
 	private VendingMachine.VendingMachine _vendingMachine;
-	private Logger _logger = new Logger("VendingMachineNPC");
+	private readonly Logger _logger = new ("VendingMachineNPC");
 
 	public override void Interact()
 	{

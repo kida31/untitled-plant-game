@@ -26,13 +26,35 @@ public partial class UiOnly : Node2D
 		GD.Print("Init vending machine");
 		_vendingMachine = new VendingMachine();
 		var inventory = _vendingMachine.Inventory;
-		inventory.SetItem(0, new ItemStack("coke", "Coke", null, "This is a coke", "", ItemCategory.Medicine, baseValue: 3, maxStackSize: 64, amount: 12));
-		inventory.SetItem(1, new ItemStack("pepsi", "Pepsi", null, "This is a pepsi", "", ItemCategory.Medicine, baseValue: 1, maxStackSize: 64, amount: 11));
+		inventory.SetItem(0, new ItemStack("coke")
+		{
+			Name = "Coke",
+			ToolTipDescription = "This is a coke",
+			BaseValue = 3,
+			Amount = 12,
+			MaxStackSize = 64,
+		});
+		inventory.SetItem(1, new ItemStack("pepsi")
+		{
+			Name = "Pepsi",
+			ToolTipDescription = "This is a pepsi",
+			BaseValue = 1,
+			Amount = 11,
+			MaxStackSize = 64,
+		});
+
 		EventBus.Instance.BeforeVendingMachineOpen(_vendingMachine);
 
 		GD.Print("Init inventory");
 		_inventory = new Inventory(15, "PlayerInventory");
-		_inventory.SetItem(0, new ItemStack("fanta", "Fanta", null, "This is a fanta", "", ItemCategory.Medicine, baseValue: 5, maxStackSize: 64, amount: 10));
+		inventory.SetItem(0, new ItemStack("fanta")
+		{
+			Name = "Fanta",
+			ToolTipDescription = "This is a fanta",
+			BaseValue = 5,
+			Amount = 10,
+			MaxStackSize = 64,
+		});
 
 		GD.Print($"init inventory view s={_inventory.Size}");
 		foreach (var stack in _inventory)

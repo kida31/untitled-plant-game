@@ -4,6 +4,8 @@ using untitledplantgame.Common;
 using untitledplantgame.Common.Inputs;
 using untitledplantgame.Common.Inputs.GameActions;
 
+namespace untitledplantgame.Interaction;
+
 /// <summary>
 /// This Class manages the interaction with any interactable object in the game.
 /// The Object registers itself to the InteractionManager once the player enters its area.
@@ -13,27 +15,21 @@ using untitledplantgame.Common.Inputs.GameActions;
 /// </summary>
 public partial class InteractionManager : Node2D
 {
-	private string BaseText => $"[{InputRemapper.GetButton(FreeRoam.Interact).ToString()}] ";
-	private const int BaseTextYTransform = 50;
-
-	[Export]
-	private Label label;
 	public static InteractionManager Instance { get; private set; }
-	public int AreaCount => activeAreas.Count;
-	private Node2D player;
-	private List<IInteractable> activeAreas = new();
-	private bool canInteract = true;
+	
+	[Export]
+	private Label _label;
+	
+	private int AreaCount => _activeAreas.Count;
+	private string BaseText => $"[{InputRemapper.GetButton(FreeRoam.Interact).ToString()}] ";
+	private bool _canInteract = true;
+	private const int BaseTextYTransform = 50;
+	private Node2D _player;
+	private readonly List<IInteractable> _activeAreas = new();
 	private readonly Logger _logger = new("InteractionManager");
 
 	public override void _Ready()
 	{
-		player = (Node2D)GetTree().GetFirstNodeInGroup(GameGroup.Player);
-
-		if (player == null)
-		{
-			_logger.Error("Player node not found.");
-		}
-
 		if (Instance == null)
 		{
 			Instance = this;
@@ -51,42 +47,44 @@ public partial class InteractionManager : Node2D
 	/// <param name="delta"></param>
 	public override void _Process(double delta)
 	{
-		if (AreaCount > 0 && canInteract)
+		_player ??= Game.Instance.GetPlayer();
+
+		if (AreaCount > 0 && _canInteract & _player != null)
 		{
-			activeAreas.Sort(SortByDistanceToPlayer);
-			label.Text = BaseText + activeAreas[0].ActionName;
-			label.GlobalPosition = activeAreas[0].GetGlobalInteractablePosition();
-			label.GlobalPosition -= new Vector2(label.Size.X / 2, BaseTextYTransform);
-			label.Show();
+			_activeAreas.Sort(SortByDistanceToPlayer);
+			_label.Text = BaseText + _activeAreas[0].ActionName;
+			_label.GlobalPosition = _activeAreas[0].GetGlobalInteractablePosition();
+			_label.GlobalPosition -= new Vector2(_label.Size.X / 2, BaseTextYTransform);
+			_label.Show();
 		}
 		else
 		{
-			label.Hide();
+			_label.Hide();
 		}
 	}
 
 	public void RegisterArea(IInteractable area)
 	{
-		activeAreas.Add(area);
+		_activeAreas.Add(area);
 	}
 
 	public void UnregisterArea(IInteractable area)
 	{
-		activeAreas.Remove(area);
+		_activeAreas.Remove(area);
 	}
 
 	public void PerformInteraction()
 	{
-		if (Input.IsActionJustPressed(FreeRoam.Interact) && canInteract)
+		if (Input.IsActionJustPressed(FreeRoam.Interact) && _canInteract)
 		{
 			if (AreaCount > 0)
 			{
-				canInteract = false;
-				label.Hide();
+				_canInteract = false;
+				_label.Hide();
 
-				activeAreas[0].Interact();
+				_activeAreas[0].Interact();
 
-				canInteract = true;
+				_canInteract = true;
 			}
 		}
 	}
@@ -99,14 +97,16 @@ public partial class InteractionManager : Node2D
 			return int.MaxValue;
 		}
 
-		if (player == null)
+		if (_player == null)
 		{
 			_logger.Error("Player is null.");
 			return int.MaxValue;
 		}
 
-		float distance1 = player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
-		float distance2 = player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
+		
+		float distance1 = _player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
+		float distance2 = _player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
+		GD.PrintRich(distance2);
 		return distance1.CompareTo(distance2);
 	}
 }

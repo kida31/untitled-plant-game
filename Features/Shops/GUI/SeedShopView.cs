@@ -157,7 +157,7 @@ public partial class SeedShopView : Control
 		}
 
 		// Change game state back to previous state
-		GameStateMachine.Instance.RevertState();
+		GameStateMachine.Instance.ChangeState(GameState.FreeRoam);
 		// Tell subscribers that the shop was closed
 		EventBus.Instance.SeedshopClosed();
 	}

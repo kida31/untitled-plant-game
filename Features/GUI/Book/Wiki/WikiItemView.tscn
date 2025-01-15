@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2i7oxcdj4025"]
+
+[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiItemView.cs" id="1_2gnwr"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_48ijb"]
+[ext_resource type="Texture2D" uid="uid://b3076kp3u3e03" path="res://Assets/UI/Book/Pages/Demo/LeftWiki_filled.png" id="3_0he3c"]
+[ext_resource type="Script" path="res://Features/GUI/Hooks/AutoExpandHook.cs" id="3_gqtxt"]
+[ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="4_q3o43"]
+[ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_d341g"]
+[ext_resource type="Texture2D" uid="uid://dsrjntfr6kb41" path="res://Assets/Items/chubery_harvested.png" id="5_i6nc1"]
+
+[node name="WikiItemView" type="Control" node_paths=PackedStringArray("_iconTextureRect", "_itemName")]
+layout_mode = 3
+anchor_right = 0.164815
+anchor_bottom = 0.0592593
+script = ExtResource("1_2gnwr")
+_iconTextureRect = NodePath("Div/ItemIcon")
+_itemName = NodePath("TextBoxDiv/TextMargin/Label")
+_temporary = ExtResource("2_48ijb")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_right = 84.0
+offset_bottom = 32.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 2
+offset_left = -15.0
+offset_top = -72.0
+offset_right = 355.0
+offset_bottom = 232.0
+texture = ExtResource("3_0he3c")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AutoExpandHook" type="Node" parent="."]
+script = ExtResource("3_gqtxt")
+_aspectRatio = 5.563
+
+[node name="Div" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.179775
+anchor_bottom = 1.0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ItemBorder" type="TextureRect" parent="Div"]
+layout_mode = 2
+texture = ExtResource("4_q3o43")
+stretch_mode = 5
+
+[node name="ItemIcon" type="TextureRect" parent="Div"]
+layout_mode = 2
+texture = ExtResource("5_i6nc1")
+stretch_mode = 5
+
+[node name="TextBoxDiv" parent="." instance=ExtResource("5_d341g")]
+layout_mode = 2
+anchor_left = 0.308989
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" parent="TextBoxDiv/TextMargin" index="0"]
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+offset_right = 84.0
+offset_bottom = 32.0
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Space" type="Control" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[editable path="TextBoxDiv"]
