@@ -101,6 +101,7 @@ texture = ExtResource("5_1pscy")
 expand_mode = 1
 
 [node name="CircleBG" type="Panel" parent="."]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f2ott")
