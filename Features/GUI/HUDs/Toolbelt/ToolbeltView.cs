@@ -5,7 +5,8 @@ namespace untitledplantgame.GUI.HUDs;
 
 public partial class ToolbeltView : Control
 {
-	public const string RotateRightAnimationName = "RotateRight";
+	private const string RotateRightAnimationName = "RotateRight";
+	private const string RotateLeftAnimationName = "RotateLeft";
 
 	[Export] private AnimationPlayer _animationPlayer;
 	[Export] private ToolBlobView _leftBlob;
@@ -38,41 +39,21 @@ public partial class ToolbeltView : Control
 			placeholderBecauseImTooStupidToDoProperDependencies.QueueFree();
 		};
 		AddChild(placeholderBecauseImTooStupidToDoProperDependencies);
-	}
-	
-	public override void _Process(double delta)
-	{
-		if (Input.IsKeyPressed(Key.F1))
-		{
-			_animationPlayer.Play(RotateRightAnimationName, customSpeed: -1.0f, fromEnd: true);
-		}
 
-		if (Input.IsKeyPressed(Key.F2))
-		{
-			_animationPlayer.Play(RotateRightAnimationName);
-		}
+		_animationPlayer.AnimationFinished += OnAnimationEnded;
 	}
 
-	private void AnimateToolChange(bool right)
+	private void AnimateToolChange(bool rotateLeft)
 	{
-		if (right)
-		{
-			_animationPlayer.Play(RotateRightAnimationName);
-			_animationPlayer.AnimationFinished += OnAnimationEnded;
-		}
-		else
-		{
-			_animationPlayer.Play(RotateRightAnimationName, customSpeed: -1.0f, fromEnd: true);
-			
-			// When playing backwards this needs to called initially, but still looks janky sometimes
-			// TODO: Fix workaround, or actually animate the second part instead of being a lazy bum
-			UpdateToolBlobs();
-		}
+		_animationPlayer.Play(rotateLeft ? RotateLeftAnimationName : RotateRightAnimationName);
 	}
 
 	private void OnAnimationEnded(object ignored)
 	{
-		_animationPlayer.AnimationFinished -= OnAnimationEnded;
+		// FIXME This is a hack to reset the animation 
+		_animationPlayer.Play("RESET");
+		/* await */
+		ToSignal(_animationPlayer, AnimationMixer.SignalName.AnimationFinished);
 		UpdateToolBlobs();
 	}
 

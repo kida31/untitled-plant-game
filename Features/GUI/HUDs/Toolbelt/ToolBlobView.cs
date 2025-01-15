@@ -41,8 +41,8 @@ public partial class ToolBlobView : Control
 				WateringCan => _wateringCanIcon,
 				Shears => _shearsIcon,
 				SeedBag => _seedBagIcon,
-				null => null,
-				_ => _shovelIcon,
+				Shovel => _shovelIcon,
+				_ => null,
 			};
 		}
 	}
@@ -63,18 +63,18 @@ public partial class ToolBlobView : Control
 		}
 
 		_style = value;
-		UpdateVisuals(1.0f);
+		UpdateVisuals();
 	}
 
-	private void UpdateVisuals(float customSpeed = Single.MaxValue)
+	private void UpdateVisuals()
 	{
 		if (_style == Style.Primary)
 		{
-			_animationPlayer?.Play(ToPrimaryAnimationName, customSpeed: customSpeed);
+			_animationPlayer?.Play(ToPrimaryAnimationName);
 		}
 		else
 		{
-			_animationPlayer?.Play(ToPrimaryAnimationName, customSpeed: -customSpeed, fromEnd: true);
+			_animationPlayer?.PlayBackwards(ToPrimaryAnimationName);
 		}
 	}
 }
