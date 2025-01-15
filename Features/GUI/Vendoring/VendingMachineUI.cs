@@ -4,37 +4,33 @@ using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
-using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.GUI.Book.Inventories;
+using untitledplantgame.GUI.VendingMachine;
 using untitledplantgame.Inventory;
+using untitledplantgame.VendingMachine;
 
-namespace untitledplantgame.VendingMachine;
+namespace untitledplantgame.GUI.Vendoring;
 
 public partial class VendingMachineUI : Control
 {
-	[Export]
-	private Node _itemStackContainer;
+	[Export] private Node _itemStackContainer;
 
-	[Export]
-	private EmojiTooltip _emojiTooltip;
+	[Export] private EmojiTooltip _emojiTooltip;
 
-	[Export]
-	private Slider _slider;
+	[Export] private Slider _slider;
 
-	[Export]
-	private Label _moneyLabel;
+	[Export] private Label _moneyLabel;
 
-	[Export]
-	private Label _itemNameLabel;
+	[Export] private Label _itemNameLabel;
 
-	[Export]
-	private Button _withdrawButton;
+	[Export] private Button _withdrawButton;
 
-	private VendingMachine _vendingMachine;
-	private List<VMItemSlotUI> _itemSlots;
+	private untitledplantgame.VendingMachine.VendingMachine _vendingMachine;
+	private List<VendingItemView> _itemSlots;
 
 	public override void _Ready()
 	{
-		_itemSlots = _itemStackContainer.GetChildren().Cast<VMItemSlotUI>().ToList();
+		_itemSlots = _itemStackContainer.GetChildren().Cast<VendingItemView>().ToList();
 		_slider.ValueChanged += OnSliderValueChanged;
 
 		for (var i = 0; i < _itemSlots.Count; i++)
@@ -48,6 +44,7 @@ public partial class VendingMachineUI : Control
 
 		EventBus.Instance.BeforeVendingMachineOpened += OpenThis;
 	}
+
 	public override void _Process(double delta)
 	{
 		if (_vendingMachine is null)
@@ -61,13 +58,13 @@ public partial class VendingMachineUI : Control
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (!IsVisibleInTree()) return;
-		if (@event.IsActionPressed(Book.Back))
+		if (@event.IsActionPressed(Common.Inputs.GameActions.Book.Back))
 		{
-			CloseThis();	
+			CloseThis();
 		}
 	}
-	
-	private void OpenThis(VendingMachine vendingMachine)
+
+	private void OpenThis(untitledplantgame.VendingMachine.VendingMachine vendingMachine)
 	{
 		GameStateMachine.Instance.SetState(GameState.Book);
 		SetVendingMachine(vendingMachine);
@@ -80,7 +77,7 @@ public partial class VendingMachineUI : Control
 		Hide();
 	}
 
-	private void SetVendingMachine(VendingMachine vendingMachine)
+	private void SetVendingMachine(untitledplantgame.VendingMachine.VendingMachine vendingMachine)
 	{
 		if (_vendingMachine is not null)
 		{
@@ -103,7 +100,7 @@ public partial class VendingMachineUI : Control
 
 	private void OnGuiFocusChanged(Control node)
 	{
-		if (node is ItemSlotUI slot)
+		if (node is InventoryItemView slot)
 		{
 			_itemNameLabel!.Text = slot.ItemStack?.Name ?? "";
 		}
@@ -113,36 +110,15 @@ public partial class VendingMachineUI : Control
 	{
 		return () =>
 		{
-			if (CursorFriend.Instance is null)
+			if (CursorInventory.Instance is null)
 				return;
 
-			if (CursorFriend.Instance.ItemStack == null)
+			if (CursorInventory.Instance.CanClick(_vendingMachine.Inventory, idx))
 			{
-				// Empty hand
-				var item = _vendingMachine.Inventory.GetItem(idx);
-				if (item == null)
-					return;
-				CursorFriend.Instance.ItemStack = item;
-				_vendingMachine.Inventory.SetItem(idx, null);
+				GD.Print($"CursorInventory.Instance.HandleClick(_vendingMachine.Inventory, {idx});");
+				// CursorInventory.Instance.HandleClick(_vendingMachine.Inventory, idx);	
 			}
-			else
-			{
-				// Holding item
-				if (_itemSlots[idx].ItemStack == null)
-				{
-					// Empty vending machine slot
-					_vendingMachine.Inventory.SetItem(idx, CursorFriend.Instance.ItemStack);
-					CursorFriend.Instance.ItemStack = null;
-				}
-				else
-				{
-					// TODO: may need to stack instead
-					// Swap
-					var temp = _vendingMachine.Inventory.GetItem(idx);
-					_vendingMachine.Inventory.SetItem(idx, CursorFriend.Instance.ItemStack);
-					CursorFriend.Instance.ItemStack = temp;
-				}
-			}
+			
 			UpdateContent(_vendingMachine.Inventory);
 		};
 	}
@@ -154,7 +130,7 @@ public partial class VendingMachineUI : Control
 
 	private void OnPriceMultChanged(float obj)
 	{
-		_itemSlots.ForEach(s => s.PriceMult = obj);
+		_itemSlots.ForEach(s => s.Price = (int) Math.Ceiling((s.ItemStack?.BaseValue ?? 0) * obj));
 	}
 
 	private void UpdateContent(IInventory inventory)
@@ -173,7 +149,7 @@ public partial class VendingMachineUI : Control
 			return;
 		}
 
-		_vendingMachine.SetPriceSlider((float)value);
+		_vendingMachine.SetPriceSlider((float) value);
 
 		// Update UI
 		var offsetValue = value - _slider.MinValue;

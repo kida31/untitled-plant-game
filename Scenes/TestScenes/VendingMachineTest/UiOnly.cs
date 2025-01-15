@@ -2,6 +2,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.VendingMachine;
+using VendingMachineUI = untitledplantgame.GUI.Vendoring.VendingMachineUI;
 
 public partial class UiOnly : Node2D
 {

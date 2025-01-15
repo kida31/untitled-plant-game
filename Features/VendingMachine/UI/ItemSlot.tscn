@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://21vebptmufut" path="res://Features/VendingMachine/UI/black_dot.png" id="2_7wld1"]
 
 [node name="ItemSlot" type="PanelContainer" node_paths=PackedStringArray("ItemTexture", "_quantityLabel", "_highlight")]
-custom_minimum_size = Vector2(48, 48)
-offset_right = 48.0
-offset_bottom = 48.0
+custom_minimum_size = Vector2(32, 32)
+offset_right = 42.0
+offset_bottom = 42.0
 focus_mode = 2
 script = ExtResource("1_5dpbk")
 ItemTexture = NodePath("CenterContainer/MarginContainer/ItemTexture")
