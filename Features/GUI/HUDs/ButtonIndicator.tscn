@@ -58,7 +58,7 @@ _data = {
 "Released": SubResource("Animation_0ipg7")
 }
 
-[node name="InputIndicator" type="MarginContainer" node_paths=PackedStringArray("_textureButton", "_animationPlayer")]
+[node name="InputIndicator" type="MarginContainer" node_paths=PackedStringArray("_animationPlayer", "_textureButton")]
 custom_minimum_size = Vector2(16, 16)
 anchors_preset = -1
 anchor_right = 0.05
@@ -68,8 +68,8 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 mouse_filter = 2
 script = ExtResource("1_wwa2o")
-_textureButton = NodePath("TextureButton")
 _animationPlayer = NodePath("AnimationPlayer")
+_textureButton = NodePath("TextureButton")
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -82,3 +82,4 @@ layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("2_emypu")
 texture_pressed = ExtResource("3_bs1oq")
+stretch_mode = 0
