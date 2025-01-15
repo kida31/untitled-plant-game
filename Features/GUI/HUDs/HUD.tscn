@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c55xp0xg83mt1"]
+[gd_scene load_steps=5 format=3 uid="uid://c55xp0xg83mt1"]
 
+[ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Features/Cycle/UI/ClockUI.tscn" id="1_313dl"]
 [ext_resource type="PackedScene" uid="uid://cme58rltegywh" path="res://Features/GUI/HUDs/BookButton.tscn" id="1_k0baw"]
 [ext_resource type="PackedScene" uid="uid://dblh2fmdokupl" path="res://Features/GUI/HUDs/Toolbelt/ToolbeltView.tscn" id="2_fhqom"]
 [ext_resource type="PackedScene" uid="uid://eadq6f41gik3" path="res://Features/GUI/HUDs/Resources/ResourcesHUD.tscn" id="3_h2wb2"]
@@ -12,6 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="ClockUI" parent="." instance=ExtResource("1_313dl")]
 
 [node name="ToolbeltView" parent="." instance=ExtResource("2_fhqom")]
 layout_mode = 1
