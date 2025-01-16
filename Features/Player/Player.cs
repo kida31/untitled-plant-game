@@ -3,7 +3,6 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
-using untitledplantgame.Interaction;
 using untitledplantgame.Inventory;
 using untitledplantgame.Shops;
 using untitledplantgame.Tools;
@@ -13,7 +12,7 @@ namespace untitledplantgame.Player;
 public partial class Player : CharacterBody2D
 {
 	private readonly Logger _logger = new Logger("Player");
-	
+
 	// Input direction(?)
 	public Vector2 Direction = Vector2.Zero;
 
@@ -31,7 +30,7 @@ public partial class Player : CharacterBody2D
 	private PlayerStateMachine _stateMachine;
 	private BigInventory _inventory;
 
-	private Toolbelt _toolbelt = new (
+	private readonly Toolbelt _toolbelt = new(
 		new Tool[]
 		{
 			new Shears(12, 16),
@@ -44,22 +43,19 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		_logger.Info("! Ready !");
-		
+
 		Game.Instance.Provide(this);
-		
+
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_stateMachine.Initialize(this);
-		
+
 		EventBus.Instance.OnItemPickUp += OnItemPickUp;
 
 		// Initialize inventory
 		var rand = new RandomStockGenerator();
 		_inventory = new(20);
-		_inventory.InventoryChanged += () =>
-		{
-			EventBus.Instance.PlayerInventoryChanged(this, _inventory);
-		};
+		_inventory.InventoryChanged += () => { EventBus.Instance.PlayerInventoryChanged(this, _inventory); };
 		_inventory.AddItem(rand.GetRandomItems(12).ToArray());
 	}
 
@@ -70,7 +66,7 @@ public partial class Player : CharacterBody2D
 			_logger.Error("Item is null, cannot pick up.");
 			return;
 		}
-		
+
 		var leftovers = _inventory.AddItem(obj);
 		if (leftovers.Count > 0)
 		{
@@ -89,16 +85,12 @@ public partial class Player : CharacterBody2D
 		{
 			Direction = Vector2.Zero; // default value, movement is an exception
 		}
-
-		//Velocity = direction * MoveSpeed;
-		InteractionManager.Instance.PerformInteraction();
 	}
 
 	public void GetSetInputDirection()
 	{
 		Direction = Input.GetVector(FreeRoam.Left, FreeRoam.Right, FreeRoam.Up, FreeRoam.Down).Normalized();
 	}
-
 
 	public override void _PhysicsProcess(double delta)
 	{
