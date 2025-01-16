@@ -168,23 +168,6 @@ public partial class VendingMachineUI : Control
 		}
 
 		_vendingMachine.SetPriceSlider((float) value);
-
-		// Update UI
-		var offsetValue = value - _slider.MinValue;
-		var offsetPercent = offsetValue / (_slider.MaxValue - _slider.MinValue);
-
-		switch (offsetPercent)
-		{
-			case > 0.66:
-				_emojiTooltip.SetMood(EmojiTooltip.Mood.Sad);
-				break;
-			case < 0.33:
-				_emojiTooltip.SetMood(EmojiTooltip.Mood.Happy);
-				break;
-			default:
-				_emojiTooltip.SetMood(EmojiTooltip.Mood.Neutral);
-				break;
-		}
 	}
 
 	// Delegates focus to some child  control.
