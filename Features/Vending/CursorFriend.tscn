@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqecm84bxfyy1"]
+
+[ext_resource type="Script" path="res://Features/Vending/CursorFriend.cs" id="1_5sbqh"]
+[ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://Features/Vending/UI/ItemSlot.tscn" id="2_e62am"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="3_xyja1"]
+
+[node name="CursorFriend" type="Control" node_paths=PackedStringArray("_itemSlot")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_5sbqh")
+_itemSlot = NodePath("ItemSlot")
+
+[node name="ItemSlot" parent="." instance=ExtResource("2_e62am")]
+visible = false
+layout_mode = 0
+scale = Vector2(0.7, 0.7)
+focus_mode = 0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("3_xyja1")

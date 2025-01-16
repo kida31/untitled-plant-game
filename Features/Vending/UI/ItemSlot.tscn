@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://v4q4n4opsed6"]
+
+[ext_resource type="Script" path="res://Features/Vending/UI/ItemSlotUI.cs" id="1_5dpbk"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="1_onwbe"]
+[ext_resource type="Texture2D" uid="uid://21vebptmufut" path="res://Features/Vending/UI/black_dot.png" id="2_7wld1"]
+
+[node name="ItemSlot" type="PanelContainer" node_paths=PackedStringArray("ItemTexture", "_quantityLabel", "_highlight")]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 42.0
+offset_bottom = 42.0
+focus_mode = 2
+script = ExtResource("1_5dpbk")
+ItemTexture = NodePath("CenterContainer/MarginContainer/ItemTexture")
+_placeholderIcon = ExtResource("1_onwbe")
+_quantityLabel = NodePath("QuantityLabel")
+_highlight = NodePath("HighlightPlaceholder")
+
+[node name="CenterContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 2
+
+[node name="EmptyBlob" type="TextureRect" parent="CenterContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.321569)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_7wld1")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ItemTexture" type="TextureRect" parent="CenterContainer/MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+expand_mode = 4
+stretch_mode = 5
+
+[node name="QuantityLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
+theme_override_colors/font_shadow_color = Color(0.933333, 0.933333, 0.933333, 1)
+theme_override_constants/shadow_outline_size = 20
+theme_override_font_sizes/font_size = 16
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="HighlightPlaceholder" type="ColorRect" parent="."]
+visible = false
+modulate = Color(0.662745, 1, 1, 0.352941)
+layout_mode = 2
