@@ -3,6 +3,9 @@ using untitledplantgame.GUI.Items;
 
 namespace untitledplantgame.GUI.Vending;
 
+/// <summary>
+///		Displays a vending item with a price.
+/// </summary>
 public partial class VendingItemView : StorageItemView
 {
 	[Export] private Label _priceLabel;

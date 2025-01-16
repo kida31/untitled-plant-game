@@ -53,7 +53,8 @@ public partial class VendingMachineUI : Control
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (!IsVisibleInTree()) return;
+		if (!IsVisibleInTree()) return; // Do not handle input if not visible
+		
 		if (@event.IsActionPressed(Common.Inputs.GameActions.Book.Back))
 		{
 			CloseThis();
