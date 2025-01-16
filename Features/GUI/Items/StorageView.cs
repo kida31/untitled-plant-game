@@ -11,7 +11,7 @@ namespace untitledplantgame.GUI.Vending;
 /// <summary>
 ///     This class is a view for the inventory. It displays the items in the inventory and allows the player to interact with them.
 /// </summary>
-public partial class SimplerInventoryView : Control
+public partial class StorageView : Control
 {
 	[Export] private Container _inventoryItemViewContainer;
 	[Export] private PackedScene _inventoryItemViewPrefab;

@@ -22,7 +22,7 @@ public partial class VendingMachineUI : Control
 
 	[Export] private Button _withdrawButton;
 
-	[Export] private SimplerInventoryView _inventoryView;
+	[Export] private StorageView _inventoryView;
 
 	private VendingMachine _vendingMachine;
 	private List<VendingItemView> _itemSlots;
