@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4ykaypmenmc0"
-path="res://.godot/imported/tile016.png-fbdd841f85edd41dd940dfd5139f3a38.ctex"
+uid="uid://b04d8mwf8rhjp"
+path="res://.godot/imported/gold_coin_pirated_many.png-00ad89ee24a2d8ceec9e869ae4e04a17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Features/Vending/emojis/tile016.png"
-dest_files=["res://.godot/imported/tile016.png-fbdd841f85edd41dd940dfd5139f3a38.ctex"]
+source_file="res://Features/GUI/Vending/gold_coin_pirated_many.png"
+dest_files=["res://.godot/imported/gold_coin_pirated_many.png-00ad89ee24a2d8ceec9e869ae4e04a17.ctex"]
 
 [params]
 

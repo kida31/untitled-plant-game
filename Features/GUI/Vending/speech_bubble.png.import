@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dknxirjc8kr0"
-path="res://.godot/imported/tile010.png-54867d3524148b830fd6d198cdb8354c.ctex"
+uid="uid://bpmmqaxhkw5id"
+path="res://.godot/imported/speech_bubble.png-1b31df78cb87e880c384539ec23cfaf9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Features/Vending/emojis/tile010.png"
-dest_files=["res://.godot/imported/tile010.png-54867d3524148b830fd6d198cdb8354c.ctex"]
+source_file="res://Features/GUI/Vending/speech_bubble.png"
+dest_files=["res://.godot/imported/speech_bubble.png-1b31df78cb87e880c384539ec23cfaf9.ctex"]
 
 [params]
 

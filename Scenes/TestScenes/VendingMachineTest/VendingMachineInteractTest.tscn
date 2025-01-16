@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="2_6h7qe"]
 [ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://Features/NPC/NPC.tscn" id="3_kjloy"]
 [ext_resource type="Script" path="res://Features/NPC/NPCMother.cs" id="4_q1cim"]
-[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/Vending/UI/vending_machine_ui.tscn" id="6_25c8q"]
+[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/GUI/Vending/vending_machine_ui.tscn" id="6_25c8q"]
 [ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://Features/NPC/VendingMachine/VendingMachineNPC.tscn" id="10_4aktg"]
 
 [node name="TestInventoryScene" type="Node"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ffmnb0ywgx2"]
 
 [ext_resource type="Script" path="res://Scenes/TestScenes/VendingMachineTest/UiOnly.cs" id="1_hus41"]
-[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/Vending/UI/vending_machine_ui.tscn" id="1_sapqf"]
-[ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://Features/Vending/UI/ItemSlot.tscn" id="2_77ub2"]
+[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/GUI/Vending/vending_machine_ui.tscn" id="1_sapqf"]
+[ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://Features/GUI/Vending/ItemSlot.tscn" id="2_77ub2"]
 [ext_resource type="PackedScene" uid="uid://cqecm84bxfyy1" path="res://Features/Vending/CursorFriend.tscn" id="4_yq4o6"]
 
 [node name="UiOnly" type="Node2D" node_paths=PackedStringArray("_vendingMachineUi", "_inventoryGrid", "_sellButton")]
