@@ -78,6 +78,10 @@ public partial class VendingMachineUI : Control
 		_inventoryView.UpdateInventory(playerMedicineInventory);
 
 		Show();
+		if (GetViewport()?.GuiGetFocusOwner() == null)
+		{
+			GrabFocus();
+		}
 	}
 
 	private void Foo(BigInventory playerInv)
@@ -137,6 +141,7 @@ public partial class VendingMachineUI : Control
 			itemView.Inventory = inventory;
 			itemView.SlotIndex = index;
 		}
+
 		UpdateItemPricesSPAGHETTI();
 	}
 
@@ -150,7 +155,7 @@ public partial class VendingMachineUI : Control
 				slot.Price = "";
 				continue;
 			}
-			
+
 			var price = _vendingMachine.CalculateItemPrice(item);
 			slot.Price = item.BaseValue == price ? $"{price}g" : $"{price}g ({item.BaseValue}g)";
 		}
@@ -181,5 +186,20 @@ public partial class VendingMachineUI : Control
 				_emojiTooltip.SetMood(EmojiTooltip.Mood.Neutral);
 				break;
 		}
+	}
+
+	// Delegates focus to some child  control.
+	// This is just called like this so its convenient to find.
+	// Would be cool if this could override original GrabFocus.
+	public void GrabFocus()
+	{
+		var first = _itemSlots.FirstOrDefault();
+		if (first == null)
+		{
+			_logger.Warn("No item slots found");
+			return;
+		}
+
+		first.GrabFocus();
 	}
 }
