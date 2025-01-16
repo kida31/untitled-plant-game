@@ -4,7 +4,7 @@ using untitledplantgame.Inventory;
 using untitledplantgame.Vending;
 using CursorFriend = untitledplantgame.Vending.CursorFriend;
 using ItemSlotUI = untitledplantgame.Vending.UI.ItemSlotUI;
-using VendingMachineUI = untitledplantgame.GUI.Vendoring.VendingMachineUI;
+using VendingMachineUI = untitledplantgame.GUI.Vending.VendingMachineUI;
 
 public partial class UiOnly : Node2D
 {

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -7,7 +6,7 @@ using untitledplantgame.GUI.Book.Inventories;
 using untitledplantgame.GUI.Items;
 using untitledplantgame.Inventory;
 
-namespace untitledplantgame.GUI.Vendoring;
+namespace untitledplantgame.GUI.Vending;
 
 /// <summary>
 ///     This class is a view for the inventory. It displays the items in the inventory and allows the player to interact with them.

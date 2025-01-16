@@ -8,7 +8,7 @@ using untitledplantgame.Inventory;
 using untitledplantgame.Vending;
 using EmojiTooltip = untitledplantgame.Vending.UI.EmojiTooltip;
 
-namespace untitledplantgame.GUI.Vendoring;
+namespace untitledplantgame.GUI.Vending;
 
 public partial class VendingMachineUI : Control
 {
@@ -127,7 +127,7 @@ public partial class VendingMachineUI : Control
 
 	private void OnPriceMultChanged(float obj)
 	{
-		UpdateItemPricesSPAGHETTI();
+		UpdateItemPriceVisuals();
 	}
 
 
@@ -141,10 +141,10 @@ public partial class VendingMachineUI : Control
 			itemView.SlotIndex = index;
 		}
 
-		UpdateItemPricesSPAGHETTI();
+		UpdateItemPriceVisuals();
 	}
 
-	private void UpdateItemPricesSPAGHETTI()
+	private void UpdateItemPriceVisuals()
 	{
 		foreach (var slot in _itemSlots)
 		{

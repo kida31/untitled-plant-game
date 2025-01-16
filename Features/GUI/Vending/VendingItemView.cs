@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using Godot;
 using untitledplantgame.GUI.Items;
 
-namespace untitledplantgame.GUI.Vendoring;
+namespace untitledplantgame.GUI.Vending;
 
 public partial class VendingItemView : StorageItemView
 {
