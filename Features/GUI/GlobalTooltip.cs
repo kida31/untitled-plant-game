@@ -17,7 +17,7 @@ public partial class GlobalTooltip : TooltipView
 	/// Delay after focus before tooltip is shown
 	/// </summary>
 	[Export]
-	private float _delay = .5f;
+	private float _delay = .001f;
 	/// <summary>
 	/// Offset for tooltip from center of focused object
 	/// </summary>
