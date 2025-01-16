@@ -1,8 +1,9 @@
-using Godot;
 using System;
+using Godot;
 using untitledplantgame.Inventory;
+using ItemSlotUI = untitledplantgame.Vending.UI.ItemSlotUI;
 
-namespace untitledplantgame.VendingMachine;
+namespace untitledplantgame.Vending;
 
 /// <summary>
 /// Represents Cursor "storage" for the player when picking up items from some inventory

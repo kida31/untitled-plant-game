@@ -1,6 +1,6 @@
 using Godot;
 
-namespace untitledplantgame.VendingMachine;
+namespace untitledplantgame.Vending.UI;
 
 public partial class EmojiTooltip : Control
 {

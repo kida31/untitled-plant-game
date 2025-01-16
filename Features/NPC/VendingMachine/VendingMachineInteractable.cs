@@ -6,7 +6,7 @@ namespace untitledplantgame.donottalktome;
 
 public partial class VendingMachineInteractable : AInteractable
 {
-	private VendingMachine.VendingMachine _vendingMachine;
+	private Vending.VendingMachine _vendingMachine;
 	private readonly Logger _logger = new ("VendingMachineNPC");
 
 	public override void Interact()
@@ -15,7 +15,7 @@ public partial class VendingMachineInteractable : AInteractable
 		if (_vendingMachine is null)
 		{
 			_logger.Info("Creating new vending machine");
-			_vendingMachine = new VendingMachine.VendingMachine();
+			_vendingMachine = new Vending.VendingMachine();
 			_logger.Info("Set vending content....");
 			_vendingMachine.Inventory.SetContents(new RandomStockGenerator().GetRandomItems(5));
 			_logger.Info("Vendign content:" + _vendingMachine.Inventory.GetItems());

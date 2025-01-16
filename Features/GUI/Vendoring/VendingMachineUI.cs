@@ -7,7 +7,8 @@ using untitledplantgame.Common.GameStates;
 using untitledplantgame.GUI.Book.Inventories;
 using untitledplantgame.GUI.Items;
 using untitledplantgame.Inventory;
-using untitledplantgame.VendingMachine;
+using untitledplantgame.Vending;
+using EmojiTooltip = untitledplantgame.Vending.UI.EmojiTooltip;
 
 namespace untitledplantgame.GUI.Vendoring;
 
@@ -25,7 +26,7 @@ public partial class VendingMachineUI : Control
 
 	[Export] private SimplerInventoryView _inventoryView;
 
-	private VendingMachine.VendingMachine _vendingMachine;
+	private Vending.VendingMachine _vendingMachine;
 	private List<VendingItemView> _itemSlots;
 	private Action _inventoryChangedHandler;
 	private Logger _logger;
@@ -60,7 +61,7 @@ public partial class VendingMachineUI : Control
 		}
 	}
 
-	private void OpenThis(VendingMachine.VendingMachine vendingMachine)
+	private void OpenThis(Vending.VendingMachine vendingMachine)
 	{
 		GameStateMachine.Instance.SetState(GameState.Book);
 		// Set vending
@@ -100,7 +101,7 @@ public partial class VendingMachineUI : Control
 		Hide();
 	}
 
-	private void SetVendingMachine(VendingMachine.VendingMachine vendingMachine)
+	private void SetVendingMachine(Vending.VendingMachine vendingMachine)
 	{
 		if (_vendingMachine is not null)
 		{

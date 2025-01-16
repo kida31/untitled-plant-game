@@ -3,7 +3,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
-namespace untitledplantgame.VendingMachine;
+namespace untitledplantgame.Vending.UI;
 
 public partial class ItemSlotUI : Control, IItemSlotUI
 {

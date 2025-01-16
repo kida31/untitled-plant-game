@@ -1,6 +1,6 @@
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.VendingMachine;
+using ItemSlotUI = untitledplantgame.Vending.UI.ItemSlotUI;
 
 namespace untitledplantgame.Crafting;
 

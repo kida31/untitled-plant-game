@@ -1,7 +1,7 @@
 ﻿using System;
 using untitledplantgame.Inventory;
 
-namespace untitledplantgame.VendingMachine;
+namespace untitledplantgame.Vending.UI;
 
 public interface IItemSlotUI
 {

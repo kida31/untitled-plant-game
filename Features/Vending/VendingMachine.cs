@@ -1,10 +1,9 @@
 using System;
-using System.Diagnostics;
 using System.Linq;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
-namespace untitledplantgame.VendingMachine;
+namespace untitledplantgame.Vending;
 
 public class VendingMachine
 {

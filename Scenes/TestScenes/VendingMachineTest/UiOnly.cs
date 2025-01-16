@@ -1,7 +1,9 @@
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
-using untitledplantgame.VendingMachine;
+using untitledplantgame.Vending;
+using CursorFriend = untitledplantgame.Vending.CursorFriend;
+using ItemSlotUI = untitledplantgame.Vending.UI.ItemSlotUI;
 using VendingMachineUI = untitledplantgame.GUI.Vendoring.VendingMachineUI;
 
 public partial class UiOnly : Node2D
