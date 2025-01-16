@@ -15,6 +15,7 @@ public class VendingMachine
 	// Magic Numbers
 	private const int MaxSalesCount = 100;
 	private const float SalesPercentPerInterval = 0.1f;
+	private const int MinutesPerInterval = 10;
 
 	// Properties
 	public Inventory.Inventory Inventory => _inventory;
@@ -29,12 +30,17 @@ public class VendingMachine
 	private float _faithMultiplier = 1.0f;
 	private int _salesRemaining = MaxSalesCount;
 	private Logger _logger = new("VendingMachine");
+	private int _minuteCounter = 0;
 
 	public VendingMachine()
 	{
 		_inventory = new(12, "Vending Machine");
 		_inventory.InventoryChanged += () => ContentChanged?.Invoke(_inventory);
+		
+		TimeController.Instance.MinuteTicked += OnMinuteTicked;
+		TimeController.Instance.DayChanged += OnEndOfDay;
 	}
+
 
 	/// <summary>
 	/// Sells a random item from the vending machine's inventory.
@@ -133,8 +139,18 @@ public class VendingMachine
 		return deducedGold;
 	}
 
-	public void OnEndOfDay()
+	public void OnEndOfDay(int _)
 	{
 		_salesRemaining = MaxSalesCount;
+	}
+
+	private void OnMinuteTicked(int day, int hour, int minute)
+	{
+		_minuteCounter += 1;
+		if (_minuteCounter > MinutesPerInterval)
+		{
+			_minuteCounter = 0;
+			SellRandomItems();
+		}
 	}
 }
