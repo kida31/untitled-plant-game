@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
+using untitledplantgame.Statistics.StatTypes;
+using untitledplantgame.Systems;
 
 namespace untitledplantgame.Vending;
 
@@ -15,7 +17,7 @@ public class VendingMachine
 	// Magic Numbers
 	private const int MaxSalesCount = 100;
 	private const float SalesPercentPerInterval = 0.1f;
-	private const int MinutesPerInterval = 10;
+	private const int MinutesPerInterval = 1;
 
 	// Properties
 	public Inventory.Inventory Inventory => _inventory;
@@ -136,6 +138,8 @@ public class VendingMachine
 	{
 		var deducedGold = _gold;
 		_gold = 0;
+		
+		CurrencyFaithOfficer.TheOneAndOnly.ChangeAny(new Currency(), deducedGold);
 		return deducedGold;
 	}
 

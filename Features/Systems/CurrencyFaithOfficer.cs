@@ -9,14 +9,13 @@ namespace untitledplantgame.Systems;
 public partial class CurrencyFaithOfficer : Node
 {
 	public static CurrencyFaithOfficer TheOneAndOnly { get; private set; }
+	public static CurrencyFaithOfficer Instance => TheOneAndOnly; // Alias for TheOneAndOnly
 	private Stat _faith;
 	private Stat _currency;
 	private readonly Logger _logger = new("CurrencyFaithOfficer");
 
 	public override void _Ready()
 	{
-		
-		
 		if (TheOneAndOnly != null)
 		{
 			_logger.Warn("Multiple instances of CurrencyFaithOfficer found; deleting the new one");
@@ -24,8 +23,8 @@ public partial class CurrencyFaithOfficer : Node
 			return;
 		}
 
-		_faith = new Stat(100, new Faith(), false);
-		_currency = new Stat(69420,new Currency() , false); //peanut made me do it
+		_faith = new Stat(0, new Faith(), false);
+		_currency = new Stat(0,new Currency() , false); //peanut made me do it
 
 		TheOneAndOnly = this;
 	}
@@ -39,7 +38,10 @@ public partial class CurrencyFaithOfficer : Node
 				EventBus.Instance.FaithChanged(change);
 				break;
 			case Currency:
+				_logger.Info($"Currency: {_currency.GetModifiedStatValue()} ({_currency.GetBaseValueOfStat()})");
+				_logger.Info("Adding currency " + change);
 				_currency.AddStatModifier(change);
+				_logger.Info("New currency balance = " + _currency.GetModifiedStatValue());
 				EventBus.Instance.CurrencyChanged(change);
 				break;
 			default:
@@ -47,5 +49,14 @@ public partial class CurrencyFaithOfficer : Node
 				break;
 		}
 	}
-	
+
+	public int GetCurrentFaith()
+	{
+		return _faith.GetModifiedStatValue();
+	}
+
+	public int GetCurrentCurrency()
+	{
+		return _currency.GetModifiedStatValue();
+	}
 }
