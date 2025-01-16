@@ -11,6 +11,8 @@ namespace untitledplantgame.GUI.Items;
 /// </summary>
 public partial class StorageItemView : InventoryItemView
 {
+	public new IItemStack ItemStack => _slotIndex < 0 ? null : _inventory?.GetItem(SlotIndex);
+
 	public IInventory Inventory
 	{
 		get => _inventory;
@@ -68,7 +70,7 @@ public partial class StorageItemView : InventoryItemView
 			_logger.Error("UpdateContent: Inventory not set");
 			return;
 		}
-		
+
 		UpdateItemView(Inventory.GetItem(SlotIndex));
 	}
 
@@ -85,7 +87,7 @@ public partial class StorageItemView : InventoryItemView
 			_logger.Error("Press: Inventory not set");
 			return;
 		}
-		
+
 		_logger.Debug($"Handle click on {_inventory.Name}[{_slotIndex}]");
 		CursorInventory.Instance.HandleClick(_inventory, _slotIndex);
 	}

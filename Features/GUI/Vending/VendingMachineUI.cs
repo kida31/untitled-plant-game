@@ -4,9 +4,10 @@ using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
+using untitledplantgame.GUI.Items;
 using untitledplantgame.Inventory;
 using untitledplantgame.Vending;
-using EmojiTooltip = untitledplantgame.Vending.UI.EmojiTooltip;
+using untitledplantgame.Vending.UI;
 
 namespace untitledplantgame.GUI.Vending;
 
@@ -70,11 +71,11 @@ public partial class VendingMachineUI : Control
 		var playerMedicineInventory = Game.Instance.GetPlayer().Inventory.GetInventory(ItemCategory.Medicine);
 		if (_inventoryChangedHandler == null)
 		{
-			_inventoryChangedHandler = () => _inventoryView.UpdateInventory(playerMedicineInventory);
+			_inventoryChangedHandler = () => _inventoryView.ShowInventory(playerMedicineInventory);
 			playerMedicineInventory.InventoryChanged += _inventoryChangedHandler;
 		}
 
-		_inventoryView.UpdateInventory(playerMedicineInventory);
+		_inventoryView.ShowInventory(playerMedicineInventory);
 
 		Show();
 		if (GetViewport()?.GuiGetFocusOwner() == null)
@@ -90,7 +91,7 @@ public partial class VendingMachineUI : Control
 
 	private Action GenerateOnInventoryChanged(IInventory inventory)
 	{
-		return delegate { _inventoryView.UpdateInventory(inventory); };
+		return delegate { _inventoryView.ShowInventory(inventory); };
 	}
 
 	private void CloseThis()
