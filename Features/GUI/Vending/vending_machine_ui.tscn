@@ -141,23 +141,14 @@ step = 0.25
 value = 1.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Control" type="Control" parent="VendingMachine"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 1
-anchor_left = 0.0621105
-anchor_top = 0.821841
-anchor_right = 0.624609
-anchor_bottom = 0.871841
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="MinIcon" type="TextureRect" parent="VendingMachine/Control"]
+[node name="LittleGoldIcon" type="TextureRect" parent="VendingMachine"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.100629
-anchor_bottom = 1.0
-offset_right = -16.0
+anchor_left = 0.0621105
+anchor_top = 0.821841
+anchor_right = 0.12461
+anchor_bottom = 0.871841
 grow_vertical = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
@@ -166,14 +157,14 @@ expand_mode = 5
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="MaxIcon" type="TextureRect" parent="VendingMachine/Control"]
+[node name="MuchGoldIcon" type="TextureRect" parent="VendingMachine"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.899371
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
+anchor_left = 0.562109
+anchor_top = 0.821841
+anchor_right = 0.624609
+anchor_bottom = 0.871841
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 10
