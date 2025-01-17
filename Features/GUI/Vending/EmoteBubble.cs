@@ -61,8 +61,8 @@ public partial class EmoteBubble : Control, IFadable
 	private float _value;
 	private float _deadZone;
 	private Logger _logger;
-
-	public EmoteBubble()
+	
+	public override void _EnterTree()
 	{
 		_logger = new Logger(this);
 		ValueChanged += OnValueChanged;
