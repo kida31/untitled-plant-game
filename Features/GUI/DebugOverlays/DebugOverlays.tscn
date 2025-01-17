@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://df0cg0vcow1n2"]
+[gd_scene load_steps=6 format=3 uid="uid://df0cg0vcow1n2"]
 
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugKeybindings.cs" id="1_2qjov"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentFocus.cs" id="1_spicd"]
+[ext_resource type="Theme" uid="uid://o4g273yxqwnk" path="res://Assets/DebuggerTheme.tres" id="1_yf5kl"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugLastClicked.cs" id="2_4xlmf"]
 [ext_resource type="Script" path="res://InGameLogOverlay.cs" id="2_lomx1"]
 
@@ -14,6 +15,7 @@ offset_top = -64.0
 offset_right = 318.0
 grow_vertical = 0
 mouse_filter = 2
+theme = ExtResource("1_yf5kl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -22,7 +24,8 @@ mouse_filter = 2
 
 [node name="Keybindings" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Keybinds"
+text = "Keybinds1
+Keybinds2"
 script = ExtResource("1_2qjov")
 
 [node name="CurrentFocus" type="Label" parent="VBoxContainer"]
@@ -41,7 +44,9 @@ layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 bbcode_enabled = true
-text = "LogMessages"
+text = "LogMessages1
+LogMessages2
+LogMessages3"
 fit_content = true
 scroll_following = true
 autowrap_mode = 2
