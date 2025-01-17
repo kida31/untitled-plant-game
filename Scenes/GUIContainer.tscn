@@ -44,7 +44,6 @@ grow_vertical = 2
 scale = Vector2(0.9969, 1)
 
 [node name="DebugOverlays" parent="." instance=ExtResource("9_m21er")]
-modulate = Color(1, 1, 1, 0.5)
 anchors_preset = -1
 anchor_top = 0.822222
 anchor_right = 0.664063

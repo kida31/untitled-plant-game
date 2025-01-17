@@ -3,12 +3,12 @@
 [ext_resource type="FontFile" uid="uid://bm2ex26qx27n2" path="res://Assets/Fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf" id="1_q2ov1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70ojd"]
-bg_color = Color(0, 0, 0, 0.5)
+bg_color = Color(0, 0, 0, 0.2)
 
 [sub_resource type="FontVariation" id="FontVariation_0pv04"]
 base_font = ExtResource("1_q2ov1")
 variation_opentype = {
-2003265652: 400
+2003265652: 100
 }
 
 [resource]
