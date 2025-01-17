@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.ExtensionMethods;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.GUI.Items;
 using untitledplantgame.Inventory;
@@ -14,7 +15,10 @@ public partial class VendingMachineUI : Control
 {
 	[Export] private Node _itemStackContainer;
 
-	[Export] private EmoteBubble _emoteBubble;
+	[ExportCategory("Emote Bubble")] [Export] private EmoteBubble _emoteBubble;
+	[Export] private float _emoteBubbleDuration;
+	[Export] private float _fadeInDuration;
+	[Export] private float _fadeOutDuration;
 
 	[Export] private Slider _slider;
 
@@ -24,6 +28,8 @@ public partial class VendingMachineUI : Control
 
 	[Export] private StorageView _inventoryView;
 
+	private Timer _emoteBubbleTimer;
+	private Tween _emoteBubbleTween;
 	private VendingMachine _vendingMachine;
 	private List<VendingItemView> _itemSlots;
 	private Action _inventoryChangedHandler;
@@ -32,6 +38,10 @@ public partial class VendingMachineUI : Control
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
+		_emoteBubbleTimer = new Timer();
+		_emoteBubbleTimer.Timeout += OnEmoteBubbleTimeout;
+		AddChild(_emoteBubbleTimer);
+
 		_itemSlots = _itemStackContainer.GetChildren().Cast<VendingItemView>().ToList();
 		_slider.ValueChanged += OnSliderValueChanged;
 
@@ -53,7 +63,7 @@ public partial class VendingMachineUI : Control
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (!IsVisibleInTree()) return; // Do not handle input if not visible
-		
+
 		if (@event.IsActionPressed(Common.Inputs.GameActions.Book.Back))
 		{
 			CloseThis();
@@ -83,7 +93,7 @@ public partial class VendingMachineUI : Control
 			GrabFocus();
 		}
 	}
-	
+
 	private Action GenerateOnInventoryChanged(IInventory inventory)
 	{
 		return delegate { _inventoryView.ShowInventory(inventory); };
@@ -164,7 +174,20 @@ public partial class VendingMachineUI : Control
 		}
 
 		_vendingMachine.SetPriceSlider((float) value);
+
+		_emoteBubble.Value = (float) (_slider.Value / _slider.MaxValue);
+		_emoteBubbleTween?.Stop();
+		_emoteBubbleTween = _emoteBubble.FadeIn(_fadeInDuration);
+		_emoteBubbleTimer.Stop();
+		_emoteBubbleTimer.Start(_emoteBubbleDuration);
 	}
+
+	private void OnEmoteBubbleTimeout()
+	{
+		_emoteBubbleTween?.Stop();
+		_emoteBubbleTween = _emoteBubble.FadeOut(_fadeOutDuration);
+	}
+
 
 	// Delegates focus to some child  control.
 	// This is just called like this so its convenient to find.

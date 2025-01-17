@@ -1,13 +1,11 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.GUI.Hooks;
-using untitledplantgame.GUI.Traits;
 
 namespace untitledplantgame.GUI.Vending;
 
 [Tool]
-public partial class EmoteBubble : Control, IFadable
+public partial class EmoteBubble : Control
 {
 	public event Action<float> ValueChanged;
 	public event Action<float> OverlapChanged;
@@ -57,11 +55,11 @@ public partial class EmoteBubble : Control, IFadable
 	///		 Texture2 of the emote bubble. Used to fade into Texture1
 	/// </summary>
 	[Export] private TextureRect _emoteTexture2;
-
+	
 	private float _value;
 	private float _deadZone;
 	private Logger _logger;
-	
+
 	public override void _EnterTree()
 	{
 		_logger = new Logger(this);

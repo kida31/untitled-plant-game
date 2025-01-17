@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
 [ext_resource type="PackedScene" uid="uid://cusi423j6fnh2" path="res://Features/GUI/Vending/EmoteBubble.tscn" id="12_5lmun"]
 
-[node name="VendingMachineUi" type="Control" node_paths=PackedStringArray("_itemStackContainer", "_slider", "_moneyLabel", "_withdrawButton", "_inventoryView")]
+[node name="VendingMachineUi" type="Control" node_paths=PackedStringArray("_itemStackContainer", "_emoteBubble", "_slider", "_moneyLabel", "_withdrawButton", "_inventoryView")]
 custom_minimum_size = Vector2(256, 320)
 layout_mode = 3
 anchors_preset = 15
@@ -23,6 +23,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mtkr8")
 _itemStackContainer = NodePath("VendingMachine/Items")
+_emoteBubble = NodePath("EmoteBubble")
+_emoteBubbleDuration = 1.0
+_fadeInDuration = 0.2
+_fadeOutDuration = 0.5
 _slider = NodePath("VendingMachine/GoldSlider")
 _moneyLabel = NodePath("VendingMachine/GoldLabel")
 _withdrawButton = NodePath("VendingMachine/WithdrawButton")
@@ -207,5 +211,7 @@ anchor_bottom = 0.0
 
 [node name="EmoteBubble" parent="." instance=ExtResource("12_5lmun")]
 layout_mode = 1
-anchor_right = 0.20625
-anchor_bottom = 0.261111
+anchor_left = 0.295312
+anchor_top = 0.727778
+anchor_right = 0.34375
+anchor_bottom = 0.802778
