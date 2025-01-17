@@ -7,7 +7,6 @@ using untitledplantgame.Common.GameStates;
 using untitledplantgame.GUI.Items;
 using untitledplantgame.Inventory;
 using untitledplantgame.Vending;
-using untitledplantgame.Vending.UI;
 
 namespace untitledplantgame.GUI.Vending;
 
@@ -15,7 +14,7 @@ public partial class VendingMachineUI : Control
 {
 	[Export] private Node _itemStackContainer;
 
-	[Export] private EmojiTooltip _emojiTooltip;
+	[Export] private EmoteBubble _emoteBubble;
 
 	[Export] private Slider _slider;
 
@@ -84,12 +83,7 @@ public partial class VendingMachineUI : Control
 			GrabFocus();
 		}
 	}
-
-	private void Foo(BigInventory playerInv)
-	{
-		throw new NotImplementedException();
-	}
-
+	
 	private Action GenerateOnInventoryChanged(IInventory inventory)
 	{
 		return delegate { _inventoryView.ShowInventory(inventory); };

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c108xawc8eseh"]
+[gd_scene load_steps=13 format=3 uid="uid://c108xawc8eseh"]
 
 [ext_resource type="Script" path="res://Features/GUI/Vending/VendingMachineUI.cs" id="1_mtkr8"]
 [ext_resource type="PackedScene" uid="uid://dy2bsx4d7l35p" path="res://Features/GUI/Vending/MiniInventory.tscn" id="2_vteot"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
 [ext_resource type="PackedScene" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
+[ext_resource type="PackedScene" uid="uid://cusi423j6fnh2" path="res://Features/GUI/Vending/EmoteBubble.tscn" id="12_5lmun"]
 
 [node name="VendingMachineUi" type="Control" node_paths=PackedStringArray("_itemStackContainer", "_slider", "_moneyLabel", "_withdrawButton", "_inventoryView")]
 custom_minimum_size = Vector2(256, 320)
@@ -203,3 +204,8 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+
+[node name="EmoteBubble" parent="." instance=ExtResource("12_5lmun")]
+layout_mode = 1
+anchor_right = 0.20625
+anchor_bottom = 0.261111

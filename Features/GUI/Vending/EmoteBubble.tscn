@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://cusi423j6fnh2"]
+
+[ext_resource type="Script" path="res://Features/GUI/Vending/EmoteBubble.cs" id="1_3i77b"]
+[ext_resource type="Texture2D" uid="uid://daewgkls8y0jg" path="res://Features/GUI/Vending/gold_coin_pirated.png" id="2_1fsf5"]
+[ext_resource type="Texture2D" uid="uid://bpmmqaxhkw5id" path="res://Features/GUI/Vending/speech_bubble.png" id="2_e4a62"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="3_0pfkr"]
+[ext_resource type="Texture2D" uid="uid://b04d8mwf8rhjp" path="res://Features/GUI/Vending/gold_coin_pirated_many.png" id="3_20ul3"]
+[ext_resource type="Texture2D" uid="uid://cgnox3kn0n8xm" path="res://Assets/UI/Book/Icons/CoinIcon.png" id="4_4o6p5"]
+
+[node name="EmoteBubble" type="Control" node_paths=PackedStringArray("_emoteTexture1", "_emoteTexture2")]
+layout_mode = 3
+anchor_right = 0.185937
+anchor_bottom = 0.236111
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3i77b")
+DeadZone = 0.8
+_emotes = [ExtResource("2_1fsf5"), ExtResource("3_0pfkr"), ExtResource("4_4o6p5"), ExtResource("3_0pfkr"), ExtResource("3_20ul3")]
+_emoteTexture1 = NodePath("EmoteTexture1")
+_emoteTexture2 = NodePath("EmoteTexture2")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e4a62")
+expand_mode = 1
+
+[node name="EmoteTexture1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.235294
+anchor_top = 0.164706
+anchor_right = 0.857143
+anchor_bottom = 0.788235
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1fsf5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="EmoteTexture2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.235294
+anchor_top = 0.164706
+anchor_right = 0.857143
+anchor_bottom = 0.788235
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1fsf5")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
