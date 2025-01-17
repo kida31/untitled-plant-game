@@ -97,7 +97,8 @@ public partial class ButtonIndicator : Control
 	private void OnButtonChanged()
 	{
 		_action = ButtonAsAction(_button);
-		AssignButtonImage(_button, Gamepad);
+		
+		if (IsInsideTree()) AssignButtonImage(_button, Gamepad);
 	}
 
 	private StringName ButtonAsAction(SimpleButton button)
