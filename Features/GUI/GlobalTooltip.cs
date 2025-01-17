@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using untitledplantgame.Inventory;
 
@@ -8,16 +9,17 @@ namespace untitledplantgame.GUI;
 /// </summary>
 public partial class GlobalTooltip : TooltipView
 {
+	public event EventHandler FocusChanged;
 	/// <summary>
-	/// Speed for fade in. Higher is faster (shorter animation)
+	/// Speed for fade in. Higher is faster (shorter animation). 0 is instant
 	/// </summary>
 	[Export]
-	private float _fadeInSpeed = 1f;
+	private float _fadeInSpeed;
 	/// <summary>
-	/// Delay after focus before tooltip is shown
+	/// Delay after focus before tooltip is shown. Higher is slower. 0 is instant
 	/// </summary>
 	[Export]
-	private float _delay = .001f;
+	private float _delay;
 	/// <summary>
 	/// Offset for tooltip from center of focused object
 	/// </summary>
@@ -25,6 +27,7 @@ public partial class GlobalTooltip : TooltipView
 
 
 	private Control _target;
+	private Tween _fadeTween;
 	private Timer _delayTimer;
 	private bool HasContent => !string.IsNullOrEmpty(Title) && !string.IsNullOrEmpty(Description);
 
@@ -33,6 +36,7 @@ public partial class GlobalTooltip : TooltipView
 		base._Ready();
 
 		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
+		
 		_delayTimer = new Timer();
 		_delayTimer.OneShot = true;
 		_delayTimer.Timeout += SetContent;
