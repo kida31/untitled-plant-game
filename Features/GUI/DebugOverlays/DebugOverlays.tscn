@@ -11,7 +11,7 @@ top_level = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -64.0
+offset_top = -30.0
 offset_right = 318.0
 grow_vertical = 0
 mouse_filter = 2
@@ -23,18 +23,21 @@ size_flags_vertical = 8
 mouse_filter = 2
 
 [node name="Keybindings" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Keybinds1
 Keybinds2"
 script = ExtResource("1_2qjov")
 
 [node name="CurrentFocus" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 text = "CurrentFocus"
 script = ExtResource("1_spicd")
 
 [node name="LastClicked" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "LastClicked"
 script = ExtResource("2_4xlmf")
