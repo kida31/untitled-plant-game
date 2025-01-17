@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cu7fp670pmqng" path="res://Assets/UI/VendingMachine/CashRetriever.png" id="8_pkwve"]
 [ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
-[ext_resource type="PackedScene" uid="uid://cb3layvs7src0" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
+[ext_resource type="PackedScene" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
 
 [node name="VendingMachineUi" type="Control" node_paths=PackedStringArray("_itemStackContainer", "_slider", "_moneyLabel", "_withdrawButton", "_inventoryView")]
 custom_minimum_size = Vector2(256, 320)
