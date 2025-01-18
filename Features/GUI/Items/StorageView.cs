@@ -56,7 +56,7 @@ public partial class StorageView : Control
 
 		// Update item label
 		var owner = GetViewport().GuiGetFocusOwner();
-		if (owner is InventoryItemView iv)
+		if (owner is StorageItemView iv)
 		{
 			UpdateSelectedItemLabel(iv);
 		}
@@ -104,7 +104,7 @@ public partial class StorageView : Control
 			$"Number of items did not match after adjustment. Tracked nodes are {_itemViews.Count} and container children are {_itemViewContainer.GetChildCount()}");
 	}
 
-	private void UpdateSelectedItemLabel(InventoryItemView itemView)
+	private void UpdateSelectedItemLabel(StorageItemView itemView)
 	{
 		if (_itemNameLabel == null) return;
 		_itemNameLabel.Text = itemView.ItemStack?.Name ?? "";
