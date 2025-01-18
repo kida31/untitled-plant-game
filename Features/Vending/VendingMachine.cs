@@ -145,6 +145,7 @@ public class VendingMachine
 		var deducedGold = _gold;
 		_gold = 0;
 
+		// Alternatively: Invoke some WithdrawCurrency event in EventBus
 		CurrencyFaithOfficer.TheOneAndOnly.ChangeAny(new Currency(), deducedGold);
 		return deducedGold;
 	}
