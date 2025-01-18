@@ -5,7 +5,7 @@ namespace untitledplantgame.Common.ExtensionMethods;
 /// <summary>
 ///     Methods to fade in and out a CanvasItem.
 /// </summary>
-public static class FadingMethods
+public static class CanvasFadeMethods
 {
 	/// <summary>
 	///     Fades in the CanvasItem by tweening the alpha value of the modulate property.
