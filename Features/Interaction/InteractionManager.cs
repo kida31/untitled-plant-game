@@ -16,10 +16,9 @@ namespace untitledplantgame.Interaction;
 public partial class InteractionManager : Node2D
 {
 	public static InteractionManager Instance { get; private set; }
-	
-	[Export]
-	private Label _label;
-	
+
+	[Export] private Label _label;
+
 	private int AreaCount => _activeAreas.Count;
 	private string BaseText => $"[{InputRemapper.GetButton(FreeRoam.Interact).ToString()}] ";
 	private bool _canInteract = true;
@@ -75,18 +74,15 @@ public partial class InteractionManager : Node2D
 
 	public void PerformInteraction()
 	{
-		if (Input.IsActionJustPressed(FreeRoam.Interact) && _canInteract)
+		if (!_canInteract || AreaCount <= 0)
 		{
-			if (AreaCount > 0)
-			{
-				_canInteract = false;
-				_label.Hide();
-
-				_activeAreas[0].Interact();
-
-				_canInteract = true;
-			}
+			return;
 		}
+
+		_canInteract = false;
+		_label.Hide();
+		_activeAreas[0].Interact();
+		_canInteract = true;
 	}
 
 	private int SortByDistanceToPlayer(IInteractable area1, IInteractable area2)
@@ -103,7 +99,6 @@ public partial class InteractionManager : Node2D
 			return int.MaxValue;
 		}
 
-		
 		float distance1 = _player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
 		float distance2 = _player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
 		GD.PrintRich(distance2);

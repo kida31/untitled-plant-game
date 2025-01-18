@@ -1,5 +1,6 @@
 using Godot;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.Interaction;
 
 namespace untitledplantgame.Player;
 
@@ -45,6 +46,13 @@ public partial class StateIdle : State
 		{
 			return _useToolState;
 		}
+
+		//Velocity = direction * MoveSpeed;
+		if (inputEvent.IsActionPressed(FreeRoam.Interact))
+		{
+			InteractionManager.Instance.PerformInteraction();
+		}
+		
 		// Could be if-else's, or maybe not?
 		return null;
 	}

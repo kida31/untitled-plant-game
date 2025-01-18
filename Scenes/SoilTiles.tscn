@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://js6xll5oktc4"]
+[gd_scene load_steps=4 format=3 uid="uid://js6xll5oktc4"]
 
-[ext_resource type="Script" path="res://Scenes/TestScenes/PlantAndCycles/TestCycleWithPlants.cs" id="1_n08xr"]
 [ext_resource type="Script" path="res://Features/Plants/PlantController.cs" id="2_wxa00"]
 [ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="3_y13yj"]
 [ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/PlantPrefab.tscn" id="4_kxbuo"]
@@ -8,7 +7,6 @@
 [node name="Plants" type="Node2D"]
 z_index = 1
 y_sort_enabled = true
-script = ExtResource("1_n08xr")
 
 [node name="PlantController" type="Node" parent="."]
 script = ExtResource("2_wxa00")
@@ -16,17 +14,12 @@ script = ExtResource("2_wxa00")
 [node name="Soil" parent="." instance=ExtResource("3_y13yj")]
 position = Vector2(395, 343)
 
-[node name="APlantPrefab2" parent="Soil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
-position = Vector2(1, -3)
-PlantName = "Drupoleaum"
-Tile = NodePath("../../Soil2")
-
 [node name="Soil2" parent="." instance=ExtResource("3_y13yj")]
 position = Vector2(443, 345)
 
-[node name="APlantPrefab" parent="Soil2" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
+[node name="Tutorial_Chuberry" parent="Soil2" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
 position = Vector2(-1, -5)
-Tile = NodePath("../../Soil")
+Tile = NodePath("..")
 
 [node name="Soil3" parent="." instance=ExtResource("3_y13yj")]
 position = Vector2(561, 400)
