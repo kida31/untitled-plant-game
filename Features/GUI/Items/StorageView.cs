@@ -27,7 +27,7 @@ public partial class StorageView : Control
 
 		_itemViews = _itemViewContainer.GetChildren().OfType<StorageItemView>().ToList();
 		_itemViews.ForEach(iv => { iv.FocusEntered += () => UpdateSelectedItemLabel(iv); });
-		_itemNameLabel.Text = "";
+		if (_itemNameLabel != null) _itemNameLabel.Text = "";
 
 		VisibilityChanged += () =>
 		{
@@ -106,6 +106,7 @@ public partial class StorageView : Control
 
 	private void UpdateSelectedItemLabel(InventoryItemView itemView)
 	{
+		if (_itemNameLabel == null) return;
 		_itemNameLabel.Text = itemView.ItemStack?.Name ?? "";
 	}
 
