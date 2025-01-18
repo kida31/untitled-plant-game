@@ -4,6 +4,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.GUI.Shops;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.GUI;
 
@@ -25,25 +26,15 @@ public partial class SeedShopView : Control
 
 	private readonly Logger _logger = new("Seedshop");
 
-	private List<ShopItemStackView> _shopSlots;
+	private List<ShopItemView> _shopSlots;
 	private IShop _currentShop;
 
 	public override void _Ready()
 	{
 		EventBus.Instance.OnSeedShopOpening += OpenSeedShop;
 
-		_shopSlots = _slotContainer.GetChildren().OfType<ShopItemStackView>().ToList();
+		_shopSlots = _slotContainer.GetChildren().OfType<ShopItemView>().ToList();
 
-		_shopSlots.ForEach(slot =>
-		{
-			var thisSlot = slot; // TODO: Check if currying is needed
-			slot.MouseEntered += () => PutTooltip(thisSlot);
-			slot.MouseExited += HideTooltip;
-			slot.FocusEntered += () => PutTooltip(thisSlot);
-			slot.FocusExited += HideTooltip;
-			slot.Pressed += () => OnSlotPressed(thisSlot);
-		});
-		
 		// Adjust navigation, hacky
 		var columnCount = (_slotContainer as GridContainer)!.Columns;
 		for (var i = 0; i < _shopSlots.Count; i++)
@@ -144,7 +135,7 @@ public partial class SeedShopView : Control
 	{
 		for (var i = 0; i < _shopSlots.Count; i++)
 		{
-			_shopSlots[i].ItemStack = i < items.Count ? items[i] : null;
+			// _shopSlots[i].ItemStack = i < items.Count ? items[i] : null;
 		}
 	}
 

@@ -1,105 +1,75 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd54v5orqpb6t"]
+[gd_scene load_steps=4 format=3 uid="uid://bd54v5orqpb6t"]
 
 [ext_resource type="Script" path="res://Features/Shops/GUI/SeedShopView.cs" id="1_rs6dp"]
-[ext_resource type="PackedScene" uid="uid://w84710wgdj5r" path="res://Features/Shops/GUI/ShopItemStackView.tscn" id="2_siqbl"]
-[ext_resource type="PackedScene" uid="uid://b4rq57akghs3p" path="res://Features/GUI/Items/ItemTooltipView.tscn" id="3_64quj"]
+[ext_resource type="Texture2D" uid="uid://uej5qcp5lxwk" path="res://Assets/UI/SeedShop/seed_shop_cloth_flat.png" id="2_oarm3"]
+[ext_resource type="PackedScene" uid="uid://dvyfrigggpkfj" path="res://Features/GUI/Shops/ShopItemView.tscn" id="3_s3uu1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy6ll"]
-
-[node name="SeedShopView" type="PanelContainer" node_paths=PackedStringArray("_slotContainer", "_tooltipView")]
-offset_right = 364.0
-offset_bottom = 532.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_fy6ll")
+[node name="SeedShopView" type="Control" node_paths=PackedStringArray("_slotContainer")]
+custom_minimum_size = Vector2(218, 269)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 218.0
+offset_bottom = 269.0
+size_flags_horizontal = 4
 script = ExtResource("1_rs6dp")
-_slotContainer = NodePath("MarginContainer/GridContainer")
-_tooltipView = NodePath("IndependentRoot/ItemTooltipView")
+_slotContainer = NodePath("GridContainer")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 2
-color = Color(0.724642, 0.724643, 0.724642, 1)
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oarm3")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16055
+anchor_top = 0.133829
+anchor_right = 0.83945
+anchor_bottom = 0.825279
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-columns = 4
+columns = 3
+metadata/_edit_use_anchors_ = true
 
-[node name="ShopItemStackView" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
 
-[node name="ShopItemStackView2" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem2" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
 
-[node name="ShopItemStackView3" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem3" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
 
-[node name="ShopItemStackView4" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem4" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
 
-[node name="ShopItemStackView5" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem5" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
 
-[node name="ShopItemStackView6" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem6" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
 
-[node name="ShopItemStackView7" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem7" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
 
-[node name="ShopItemStackView8" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem8" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
 
-[node name="ShopItemStackView9" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem9" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
 
-[node name="ShopItemStackView10" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem10" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
 
-[node name="ShopItemStackView11" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem11" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
 
-[node name="ShopItemStackView12" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
+[node name="ShopItem12" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
-focus_mode = 2
-
-[node name="ShopItemStackView13" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
-layout_mode = 2
-focus_mode = 2
-
-[node name="ShopItemStackView14" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
-layout_mode = 2
-focus_mode = 2
-
-[node name="ShopItemStackView15" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
-layout_mode = 2
-focus_mode = 2
-
-[node name="ShopItemStackView16" parent="MarginContainer/GridContainer" instance=ExtResource("2_siqbl")]
-layout_mode = 2
-focus_mode = 2
-
-[node name="IndependentRoot" type="Control" parent="."]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ItemTooltipView" parent="IndependentRoot" instance=ExtResource("3_64quj")]
-visible = false
-layout_mode = 0
