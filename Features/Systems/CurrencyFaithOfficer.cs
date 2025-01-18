@@ -8,6 +8,7 @@ namespace untitledplantgame.Systems;
 [Singleton]
 public partial class CurrencyFaithOfficer : Node
 {
+	private const int StartingCurrency = 10;
 	public static CurrencyFaithOfficer TheOneAndOnly { get; private set; }
 	public static CurrencyFaithOfficer Instance => TheOneAndOnly; // Alias for TheOneAndOnly
 	private Stat _faith;
@@ -24,7 +25,7 @@ public partial class CurrencyFaithOfficer : Node
 		}
 
 		_faith = new Stat(0, new Faith(), false);
-		_currency = new Stat(0,new Currency() , false); //peanut made me do it
+		_currency = new Stat(StartingCurrency,new Currency() , false); //peanut made me do it
 
 		TheOneAndOnly = this;
 	}
@@ -35,13 +36,13 @@ public partial class CurrencyFaithOfficer : Node
 		{
 			case Faith:
 				_faith.AddStatModifier(change); 
+				_logger.Debug($"Added Currency={change} New Balance={_faith.GetModifiedStatValue()}");
 				EventBus.Instance.FaithChanged(change);
 				break;
 			case Currency:
-				_logger.Info($"Currency: {_currency.GetModifiedStatValue()} ({_currency.GetBaseValueOfStat()})");
-				_logger.Info("Adding currency " + change);
+				
 				_currency.AddStatModifier(change);
-				_logger.Info("New currency balance = " + _currency.GetModifiedStatValue());
+				_logger.Debug($"Added Currency={change} New Balance={_currency.GetModifiedStatValue()}");
 				EventBus.Instance.CurrencyChanged(change);
 				break;
 			default:

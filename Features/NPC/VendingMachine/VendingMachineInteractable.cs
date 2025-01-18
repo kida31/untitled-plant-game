@@ -14,7 +14,6 @@ public partial class VendingMachineInteractable : AInteractable
 	{
 		base._Ready();
 		_vendingMachine = new VendingMachine();
-		_vendingMachine.Inventory.SetContents(new RandomStockGenerator().GetRandomItems(5));
 	}
 
 	public override void Interact()
