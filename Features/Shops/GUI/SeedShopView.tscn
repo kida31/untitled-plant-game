@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd54v5orqpb6t"]
+[gd_scene load_steps=6 format=3 uid="uid://bd54v5orqpb6t"]
 
 [ext_resource type="Script" path="res://Features/Shops/GUI/SeedShopView.cs" id="1_rs6dp"]
 [ext_resource type="Texture2D" uid="uid://uej5qcp5lxwk" path="res://Assets/UI/SeedShop/seed_shop_cloth_flat.png" id="2_oarm3"]
 [ext_resource type="PackedScene" uid="uid://dvyfrigggpkfj" path="res://Features/GUI/Shops/ShopItemView.tscn" id="3_s3uu1"]
+[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="4_gya2w"]
+[ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="5_0lc50"]
 
 [node name="SeedShopView" type="Control" node_paths=PackedStringArray("_itemContainer")]
 custom_minimum_size = Vector2(218, 269)
@@ -73,3 +75,13 @@ layout_mode = 2
 
 [node name="ShopItem12" parent="GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
+
+[node name="FocusIndicator" parent="." instance=ExtResource("4_gya2w")]
+
+[node name="GlobalTooltip" parent="." instance=ExtResource("5_0lc50")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 102.163
+offset_bottom = 16.0592

@@ -1,3 +1,4 @@
+using System.Resources;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.GUI.Items;
@@ -21,7 +22,10 @@ public partial class ShopItemView : NewInventoryItemView
 		var label = new RichTextLabel();
 		label.BbcodeEnabled = true;
 		label.Text = ItemStack == null ? "" : $"[center]{ItemStack.BaseValue}{BbImage.Coin}";
+		label.AutowrapMode = TextServer.AutowrapMode.Off;
 		label.FitContent = true;
+		label.SizeFlagsHorizontal = SizeFlags.Expand;
+		label.SizeFlagsVertical = SizeFlags.Expand;
 		return label;
 	}
 }

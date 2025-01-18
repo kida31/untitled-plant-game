@@ -29,7 +29,7 @@ public partial class GlobalTooltip : TooltipView
 	private Control _target;
 	private Tween _fadeTween;
 	private Timer _delayTimer;
-	private bool HasContent => !string.IsNullOrEmpty(Title) && !string.IsNullOrEmpty(Description);
+	private bool HasContent => !string.IsNullOrEmpty(Title) || !string.IsNullOrEmpty(Description) || CustomContent != null;
 
 	public override void _Ready()
 	{
@@ -77,11 +77,7 @@ public partial class GlobalTooltip : TooltipView
 		Title = tooltipable?.Title ?? "";
 		Description = tooltipable?.Description ?? "";
 
-		CustomContent = new();
-		if (tooltipable?.Content != null)
-		{
-			CustomContent.Add(tooltipable.Content);
-		}
+		CustomContent = tooltipable?.Content;
 	}
 
 	private void OnGuiFocusChanged(Control node)
