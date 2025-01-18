@@ -29,6 +29,10 @@ public class VendingMachine
 	public float PriceMultiplier => _priceMultiplier;
 	public float FaithMultiplier => _faithMultiplier;
 	public int Gold => _gold;
+	/// <summary>
+	///		Whether the vending machine is currently selling items.
+	/// </summary>
+	public bool IsTicking { get; set; } = true;
 
 	// Private
 	private readonly Inventory.Inventory _inventory;
@@ -157,6 +161,8 @@ public class VendingMachine
 
 	private void OnMinuteTicked(int day, int hour, int minute)
 	{
+		if (!IsTicking) return;
+		
 		_minuteCounter += 1;
 		if (_minuteCounter >= MinutesPerInterval)
 		{

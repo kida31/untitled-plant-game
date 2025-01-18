@@ -38,7 +38,7 @@ public partial class VendingMachineUI : Control
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
-		
+
 		// Emote bubble
 		_emoteBubbleTimer = new Timer();
 		_emoteBubbleTimer.Timeout += OnEmoteBubbleTimeout;
@@ -78,6 +78,7 @@ public partial class VendingMachineUI : Control
 		GameStateMachine.Instance.SetState(GameState.Book);
 		// Set vending
 		SetVendingMachine(vendingMachine);
+		vendingMachine.IsTicking = false; // Pause vending machine while GUI is open
 
 		// Set player inv. This only needs to happen once. Multiple ways to do it.
 		// Arbitrary solution: Save the onchange handler, and check whether we have already subscribed
@@ -97,13 +98,9 @@ public partial class VendingMachineUI : Control
 		}
 	}
 
-	private Action GenerateOnInventoryChanged(IInventory inventory)
-	{
-		return delegate { _inventoryView.ShowInventory(inventory); };
-	}
-
 	private void CloseThis()
 	{
+		_vendingMachine.IsTicking = true; // Resume vending machine
 		GameStateMachine.Instance.ChangeState(GameState.FreeRoam);
 		Hide();
 	}
