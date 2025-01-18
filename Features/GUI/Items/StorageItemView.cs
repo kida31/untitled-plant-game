@@ -88,6 +88,12 @@ public partial class StorageItemView : InventoryItemView
 			return;
 		}
 
+		if (!CursorInventory.Instance.CanClick(_inventory, _slotIndex))
+		{
+			// This seems inconsistent with secondary click
+			return;
+		}
+
 		_logger.Debug($"Handle click on {_inventory.Name}[{_slotIndex}]");
 		CursorInventory.Instance.HandleClick(_inventory, _slotIndex);
 	}

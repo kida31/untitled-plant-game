@@ -178,6 +178,7 @@ public partial class VendingMachineUI : Control
 
 		_vendingMachine.SetPriceSlider((float) value);
 
+		// NOTE: This does not correspond to the actual price or faith, but simply the slider position.
 		_emoteBubble.Value = (float) (_slider.Value / _slider.MaxValue);
 		_emoteBubbleTween?.Stop();
 		_emoteBubbleTween = _emoteBubble.FadeIn(_fadeInDuration);
