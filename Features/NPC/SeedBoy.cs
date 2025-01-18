@@ -12,7 +12,6 @@ public partial class SeedBoy : AInteractable
 	{
 		base._Ready();
 		_seedShop = new SeedShop();
-		_seedShop.GenerateRandomShopStock();
 	}
 
 	public override void Interact()
