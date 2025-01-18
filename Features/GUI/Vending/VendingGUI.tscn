@@ -1,15 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://c108xawc8eseh"]
+[gd_scene load_steps=14 format=3 uid="uid://c108xawc8eseh"]
 
 [ext_resource type="Script" path="res://Features/GUI/Vending/VendingMachineUI.cs" id="1_mtkr8"]
 [ext_resource type="PackedScene" uid="uid://dy2bsx4d7l35p" path="res://Features/GUI/Vending/MiniInventory.tscn" id="2_vteot"]
 [ext_resource type="Texture2D" uid="uid://yvo33yjscsag" path="res://Assets/UI/VendingMachine/Base_right.png" id="3_t32op"]
 [ext_resource type="PackedScene" uid="uid://ci3xd0kudwy7k" path="res://Features/GUI/Vending/VendingItemView.tscn" id="4_v03kc"]
 [ext_resource type="Texture2D" uid="uid://bopd7g6vsty7t" path="res://Assets/UI/VendingMachine/Hebel.png" id="5_v8xxq"]
+[ext_resource type="Texture2D" uid="uid://b5hv1i828jc6" path="res://Assets/UI/VendingMachine/Slider.png" id="6_iyrxl"]
 [ext_resource type="Texture2D" uid="uid://cu7fp670pmqng" path="res://Assets/UI/VendingMachine/CashRetriever.png" id="8_pkwve"]
 [ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
 [ext_resource type="PackedScene" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
 [ext_resource type="PackedScene" uid="uid://cusi423j6fnh2" path="res://Features/GUI/Vending/EmoteBubble.tscn" id="12_5lmun"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uti0s"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("6_iyrxl")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5850f"]
 
 [node name="VendingMachineUi" type="Control" node_paths=PackedStringArray("_itemStackContainer", "_emoteBubble", "_slider", "_moneyLabel", "_withdrawButton", "_inventoryView")]
 custom_minimum_size = Vector2(256, 320)
@@ -138,6 +146,8 @@ offset_bottom = 3.05176e-05
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_icons/grabber = ExtResource("5_v8xxq")
+theme_override_styles/slider = SubResource("StyleBoxTexture_uti0s")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_5850f")
 max_value = 2.0
 step = 0.25
 value = 1.0
