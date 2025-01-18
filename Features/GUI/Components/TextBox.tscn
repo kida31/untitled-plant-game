@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://duvfpm1poaajg"]
+
+[ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="1_vktm1"]
+
+[node name="TextBoxDiv" type="MarginContainer"]
+offset_right = 122.0
+offset_bottom = 114.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_vktm1")
+region_rect = Rect2(0, 0, 64, 32)
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+
+[node name="TextMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
+
+[node name="Label" type="Label" parent="TextMargin"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"GraphFrameTitleLabel"
+text = "Abc123"

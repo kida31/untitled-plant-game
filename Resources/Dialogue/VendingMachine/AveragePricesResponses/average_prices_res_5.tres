@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=4 format=3 uid="uid://blmf2kbvcent7"]
+
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_7blsb"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_lta6b"]
+
+[sub_resource type="Resource" id="Resource_w4yei"]
+script = ExtResource("1_7blsb")
+speakerName = "Laya"
+DialogueExpression = 0
+dialogueText = "Average prices for average humans."
+
+[resource]
+script = ExtResource("2_lta6b")
+_dialogueId = "average_prices_res_5"
+_dialogueText = Array[Object]([SubResource("Resource_w4yei")])
+_responses = null

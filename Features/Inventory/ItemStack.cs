@@ -1,3 +1,4 @@
+﻿using System;
 using System.Linq;
 using Godot;
 using Godot.Collections;
@@ -10,23 +11,24 @@ namespace untitledplantgame.Inventory;
 ///     https://github.com/Bukkit/Bukkit/blob/master/src/main/java/org/bukkit/inventory/ItemStack.java
 /// </summary>
 [GlobalClass]
+[Obsolete("Did you mean to use the interface IItemStack? (This is not really obsolete. Just a reminder)")]
 public partial class ItemStack : Resource, IItemStack
 {
-	[Export] public int Amount { get; set; }
-	[Export] public string Id { get; set; }
-	[Export] public string Name { get; set; }
-	[Export] public Texture2D Icon { get; set; }
+	[Export] public int Amount { get; set; } = 1;
+	[Export] public string Id { get; set; } = "";
+	[Export] public string Name { get; set; } = "";
+	[Export] public Texture2D Icon { get; set; } = null;
 	[Export] public string ToolTipDescription { get; set; }
 	[Export] public string WikiDescription { get; set; }
-	[Export] public int MaxStackSize { get; set; }
-	[Export] public int BaseValue { get; set; }
+	[Export] public int MaxStackSize { get; set; } = 64;
+	[Export] public int BaseValue { get; set; } = 0;
 
 	[Export(PropertyHint.Enum, "Seed,Material,Medicine")]
 	private string _category;
 
-	[Export] public Array<AComponent> Components { get; set; }
+	[Export] public Array<AComponent> Components { get; set; } = new();
 
-	[Export] public Array<string> RelatedItemIds { get; set; }
+	[Export] public Array<string> RelatedItemIds { get; set; } = new();
 
 	public ItemCategory Category
 	{
@@ -45,33 +47,31 @@ public partial class ItemStack : Resource, IItemStack
 
 	private readonly Logger _logger;
 
+	[Obsolete("Use the constructor with the id parameter in code")]
 	public ItemStack()
 	{
 		_logger = new Logger("ItemStack");
 		Components = new();
 	}
 
-	public ItemStack(string id,
-		string name,
-		Texture2D icon,
-		string toolTipDescription,
-		string wikiDescription,
-		ItemCategory category,
-		int baseValue = 1,
-		int maxStackSize = 64,
-		int amount = 1,
-		Array<AComponent> components = null
+	public ItemStack(string id
 	) : this()
 	{
 		Id = id;
-		Name = name;
-		Icon = icon;
-		ToolTipDescription = toolTipDescription;
-		Category = category;
-		MaxStackSize = maxStackSize;
-		BaseValue = baseValue;
-		Amount = amount;
-		Components = components;
+	}
+	
+	public ItemStack(IItemStack item)
+	{
+		Id = item.Id;
+		Name = item.Name;
+		Icon = item.Icon;
+		ToolTipDescription = item.ToolTipDescription;
+		WikiDescription = item.WikiDescription;
+		Category = item.Category;
+		MaxStackSize = item.MaxStackSize;
+		BaseValue = item.BaseValue;
+		Amount = item.Amount;
+		Components = item.Components.Duplicate(true); // I doubt this actually deep copies
 	}
 
 	public T GetComponent<T>()
@@ -116,7 +116,7 @@ public partial class ItemStack : Resource, IItemStack
 
 	public bool HasSameId(IItemStack itemStack)
 	{
-		return Id == itemStack.Id;
+		return Id == itemStack?.Id;
 	}
 
 	public bool HasSameIdAndProps(IItemStack itemStack)
@@ -141,10 +141,19 @@ public partial class ItemStack : Resource, IItemStack
 
 	public IItemStack Clone()
 	{
-		// TODO: After the JSON fiasco I absolutely do NOT trust Godot to handle deep copies well (especially looking at the Stats)
-		var newStack = new ItemStack(Id, Name, Icon, ToolTipDescription, WikiDescription, Category, baseValue: BaseValue, maxStackSize: MaxStackSize,
-			amount: Amount, components: Components.Duplicate(true));
-		return newStack;
+		return new ItemStack(Id)
+		{
+			Name = Name,
+			Icon = Icon,
+			ToolTipDescription = ToolTipDescription,
+			WikiDescription = WikiDescription,
+			Category = Category,
+			BaseValue = BaseValue,
+			MaxStackSize = MaxStackSize,
+			Amount = Amount,
+			// TODO: After the JSON fiasco I absolutely do NOT trust Godot to handle deep copies well (especially looking at the Stats)
+			Components = Components.Duplicate(true)
+		};
 	}
 
 	public override string ToString()

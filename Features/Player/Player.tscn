@@ -303,11 +303,10 @@ script = ExtResource("7_lrvm3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ryxll")
 
-[node name="InteractablesManager" type="Node" parent="Area2D" node_paths=PackedStringArray("_player")]
-script = ExtResource("7_pko3m")
-_player = NodePath("../..")
+[node name="InteractablesManager" type="Node" parent="Area2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -40)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 

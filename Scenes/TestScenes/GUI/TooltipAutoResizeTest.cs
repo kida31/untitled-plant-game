@@ -1,6 +1,5 @@
 using Godot;
-using System;
-using untitledplantgame.Inventory.GUI;
+using untitledplantgame.GUI;
 
 public partial class Testtooltipresize : Control
 {

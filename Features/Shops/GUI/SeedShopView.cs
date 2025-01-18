@@ -140,7 +140,7 @@ public partial class SeedShopView : Control
 		_tooltipView.Show();
 	}
 
-	private void SetShopUIContent(List<ItemStack> items)
+	private void SetShopUIContent(List<IItemStack> items)
 	{
 		for (var i = 0; i < _shopSlots.Count; i++)
 		{
@@ -157,7 +157,7 @@ public partial class SeedShopView : Control
 		}
 
 		// Change game state back to previous state
-		GameStateMachine.Instance.RevertState();
+		GameStateMachine.Instance.ChangeState(GameState.FreeRoam);
 		// Tell subscribers that the shop was closed
 		EventBus.Instance.SeedshopClosed();
 	}

@@ -16,7 +16,7 @@ namespace untitledplantgame.Database;
 public class ItemDatabase
 {
 	public List<Recipe> Recipes { get; private set; }
-	public List<ItemStack> ItemStacks { get; private set; }
+	public List<IItemStack> ItemStacks { get; private set; }
 	private static ItemDatabase _instance;
 
 	private readonly Logger _logger = new("ItemDatabase");
@@ -32,14 +32,14 @@ public class ItemDatabase
 		ItemStacks = FillDataBaseItemStackList();
 		Recipes = FillDataBaseRecipeList();
 	}
-	
+
 
 	/// <summary>
 	/// Looks for an ItemStack with the specified ID. Returns a clone of the ItemStack.
 	/// </summary>
 	/// <param name="itemId"></param>
 	/// <returns></returns>
-	public ItemStack CreateItemStack(string itemId, int amount = 1)
+	public IItemStack CreateItemStack(string itemId, int amount = 1)
 	{
 		var item = ItemStacks.FirstOrDefault(itemStack => itemStack.Id == itemId)?.Clone();
 		if (item == null)
@@ -50,7 +50,7 @@ public class ItemDatabase
 
 		item.Amount = amount;
 
-		return item as ItemStack;
+		return item;
 	}
 
 	/// <summary>
@@ -61,9 +61,9 @@ public class ItemDatabase
 	/// </summary>
 	/// <param name="components"></param>
 	/// <returns></returns>
-	public List<ItemStack> GetItemStacksWithSpecifiedComponents(List<AComponent> components)
+	public List<IItemStack> GetItemStacksWithSpecifiedComponents(List<AComponent> components)
 	{
-		var specificItemStack = new List<ItemStack>();
+		var specificItemStack = new List<IItemStack>();
 		var group1 = components.GroupBy(item => item.GetType()).ToDictionary(g => g.Key, g => g.Count());
 
 		foreach (var itemStack in ItemStacks)
@@ -87,16 +87,16 @@ public class ItemDatabase
 	/// <param name="components"></param>
 	/// <returns></returns>
 	/// <exception cref="NotImplementedException"></exception>
-	public ItemStack GetItemStacksWithAtLeastThoseComponents(List<AComponent> components)
+	public IItemStack GetItemStacksWithAtLeastThoseComponents(List<AComponent> components)
 	{
 		throw new NotImplementedException();
 	}
-	
-	public List<Recipe> GetAllRecipesWithItemStacks(List<ItemStack> itemStacks, List<Recipe> externalRecipeList)
+
+	public List<Recipe> GetAllRecipesWithItemStacks(List<IItemStack> itemStacks, List<Recipe> externalRecipeList)
 	{
 		var recipeSearchList = externalRecipeList ?? Recipes;
 
-		bool UsesIngredients(Recipe recipe, IReadOnlyCollection<ItemStack> items)
+		bool UsesIngredients(Recipe recipe, IReadOnlyCollection<IItemStack> items)
 		{
 			if (items.Count > recipe.Ingredients.Count)
 			{
@@ -128,7 +128,7 @@ public class ItemDatabase
 	}
 
 	public List<Recipe> GetAllRecipesWithItemStacksAndCraftingType(
-		List<ItemStack> itemStacks,
+		List<IItemStack> itemStacks,
 		List<Recipe> externalRecipeList,
 		Recipe.CraftingType craftingType
 	)
@@ -152,12 +152,12 @@ public class ItemDatabase
 		return new List<Recipe>();
 	}
 
-	
-	private List<ItemStack> FillDataBaseItemStackList()
+
+	private List<IItemStack> FillDataBaseItemStackList()
 	{
-		return new List<ItemStack>
+		return new List<IItemStack>
 		{
-			new()
+			new ItemStack()
 			{
 				Id = "unknownSeedTemplate",
 				Name = "Unknown Seed",
@@ -166,9 +166,9 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				Components = new Array<AComponent> {new SeedComponent("")},
+				Components = new Array<AComponent> { new SeedComponent("") },
 			},
-			new()
+			new ItemStack()
 			{
 				Id = "chuberrySeed",
 				Name = "Chuberry Seed",
@@ -178,10 +178,10 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "chuberryFruit", "chuberryDried" },
-				Components = new Array<AComponent> {new SeedComponent("Chuberry")},
+				RelatedItemIds = new Array<string> { "chuberryFruit" },
+				Components = new Array<AComponent> { new SeedComponent("Chuberry") },
 			},
-			new()
+			new ItemStack()
 			{
 				Id = "chuberryFruit",
 				Name = "Chuberry Fruit",
@@ -191,13 +191,13 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryDried" },
-				Components = new ()
+				RelatedItemIds = new Array<string> { "chuberrySeed" },
+				Components = new()
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
 				}
 			},
-			new()
+			new ItemStack
 			{
 				Id = "drupoleaumSeed",
 				Name = "Drupoleaum Seed",
@@ -213,7 +213,7 @@ public class ItemDatabase
 					new SeedComponent("Drupoleaum")
 				}
 			},
-			new()
+			new ItemStack
 			{
 				Id = "drupoleaumFlower",
 				Name = "Drupoleaum Flower",
@@ -229,7 +229,7 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower)
 				}
 			},
-			new()
+			new ItemStack
 			{
 				Id = "drupoleaumFruits",
 				Name = "Drupoleaum Fruit",
@@ -245,7 +245,7 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
 				}
 			},
-			new()
+			new ItemStack
 			{
 				Id = "licarySeed",
 				Name = "Licary Seed",
@@ -255,13 +255,13 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"), //TODO add icon
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit", "licaryLeaf" },
+				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit" },
 				Components = new Array<AComponent>
 				{
 					new SeedComponent("Licary")
 				}
 			},
-			new()
+			new ItemStack
 			{
 				Id = "licaryFlowers",
 				Name = "Licary Flowers",
@@ -271,13 +271,13 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit", "licaryLeaf", "licaryLeafDried" },
+				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit" },
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower)
 				}
 			},
-			new()
+			new ItemStack
 			{
 				Id = "licaryFruit",
 				Name = "Licary Fruit",
@@ -287,13 +287,13 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers", "licaryLeaf", "licaryLeafDried" },
+				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers" },
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
 				}
 			},
-			new()
+			new ItemStack
 			{
 				Id = "dried_fruit",
 				Name = "Dried ",
@@ -306,7 +306,7 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFruit)
 				}
 			},
-			new()
+			new ItemStack
 			{
 				Id = "dried_flower",
 				Name = "Dried ",
@@ -319,9 +319,9 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFlower),
 				},
 				Amount = 1,
-				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
+				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryFruit" },
 			},
-			new()
+			new ItemStack
 			{
 				Id = "dried_leaves",
 				Name = "Dried ",
@@ -334,7 +334,7 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsLeaf)
 				},
 				Amount = 1,
-				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
+				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryFruit" },
 			},
 		};
 	}

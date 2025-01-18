@@ -1,12 +1,14 @@
 using Godot;
+using System;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.VendingMachine;
 
 /// <summary>
 /// Represents Cursor "storage" for the player when picking up items from some inventory
-/// Functional + UI
+///		Functional + UI
 /// </summary>
+[Obsolete("Use CursorInventory instead")]
 public partial class CursorFriend : Control
 {
 	public static CursorFriend Instance { get; private set; }
@@ -14,7 +16,7 @@ public partial class CursorFriend : Control
 	[Export]
 	private ItemSlotUI _itemSlot;
 
-	public ItemStack ItemStack
+	public IItemStack ItemStack
 	{
 		get => _itemSlot?.ItemStack;
 		set => _itemSlot.ItemStack = value;
