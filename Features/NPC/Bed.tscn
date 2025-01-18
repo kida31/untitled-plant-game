@@ -1,38 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqqhj7jxwv1q5"]
+[gd_scene load_steps=11 format=3 uid="uid://bqqhj7jxwv1q5"]
 
 [ext_resource type="Script" path="res://Features/NPC/Bed.cs" id="1_nusbk"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_hxpt1"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_8c8eo"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_hwlei"]
+[ext_resource type="Texture2D" uid="uid://4cfy612ib68k" path="res://Assets/IndoorAssets/bed.png" id="5_5yuxv"]
+
+[sub_resource type="Resource" id="Resource_tlar2"]
+script = ExtResource("2_hxpt1")
+speakerName = "Bed"
+DialogueExpression = 0
+dialogueText = "Would you like to go to Bed?"
+
+[sub_resource type="Resource" id="Resource_2aaa4"]
+script = ExtResource("3_8c8eo")
+_responseButton = "Yes"
+
+[sub_resource type="Resource" id="Resource_s6ni2"]
+script = ExtResource("3_8c8eo")
+_responseButton = "No"
+
+[sub_resource type="Resource" id="Resource_wt150"]
+script = ExtResource("4_hwlei")
+_dialogueId = "GoToSleep"
+_dialogueText = Array[Object]([SubResource("Resource_tlar2")])
+_responses = Array[Object]([SubResource("Resource_2aaa4"), SubResource("Resource_s6ni2")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5sl4"]
-size = Vector2(48, 16)
+size = Vector2(29, 10.6)
 
 [node name="Bed" type="Area2D"]
 script = ExtResource("1_nusbk")
-
-[node name="Bed" type="ColorRect" parent="."]
-offset_left = -32.0
-offset_top = -16.0
-offset_right = 32.0
-offset_bottom = 16.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.845178, 0.802162, 0.800774, 1)
-
-[node name="Pillow" type="ColorRect" parent="Bed"]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 4.0
-offset_right = 61.0
-offset_bottom = 28.0
-color = Color(0.939127, 0.927722, 0.963788, 1)
-
-[node name="Sheets" type="ColorRect" parent="Bed"]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 39.0
-offset_bottom = 33.0
-color = Color(0.937255, 0.929412, 0.964706, 1)
+_dialogueResourceObject = SubResource("Resource_wt150")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2.5)
 scale = Vector2(2, 5)
 shape = SubResource("RectangleShape2D_p5sl4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(31, 1)
+texture = ExtResource("5_5yuxv")
