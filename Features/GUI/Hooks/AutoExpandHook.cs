@@ -40,6 +40,12 @@ public partial class AutoExpandHook : Node
 		_parent.ItemRectChanged += OnItemRectChanged;
 	}
 
+	public override void _ExitTree()
+	{
+		// Clean up
+		_parent.ItemRectChanged -= OnItemRectChanged;
+	}
+
 	private void OnItemRectChanged()
 	{
 		var size = _parent.GetGlobalRect().Size;

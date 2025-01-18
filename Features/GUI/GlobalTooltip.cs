@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Inventory;
 
@@ -9,15 +11,15 @@ namespace untitledplantgame.GUI;
 public partial class GlobalTooltip : TooltipView
 {
 	/// <summary>
-	/// Speed for fade in. Higher is faster (shorter animation)
+	/// Speed for fade in. Higher is faster (shorter animation). 0 is instant
 	/// </summary>
-	[Export]
-	private float _fadeInSpeed = 1f;
+	[Export] private float _fadeInSpeed;
+
 	/// <summary>
-	/// Delay after focus before tooltip is shown
+	/// Delay after focus before tooltip is shown. Higher is slower. 0 is instant
 	/// </summary>
-	[Export]
-	private float _delay = .5f;
+	[Export] private float _delay;
+
 	/// <summary>
 	/// Offset for tooltip from center of focused object
 	/// </summary>
@@ -25,6 +27,7 @@ public partial class GlobalTooltip : TooltipView
 
 
 	private Control _target;
+	private Tween _fadeTween;
 	private Timer _delayTimer;
 	private bool HasContent => !string.IsNullOrEmpty(Title) && !string.IsNullOrEmpty(Description);
 
@@ -33,6 +36,7 @@ public partial class GlobalTooltip : TooltipView
 		base._Ready();
 
 		GetViewport().GuiFocusChanged += OnGuiFocusChanged;
+
 		_delayTimer = new Timer();
 		_delayTimer.OneShot = true;
 		_delayTimer.Timeout += SetContent;
@@ -42,8 +46,8 @@ public partial class GlobalTooltip : TooltipView
 	public override void _Process(double delta)
 	{
 		var targetIsValid = _target != null &&
-			_target.HasFocus() &&
-			_target.IsVisibleInTree();
+		                    _target.HasFocus() &&
+		                    _target.IsVisibleInTree();
 		var noOtherGuiActive = CursorInventory.Instance?.Content == null;
 		if (
 			targetIsValid &&
@@ -56,7 +60,8 @@ public partial class GlobalTooltip : TooltipView
 			var center = rect.Position + rect.Size / 2;
 			GlobalPosition = center + _offset;
 
-			Modulate = Modulate.Lerp(new Color(Modulate) { A = 1 }, (float)delta * _fadeInSpeed);
+			var weight = _fadeInSpeed > 0 ? delta * _fadeInSpeed : 1;
+			Modulate = Modulate.Lerp(new Color(Modulate) {A = 1}, (float) weight);
 			Show();
 		}
 		else
@@ -71,7 +76,12 @@ public partial class GlobalTooltip : TooltipView
 
 		Title = tooltipable?.Title ?? "";
 		Description = tooltipable?.Description ?? "";
-		CustomContent = tooltipable?.Content != null ? new() { tooltipable.Content } : new();
+
+		CustomContent = new();
+		if (tooltipable?.Content != null)
+		{
+			CustomContent.Add(tooltipable.Content);
+		}
 	}
 
 	private void OnGuiFocusChanged(Control node)
@@ -81,8 +91,9 @@ public partial class GlobalTooltip : TooltipView
 		SetContent();
 
 		// Set Content delayed
-		Modulate = new Color(Modulate) { A = 0 };
+		Modulate = new Color(Modulate) {A = 0};
 		_target = node is ITooltipable ? node : null;
-		_delayTimer.Start(_delay);
+		var delay = _delay > 0 ? _delay : double.Epsilon;
+		_delayTimer.Start(delay);
 	}
 }
