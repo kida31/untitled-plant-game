@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
@@ -10,7 +11,7 @@ using MedicineComponent = untitledplantgame.Item.Components.MedicineComponent;
 
 namespace untitledplantgame.Crafting;
 
-public class Dehydrator : ICraftingStation
+public partial class Dehydrator : Node, ICraftingStation
 {
 	private const int SlotNumber = 6;
 	private const double CraftingTime = 10; //TODO: find a good value
@@ -56,7 +57,7 @@ public class Dehydrator : ICraftingStation
 		_logger.Debug($"Initialized Dehydrator with {CraftingSlots.Length} slots");
 	}
 
-	public void Process(double delta)
+	public override void _Process(double delta)
 	{
 		Assert.AssertNotNull(CraftingSlots);
 		if (CraftingSlots == null) return;
