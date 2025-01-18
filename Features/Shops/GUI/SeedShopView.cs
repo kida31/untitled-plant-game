@@ -4,6 +4,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.GUI.Items;
 using untitledplantgame.GUI.Shops;
 using untitledplantgame.Inventory;
 using untitledplantgame.Inventory.GUI;
@@ -18,6 +19,7 @@ public partial class SeedShopView : Control
 	private static readonly Vector2 TooltipOffset = new(8, 0);
 
 	[Export] private Control _itemContainer;
+	[Export] private StorageView _seedInventory;
 
 	private readonly Logger _logger = new("Seedshop");
 	private List<ShopItemView> _itemSlots;
@@ -79,6 +81,7 @@ public partial class SeedShopView : Control
 		GameStateMachine.Instance.SetState(GameState.Shop);
 		Assert.AssertTrue(!Visible, "Shop was not supposed to be visible");
 		
+		// Setup shop
 		if (_currentShop != null)
 		{
 			_currentShop.ShopStockChanged -= UpdateShopContentVisual;
@@ -89,6 +92,9 @@ public partial class SeedShopView : Control
 		UpdateShopContentVisual(null /* unused */);
 		Show();
 
+		// Connect player inventory
+		_seedInventory.ShowInventory(Game.Player.Inventory.GetInventory(ItemCategory.Seed));
+		
 		// Grab focus
 		_itemSlots[0].GrabFocus();
 	}

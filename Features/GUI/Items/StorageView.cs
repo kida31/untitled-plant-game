@@ -18,14 +18,14 @@ public partial class StorageView : Control
 	[Export] private Container _itemViewContainer;
 	[Export] private Label _itemNameLabel;
 
-	private List<StorageItemView> _itemViews;
+	private List<NewInventoryItemView> _itemViews;
 	private Logger _logger;
 
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
 
-		_itemViews = _itemViewContainer.GetChildren().OfType<StorageItemView>().ToList();
+		_itemViews = _itemViewContainer.GetChildren().OfType<NewInventoryItemView>().ToList();
 		_itemViews.ForEach(iv => { iv.FocusEntered += () => UpdateSelectedItemLabel(iv); });
 		if (_itemNameLabel != null) _itemNameLabel.Text = "";
 
@@ -40,7 +40,7 @@ public partial class StorageView : Control
 
 	public void ShowInventory(IInventory inventory)
 	{
-		_itemViews = _itemViewContainer.GetChildren().OfType<StorageItemView>().ToList();
+		_itemViews = _itemViewContainer.GetChildren().OfType<NewInventoryItemView>().ToList();
 
 		var items = inventory.GetItems();
 		PrepareItemViewNodes(items.Count);
@@ -56,7 +56,7 @@ public partial class StorageView : Control
 
 		// Update item label
 		var owner = GetViewport().GuiGetFocusOwner();
-		if (owner is StorageItemView iv)
+		if (owner is NewInventoryItemView iv)
 		{
 			UpdateSelectedItemLabel(iv);
 		}
@@ -94,7 +94,7 @@ public partial class StorageView : Control
 		// ...or add new ones
 		while (_itemViews.Count < amount)
 		{
-			var itemView = _itemViewPrefab.Instantiate<StorageItemView>();
+			var itemView = _itemViewPrefab.Instantiate<NewInventoryItemView>();
 			_itemViewContainer.AddChild(itemView);
 			itemView.FocusEntered += () => UpdateSelectedItemLabel(itemView);
 			_itemViews.Add(itemView);
@@ -104,7 +104,7 @@ public partial class StorageView : Control
 			$"Number of items did not match after adjustment. Tracked nodes are {_itemViews.Count} and container children are {_itemViewContainer.GetChildCount()}");
 	}
 
-	private void UpdateSelectedItemLabel(StorageItemView itemView)
+	private void UpdateSelectedItemLabel(NewInventoryItemView itemView)
 	{
 		if (_itemNameLabel == null) return;
 		_itemNameLabel.Text = itemView.ItemStack?.Name ?? "";
