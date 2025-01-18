@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://uej5qcp5lxwk" path="res://Assets/UI/SeedShop/seed_shop_cloth_flat.png" id="2_oarm3"]
 [ext_resource type="PackedScene" uid="uid://dvyfrigggpkfj" path="res://Features/GUI/Shops/ShopItemView.tscn" id="3_s3uu1"]
 
-[node name="SeedShopView" type="Control" node_paths=PackedStringArray("_slotContainer")]
+[node name="SeedShopView" type="Control" node_paths=PackedStringArray("_itemContainer")]
 custom_minimum_size = Vector2(218, 269)
 layout_mode = 3
 anchors_preset = 0
@@ -12,7 +12,7 @@ offset_right = 218.0
 offset_bottom = 269.0
 size_flags_horizontal = 4
 script = ExtResource("1_rs6dp")
-_slotContainer = NodePath("GridContainer")
+_itemContainer = NodePath("GridContainer")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

@@ -16,57 +16,57 @@ public partial class SeedShopView : Control
 	// The tooltip itself will alight to the right side of a slot.
 	// TODO: Change this once design team has created a design.
 	private static readonly Vector2 TooltipOffset = new(8, 0);
-	
-	[Export]
-	private Control _slotContainer;
 
-	[Export]
-	private ItemTooltipView _tooltipView;
-	
+	[Export] private Control _itemContainer;
 
 	private readonly Logger _logger = new("Seedshop");
-
-	private List<ShopItemView> _shopSlots;
+	private List<ShopItemView> _itemSlots;
 	private IShop _currentShop;
 
 	public override void _Ready()
 	{
 		EventBus.Instance.OnSeedShopOpening += OpenSeedShop;
 
-		_shopSlots = _slotContainer.GetChildren().OfType<ShopItemView>().ToList();
+		_itemSlots = _itemContainer.GetChildren().OfType<ShopItemView>().ToList();
 
-		// Adjust navigation, hacky
-		var columnCount = (_slotContainer as GridContainer)!.Columns;
-		for (var i = 0; i < _shopSlots.Count; i++)
+		_itemSlots.ForEach(its =>
 		{
-			var slot = _shopSlots[i];
-			slot.FocusMode = FocusModeEnum.All;
-			// RightNeighbour, Not last column
-			if (i % columnCount != columnCount - 1)
-			{
-				slot.FocusNeighborRight = _shopSlots[i + 1].GetPath();
-			}
-			// LeftNeighbour, Not first column
-			if (i % columnCount != 0)
-			{
-				slot.FocusNeighborLeft = _shopSlots[i - 1].GetPath();
-			}
-			// TopNeighbour, Not first row
-			if (i >= columnCount)
-			{
-				slot.FocusNeighborTop = _shopSlots[i - columnCount].GetPath();
-			}
-			// BottomNeighbour, Not last row
-			if (i < _shopSlots.Count - columnCount)
-			{
-				slot.FocusNeighborBottom = _shopSlots[i + columnCount].GetPath();
-			}
-		}
+			its.Pressed += () => OnSlotPressed(its);
+		});
+
+		// // Adjust navigation, hacky
+		// var columnCount = (_slotContainer as GridContainer)!.Columns;
+		// for (var i = 0; i < _shopSlots.Count; i++)
+		// {
+		// 	var slot = _shopSlots[i];
+		// 	slot.FocusMode = FocusModeEnum.All;
+		// 	// RightNeighbour, Not last column
+		// 	if (i % columnCount != columnCount - 1)
+		// 	{
+		// 		slot.FocusNeighborRight = _shopSlots[i + 1].GetPath();
+		// 	}
+		// 	// LeftNeighbour, Not first column
+		// 	if (i % columnCount != 0)
+		// 	{
+		// 		slot.FocusNeighborLeft = _shopSlots[i - 1].GetPath();
+		// 	}
+		// 	// TopNeighbour, Not first row
+		// 	if (i >= columnCount)
+		// 	{
+		// 		slot.FocusNeighborTop = _shopSlots[i - columnCount].GetPath();
+		// 	}
+		// 	// BottomNeighbour, Not last row
+		// 	if (i < _shopSlots.Count - columnCount)
+		// 	{
+		// 		slot.FocusNeighborBottom = _shopSlots[i + columnCount].GetPath();
+		// 	}
+		// }
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		base._UnhandledInput(@event);
+		if (!IsVisibleInTree()) return;
+
 		if (@event.IsActionPressed(Shop.CloseShop))
 		{
 			CloseSeedShop();
@@ -75,67 +75,53 @@ public partial class SeedShopView : Control
 
 	private void OpenSeedShop(IShop shop)
 	{
-		if (_currentShop != null)
-		{
-			_currentShop.ShopStockChanged -= SetShopUIContent;
-		}
-		
 		// Block interaction while shop is open
 		GameStateMachine.Instance.SetState(GameState.Shop);
-
-		
 		Assert.AssertTrue(!Visible, "Shop was not supposed to be visible");
-		_currentShop = shop;
-		SetShopUIContent(shop.CurrentStock.ToList());
-		shop.ShopStockChanged += SetShopUIContent;
-		Show();
 		
+		if (_currentShop != null)
+		{
+			_currentShop.ShopStockChanged -= UpdateShopContentVisual;
+		}
+
+		_currentShop = shop;
+		shop.ShopStockChanged += UpdateShopContentVisual;
+		UpdateShopContentVisual(null /* unused */);
+		Show();
+
 		// Grab focus
-		_shopSlots[0].GrabFocus();
+		_itemSlots[0].GrabFocus();
 	}
 
-	private void OnSlotPressed(ShopItemStackView thisSlot)
+	private void OnSlotPressed(ShopItemView slot)
 	{
-		var item = thisSlot.ItemStack?.Clone() as ItemStack;
+		var item = slot.ItemStack?.Clone();
 		if (item == null)
 		{
 			return;
 		}
+
 		item.Amount = 1;
 		_logger.Info("Buy item: " + item);
 		_currentShop?.BuyItem(item);
 	}
 
-	private void HideTooltip()
+	private void UpdateShopContentVisual(object _)
 	{
-		_tooltipView.Hide();
-	}
+		var inventory = _currentShop?.Inventory;
+		Assert.AssertEquals(_itemSlots.Count, inventory?.Count() ?? 0, "Shop item slots count does not match shop items count");
 
-	private void PutTooltip(ShopItemStackView slot)
-	{
-		if (slot.ItemStack == null)
+		if (inventory == null)
 		{
-			_tooltipView.Hide();
+			_logger.Info("No inventory found for shop");
 			return;
 		}
 
-		// Set content
-		_tooltipView.ItemStack = slot.ItemStack;
-
-		// Set position
-		var newPosition = slot.GlobalPosition;
-		newPosition.X += slot.GetRect().Size.X;
-		newPosition += TooltipOffset;
-		_tooltipView.GlobalPosition = newPosition;
-
-		_tooltipView.Show();
-	}
-
-	private void SetShopUIContent(List<IItemStack> items)
-	{
-		for (var i = 0; i < _shopSlots.Count; i++)
+		for (var i = 0; i < _itemSlots.Count; i++)
 		{
-			// _shopSlots[i].ItemStack = i < items.Count ? items[i] : null;
+			var slot = _itemSlots[i];
+			slot.Inventory = inventory;
+			slot.SlotIndex = i;
 		}
 	}
 

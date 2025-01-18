@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
@@ -10,44 +11,46 @@ public class SeedShop : IShop
 {
 	public event Action<List<IItemStack>> ShopStockChanged;
 
-	public IItemStack[] CurrentStock => _shopInventory.GetItems().ToArray();
+	public IItemStack[] CurrentStock => Inventory.GetItems().ToArray();
 
-	private Inventory.Inventory _shopInventory;
+	public IInventory Inventory { get; private set; }
 	private Logger _logger = new Logger("SeedShopShop");
 
 	public SeedShop()
 	{
-		_shopInventory = new Inventory.Inventory(16, "Seedshop");
+		Inventory = new Inventory.Inventory(12, "Seedshop");
+		GenerateRandomShopStock();
+		GD.PrintRaw(BbImage.Coin);
 	}
 
 	public void SetShopContent(IItemStack[] items)
 	{
-		_shopInventory.SetContents(new List<IItemStack>(items));
-		ShopStockChanged?.Invoke(_shopInventory.GetItems());
+		Inventory.SetContents(new List<IItemStack>(items));
+		ShopStockChanged?.Invoke(Inventory.GetItems());
 		_logger.Debug("[Set] ShopStockChanged");
 	}
 
 	public IItemStack BuyItem(IItemStack item)
 	{
-		Assert.AssertTrue(_shopInventory.Contains(item), "items did not exist");
-		_shopInventory.RemoveItem(item);
-		ShopStockChanged?.Invoke(_shopInventory.GetItems());
+		Assert.AssertTrue(Inventory.Contains(item), "items did not exist");
+		Inventory.RemoveItem(item);
+		ShopStockChanged?.Invoke(Inventory.GetItems());
 		_logger.Debug("[Buy] ShopStockChanged");
 		return item;
 	}
 
 	public IItemStack BuyItem(int slotIndex)
 	{
-		var item = _shopInventory.GetItem(slotIndex).Clone() as IItemStack;
+		var item = Inventory.GetItem(slotIndex).Clone() as IItemStack;
 		item!.Amount = 1;
-		ShopStockChanged?.Invoke(_shopInventory.GetItems());
+		ShopStockChanged?.Invoke(Inventory.GetItems());
 		_logger.Debug("[Buy] ShopStockChanged");
 		return BuyItem(item);
 	}
 
 	public void GenerateRandomShopStock()
 	{
-		var items = new RandomStockGenerator().GetRandomPlaceholders(15);
+		var items = new RandomStockGenerator().GetRandomItems(12);
 		SetShopContent(items.ToArray());
 	}
 }
