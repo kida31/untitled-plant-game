@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://06mxrjn0jar7"
-path="res://.godot/imported/Chair.png-b300dd8deadc907fe6726c701be2259d.ctex"
+uid="uid://d1i5xtiv6s2iw"
+path="res://.godot/imported/Kante.png-3cc3b92004982b79c8e72d7f725e5e5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Overworld/House/Chair.png"
-dest_files=["res://.godot/imported/Chair.png-b300dd8deadc907fe6726c701be2259d.ctex"]
+source_file="res://Assets/Overworld/Garden/Kante.png"
+dest_files=["res://.godot/imported/Kante.png-3cc3b92004982b79c8e72d7f725e5e5b.ctex"]
 
 [params]
 

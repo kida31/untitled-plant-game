@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://06mxrjn0jar7"
-path="res://.godot/imported/Chair.png-b300dd8deadc907fe6726c701be2259d.ctex"
+uid="uid://sn1nsmppmr7p"
+path="res://.godot/imported/Fence.png-6dad48c4005a324522d002349f05a297.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Overworld/House/Chair.png"
-dest_files=["res://.godot/imported/Chair.png-b300dd8deadc907fe6726c701be2259d.ctex"]
+source_file="res://Assets/Overworld/Garden/Fence.png"
+dest_files=["res://.godot/imported/Fence.png-6dad48c4005a324522d002349f05a297.ctex"]
 
 [params]
 
