@@ -102,7 +102,7 @@ public partial class ButtonIndicator : Control
 		// this is sometimes being called and throws errors since [Export]s are not set
 		// Reproducing this is not consistent for some reason
 		// If condition is added to prevent this
-		if (IsInsideTree())
+		if (IsNodeReady())
 		{
 			AssignButtonImage(_button, Gamepad);
 		}
