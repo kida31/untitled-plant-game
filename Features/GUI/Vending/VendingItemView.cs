@@ -8,7 +8,7 @@ namespace untitledplantgame.GUI.Vending;
 /// </summary>
 public partial class VendingItemView : StorageItemView
 {
-	[Export] private Label _priceLabel;
+	[Export] private RichTextLabel _priceLabel;
 
 	public string Price
 	{

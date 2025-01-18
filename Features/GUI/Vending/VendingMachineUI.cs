@@ -13,6 +13,8 @@ namespace untitledplantgame.GUI.Vending;
 
 public partial class VendingMachineUI : Control
 {
+	private const string CoinIconPath = "res://Assets/UI/Book/Icons/CoinIcon.png";
+	private const string BBCoin = $"[img=8x8]{CoinIconPath}[/img]";
 	[Export] private Node _itemStackContainer;
 
 	[ExportCategory("Emote Bubble")] [Export] private EmoteBubble _emoteBubble;
@@ -22,7 +24,7 @@ public partial class VendingMachineUI : Control
 
 	[Export] private Slider _slider;
 
-	[Export] private Label _moneyLabel;
+	[Export] private RichTextLabel _moneyLabel;
 
 	[Export] private Button _withdrawButton;
 
@@ -60,7 +62,7 @@ public partial class VendingMachineUI : Control
 			return;
 		}
 
-		_moneyLabel.Text = "Gold: " + _vendingMachine.Gold;
+		_moneyLabel.Text = $"[center]{_vendingMachine.Gold}{BBCoin}[/center]";
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -161,8 +163,8 @@ public partial class VendingMachineUI : Control
 				continue;
 			}
 
-			var price = _vendingMachine.CalculateItemPrice(item);
-			slot.Price = item.Amount == 1 ? $"{price}g" : $"{price}g ({price * item.Amount}g)";
+			var price = _vendingMachine.CalculateItemPrice(item) * item.Amount;
+			slot.Price = $"[center]{price}{BBCoin}[/center]";
 		}
 	}
 
@@ -188,7 +190,6 @@ public partial class VendingMachineUI : Control
 		_emoteBubbleTween?.Stop();
 		_emoteBubbleTween = _emoteBubble.FadeOut(_fadeOutDuration);
 	}
-
 
 	// Delegates focus to some child  control.
 	// This is just called like this so its convenient to find.
