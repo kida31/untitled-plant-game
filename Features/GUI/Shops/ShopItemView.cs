@@ -10,7 +10,7 @@ public partial class ShopItemView : NewInventoryItemView
 {
 	[Export] private RichTextLabel _priceLabel;
 	public override Control Content => StatsToControl();
-
+	
 	protected override void UpdateContent()
 	{
 		base.UpdateContent();
@@ -19,6 +19,8 @@ public partial class ShopItemView : NewInventoryItemView
 
 	private Control StatsToControl()
 	{
+		if (ItemStack == null) return null;
+		
 		var label = new RichTextLabel();
 		label.BbcodeEnabled = true;
 		label.Text = ItemStack == null ? "" : $"[center]{ItemStack.BaseValue}{BbImage.Coin}";

@@ -7,10 +7,11 @@ using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.GUI.Items;
 using untitledplantgame.GUI.Shops;
 using untitledplantgame.Inventory;
-using untitledplantgame.Inventory.GUI;
+using untitledplantgame.Systems;
 
 namespace untitledplantgame.Shops.GUI;
 
+// TODO: Disallow buying items if player does not have enough space
 public partial class SeedShopView : Control
 {
 	// This is the additional offset of the tooltip from the slot.
@@ -31,10 +32,7 @@ public partial class SeedShopView : Control
 
 		_itemSlots = _itemContainer.GetChildren().OfType<ShopItemView>().ToList();
 
-		_itemSlots.ForEach(its =>
-		{
-			its.Pressed += () => OnSlotPressed(its);
-		});
+		_itemSlots.ForEach(its => { its.Pressed += () => OnSlotPressed(its); });
 
 		// // Adjust navigation, hacky
 		// var columnCount = (_slotContainer as GridContainer)!.Columns;
@@ -65,6 +63,33 @@ public partial class SeedShopView : Control
 		// }
 	}
 
+	public override void _Process(double delta)
+	{
+		// Lazy Logic here
+		// for each item slot, if player does not have enough money, disable the slot and put grey overlay
+
+		var playerMoney = CurrencyFaithOfficer.Instance.GetCurrentCurrency();
+		_itemSlots.ForEach(slot =>
+		{
+			var item = slot.ItemStack;
+			if (item == null)
+			{
+				return;
+			}
+
+			if (item.BaseValue > playerMoney)
+			{
+				slot.Disabled = true;
+				slot.Modulate = new Color(1, 1, 1, 0.5f);
+			}
+			else
+			{
+				slot.Disabled = false;
+				slot.Modulate = Colors.White;
+			}
+		});
+	}
+
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (!IsVisibleInTree()) return;
@@ -80,7 +105,7 @@ public partial class SeedShopView : Control
 		// Block interaction while shop is open
 		GameStateMachine.Instance.SetState(GameState.Shop);
 		Assert.AssertTrue(!Visible, "Shop was not supposed to be visible");
-		
+
 		// Setup shop
 		if (_currentShop != null)
 		{
@@ -94,7 +119,7 @@ public partial class SeedShopView : Control
 
 		// Connect player inventory
 		_seedInventory.ShowInventory(Game.Player.Inventory.GetInventory(ItemCategory.Seed));
-		
+
 		// Grab focus
 		_itemSlots[0].GrabFocus();
 	}
