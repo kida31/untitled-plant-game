@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://v4q4n4opsed6"]
+[gd_scene load_steps=3 format=3 uid="uid://v4q4n4opsed6"]
 
 [ext_resource type="Script" path="res://Features/GUI/Vending/ItemSlotUI.cs" id="1_5dpbk"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="1_onwbe"]
-[ext_resource type="Texture2D" uid="uid://21vebptmufut" path="res://Features/GUI/Vending/black_dot.png" id="2_7wld1"]
 
 [node name="ItemSlot" type="PanelContainer" node_paths=PackedStringArray("ItemTexture", "_quantityLabel", "_highlight")]
 custom_minimum_size = Vector2(32, 32)
@@ -17,14 +16,6 @@ _highlight = NodePath("HighlightPlaceholder")
 
 [node name="CenterContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 2
-
-[node name="EmptyBlob" type="TextureRect" parent="CenterContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0.321569)
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("2_7wld1")
-expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
 layout_mode = 2
