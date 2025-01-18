@@ -26,30 +26,30 @@ public partial class TestCrafing : Node2D
 		var texture = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Fruits.png");
 		var medicine = new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
 			{
-				{ Warming, 3 },
-				{ Antibacterial, 2 }
+				{Warming, 3},
+				{Antibacterial, 2}
 			},
 			new System.Collections.Generic.Dictionary<IllnessEffect, int>
 			{
-				{ IllnessEffect.Indigestion, 3 }
+				{IllnessEffect.Indigestion, 3}
 			}
 		);
-		_testItem = new ItemStack(
-			id: "TestDummy",
-			name: "Dead Plant",
-			toolTipDescription: "A plant that died due to your carelessness.",
-			wikiDescription: "Another cool Description",
-			icon: texture,
-			category: ItemCategory.Medicine,
-			baseValue: 1,
-			maxStackSize: 1,
-			amount: 1,
-			components: new Array<AComponent>()
+		_testItem = new ItemStack(id: "TestDummy")
+		{
+			Name = "Dead Plant",
+			ToolTipDescription = "A plant that died due to your carelessness.",
+			WikiDescription = "Another cool Description",
+			Icon = texture,
+			Category = ItemCategory.Medicine,
+			BaseValue = 1,
+			MaxStackSize = 1,
+			Amount = 1,
+			Components = new Array<AComponent>()
 			{
 				new TagsComponent(TagsComponent.Tags.IsDrieable),
 				medicine
 			}
-		);
+		};
 		_dehydrator = new Dehydrator();
 		_index = -1;
 

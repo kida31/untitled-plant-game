@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Features/Shops/GUI/SeedShopView.cs" id="1_rs6dp"]
 [ext_resource type="PackedScene" uid="uid://w84710wgdj5r" path="res://Features/Shops/GUI/ShopItemStackView.tscn" id="2_siqbl"]
-[ext_resource type="PackedScene" uid="uid://b4rq57akghs3p" path="res://Features/Inventory/GUI/ItemTooltipView.tscn" id="3_64quj"]
+[ext_resource type="PackedScene" uid="uid://b4rq57akghs3p" path="res://Features/GUI/Items/ItemTooltipView.tscn" id="3_64quj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy6ll"]
 

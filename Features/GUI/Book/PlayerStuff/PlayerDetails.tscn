@@ -1,0 +1,189 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtgjnb2g3iphl"]
+
+[ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/PlayerDetailsView.cs" id="1_88tm0"]
+[ext_resource type="Texture2D" uid="uid://ijkype7hlovv" path="res://Assets/UI/Book/Pages/RightInventory_empty.png" id="2_srt7k"]
+[ext_resource type="Texture2D" uid="uid://cj2g8kcrdsod8" path="res://Assets/UI/Book/Pages/Demo/RightInventory_filled.png" id="3_nof0m"]
+[ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="4_n8hnm"]
+[ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/FaithProgressBar.cs" id="4_tixgw"]
+[ext_resource type="Texture2D" uid="uid://dprdoudpd6aaf" path="res://Assets/UI/Book/FaithFlower/FaithFlowerPetal_empty.png" id="5_158xj"]
+[ext_resource type="Texture2D" uid="uid://bdpoln30dwxu5" path="res://Assets/UI/Book/FaithFlower/FaithFlowerPetal_filled.png" id="5_khkp4"]
+
+[node name="PlayerDetails" type="Control" node_paths=PackedStringArray("_faithProgressBar", "label1", "label2", "label3", "label4")]
+layout_mode = 3
+anchor_right = 0.200926
+anchor_bottom = 0.555556
+offset_right = 6.99991
+offset_bottom = 3.99976
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_88tm0")
+_faithProgressBar = NodePath("FaithProgressBar")
+label1 = NodePath("VBoxContainer/TextBox")
+label2 = NodePath("VBoxContainer/TextBox2")
+label3 = NodePath("VBoxContainer/TextBox3")
+label4 = NodePath("VBoxContainer/TextBox4")
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_srt7k")
+metadata/_edit_use_anchors_ = true
+
+[node name="BG2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+offset_right = 224.0
+offset_bottom = 304.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_nof0m")
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+anchor_left = 0.169643
+anchor_top = 0.618421
+anchor_right = 0.464286
+anchor_bottom = 0.921053
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextBox" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
+theme_override_font_sizes/font_size = 16
+text = "Abc12"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="TextBox2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
+theme_override_font_sizes/font_size = 16
+text = "Abc12"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="TextBox3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
+theme_override_font_sizes/font_size = 16
+text = "Abc12"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="TextBox4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
+theme_override_font_sizes/font_size = 16
+text = "Abc12"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="FaithProgressBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_tixgw")
+Value = 14.82
+metadata/_edit_use_anchors_ = true
+
+[node name="First" type="TextureProgressBar" parent="FaithProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.138393
+anchor_top = 0.25118
+anchor_right = 0.334759
+anchor_bottom = 0.25118
+offset_top = 10.6412
+offset_right = -11.986
+offset_bottom = 42.6412
+rotation = -1.02276
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("5_158xj")
+texture_progress = ExtResource("5_khkp4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Second" type="TextureProgressBar" parent="FaithProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.151786
+anchor_top = 0.200658
+anchor_right = 0.339851
+anchor_bottom = 0.255044
+offset_right = -10.1266
+offset_bottom = 15.4666
+rotation = -0.411401
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("5_158xj")
+texture_progress = ExtResource("5_khkp4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Third" type="TextureProgressBar" parent="FaithProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21875
+anchor_top = 0.148026
+anchor_right = 0.372566
+anchor_bottom = 0.244541
+offset_right = -2.45482
+offset_bottom = 2.6595
+rotation = -0.0799965
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("5_158xj")
+texture_progress = ExtResource("5_khkp4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Fourth" type="TextureProgressBar" parent="FaithProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.285714
+anchor_top = 0.131579
+anchor_right = 0.429998
+anchor_bottom = 0.23578
+offset_right = -0.319633
+offset_bottom = 0.32283
+rotation = -0.0100381
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("5_158xj")
+texture_progress = ExtResource("5_khkp4")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextBox" parent="." instance=ExtResource("4_n8hnm")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.359375
+anchor_top = 0.409375
+anchor_right = 0.714214
+anchor_bottom = 0.559375
+offset_right = 0.0
+offset_bottom = 0.0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Faith"
+text_overrun_behavior = 0
+metadata/_edit_use_anchors_ = true

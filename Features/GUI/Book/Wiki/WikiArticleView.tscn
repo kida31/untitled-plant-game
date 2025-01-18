@@ -1,0 +1,134 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmc1oq8o2if8d"]
+
+[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiArticleView.cs" id="1_6vmcs"]
+[ext_resource type="Texture2D" uid="uid://cau3g6e5xdjb1" path="res://Assets/UI/Book/Pages/RightWiki_empty.png" id="2_mb5lo"]
+[ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="3_jwpvw"]
+[ext_resource type="Texture2D" uid="uid://dgkb2riflkmgf" path="res://Assets/UI/Book/Pages/Demo/RightWiki_filled.png" id="3_n81vm"]
+[ext_resource type="PackedScene" uid="uid://rkiq7gr8ft71" path="res://Features/GUI/Book/Wiki/WikiRelatedItemView.tscn" id="5_ptoeu"]
+[ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_wi3q8"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("_iconTextureRect", "_itemDescription", "_itemNameAndCategory", "_itemStats", "_relatedItemViews")]
+layout_mode = 3
+anchor_right = 0.207407
+anchor_bottom = 0.562963
+offset_right = 1.52588e-05
+script = ExtResource("1_6vmcs")
+_iconTextureRect = NodePath("AspectRatioContainer/ItemIcon")
+_itemDescription = NodePath("Description/TextMargin/Label")
+_itemNameAndCategory = NodePath("Name/TextMargin/Label")
+_itemStats = NodePath("Stats/TextMargin/Label")
+_relatedItemViews = [NodePath("RelatedStuff/RelatedItem"), NodePath("RelatedStuff/RelatedItem2"), NodePath("RelatedStuff/RelatedItem3"), NodePath("RelatedStuff/RelatedItem4")]
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mb5lo")
+metadata/_edit_use_anchors_ = true
+
+[node name="BG2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+offset_right = 224.0
+offset_bottom = 304.0
+texture = ExtResource("3_n81vm")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+anchor_left = 0.432478
+anchor_top = 0.0440789
+anchor_right = 0.628906
+anchor_bottom = 0.188816
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="NinePatchRect" parent="AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("3_jwpvw")
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="ItemIcon" type="TextureRect" parent="AspectRatioContainer"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" parent="." instance=ExtResource("5_wi3q8")]
+visible = false
+layout_mode = 2
+anchor_left = 0.125
+anchor_top = 0.240625
+anchor_right = 0.765625
+anchor_bottom = 0.303125
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" parent="Name/TextMargin" index="0"]
+horizontal_alignment = 1
+
+[node name="Description" parent="." instance=ExtResource("5_wi3q8")]
+custom_minimum_size = Vector2(91, 0)
+layout_mode = 2
+anchor_left = 0.133929
+anchor_top = 0.240132
+anchor_right = 0.629464
+anchor_bottom = 0.759868
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextMargin" parent="Description" index="1"]
+theme_override_constants/margin_top = 8
+
+[node name="Label" parent="Description/TextMargin" index="0"]
+autowrap_mode = 2
+
+[node name="Stats" parent="." instance=ExtResource("5_wi3q8")]
+layout_mode = 2
+anchor_left = 0.705357
+anchor_top = 0.240132
+anchor_right = 0.928571
+anchor_bottom = 0.759868
+offset_right = 0.0
+offset_bottom = 0.0
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextMargin" parent="Stats" index="1"]
+theme_override_constants/margin_top = 8
+
+[node name="Label" parent="Stats/TextMargin" index="0"]
+text = "Abc12"
+
+[node name="RelatedStuff" type="HBoxContainer" parent="."]
+layout_mode = 2
+anchor_left = 0.138393
+anchor_top = 0.776316
+anchor_right = 0.928571
+anchor_bottom = 0.881579
+grow_horizontal = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RelatedItem" parent="RelatedStuff" instance=ExtResource("5_ptoeu")]
+layout_mode = 2
+
+[node name="RelatedItem2" parent="RelatedStuff" instance=ExtResource("5_ptoeu")]
+layout_mode = 2
+
+[node name="RelatedItem3" parent="RelatedStuff" instance=ExtResource("5_ptoeu")]
+layout_mode = 2
+
+[node name="RelatedItem4" parent="RelatedStuff" instance=ExtResource("5_ptoeu")]
+layout_mode = 2
+
+[editable path="Name"]
+[editable path="Description"]
+[editable path="Stats"]

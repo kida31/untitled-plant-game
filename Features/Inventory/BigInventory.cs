@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Common;
@@ -21,28 +22,41 @@ namespace untitledplantgame.Inventory;
 /// </summary>
 public class BigInventory : IInventory
 {
+	public event Action InventoryChanged;
+	public event Action<IItemStack> ItemAdded;
+	public event Action<IItemStack> ItemRemoved;
+	
 	public int Size => _inventories.Values.Sum(inventory => inventory.Size);
 	public string Name => "Player Inventory";
 	
 	private readonly Dictionary<ItemCategory, IInventory> _inventories;
 	private readonly Logger _logger = new("BigInventory");
-
-	public BigInventory()
-		: this(15) { }
-
+	
 	public BigInventory(int size)
 	{
 		_inventories = new Dictionary<ItemCategory, IInventory>
 		{
-			{ ItemCategory.Seed, new Inventory(size, "Seed Inventory") },
-			{ ItemCategory.Medicine, new Inventory(size, "Fertilizer Inventory") },
-			{ ItemCategory.Material, new Inventory(size, "Plant Inventory") },
+			{ ItemCategory.Seed, new Inventory(size, "Seeds") },
+			{ ItemCategory.Material, new Inventory(size, "Materials") },
+			{ ItemCategory.Medicine, new Inventory(size, "Medicine") },
 		};
+		
+		foreach (var (_, inventory) in _inventories)
+		{
+			inventory.InventoryChanged += () => InventoryChanged?.Invoke();
+			inventory.ItemAdded += item => ItemAdded?.Invoke(item);
+			inventory.ItemRemoved += item => ItemRemoved?.Invoke(item);
+		}
 	}
 
 	public BigInventory(Dictionary<ItemCategory, IInventory> inventories)
 	{
 		_inventories = inventories;
+	}
+
+	public List<IInventory> GetSubInventories()
+	{
+		return new List<IInventory>(_inventories.Values);
 	}
 
 	public IInventory GetInventory(ItemCategory category)
@@ -340,6 +354,36 @@ public class BigInventory : IInventory
 			if (slotIdx < inventory.Size)
 			{
 				return inventory.AddItemToSlot(slotIdx, item);
+			}
+
+			slotIdx -= inventory.Size;
+		}
+
+		return null;
+	}
+
+	public IItemStack RemoveItemFromSlot(int slotIdx, IItemStack item)
+	{
+		foreach (var inventory in _inventories.Values)
+		{
+			if (slotIdx < inventory.Size)
+			{
+				return inventory.RemoveItemFromSlot(slotIdx, item);
+			}
+
+			slotIdx -= inventory.Size;
+		}
+
+		return null;
+	}
+
+	public IItemStack PopItemFromSlot(int slotIdx, int amount)
+	{
+		foreach (var inventory in _inventories.Values)
+		{
+			if (slotIdx < inventory.Size)
+			{
+				return inventory.PopItemFromSlot(slotIdx, amount);
 			}
 
 			slotIdx -= inventory.Size;

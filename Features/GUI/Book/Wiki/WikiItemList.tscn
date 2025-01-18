@@ -1,0 +1,189 @@
+[gd_scene load_steps=7 format=3 uid="uid://c77ama5r0mirv"]
+
+[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/ScrollViewController.cs" id="1_2ipb1"]
+[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiItemList.cs" id="1_lt328"]
+[ext_resource type="PackedScene" uid="uid://b2i7oxcdj4025" path="res://Features/GUI/Book/Wiki/WikiItemView.tscn" id="2_kax1w"]
+[ext_resource type="Texture2D" uid="uid://bucuvgskvuhrl" path="res://Assets/UI/Book/Pages/LeftWiki_empty.png" id="3_yllv7"]
+[ext_resource type="Texture2D" uid="uid://b3076kp3u3e03" path="res://Assets/UI/Book/Pages/Demo/LeftWiki_filled.png" id="4_8trht"]
+[ext_resource type="Texture2D" uid="uid://b0udl2fbk1ct8" path="res://Assets/UI/Book/Containers&Labels/ToolContainer.png" id="5_58xx7"]
+
+[node name="WikiItemList" type="Control" node_paths=PackedStringArray("_itemViewContainer", "_materialButton", "_medicineButton", "_plantButton")]
+clip_children = 2
+custom_minimum_size = Vector2(224, 304)
+layout_mode = 3
+anchor_right = 0.207407
+anchor_bottom = 0.562963
+offset_right = 1.52588e-05
+size_flags_horizontal = 3
+script = ExtResource("1_lt328")
+_itemViewContainer = NodePath("MarginContainer/ScrollContainer/MarginAll/ItemViewContainer")
+_itemViewPrefab = ExtResource("2_kax1w")
+_materialButton = NodePath("SectionsButtons/Div2/Button")
+_medicineButton = NodePath("SectionsButtons/Div3/Button")
+_plantButton = NodePath("SectionsButtons/Div/Button")
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -3.05176e-05
+texture = ExtResource("3_yllv7")
+metadata/_edit_use_anchors_ = true
+
+[node name="BG2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -28.0
+offset_bottom = -15.2
+texture = ExtResource("4_8trht")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="SectionsButtons" type="HBoxContainer" parent="."]
+layout_mode = 2
+anchor_left = 0.290179
+anchor_top = 0.0822368
+anchor_right = 0.825893
+anchor_bottom = 0.1875
+size_flags_horizontal = 6
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Div" type="MarginContainer" parent="SectionsButtons"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="SectionsButtons/Div"]
+layout_mode = 2
+texture = ExtResource("5_58xx7")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="SectionsButtons/Div"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Plants"
+flat = true
+clip_text = true
+icon_alignment = 1
+
+[node name="Div2" type="MarginContainer" parent="SectionsButtons"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="SectionsButtons/Div2"]
+layout_mode = 2
+texture = ExtResource("5_58xx7")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="SectionsButtons/Div2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Material"
+flat = true
+clip_text = true
+icon_alignment = 1
+
+[node name="Div3" type="MarginContainer" parent="SectionsButtons"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="SectionsButtons/Div3"]
+layout_mode = 2
+texture = ExtResource("5_58xx7")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="SectionsButtons/Div3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Medicine"
+flat = true
+clip_text = true
+icon_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -91.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_right = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" node_paths=PackedStringArray("_scrollViewItems")]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("1_2ipb1")
+_scrollViewItems = NodePath("MarginAll/ItemViewContainer")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginAll" type="MarginContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="ItemViewContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginAll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2
+
+[node name="MarginContainer2" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2
+
+[node name="MarginContainer3" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2
+
+[node name="MarginContainer4" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2
+
+[node name="MarginContainer5" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2
+
+[node name="MarginContainer6" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2
+
+[node name="MarginContainer7" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2
+
+[node name="MarginContainer8" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2
+
+[node name="MarginContainer9" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2
+
+[node name="MarginContainer10" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2
+
+[node name="MarginContainer11" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2
+
+[node name="MarginContainer12" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
+custom_minimum_size = Vector2(0, 32.7162)
+layout_mode = 2

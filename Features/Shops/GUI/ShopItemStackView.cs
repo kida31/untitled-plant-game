@@ -2,7 +2,7 @@ using System;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
-using untitledplantgame.VendingMachine;
+using untitledplantgame.Vending.UI;
 
 public partial class ShopItemStackView : Control, IItemSlotUI
 {
