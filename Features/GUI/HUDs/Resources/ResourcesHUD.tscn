@@ -5,11 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://bn4fpfuaq40v7" path="res://Assets/UI/HUD/round_container_currency_hud.png" id="2_83nbu"]
 
 [node name="ResourcesHUD" type="MarginContainer" node_paths=PackedStringArray("_gridContainer")]
-offset_right = 98.0
-offset_bottom = 36.0
+anchors_preset = -1
+anchor_right = 0.175
+anchor_bottom = 0.0722222
 script = ExtResource("1_abjfc")
 _gridContainer = NodePath("MarginContainer/CurrencyGrid")
 _coinIcon = ExtResource("2_5yp2m")
+metadata/_edit_use_anchors_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
@@ -37,11 +39,13 @@ columns = 2
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 6
+texture = ExtResource("2_5yp2m")
 stretch_mode = 5
 
 [node name="Placeholder-CheckCodePls2" type="RichTextLabel" parent="MarginContainer/CurrencyGrid"]
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 4
 bbcode_enabled = true
 text = "[right]123456"
 fit_content = true
