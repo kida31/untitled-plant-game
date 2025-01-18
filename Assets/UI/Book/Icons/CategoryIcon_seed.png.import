@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bae1mukngopeu"
-path="res://.godot/imported/L1_default.png-7d0965a51af4091a9354b9e03564ae51.ctex"
+uid="uid://b4u1cuyool30a"
+path="res://.godot/imported/CategoryIcon_seed.png-ccf36d6c1b6a3246f52a0a2cef114061.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Buttons/Playstation/L1_default.png"
-dest_files=["res://.godot/imported/L1_default.png-7d0965a51af4091a9354b9e03564ae51.ctex"]
+source_file="res://Assets/UI/Book/Icons/CategoryIcon_seed.png"
+dest_files=["res://.godot/imported/CategoryIcon_seed.png-ccf36d6c1b6a3246f52a0a2cef114061.ctex"]
 
 [params]
 

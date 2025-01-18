@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bae1mukngopeu"
-path="res://.godot/imported/L1_default.png-7d0965a51af4091a9354b9e03564ae51.ctex"
+uid="uid://o8mbllj8givt"
+path="res://.godot/imported/hanging_shelf.png-cb020af42414e2af55a9340a52f816bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Buttons/Playstation/L1_default.png"
-dest_files=["res://.godot/imported/L1_default.png-7d0965a51af4091a9354b9e03564ae51.ctex"]
+source_file="res://Assets/IndoorAssets/hanging_shelf.png"
+dest_files=["res://.godot/imported/hanging_shelf.png-cb020af42414e2af55a9340a52f816bd.ctex"]
 
 [params]
 
