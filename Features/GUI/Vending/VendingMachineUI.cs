@@ -161,8 +161,9 @@ public partial class VendingMachineUI : Control
 				continue;
 			}
 
-			var price = _vendingMachine.CalculateItemPrice(item);
-			slot.Price = item.BaseValue == price ? $"{price}g" : $"{price}g ({item.BaseValue}g)";
+			var price = _vendingMachine.CalculateItemPrice(item) * item.Amount;
+			var basePrice = item.BaseValue * item.Amount;
+			slot.Price = basePrice == price ? $"{price}g" : $"{price}g ({basePrice}g)";
 		}
 	}
 
