@@ -7,22 +7,20 @@
 radius = 115.7
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bl7xe"]
-size = Vector2(61, 12)
+size = Vector2(62, 12)
 
 [node name="VendingMachineNPC" type="Area2D"]
 script = ExtResource("1_34pgk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -53)
 texture = ExtResource("2_s5npr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_alu6d")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 y_sort_enabled = true
-position = Vector2(-0.5, 52)
 shape = SubResource("RectangleShape2D_bl7xe")
