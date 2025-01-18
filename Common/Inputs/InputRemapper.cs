@@ -129,7 +129,7 @@ public partial class InputRemapper : Node
 		}
 
 		// Not sure if this is necessary or would feel awkward.
-		// TriggerReleaseOnAllActions();
+		TriggerReleaseOnAllActions();
 		UnbindInputEvents(prevState);
 		BindInputEvents(newState);
 	}
