@@ -43,13 +43,13 @@ position = Vector2(730, 160)
 
 [node name="Plants" parent="." instance=ExtResource("7_36aju")]
 
-[node name="Player" parent="." instance=ExtResource("1_mh621")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(640, 360)
-
 [node name="NightTint" type="CanvasModulate" parent="."]
 position = Vector2(577.5, 328.625)
 scale = Vector2(1.19896, 1.19896)
 script = ExtResource("6_4ec11")
 _gradientTexture = ExtResource("7_xmbsw")
+
+[node name="Player" parent="." instance=ExtResource("1_mh621")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(640, 360)
