@@ -37,9 +37,8 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		_logger.Debug("Initialised.");
 	}
 
-	public void StartDialog(string dialogueId)
+	public void StartDialog(DialogueResourceObject dialogue)
 	{
-		var dialogue = DialogueDatabase.Instance.GetResourceByName(dialogueId);
 		EventBus.Instance.InvokeInitialiseDialogue(this);
 
 		if (dialogue == null)
@@ -61,7 +60,20 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	public void InsertSelectedResponse(string response)
 	{
 		var nextDialogue = _currentDialogue._responses.First((r) => r._responseButton == response)._responseDialogue;
-		SetAndResetDialogueBlock(nextDialogue);
+		switch (nextDialogue)
+		{
+			case null:
+				_logger.Debug("No follow up dialogue");
+				EndDialogue();
+				return;
+			case DialogueEvent d:
+				EndDialogue();
+				d.ExcuteEvent();
+				return;
+			default:
+				SetAndResetDialogueBlock(nextDialogue);
+				break;
+		}
 	}
 
 	public void GetResponses()
