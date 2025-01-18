@@ -57,6 +57,8 @@ public partial class ResourcesHUD : MarginContainer
 			var newBalance = CurrencyFaithOfficer.TheOneAndOnly.GetCurrentCurrency();
 			_targetValues[goldRow] = newBalance;
 		};
+		
+		_targetValues[goldRow] = CurrencyFaithOfficer.TheOneAndOnly.GetCurrentCurrency();
 	}
 
 	// TODO: Remove
