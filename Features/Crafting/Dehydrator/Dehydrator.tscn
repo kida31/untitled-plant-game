@@ -1,12 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://fc51eeilo3tu"]
 
 [ext_resource type="Script" path="res://Features/Crafting/Dehydrator/Dehydrator.cs" id="1_1p1ow"]
-[ext_resource type="Texture2D" uid="uid://14cqlajvxk5b" path="res://Assets/IndoorAssets/Dehydrator_smaller.png" id="2_uiyb2"]
+[ext_resource type="Texture2D" uid="uid://dmbdsljo1seok" path="res://Assets/Overworld/House/mini_dehydrator.png" id="2_2ormt"]
 
 [node name="Dehydrator" type="Node2D"]
 script = ExtResource("1_1p1ow")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_uiyb2")
+[node name="TextureRect" type="Sprite2D" parent="."]
+texture = ExtResource("2_2ormt")
