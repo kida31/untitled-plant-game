@@ -65,6 +65,7 @@ public partial class TooltipView : Control
 
 	public override void _ExitTree()
 	{
+		// Clean up
 		_referenceLabel.ItemRectChanged -= AutoAdjustWidth;
 	}
 
