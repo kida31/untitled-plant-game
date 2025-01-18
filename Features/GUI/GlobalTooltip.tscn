@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c82x6hxji8t8v"]
+
+[ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="1_ng0ue"]
+[ext_resource type="Script" path="res://Features/GUI/GlobalTooltip.cs" id="2_ipapd"]
+
+[node name="GlobalTooltip" instance=ExtResource("1_ng0ue")]
+script = ExtResource("2_ipapd")
+_fadeInSpeed = 10.0
+_delay = 0.0
+_offset = Vector2(0, 0)

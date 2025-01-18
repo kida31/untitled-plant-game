@@ -63,6 +63,12 @@ public partial class TooltipView : Control
 		// EndShittyLabelAdjustment
 	}
 
+	public override void _ExitTree()
+	{
+		// Clean up
+		_referenceLabel.ItemRectChanged -= AutoAdjustWidth;
+	}
+
 	private void SetTitle(string value)
 	{
 		value ??= "";

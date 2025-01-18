@@ -5,6 +5,7 @@ using untitledplantgame.Dialogue;
 using untitledplantgame.Inventory;
 using untitledplantgame.Plants;
 using untitledplantgame.Shops;
+using untitledplantgame.Vending;
 
 namespace untitledplantgame.Common;
 
@@ -71,9 +72,9 @@ public partial class EventBus : Node
 		OnSeedshopClosed?.Invoke();
 	}
 
-	public event Action<VendingMachine.VendingMachine> BeforeVendingMachineOpened;
+	public event Action<VendingMachine> BeforeVendingMachineOpened;
 
-	public void BeforeVendingMachineOpen(VendingMachine.VendingMachine vendingMachine)
+	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
 	}
