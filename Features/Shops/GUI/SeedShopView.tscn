@@ -60,6 +60,7 @@ modulate = Color(1, 1, 1, 0.438)
 layout_mode = 2
 
 [node name="ShopItem2" parent="SeedShopCarpet/GridContainer" instance=ExtResource("3_s3uu1")]
+modulate = Color(0.793, 0.793, 0.793, 0.535)
 layout_mode = 2
 
 [node name="ShopItem3" parent="SeedShopCarpet/GridContainer" instance=ExtResource("3_s3uu1")]
