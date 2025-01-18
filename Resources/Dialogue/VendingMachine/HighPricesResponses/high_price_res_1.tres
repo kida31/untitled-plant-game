@@ -7,10 +7,10 @@
 script = ExtResource("1_kg3u5")
 speakerName = "Laya"
 DialogueExpression = 0
-dialogueText = "A goddess has to live too… *shrugs*"
+dialogueText = "Well, I’m a goddess after all, so why shouldn’t they pay for that?"
 
 [resource]
 script = ExtResource("1_1fg4h")
-_dialogueId = "high_price_res_2"
+_dialogueId = "high_price_res_1"
 _dialogueText = Array[Object]([SubResource("Resource_mry7g")])
 _responses = null

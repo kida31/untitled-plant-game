@@ -7,10 +7,10 @@
 script = ExtResource("1_ktpdj")
 speakerName = "Laya"
 DialogueExpression = 0
-dialogueText = "They shouldn’t struggle every day, some days it’s okay not to."
+dialogueText = "Ha, today I’m feeling generous, I bet they will love me for it!"
 
 [resource]
 script = ExtResource("2_bumuv")
-_dialogueId = "low_prices_res_2"
+_dialogueId = "low_prices_res_1"
 _dialogueText = Array[Object]([SubResource("Resource_2xwwc")])
 _responses = null
