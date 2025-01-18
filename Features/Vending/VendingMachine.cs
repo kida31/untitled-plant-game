@@ -7,6 +7,10 @@ using untitledplantgame.Systems;
 
 namespace untitledplantgame.Vending;
 
+/// <summary>
+///     A vending machine that sells items from its inventory.
+///     Encapsulates the selling logic and keeps track of the inventory and gold.
+/// </summary>
 public class VendingMachine
 {
 	// Events
@@ -15,9 +19,10 @@ public class VendingMachine
 	public event Action<float> FaithMultChanged;
 
 	// Magic Numbers
-	private const int MaxSalesCount = 100;
-	private const float SalesPercentPerInterval = 0.1f;
-	private const int MinutesPerInterval = 1;
+	private const int MaxSalesCount = 100; // Maximum sales per day
+	private const float SalesPercentPerInterval = 0.1f; // Sell 10% of stock per interval
+	private const int MinSalesPerInterval = 1; // Sell at least one item per interval
+	private const int MinutesPerInterval = 5; // Sell once every hour
 
 	// Properties
 	public Inventory.Inventory Inventory => _inventory;
@@ -38,7 +43,7 @@ public class VendingMachine
 	{
 		_inventory = new(12, "Vending Machine");
 		_inventory.InventoryChanged += () => ContentChanged?.Invoke(_inventory);
-		
+
 		TimeController.Instance.MinuteTicked += OnMinuteTicked;
 		TimeController.Instance.DayChanged += OnEndOfDay;
 	}
@@ -74,8 +79,9 @@ public class VendingMachine
 			return;
 		}
 
-		// Sales count for this transaction is a percent of current supply, but at least one.
-		var totalSellCount = (int) Math.Ceiling(Math.Max(SalesPercentPerInterval * itemStacks.Count, 1));
+		// Sales count for this transaction is a percent of current supply (rounded up), but at least minimum.
+		var totalStock = itemStacks.Sum(it => it?.Amount ?? 0);
+		var totalSellCount = (int) Math.Max(Math.Ceiling(SalesPercentPerInterval * totalStock), MinSalesPerInterval);
 
 		// Sort by price descending, sell most expensive first.
 		var itemsByPrice = _inventory.OrderByDescending(stack => stack?.BaseValue ?? 0).ToList();
@@ -138,7 +144,7 @@ public class VendingMachine
 	{
 		var deducedGold = _gold;
 		_gold = 0;
-		
+
 		CurrencyFaithOfficer.TheOneAndOnly.ChangeAny(new Currency(), deducedGold);
 		return deducedGold;
 	}
@@ -151,7 +157,7 @@ public class VendingMachine
 	private void OnMinuteTicked(int day, int hour, int minute)
 	{
 		_minuteCounter += 1;
-		if (_minuteCounter > MinutesPerInterval)
+		if (_minuteCounter >= MinutesPerInterval)
 		{
 			_minuteCounter = 0;
 			SellRandomItems();
