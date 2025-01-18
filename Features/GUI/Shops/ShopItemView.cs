@@ -13,14 +13,14 @@ public partial class ShopItemView : NewInventoryItemView
 	protected override void UpdateContent()
 	{
 		base.UpdateContent();
-		_priceLabel.Text = ItemStack == null ? "" : $"{ItemStack.BaseValue}::{BbImage.Coin.ToString()}";
+		_priceLabel.Text = ItemStack == null ? "" : $"[center]{ItemStack.BaseValue}{BbImage.Coin}";
 	}
 
 	private Control StatsToControl()
 	{
 		var label = new RichTextLabel();
 		label.BbcodeEnabled = true;
-		label.Text = ItemStack == null ? "" : $"{ItemStack.BaseValue}{BbImage.Coin.ToString()}";
+		label.Text = ItemStack == null ? "" : $"[center]{ItemStack.BaseValue}{BbImage.Coin}";
 		label.FitContent = true;
 		return label;
 	}
