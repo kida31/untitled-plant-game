@@ -1,9 +1,16 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=2 format=3 uid="uid://bbryd0jmqfidk"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=4 format=3 uid="uid://dd00mgmrn1mo"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_1fg4h"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_kg3u5"]
+
+[sub_resource type="Resource" id="Resource_mry7g"]
+script = ExtResource("1_kg3u5")
+speakerName = "Laya"
+DialogueExpression = 0
+dialogueText = "A goddess has to live too… *shrugs*"
 
 [resource]
 script = ExtResource("1_1fg4h")
-_dialogueId = ""
-_dialogueText = null
+_dialogueId = "high_price_res_2"
+_dialogueText = Array[Object]([SubResource("Resource_mry7g")])
 _responses = null
