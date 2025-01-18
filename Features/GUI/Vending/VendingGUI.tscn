@@ -1,12 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c108xawc8eseh"]
+[gd_scene load_steps=11 format=3 uid="uid://c108xawc8eseh"]
 
 [ext_resource type="Script" path="res://Features/GUI/Vending/VendingMachineUI.cs" id="1_mtkr8"]
 [ext_resource type="PackedScene" uid="uid://dy2bsx4d7l35p" path="res://Features/GUI/Vending/MiniInventory.tscn" id="2_vteot"]
 [ext_resource type="Texture2D" uid="uid://yvo33yjscsag" path="res://Assets/UI/VendingMachine/Base_right.png" id="3_t32op"]
 [ext_resource type="PackedScene" uid="uid://ci3xd0kudwy7k" path="res://Features/GUI/Vending/VendingItemView.tscn" id="4_v03kc"]
 [ext_resource type="Texture2D" uid="uid://bopd7g6vsty7t" path="res://Assets/UI/VendingMachine/Hebel.png" id="5_v8xxq"]
-[ext_resource type="Texture2D" uid="uid://daewgkls8y0jg" path="res://Features/GUI/Vending/gold_coin_pirated.png" id="6_bdwvg"]
-[ext_resource type="Texture2D" uid="uid://b04d8mwf8rhjp" path="res://Features/GUI/Vending/gold_coin_pirated_many.png" id="7_iyape"]
 [ext_resource type="Texture2D" uid="uid://cu7fp670pmqng" path="res://Assets/UI/VendingMachine/CashRetriever.png" id="8_pkwve"]
 [ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
@@ -131,9 +129,9 @@ vertical_alignment = 1
 
 [node name="GoldSlider" type="HSlider" parent="VendingMachine"]
 layout_mode = 2
-anchor_left = 0.136719
+anchor_left = 0.0625
 anchor_top = 0.821875
-anchor_right = 0.550781
+anchor_right = 0.625
 anchor_bottom = 0.871875
 offset_top = 3.05176e-05
 offset_bottom = 3.05176e-05
@@ -143,39 +141,6 @@ theme_override_icons/grabber = ExtResource("5_v8xxq")
 max_value = 2.0
 step = 0.25
 value = 1.0
-metadata/_edit_use_anchors_ = true
-
-[node name="LittleGoldIcon" type="TextureRect" parent="VendingMachine"]
-custom_minimum_size = Vector2(16, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0621105
-anchor_top = 0.821841
-anchor_right = 0.12461
-anchor_bottom = 0.871841
-grow_vertical = 2
-size_flags_horizontal = 2
-size_flags_vertical = 4
-texture = ExtResource("6_bdwvg")
-expand_mode = 5
-stretch_mode = 4
-metadata/_edit_use_anchors_ = true
-
-[node name="MuchGoldIcon" type="TextureRect" parent="VendingMachine"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.562109
-anchor_top = 0.821841
-anchor_right = 0.624609
-anchor_bottom = 0.871841
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 10
-size_flags_vertical = 4
-texture = ExtResource("7_iyape")
-expand_mode = 5
-stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="GoldLabel" type="Label" parent="VendingMachine"]
@@ -211,7 +176,7 @@ anchor_bottom = 0.0
 
 [node name="EmoteBubble" parent="." instance=ExtResource("12_5lmun")]
 layout_mode = 1
-anchor_left = 0.295312
-anchor_top = 0.727778
-anchor_right = 0.34375
-anchor_bottom = 0.802778
+anchor_left = 0.324999
+anchor_top = 0.730556
+anchor_right = 0.373437
+anchor_bottom = 0.805556
