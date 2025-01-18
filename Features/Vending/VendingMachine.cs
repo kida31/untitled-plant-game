@@ -22,7 +22,7 @@ public class VendingMachine
 	private const int MaxSalesCount = 100; // Maximum sales per day
 	private const float SalesPercentPerInterval = 0.1f; // Sell 10% of stock per interval
 	private const int MinSalesPerInterval = 1; // Sell at least one item per interval
-	private const int MinutesPerInterval = 5; // Sell once every hour
+	private const int MinutesPerInterval = 60; // Sell once every hour
 
 	// Properties
 	public Inventory.Inventory Inventory => _inventory;
