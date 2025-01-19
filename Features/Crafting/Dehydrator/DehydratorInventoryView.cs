@@ -11,6 +11,7 @@ public partial class DehydratorInventoryView : Control
 	[Export] private CraftingInventory _playerInventory;
 	[Export] private DehydratorUi _dehydratorUi;
 
+	private int _index;
 	private Dehydrator _dehydrator;
 
 	public override void _Ready()
@@ -21,7 +22,19 @@ public partial class DehydratorInventoryView : Control
 
 	private void OnInsertingItem(NewInventoryItemView obj)
 	{
-		//_dehydrator.InsertItemToSlot(obj);
+		//get first empty slot of dehydrator
+		_index = -1;
+		for (var i = 0; i < _dehydrator.CraftingSlots.Length; i++)
+		{
+			if (_dehydrator.CraftingSlots[i].ItemStack != null)
+			{
+				continue;
+			}
+
+			_index = i;
+			break;
+		}
+		_dehydrator.InsertItemToSlot(obj.ItemStack, _index);
 	}
 
 	public override void _Input(InputEvent @event)
