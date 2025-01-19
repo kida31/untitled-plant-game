@@ -12,10 +12,6 @@ uniform float light_start : hint_range(0.0, 1.0) = 0.275;
 uniform float light_end : hint_range(0.0, 1.0) = 0.4;
 
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
 void fragment() {
 	// Called for every pixel the material is visible on.
 	float depth = texture(noise1, UV + scroll1 * TIME).r * texture(noise2, UV + scroll2 * TIME).r;
@@ -24,8 +20,3 @@ void fragment() {
 	COLOR = screen_col * tone_color + top_light;
 	COLOR.a = 1.0;  // cap alpha
 }
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
