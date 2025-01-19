@@ -6,9 +6,18 @@ using untitledplantgame.Common.GameStates;
 namespace untitledplantgame.Common.Inputs;
 
 /// <summary>
+/// This Singleton class is responsible for remapping inputs based on the current game state.
+/// Input will only trigger actions corresponding to the current game state.
+/// This way objects do not have to check the game state themselves.
 /// </summary>
 public partial class InputRemapper : Node
 {
+	/// <summary>
+	/// NOTE: This is a workaround to map the south button to the accept action.
+	/// Alternatively directly map ui_accept in Godot Input maps, but do not forget to match it to base_south
+	/// </summary>
+	private const bool MapSouthToAccept = true;
+	
 	/// <summary>
 	/// Returns they Key that is mapped to this action
 	/// </summary>
@@ -41,7 +50,6 @@ public partial class InputRemapper : Node
 			.ToArray();
 
 		// Make placeholder actions for all game states
-		// and remove original
 		foreach (var gs in GameState.GetValues())
 		{
 			foreach (var actionName in _actionNames)
@@ -52,10 +60,26 @@ public partial class InputRemapper : Node
 			}
 		}
 
+		if (MapSouthToAccept)
+		{
+			BindSouthAsAccept();
+		}
 		// Bind inputs to actions for current context
 		BindInputEvents(GameStateMachine.Instance.CurrentState);
 
 		GameStateMachine.Instance.StateChanged += OnGameStateChanged;
+	}
+	
+	private void BindSouthAsAccept()
+	{
+		const string southAction = "base_south";
+		const string acceptAction = "ui_accept";
+		
+		var inputs = InputMap.ActionGetEvents(southAction);
+		foreach (var e in inputs)
+		{
+			InputMap.ActionAddEvent(acceptAction, e);
+		}
 	}
 
 	private void BindInputEvents(GameState context)
@@ -105,7 +129,7 @@ public partial class InputRemapper : Node
 		}
 
 		// Not sure if this is necessary or would feel awkward.
-		// TriggerReleaseOnAllActions();
+		TriggerReleaseOnAllActions();
 		UnbindInputEvents(prevState);
 		BindInputEvents(newState);
 	}

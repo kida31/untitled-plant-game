@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using untitledplantgame.Common;
+using untitledplantgame.Systems;
 
 public partial class ResourcesHUD : MarginContainer
 {
@@ -49,8 +50,15 @@ public partial class ResourcesHUD : MarginContainer
 			};
 		}
 
-		AddRow(icon: _coinIcon, valueFormatter: FormatGold);
-		EventBus.Instance.GoldChanged += (_, newGold) => _targetValues[_targetValues.Keys.First()] = newGold;
+		// wtf is this code abomination?
+		var goldRow = AddRow(icon: _coinIcon, valueFormatter: FormatGold);
+		EventBus.Instance.OnCurrencyChange += (_) =>
+		{
+			var newBalance = CurrencyFaithOfficer.TheOneAndOnly.GetCurrentCurrency();
+			_targetValues[goldRow] = newBalance;
+		};
+		
+		_targetValues[goldRow] = CurrencyFaithOfficer.TheOneAndOnly.GetCurrentCurrency();
 	}
 
 	// TODO: Remove

@@ -1,5 +1,6 @@
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Interaction;
 
 namespace untitledplantgame.NPC;
 
@@ -28,7 +29,6 @@ public abstract partial class AInteractable : Area2D, IInteractable
 	}
 
 	public abstract void Interact();
-
 	
 	private void OnBodyEntered(Node body)
 	{

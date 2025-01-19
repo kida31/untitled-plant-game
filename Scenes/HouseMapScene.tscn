@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://bs7jmvcej2bhc"]
+[gd_scene load_steps=17 format=4 uid="uid://bs7jmvcej2bhc"]
 
 [ext_resource type="Texture2D" uid="uid://dvjxp03o22y3l" path="res://Assets/Tilesets/atlas_32x.png" id="1_njfkm"]
 [ext_resource type="Texture2D" uid="uid://h83g282s043x" path="res://Assets/OverworldAssets/GardenDecoration/ladder_tileset_improved.png" id="2_4uw5u"]
 [ext_resource type="Texture2D" uid="uid://4cfy612ib68k" path="res://Assets/IndoorAssets/bed.png" id="3_rc2t2"]
+[ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="4_0j18u"]
+[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="5_t1uyc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1url"]
 texture = ExtResource("1_njfkm")
@@ -3089,3 +3091,11 @@ tile_set = SubResource("TileSet_hs3e3")
 [node name="WallHangedObjects" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAANAAsAAAAOAAAAAAANAAwAAAAOAAEAAAAOAAsAAAAPAAAAAAAOAAwAAAAPAAEAAAARAAsAAAAOAAAAAAARAAwAAAAOAAEAAAASAAsAAAAPAAAAAAASAAwAAAAPAAEAAAAUAAsAAAAOAAAAAAAUAAwAAAAOAAEAAAAVAAsAAAAPAAAAAAAVAAwAAAAPAAEAAAAZAAsAAAAOAAAAAAAZAAwAAAAOAAEAAAAaAAsAAAAPAAAAAAAaAAwAAAAPAAEAAAAWAAsAAAAKAAgAAAAWAAwAAAAKAAkAAAAXAAsAAAALAAgAAAAXAAwAAAALAAkAAAAMAAsAAAALAAoAAAAMAAwAAAALAAsAAAA=")
 tile_set = SubResource("TileSet_6alp4")
+
+[node name="Door" parent="." instance=ExtResource("4_0j18u")]
+position = Vector2(400, 567)
+entryDoorName = "RoofHouse"
+
+[node name="Bed" parent="." instance=ExtResource("5_t1uyc")]
+position = Vector2(592, 585)
+rotation = -1.5708

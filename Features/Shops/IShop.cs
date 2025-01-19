@@ -12,6 +12,7 @@ public interface IShop
 
 	void GenerateRandomShopStock(); // Might not be needed
 	IItemStack[] CurrentStock { get; }
+	IInventory Inventory { get; }
 
 	/// <summary>
 	/// Remove one item of that kind off the shop and returns that instance

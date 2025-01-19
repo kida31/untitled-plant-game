@@ -34,13 +34,13 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 
 		EventBus.Instance.StartingDialogue += StartDialog;
+		
 		_logger.Debug("Initialised.");
 	}
 	
 
-	public void StartDialog(string dialogueId)
+	public void StartDialog(DialogueResourceObject dialogue)
 	{
-		var dialogue = DialogueDatabase.Instance.GetResourceByName(dialogueId);
 		EventBus.Instance.InvokeInitialiseDialogue(this);
 		
 		if (dialogue == null)
@@ -62,11 +62,25 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	public void InsertSelectedResponse(string response)
 	{
 		var nextDialogue = _currentDialogue._responses.First((r) => r._responseButton == response)._responseDialogue;
-		SetAndResetDialogueBlock(nextDialogue);
+		switch (nextDialogue)
+		{
+			case null:
+				_logger.Debug("No follow up dialogue");
+				EndDialogue();
+				return;
+			case DialogueEvent d:
+				d.Execute();
+				EndDialogue();
+				return;
+			default:
+				SetAndResetDialogueBlock(nextDialogue);
+				break;
+		}
 	}
 
 	public void GetResponses()
 	{
+		_logger.Debug("Getting responses.");
 		if (_currentDialogue._responses.Length == 0)
 		{
 			EndDialogue();
@@ -77,6 +91,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 	private void EndDialogue()
 	{
+		_logger.Debug("Ending dialogue.");
 		_currentDialogue = null;
 		GameStateMachine.Instance.SetState(GameState.FreeRoam);
 		OnDialogueEnd?.Invoke(_currentDialogue);
@@ -84,7 +99,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 	private void SetAndResetDialogueBlock(DialogueResourceObject dialogue)
 	{
-		OnDialogueBlockStarted?.Invoke(dialogue);
 		_currentDialogue = dialogue;
+		OnDialogueBlockStarted?.Invoke(_currentDialogue);
 	}
 }

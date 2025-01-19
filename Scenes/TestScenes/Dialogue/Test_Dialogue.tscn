@@ -18,10 +18,6 @@ _button = NodePath("Button")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueScene" parent="CanvasLayer" instance=ExtResource("1_mt3pj")]
-offset_left = 331.0
-offset_top = 525.0
-offset_right = 331.0
-offset_bottom = 525.0
 
 [node name="Button" type="Button" parent="."]
 offset_left = 501.0

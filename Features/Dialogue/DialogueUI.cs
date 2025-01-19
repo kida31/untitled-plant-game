@@ -10,10 +10,10 @@ public partial class DialogueUI : Control
 {
 	private IDialogueSystem _dialogueSystem;
 
-	private RichTextLabel _nameLabel;
-	private RichTextLabel _dialogueTextLabel;
-	private AnimatedSprite2D _animatedSprite2D;
-	private BoxContainer _responseContainer;
+	[Export] private RichTextLabel _nameLabel;
+	[Export] private RichTextLabel _dialogueTextLabel;
+	[Export] private AnimatedSprite2D _animatedSprite2D;
+	[Export] private BoxContainer _responseContainer;
 
 	private DialogueResourceObject _currentDialogue;
 	private IEnumerator<DialogueLine> _lineEnumerator;
@@ -29,13 +29,6 @@ public partial class DialogueUI : Control
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
-
-		//UI elements
-		_animatedSprite2D = GetNode<AnimatedSprite2D>("Portrait");
-		_nameLabel = GetNode<RichTextLabel>("PanelContainer2/MarginContainer/Name");
-		_dialogueTextLabel = GetNode<RichTextLabel>("PanelContainer/MarginContainer/DialogueText");
-		_responseContainer = GetNode<BoxContainer>("Responses");
-
 		//Animation
 		_skipCooldownTimer = new Timer();
 		AddChild(_skipCooldownTimer);
@@ -61,10 +54,18 @@ public partial class DialogueUI : Control
 
 	private void ConnectDialogue(IDialogueSystem sys)
 	{
+		if(_dialogueSystem != null)
+		{
+			_dialogueSystem.OnDialogueEnd -= HideDialogueUi;
+			_dialogueSystem.OnDialogueBlockStarted -= OnDialogueBlockStarted;
+			_dialogueSystem.OnResponding -= DisplayResponses;
+			_dialogueSystem = null;
+		}
+		
 		_logger.Debug("Dialogue system connected." + sys);
 		_dialogueSystem = sys;
 		_dialogueSystem.OnDialogueBlockStarted += OnDialogueBlockStarted;
-		_dialogueSystem.OnDialogueEnd += o => HideDialogueUi();
+		_dialogueSystem.OnDialogueEnd += HideDialogueUi;
 		_dialogueSystem.OnResponding += DisplayResponses;
 	}
 
@@ -133,15 +134,18 @@ public partial class DialogueUI : Control
 		var buttons = new List<Button>();
 		foreach (var response in responses)
 		{
-			Button button;
-			_responseContainer.CallDeferred(Node.MethodName.AddChild, button = new Button());
+			Button button = new Button();
+			_responseContainer.CallDeferred(Node.MethodName.AddChild, button);
 			button.Text = response;
 			button.ActionMode = BaseButton.ActionModeEnum.Press;
-			button.Pressed += () =>
+
+			void OnButtonOnPressed()
 			{
 				_dialogueSystem.InsertSelectedResponse(response);
 				ClearResponses();
-			};
+			}
+
+			button.Pressed += OnButtonOnPressed;
 			buttons.Add(button);
 		}
 
@@ -150,8 +154,9 @@ public partial class DialogueUI : Control
 
 	private void ClearResponses()
 	{
-		foreach (Node child in _responseContainer.GetChildren())
-		{
+		foreach (var child in _responseContainer.GetChildren())
+		{ 
+			_logger.Debug($"Queue {child} for deletion.");
 			child.QueueFree();
 		}
 	}
@@ -175,7 +180,7 @@ public partial class DialogueUI : Control
 		Visible = true;
 	}
 
-	private void HideDialogueUi()
+	private void HideDialogueUi(DialogueResourceObject _)
 	{
 		_currentDialogue = null;
 		_lineEnumerator = null;

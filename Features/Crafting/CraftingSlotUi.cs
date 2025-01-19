@@ -1,6 +1,6 @@
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.VendingMachine;
+using untitledplantgame.Vending.UI;
 
 namespace untitledplantgame.Crafting;
 

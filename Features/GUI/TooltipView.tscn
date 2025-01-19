@@ -7,9 +7,10 @@
 draw_center = false
 
 [node name="TooltipView" type="PanelContainer" node_paths=PackedStringArray("_titleLabel", "_descriptionLabel", "_separator", "_contentContainer", "_referenceLabel")]
-custom_minimum_size = Vector2(192, 64)
-offset_right = 192.0
-offset_bottom = 84.0
+custom_minimum_size = Vector2(128, 32)
+anchors_preset = -1
+anchor_right = 0.118519
+anchor_bottom = 0.0592593
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
@@ -18,8 +19,9 @@ script = ExtResource("1_ejofp")
 _titleLabel = NodePath("MarginContainer/VBoxContainer/TitleLabel")
 _descriptionLabel = NodePath("MarginContainer/VBoxContainer/DescriptionLabel")
 _separator = NodePath("MarginContainer/VBoxContainer/HSeparator")
-_contentContainer = NodePath("MarginContainer/VBoxContainer/ContentContainer")
+_contentContainer = NodePath("MarginContainer/VBoxContainer/CustomContentHere")
 _referenceLabel = NodePath("MarginContainer/VBoxContainer/TitleLabel/TitleLabel2")
+metadata/_edit_use_anchors_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
@@ -47,7 +49,6 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 bbcode_enabled = true
-text = "Title"
 fit_content = true
 scroll_active = false
 tab_size = 2
@@ -68,11 +69,10 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"Secondary"
 bbcode_enabled = true
-text = "Description"
 fit_content = true
 scroll_active = false
 tab_size = 2
 
-[node name="ContentContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="CustomContentHere" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 3

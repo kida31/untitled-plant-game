@@ -15,7 +15,7 @@ public partial class TestDialogue : Node2D
 
 	public override void _Ready()
 	{
-		EventBus.Instance.InvokeStartingDialogue(_exampleDialogue._dialogueId);
+		EventBus.Instance.InvokeStartingDialogue(_exampleDialogue);
 		_button.Pressed += LoadNextDialogue;
 	}
 
@@ -24,7 +24,7 @@ public partial class TestDialogue : Node2D
 		if(i < _followupDialogue.Length)
 		{
 			i++;
-			EventBus.Instance.InvokeStartingDialogue(_followupDialogue[i]._dialogueId);
+			EventBus.Instance.InvokeStartingDialogue(_followupDialogue[i]);
 			_button.FocusMode = Control.FocusModeEnum.None;
 			_logger.Debug($"current index {i}");
 		}

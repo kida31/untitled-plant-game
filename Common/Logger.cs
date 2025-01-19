@@ -3,18 +3,21 @@ using Godot;
 
 namespace untitledplantgame.Common;
 
-enum LogLevel
+public enum LogLevel
 {
-	Info, // Grey
 	Debug, // Blue
+	Info, // Grey
 	Warn, // Yellow
 	Error, // Red
 }
 
 public class Logger
 {
+	// Config Stuff
+	public const string LogLevelSetting = "untitled_plant_game/logging/log_level"; // TODO: Make private
+	private const LogLevel DefaultConsoleLogLevel = LogLevel.Info;
+
 	public static Action<string> MessageLogged;
-	
 	private readonly string _logFilePath;
 	private readonly string _name;
 
@@ -61,12 +64,12 @@ public class Logger
 		}
 		else
 		{
-			// Write to (Godot) console
-			if (LogLevel.Warn == level)
-				GD.PushWarning(message);
-			if (LogLevel.Error == level)
-				GD.PushError(message);
+			if (ConsoleLogLevelInSettings > level)
+			{
+				return;
+			}
 
+			// Write to (Godot) console
 			var coloredMessage = level switch
 			{
 				LogLevel.Info => BBColor.Gray.Apply(logMessage),
@@ -75,6 +78,11 @@ public class Logger
 				LogLevel.Error => BBColor.Red.Apply(logMessage),
 				_ => logMessage,
 			};
+			if (LogLevel.Error == level)
+			{
+				GD.PrintErr(logMessage);
+			}
+
 			GD.PrintRich(coloredMessage);
 			MessageLogged?.Invoke(coloredMessage);
 		}
@@ -98,5 +106,23 @@ public class Logger
 	public void Error(string message)
 	{
 		Log(LogLevel.Error, message);
+	}
+
+	// Get log level from project settings or default to Info
+	private LogLevel ConsoleLogLevelInSettings
+	{
+		get
+		{
+			if (ProjectSettings.HasSetting(LogLevelSetting))
+			{
+				var logLevelName = ProjectSettings.GetSetting(LogLevelSetting).AsString();
+				if (Enum.TryParse(logLevelName, out LogLevel logLevel))
+				{
+					return logLevel;
+				}
+			}
+
+			return DefaultConsoleLogLevel;
+		}
 	}
 }

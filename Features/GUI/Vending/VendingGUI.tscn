@@ -1,0 +1,199 @@
+[gd_scene load_steps=15 format=3 uid="uid://c108xawc8eseh"]
+
+[ext_resource type="Script" path="res://Features/GUI/Vending/VendingMachineUI.cs" id="1_mtkr8"]
+[ext_resource type="PackedScene" uid="uid://dy2bsx4d7l35p" path="res://Features/GUI/Vending/MiniInventory.tscn" id="2_vteot"]
+[ext_resource type="Texture2D" uid="uid://yvo33yjscsag" path="res://Assets/UI/VendingMachine/Base_right.png" id="3_t32op"]
+[ext_resource type="PackedScene" uid="uid://ci3xd0kudwy7k" path="res://Features/GUI/Vending/VendingItemView.tscn" id="4_v03kc"]
+[ext_resource type="Texture2D" uid="uid://bopd7g6vsty7t" path="res://Assets/UI/VendingMachine/Hebel.png" id="5_v8xxq"]
+[ext_resource type="Texture2D" uid="uid://b5hv1i828jc6" path="res://Assets/UI/VendingMachine/Slider.png" id="6_iyrxl"]
+[ext_resource type="Texture2D" uid="uid://cu7fp670pmqng" path="res://Assets/UI/VendingMachine/CashRetriever.png" id="8_pkwve"]
+[ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
+[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
+[ext_resource type="PackedScene" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
+[ext_resource type="PackedScene" uid="uid://cusi423j6fnh2" path="res://Features/GUI/Vending/EmoteBubble.tscn" id="12_5lmun"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uti0s"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource("6_iyrxl")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5850f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sc5gj"]
+
+[node name="VendingMachineUi" type="Control" node_paths=PackedStringArray("_itemStackContainer", "_emoteBubble", "_slider", "_moneyLabel", "_withdrawButton", "_inventoryView")]
+custom_minimum_size = Vector2(256, 320)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mtkr8")
+_itemStackContainer = NodePath("VendingMachine/Items")
+_emoteBubble = NodePath("EmoteBubble")
+_emoteBubbleDuration = 1.0
+_fadeInDuration = 0.2
+_fadeOutDuration = 0.5
+_slider = NodePath("VendingMachine/MoneySlider")
+_moneyLabel = NodePath("VendingMachine/MoneyLabel")
+_withdrawButton = NodePath("VendingMachine/WithdrawButton")
+_inventoryView = NodePath("MinInventory")
+
+[node name="MinInventory" parent="." instance=ExtResource("2_vteot")]
+layout_mode = 1
+
+[node name="VendingMachine" type="Control" parent="."]
+custom_minimum_size = Vector2(256, 320)
+layout_mode = 1
+anchor_left = 0.078125
+anchor_top = 0.0611111
+anchor_right = 0.478125
+anchor_bottom = 0.95
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="VendingMachine"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_t32op")
+stretch_mode = 5
+
+[node name="Items" type="GridContainer" parent="VendingMachine"]
+layout_mode = 2
+anchor_left = 0.0625
+anchor_top = 0.184375
+anchor_right = 0.333984
+anchor_bottom = 0.470313
+offset_right = 73.5
+offset_bottom = 103.5
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VMItemSlotUI" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VMItemSlotUI2" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VMItemSlotUI3" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VMItemSlotUI4" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VMItemSlotUI5" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VMItemSlotUI6" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VMItemSlotUI7" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VMItemSlotUI8" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VMItemSlotUI9" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VMItemSlotUI10" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VMItemSlotUI11" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VMItemSlotUI12" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="NameLabel" type="Label" parent="VendingMachine"]
+visible = false
+custom_minimum_size = Vector2(128, 24)
+layout_mode = 2
+offset_left = 24.2492
+offset_top = 254.839
+offset_right = 152.249
+offset_bottom = 278.839
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneySlider" type="HSlider" parent="VendingMachine"]
+layout_mode = 2
+anchor_left = 0.0625
+anchor_top = 0.821875
+anchor_right = 0.625
+anchor_bottom = 0.871875
+offset_top = 3.05176e-05
+offset_bottom = 3.05176e-05
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_icons/grabber = ExtResource("5_v8xxq")
+theme_override_icons/grabber_highlight = ExtResource("5_v8xxq")
+theme_override_icons/grabber_disabled = ExtResource("5_v8xxq")
+theme_override_styles/slider = SubResource("StyleBoxTexture_uti0s")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_5850f")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_sc5gj")
+max_value = 2.0
+step = 0.25
+value = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MoneyLabel" type="RichTextLabel" parent="VendingMachine"]
+layout_mode = 2
+offset_left = 198.791
+offset_top = 267.143
+offset_right = 233.791
+offset_bottom = 280.143
+size_flags_horizontal = 4
+bbcode_enabled = true
+text = "[center]0[img=center,center,8x8]res://Assets/UI/Book/Icons/CoinIcon.png[/img][/center]"
+fit_content = true
+
+[node name="WithdrawButton" type="Button" parent="VendingMachine"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+offset_left = 188.0
+offset_top = 229.0
+offset_right = 244.0
+offset_bottom = 269.0
+icon = ExtResource("8_pkwve")
+flat = true
+icon_alignment = 1
+
+[node name="CursorHand" parent="." instance=ExtResource("9_28tje")]
+layout_mode = 1
+
+[node name="FocusIndicator" parent="." instance=ExtResource("10_2nqj0")]
+
+[node name="GlobalTooltip" parent="." instance=ExtResource("11_qfslm")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+
+[node name="EmoteBubble" parent="." instance=ExtResource("12_5lmun")]
+layout_mode = 1
+anchor_left = 0.324999
+anchor_top = 0.730556
+anchor_right = 0.373437
+anchor_bottom = 0.805556
