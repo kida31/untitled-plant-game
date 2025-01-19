@@ -21,6 +21,7 @@ offset_bottom = 670.0
 [node name="Weahter" parent="." instance=ExtResource("5_ctdgk")]
 
 [node name="DialogueView" parent="." instance=ExtResource("2_qr6u8")]
+visible = false
 
 [node name="Cheats" type="Node" parent="."]
 
