@@ -1,6 +1,5 @@
 ﻿using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.GUI.Book.Inventories;
 using untitledplantgame.GUI.Components;
 using untitledplantgame.Inventory;
 
@@ -28,7 +27,7 @@ public partial class NewInventoryItemView : Clickable, ITooltipable
 	public virtual string Title => ItemStack?.Name;
 	public virtual string Description => ItemStack?.ToolTipDescription;
 	public virtual Control Content => null;
-	public new virtual IItemStack ItemStack => _slotIndex < 0 ? null : _inventory?.GetItem(SlotIndex);
+	public IItemStack ItemStack => _slotIndex < 0 ? null : _inventory?.GetItem(SlotIndex);
 	
 	// Properties
 	public IInventory Inventory

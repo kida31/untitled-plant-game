@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.GUI.Book.Inventories;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.GUI.Items;

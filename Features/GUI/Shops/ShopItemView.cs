@@ -1,8 +1,6 @@
-using System.Resources;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.GUI.Items;
-using untitledplantgame.Inventory;
 
 namespace untitledplantgame.GUI.Shops;
 

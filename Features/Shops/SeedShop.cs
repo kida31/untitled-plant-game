@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
@@ -60,7 +58,7 @@ public class SeedShop : IShop
 
 	public IItemStack BuyItem(int slotIndex)
 	{
-		var item = Inventory.GetItem(slotIndex).Clone() as IItemStack;
+		var item = Inventory.GetItem(slotIndex).Clone();
 		item!.Amount = 1;
 		ShopStockChanged?.Invoke(Inventory.GetItems());
 		_logger.Debug("[Buy] ShopStockChanged");
