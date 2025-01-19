@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://csfwrdc81ybx0" path="res://Assets/Tilesets/TX Tileset Stone Ground.png" id="3_2cek8"]
 [ext_resource type="Texture2D" uid="uid://h83g282s043x" path="res://Assets/Overworld/Garden/ladder_tileset_improved.png" id="3_rcpjb"]
 [ext_resource type="Texture2D" uid="uid://ctomw1ove5828" path="res://Assets/Tilesets/TX Tileset Wall.png" id="4_5u7nl"]
-[ext_resource type="Texture2D" uid="uid://ct6xxe5qrpf5b" path="res://Assets/Overworld/Garden/front_wall (1).png" id="5_njf2j"]
 [ext_resource type="Texture2D" uid="uid://bvw5lymyjpgs2" path="res://Assets/Overworld/Garden/crates_tileset.png" id="6_m0mf6"]
 [ext_resource type="Texture2D" uid="uid://c22xfmspxhj70" path="res://Assets/Overworld/Garden/tileset_stones.png" id="7_l5mav"]
+[ext_resource type="Texture2D" uid="uid://canumkd4edu8q" path="res://Assets/Overworld/Garden/front_wall_prettier.png" id="7_sjjmn"]
 [ext_resource type="Texture2D" uid="uid://bg6sungsm67xq" path="res://Assets/Overworld/House/PlantFence.png" id="8_khsoa"]
 [ext_resource type="Texture2D" uid="uid://cpd5g3usnjwuo" path="res://Assets/Overworld/Garden/tileset_stones_improved.png" id="8_w65j4"]
 [ext_resource type="Texture2D" uid="uid://dempy0e7dsgb7" path="res://Assets/Overworld/Garden/small_planter_round.png" id="9_8wk0d"]
@@ -717,7 +717,7 @@ tile_set = SubResource("TileSet_ue6vt")
 
 [node name="FrontWall(1)" type="Sprite2D" parent="."]
 position = Vector2(640, 784)
-texture = ExtResource("5_njf2j")
+texture = ExtResource("7_sjjmn")
 
 [node name="WorldDecoration" type="TileMapLayer" parent="."]
 y_sort_enabled = true
