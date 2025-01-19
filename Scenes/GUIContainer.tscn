@@ -13,10 +13,6 @@
 
 [node name="SeedShopView" parent="." instance=ExtResource("2_y866b")]
 visible = false
-offset_left = 155.0
-offset_top = 50.0
-offset_right = 519.0
-offset_bottom = 670.0
 
 [node name="Weahter" parent="." instance=ExtResource("5_ctdgk")]
 
