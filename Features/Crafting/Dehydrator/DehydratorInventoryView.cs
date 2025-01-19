@@ -21,7 +21,7 @@ public partial class DehydratorInventoryView : Control
 
 	private void OnInsertingItem(NewInventoryItemView obj)
 	{
-		
+		//_dehydrator.InsertItemToSlot(obj);
 	}
 
 	public override void _Input(InputEvent @event)
