@@ -62,20 +62,27 @@ offset_left = 1.0
 offset_right = 97.0
 
 [node name="R2Button" parent="." instance=ExtResource("7_ucqdi")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 463.0
-offset_top = 296.0
-offset_right = 472.6
-offset_bottom = 300.978
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -10.0
+offset_bottom = 22.0002
+grow_horizontal = 0
+grow_vertical = 0
 Button = 7
 
 [node name="L2Button" parent="." instance=ExtResource("7_ucqdi")]
 layout_mode = 1
+anchor_left = 0.0714286
+anchor_top = 0.0361842
+anchor_right = 0.121429
+anchor_bottom = 0.125073
 offset_left = -32.0
-offset_top = 286.0
+offset_top = 283.0
 offset_right = -22.4
-offset_bottom = 290.978
+offset_bottom = 287.978
 Button = 6
