@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=11 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
 [ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
-[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
 [ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
 
 [node name="GameWorldContainer" type="Node2D"]
@@ -26,9 +25,6 @@ position = Vector2(750, 429)
 
 [node name="GenericItem2" parent="." instance=ExtResource("12_tpjy1")]
 position = Vector2(757, 448)
-
-[node name="Bed" parent="." instance=ExtResource("11_33dsb")]
-position = Vector2(888, 177)
 
 [node name="SeedShop" parent="." instance=ExtResource("2_w1s7m")]
 z_index = 2

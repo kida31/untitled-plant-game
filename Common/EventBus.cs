@@ -2,9 +2,11 @@ using System;
 using Godot;
 using untitledplantgame.Crafting;
 using untitledplantgame.Dialogue;
+using untitledplantgame.Dialogue.Models;
 using untitledplantgame.Inventory;
 using untitledplantgame.Plants;
 using untitledplantgame.Shops;
+using untitledplantgame.Vending;
 
 namespace untitledplantgame.Common;
 
@@ -71,9 +73,9 @@ public partial class EventBus : Node
 		OnSeedshopClosed?.Invoke();
 	}
 
-	public event Action<VendingMachine.VendingMachine> BeforeVendingMachineOpened;
+	public event Action<VendingMachine> BeforeVendingMachineOpened;
 
-	public void BeforeVendingMachineOpen(VendingMachine.VendingMachine vendingMachine)
+	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
 	}
@@ -81,16 +83,16 @@ public partial class EventBus : Node
 	//Dialogue
 
 	/// <summary>
-	///     Invoked when a dialogue is starting, passes the dialogue name
+	///     Invoked when a dialogue is starting, passes the dialogue object
 	/// </summary>
-	public event Action<string> StartingDialogue;
+	public event Action<DialogueResourceObject> StartingDialogue;
 
 	/// <summary>
-	///     Emitted when a dialogue is started for the first time
+	///     Emitted when a dialogue is started, passes the dialogue system
 	/// </summary>
 	public event Action<IDialogueSystem> InitialiseDialogue;
 
-	public void InvokeStartingDialogue(string obj)
+	public void InvokeStartingDialogue(DialogueResourceObject obj)
 	{
 		StartingDialogue?.Invoke(obj);
 	}

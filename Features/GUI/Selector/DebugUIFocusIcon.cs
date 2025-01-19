@@ -12,11 +12,30 @@ public partial class DebugUIFocusIcon : Label
 
 	public override void _Process(double delta)
 	{
-		var pos = _readPosFrom?.GetGlobalRect().GetCenter() ?? Vector2.Zero;
-		var size = _readSizeFrom.Size;
-		var tRect = _scriptOwner.FocusedControl?.GetGlobalRect();
-		var tPos = tRect?.GetCenter() ?? Vector2.Zero;
-		var tSize = tRect?.Size ?? Vector2.Zero;
+		// Parent object
+		var size = Vector2.Zero;
+		var pos = Vector2.Zero;
+		
+		// Targeted object (focused control)
+		var tSize = Vector2.Zero;
+		var tPos = Vector2.Zero;
+
+		if (IsInstanceValid(_readPosFrom))
+		{
+			pos = _readPosFrom.GetGlobalRect().GetCenter();
+		}
+
+		if (IsInstanceValid(_readSizeFrom))
+		{
+			size = _readSizeFrom.Size;
+		}
+
+		if (IsInstanceValid(_scriptOwner.FocusedControl))
+		{
+			var tRect = _scriptOwner.FocusedControl.GetGlobalRect();
+			tPos = tRect.GetCenter();
+			tSize = tRect.Size;
+		}
 
 		Text = $"Position: {pos.X:F1}x{pos.Y:F1}";
 		Text += $"\nTargetPos: {tPos.X:F1}x{tPos.Y:F1}";

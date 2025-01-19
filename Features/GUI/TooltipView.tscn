@@ -19,7 +19,7 @@ script = ExtResource("1_ejofp")
 _titleLabel = NodePath("MarginContainer/VBoxContainer/TitleLabel")
 _descriptionLabel = NodePath("MarginContainer/VBoxContainer/DescriptionLabel")
 _separator = NodePath("MarginContainer/VBoxContainer/HSeparator")
-_contentContainer = NodePath("MarginContainer/VBoxContainer/ContentContainer")
+_contentContainer = NodePath("MarginContainer/VBoxContainer/CustomContentHere")
 _referenceLabel = NodePath("MarginContainer/VBoxContainer/TitleLabel/TitleLabel2")
 metadata/_edit_use_anchors_ = true
 
@@ -73,6 +73,6 @@ fit_content = true
 scroll_active = false
 tab_size = 2
 
-[node name="ContentContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="CustomContentHere" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 3
