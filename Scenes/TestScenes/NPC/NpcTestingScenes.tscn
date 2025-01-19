@@ -23,13 +23,14 @@ _routines = [NodePath("WalkRoutine")]
 
 [node name="TalkRoutine" type="Node" parent="NpcBody2D/RoutinePlanner"]
 script = ExtResource("4_s323p")
+RoutineStartMinutes = 10
 
 [node name="TalkToPlayerTask" parent="NpcBody2D/RoutinePlanner/TalkRoutine" instance=ExtResource("6_fwegf")]
 _dialogueResourceObject = ExtResource("4_tyepw")
 
 [node name="WalkRoutine" type="Node" parent="NpcBody2D/RoutinePlanner"]
 script = ExtResource("4_s323p")
-RoutineStartMinutes = 10
+RoutineStartMinutes = 20
 
 [node name="MovementTaskTarget" parent="NpcBody2D/RoutinePlanner/WalkRoutine" instance=ExtResource("3_q8nv8")]
 position = Vector2(111, -73)
