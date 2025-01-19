@@ -53,10 +53,18 @@ public partial class DialogueUI : Control
 
 	private void ConnectDialogue(IDialogueSystem sys)
 	{
+		if(_dialogueSystem != null)
+		{
+			_dialogueSystem.OnDialogueEnd -= HideDialogueUi;
+			_dialogueSystem.OnDialogueBlockStarted -= OnDialogueBlockStarted;
+			_dialogueSystem.OnResponding -= DisplayResponses;
+			_dialogueSystem = null;
+		}
+		
 		_logger.Debug("Dialogue system connected." + sys);
 		_dialogueSystem = sys;
 		_dialogueSystem.OnDialogueBlockStarted += OnDialogueBlockStarted;
-		_dialogueSystem.OnDialogueEnd += o => HideDialogueUi();
+		_dialogueSystem.OnDialogueEnd += HideDialogueUi;
 		_dialogueSystem.OnResponding += DisplayResponses;
 	}
 
@@ -163,7 +171,7 @@ public partial class DialogueUI : Control
 		Visible = true;
 	}
 
-	private void HideDialogueUi()
+	private void HideDialogueUi(DialogueResourceObject _)
 	{
 		ClearResponses();
 		_currentDialogue = null;

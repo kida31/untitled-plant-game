@@ -34,13 +34,14 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 
 		EventBus.Instance.StartingDialogue += StartDialog;
+		
 		_logger.Debug("Initialised.");
 	}
 
 	public void StartDialog(DialogueResourceObject dialogue)
 	{
 		EventBus.Instance.InvokeInitialiseDialogue(this);
-
+		
 		if (dialogue == null)
 		{
 			_logger.Error("Dialogue is null.");

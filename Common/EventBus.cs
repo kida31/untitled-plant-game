@@ -83,12 +83,12 @@ public partial class EventBus : Node
 	//Dialogue
 
 	/// <summary>
-	///     Invoked when a dialogue is starting, passes the dialogue name
+	///     Invoked when a dialogue is starting, passes the dialogue object
 	/// </summary>
 	public event Action<DialogueResourceObject> StartingDialogue;
 
 	/// <summary>
-	///     Emitted when a dialogue is started for the first time
+	///     Emitted when a dialogue is started, passes the dialogue system
 	/// </summary>
 	public event Action<IDialogueSystem> InitialiseDialogue;
 
@@ -97,6 +97,7 @@ public partial class EventBus : Node
 		StartingDialogue?.Invoke(obj);
 	}
 
+	//Connect Dialogue System to UI. Should only be called once, when the game starts.
 	public void InvokeInitialiseDialogue(IDialogueSystem obj)
 	{
 		InitialiseDialogue?.Invoke(obj);
