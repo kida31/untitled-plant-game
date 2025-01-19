@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Scenes;
@@ -7,10 +8,18 @@ using untitledplantgame.Scenes;
 public partial class BlurController : Node
 {
 	public static BlurController Instance { get; private set; }
+	
+	public event Action BlurEnabled;
+	public event Action BlurDisabled;
 
-	[Export] private float _blurStrength;
+	[Export(PropertyHint.Range, "0.0,5.0")] private float _strength;
+	[Export(PropertyHint.Range,"0.0,2.0")] private float _transitionDuration;
+	
+	[ExportGroup("Setup")]
 	[Export] private BlurEffect _blurEffect;
 
+	private float _currentLod;
+	private Tween _tween; // Tween for strength transition
 	private Logger _logger;
 
 	public override void _Ready()
@@ -50,12 +59,43 @@ public partial class BlurController : Node
 	// Currently no public use.
 	private void EnableBlur()
 	{
-		_blurEffect.Strength = _blurStrength;
+		_tween?.Stop();
+		_tween?.Free();
+		
+		_tween = CreateTween();
+		_tween.TweenMethod(Callable.From<float>(_blurEffect.SetStrength), _blurEffect.Strength, _strength, _transitionDuration);
+		_tween.Finished += () => BlurEnabled?.Invoke();
 	}
 
 	// Currently no public use.
 	private void DisableBlur()
 	{
-		_blurEffect.Strength = 0;
+		_tween?.Stop();
+		_tween?.Free();
+
+		_tween = CreateTween();
+		_tween.TweenMethod(Callable.From<float>(_blurEffect.SetStrength), _blurEffect.Strength, 0, _transitionDuration);
+		_tween.Finished += () => BlurDisabled?.Invoke();
+	}
+	
+	private async Task EnableBlurAsync()
+	{
+		_tween?.Stop();
+		_tween?.Free();
+		
+		_tween = CreateTween();
+		_tween.TweenMethod(Callable.From<float>(_blurEffect.SetStrength), _blurEffect.Strength, _strength, _transitionDuration);
+		_tween.Finished += () => BlurEnabled?.Invoke();
+	}
+	
+	private async Task DisableBlurAsync()
+	{
+		_tween?.Stop();
+		_tween?.Free();
+
+		_tween = CreateTween();
+		_tween.TweenMethod(Callable.From<float>(_blurEffect.SetStrength), _blurEffect.Strength, 0, _transitionDuration);
+		await ToSignal(_tween, "finished");
+		BlurDisabled?.Invoke();
 	}
 }
