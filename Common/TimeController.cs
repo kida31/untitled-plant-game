@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Godot;
+using Godot.NativeInterop;
 
 namespace untitledplantgame.Common;
 
@@ -17,7 +19,7 @@ public partial class TimeController : Node
 	/// Singleton instance that's accessible from anywhere
 	public static TimeController Instance { get; private set; }
 
-	public long TimeOfDayInMinutes;
+	public int TimeOfDayInMinutes;
 	
 	public delegate void DayChangedHandler(int day);
 
@@ -27,6 +29,10 @@ public partial class TimeController : Node
 	public delegate void MinuteTickedHandler(int day, int hour, int minute);
 
 	public event MinuteTickedHandler MinuteTicked;
+
+	private event Action _clockBasedEventsInvoked;
+	
+	private readonly Dictionary<int, List<Action>> _scheduledEvents = new ();
 
 
 	/// <summary>
@@ -50,11 +56,18 @@ public partial class TimeController : Node
 			return;
 		}
 
+		_clockBasedEventsInvoked += InvokeClockBasedEvents;
+		
 		Instance = this;
 		CurrentSeconds = StartOfDaySeconds;
 		_wasNoon = false;
 		_logger = new Logger(this);
 		_logger.Debug($"Time initialized with {CurrentSeconds}");
+		
+		
+		AddEvent(8, 0, () => GD.Print("It's noon!"));
+		AddEvent(8, 0, () => GD.Print("Time to eat lunch!"));
+		AddEvent(9, 0, () => GD.Print("It's 6 PM!"));
 	}
 
 	/**
@@ -81,6 +94,48 @@ public partial class TimeController : Node
 		RecalculateTimeEvents();
 	}
 
+	public void AddEvent(int hour, int minute, Action action)
+	{
+		int eventTime = hour * 60 + minute;
+		
+		if (!_scheduledEvents.ContainsKey(eventTime))
+		{
+			_scheduledEvents[eventTime] = new List<Action>();
+		}
+
+		_scheduledEvents[eventTime].Add(action);
+	}
+
+	public void GoToNextDay()
+	{
+		FastForwardTo(StartOfDaySeconds);
+		_currentTimeMultiplier = InGameToRealTimeFastForwardMultiplier;
+	}
+
+	//Please remove this later
+	public void FastForwardFor(double duration)
+	{
+		Assert.AssertTrue(duration > 0);
+		_fastForwardDuration = duration;
+	}
+
+	public void FastForwardTo(double targetTime)
+	{
+		Assert.AssertTrue(targetTime < SecondsPerDay, "Target time is greater than a day");
+		FastForwardFor((SecondsPerDay + targetTime - CurrentSeconds) % SecondsPerDay);
+	}
+
+	private void InvokeClockBasedEvents()
+	{
+		if (_scheduledEvents.ContainsKey(TimeOfDayInMinutes))
+		{
+			foreach (var action in _scheduledEvents[TimeOfDayInMinutes])
+			{
+				action?.Invoke();
+			}
+		}
+	}
+	
 	/**
 	 * TODO: calculates in-game time every time tick (not every frame, as calculated in _Process())
 	 * emits a signal with the current time
@@ -109,6 +164,8 @@ public partial class TimeController : Node
 		{
 			_currentMinute = minute;
 			MinuteTicked?.Invoke(_currentDay, hour, minute);
+			_clockBasedEventsInvoked?.Invoke();
+			GD.Print(TimeOfDayInMinutes);
 		}
 
 		if (currentDayMinutes >= 12 * 60 && !_wasNoon)
@@ -122,24 +179,5 @@ public partial class TimeController : Node
 			
 			TimeOfDayInMinutes = 0;
 		}
-	}
-
-	public void GoToNextDay()
-	{
-		FastForwardTo(StartOfDaySeconds);
-		_currentTimeMultiplier = InGameToRealTimeFastForwardMultiplier;
-	}
-
-	//Please remove this later
-	public void FastForwardFor(double duration)
-	{
-		Assert.AssertTrue(duration > 0);
-		_fastForwardDuration = duration;
-	}
-
-	public void FastForwardTo(double targetTime)
-	{
-		Assert.AssertTrue(targetTime < SecondsPerDay, "Target time is greater than a day");
-		FastForwardFor((SecondsPerDay + targetTime - CurrentSeconds) % SecondsPerDay);
 	}
 }
