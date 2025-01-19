@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.ExtensionMethods;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Database;
@@ -121,7 +122,9 @@ public partial class BookView : Control
 			Show();	
 			BlurController.Instance.BlurEnabled -= OnBlurFinished;
 		}
-		
+
+		// this.FadeIn(0.5f);
+		Show();
 	}
 
 	private void HideBook()

@@ -60,7 +60,6 @@ public partial class BlurController : Node
 	public void EnableBlur()
 	{
 		_tween?.Stop();
-		_tween?.Free();
 		
 		_tween = CreateTween();
 		_tween.TweenMethod(Callable.From<float>(_blurEffect.SetStrength), _blurEffect.Strength, _strength, _transitionDuration);
@@ -71,7 +70,6 @@ public partial class BlurController : Node
 	public void DisableBlur()
 	{
 		_tween?.Stop();
-		_tween?.Free();
 
 		_tween = CreateTween();
 		_tween.TweenMethod(Callable.From<float>(_blurEffect.SetStrength), _blurEffect.Strength, 0, _transitionDuration);
@@ -81,7 +79,6 @@ public partial class BlurController : Node
 	public async Task EnableBlurAsync()
 	{
 		_tween?.Stop();
-		_tween?.Free();
 		
 		_tween = CreateTween();
 		_tween.TweenMethod(Callable.From<float>(_blurEffect.SetStrength), _blurEffect.Strength, _strength, _transitionDuration);
