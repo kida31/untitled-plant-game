@@ -68,7 +68,7 @@ public partial class FollowControlHook : Node
 
 	public override void _Process(double delta)
 	{
-		if (_target == null && !IsInstanceValid(_target)) return;
+		if (_target == null || !IsInstanceValid(_target)) return;
 		if (!_target.HasFocus())
 		{
 			_target = null;
