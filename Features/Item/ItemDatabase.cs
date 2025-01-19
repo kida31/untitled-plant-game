@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Common;
@@ -157,17 +156,18 @@ public class ItemDatabase
 	{
 		return new List<IItemStack>
 		{
-			new ItemStack()
-			{
-				Id = "unknownSeedTemplate",
-				Name = "Unknown Seed",
-				ToolTipDescription = "An unknown seed.",
-				WikiDescription = "An unknown seed. Plant it and water it regularly to find out what it produces!",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
-				Category = ItemCategory.Seed,
-				BaseValue = 5,
-				Components = new Array<AComponent> { new SeedComponent("") },
-			},
+			// TODO: This will be implemented as a separate feature
+			// new ItemStack()
+			// {
+			// 	Id = "unknownSeedTemplate",
+			// 	Name = "Unknown Seed",
+			// 	ToolTipDescription = "An unknown seed.",
+			// 	WikiDescription = "An unknown seed. Plant it and water it regularly to find out what it produces!",
+			// 	Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
+			// 	Category = ItemCategory.Seed,
+			// 	BaseValue = 5,
+			// 	Components = new Array<AComponent> { new SeedComponent("") },
+			// },
 			new ItemStack()
 			{
 				Id = "chuberrySeed",
