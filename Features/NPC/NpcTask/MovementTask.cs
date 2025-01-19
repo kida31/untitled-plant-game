@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Godot;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.NPC.NpcTask;
 
@@ -16,26 +17,32 @@ public partial class MovementTask :  Area2D, INpcTask
 	private bool DestinationReached { get; set; }
 	private event EventHandler TaskStarted;
 	private event EventHandler TaskFinished;
-	private Npc _npcExecutingTheseTasks;
+	private Npc _npcExecutingThisTasks;
+	private Logger _logger;
 	
 	public override void _Ready()
 	{
 		BodyEntered += OnBodyEntered;
+		_logger = new Logger(this);
 	}
 
 	public void InitializeTask(Npc owningNpc)
 	{
-		_npcExecutingTheseTasks = owningNpc;
+		_npcExecutingThisTasks = owningNpc;
+		_logger.Debug("Task assigned " + _npcExecutingThisTasks.GetNpcName() + " as it's owner.");
+
 	}
 
 	public void StartTask()
 	{
 		TaskStarted?.Invoke(this, EventArgs.Empty);
+		_logger.Info("MovementTask started.");
 	}
 
 	public void FinishTask()
 	{
 		TaskFinished?.Invoke(this, EventArgs.Empty);
+		_logger.Info("MovementTask finished.");
 	}
 
 	public bool IsTaskActive()
@@ -45,21 +52,24 @@ public partial class MovementTask :  Area2D, INpcTask
 
 	public void InterruptCurrentTask()
 	{
-		_lastValidVelocity = _npcExecutingTheseTasks.Velocity;
-			
-		_npcExecutingTheseTasks.Velocity = Vector2.Zero;
+		_lastValidVelocity = _npcExecutingThisTasks.Velocity;
+		
+		_npcExecutingThisTasks.Velocity = Vector2.Zero;
+		_logger.Debug("MovementTask was interrupted!");
+
 	}
 
 	public void ResumeCurrentTask()
 	{
-		_npcExecutingTheseTasks.Velocity = _lastValidVelocity;
+		_npcExecutingThisTasks.Velocity = _lastValidVelocity;
 		_lastValidVelocity = new Vector2();
+		_logger.Debug("MovementTask was resumed");
 	}
 
 	private void OnBodyEntered(Node2D npc)
 	{
 		var npcInstance = npc as Npc;
-		if (npcInstance == _npcExecutingTheseTasks)
+		if (npcInstance == _npcExecutingThisTasks)
 		{
 			DestinationReached = true;
 			FinishTask();
@@ -68,14 +78,15 @@ public partial class MovementTask :  Area2D, INpcTask
 	
 	public async Task ExecuteNpcTask()
 	{
+		_logger.Debug("Async Task execution started.");
 		await Task.Yield();
 		StartTask();
 		
-		var newVelocity = Position - _npcExecutingTheseTasks.Position;
-		_npcExecutingTheseTasks.Velocity = newVelocity.Normalized() * 100;
+		var newVelocity = Position - _npcExecutingThisTasks.Position;
+		_npcExecutingThisTasks.Velocity = newVelocity.Normalized() * 100;
 		
 		await WaitForConditionAsync();
-		_npcExecutingTheseTasks.Velocity = Vector2.Zero;
+		_npcExecutingThisTasks.Velocity = Vector2.Zero;
 	}
 	
 	private Task WaitForConditionAsync()
@@ -89,7 +100,7 @@ public partial class MovementTask :  Area2D, INpcTask
 			{
 				return;
 			}
-
+			_logger.Debug("The Npc reached the task's destination.");
 			tcs.TrySetResult(true);
 			TaskFinished -= onConditionMet;
 		};

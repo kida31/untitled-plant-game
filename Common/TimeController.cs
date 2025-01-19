@@ -63,11 +63,6 @@ public partial class TimeController : Node
 		_wasNoon = false;
 		_logger = new Logger(this);
 		_logger.Debug($"Time initialized with {CurrentSeconds}");
-		
-		
-		AddEvent(8, 0, () => GD.Print("It's noon!"));
-		AddEvent(8, 0, () => GD.Print("Time to eat lunch!"));
-		AddEvent(9, 0, () => GD.Print("It's 6 PM!"));
 	}
 
 	/**
@@ -165,7 +160,6 @@ public partial class TimeController : Node
 			_currentMinute = minute;
 			MinuteTicked?.Invoke(_currentDay, hour, minute);
 			_clockBasedEventsInvoked?.Invoke();
-			GD.Print(TimeOfDayInMinutes);
 		}
 
 		if (currentDayMinutes >= 12 * 60 && !_wasNoon)

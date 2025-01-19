@@ -14,27 +14,27 @@ public partial class NpcRoutinePlanner : Node
 	[Export] private Array<NpcRoutine> _routines;
 	
 	public INpcTask ActiveTask;
+	private Logger _logger;
 	
 	public override void _Ready()
 	{
 		ExecuteAllRoutines(); 
+		_logger = new Logger(this);
 	}
 
 	public Npc GetNpcExecutingRoutines()
 	{
 		return _npcExecutingRoutines;
 	}
-
-	public void SetActiveTask(INpcTask task)
-	{
-		ActiveTask = task;
-	}
 	
 	private async void ExecuteAllRoutines()
 	{
-		await Task.Delay(10); // Script execution order
-		
-		EventBus.Instance.NpcDialogueWithPlayerStarted((AnimatedSprite2D) _npcExecutingRoutines.GetNode("PortraitSprite2D"));
+		await Task.Delay(16); // Script execution order delay needed
+		_logger.Debug("Startin");
+		EventBus.Instance.NpcDialogueWithPlayerStarted(
+			(AnimatedSprite2D) _npcExecutingRoutines.GetNode("PortraitSprite2D"),
+			_npcExecutingRoutines.GetNpcName()
+			);
 		
 		foreach (var npcRoutine in _routines)
 		{

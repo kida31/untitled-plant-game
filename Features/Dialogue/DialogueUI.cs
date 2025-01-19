@@ -38,7 +38,7 @@ public partial class DialogueUI : Control
 		AddChild(_dialogueAnimation);
 
 		//Events
-		EventBus.Instance.OnNpcStartDialogue += ChangeToNpcPortrait;
+		EventBus.Instance.OnNpcStartDialogue += ChangeToIdentity;
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
 		_logger.Debug("Subscribed to dialogue system intialising.");
 		_skipCooldownTimer.Timeout += () => _smashable = true;
@@ -69,10 +69,12 @@ public partial class DialogueUI : Control
 		_dialogueSystem.OnResponding += DisplayResponses;
 	}
 
-	private void ChangeToNpcPortrait(AnimatedSprite2D portrait)
+	private void ChangeToIdentity(AnimatedSprite2D portrait, string npcName)
 	{
 		_animatedSprite2D.SpriteFrames = portrait.SpriteFrames;
-		var r = _animatedSprite2D.SpriteFrames;
+		var save = _animatedSprite2D.SpriteFrames;
+
+		_nameLabel.Text = npcName;
 	}
 
 	private void OnDialogueBlockStarted(DialogueResourceObject dialogue)

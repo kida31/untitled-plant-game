@@ -23,11 +23,14 @@ public partial class NpcRoutine : Node
 	private NpcRoutinePlanner _owningRoutinePlanner;
 	private List<INpcTask> _npcTasks;
 	private event EventHandler RightTimeOfDayReached;
+	private Logger _logger;
 
 	public override void _Ready()
 	{
+		_logger = new Logger(this);
 		if (RoutineTrigger == Options.TimeOfDay)
 		{
+			_logger.Debug("This NpcRoutine will be triggered at: " + RoutineStartHours + "h : " + RoutineStartMinutes + "min.");
 			TimeController.Instance.AddEvent(
 				RoutineStartHours, 
 				RoutineStartMinutes, 
@@ -53,8 +56,13 @@ public partial class NpcRoutine : Node
 	
 	public async Task ExecuteAllTasks()
 	{
+		_logger.Debug("Starting to execute all tasks in this routine.");
 		await Task.Yield();
-		await WaitUntilCorrectTimeOfDay();
+	
+		if (RoutineTrigger == Options.TimeOfDay)
+		{
+			await WaitUntilCorrectTimeOfDay();
+		}
 		
 		foreach (var npcTask in _npcTasks)
 		{

@@ -21,9 +21,12 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 	private NpcRoutinePlanner _routinePlanner;
 	private IDialogueSystem _dialogueSystem;
 	private NpcPlayerInteraction _npcInteraction;
+	
+	private Logger _logger;
 
 	public override void _Ready()
 	{
+		_logger = new Logger(this);
 		_routinePlanner = (NpcRoutinePlanner) GetParent(); // We will enforce this as a soft rule ⇒ RoutinePlanner MUST be the parent!
 		
 		_npcInteraction = (NpcPlayerInteraction) _routinePlanner.GetParent().FindChild("InteractionNode");
@@ -39,12 +42,11 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 	private void StartDialogue()
 	{
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
-		EventBus.Instance.InvokeStartingDialogue(
-			_dialogueResourceObject[new Random().Next(_dialogueResourceObject.Count)]._dialogueId);
+		EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject[new Random().Next(_dialogueResourceObject.Count)]);
 		TaskStarted?.Invoke(this, EventArgs.Empty);
 		
 		_routinePlanner.ActiveTask?.InterruptCurrentTask();
-		
+		_logger.Info("Player stopped the current routine by starting a Dialogue with an Npc.");
 		ResumeRoutineIfFinished();
 	}
 	
@@ -56,6 +58,7 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 		TaskFinished?.Invoke(this, EventArgs.Empty);
 		
 		_routinePlanner.ActiveTask?.ResumeCurrentTask();
+		_logger.Info("The Npc is now resuming it's original task.");
 	}
 
 	public async void ResumeRoutineIfFinished()

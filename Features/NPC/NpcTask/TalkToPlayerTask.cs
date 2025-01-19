@@ -26,19 +26,29 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 	private Npc _npcExecutingThisTasks;
 	private NpcPlayerInteraction _npcInteraction;
 	private IDialogueSystem _dialogueSystem;
+	
+	private Logger _logger;
+
+	public override void _Ready()
+	{
+		base._Ready();
+		_logger = new Logger(this);
+	}
 
 	public void InitializeTask(Npc owningNpc)
 	{
 		_npcExecutingThisTasks = owningNpc;
 		_npcInteraction = (NpcPlayerInteraction) _npcExecutingThisTasks.FindChild("InteractionNode");
 		_npcInteraction.InteractionEvent += StartTask;
+		_logger.Debug("Task assigned " + _npcExecutingThisTasks.GetNpcName() + " as it's owner.");
 	}
 
 	public void StartTask()
 	{
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
-		EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject._dialogueId);
+		EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject);
 		TaskStarted?.Invoke(this, EventArgs.Empty);
+		_logger.Info("TalkToPlayerTask started.");
 	}
 
 	public void FinishTask()
@@ -48,6 +58,7 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 
 		DialogueFinished = true;
 		TaskFinished?.Invoke(this, EventArgs.Empty);
+		_logger.Info("TalkToPlayerTask finished.");
 	}
 
 	public bool IsTaskActive()
@@ -57,20 +68,17 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 
 	public void InterruptCurrentTask()
 	{
-		// The player can't escape a dialogue. If this method gets called, something went wrong.
-		// Logger
-		throw new Exception();
+		_logger.Error("TalkToPlayerTask can't be interrupted! The player has to finish the dialogue first! Something went wrong.");
 	}
 
 	public void ResumeCurrentTask()
 	{
-		// The player can't escape a dialogue. If this method gets called, something went wrong.
-		// Logger
-		throw new Exception();
+		_logger.Error("TalkToPlayerTask can't be resumed, since it can't be interrupted!");
 	}
 	
 	public async Task ExecuteNpcTask()
 	{
+		_logger.Debug("Async Task execution started.");
 		await Task.Yield();
 		StartTask();
 		
@@ -94,7 +102,7 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 			{
 				return;
 			}
-			
+			_logger.Debug("Dialogue is finished! Async Condition: 'DialogueFinish' is true.");
 			tcs.TrySetResult(true);
 			TaskFinished -= onConditionMet;
 		};

@@ -61,7 +61,3 @@ position = Vector2(29, 121)
 
 [node name="DialogueView" parent="CanvasLayer" instance=ExtResource("8_qtpvf")]
 visible = false
-offset_left = 28.0
-offset_top = 223.0
-offset_right = 28.0
-offset_bottom = 223.0

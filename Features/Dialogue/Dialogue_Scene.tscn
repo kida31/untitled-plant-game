@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cc8tr4q35n0q8"]
+[gd_scene load_steps=10 format=3 uid="uid://cc8tr4q35n0q8"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/DialogueUI.cs" id="1_hawac"]
 [ext_resource type="Texture2D" uid="uid://o4fvncrv04mo" path="res://Assets/Sprites/damage.png" id="2_cnal3"]
 [ext_resource type="Texture2D" uid="uid://be34y66w0usqf" path="res://Assets/UI/chatbox_rounded.png" id="3_2ukc1"]
-[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="3_rc67y"]
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_soyak"]
@@ -57,57 +56,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7dwi"]
-atlas = ExtResource("3_rc67y")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p7tke"]
-atlas = ExtResource("3_rc67y")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hce5a"]
-atlas = ExtResource("3_rc67y")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4r63v"]
-atlas = ExtResource("3_rc67y")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_spuxc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n7dwi")
-}],
-"loop": true,
-"name": &"angry",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p7tke")
-}],
-"loop": true,
-"name": &"happy",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hce5a")
-}],
-"loop": true,
-"name": &"normal",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4r63v")
-}],
-"loop": true,
-"name": &"sad",
-"speed": 5.0
-}]
-
 [node name="DialogueView" type="Control" node_paths=PackedStringArray("_nameLabel", "_dialogueTextLabel", "_animatedSprite2D", "_responseContainer")]
 layout_mode = 3
 anchors_preset = 15
@@ -121,19 +69,11 @@ _dialogueTextLabel = NodePath("DialogueField/MarginContainer/DialogueText")
 _animatedSprite2D = NodePath("Portrait")
 _responseContainer = NodePath("Responses")
 
-[node name="Portrait_O" type="AnimatedSprite2D" parent="."]
-visible = false
+[node name="Portrait" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(169, 142)
 sprite_frames = SubResource("SpriteFrames_3m0r1")
 animation = &"happy"
-
-[node name="Portrait" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(91.5, -48.25)
-scale = Vector2(4.7625, 4.50625)
-sprite_frames = SubResource("SpriteFrames_spuxc")
-animation = &"angry"
 
 [node name="Responses" type="VBoxContainer" parent="."]
 layout_mode = 1
