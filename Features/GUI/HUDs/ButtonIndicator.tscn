@@ -1,9 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://s5ddvfj7hgkj"]
 
 [ext_resource type="Script" path="res://Features/GUI/HUDs/ButtonIndicator.cs" id="1_wwa2o"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dc7cs"]
-draw_center = false
+[ext_resource type="Texture2D" uid="uid://bvfdksdnr48h7" path="res://Assets/UI/Buttons/XBOX/A_default.png" id="2_emypu"]
+[ext_resource type="Texture2D" uid="uid://dab1crbj4ualc" path="res://Assets/UI/Buttons/XBOX/A_pressed.png" id="3_bs1oq"]
 
 [sub_resource type="Animation" id="Animation_irdbn"]
 resource_name = "FadeOut"
@@ -59,53 +58,28 @@ _data = {
 "Released": SubResource("Animation_0ipg7")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k634"]
-bg_color = Color(0.828753, 0.841183, 0.850241, 0.611765)
-corner_radius_top_left = 31
-corner_radius_top_right = 31
-corner_radius_bottom_right = 31
-corner_radius_bottom_left = 31
-corner_detail = 16
-
-[node name="InputIndicator" type="PanelContainer" node_paths=PackedStringArray("_textLabel", "_animationPlayer")]
-custom_minimum_size = Vector2(64, 64)
-offset_right = 64.0
-offset_bottom = 44.0
+[node name="InputIndicator" type="MarginContainer" node_paths=PackedStringArray("_animationPlayer", "_textureButton")]
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = -1
+anchor_right = 0.05
+anchor_bottom = 0.0888889
 size_flags_horizontal = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_dc7cs")
 script = ExtResource("1_wwa2o")
-_textLabel = NodePath("MarginContainer/idontknowwhytextlabelisoffcenter/Label")
 _animationPlayer = NodePath("AnimationPlayer")
+_textureButton = NodePath("TextureButton")
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_57xv3")
 }
 
-[node name="CircleBG" type="Panel" parent="."]
+[node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5k634")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 13
-mouse_filter = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
-
-[node name="idontknowwhytextlabelisoffcenter" type="MarginContainer" parent="MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_bottom = 2
-
-[node name="Label" type="Label" parent="MarginContainer/idontknowwhytextlabelisoffcenter"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Y"
-horizontal_alignment = 1
-vertical_alignment = 1
+toggle_mode = true
+texture_normal = ExtResource("2_emypu")
+texture_pressed = ExtResource("3_bs1oq")
+stretch_mode = 0

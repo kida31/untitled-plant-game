@@ -25,7 +25,7 @@ public interface IItemStack
 	Texture2D Icon { get; set; }
 
 	/// <summary>
-	///     The description of the item
+	///     The short description of the item
 	/// </summary>
 	string ToolTipDescription { get; set; }
 	
@@ -103,4 +103,27 @@ public interface IItemStack
 	public bool IsIdentical(IItemStack itemStack);
 
 	IItemStack Clone();
+	
+	// Extras for convenience
+	
+	/// <summary>
+	///		Subtracts the amount of the given item stack from this item stack. Returns a new item stack with the result.
+	/// </summary>
+	/// <param name="that"></param>
+	/// <returns></returns>
+	/// <exception cref="ArgumentException"></exception>
+	public sealed IItemStack Subtract(IItemStack that)
+	{
+		if (!HasSameIdAndProps(that))
+		{
+			throw new System.ArgumentException("Cannot subtract different items");
+		}
+		if (Amount < that.Amount)
+		{
+			throw new System.ArgumentException("Cannot subtract more than available");
+		}
+		var selfClone = Clone();
+		selfClone.Amount -= that.Amount;
+		return selfClone;
+	}
 }

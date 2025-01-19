@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=37 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="Texture2D" uid="uid://xmkgwv2sjtus" path="res://Assets/Sprites/ExamplePlayerSprite.png" id="2_ii4t3"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Features/Player/StateIdle.cs" id="5_k3tas"]
 [ext_resource type="Script" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
 [ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
-[ext_resource type="Script" path="res://Features/Player/InteractablesManager.cs" id="7_pko3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uchbd"]
 size = Vector2(26, 12)
@@ -302,10 +301,9 @@ script = ExtResource("7_lrvm3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ryxll")
 
-[node name="InteractablesManager" type="Node" parent="Area2D" node_paths=PackedStringArray("_player")]
-script = ExtResource("7_pko3m")
-_player = NodePath("../..")
+[node name="InteractablesManager" type="Node" parent="Area2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -40)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0

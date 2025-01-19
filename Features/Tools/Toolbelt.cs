@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Tools;
 
@@ -53,7 +55,7 @@ public class Toolbelt
         }
         else
         {
-            _toolIndex = (_toolIndex + _tools.Length + 1) % _tools.Length;
+            _toolIndex = (_toolIndex + _tools.Length - 1) % _tools.Length;
             _logger.Info("Switch to tool: " + CurrentTool);
             WentToPreviousTool?.Invoke();
             ToolChanged?.Invoke(CurrentTool);

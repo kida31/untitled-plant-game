@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://ciy3cfmtd600v"]
+[gd_scene load_steps=51 format=4 uid="uid://ciy3cfmtd600v"]
 
 [ext_resource type="Script" path="res://Features/Plants/Soil/SoilMap.cs" id="1_uo15o"]
 [ext_resource type="Texture2D" uid="uid://capj2kjiyfndo" path="res://Assets/Tilesets/TX Tileset Grass.png" id="1_y6de5"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ma3gcmjjv50o" path="res://Assets/OverworldAssets/GardenDecoration/fence_side_less_shine.png" id="16_khlja"]
 [ext_resource type="Texture2D" uid="uid://cv6hjqm0nnrau" path="res://Assets/Tilesets/soiltiles_tileset_better_rgb.png" id="16_mugcb"]
 [ext_resource type="Script" path="res://Features/Plants/PlantMap.cs" id="17_qgpau"]
+[ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="18_eh65c"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_jas7t"]
 tile_data = PackedInt32Array(0, 2, 0, 65536, 2, 1, 1, 65538, 0, 65537, 65538, 1)
@@ -506,3 +507,7 @@ script = ExtResource("17_qgpau")
 
 [node name="MarkerNode" type="Node2D" parent="."]
 position = Vector2(458, 346)
+
+[node name="Door" parent="." instance=ExtResource("18_eh65c")]
+position = Vector2(400, 562)
+entryDoorName = "RoofHouse"

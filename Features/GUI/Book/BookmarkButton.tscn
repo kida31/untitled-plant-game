@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://blty0r6y6jxn3"]
+
+[ext_resource type="Script" path="res://Features/GUI/Book/BookmarkButton.cs" id="1_82iwr"]
+
+[node name="BookmarkButton" type="MarginContainer" node_paths=PackedStringArray("_rectActive", "_rectInactive")]
+custom_minimum_size = Vector2(17, 25)
+offset_right = 17.0
+offset_bottom = 56.0
+focus_mode = 2
+script = ExtResource("1_82iwr")
+_rectActive = NodePath("Active")
+_rectInactive = NodePath("Inactive")
+
+[node name="Inactive" type="NinePatchRect" parent="."]
+layout_mode = 2
+patch_margin_top = 3
+patch_margin_bottom = 19
+
+[node name="Active" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 2
+patch_margin_top = 3
+patch_margin_bottom = 19
+axis_stretch_vertical = 2

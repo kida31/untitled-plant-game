@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://ikmkfkp11t0t"]
+
+[ext_resource type="Script" path="res://Features/GUI/Selector/UIFocusIcon.cs" id="1_7c43y"]
+[ext_resource type="Script" path="res://Features/GUI/Hooks/CopySizeHook.cs" id="3_hntjl"]
+[ext_resource type="Script" path="res://Features/GUI/Hooks/FollowControlHook.cs" id="3_n0srx"]
+[ext_resource type="Texture2D" uid="uid://dro7ag82k0lgb" path="res://Assets/UI/Book/Icons/ItemSelectorLeft.png" id="4_rj1ek"]
+[ext_resource type="Texture2D" uid="uid://1kh2uoaq4d68" path="res://Assets/UI/Book/Icons/ItemSelectorRight.png" id="5_iw1x1"]
+[ext_resource type="Script" path="res://Features/GUI/Selector/DebugUIFocusIcon.cs" id="6_wrko2"]
+
+[node name="FocusIndicator" type="Control" node_paths=PackedStringArray("_sizeHook", "_followHook")]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_7c43y")
+_sizeHook = NodePath("LocalDiv/CopySizeHook")
+_followHook = NodePath("FollowHook")
+
+[node name="FollowHook" type="Node" parent="."]
+script = ExtResource("3_n0srx")
+SmoothingFactor = 20.0
+
+[node name="LocalDiv" type="BoxContainer" parent="."]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="CopySizeHook" type="Node" parent="LocalDiv"]
+script = ExtResource("3_hntjl")
+
+[node name="Margin" type="MarginContainer" parent="LocalDiv"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="TextureRect" type="NinePatchRect" parent="LocalDiv/Margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("4_rj1ek")
+patch_margin_left = 18
+patch_margin_top = 20
+
+[node name="TextureRect2" type="NinePatchRect" parent="LocalDiv/Margin"]
+layout_mode = 2
+texture = ExtResource("5_iw1x1")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_right = 20
+patch_margin_bottom = 19
+
+[node name="DebugLabel" type="Label" parent="." node_paths=PackedStringArray("_scriptOwner", "_readPosFrom", "_readSizeFrom")]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 14.0
+text = "100x100"
+script = ExtResource("6_wrko2")
+_scriptOwner = NodePath("..")
+_readPosFrom = NodePath("..")
+_readSizeFrom = NodePath("../LocalDiv")

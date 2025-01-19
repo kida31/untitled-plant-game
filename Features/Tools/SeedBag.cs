@@ -21,7 +21,7 @@ public class SeedBag : Tool
 	protected override void OnStart(Player.Player user)
 	{
 		var inventory = user.Inventory.GetInventory(ItemCategory.Seed);
-		CurrentSeedItem = inventory.FirstOrDefault();
+		CurrentSeedItem = inventory.FirstOrDefault() as ItemStack; // This might break if ItemStack is not properly updated (independent of IItemstack)
 
 		if(CurrentSeedItem == null)
 		{
@@ -38,7 +38,15 @@ public class SeedBag : Tool
 	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
 	{
 		var closestTile = hits.OfType<SoilTile>().MinBy(p => p.GlobalPosition.DistanceSquaredTo(user.GlobalPosition));
-		if (closestTile == null || IsSoilOccupied(closestTile)) return false;
+		if (closestTile == null)
+		{
+			_logger.Warn("There is no soil tile to plant on");
+			return false;
+		}
+		if (IsSoilOccupied(closestTile))
+		{
+			return false;
+		}
 		
 		return hits.OfType<SoilTile>().Any();
 	}
@@ -46,7 +54,15 @@ public class SeedBag : Tool
 	protected override bool OnHit(Player.Player user, Node2D[] hits)
 	{
 		var closestTile = hits.OfType<SoilTile>().MinBy(p => p.GlobalPosition.DistanceSquaredTo(user.GlobalPosition));
-		if (closestTile == null || IsSoilOccupied(closestTile)) return false;
+		if (closestTile == null)
+		{
+			_logger.Warn("There is no soil tile to plant on");
+			return false;
+		}
+		if (IsSoilOccupied(closestTile))
+		{
+			return false;
+		}
 		
 		if(CurrentSeedItem == null)
 		{
@@ -63,7 +79,7 @@ public class SeedBag : Tool
 		var currentPlant = Plant.Create(plantName);
 		closestTile.PlantSeed(currentPlant);
 		
-		var newSeedItem = (ItemStack) CurrentSeedItem.Clone();
+		var newSeedItem = CurrentSeedItem.Clone();
 		newSeedItem.Amount = 1;
 		user.Inventory.RemoveItem(newSeedItem);
 		
@@ -72,10 +88,21 @@ public class SeedBag : Tool
 		return true;
 	}
 
-	private static bool IsSoilOccupied(SoilTile closestTile)
+	private bool IsSoilOccupied(SoilTile closestTile)
 	{
-		var plants = closestTile.GetTree().GetNodesInGroup(GameGroup.Plants).OfType<Plant>();
-		return plants.Any(plant => plant.Tile == closestTile);
+		var plants = closestTile.GetTree().GetNodesInGroup(GameGroup.Plants).OfType<Plant>().ToArray();
+		foreach (var plant in plants)
+		{
+			if (plant.Tile != closestTile)
+			{
+				continue;
+			}
+
+			_logger.Warn($"Soil tile is already occupied by {plant.PlantName}");
+			return true;
+		}
+
+		return false;
 	}
 
 	protected override void OnMiss(Player.Player user)

@@ -1,6 +1,6 @@
-// using System.Text.RegularExpressions;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Interaction;
 
 // Alternative name AAreaInteractable, to emphasize that it is using an Area
 /// <summary>
@@ -27,14 +27,20 @@ public abstract partial class AInteractable : Area2D, IInteractable
 	}
 
 	public abstract void Interact();
-
-	protected virtual void OnBodyExited(Node body)
-	{
-		InteractionManager.Instance.UnregisterArea(this);
-	}
-
+	
 	private void OnBodyEntered(Node body)
 	{
-		InteractionManager.Instance.RegisterArea(this);
+		if (body.IsInGroup("player"))
+		{
+			InteractionManager.Instance.RegisterArea(this);
+		}
+	}
+	
+	protected virtual void OnBodyExited(Node body)
+	{
+		if (body.IsInGroup("player"))
+		{
+			InteractionManager.Instance.UnregisterArea(this);
+		}
 	}
 }

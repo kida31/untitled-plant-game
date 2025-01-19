@@ -32,7 +32,7 @@ public class ItemDatabase
 		ItemStacks = FillDataBaseItemStackList();
 		Recipes = FillDataBaseRecipeList();
 	}
-	
+
 
 	/// <summary>
 	/// Looks for an ItemStack with the specified ID. Returns a clone of the ItemStack.
@@ -91,7 +91,7 @@ public class ItemDatabase
 	{
 		throw new NotImplementedException();
 	}
-	
+
 	public List<Recipe> GetAllRecipesWithItemStacks(List<IItemStack> itemStacks, List<Recipe> externalRecipeList)
 	{
 		var recipeSearchList = externalRecipeList ?? Recipes;
@@ -152,7 +152,7 @@ public class ItemDatabase
 		return new List<Recipe>();
 	}
 
-	
+
 	private List<IItemStack> FillDataBaseItemStackList()
 	{
 		return new List<IItemStack>
@@ -166,7 +166,7 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				Components = new Array<AComponent> {new SeedComponent("")},
+				Components = new Array<AComponent> { new SeedComponent("") },
 			},
 			new ItemStack()
 			{
@@ -178,8 +178,8 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "chuberryFruit", "chuberryDried" },
-				Components = new Array<AComponent> {new SeedComponent("Chuberry")},
+				RelatedItemIds = new Array<string> { "chuberryFruit" },
+				Components = new Array<AComponent> { new SeedComponent("Chuberry") },
 			},
 			new ItemStack()
 			{
@@ -191,8 +191,8 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryDried" },
-				Components = new ()
+				RelatedItemIds = new Array<string> { "chuberrySeed" },
+				Components = new()
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
 				}
@@ -255,7 +255,7 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"), //TODO add icon
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit", "licaryLeaf" },
+				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit" },
 				Components = new Array<AComponent>
 				{
 					new SeedComponent("Licary")
@@ -271,7 +271,7 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit", "licaryLeaf", "licaryLeafDried" },
+				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit" },
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower)
@@ -287,7 +287,7 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers", "licaryLeaf", "licaryLeafDried" },
+				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers" },
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
@@ -319,7 +319,7 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFlower),
 				},
 				Amount = 1,
-				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
+				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryFruit" },
 			},
 			new ItemStack
 			{
@@ -334,7 +334,7 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsLeaf)
 				},
 				Amount = 1,
-				RelatedItemIds = new Array<string> { "cuberrySeed", "chuberryFruit" },
+				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryFruit" },
 			},
 		};
 	}
