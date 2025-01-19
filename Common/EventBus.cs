@@ -113,11 +113,21 @@ public partial class EventBus : Node
 	
 	//HUD
 
+	// An event to change the portrait! Shouldn't be hard. But I don't know how to translate them into emotions
+	
 	public event Action<int, int> GoldChanged;
+	public event Action<AnimatedSprite2D> OnNpcStartDialogue;
+	
 	public void InvokeGoldChanged(int deltaGold, int newGold)
 	{
 		GoldChanged?.Invoke(deltaGold, newGold);
 	}
+
+	public void NpcDialogueWithPlayerStarted(AnimatedSprite2D portrait)
+	{
+		OnNpcStartDialogue?.Invoke(portrait);
+	}
+	
 	
 	//Inventory
 	
