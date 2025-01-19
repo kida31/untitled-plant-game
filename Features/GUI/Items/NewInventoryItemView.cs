@@ -20,7 +20,7 @@ public partial class NewInventoryItemView : Clickable, ITooltipable
 	
 	// Private fields
 	
-	private int _slotIndex = -1;
+	private int _slotIndex = -1; // TODO: Consider making their properties one combined setter method instead
 	private IInventory _inventory;
 	private Logger _logger;
 
