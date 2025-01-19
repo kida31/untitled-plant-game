@@ -57,7 +57,7 @@ public partial class BlurController : Node
 	}
 
 	// Currently no public use.
-	private void EnableBlur()
+	public void EnableBlur()
 	{
 		_tween?.Stop();
 		_tween?.Free();
@@ -68,7 +68,7 @@ public partial class BlurController : Node
 	}
 
 	// Currently no public use.
-	private void DisableBlur()
+	public void DisableBlur()
 	{
 		_tween?.Stop();
 		_tween?.Free();
@@ -78,17 +78,18 @@ public partial class BlurController : Node
 		_tween.Finished += () => BlurDisabled?.Invoke();
 	}
 	
-	private async Task EnableBlurAsync()
+	public async Task EnableBlurAsync()
 	{
 		_tween?.Stop();
 		_tween?.Free();
 		
 		_tween = CreateTween();
 		_tween.TweenMethod(Callable.From<float>(_blurEffect.SetStrength), _blurEffect.Strength, _strength, _transitionDuration);
-		_tween.Finished += () => BlurEnabled?.Invoke();
+		await ToSignal(_tween, "finished");
+		BlurEnabled?.Invoke();
 	}
 	
-	private async Task DisableBlurAsync()
+	public async Task DisableBlurAsync()
 	{
 		_tween?.Stop();
 		_tween?.Free();

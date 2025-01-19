@@ -113,7 +113,15 @@ public partial class BookView : Control
 		_logger.Info("Opening...");
 		GameStateMachine.Instance.SetState(GameState.Book);
 		UpdateInventory(Game.Player, Game.Player.Inventory);
-		Show();
+		
+		// Do Once, pseudo "await"
+		BlurController.Instance.BlurEnabled += OnBlurFinished;
+		void OnBlurFinished()
+		{
+			Show();	
+			BlurController.Instance.BlurEnabled -= OnBlurFinished;
+		}
+		
 	}
 
 	private void HideBook()
