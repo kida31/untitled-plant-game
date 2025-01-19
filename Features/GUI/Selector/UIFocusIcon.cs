@@ -7,7 +7,8 @@ namespace untitledplantgame.GUI.Selector;
 
 // TODO: Move modulate out of class
 /// <summary>
-///		This is the visual indicator that follows the player's current selection/focus on GUI (in the book in particular)
+///		This is the visual indicator that follows the player's current selection/focus on GUI (in the book in particular).
+///		This is disabled for freeroam state only
 /// </summary>
 public partial class UIFocusIcon : Control
 {
@@ -42,9 +43,9 @@ public partial class UIFocusIcon : Control
 
 	private void OnGuiFocusChanged(Control node)
 	{
-		if (GameStateMachine.Instance.CurrentState != GameState.Book)
+		if (GameStateMachine.Instance.CurrentState == GameState.FreeRoam)
 		{
-			_logger.Debug("Not in book state. Ignoring focus change.");
+			_logger.Debug("Currently in FreeRoam. Ignoring focus change.");
 			return;
 		}
 
@@ -60,7 +61,7 @@ public partial class UIFocusIcon : Control
 
 	private void OnStateChanged(GameState previous, GameState newState)
 	{
-		if (newState == GameState.Book)
+		if (newState != GameState.FreeRoam)
 		{
 			Show();
 		}
