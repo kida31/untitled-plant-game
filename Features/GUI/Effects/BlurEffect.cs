@@ -9,7 +9,7 @@ public partial class BlurEffect : Control
 	private const float LodMax = 5.0f;
 	private const float LodMin = 0.0f;
 	
-	[Export(PropertyHint.Range, "0.0,5.0")] private float Strength
+	[Export(PropertyHint.Range, "0.0,5.0")] public float Strength
 	{
 		get => GetStrength();
 		set => SetStrength(value);
