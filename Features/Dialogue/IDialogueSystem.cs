@@ -24,7 +24,9 @@ public interface IDialogueSystem
 	/// Start the dialogue.
 	/// </summary>
 	/// <param name="dialogue"></param>
-	void StartDialog(string dialogue);
+	//void StartDialog(string dialogue);
+
+	void StartDialog(DialogueResourceObject dialogue);
 	
 	/// <summary>
 	/// Invoke Response event to display responses.

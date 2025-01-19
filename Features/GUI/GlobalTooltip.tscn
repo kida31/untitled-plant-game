@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c82x6hxji8t8v"]
+[gd_scene load_steps=3 format=3 uid="uid://dd68fctjqslys"]
 
 [ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="1_ng0ue"]
 [ext_resource type="Script" path="res://Features/GUI/GlobalTooltip.cs" id="2_ipapd"]
