@@ -27,7 +27,6 @@ public class SeedShop : IShop
 	public SeedShop()
 	{
 		Inventory = new Inventory.Inventory(12, "Seedshop");
-		GenerateRandomShopStock();
 	}
 
 	public void SetShopContent(IItemStack[] items)

@@ -12,6 +12,14 @@ public partial class SeedBoy : AInteractable
 	{
 		base._Ready();
 		_seedShop = new SeedShop();
+		_seedShop.GenerateRandomShopStock();
+		
+		TimeController.Instance.DayChanged += OnDayChanged;
+	}
+
+	private void OnDayChanged(int day)
+	{
+		_seedShop.GenerateRandomShopStock();
 	}
 
 	public override void Interact()
