@@ -134,6 +134,7 @@ public partial class DialogueUI : Control
 			void OnButtonOnPressed()
 			{
 				_dialogueSystem.InsertSelectedResponse(response);
+				ClearResponses();
 			}
 
 			button.Pressed += OnButtonOnPressed;
@@ -173,7 +174,6 @@ public partial class DialogueUI : Control
 
 	private void HideDialogueUi(DialogueResourceObject _)
 	{
-		ClearResponses();
 		_currentDialogue = null;
 		_lineEnumerator = null;
 		Visible = false;
