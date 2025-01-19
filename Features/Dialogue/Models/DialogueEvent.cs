@@ -8,6 +8,7 @@ namespace untitledplantgame.Dialogue.Models;
 /// </summary>
 [GlobalClass]
 public abstract partial class DialogueEvent : DialogueResourceObject
+//TODO: Remove this inheritance and replace with a common interface for event and reseource objects.
 {
 	/// <summary>
 	/// Execute Events that are triggered by the Dialogue System on Response.

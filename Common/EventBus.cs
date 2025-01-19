@@ -97,7 +97,6 @@ public partial class EventBus : Node
 		StartingDialogue?.Invoke(obj);
 	}
 
-	//Connect Dialogue System to UI. Should only be called once, when the game starts.
 	public void InvokeInitialiseDialogue(IDialogueSystem obj)
 	{
 		InitialiseDialogue?.Invoke(obj);
