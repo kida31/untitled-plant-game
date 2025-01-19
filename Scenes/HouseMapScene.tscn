@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://btrjefeco6yc6" path="res://Assets/Overworld/House/Pillow_long.png" id="5_xxfd4"]
 [ext_resource type="Texture2D" uid="uid://bg6sungsm67xq" path="res://Assets/Overworld/House/PlantFence.png" id="6_ixvoq"]
 [ext_resource type="Texture2D" uid="uid://dvhnxweerw26d" path="res://Assets/Overworld/House/long_plants.png" id="6_uljed"]
-[ext_resource type="PackedScene" path="res://Features/Crafting/Dehydrator/Dehydrator.tscn" id="7_85s0o"]
+[ext_resource type="PackedScene" uid="uid://fc51eeilo3tu" path="res://Features/Crafting/Dehydrator/Dehydrator.tscn" id="7_85s0o"]
 [ext_resource type="Texture2D" uid="uid://b3vil7ewxk6hl" path="res://Assets/Overworld/House/tall_plant.png" id="7_reln1"]
 [ext_resource type="Texture2D" uid="uid://cc1awsayc4q4p" path="res://Assets/Overworld/House/mortar.png" id="14_pkrwm"]
 
@@ -1713,6 +1713,7 @@ sources/0 = SubResource("TileSetAtlasSource_5kd7m")
 sources/3 = SubResource("TileSetAtlasSource_eou02")
 
 [node name="HouseMapScene" type="Node2D"]
+y_sort_enabled = true
 position = Vector2(-325, -306)
 
 [node name="Floor" type="TileMapLayer" parent="."]
