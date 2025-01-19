@@ -1,44 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqqhj7jxwv1q5"]
+[gd_scene load_steps=4 format=3 uid="uid://bqqhj7jxwv1q5"]
 
 [ext_resource type="Script" path="res://Features/NPC/Bed.cs" id="1_nusbk"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_hxpt1"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_8c8eo"]
-[ext_resource type="Script" path="res://Features/Dialogue/Events/GoToBed.cs" id="3_xc3js"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_hwlei"]
-
-[sub_resource type="Resource" id="Resource_tlar2"]
-script = ExtResource("2_hxpt1")
-speakerName = "Bed"
-DialogueExpression = 0
-dialogueText = "Would you like to go to Bed?"
-
-[sub_resource type="Resource" id="Resource_kr3qh"]
-script = ExtResource("3_xc3js")
-_dialogueId = ""
-_dialogueText = null
-_responses = null
-
-[sub_resource type="Resource" id="Resource_2aaa4"]
-script = ExtResource("3_8c8eo")
-_responseButton = "Yes"
-_responseDialogue = SubResource("Resource_kr3qh")
-
-[sub_resource type="Resource" id="Resource_s6ni2"]
-script = ExtResource("3_8c8eo")
-_responseButton = "No"
-
-[sub_resource type="Resource" id="Resource_wt150"]
-script = ExtResource("4_hwlei")
-_dialogueId = "GoToSleep"
-_dialogueText = Array[Object]([SubResource("Resource_tlar2")])
-_responses = Array[Object]([SubResource("Resource_2aaa4"), SubResource("Resource_s6ni2")])
+[ext_resource type="Resource" uid="uid://dqv210o7xertv" path="res://Resources/Dialogue/Bed/Bed.tres" id="2_xdr7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5sl4"]
 size = Vector2(29, 10.6)
 
 [node name="Bed" type="Area2D"]
 script = ExtResource("1_nusbk")
-_dialogueResourceObject = SubResource("Resource_wt150")
+_dialogueResourceObject = ExtResource("2_xdr7q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -2.5)

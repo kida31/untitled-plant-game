@@ -7,7 +7,7 @@ namespace untitledplantgame.Dialogue.Events;
 [GlobalClass]
 public partial class GoToBed : DialogueEvent
 {
-	public override void ExcuteEvent()
+	public override void ExecuteEvent()
 	{
 		TimeController.Instance.GoToNextDay();
 	}

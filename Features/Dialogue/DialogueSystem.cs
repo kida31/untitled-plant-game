@@ -68,7 +68,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 				EndDialogue();
 				return;
 			case DialogueEvent d:
-				d.ExcuteEvent();
+				d.ExecuteEvent();
 				EndDialogue();
 				return;
 			default:
