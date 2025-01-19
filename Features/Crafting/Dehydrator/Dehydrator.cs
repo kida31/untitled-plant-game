@@ -11,7 +11,7 @@ using MedicineComponent = untitledplantgame.Item.Components.MedicineComponent;
 
 namespace untitledplantgame.Crafting;
 
-public partial class Dehydrator : Node, ICraftingStation
+public class Dehydrator : ICraftingStation
 {
 	private const int SlotNumber = 6;
 	private const double CraftingTime = 10; //TODO: find a good value
@@ -57,7 +57,7 @@ public partial class Dehydrator : Node, ICraftingStation
 		_logger.Debug($"Initialized Dehydrator with {CraftingSlots.Length} slots");
 	}
 
-	public override void _Process(double delta)
+	public void Process(double delta)
 	{
 		Assert.AssertNotNull(CraftingSlots);
 		if (CraftingSlots == null) return;
