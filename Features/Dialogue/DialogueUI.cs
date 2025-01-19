@@ -10,10 +10,10 @@ public partial class DialogueUI : Control
 {
 	private IDialogueSystem _dialogueSystem;
 
-	private RichTextLabel _nameLabel;
-	private RichTextLabel _dialogueTextLabel;
-	private AnimatedSprite2D _animatedSprite2D;
-	private BoxContainer _responseContainer;
+	[Export] private RichTextLabel _nameLabel;
+	[Export] private RichTextLabel _dialogueTextLabel;
+	[Export] private AnimatedSprite2D _animatedSprite2D;
+	[Export] private BoxContainer _responseContainer;
 
 	private DialogueResourceObject _currentDialogue;
 	private IEnumerator<DialogueLine> _lineEnumerator;
@@ -29,13 +29,6 @@ public partial class DialogueUI : Control
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
-
-		//UI elements
-		_animatedSprite2D = GetNode<AnimatedSprite2D>("Portrait");
-		_nameLabel = GetNode<RichTextLabel>("PanelContainer2/MarginContainer/Name");
-		_dialogueTextLabel = GetNode<RichTextLabel>("PanelContainer/MarginContainer/DialogueText");
-		_responseContainer = GetNode<BoxContainer>("Responses");
-
 		//Animation
 		_skipCooldownTimer = new Timer();
 		AddChild(_skipCooldownTimer);

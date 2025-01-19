@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqqhj7jxwv1q5"]
+[gd_scene load_steps=13 format=3 uid="uid://bqqhj7jxwv1q5"]
 
 [ext_resource type="Script" path="res://Features/NPC/Bed.cs" id="1_nusbk"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_hxpt1"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_8c8eo"]
+[ext_resource type="Script" path="res://Features/Dialogue/Events/GoToBed.cs" id="3_xc3js"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_hwlei"]
 [ext_resource type="Texture2D" uid="uid://4cfy612ib68k" path="res://Assets/IndoorAssets/bed.png" id="5_5yuxv"]
 
@@ -12,9 +13,16 @@ speakerName = "Bed"
 DialogueExpression = 0
 dialogueText = "Would you like to go to Bed?"
 
+[sub_resource type="Resource" id="Resource_kr3qh"]
+script = ExtResource("3_xc3js")
+_dialogueId = ""
+_dialogueText = null
+_responses = null
+
 [sub_resource type="Resource" id="Resource_2aaa4"]
 script = ExtResource("3_8c8eo")
 _responseButton = "Yes"
+_responseDialogue = SubResource("Resource_kr3qh")
 
 [sub_resource type="Resource" id="Resource_s6ni2"]
 script = ExtResource("3_8c8eo")

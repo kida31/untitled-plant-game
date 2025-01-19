@@ -71,23 +71,21 @@ _responseContainer = NodePath("Responses")
 
 [node name="Portrait" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(146, 112)
+position = Vector2(169, 142)
 sprite_frames = SubResource("SpriteFrames_3m0r1")
 animation = &"sad"
 
 [node name="Responses" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -236.0
-offset_top = -336.0
-offset_right = -86.0
-offset_bottom = -186.0
+anchors_preset = -1
+anchor_left = 0.58125
+anchor_top = 0.469444
+anchor_right = 0.815625
+anchor_bottom = 0.527778
 grow_horizontal = 0
 grow_vertical = 0
+alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="DialogueField" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -96,10 +94,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -233.0
-offset_top = -184.75
-offset_right = 239.0
-offset_bottom = -3.75
+offset_left = -197.0
+offset_top = -169.0
+offset_right = 203.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
@@ -131,10 +129,10 @@ visible_characters_behavior = 1
 [node name="NameDiv" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0140625
-anchor_top = -0.0611111
-anchor_right = 0.167187
-anchor_bottom = 0.0277778
+anchor_left = 0.0484375
+anchor_top = -0.00902778
+anchor_right = 0.201562
+anchor_bottom = 0.0798612
 offset_left = 87.0
 offset_top = 175.25
 offset_right = 87.0
