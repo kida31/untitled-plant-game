@@ -33,34 +33,6 @@ public partial class SeedShopView : Control
 		_itemSlots = _itemContainer.GetChildren().OfType<ShopItemView>().ToList();
 
 		_itemSlots.ForEach(its => { its.Pressed += () => OnSlotPressed(its); });
-
-		// // Adjust navigation, hacky
-		// var columnCount = (_slotContainer as GridContainer)!.Columns;
-		// for (var i = 0; i < _shopSlots.Count; i++)
-		// {
-		// 	var slot = _shopSlots[i];
-		// 	slot.FocusMode = FocusModeEnum.All;
-		// 	// RightNeighbour, Not last column
-		// 	if (i % columnCount != columnCount - 1)
-		// 	{
-		// 		slot.FocusNeighborRight = _shopSlots[i + 1].GetPath();
-		// 	}
-		// 	// LeftNeighbour, Not first column
-		// 	if (i % columnCount != 0)
-		// 	{
-		// 		slot.FocusNeighborLeft = _shopSlots[i - 1].GetPath();
-		// 	}
-		// 	// TopNeighbour, Not first row
-		// 	if (i >= columnCount)
-		// 	{
-		// 		slot.FocusNeighborTop = _shopSlots[i - columnCount].GetPath();
-		// 	}
-		// 	// BottomNeighbour, Not last row
-		// 	if (i < _shopSlots.Count - columnCount)
-		// 	{
-		// 		slot.FocusNeighborBottom = _shopSlots[i + columnCount].GetPath();
-		// 	}
-		// }
 	}
 
 	public override void _Process(double delta)
