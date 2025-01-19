@@ -8,6 +8,7 @@
 script = ExtResource("2_3k3fw")
 _progressBar = NodePath("CenterContainer/ProgressBar")
 _craftingCompleteTexture = NodePath("CraftingCompleteIndicator")
+_placeholderIcon = null
 
 [node name="ProgressBar" type="ProgressBar" parent="CenterContainer" index="1"]
 layout_mode = 2

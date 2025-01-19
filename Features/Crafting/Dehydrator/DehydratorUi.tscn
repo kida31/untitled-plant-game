@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dafhmyiy5jrym" path="res://Features/Crafting/crafting_slot.tscn" id="3_licfq"]
 
 [node name="DehydratorUi" type="Control" node_paths=PackedStringArray("_retrieveAllItemsButton", "_slotContainer")]
+custom_minimum_size = Vector2(192, 192)
 layout_mode = 3
 anchor_right = 0.45
 anchor_bottom = 0.533333
