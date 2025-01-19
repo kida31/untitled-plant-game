@@ -56,7 +56,7 @@ public partial class UIFocusIcon : Control
 		// Manual adjustments
 		_focusedControl = node;
 		Modulate = new Color(Modulate) {A = 0f};
-		_logger.Info("Focus new element: " + node.Name);
+		_logger.Debug("Focus new element: " + node.Name);
 	}
 
 	private void OnStateChanged(GameState previous, GameState newState)

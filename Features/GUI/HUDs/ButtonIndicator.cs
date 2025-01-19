@@ -68,8 +68,8 @@ public partial class ButtonIndicator : Control
 
 	public bool IsPressed
 	{
-		get => _textureButton?.IsPressed() ?? false;
-		set => _textureButton.SetPressed(value);
+		get => IsInstanceValid(_textureButton) && _textureButton.IsPressed();
+		set => _textureButton?.SetPressed(value);
 	}
 
 	[Export] private TextureButton _textureButton;
