@@ -118,15 +118,17 @@ public partial class DialogueUI : Control
 		var buttons = new List<Button>();
 		foreach (var response in responses)
 		{
-			Button button;
-			_responseContainer.CallDeferred(Node.MethodName.AddChild, button = new Button());
+			Button button = new Button();
+			_responseContainer.CallDeferred(Node.MethodName.AddChild, button);
 			button.Text = response;
 			button.ActionMode = BaseButton.ActionModeEnum.Press;
-			button.Pressed += () =>
+
+			void OnButtonOnPressed()
 			{
 				_dialogueSystem.InsertSelectedResponse(response);
-				ClearResponses();
-			};
+			}
+
+			button.Pressed += OnButtonOnPressed;
 			buttons.Add(button);
 		}
 
@@ -135,8 +137,9 @@ public partial class DialogueUI : Control
 
 	private void ClearResponses()
 	{
-		foreach (Node child in _responseContainer.GetChildren())
-		{
+		foreach (var child in _responseContainer.GetChildren())
+		{ 
+			_logger.Debug($"Queue {child} for deletion.");
 			child.QueueFree();
 		}
 	}
@@ -162,6 +165,7 @@ public partial class DialogueUI : Control
 
 	private void HideDialogueUi()
 	{
+		ClearResponses();
 		_currentDialogue = null;
 		_lineEnumerator = null;
 		Visible = false;

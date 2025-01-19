@@ -67,8 +67,8 @@ public partial class DialogueSystem : Node, IDialogueSystem
 				EndDialogue();
 				return;
 			case DialogueEvent d:
-				EndDialogue();
 				d.ExcuteEvent();
+				EndDialogue();
 				return;
 			default:
 				SetAndResetDialogueBlock(nextDialogue);
@@ -78,6 +78,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 	public void GetResponses()
 	{
+		_logger.Debug("Getting responses.");
 		if (_currentDialogue._responses.Length == 0)
 		{
 			EndDialogue();
@@ -89,6 +90,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 	private void EndDialogue()
 	{
+		_logger.Debug("Ending dialogue.");
 		_currentDialogue = null;
 		GameStateMachine.Instance.SetState(GameState.FreeRoam);
 		OnDialogueEnd?.Invoke(_currentDialogue);
@@ -96,7 +98,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 	private void SetAndResetDialogueBlock(DialogueResourceObject dialogue)
 	{
-		OnDialogueBlockStarted?.Invoke(dialogue);
 		_currentDialogue = dialogue;
+		OnDialogueBlockStarted?.Invoke(_currentDialogue);
 	}
 }

@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqqhj7jxwv1q5"]
+[gd_scene load_steps=12 format=3 uid="uid://bqqhj7jxwv1q5"]
 
 [ext_resource type="Script" path="res://Features/NPC/Bed.cs" id="1_nusbk"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_hxpt1"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_8c8eo"]
 [ext_resource type="Script" path="res://Features/Dialogue/Events/GoToBed.cs" id="3_xc3js"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_hwlei"]
-[ext_resource type="Texture2D" uid="uid://4cfy612ib68k" path="res://Assets/IndoorAssets/bed.png" id="5_5yuxv"]
 
 [sub_resource type="Resource" id="Resource_tlar2"]
 script = ExtResource("2_hxpt1")
@@ -45,7 +44,3 @@ _dialogueResourceObject = SubResource("Resource_wt150")
 position = Vector2(-1, -2.5)
 scale = Vector2(2, 5)
 shape = SubResource("RectangleShape2D_p5sl4")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(31, 1)
-texture = ExtResource("5_5yuxv")
