@@ -1,38 +1,66 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbpdq5274ohk8"]
+[gd_scene load_steps=11 format=3 uid="uid://bbpdq5274ohk8"]
 
 [ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="2_7jprp"]
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="2_p24nj"]
 [ext_resource type="PackedScene" uid="uid://lufeqnjeabjx" path="res://Features/NPC/NpcTask/MovementTaskTarget.tscn" id="3_q8nv8"]
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="4_ajjof"]
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_s323p"]
+[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/TutorialDialogue.tres" id="4_tyepw"]
 [ext_resource type="PackedScene" uid="uid://bwxru3xolfihy" path="res://Features/NPC/NpcTask/TalkToPlayerTask.tscn" id="6_fwegf"]
+[ext_resource type="Script" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="7_bhhsc"]
+[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/TutorialDialogue2ndPart.tres" id="8_2olw0"]
+[ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="8_qtpvf"]
 
 [node name="NpcTestingScenes" type="Node2D"]
 
-[node name="TalkRoutine" type="Node" parent="."]
-script = ExtResource("4_s323p")
-
-[node name="TalkToPlayerTask" parent="TalkRoutine" instance=ExtResource("6_fwegf")]
-_text = "First Text"
-
-[node name="WalkAndTalkRoutine" type="Node" parent="."]
-script = ExtResource("4_s323p")
-
-[node name="MovementTaskTarget" parent="WalkAndTalkRoutine" instance=ExtResource("3_q8nv8")]
-position = Vector2(194, -1)
-
-[node name="TalkToPlayerTask" parent="WalkAndTalkRoutine" instance=ExtResource("6_fwegf")]
-_text = "Second"
-
-[node name="MovementTaskTarget2" parent="WalkAndTalkRoutine" instance=ExtResource("3_q8nv8")]
-position = Vector2(194, 53)
-
-[node name="RoutinePlanner" type="Node" parent="." node_paths=PackedStringArray("_routines")]
-script = ExtResource("2_7jprp")
-_routines = [NodePath("../TalkRoutine"), NodePath("../WalkAndTalkRoutine")]
-
 [node name="NpcBody2D" parent="." node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("2_p24nj")]
-_routinePlanner = NodePath("../RoutinePlanner")
+_routinePlanner = NodePath("RoutinePlanner")
+
+[node name="RoutinePlanner" type="Node" parent="NpcBody2D" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+script = ExtResource("2_7jprp")
+_npcExecutingRoutines = NodePath("..")
+_routines = [NodePath("WalkRoutine")]
+
+[node name="TalkRoutine" type="Node" parent="NpcBody2D/RoutinePlanner"]
+script = ExtResource("4_s323p")
+
+[node name="TalkToPlayerTask" parent="NpcBody2D/RoutinePlanner/TalkRoutine" instance=ExtResource("6_fwegf")]
+_dialogueResourceObject = ExtResource("4_tyepw")
+
+[node name="WalkRoutine" type="Node" parent="NpcBody2D/RoutinePlanner"]
+script = ExtResource("4_s323p")
+RoutineStartMinutes = 2
+
+[node name="MovementTaskTarget" parent="NpcBody2D/RoutinePlanner/WalkRoutine" instance=ExtResource("3_q8nv8")]
+position = Vector2(111, -73)
+
+[node name="MovementTaskTarget2" parent="NpcBody2D/RoutinePlanner/WalkRoutine" instance=ExtResource("3_q8nv8")]
+position = Vector2(121, 186)
+
+[node name="WalkAndTalkRoutine" type="Node" parent="NpcBody2D/RoutinePlanner"]
+script = ExtResource("4_s323p")
+
+[node name="MovementTaskTarget" parent="NpcBody2D/RoutinePlanner/WalkAndTalkRoutine" instance=ExtResource("3_q8nv8")]
+position = Vector2(111, -73)
+
+[node name="TalkToPlayerTask" parent="NpcBody2D/RoutinePlanner/WalkAndTalkRoutine" instance=ExtResource("6_fwegf")]
+_dialogueResourceObject = ExtResource("4_tyepw")
+
+[node name="MovementTaskTarget2" parent="NpcBody2D/RoutinePlanner/WalkAndTalkRoutine" instance=ExtResource("3_q8nv8")]
+position = Vector2(121, 186)
+
+[node name="InitiateDialogue" type="Node" parent="NpcBody2D/RoutinePlanner"]
+script = ExtResource("7_bhhsc")
+_dialogueResourceObject = Array[Object]([ExtResource("4_tyepw"), ExtResource("8_2olw0")])
 
 [node name="Player" parent="." instance=ExtResource("4_ajjof")]
 position = Vector2(29, 121)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueView" parent="CanvasLayer" instance=ExtResource("8_qtpvf")]
+visible = false
+offset_left = 28.0
+offset_top = 223.0
+offset_right = 28.0
+offset_bottom = 223.0
