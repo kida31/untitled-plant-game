@@ -14,17 +14,21 @@ public partial class StandardNpc : Npc
 	[Export] private NpcPlayerInteraction _npcPlayerInteraction;
 	[Export] private NpcRoutinePlanner _routinePlanner;
 
+	private Npc _npcExecutingTheseTasks;
+
 	public override void _Ready()
 	{
 		base._Ready();
-		
-		//GD.Print(GetType());
-		//GD.Print("Testing");
+	}
+	
+	public override void _PhysicsProcess(double delta)
+	{
+		MoveAndSlide();
 	}
 
 	public override string GetNpcName()
 	{
-		throw new System.NotImplementedException();
+		return _name;
 	}
 
 	public override bool IsNpcInteractable()
