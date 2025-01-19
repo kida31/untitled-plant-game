@@ -45,6 +45,7 @@ public partial class DialogueUI : Control
 		AddChild(_dialogueAnimation);
 
 		//Events
+		EventBus.Instance.OnNpcStartDialogue += ChangeToNpcPortrait;
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
 		_logger.Debug("Subscribed to dialogue system intialising.");
 		_skipCooldownTimer.Timeout += () => _smashable = true;
@@ -65,6 +66,12 @@ public partial class DialogueUI : Control
 		_dialogueSystem.OnDialogueBlockStarted += OnDialogueBlockStarted;
 		_dialogueSystem.OnDialogueEnd += o => HideDialogueUi();
 		_dialogueSystem.OnResponding += DisplayResponses;
+	}
+
+	private void ChangeToNpcPortrait(AnimatedSprite2D portrait)
+	{
+		_animatedSprite2D.SpriteFrames = portrait.SpriteFrames;
+		var r = _animatedSprite2D.SpriteFrames;
 	}
 
 	private void OnDialogueBlockStarted(DialogueResourceObject dialogue)
@@ -116,6 +123,7 @@ public partial class DialogueUI : Control
 		_nameLabel.Text = line.speakerName;
 		_dialogueTextLabel.Text = line.dialogueText;
 		_dialogueAnimation.AnimateNextDialogueLine(_dialogueTextLabel, line);
+		
 		_animatedSprite2D.Play(line.DialogueExpression.ToString());
 		Visible = true;
 	}

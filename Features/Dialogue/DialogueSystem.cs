@@ -36,12 +36,13 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		EventBus.Instance.StartingDialogue += StartDialog;
 		_logger.Debug("Initialised.");
 	}
+	
 
 	public void StartDialog(string dialogueId)
 	{
 		var dialogue = DialogueDatabase.Instance.GetResourceByName(dialogueId);
 		EventBus.Instance.InvokeInitialiseDialogue(this);
-
+		
 		if (dialogue == null)
 		{
 			_logger.Error("Dialogue is null.");
@@ -71,7 +72,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			EndDialogue();
 			return;
 		}
-
 		OnResponding?.Invoke(_currentDialogue._responses.Select(r => r._responseButton).ToArray());
 	}
 
