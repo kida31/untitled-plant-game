@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=9 format=3 uid="uid://3ndp3em1fi7h"]
 
-[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/GUI/Vending/VendingGUI.tscn" id="1_iuaq5"]
+[ext_resource type="PackedScene" path="res://Features/GUI/Vending/VendingGUI.tscn" id="1_iuaq5"]
+[ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="2_qr6u8"]
 [ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="2_y866b"]
 [ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
 [ext_resource type="PackedScene" uid="uid://c55xp0xg83mt1" path="res://Features/GUI/HUDs/HUD.tscn" id="5_gr4nr"]
@@ -18,6 +19,9 @@ offset_right = 519.0
 offset_bottom = 670.0
 
 [node name="Weahter" parent="." instance=ExtResource("5_ctdgk")]
+
+[node name="DialogueView" parent="." instance=ExtResource("2_qr6u8")]
+visible = false
 
 [node name="Cheats" type="Node" parent="."]
 

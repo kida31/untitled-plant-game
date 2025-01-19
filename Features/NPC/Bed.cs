@@ -1,40 +1,24 @@
 using Godot;
-using System;
 using untitledplantgame.Common;
-using untitledplantgame.Player;
+using untitledplantgame.Dialogue.Events;
+using untitledplantgame.Dialogue.Models;
+
+namespace untitledplantgame.NPC;
 
 public partial class Bed : Area2D
 {
-	public string ActionName => "Sleep";
-	private bool _playerIsInBed = false;
+	[Export] private DialogueResourceObject _dialogueResourceObject;
 
 	public override void _Ready()
 	{
 		BodyEntered += OnBodyEntered;
-		BodyExited += OnBodyExited;
-	}
-
-	public override void _Process(double delta)
-	{
-		if (_playerIsInBed)
-		{
-			TimeController.Instance.FastForwardFor(60);
-		}
-	}
-
-	private void OnBodyExited(Node2D body)
-	{
-		if (body is Player)
-		{
-			_playerIsInBed = false;
-		}
 	}
 
 	private void OnBodyEntered(Node2D body)
 	{
-		if (body is Player)
+		if (body is Player.Player)
 		{
-			_playerIsInBed = true;
+			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject);
 		}
 	}
 }
