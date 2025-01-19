@@ -1,9 +1,9 @@
-﻿using Godot;
-
-namespace untitledplantgame.Common;
+﻿namespace untitledplantgame.Common;
 
 /// <summary>
-/// Images repackaged for use in BBCode
+///		Images repackaged for use in BBCode.
+///		Interpolate or append to strings to include in BBCode.
+///		Make sure the object is a RichTextLabel and the BBCode is enabled.
 /// </summary>
 public class BbImage
 {
@@ -13,7 +13,7 @@ public class BbImage
 	public int X { get; set; }
 	public int Y { get; set; }
 
-	public BbImage(string path)
+	private BbImage(string path)
 	{
 		Path = path;
 		// Roughly the size of our default font
@@ -28,11 +28,6 @@ public class BbImage
 			return $"[img={X}x{Y}]{Path}[/img]";
 		}
 
-		return $"[img]{Path}[/img]";
-	}
-
-	public string AsBB()
-	{
 		return $"[img]{Path}[/img]";
 	}
 }
