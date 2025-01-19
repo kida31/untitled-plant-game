@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
 [ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
-[ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
+[ext_resource type="PackedScene" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
@@ -39,13 +39,13 @@ position = Vector2(730, 160)
 
 [node name="Plants" parent="." instance=ExtResource("7_36aju")]
 
+[node name="Player" parent="." instance=ExtResource("1_mh621")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(640, 360)
+
 [node name="NightTint" type="CanvasModulate" parent="."]
 position = Vector2(577.5, 328.625)
 scale = Vector2(1.19896, 1.19896)
 script = ExtResource("6_4ec11")
 _gradientTexture = ExtResource("7_xmbsw")
-
-[node name="Player" parent="." instance=ExtResource("1_mh621")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(640, 360)
