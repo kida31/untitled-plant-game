@@ -30,7 +30,7 @@ public partial class CopySizeHook : Node
 
 	public override void _Process(double delta)
 	{
-		if (_target == null) return;
+		if (!IsInstanceValid(_target)) return;
 
 		var size = _target.GetGlobalRect().Size;
 		size = SmoothenSize(size, delta);

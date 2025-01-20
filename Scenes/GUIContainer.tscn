@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=11 format=3 uid="uid://3ndp3em1fi7h"]
 
-[ext_resource type="PackedScene" path="res://Features/GUI/Vending/VendingGUI.tscn" id="1_iuaq5"]
+[ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/GUI/Vending/VendingGUI.tscn" id="1_iuaq5"]
 [ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="2_qr6u8"]
 [ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="2_y866b"]
 [ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
 [ext_resource type="PackedScene" uid="uid://c55xp0xg83mt1" path="res://Features/GUI/HUDs/HUD.tscn" id="5_gr4nr"]
+[ext_resource type="PackedScene" uid="uid://dbt63s227d4pq" path="res://Features/GUI/Effects/NonGameplayEffect.tscn" id="5_ii0a5"]
 [ext_resource type="PackedScene" uid="uid://cca7okqb2j4c7" path="res://Features/GUI/Book/BookView.tscn" id="5_sy5d4"]
+[ext_resource type="Script" path="res://Features/GUI/Effects/TriggerOnNonGameplay.cs" id="6_wbn0r"]
 [ext_resource type="PackedScene" uid="uid://cwe0di17r2yd" path="res://Features/TeleportPlayer/SceneTransition.tscn" id="8_jtjsl"]
 [ext_resource type="PackedScene" uid="uid://df0cg0vcow1n2" path="res://Features/GUI/DebugOverlays/DebugOverlays.tscn" id="9_m21er"]
 
@@ -13,12 +15,9 @@
 
 [node name="SeedShopView" parent="." instance=ExtResource("2_y866b")]
 visible = false
-offset_left = 155.0
-offset_top = 50.0
-offset_right = 519.0
-offset_bottom = 670.0
 
 [node name="Weahter" parent="." instance=ExtResource("5_ctdgk")]
+z_index = -2
 
 [node name="DialogueView" parent="." instance=ExtResource("2_qr6u8")]
 visible = false
@@ -26,6 +25,7 @@ visible = false
 [node name="Cheats" type="Node" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource("5_gr4nr")]
+z_index = -2
 
 [node name="VendingGUI" parent="." instance=ExtResource("1_iuaq5")]
 visible = false
@@ -50,3 +50,11 @@ anchor_right = 0.664063
 offset_top = 5.0
 offset_right = 0.0
 metadata/_edit_use_anchors_ = true
+
+[node name="NonGameplayEffect" parent="." instance=ExtResource("5_ii0a5")]
+visible = false
+z_index = -1
+
+[node name="TriggerOnNonGameplay" type="Node" parent="NonGameplayEffect"]
+script = ExtResource("6_wbn0r")
+_fadeOutDuration = 0.1

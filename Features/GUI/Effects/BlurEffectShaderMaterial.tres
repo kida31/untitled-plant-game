@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b0s6okqcwubks"]
+
+[ext_resource type="Shader" path="res://Features/GUI/Effects/BlurEffect.gdshader" id="1_844ct"]
+
+[resource]
+shader = ExtResource("1_844ct")
+shader_parameter/lod = 0.0

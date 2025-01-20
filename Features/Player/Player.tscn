@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uchbd"]
-size = Vector2(26, 12)
+size = Vector2(26, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2lq2x"]
 atlas = ExtResource("2_kammg")
@@ -1519,11 +1519,11 @@ radius = 34.0147
 script = ExtResource("1_ypuiu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -11)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_uchbd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_t74rv")
 animation = &"shears_down"
 
@@ -1547,6 +1547,6 @@ shape = SubResource("CircleShape2D_ryxll")
 [node name="InteractablesManager" type="Node" parent="Area2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -40)
+position = Vector2(0, -31)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
