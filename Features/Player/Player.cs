@@ -11,7 +11,7 @@ namespace untitledplantgame.Player;
 
 public partial class Player : CharacterBody2D
 {
-	private readonly Logger _logger = new Logger("Player");
+	private readonly Logger _logger = new ("Player");
 
 	// Input direction(?)
 	public Vector2 Direction = Vector2.Zero;

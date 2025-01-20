@@ -8,12 +8,12 @@ public partial class StateWalk : State
 {
 	[Export]
 	private float _movespeed = 100.0f;
-	private State idleState;
+	private State _idleState;
 	private State _useToolState;
 
 	public override void _Ready()
 	{
-		idleState = GetNode<State>("../Idle");
+		_idleState = GetNode<State>("../Idle");
 		_useToolState = GetNode<State>("../UseTool");
 	}
 
@@ -25,7 +25,7 @@ public partial class StateWalk : State
 	public override State Process(double delta)
 	{
 		if (Player.Direction == Vector2.Zero)
-			return idleState;
+			return _idleState;
 
 		Player.Velocity = Player.Direction * _movespeed;
 		if (Player.SetDirection())
