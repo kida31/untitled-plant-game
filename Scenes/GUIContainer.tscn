@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c55xp0xg83mt1" path="res://Features/GUI/HUDs/HUD.tscn" id="5_gr4nr"]
 [ext_resource type="PackedScene" uid="uid://dbt63s227d4pq" path="res://Features/GUI/Effects/NonGameplayEffect.tscn" id="5_ii0a5"]
 [ext_resource type="PackedScene" uid="uid://cca7okqb2j4c7" path="res://Features/GUI/Book/BookView.tscn" id="5_sy5d4"]
+[ext_resource type="PackedScene" path="res://Features/Crafting/Dehydrator/DehydratorInventoryView.tscn" id="5_yxd3d"]
 [ext_resource type="Script" path="res://Features/GUI/Effects/TriggerOnNonGameplay.cs" id="6_wbn0r"]
 [ext_resource type="PackedScene" uid="uid://cwe0di17r2yd" path="res://Features/TeleportPlayer/SceneTransition.tscn" id="8_jtjsl"]
 [ext_resource type="PackedScene" uid="uid://df0cg0vcow1n2" path="res://Features/GUI/DebugOverlays/DebugOverlays.tscn" id="9_m21er"]
@@ -27,7 +28,7 @@ visible = false
 [node name="HUD" parent="." instance=ExtResource("5_gr4nr")]
 z_index = -2
 
-[node name="DehydratorInventoryView" parent="." instance=ExtResource("5_pamb4")]
+[node name="DehydratorInventoryView" parent="." instance=ExtResource("5_yxd3d")]
 
 [node name="VendingGUI" parent="." instance=ExtResource("1_iuaq5")]
 visible = false
@@ -46,7 +47,6 @@ grow_vertical = 2
 scale = Vector2(0.9969, 1)
 
 [node name="DebugOverlays" parent="." instance=ExtResource("9_m21er")]
-visible = false
 anchors_preset = -1
 anchor_top = 0.822222
 anchor_right = 0.664063
