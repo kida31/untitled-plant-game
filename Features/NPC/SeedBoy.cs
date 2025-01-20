@@ -4,6 +4,8 @@ using untitledplantgame.Shops;
 
 // TODO: Each NPC should not need to be its own class
 // TODO: Refactor to use a single NPC class with a property for the NPC's name and other common properties
+namespace untitledplantgame.NPC;
+
 public partial class SeedBoy : AInteractable
 {
 	private SeedShop _seedShop;

@@ -1,6 +1,7 @@
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
+using untitledplantgame.NPC;
 
 namespace untitledplantgame.Item;
 

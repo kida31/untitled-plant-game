@@ -40,6 +40,7 @@ CollisionManager="*res://Features/Player/CollisionManager.cs"
 DialogueSystem="*res://Features/Dialogue/DialogueSystem.cs"
 CurrencyFaithOfficer="*res://Features/Systems/CurrencyFaithOfficer.cs"
 TeleportPlayer="*res://Features/TeleportPlayer/TeleportPlayer.cs"
+ClockBasedEventController="*res://Common/ClockBasedEventController.cs"
 
 [display]
 

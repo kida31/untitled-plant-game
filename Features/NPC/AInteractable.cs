@@ -2,6 +2,8 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Interaction;
 
+namespace untitledplantgame.NPC;
+
 // Alternative name AAreaInteractable, to emphasize that it is using an Area
 /// <summary>
 /// Base class for interactable objects in the game.
@@ -30,17 +32,21 @@ public abstract partial class AInteractable : Area2D, IInteractable
 	
 	private void OnBodyEntered(Node body)
 	{
-		if (body.IsInGroup("player"))
+		if (!body.IsInGroup(GameGroup.Player))
 		{
-			InteractionManager.Instance.RegisterArea(this);
+			return;
 		}
+		
+		InteractionManager.Instance.RegisterArea(this);
 	}
 	
 	protected virtual void OnBodyExited(Node body)
 	{
-		if (body.IsInGroup("player"))
+		if (!body.IsInGroup(GameGroup.Player))
 		{
-			InteractionManager.Instance.UnregisterArea(this);
+			return;
 		}
+		
+		InteractionManager.Instance.UnregisterArea(this);
 	}
 }
