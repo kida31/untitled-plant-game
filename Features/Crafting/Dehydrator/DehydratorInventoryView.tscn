@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba2vnix233ao7"]
+[gd_scene load_steps=9 format=3 uid="uid://fpjia0r4x37g"]
 
 [ext_resource type="PackedScene" uid="uid://y78tki415ik5" path="res://Features/Crafting/Dehydrator/DehydratorUi.tscn" id="1_xtr3v"]
 [ext_resource type="Script" path="res://Features/Crafting/Dehydrator/CraftingInventory.cs" id="3_5uei1"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ddbxhrxrxirqa" path="res://Assets/UI/Book/Pages/Demo/LeftInventory_filled.png" id="5_oy5tk"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="6_8b1nu"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="9_q65ah"]
-[ext_resource type="PackedScene" uid="uid://c82x6hxji8t8v" path="res://Features/GUI/GlobalTooltip.tscn" id="10_p7lvf"]
+[ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="10_p7lvf"]
 
 [node name="DehydratorInventoryView" type="Control"]
 layout_mode = 3
@@ -18,13 +18,14 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="DehydratorUi" parent="." instance=ExtResource("1_xtr3v")]
+[node name="DehydratorUi" parent="." node_paths=PackedStringArray("_playerInventory") instance=ExtResource("1_xtr3v")]
 visible = false
 layout_mode = 1
 anchor_left = 0.06875
 anchor_top = 0.163889
 anchor_right = 0.434375
 anchor_bottom = 0.813889
+_playerInventory = NodePath("../MiniInventory")
 
 [node name="MiniInventory" type="Control" parent="." node_paths=PackedStringArray("_itemViewContainer", "_itemNameLabel")]
 visible = false
