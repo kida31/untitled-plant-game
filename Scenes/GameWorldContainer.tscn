@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="10_vhh3s"]
 [ext_resource type="Resource" uid="uid://rue2vg1j66lx" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_1.tres" id="11_tpn7b"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="12_ee1fa"]
-[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/TutorialDialogue.tres" id="12_p5tpu"]
+[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/TutorialDialogue.tres" id="12_p5tpu"]
 [ext_resource type="Resource" uid="uid://djkgxlqpnhr00" path="res://Resources/Dialogue/VendingMachine/VM_init_1.tres" id="13_50go7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xisvw"]
@@ -40,6 +40,7 @@ y_sort_enabled = true
 position = Vector2(-3, 1372)
 
 [node name="Pier" parent="." instance=ExtResource("3_d7fyg")]
+y_sort_enabled = true
 position = Vector2(-1052, 2316)
 
 [node name="PlaceholderItem_1" type="Area2D" parent="."]
@@ -66,7 +67,6 @@ texture = ExtResource("4_re8t5")
 
 [node name="SeedShop" type="Area2D" parent="." groups=["Interactables"]]
 z_index = 2
-y_sort_enabled = true
 position = Vector2(465, 195)
 script = ExtResource("3_orgm4")
 
@@ -155,7 +155,6 @@ RoutineTrigger = 1
 [node name="VendingMachineNPC" parent="." instance=ExtResource("2_ldf7o")]
 visible = false
 z_index = 1
-y_sort_enabled = true
 position = Vector2(730, 160)
 
 [node name="VendingMachineCrissCross" parent="." node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("8_m1wm1")]
