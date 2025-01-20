@@ -1,14 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cusi423j6fnh2"]
+[gd_scene load_steps=8 format=3 uid="uid://dbia3oa71qd5m"]
 
 [ext_resource type="Script" path="res://Features/GUI/Vending/EmoteBubble.cs" id="1_3i77b"]
+[ext_resource type="Texture2D" uid="uid://cygl3yyb0e3ho" path="res://Assets/UI/VendingMachine/Emoji_extatic.png" id="2_djwf5"]
 [ext_resource type="Texture2D" uid="uid://bpmmqaxhkw5id" path="res://Features/GUI/Vending/speech_bubble.png" id="2_e4a62"]
-[ext_resource type="Texture2D" uid="uid://5kx22qfxe5uu" path="res://Assets/Items/chubery_seed.png" id="2_gycop"]
-[ext_resource type="Texture2D" uid="uid://dsrjntfr6kb41" path="res://Assets/Items/chubery_harvested.png" id="3_nwc8d"]
-[ext_resource type="Texture2D" uid="uid://bxatacnmmrgwf" path="res://Assets/Items/Drupoleaum_Flowers.png" id="4_hvq4p"]
-[ext_resource type="Texture2D" uid="uid://caasjky7s7if7" path="res://Assets/Items/licary_flowers.png" id="5_10nbx"]
-[ext_resource type="Texture2D" uid="uid://ub55y2eyhgq5" path="res://Assets/Items/Duck.png" id="6_7px1s"]
+[ext_resource type="Texture2D" uid="uid://47rrojthnb0m" path="res://Assets/UI/VendingMachine/Emoji_happy.png" id="3_4a6qe"]
+[ext_resource type="Texture2D" uid="uid://b151hemjw1aaa" path="res://Assets/UI/VendingMachine/Emoji_normal.png" id="4_vfors"]
+[ext_resource type="Texture2D" uid="uid://bxjsskfboy6eb" path="res://Assets/UI/VendingMachine/Emoji_sad.png" id="5_21ews"]
+[ext_resource type="Texture2D" uid="uid://c7w06ml5lby66" path="res://Assets/UI/VendingMachine/Emoji_angry.png" id="6_qkfko"]
 
 [node name="EmoteBubble" type="Control" node_paths=PackedStringArray("_emoteTexture1", "_emoteTexture2")]
+custom_minimum_size = Vector2(36, 36)
 layout_mode = 3
 anchor_right = 0.185937
 anchor_bottom = 0.236111
@@ -17,7 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_3i77b")
 Value = 1.0
 DeadZone = 0.8
-_emotes = [ExtResource("2_gycop"), ExtResource("3_nwc8d"), ExtResource("4_hvq4p"), ExtResource("5_10nbx"), ExtResource("6_7px1s")]
+_emotes = [ExtResource("2_djwf5"), ExtResource("3_4a6qe"), ExtResource("4_vfors"), ExtResource("5_21ews"), ExtResource("6_qkfko")]
 _emoteTexture1 = NodePath("EmoteTexture1")
 _emoteTexture2 = NodePath("EmoteTexture2")
 metadata/_edit_use_anchors_ = true
@@ -33,15 +34,16 @@ texture = ExtResource("2_e4a62")
 expand_mode = 1
 
 [node name="EmoteTexture1" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.235294
-anchor_top = 0.164706
-anchor_right = 0.857143
-anchor_bottom = 0.788235
+anchor_left = 0.302522
+anchor_top = 0.176471
+anchor_right = 0.789918
+anchor_bottom = 0.776471
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_7px1s")
+texture = ExtResource("6_qkfko")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -55,6 +57,6 @@ anchor_right = 0.857143
 anchor_bottom = 0.788235
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_7px1s")
+texture = ExtResource("6_qkfko")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
