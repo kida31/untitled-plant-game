@@ -68,8 +68,8 @@ public partial class ButtonIndicator : Control
 
 	public bool IsPressed
 	{
-		get => _textureButton?.IsPressed() ?? false;
-		set => _textureButton?.SetPressed(value);
+		get => _textureButton.IsPressed();
+		set => _textureButton.SetPressed(value);
 	}
 
 	[Export] private TextureButton _textureButton;
@@ -102,7 +102,7 @@ public partial class ButtonIndicator : Control
 		// this is sometimes being called and throws errors since [Export]s are not set
 		// Reproducing this is not consistent for some reason
 		// If condition is added to prevent this
-		if (IsNodeReady() && _textureButton != null)
+		if (IsNodeReady())
 		{
 			AssignButtonImage(_button, Gamepad);
 		}
