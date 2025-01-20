@@ -9,8 +9,6 @@ namespace untitledplantgame.GUI.Book.Wiki;
 /// </summary>
 public partial class WikiItemView : Control
 {
-	[Export] private BaseButton _detailedWikiItemViewButton;
-
 	/// <summary>
 	///     All focus will be redirected to this element instead
 	/// </summary>
