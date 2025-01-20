@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Common.GameStates;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item.Components;
@@ -12,7 +10,7 @@ using MedicineComponent = untitledplantgame.Item.Components.MedicineComponent;
 
 namespace untitledplantgame.Crafting;
 
-public partial class Dehydrator : Node2D, ICraftingStation
+public class Dehydrator : ICraftingStation
 {
 	private const int SlotNumber = 6;
 	private const double CraftingTime = 9; //TODO: find a good value
@@ -67,7 +65,14 @@ public partial class Dehydrator : Node2D, ICraftingStation
 		}
 	}
 
-	public void InsertItemToSlot(IItemStack item)
+	/// <summary>
+	/// Insert an item to the first empty slot. If the item is not drieable, return false. If successful, return true.
+	/// Successful means the item is inserted to the first empty slot and there is at least one empty slot.
+	/// Item is cloned and will not be modified.
+	/// </summary>
+	/// <param name="item"></param>
+	/// <returns></returns>
+	public bool InsertItemToSlot(IItemStack item)
 	{
 		//get first empty CraftingSlot
 		var currentIndex = -1;
@@ -80,28 +85,36 @@ public partial class Dehydrator : Node2D, ICraftingStation
 			currentIndex = i;
 			break;
 		}
+
+		if (currentIndex == -1) return false;
 		
 		var slot = CraftingSlots[currentIndex];
-
+		if(item.Amount < 1)
+		{
+			_logger.Error("Cannot insert item with amount less than 1.");
+			return false;
+		}
+		
 		var tags = item.GetComponent<TagsComponent>();
-		if (!tags.Contains(TagsComponent.Tags.IsDrieable)) return;
+		if (!tags.Contains(TagsComponent.Tags.IsDrieable)) return false;
 
 		if (slot.ItemStack != null)
 		{
 			_logger.Error($"Slot {currentIndex} is already occupied.");
-			return;
+			return false;
 		}
 
 		_logger.Debug($"Inserting item {item.Name} to slot {currentIndex}");
 		var insertedItem = item.Clone();
-
 		insertedItem.Amount = 1;
+		
 		slot.ItemStack = insertedItem;
 		slot.AddItemAndStartCrafting(item, CraftingTime);
 		slot.CraftTimeOut += OnCraftTimeOut; // TODO: Ready
 
 		CraftingSlots[currentIndex] = slot;
 		ItemInserted?.Invoke(item, currentIndex);
+		return true;
 	}
 
 	public IItemStack RemoveItemFromSlot(int slotIndex)
@@ -174,15 +187,5 @@ public partial class Dehydrator : Node2D, ICraftingStation
 		item.AddComponent(tags);
 
 		return item;
-	}
-
-	public void Interact()
-	{
-		EventBus.Instance.BeforeCraftingStationUiOpen(this);
-	}
-
-	public Vector2 GetGlobalInteractablePosition()
-	{
-		return GlobalPosition;
 	}
 }

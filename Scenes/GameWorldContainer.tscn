@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
 [ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://Features/NPC/VendingMachine/VendingMachineNPC.tscn" id="2_ldf7o"]
 [ext_resource type="Script" path="res://Features/Item/InteractableItem.cs" id="3_8c8wd"]
-[ext_resource type="PackedScene" uid="uid://ddthdftxrhg6x" path="res://Scenes/Pier.tscn" id="3_d7fyg"]
+[ext_resource type="PackedScene" path="res://Scenes/Pier.tscn" id="3_d7fyg"]
 [ext_resource type="Script" path="res://Features/NPC/SeedBoy.cs" id="3_orgm4"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="4_re8t5"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]

@@ -1,6 +1,7 @@
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
+using untitledplantgame.GUI.Items;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Crafting;
@@ -24,12 +25,18 @@ public partial class DehydratorUi : Control
 		};
 
 		EventBus.Instance.BeforeCraftingStationUiOpened += BeforeCraftingStationUiOpened;
-		_playerInventory.RemovingItemFromInventory += OnInsertingItemToDehydrator;
+		_playerInventory.RemovingItemFromInventory += OnInventoryWantsToDoSomethingWithItem;
 	}
 
-	private void OnInsertingItemToDehydrator(IItemStack item)
+	private void OnInventoryWantsToDoSomethingWithItem(NewInventoryItemView obj)
 	{
-		_craftingStation.InsertItemToSlot(item);
+		if(obj.ItemStack == null) return;
+		var wasInserted = _craftingStation.InsertItemToSlot(obj.ItemStack);
+		if (!wasInserted) return;
+
+		var item = obj.ItemStack.Clone();
+		item.Amount = 1;
+		obj.Inventory.RemoveItem(item);
 	}
 
 	private void BeforeCraftingStationUiOpened(ICraftingStation dehydrator)
@@ -66,16 +73,17 @@ public partial class DehydratorUi : Control
 		_craftingStation.ItemInserted += OnCraftingStationUiItemInserted;
 		_craftingStation.ItemRemoved += OnCraftingStationUiItemRemoved;
 		GameStateMachine.Instance.SetState(GameState.Crafting);
-		Visible = true;
 		
 		_playerInventory.ShowInventory(Game.Player.Inventory.GetInventory(ItemCategory.Medicine));
+		_playerInventory.Show();
+		Show();
 	}
 
 	private void OnCraftingStationUiClosed()
 	{
 		GameStateMachine.Instance.SetState(GameState.FreeRoam);
-
-		Visible = false;
+		Hide();
+		_playerInventory.Hide();
 	}
 
 	private void OnCraftingStationUiItemInserted(IItemStack item, int slotIndex)

@@ -8,7 +8,7 @@ namespace untitledplantgame.Crafting;
 
 public partial class CraftingInventory : StorageView
 {
-	public Action<IItemStack> RemovingItemFromInventory;
+	public Action<NewInventoryItemView> RemovingItemFromInventory;
 	
 	public override void _Ready()
 	{
@@ -18,11 +18,7 @@ public partial class CraftingInventory : StorageView
 
 	private void OnItemViewPressed(NewInventoryItemView newInventoryItemView)
 	{
-		ItemViews[newInventoryItemView.SlotIndex].ItemStack.Amount--;
-		var item = newInventoryItemView.ItemStack.Clone();
-		item.Amount = 1;
-		
-		RemovingItemFromInventory?.Invoke(item);
+		RemovingItemFromInventory?.Invoke(newInventoryItemView);
 	}
 
 	public void AddItem(IItemStack item)
