@@ -33,9 +33,4 @@ public partial class StandardNpc : Npc
 		_logger.Info("Npc name was requested.");
 		return _name;
 	}
-
-	public override bool IsNpcInteractable()
-	{
-		return true;
-	}
 }

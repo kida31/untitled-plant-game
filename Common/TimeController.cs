@@ -113,8 +113,6 @@ public partial class TimeController : Node
 		var currentDayMinutes = (int)(totalMinutes % minutesPerDay);
 		var hour = (int)(currentDayMinutes / minutesPerHour);
 		var minute = (int)(currentDayMinutes % minutesPerHour);
-
-		ClockBasedEventController.Instance.SetTimeOfDayInMinutes(currentDayMinutes);
 		
 		if (CurrentSeconds >= SecondsPerDay)
 		{

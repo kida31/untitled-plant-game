@@ -9,7 +9,7 @@ public partial class ClockBasedEventController : Node
 	public static ClockBasedEventController Instance { get; private set; }
 	
 	private int _timeOfDayInMinutes;
-	private event Action _clockBasedEventsInvoked;
+	private event Action ClockBasedEventsInvoked;
 	private readonly Dictionary<int, List<Action>> _scheduledEvents = new ();
 	
 	private Logger _logger;
@@ -24,13 +24,14 @@ public partial class ClockBasedEventController : Node
 		}
 		
 		Instance = this;
-		
-		_clockBasedEventsInvoked += InvokeClockBasedEvents;
+
+		TimeController.Instance.MinuteTicked += SetTimeOfDayInMinutes;
+		ClockBasedEventsInvoked += InvokeClockBasedEvents;
 	}
 
-	public void SetTimeOfDayInMinutes(int timeOfDayInMinutes)
+	private void SetTimeOfDayInMinutes(int _, int hour, int minute)
 	{
-		_timeOfDayInMinutes = timeOfDayInMinutes;
+		_timeOfDayInMinutes = hour * 60 + minute;
 	}
 	
 	public void AddClockBasedEvent(int hour, int minute, Action action)
@@ -47,7 +48,7 @@ public partial class ClockBasedEventController : Node
 
 	public void ExecuteAllClockBasedEvents()
 	{
-		_clockBasedEventsInvoked?.Invoke();
+		ClockBasedEventsInvoked?.Invoke();
 	}
 	
 	private void InvokeClockBasedEvents()
