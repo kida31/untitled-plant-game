@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyk32acdb544h"
-path="res://.godot/imported/Hover.png-ad81ed31f67d786569743b758e558b17.ctex"
+uid="uid://bcaxxbkrtykv3"
+path="res://.godot/imported/Godfrey_walkfront-Sheet.png-6ad90512b0f31f56d25109004f53054c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Hover.png"
-dest_files=["res://.godot/imported/Hover.png-ad81ed31f67d786569743b758e558b17.ctex"]
+source_file="res://Assets/Characters/Godfrey/Godfrey_walkfront-Sheet.png"
+dest_files=["res://.godot/imported/Godfrey_walkfront-Sheet.png-6ad90512b0f31f56d25109004f53054c.ctex"]
 
 [params]
 
