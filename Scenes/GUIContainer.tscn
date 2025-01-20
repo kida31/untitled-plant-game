@@ -13,7 +13,7 @@
 
 [node name="GUIContainer" type="CanvasLayer"]
 
-[node name="Weahter" parent="." instance=ExtResource("5_ctdgk")]
+[node name="Weather" parent="." instance=ExtResource("5_ctdgk")]
 
 [node name="Cheats" type="Node" parent="."]
 
@@ -24,6 +24,8 @@ visible = false
 
 [node name="TriggerOnNoneGameplay" type="Node" parent="NonGameplayEffect"]
 script = ExtResource("6_wbn0r")
+
+[node name="ALL NODES BELOW WILL NOT BE AFFECTED BY BLUR" type="Node" parent="."]
 
 [node name="SeedShopView" parent="." instance=ExtResource("2_y866b")]
 visible = false
