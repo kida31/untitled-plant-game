@@ -117,19 +117,15 @@ public partial class BookView : Control
 		UpdateInventory(Game.Player, Game.Player.Inventory);
 		
 		Show();
-		this.FadeIn(0.2f);
+		this.FadeIn(0.2f); // TODO: Refactor this in all GUI elements. Seems silly to implement this in every GUI element
 	}
 
 	private void HideBook()
 	{
 		_logger.Info("Hiding...");
+		GameStateMachine.Instance.SetState(GameState.FreeRoam);
 		
-		// TODO: Refactor this in all GUI elements. Seems silly to implement this in every GUI element
 		var tween = this.FadeOut(0.2f);
-		ToSignal(tween, Tween.SignalName.Finished).OnCompleted(() =>
-		{
-			Hide();
-			GameStateMachine.Instance.SetState(GameState.FreeRoam);
-		});
+		ToSignal(tween, Tween.SignalName.Finished).OnCompleted(Hide);
 	}
 }

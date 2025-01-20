@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.ExtensionMethods;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.GUI.Items;
@@ -33,6 +34,7 @@ public partial class SeedShopView : Control
 		_itemSlots = _itemContainer.GetChildren().OfType<ShopItemView>().ToList();
 
 		_itemSlots.ForEach(its => { its.Pressed += () => OnSlotPressed(its); });
+		this.FadeOut(0);
 	}
 
 	public override void _Process(double delta)
@@ -88,6 +90,7 @@ public partial class SeedShopView : Control
 		shop.ShopStockChanged += UpdateShopContentVisual;
 		UpdateShopContentVisual(null /* unused */);
 		Show();
+		this.FadeIn(0.2f); // TODO: Refactor this in all GUI elements. Seems silly to implement this in every GUI element
 
 		// Connect player inventory
 		_seedInventory.ShowInventory(Game.Player.Inventory.GetInventory(ItemCategory.Seed));
@@ -130,9 +133,10 @@ public partial class SeedShopView : Control
 
 	private void CloseSeedShop()
 	{
-		if (this.Visible)
+		if (Visible)
 		{
-			this.Hide();
+			var tween = this.FadeOut(0.2f);
+			ToSignal(tween, Tween.SignalName.Finished).OnCompleted(Hide);
 			_logger.Debug("Seedshop closed.");
 		}
 
