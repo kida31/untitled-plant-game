@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://djkgxlqpnhr00" path="res://Resources/Dialogue/VendingMachine/VM_init_1.tres" id="6_ki0ac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqkbf"]
-radius = 115.7
+radius = 62.0322
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqgu1"]
 size = Vector2(62, 12)

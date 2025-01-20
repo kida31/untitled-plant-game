@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cr2712p8tviur"]
+[gd_scene load_steps=12 format=3 uid="uid://cr2712p8tviur"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_ljkvf"]
+[ext_resource type="Texture2D" uid="uid://6vwbt72gbl2k" path="res://Assets/Characters/Godfrey/Godfrey_idle-Sheet.png" id="2_ujoa5"]
 [ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="2_wp7ik"]
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="3_yt76g"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="4_m14tq"]
@@ -19,7 +20,9 @@ _routinePlanner = NodePath("GodfreySprite/RoutinePlanner")
 animation = &""
 
 [node name="GodfreySprite" type="Sprite2D" parent="." index="4"]
-position = Vector2(465, 196)
+position = Vector2(0, -30)
+texture = ExtResource("2_ujoa5")
+hframes = 11
 
 [node name="RoutinePlanner" type="Node" parent="GodfreySprite" index="0" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
 script = ExtResource("2_wp7ik")
