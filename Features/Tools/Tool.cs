@@ -75,17 +75,13 @@ public abstract class Tool
 	private void _OnInitialHit(Player.Player user, Node2D[] hits)
 	{
 		_logger.Debug("Initial hit");
-		if (hits.Length > 0 && OnInitialHit(user, hits))
-		{
-			_channelingBar = new ChannelingBar(user, _channelingTime);
-			// TODO replace with actual new hit scan
-			_channelingBar.Completed += () => _OnHit(user, hits);
-			user.AddChild(_channelingBar);
-		}
-		else
-		{
-			_OnMiss(user);
-		}
+
+		if (hits.Length > 0) OnInitialHit(user, hits);
+
+		_channelingBar = new ChannelingBar(user, _channelingTime);
+		// TODO replace with actual new hit scan
+		_channelingBar.Completed += () => _OnHit(user, hits);
+		user.AddChild(_channelingBar);
 	}
 
 	private void _OnHit(Player.Player user, Node2D[] hits)
