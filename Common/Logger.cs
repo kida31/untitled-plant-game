@@ -32,7 +32,7 @@ public class Logger
 		}
 
 		// Write logs to file when it's not a debug build
-		if (!OS.IsDebugBuild())
+		if (!OS.IsDebugBuild() || true)
 		{
 			// Create directory if it doesn't exist
 			var dirPath = System.IO.Path.Combine(
