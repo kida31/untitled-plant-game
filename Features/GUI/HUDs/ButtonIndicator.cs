@@ -68,8 +68,8 @@ public partial class ButtonIndicator : Control
 
 	public bool IsPressed
 	{
-		get => _textureButton.IsPressed();
-		set => _textureButton.SetPressed(value);
+		get => IsInstanceValid(_textureButton) && _textureButton.IsPressed();
+		set => _textureButton?.SetPressed(value);
 	}
 
 	[Export] private TextureButton _textureButton;
@@ -102,7 +102,7 @@ public partial class ButtonIndicator : Control
 		// this is sometimes being called and throws errors since [Export]s are not set
 		// Reproducing this is not consistent for some reason
 		// If condition is added to prevent this
-		if (IsNodeReady())
+		if (_textureButton != null)
 		{
 			AssignButtonImage(_button, Gamepad);
 		}
@@ -171,7 +171,13 @@ public partial class ButtonIndicator : Control
 				return;
 
 			case (GamepadType.Xbox, SimpleButton.LeftTrigger_LT_L2):
+				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "LT_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "LT_pressed.png");
+				return;
 			case (GamepadType.Xbox, SimpleButton.RightTrigger_RT_R2):
+				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "RT_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "RT_pressed.png");
+				return;
 			case (GamepadType.Xbox, SimpleButton.Start):
 			case (GamepadType.Xbox, SimpleButton.Select):
 				break;
@@ -202,7 +208,13 @@ public partial class ButtonIndicator : Control
 				return;
 
 			case (GamepadType.Playstation, SimpleButton.LeftTrigger_LT_L2):
+				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "L2_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "L2_pressed.png");
+				return;
 			case (GamepadType.Playstation, SimpleButton.RightTrigger_RT_R2):
+				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "R2_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "R2_pressed.png");
+				return;
 			case (GamepadType.Playstation, SimpleButton.Start):
 			case (GamepadType.Playstation, SimpleButton.Select):
 				break;
