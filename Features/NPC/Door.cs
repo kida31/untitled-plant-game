@@ -1,4 +1,5 @@
 using Godot;
+using untitledplantgame.NPC;
 
 public partial class Door : AInteractable
 {

@@ -1,4 +1,5 @@
 using untitledplantgame.Common;
+using untitledplantgame.NPC;
 using untitledplantgame.Shops;
 using untitledplantgame.Vending;
 

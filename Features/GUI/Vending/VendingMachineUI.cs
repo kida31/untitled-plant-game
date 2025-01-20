@@ -53,6 +53,7 @@ public partial class VendingMachineUI : Control
 		_withdrawButton.Pressed += () => _vendingMachine.WithdrawGold();
 
 		EventBus.Instance.BeforeVendingMachineOpened += OpenThis;
+		this.FadeOut(0);
 	}
 
 	public override void _Process(double delta)
@@ -94,6 +95,7 @@ public partial class VendingMachineUI : Control
 		_inventoryView.ShowInventory(playerMedicineInventory);
 
 		Show();
+		this.FadeIn(0.2f); // TODO: Refactor this in all GUI elements. Seems silly to implement this in every GUI element
 		if (GetViewport()?.GuiGetFocusOwner() == null)
 		{
 			GrabFocus();
@@ -104,7 +106,10 @@ public partial class VendingMachineUI : Control
 	{
 		_vendingMachine.IsTicking = true; // Resume vending machine
 		GameStateMachine.Instance.ChangeState(GameState.FreeRoam);
-		Hide();
+		
+		var tween = this.FadeOut(0.2f);
+		ToSignal(tween, Tween.SignalName.Finished).OnCompleted(Hide);
+		_logger.Debug("Vending machine closed.");
 	}
 
 	private void SetVendingMachine(VendingMachine vendingMachine)

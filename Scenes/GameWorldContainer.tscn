@@ -1,16 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=13 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
 [ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://Features/NPC/VendingMachine/VendingMachineNPC.tscn" id="2_ldf7o"]
-[ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://Features/NPC/NPC.tscn" id="2_w1s7m"]
-[ext_resource type="PackedScene" uid="uid://ddthdftxrhg6x" path="res://Scenes/Pier.tscn" id="3_d7fyg"]
+[ext_resource type="Script" path="res://Features/Item/InteractableItem.cs" id="3_8c8wd"]
 [ext_resource type="Script" path="res://Features/NPC/SeedBoy.cs" id="3_orgm4"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="4_re8t5"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
 [ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
-[ext_resource type="PackedScene" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xisvw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xna5f"]
+radius = 40.0
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
@@ -20,23 +24,45 @@ y_sort_enabled = true
 [node name="HouseMapScene" parent="." instance=ExtResource("10_t60bx")]
 position = Vector2(-3, 1372)
 
-[node name="Pier" parent="." instance=ExtResource("3_d7fyg")]
-z_index = -1
-y_sort_enabled = true
-position = Vector2(-1321, 2197)
-
-[node name="GenericItem" parent="." instance=ExtResource("12_tpjy1")]
+[node name="PlaceholderItem_1" type="Area2D" parent="."]
 position = Vector2(750, 429)
+script = ExtResource("3_8c8wd")
 
-[node name="GenericItem2" parent="." instance=ExtResource("12_tpjy1")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceholderItem_1"]
+shape = SubResource("CircleShape2D_xisvw")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlaceholderItem_1"]
+scale = Vector2(0.0507813, 0.128906)
+texture = ExtResource("4_re8t5")
+
+[node name="PlaceholderItem_2" type="Area2D" parent="."]
 position = Vector2(757, 448)
+script = ExtResource("3_8c8wd")
 
-[node name="SeedShop" parent="." instance=ExtResource("2_w1s7m")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceholderItem_2"]
+shape = SubResource("CircleShape2D_xisvw")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlaceholderItem_2"]
+scale = Vector2(0.0507813, 0.128906)
+texture = ExtResource("4_re8t5")
+
+[node name="SeedShop" type="Area2D" parent="." groups=["Interactables"]]
+z_index = 2
+y_sort_enabled = true
 position = Vector2(465, 195)
 script = ExtResource("3_orgm4")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeedShop"]
+shape = SubResource("CircleShape2D_xna5f")
+
+[node name="Sprite2D" type="Sprite2D" parent="SeedShop"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_re8t5")
+
 [node name="VendingMachineNPC" parent="." instance=ExtResource("2_ldf7o")]
-position = Vector2(730, 185)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(730, 160)
 
 [node name="Plants" parent="." instance=ExtResource("7_36aju")]
 z_index = 0

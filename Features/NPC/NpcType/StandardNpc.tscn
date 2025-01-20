@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://1wnuc03ll3y"]
+
+[ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_6ipep"]
+[ext_resource type="Texture2D" uid="uid://bklcso0wn7iqr" path="res://Assets/Sprites/idle.png" id="2_4g0uj"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_435mo"]
+[ext_resource type="Texture2D" uid="uid://o4fvncrv04mo" path="res://Assets/Sprites/damage.png" id="3_64ptj"]
+[ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="3_mu2uu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvi7q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmcfc"]
+atlas = ExtResource("3_64ptj")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6nbc"]
+atlas = ExtResource("2_4g0uj")
+region = Rect2(240, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nryec"]
+atlas = ExtResource("3_64ptj")
+region = Rect2(160, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdp1m"]
+atlas = ExtResource("3_64ptj")
+region = Rect2(80, 240, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s0wvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmcfc")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6nbc")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nryec")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdp1m")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlqdi"]
+radius = 23.0217
+
+[node name="NpcBody2D" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_6ipep")
+_name = "Jeff the Landshark"
+_defaultPortrait = ExtResource("2_435mo")
+_npcPlayerInteraction = NodePath("InteractionNode")
+
+[node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_fvi7q")
+
+[node name="CharacterSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s0wvy")
+animation = &"angry"
+
+[node name="PortraitSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_s0wvy")
+animation = &"angry"
+
+[node name="InteractionNode" type="Area2D" parent="."]
+script = ExtResource("3_mu2uu")
+
+[node name="InteractionCollisionShape2D" type="CollisionShape2D" parent="InteractionNode"]
+shape = SubResource("CircleShape2D_jlqdi")
