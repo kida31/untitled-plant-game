@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://lufeqnjeabjx"]
+
+[ext_resource type="Script" path="res://Features/NPC/NpcTask/MovementTask.cs" id="1_wysxy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqmfv"]
+
+[node name="MovementTaskTarget" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_wysxy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fqmfv")

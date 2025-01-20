@@ -73,7 +73,7 @@ _responseContainer = NodePath("Responses")
 texture_filter = 1
 position = Vector2(169, 142)
 sprite_frames = SubResource("SpriteFrames_3m0r1")
-animation = &"sad"
+animation = &"happy"
 
 [node name="Responses" type="VBoxContainer" parent="."]
 layout_mode = 1

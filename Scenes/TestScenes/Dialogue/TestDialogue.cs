@@ -1,19 +1,13 @@
 using Godot;
 using untitledplantgame.Common;
 using DialogueResourceObject = untitledplantgame.Dialogue.Models.DialogueResourceObject;
-using DialogueSystem = untitledplantgame.Dialogue.DialogueSystem;
-
 
 namespace untitledplantgame.Scenes.TestScenes.Dialogue;
 
 public partial class TestDialogue : Node2D
 {
-	[Export]
-	private DialogueResourceObject _exampleDialogue;
-
-	[Export]
-	private DialogueResourceObject[] _followupDialogue;
-
+	[Export] private DialogueResourceObject _exampleDialogue;
+	[Export] private DialogueResourceObject[] _followupDialogue;
 	[Export] private Button _button;
 	
 	private readonly Logger _logger = new("TutorialDialogue");
