@@ -57,3 +57,4 @@ z_index = -1
 
 [node name="TriggerOnNonGameplay" type="Node" parent="NonGameplayEffect"]
 script = ExtResource("6_wbn0r")
+_fadeOutDuration = 0.1
