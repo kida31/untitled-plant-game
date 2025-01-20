@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cu7fp670pmqng" path="res://Assets/UI/VendingMachine/CashRetriever.png" id="8_pkwve"]
 [ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
-[ext_resource type="PackedScene" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
+[ext_resource type="PackedScene" uid="uid://c82x6hxji8t8v" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
 [ext_resource type="PackedScene" uid="uid://cusi423j6fnh2" path="res://Features/GUI/Vending/EmoteBubble.tscn" id="12_5lmun"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uti0s"]
@@ -193,7 +193,9 @@ anchor_bottom = 0.0
 
 [node name="EmoteBubble" parent="." instance=ExtResource("12_5lmun")]
 layout_mode = 1
-anchor_left = 0.324999
-anchor_top = 0.730556
-anchor_right = 0.373437
-anchor_bottom = 0.805556
+anchor_left = 0.31875
+anchor_top = 0.688889
+anchor_right = 0.31875
+anchor_bottom = 0.688889
+offset_right = 68.0
+offset_bottom = 46.0
