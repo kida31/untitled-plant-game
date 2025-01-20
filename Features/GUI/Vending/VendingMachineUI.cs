@@ -109,6 +109,7 @@ public partial class VendingMachineUI : Control
 		
 		var tween = this.FadeOut(0.2f);
 		ToSignal(tween, Tween.SignalName.Finished).OnCompleted(Hide);
+		_logger.Debug("Vending machine closed.");
 	}
 
 	private void SetVendingMachine(VendingMachine vendingMachine)

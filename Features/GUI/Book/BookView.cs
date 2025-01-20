@@ -127,5 +127,6 @@ public partial class BookView : Control
 		
 		var tween = this.FadeOut(0.2f);
 		ToSignal(tween, Tween.SignalName.Finished).OnCompleted(Hide);
+		_logger.Debug("Book closed.");
 	}
 }
