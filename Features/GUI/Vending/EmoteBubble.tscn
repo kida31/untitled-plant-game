@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbia3oa71qd5m"]
+[gd_scene load_steps=8 format=3 uid="uid://cusi423j6fnh2"]
 
 [ext_resource type="Script" path="res://Features/GUI/Vending/EmoteBubble.cs" id="1_3i77b"]
 [ext_resource type="Texture2D" uid="uid://cygl3yyb0e3ho" path="res://Assets/UI/VendingMachine/Emoji_extatic.png" id="2_djwf5"]
@@ -9,14 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://c7w06ml5lby66" path="res://Assets/UI/VendingMachine/Emoji_angry.png" id="6_qkfko"]
 
 [node name="EmoteBubble" type="Control" node_paths=PackedStringArray("_emoteTexture1", "_emoteTexture2")]
-custom_minimum_size = Vector2(36, 36)
+custom_minimum_size = Vector2(68, 46)
 layout_mode = 3
-anchor_right = 0.185937
-anchor_bottom = 0.236111
-grow_horizontal = 2
-grow_vertical = 2
+anchor_right = 0.10625
+anchor_bottom = 0.127778
 script = ExtResource("1_3i77b")
-Value = 1.0
+Value = 0.738
 DeadZone = 0.8
 _emotes = [ExtResource("2_djwf5"), ExtResource("3_4a6qe"), ExtResource("4_vfors"), ExtResource("5_21ews"), ExtResource("6_qkfko")]
 _emoteTexture1 = NodePath("EmoteTexture1")
@@ -34,29 +32,28 @@ texture = ExtResource("2_e4a62")
 expand_mode = 1
 
 [node name="EmoteTexture1" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(32, 32)
+modulate = Color(1, 1, 1, 0.24)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.302522
-anchor_top = 0.176471
-anchor_right = 0.789918
-anchor_bottom = 0.776471
+anchor_left = 0.308824
+anchor_top = 0.130435
+anchor_right = 0.779412
+anchor_bottom = 0.826087
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_qkfko")
-expand_mode = 1
+texture = ExtResource("4_vfors")
 metadata/_edit_use_anchors_ = true
 
 [node name="EmoteTexture2" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.76)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.235294
-anchor_top = 0.164706
-anchor_right = 0.857143
-anchor_bottom = 0.788235
+anchor_left = 0.308824
+anchor_top = 0.130435
+anchor_right = 0.779412
+anchor_bottom = 0.826087
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_qkfko")
+texture = ExtResource("5_21ews")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
