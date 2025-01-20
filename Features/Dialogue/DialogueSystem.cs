@@ -37,7 +37,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 		
 		_logger.Debug("Initialised.");
 	}
-	
 
 	public void StartDialog(DialogueResourceObject dialogue)
 	{
@@ -86,6 +85,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			EndDialogue();
 			return;
 		}
+		
 		OnResponding?.Invoke(_currentDialogue._responses.Select(r => r._responseButton).ToArray());
 	}
 
