@@ -8,7 +8,6 @@ namespace untitledplantgame.GUI.Hooks;
 ///		One dimension is chosen as primary dimension. The other dimension is then adjusted to keep the aspect ratio.
 ///		Aspect ratio can be manually set initially or will be calculated from the size of the parent node in _Ready.
 /// </summary>
-[Tool]
 public partial class AutoExpandHook : Node
 {
 	enum Mode
@@ -32,6 +31,7 @@ public partial class AutoExpandHook : Node
 
 	public override void _EnterTree()
 	{
+		GD.Print("EnterTree1");
 		_parent = GetParent<Control>();
 		_logger = new Logger(this);
 		if (_aspectRatio <= double.Epsilon)
@@ -46,25 +46,6 @@ public partial class AutoExpandHook : Node
 	public override void _ExitTree()
 	{
 		// Clean up
-
-		var callable = Callable.From(OnItemRectChanged);
-		var isConnected = _parent.IsConnected(CanvasItem.SignalName.ItemRectChanged, callable);
-		// Bad Practice Catch(anything) - This is a workaround for a (I assume) Godot bug
-		if (!isConnected)
-		{
-			// Why is it possible that the event is not added? It's in _Ready/_EnterTree
-			// [Tool] scripts are isolated from the rest of the scene tree.
-			// Funky stuff can happen when reloading scripts while not reloading scenes/editor
-
-			// C# sharp can unregister delegates without having connected earlier, no?
-			// This seems to be a Godot specific error.
-			// C# usually allows to remove a delegate from an event even if it is not added.
-			// Godot Signals do not allow that.
-
-			// This is probably editor-only and only during development (recompiling scripts)
-			_logger?.Error("OnItemRectChanged was not connected to ItemRectChanged signal. Disconnect suppressed.");
-			return;
-		}
 
 		_parent.ItemRectChanged -= OnItemRectChanged;
 	}
