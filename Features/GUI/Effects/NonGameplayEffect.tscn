@@ -9,9 +9,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="BlurEffect" parent="." instance=ExtResource("1_x17td")]
 layout_mode = 1
+mouse_filter = 2
 Strength = 1.0
 
 [node name="ColorOverlay" type="ColorRect" parent="."]
@@ -21,4 +23,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.12, 0.076, 0.031, 0.4)
