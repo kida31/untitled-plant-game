@@ -12,8 +12,8 @@ public partial class NpcRoutinePlanner : Node
 {
 	[Export] private Npc _npcExecutingRoutines;
 	[Export] private Array<NpcRoutine> _routines;
-	
 	public INpcTask ActiveTask;
+	private const int ScriptExecutionOrderDelay = 16;
 	private Logger _logger;
 	
 	public override void _Ready()
@@ -29,8 +29,8 @@ public partial class NpcRoutinePlanner : Node
 	
 	private async void ExecuteAllRoutines()
 	{
-		await Task.Delay(16); // Script execution order delay needed
-		_logger.Debug("Startin");
+		await Task.Delay(ScriptExecutionOrderDelay);
+		_logger.Debug("Starting to execute the Npc's routines.");
 		EventBus.Instance.NpcDialogueWithPlayerStarted(
 			(AnimatedSprite2D) _npcExecutingRoutines.GetNode("PortraitSprite2D"),
 			_npcExecutingRoutines.GetNpcName()

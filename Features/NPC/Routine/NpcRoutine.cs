@@ -31,7 +31,7 @@ public partial class NpcRoutine : Node
 		if (RoutineTrigger == Options.TimeOfDay)
 		{
 			_logger.Debug("This NpcRoutine will be triggered at: " + RoutineStartHours + "h : " + RoutineStartMinutes + "min.");
-			TimeController.Instance.AddEvent(
+			ClockBasedEventController.Instance.AddClockBasedEvent(
 				RoutineStartHours, 
 				RoutineStartMinutes, 
 				TimeToTriggerRoutine

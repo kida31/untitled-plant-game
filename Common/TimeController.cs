@@ -18,8 +18,6 @@ public partial class TimeController : Node
 	/// The hour with which the day starts
 	/// Singleton instance that's accessible from anywhere
 	public static TimeController Instance { get; private set; }
-
-	public int TimeOfDayInMinutes;
 	
 	public delegate void DayChangedHandler(int day);
 
@@ -29,10 +27,6 @@ public partial class TimeController : Node
 	public delegate void MinuteTickedHandler(int day, int hour, int minute);
 
 	public event MinuteTickedHandler MinuteTicked;
-
-	private event Action _clockBasedEventsInvoked;
-	
-	private readonly Dictionary<int, List<Action>> _scheduledEvents = new ();
 
 
 	/// <summary>
@@ -55,8 +49,6 @@ public partial class TimeController : Node
 			QueueFree();
 			return;
 		}
-
-		_clockBasedEventsInvoked += InvokeClockBasedEvents;
 		
 		Instance = this;
 		CurrentSeconds = StartOfDaySeconds;
@@ -89,18 +81,6 @@ public partial class TimeController : Node
 		RecalculateTimeEvents();
 	}
 
-	public void AddEvent(int hour, int minute, Action action)
-	{
-		int eventTime = hour * 60 + minute;
-		
-		if (!_scheduledEvents.ContainsKey(eventTime))
-		{
-			_scheduledEvents[eventTime] = new List<Action>();
-		}
-
-		_scheduledEvents[eventTime].Add(action);
-	}
-
 	public void GoToNextDay()
 	{
 		FastForwardTo(StartOfDaySeconds);
@@ -119,17 +99,6 @@ public partial class TimeController : Node
 		Assert.AssertTrue(targetTime < SecondsPerDay, "Target time is greater than a day");
 		FastForwardFor((SecondsPerDay + targetTime - CurrentSeconds) % SecondsPerDay);
 	}
-
-	private void InvokeClockBasedEvents()
-	{
-		if (_scheduledEvents.ContainsKey(TimeOfDayInMinutes))
-		{
-			foreach (var action in _scheduledEvents[TimeOfDayInMinutes])
-			{
-				action?.Invoke();
-			}
-		}
-	}
 	
 	/**
 	 * TODO: calculates in-game time every time tick (not every frame, as calculated in _Process())
@@ -142,10 +111,11 @@ public partial class TimeController : Node
 
 		var totalMinutes = (int)(CurrentSeconds / 60);
 		var currentDayMinutes = (int)(totalMinutes % minutesPerDay);
-		TimeOfDayInMinutes = currentDayMinutes;
 		var hour = (int)(currentDayMinutes / minutesPerHour);
 		var minute = (int)(currentDayMinutes % minutesPerHour);
 
+		ClockBasedEventController.Instance.SetTimeOfDayInMinutes(currentDayMinutes);
+		
 		if (CurrentSeconds >= SecondsPerDay)
 		{
 			_logger.Debug($"Day {_currentDay} passed, emitting signal");
@@ -159,19 +129,14 @@ public partial class TimeController : Node
 		{
 			_currentMinute = minute;
 			MinuteTicked?.Invoke(_currentDay, hour, minute);
-			_clockBasedEventsInvoked?.Invoke();
+			
+			ClockBasedEventController.Instance.ExecuteAllClockBasedEvents();
 		}
 
 		if (currentDayMinutes >= 12 * 60 && !_wasNoon)
 		{
 			_wasNoon = true;
 			NoonOccured?.Invoke();
-		}
-
-		if (TimeOfDayInMinutes >= 24 * 60)
-		{
-			
-			TimeOfDayInMinutes = 0;
 		}
 	}
 }

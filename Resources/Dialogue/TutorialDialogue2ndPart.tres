@@ -49,4 +49,4 @@ dialogueText = "How about you water these two plants by pressing and holding X o
 script = ExtResource("1_18mhc")
 _dialogueId = "Gottfried2ndPart"
 _dialogueText = Array[Object]([SubResource("Resource_82fqt"), SubResource("Resource_ldvuu"), SubResource("Resource_x1toj"), SubResource("Resource_wdl46"), SubResource("Resource_4o0ft"), SubResource("Resource_okke3"), SubResource("Resource_cl8ob")])
-_responses = Array[Object]([])
+_responses = null
