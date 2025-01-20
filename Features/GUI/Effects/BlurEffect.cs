@@ -1,6 +1,6 @@
 using Godot;
 
-namespace untitledplantgame.Scenes;
+namespace untitledplantgame.GUI.Effects;
 
 [Tool]
 public partial class BlurEffect : ColorRect
