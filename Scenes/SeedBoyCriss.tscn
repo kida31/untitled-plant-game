@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://osnne5a45tou"]
+
+[ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_qjsqv"]
+[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="2_e08ef"]
+[ext_resource type="Texture2D" uid="uid://n8ek3re8se52" path="res://Assets/Characters/PanDan/seedboi.png" id="2_j4u8e"]
+[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="3_a24bk"]
+[ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="4_p27pq"]
+[ext_resource type="Resource" uid="uid://rue2vg1j66lx" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_1.tres" id="5_hojrx"]
+[ext_resource type="Resource" uid="uid://cak24kibqtypv" path="res://Resources/Dialogue/SeedBoy/ClosingLines/seed_boy_close_1.tres" id="6_2b1q6"]
+
+[node name="PanDan" node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("1_qjsqv")]
+_name = "Pan Dan"
+_routinePlanner = NodePath("SeedShopSprite/RoutinePlanner")
+
+[node name="CharacterSprite2D" parent="." index="1"]
+animation = &""
+
+[node name="SeedShopSprite" type="Sprite2D" parent="." index="4"]
+position = Vector2(0, -26)
+texture = ExtResource("2_j4u8e")
+hframes = 11
+
+[node name="RoutinePlanner" type="Node" parent="SeedShopSprite" index="0" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+script = ExtResource("2_e08ef")
+_npcExecutingRoutines = NodePath("../..")
+_routines = [null]
+
+[node name="OnPlayerInteraction" type="Node" parent="SeedShopSprite/RoutinePlanner" index="0"]
+script = ExtResource("3_a24bk")
+RoutineTrigger = 1
+
+[node name="Dialogue" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction" index="0"]
+script = ExtResource("4_p27pq")
+_dialogueResourceObject = ExtResource("5_hojrx")
+
+[node name="Dialogue_Yes_0_okCool" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue" index="0"]
+
+[node name="OpenShop" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_Yes_0_okCool" index="0"]
+
+[node name="CloseShopLine" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_Yes_0_okCool/OpenShop" index="0"]
+script = ExtResource("4_p27pq")
+_dialogueResourceObject = ExtResource("6_2b1q6")
+
+[node name="Dialogue_No_1_sad" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue" index="1"]
+
+[node name="GoFreeRoam" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_No_1_sad" index="0"]
