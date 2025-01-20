@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://rryay1lejcli"]
 
 [ext_resource type="Script" path="res://Features/GUI/HUDs/MainMenu/MainMenu.cs" id="1_nnu1v"]
-[ext_resource type="Texture2D" uid="uid://8ao6clx6ie2r" path="res://StartScreenBackground.png" id="2_gtdmb"]
+[ext_resource type="Texture2D" uid="uid://cj4gppdvblh0q" path="res://Assets/UI/Tawas_Logo.png" id="2_70i77"]
 [ext_resource type="Texture2D" uid="uid://jitwrv3dmfn4" path="res://DefaultItemBackground_White.png" id="2_y5xl3"]
 [ext_resource type="Texture2D" uid="uid://s2fupbntng85" path="res://Assets/UI/Buttons/play_button_default.png" id="4_r4pi3"]
 [ext_resource type="Texture2D" uid="uid://dakp8dhmdf6ob" path="res://Assets/UI/Buttons/settings_button_default.png" id="5_4gtp0"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://drxncrntinnvq" path="res://Assets/UI/Buttons/settings_button_pressed.png" id="7_jbut7"]
 [ext_resource type="Texture2D" uid="uid://b64mimqgiq3jj" path="res://Assets/UI/Buttons/exit_button_pressed.png" id="10_0sl0g"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("_mainMenuPanel", "_startButton", "_settingsButton", "_exitButton")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("_startButton", "_settingsButton", "_exitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,12 +19,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nnu1v")
-_mainMenuPanel = NodePath("PanelContainer")
 _startButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer/Button")
 _settingsButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer2/Button")
 _exitButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer3/Button")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,19 +31,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="TextureRect" parent="PanelContainer"]
-layout_mode = 2
-texture = ExtResource("2_gtdmb")
-expand_mode = 1
-
 [node name="Background2" type="TextureRect" parent="PanelContainer"]
 modulate = Color(1, 1, 1, 0.619608)
 layout_mode = 2
+offset_right = 640.0
+offset_bottom = 360.0
 texture = ExtResource("2_y5xl3")
 expand_mode = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+[node name="Background" type="TextureRect" parent="PanelContainer"]
+custom_minimum_size = Vector2(256, 128)
 layout_mode = 2
+offset_left = 193.0
+offset_top = 17.0
+offset_right = 449.0
+offset_bottom = 145.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_70i77")
+expand_mode = 1
+
+[node name="CenterContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -174.0
+offset_right = 32.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
 layout_mode = 2

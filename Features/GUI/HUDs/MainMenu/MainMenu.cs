@@ -4,7 +4,6 @@ using untitledplantgame.Common;
 
 public partial class MainMenu : Control
 {
-	[Export] private PanelContainer _mainMenuPanel;
 	[Export] private Button _startButton;
 	[Export] private Button _settingsButton;
 	[Export] private Button _exitButton;
