@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=24 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
@@ -10,12 +10,26 @@
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
+[ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="8_m1wm1"]
+[ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="9_kyp2h"]
+[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="10_gpqln"]
 [ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
+[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="10_vhh3s"]
+[ext_resource type="Resource" uid="uid://rue2vg1j66lx" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_1.tres" id="11_tpn7b"]
+[ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="12_ee1fa"]
+[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/TutorialDialogue.tres" id="12_p5tpu"]
+[ext_resource type="Resource" uid="uid://djkgxlqpnhr00" path="res://Resources/Dialogue/VendingMachine/VM_init_1.tres" id="13_50go7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xisvw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xna5f"]
 radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v62ct"]
+radius = 115.7
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hq0i"]
+size = Vector2(62, 12)
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
@@ -63,10 +77,121 @@ shape = SubResource("CircleShape2D_xna5f")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_re8t5")
 
+[node name="SeedShopCrissCross" parent="." instance=ExtResource("8_m1wm1")]
+_name = "Pan Dan"
+
+[node name="SeedShopSprite" type="Sprite2D" parent="SeedShopCrissCross"]
+position = Vector2(465, 196)
+
+[node name="RoutinePlanner" type="Node" parent="SeedShopCrissCross/SeedShopSprite" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+script = ExtResource("10_vhh3s")
+_npcExecutingRoutines = NodePath("../..")
+_routines = [NodePath("OnPlayerInteraction")]
+
+[node name="OnPlayerInteraction" type="Node" parent="SeedShopCrissCross/SeedShopSprite/RoutinePlanner"]
+script = ExtResource("10_gpqln")
+RoutineTrigger = 1
+
+[node name="Dialogue" type="Node" parent="SeedShopCrissCross/SeedShopSprite/RoutinePlanner/OnPlayerInteraction"]
+script = ExtResource("12_ee1fa")
+_dialogueResourceObject = ExtResource("11_tpn7b")
+
+[node name="Dialogue_Yes_0_okCool" type="Node" parent="SeedShopCrissCross/SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue"]
+
+[node name="OpenShop" type="Node" parent="SeedShopCrissCross/SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_Yes_0_okCool"]
+
+[node name="CloseShopLine" type="Node" parent="SeedShopCrissCross/SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_Yes_0_okCool/OpenShop"]
+
+[node name="Dialogue_No_1_sad" type="Node" parent="SeedShopCrissCross/SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue"]
+
+[node name="GoFreeRoam" type="Node" parent="SeedShopCrissCross/SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_No_1_sad"]
+
+[node name="GodfreyCrissCross" parent="." instance=ExtResource("8_m1wm1")]
+position = Vector2(513, 332)
+_name = "Pan Dan"
+
+[node name="GodfreySprite" type="Sprite2D" parent="GodfreyCrissCross"]
+position = Vector2(465, 196)
+
+[node name="RoutinePlanner" type="Node" parent="GodfreyCrissCross/GodfreySprite" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+script = ExtResource("10_vhh3s")
+_npcExecutingRoutines = NodePath("../..")
+_routines = [NodePath("../../../SeedShopCrissCross/SeedShopSprite/RoutinePlanner/OnPlayerInteraction")]
+
+[node name="OnPlayerInteraction1" type="Node" parent="GodfreyCrissCross/GodfreySprite/RoutinePlanner"]
+script = ExtResource("10_gpqln")
+RoutineTrigger = 1
+
+[node name="Tut1" type="Node" parent="GodfreyCrissCross/GodfreySprite/RoutinePlanner/OnPlayerInteraction1"]
+script = ExtResource("12_ee1fa")
+_dialogueResourceObject = ExtResource("12_p5tpu")
+
+[node name="Tut2" type="Node" parent="GodfreyCrissCross/GodfreySprite/RoutinePlanner/OnPlayerInteraction1"]
+
+[node name="OnPlayerInteraction2" type="Node" parent="GodfreyCrissCross/GodfreySprite/RoutinePlanner"]
+script = ExtResource("10_gpqln")
+RoutineTrigger = 1
+
+[node name="Harvesting" type="Node" parent="GodfreyCrissCross/GodfreySprite/RoutinePlanner/OnPlayerInteraction2"]
+
+[node name="OnPlayerInteraction3" type="Node" parent="GodfreyCrissCross/GodfreySprite/RoutinePlanner"]
+script = ExtResource("10_gpqln")
+RoutineTrigger = 1
+
+[node name="VendingMachine" type="Node" parent="GodfreyCrissCross/GodfreySprite/RoutinePlanner/OnPlayerInteraction3"]
+
+[node name="OnPlayerInteraction4" type="Node" parent="GodfreyCrissCross/GodfreySprite/RoutinePlanner"]
+script = ExtResource("10_gpqln")
+RoutineTrigger = 1
+
+[node name="SeedBoy" type="Node" parent="GodfreyCrissCross/GodfreySprite/RoutinePlanner/OnPlayerInteraction4"]
+
+[node name="OnPlayerInteraction5" type="Node" parent="GodfreyCrissCross/GodfreySprite/RoutinePlanner"]
+script = ExtResource("10_gpqln")
+RoutineTrigger = 1
+
+[node name="TutEnd" type="Node" parent="GodfreyCrissCross/GodfreySprite/RoutinePlanner/OnPlayerInteraction5"]
+
 [node name="VendingMachineNPC" parent="." instance=ExtResource("2_ldf7o")]
+visible = false
 z_index = 1
 y_sort_enabled = true
 position = Vector2(730, 160)
+
+[node name="VendingMachineCrissCross" parent="." node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("8_m1wm1")]
+position = Vector2(730, 185)
+_name = "Vending Machine"
+_routinePlanner = NodePath("RoutinePlanner")
+
+[node name="VendingMachineSprite" type="Sprite2D" parent="VendingMachineCrissCross"]
+position = Vector2(0, -53)
+texture = ExtResource("9_kyp2h")
+
+[node name="InteractionRange" type="CollisionShape2D" parent="VendingMachineCrissCross"]
+shape = SubResource("CircleShape2D_v62ct")
+
+[node name="CollisionShape" type="StaticBody2D" parent="VendingMachineCrissCross"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VendingMachineCrissCross/CollisionShape"]
+y_sort_enabled = true
+shape = SubResource("RectangleShape2D_6hq0i")
+
+[node name="RoutinePlanner" type="Node" parent="VendingMachineCrissCross" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+script = ExtResource("10_vhh3s")
+_npcExecutingRoutines = NodePath("..")
+_routines = [NodePath("OnPlayerInteraction")]
+
+[node name="OnPlayerInteraction" type="Node" parent="VendingMachineCrissCross/RoutinePlanner"]
+script = ExtResource("10_gpqln")
+RoutineTrigger = 1
+
+[node name="Dialogue" type="Node" parent="VendingMachineCrissCross/RoutinePlanner/OnPlayerInteraction"]
+script = ExtResource("12_ee1fa")
+_dialogueResourceObject = ExtResource("13_50go7")
+
+[node name="Yes_0_openVM" type="Node" parent="VendingMachineCrissCross/RoutinePlanner/OnPlayerInteraction/Dialogue"]
+
+[node name="No_1_GoFreeRoam" type="Node" parent="VendingMachineCrissCross/RoutinePlanner/OnPlayerInteraction/Dialogue"]
 
 [node name="Plants" parent="." instance=ExtResource("7_36aju")]
 z_index = 0
