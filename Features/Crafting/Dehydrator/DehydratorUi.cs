@@ -7,7 +7,6 @@ namespace untitledplantgame.Crafting;
 
 public partial class DehydratorUi : Control
 {
-	[Export] private Button _closeButton;
 	[Export] private Button _retrieveAllItemsButton;
 	[Export] private GridContainer _slotContainer;
 
@@ -17,7 +16,6 @@ public partial class DehydratorUi : Control
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
-		_closeButton.Pressed += OnCraftingStationUiClosed;
 		_retrieveAllItemsButton.Pressed += () =>
 		{
 			Assert.AssertNotNull(_craftingStation);

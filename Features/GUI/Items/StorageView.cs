@@ -17,15 +17,15 @@ public partial class StorageView : Control
 	[Export] private Container _itemViewContainer;
 	[Export] private Label _itemNameLabel;
 
-	private List<NewInventoryItemView> _itemViews;
+	protected List<NewInventoryItemView> ItemViews;
 	private Logger _logger;
 
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
 
-		_itemViews = _itemViewContainer.GetChildren().OfType<NewInventoryItemView>().ToList();
-		_itemViews.ForEach(iv => { iv.FocusEntered += () => UpdateSelectedItemLabel(iv); });
+		ItemViews = _itemViewContainer.GetChildren().OfType<NewInventoryItemView>().ToList();
+		ItemViews.ForEach(iv => { iv.FocusEntered += () => UpdateSelectedItemLabel(iv); });
 		if (_itemNameLabel != null) _itemNameLabel.Text = "";
 
 		VisibilityChanged += () =>
@@ -39,15 +39,15 @@ public partial class StorageView : Control
 
 	public void ShowInventory(IInventory inventory)
 	{
-		_itemViews = _itemViewContainer.GetChildren().OfType<NewInventoryItemView>().ToList();
+		ItemViews = _itemViewContainer.GetChildren().OfType<NewInventoryItemView>().ToList();
 
 		var items = inventory.GetItems();
 		PrepareItemViewNodes(items.Count);
 
 		// Hook up item views
-		for (var i = 0; i < _itemViews.Count; i++)
+		for (var i = 0; i < ItemViews.Count; i++)
 		{
-			var itemView = _itemViews[i];
+			var itemView = ItemViews[i];
 
 			itemView.Inventory = inventory;
 			itemView.SlotIndex = i < items.Count ? i : -1;
@@ -66,7 +66,7 @@ public partial class StorageView : Control
 	/// </summary>
 	public new void GrabFocus()
 	{
-		_itemViews.FirstOrDefault()?.GrabFocus();
+		ItemViews.FirstOrDefault()?.GrabFocus();
 	}
 
 	/// <summary>
@@ -75,32 +75,32 @@ public partial class StorageView : Control
 	/// <param name="amount"></param>
 	private void PrepareItemViewNodes(int amount)
 	{
-		if (_itemViews.Count != _itemViewContainer.GetChildCount())
+		if (ItemViews.Count != _itemViewContainer.GetChildCount())
 		{
 			_logger.Warn("Number of items did not match. " +
-			             $"There are {_itemViews.Count} tracked item views, but container has {_itemViewContainer.GetChildCount()} children.");
+			             $"There are {ItemViews.Count} tracked item views, but container has {_itemViewContainer.GetChildCount()} children.");
 		}
 
 		// Remove extra item views...
-		while (_itemViews.Count > amount)
+		while (ItemViews.Count > amount)
 		{
-			var itemView = _itemViews[0];
-			_itemViews.Remove(itemView);
+			var itemView = ItemViews[0];
+			ItemViews.Remove(itemView);
 			itemView.QueueFree();
 			//  We do not need to unsubscribe since object is being freed.
 		}
 
 		// ...or add new ones
-		while (_itemViews.Count < amount)
+		while (ItemViews.Count < amount)
 		{
 			var itemView = _itemViewPrefab.Instantiate<NewInventoryItemView>();
 			_itemViewContainer.AddChild(itemView);
 			itemView.FocusEntered += () => UpdateSelectedItemLabel(itemView);
-			_itemViews.Add(itemView);
+			ItemViews.Add(itemView);
 		}
 
-		Assert.AssertTrue(_itemViews.Count == _itemViewContainer.GetChildCount(),
-			$"Number of items did not match after adjustment. Tracked nodes are {_itemViews.Count} and container children are {_itemViewContainer.GetChildCount()}");
+		Assert.AssertTrue(ItemViews.Count == _itemViewContainer.GetChildCount(),
+			$"Number of items did not match after adjustment. Tracked nodes are {ItemViews.Count} and container children are {_itemViewContainer.GetChildCount()}");
 	}
 
 	private void UpdateSelectedItemLabel(NewInventoryItemView itemView)

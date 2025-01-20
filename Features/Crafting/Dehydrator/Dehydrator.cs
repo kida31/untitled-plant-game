@@ -13,7 +13,7 @@ namespace untitledplantgame.Crafting;
 public class Dehydrator : ICraftingStation
 {
 	private const int SlotNumber = 6;
-	private const double CraftingTime = 10; //TODO: find a good value
+	private const double CraftingTime = 9; //TODO: find a good value
 	private const Recipe.CraftingType CraftingType = Recipe.CraftingType.Drying;
 	private const double ValueMultiplier = 4.20; //TODO: find a good value
 	
