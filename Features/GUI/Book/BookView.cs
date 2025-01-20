@@ -38,6 +38,7 @@ public partial class BookView : Control
 	{
 		// 1. Init self
 		_logger = new Logger(this);
+		this.FadeOut(0);
 
 		// 1.1. Subscribe to events
 		EventBus.Instance.OnPlayerInventoryChanged += UpdateInventory;
@@ -115,22 +116,20 @@ public partial class BookView : Control
 		GameStateMachine.Instance.SetState(GameState.Book);
 		UpdateInventory(Game.Player, Game.Player.Inventory);
 		
-		// Do Once, pseudo "await"
-		BlurController.Instance.BlurEnabled += OnBlurFinished;
-		void OnBlurFinished()
-		{
-			Show();	
-			BlurController.Instance.BlurEnabled -= OnBlurFinished;
-		}
-
-		// this.FadeIn(0.5f);
 		Show();
+		this.FadeIn(0.2f);
 	}
 
 	private void HideBook()
 	{
 		_logger.Info("Hiding...");
-		GameStateMachine.Instance.SetState(GameState.FreeRoam);
-		Hide();
+		
+		// TODO: Refactor this in all GUI elements. Seems silly to implement this in every GUI element
+		var tween = this.FadeOut(0.2f);
+		ToSignal(tween, Tween.SignalName.Finished).OnCompleted(() =>
+		{
+			Hide();
+			GameStateMachine.Instance.SetState(GameState.FreeRoam);
+		});
 	}
 }
