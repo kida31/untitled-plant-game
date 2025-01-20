@@ -32,7 +32,7 @@ public abstract partial class AInteractable : Area2D, IInteractable
 	
 	private void OnBodyEntered(Node body)
 	{
-		if (!body.IsInGroup("player"))
+		if (!body.IsInGroup(GameGroup.Player))
 		{
 			return;
 		}
@@ -42,7 +42,7 @@ public abstract partial class AInteractable : Area2D, IInteractable
 	
 	protected virtual void OnBodyExited(Node body)
 	{
-		if (!body.IsInGroup("player"))
+		if (!body.IsInGroup(GameGroup.Player))
 		{
 			return;
 		}
