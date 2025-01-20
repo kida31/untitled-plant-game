@@ -1,13 +1,13 @@
 using Godot;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.GUI.Hooks;
 
 /// <summary>
 ///		Add this node as a child of a Control node to make it expand in a way that keeps the aspect ratio
-///	 One dimension is chosen as primary dimension. The other dimension is then adjusted to keep the aspect ratio.
-/// Aspect ratio can be manually set initially or will be calculated from the size of the parent node in _Ready.
+///		One dimension is chosen as primary dimension. The other dimension is then adjusted to keep the aspect ratio.
+///		Aspect ratio can be manually set initially or will be calculated from the size of the parent node in _Ready.
 /// </summary>
-[Tool]
 public partial class AutoExpandHook : Node
 {
 	enum Mode
@@ -27,10 +27,13 @@ public partial class AutoExpandHook : Node
 	[Export] private Mode _mode = Mode.HeightMatchWidth;
 
 	private Control _parent;
+	private Logger _logger;
 
-	public override void _Ready()
+	public override void _EnterTree()
 	{
+		GD.Print("EnterTree1");
 		_parent = GetParent<Control>();
+		_logger = new Logger(this);
 		if (_aspectRatio <= double.Epsilon)
 		{
 			var size = _parent.GetGlobalRect().Size;
@@ -43,6 +46,7 @@ public partial class AutoExpandHook : Node
 	public override void _ExitTree()
 	{
 		// Clean up
+
 		_parent.ItemRectChanged -= OnItemRectChanged;
 	}
 

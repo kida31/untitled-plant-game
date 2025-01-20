@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_82d0x"]
 script = ExtResource("1_yotbo")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = 2
 dialogueText = "Hello newcomer! I am Gottfried and I am somewhat of a leader around here."
 
 [sub_resource type="Resource" id="Resource_j1jl0"]

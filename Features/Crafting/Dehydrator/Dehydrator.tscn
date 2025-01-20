@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://fc51eeilo3tu"]
+
+[ext_resource type="Texture2D" uid="uid://dmbdsljo1seok" path="res://Assets/Overworld/House/mini_dehydrator.png" id="2_2ormt"]
+
+[node name="Dehydrator" type="Node2D"]
+
+[node name="TextureRect" type="Sprite2D" parent="."]
+texture = ExtResource("2_2ormt")
