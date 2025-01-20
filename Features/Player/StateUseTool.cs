@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.Tools;
 
 namespace untitledplantgame.Player;
 
@@ -8,6 +10,13 @@ public partial class StateUseTool : State
 {
 	private State _idleState;
 	private bool _queuingExit;
+	private Dictionary<Type, string> _toolActions = new()
+	{
+		{ typeof(WateringCan), "water" },
+		{ typeof(Shears), "shears" },
+		{ typeof(SeedBag), "seedbag" },
+		{ typeof(Shovel), "shovel" }
+	};
 
 	public override void _Ready()
 	{
@@ -17,9 +26,12 @@ public partial class StateUseTool : State
 	public override void Enter()
 	{
 		_queuingExit = false;
-		Player.UpdateAnimation("idle");
-
+		
 		var tool = Player.Toolbelt.CurrentTool;
+		var toolName = tool.GetType();
+
+		UpdateToolAnimation(toolName);
+		
 		if (tool != null)
 		{
 			tool.StartChanneling(Player); // Should be a public method in player instead of property access
@@ -27,15 +39,22 @@ public partial class StateUseTool : State
 		}
 	}
 
+	private void UpdateToolAnimation(Type toolType)
+	{
+		var toolAction = _toolActions[toolType];
+		Player.UpdateAnimation(toolAction);
+	}
+
 	public override State Process(double delta)
 	{
 		Player.SetDirection();
 		Player.Velocity = Vector2.Zero;
-		Player.UpdateAnimation("idle");
 
 		if (!Input.IsActionPressed(FreeRoam.UseTool))
 		{
 			Player.Toolbelt.CurrentTool?.Cancel(Player);
+			var tool = Player.Toolbelt.CurrentTool;
+			UpdateToolAnimation(tool?.GetType());
 			return _idleState;
 		}
 
