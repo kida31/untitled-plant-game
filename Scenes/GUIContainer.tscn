@@ -5,50 +5,46 @@
 [ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="2_y866b"]
 [ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
 [ext_resource type="PackedScene" uid="uid://c55xp0xg83mt1" path="res://Features/GUI/HUDs/HUD.tscn" id="5_gr4nr"]
+[ext_resource type="PackedScene" uid="uid://dbt63s227d4pq" path="res://Features/GUI/Effects/NonGameplayEffect.tscn" id="5_ii0a5"]
 [ext_resource type="PackedScene" uid="uid://cca7okqb2j4c7" path="res://Features/GUI/Book/BookView.tscn" id="5_sy5d4"]
+[ext_resource type="Script" path="res://Scenes/TriggerOnNonGameplay.cs" id="6_wbn0r"]
 [ext_resource type="PackedScene" uid="uid://cwe0di17r2yd" path="res://Features/TeleportPlayer/SceneTransition.tscn" id="8_jtjsl"]
-[ext_resource type="PackedScene" uid="uid://d0v5k0l8ds6w6" path="res://Features/GUI/Effects/BlurEffect.tscn" id="8_y55me"]
-[ext_resource type="Script" path="res://Scenes/BlurController.cs" id="9_4ddrp"]
 [ext_resource type="PackedScene" uid="uid://df0cg0vcow1n2" path="res://Features/GUI/DebugOverlays/DebugOverlays.tscn" id="9_m21er"]
 
 [node name="GUIContainer" type="CanvasLayer"]
 
-[node name="SeedShopView" parent="." instance=ExtResource("2_y866b")]
-visible = false
-
 [node name="Weahter" parent="." instance=ExtResource("5_ctdgk")]
-
-[node name="DialogueView" parent="." instance=ExtResource("2_qr6u8")]
-visible = false
 
 [node name="Cheats" type="Node" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource("5_gr4nr")]
+
+[node name="NonGameplayEffect" parent="." instance=ExtResource("5_ii0a5")]
+visible = false
+
+[node name="TriggerOnNoneGameplay" type="Node" parent="NonGameplayEffect"]
+script = ExtResource("6_wbn0r")
+
+[node name="SeedShopView" parent="." instance=ExtResource("2_y866b")]
+visible = false
+
+[node name="DialogueView" parent="." instance=ExtResource("2_qr6u8")]
+visible = false
 
 [node name="VendingGUI" parent="." instance=ExtResource("1_iuaq5")]
 visible = false
 
 [node name="BookView" parent="." instance=ExtResource("5_sy5d4")]
 visible = false
-anchor_left = 0.15
-anchor_top = 0.0777778
-anchor_right = 0.85
-anchor_bottom = 0.922222
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_right = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SceneTransition" parent="." instance=ExtResource("8_jtjsl")]
 scale = Vector2(0.9969, 1)
-
-[node name="BlurEffect" parent="." instance=ExtResource("8_y55me")]
-visible = false
-
-[node name="Node" type="Node" parent="BlurEffect" node_paths=PackedStringArray("_blurEffect")]
-script = ExtResource("9_4ddrp")
-_strength = 1.0
-_transitionDuration = 0.5
-_blurEffect = NodePath("..")
 
 [node name="DebugOverlays" parent="." instance=ExtResource("9_m21er")]
 anchors_preset = -1
