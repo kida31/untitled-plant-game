@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=12 format=3 uid="uid://3ndp3em1fi7h"]
 
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/GUI/Vending/VendingGUI.tscn" id="1_iuaq5"]
 [ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="2_qr6u8"]
@@ -27,6 +27,8 @@ visible = false
 [node name="HUD" parent="." instance=ExtResource("5_gr4nr")]
 z_index = -2
 
+[node name="DehydratorInventoryView" parent="." instance=ExtResource("5_pamb4")]
+
 [node name="VendingGUI" parent="." instance=ExtResource("1_iuaq5")]
 visible = false
 
@@ -44,6 +46,7 @@ grow_vertical = 2
 scale = Vector2(0.9969, 1)
 
 [node name="DebugOverlays" parent="." instance=ExtResource("9_m21er")]
+visible = false
 anchors_preset = -1
 anchor_top = 0.822222
 anchor_right = 0.664063

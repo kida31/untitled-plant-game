@@ -1,0 +1,164 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba2vnix233ao7"]
+
+[ext_resource type="PackedScene" uid="uid://y78tki415ik5" path="res://Features/Crafting/Dehydrator/DehydratorUi.tscn" id="1_xtr3v"]
+[ext_resource type="Script" path="res://Features/Crafting/Dehydrator/CraftingInventory.cs" id="3_5uei1"]
+[ext_resource type="PackedScene" path="res://Features/GUI/Items/NewInventoryItemView.tscn" id="3_gqumj"]
+[ext_resource type="Texture2D" uid="uid://bxc00meevdgul" path="res://Assets/UI/Book/Pages/mini_inventory.png" id="4_0wx03"]
+[ext_resource type="Texture2D" uid="uid://ddbxhrxrxirqa" path="res://Assets/UI/Book/Pages/Demo/LeftInventory_filled.png" id="5_oy5tk"]
+[ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="6_8b1nu"]
+[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="9_q65ah"]
+[ext_resource type="PackedScene" uid="uid://c82x6hxji8t8v" path="res://Features/GUI/GlobalTooltip.tscn" id="10_p7lvf"]
+
+[node name="DehydratorInventoryView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="DehydratorUi" parent="." instance=ExtResource("1_xtr3v")]
+visible = false
+layout_mode = 1
+anchor_left = 0.06875
+anchor_top = 0.163889
+anchor_right = 0.434375
+anchor_bottom = 0.813889
+
+[node name="MiniInventory" type="Control" parent="." node_paths=PackedStringArray("_itemViewContainer", "_itemNameLabel")]
+visible = false
+custom_minimum_size = Vector2(223, 235)
+layout_mode = 1
+anchor_left = 0.551562
+anchor_top = 0.163889
+anchor_right = 0.901562
+anchor_bottom = 0.816667
+offset_bottom = -6.10352e-05
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_5uei1")
+_itemViewPrefab = ExtResource("3_gqumj")
+_itemViewContainer = NodePath("ItemGrid")
+_itemNameLabel = NodePath("TextBox")
+metadata/_tab_index = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="MiniInventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0wx03")
+metadata/_edit_use_anchors_ = true
+
+[node name="Reference" type="TextureRect" parent="MiniInventory"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_oy5tk")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextBox" parent="MiniInventory" instance=ExtResource("6_8b1nu")]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+anchor_left = 0.232143
+anchor_top = 0.874734
+anchor_right = 0.8125
+anchor_bottom = 0.930053
+offset_right = 0.0
+offset_bottom = 0.0
+size_flags_horizontal = 4
+text = "Abc12abc12"
+horizontal_alignment = 1
+text_overrun_behavior = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ItemGrid" type="GridContainer" parent="MiniInventory"]
+layout_mode = 2
+anchor_left = 0.196429
+anchor_top = 0.0657895
+anchor_right = 0.848214
+anchor_bottom = 0.671053
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="ItemView" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView2" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView3" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView4" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView5" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView6" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView7" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView8" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView9" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView10" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView11" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView12" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView13" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView14" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView15" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView16" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView17" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView18" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView19" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="ItemView20" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
+layout_mode = 2
+
+[node name="FocusIndicator" parent="." instance=ExtResource("9_q65ah")]
+visible = false
+
+[node name="GlobalTooltip" parent="." instance=ExtResource("10_p7lvf")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0

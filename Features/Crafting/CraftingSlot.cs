@@ -11,7 +11,7 @@ public partial class CraftingSlot
 	public event Action<CraftingSlot> CraftTimeOut;
 	public event Action<double> ProgressChanged;
 	public IItemStack ItemStack { get; set; }
-	public bool IsCraftingComplete;
+	public bool IsCraftingComplete => !_isCrafting && ItemStack != null;
 	private bool _isCrafting; 
 	private double _currentTime;
 	private double _totalCraftTime;
@@ -62,12 +62,15 @@ public partial class CraftingSlot
 	{
 		ItemStack = null;
 		_isCrafting = false;
+		_currentTime = 0;
+		_totalCraftTime = 0;
 	}
 
 	private void CompleteCrafting()
 	{
-		IsCraftingComplete = true;
 		_isCrafting = false;
+		//_currentTime = 0;
+		//_totalCraftTime = 0;
 		CraftTimeOut?.Invoke(this);
 	}
 }
