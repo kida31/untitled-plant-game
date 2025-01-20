@@ -1,6 +1,8 @@
+using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
+using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.GUI.Items;
 using untitledplantgame.Inventory;
 
@@ -21,11 +23,29 @@ public partial class DehydratorUi : Control
 		_retrieveAllItemsButton.Pressed += () =>
 		{
 			Assert.AssertNotNull(_craftingStation);
-			_craftingStation?.RetrieveAllFinishedItems();
+			
+			var items = _craftingStation?.RetrieveAllFinishedItems();
+			var itemsArr = items?.Where(i => i != null).ToArray();
+			if(itemsArr != null) Game.Player.Inventory.AddItem(itemsArr);
+			
+			for (var i = 0; i < _slotContainer.GetChildCount(); i++)
+			{
+				OnCraftingStationUiItemRemoved(i);
+			}
 		};
 
 		EventBus.Instance.BeforeCraftingStationUiOpened += BeforeCraftingStationUiOpened;
 		_playerInventory.RemovingItemFromInventory += OnInventoryWantsToDoSomethingWithItem;
+		var slotUi = _slotContainer.GetChildren();
+		for (var index = 0; index < slotUi.Count; index++)
+		{
+			var slot = slotUi[index];
+			if (slot is CraftingSlotUi slotUiInstance)
+			{
+				var i = index;
+				slotUiInstance.Pressed += () => PressedCraftingSlot(slotUiInstance, i);
+			}
+		}
 	}
 
 	private void OnInventoryWantsToDoSomethingWithItem(NewInventoryItemView obj)
@@ -34,9 +54,7 @@ public partial class DehydratorUi : Control
 		var wasInserted = _craftingStation.InsertItemToSlot(obj.ItemStack);
 		if (!wasInserted) return;
 
-		var item = obj.ItemStack.Clone();
-		item.Amount = 1;
-		obj.Inventory.RemoveItem(item);
+		obj.Inventory.PopItemFromSlot(obj.SlotIndex, 1);
 	}
 
 	private void BeforeCraftingStationUiOpened(ICraftingStation dehydrator)
@@ -66,17 +84,32 @@ public partial class DehydratorUi : Control
 			Assert.AssertTrue(uiSlots[i] is CraftingSlotUi, "this should be a crafting slot uwu");
 			if (uiSlots[i] is CraftingSlotUi slotUi)
 			{
-				slotUi.SetCraftingSlot(slots[i]);
+				slotUi.UpdateCraftingSlot(slots[i]);
 			}
 		}
 
 		_craftingStation.ItemInserted += OnCraftingStationUiItemInserted;
-		_craftingStation.ItemRemoved += OnCraftingStationUiItemRemoved;
 		GameStateMachine.Instance.SetState(GameState.Crafting);
 		
 		_playerInventory.ShowInventory(Game.Player.Inventory.GetInventory(ItemCategory.Medicine));
 		_playerInventory.Show();
 		Show();
+	}
+
+	private void PressedCraftingSlot(CraftingSlotUi slot, int index)
+	{
+		if(slot.ItemStack == null) return;
+		Game.Player.Inventory.AddItem(_craftingStation.RemoveItemFromSlot(index));
+		OnCraftingStationUiItemRemoved(index);
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		base._UnhandledInput(@event);
+		if (@event.IsActionPressed(UINavigation.Cancel) && IsVisibleInTree())
+		{
+			OnCraftingStationUiClosed();
+		}
 	}
 
 	private void OnCraftingStationUiClosed()
@@ -94,7 +127,7 @@ public partial class DehydratorUi : Control
 		if (_slotContainer.GetChild(slotIndex) is CraftingSlotUi slotUi)
 		{
 			_logger.Debug($"The item {item.Name} should be on slot {slotIndex}. Crafting station has item {slot.ItemStack.Name}");
-			slotUi.SetCraftingSlot(slot);
+			slotUi.UpdateCraftingSlot(slot);
 		}
 	}
 
@@ -103,9 +136,7 @@ public partial class DehydratorUi : Control
 		if (_slotContainer.GetChild(slotIndex) is CraftingSlotUi slot)
 		{
 			_logger.Debug($"Item removed from slot {slotIndex}");
-			slot.SetCraftingSlot(slot.CraftingSlot);
+			slot.UpdateCraftingSlot(slot.CraftingSlot);
 		}
-		
-		_playerInventory.AddItem(_craftingStation.CraftingSlots[slotIndex].ItemStack);
 	}
 }

@@ -23,7 +23,6 @@ public class Dehydrator : ICraftingStation
 
 	public string ActionName { get; } = "Dehydrate";
 	public event Action<IItemStack, int> ItemInserted;
-	public event Action<int> ItemRemoved;
 	public CraftingSlot[] CraftingSlots { get; private set; }
 
 	private readonly Logger _logger;
@@ -54,7 +53,7 @@ public class Dehydrator : ICraftingStation
 		_logger.Debug($"Initialized Dehydrator with {CraftingSlots.Length} slots");
 	}
 
-	public void Process(double delta)
+	public void DoCraftingTickTock(double delta)
 	{
 		Assert.AssertNotNull(CraftingSlots);
 		if (CraftingSlots == null) return;
@@ -109,33 +108,37 @@ public class Dehydrator : ICraftingStation
 		insertedItem.Amount = 1;
 		
 		slot.ItemStack = insertedItem;
-		slot.AddItemAndStartCrafting(item, CraftingTime);
+		slot.AddItemAndStartCrafting(insertedItem, CraftingTime);
 		slot.CraftTimeOut += OnCraftTimeOut; // TODO: Ready
 
 		CraftingSlots[currentIndex] = slot;
-		ItemInserted?.Invoke(item, currentIndex);
+		ItemInserted?.Invoke(insertedItem, currentIndex);
 		return true;
 	}
 
 	public IItemStack RemoveItemFromSlot(int slotIndex)
 	{
-		_logger.Debug($"Removing item from slot {slotIndex}");
 		var item = CraftingSlots[slotIndex].ItemStack;
+		_logger.Debug($"Removing item {item} from slot {slotIndex}");
 		CraftingSlots[slotIndex].RemoveItem();
-		ItemRemoved?.Invoke(slotIndex);
-
+		
 		return item;
 	}
-
-	public void RetrieveAllFinishedItems()
+	
+	public List<IItemStack> RetrieveAllFinishedItems()
 	{
+		var items = new List<IItemStack>();
 		for (var i = 0; i < CraftingSlots.Length; i++)
 		{
 			if (CraftingSlots[i].IsCraftingComplete)
 			{
-				RemoveItemFromSlot(i);
+				var item = RemoveItemFromSlot(i);
+				if(item == null) continue;
+				items.Add(item);
 			}
 		}
+
+		return items;
 	}
 
 	private void OnCraftTimeOut(CraftingSlot slot)
@@ -157,7 +160,7 @@ public class Dehydrator : ICraftingStation
 
 	private IItemStack ModifyComponent(IItemStack item)
 	{
-		var comp = item.GetComponent<MedicineComponent>().Clone();
+		var comp = item?.GetComponent<MedicineComponent>()?.Clone();
 		if (comp == null) return item;
 
 		foreach (var (effect, value) in _medicineComponent.TheGoodStuff)

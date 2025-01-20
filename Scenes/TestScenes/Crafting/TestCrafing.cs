@@ -60,7 +60,7 @@ public partial class TestCrafing : Node2D
 
 	public override void _Process(double delta)
 	{
-		_dehydrator.Process(delta);
+		_dehydrator.DoCraftingTickTock(delta);
 	}
 
 	private void RemoveItem()

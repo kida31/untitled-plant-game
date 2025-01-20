@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://y78tki415ik5"]
+[gd_scene load_steps=7 format=3 uid="uid://y78tki415ik5"]
 
 [ext_resource type="Script" path="res://Features/Crafting/Dehydrator/DehydratorUi.cs" id="1_p40jb"]
 [ext_resource type="Texture2D" uid="uid://bsff074nxvmgu" path="res://Assets/UI/Crafting/dehydrator_UI.png" id="2_vppst"]
 [ext_resource type="PackedScene" uid="uid://dafhmyiy5jrym" path="res://Features/Crafting/crafting_slot.tscn" id="3_licfq"]
 [ext_resource type="Texture2D" uid="uid://hfq05pqfpnyr" path="res://Assets/UI/Crafting/retrieve_all.png" id="3_nxqjy"]
-[ext_resource type="Texture2D" uid="uid://dqducm8634867" path="res://Assets/Items/Plants/chubery_harvested.png" id="4_tkq3b"]
 [ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="4_xr746"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8us2i"]
@@ -47,10 +46,10 @@ icon_alignment = 1
 [node name="Grid" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0811966
-anchor_top = 0.491453
-anchor_right = 0.790598
-anchor_bottom = 0.935897
+anchor_left = 0.15812
+anchor_top = 0.517094
+anchor_right = 0.705128
+anchor_bottom = 0.858974
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/h_separation = 16
@@ -61,7 +60,6 @@ metadata/_edit_use_anchors_ = true
 [node name="ItemSlot" parent="Grid" instance=ExtResource("3_licfq")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_8us2i")
-_placeholderIcon = ExtResource("4_tkq3b")
 
 [node name="ItemSlot2" parent="Grid" instance=ExtResource("3_licfq")]
 layout_mode = 2

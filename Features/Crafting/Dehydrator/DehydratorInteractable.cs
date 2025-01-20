@@ -17,6 +17,11 @@ public partial class DehydratorInteractable : AInteractable
 		}
 	}
 
+	public override void _Process(double delta)
+	{
+		_dehydrator.DoCraftingTickTock(delta);
+	}
+
 	public override void Interact()
 	{
 		_logger.Debug("Interacted");
