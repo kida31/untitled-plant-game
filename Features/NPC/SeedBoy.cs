@@ -13,16 +13,28 @@ public partial class SeedBoy : AInteractable
 		base._Ready();
 		_seedShop = new SeedShop();
 		_seedShop.GenerateRandomShopStock();
+
+		TimeController.Instance.DayChanged += OnDayChanged;
+	}
+
+	public override void _ExitTree()
+	{
+		TimeController.Instance.DayChanged -= OnDayChanged;
 	}
 
 	public override void Interact()
 	{
 		EventBus.Instance.SeedShopOpening(_seedShop);
 	}
-	
+
 	protected override void OnBodyExited(Node body)
 	{
 		base.OnBodyExited(body);
 		EventBus.Instance.SeedshopClosed();
+	}
+
+	private void OnDayChanged(int day)
+	{
+		_seedShop.GenerateRandomShopStock();
 	}
 }
