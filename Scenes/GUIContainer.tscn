@@ -13,23 +13,19 @@
 
 [node name="GUIContainer" type="CanvasLayer"]
 
-[node name="Weahter" parent="." instance=ExtResource("5_ctdgk")]
-
-[node name="HUD" parent="." instance=ExtResource("5_gr4nr")]
-
-[node name="NonGameplayEffect" parent="." instance=ExtResource("5_ii0a5")]
-visible = false
-
-[node name="TriggerOnNonGameplay" type="Node" parent="NonGameplayEffect"]
-script = ExtResource("6_wbn0r")
-
 [node name="SeedShopView" parent="." instance=ExtResource("2_y866b")]
 visible = false
+
+[node name="Weahter" parent="." instance=ExtResource("5_ctdgk")]
+z_index = -2
 
 [node name="DialogueView" parent="." instance=ExtResource("2_qr6u8")]
 visible = false
 
 [node name="Cheats" type="Node" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("5_gr4nr")]
+z_index = -2
 
 [node name="VendingGUI" parent="." instance=ExtResource("1_iuaq5")]
 visible = false
@@ -54,3 +50,10 @@ anchor_right = 0.664063
 offset_top = 5.0
 offset_right = 0.0
 metadata/_edit_use_anchors_ = true
+
+[node name="NonGameplayEffect" parent="." instance=ExtResource("5_ii0a5")]
+visible = false
+z_index = -1
+
+[node name="TriggerOnNonGameplay" type="Node" parent="NonGameplayEffect"]
+script = ExtResource("6_wbn0r")
