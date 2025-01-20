@@ -75,7 +75,7 @@ public partial class TestCrafing : Node2D
 		_index = Math.Min(++_index, _dehydrator.CraftingSlots.Length);
 
 		if (_index >= _dehydrator.CraftingSlots.Length) return;
-		_dehydrator.InsertItemToSlot(_testItem, _index);
+		_dehydrator.InsertItemToSlot(_testItem);
 	}
 
 	private void OpenDehydrator()

@@ -9,6 +9,7 @@ public partial class DehydratorUi : Control
 {
 	[Export] private Button _retrieveAllItemsButton;
 	[Export] private GridContainer _slotContainer;
+	[Export] private CraftingInventory _playerInventory;
 
 	private Dehydrator _craftingStation;
 	private Logger _logger;
@@ -23,6 +24,12 @@ public partial class DehydratorUi : Control
 		};
 
 		EventBus.Instance.BeforeCraftingStationUiOpened += BeforeCraftingStationUiOpened;
+		_playerInventory.RemovingItemFromInventory += OnInsertingItemToDehydrator;
+	}
+
+	private void OnInsertingItemToDehydrator(IItemStack item)
+	{
+		_craftingStation.InsertItemToSlot(item);
 	}
 
 	private void BeforeCraftingStationUiOpened(ICraftingStation dehydrator)
@@ -60,6 +67,8 @@ public partial class DehydratorUi : Control
 		_craftingStation.ItemRemoved += OnCraftingStationUiItemRemoved;
 		GameStateMachine.Instance.SetState(GameState.Crafting);
 		Visible = true;
+		
+		_playerInventory.ShowInventory(Game.Player.Inventory.GetInventory(ItemCategory.Medicine));
 	}
 
 	private void OnCraftingStationUiClosed()
@@ -88,5 +97,7 @@ public partial class DehydratorUi : Control
 			_logger.Debug($"Item removed from slot {slotIndex}");
 			slot.SetCraftingSlot(slot.CraftingSlot);
 		}
+		
+		_playerInventory.AddItem(_craftingStation.CraftingSlots[slotIndex].ItemStack);
 	}
 }

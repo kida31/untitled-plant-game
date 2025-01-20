@@ -17,7 +17,7 @@ public partial class DehydratorInventoryView : Control
 	public override void _Ready()
 	{
 		base._Ready();
-		_playerInventory.InsertingItem += OnInsertingItem;
+		//_playerInventory.InsertingItemToCraftingStation += OnInsertingItem;
 	}
 
 	private void OnInsertingItem(NewInventoryItemView obj)
@@ -34,7 +34,7 @@ public partial class DehydratorInventoryView : Control
 			_index = i;
 			break;
 		}
-		_dehydrator.InsertItemToSlot(obj.ItemStack, _index);
+		//_dehydrator.InsertItemToSlot(obj.ItemStack, _index);
 	}
 
 	public override void _Input(InputEvent @event)

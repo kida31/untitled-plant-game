@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.GameStates;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item.Components;
@@ -10,25 +12,24 @@ using MedicineComponent = untitledplantgame.Item.Components.MedicineComponent;
 
 namespace untitledplantgame.Crafting;
 
-public class Dehydrator : ICraftingStation
+public partial class Dehydrator : Node2D, ICraftingStation
 {
 	private const int SlotNumber = 6;
 	private const double CraftingTime = 9; //TODO: find a good value
 	private const Recipe.CraftingType CraftingType = Recipe.CraftingType.Drying;
 	private const double ValueMultiplier = 4.20; //TODO: find a good value
-	
+
 	private static readonly IItemStack DriedLeaf = ItemDatabase.Instance.CreateItemStack("dried_leaf");
 	private static readonly IItemStack DriedFlower = ItemDatabase.Instance.CreateItemStack("dried_flower");
 	private static readonly IItemStack DriedFruit = ItemDatabase.Instance.CreateItemStack("dried_fruit");
-	
-	public event Action<IItemStack[]> RetrieveAllFinishedItemsAction; //TODO: add items to inventory
+
+	public string ActionName { get; } = "Dehydrate";
 	public event Action<IItemStack, int> ItemInserted;
 	public event Action<int> ItemRemoved;
 	public CraftingSlot[] CraftingSlots { get; private set; }
 
 	private readonly Logger _logger;
 	private readonly ItemDatabase _itemDatabase = ItemDatabase.Instance;
-	private readonly Recipe _dryingRecipe;
 
 	private readonly MedicineComponent _medicineComponent = new(
 		new Dictionary<MedicinalEffect, int>
@@ -52,7 +53,6 @@ public class Dehydrator : ICraftingStation
 			CraftingSlots[i] = new CraftingSlot();
 		}
 
-		_dryingRecipe = _itemDatabase.Recipes.FirstOrDefault(r => r.RecipeCraftingType == CraftingType);
 		_logger.Debug($"Initialized Dehydrator with {CraftingSlots.Length} slots");
 	}
 
@@ -67,30 +67,41 @@ public class Dehydrator : ICraftingStation
 		}
 	}
 
-	public void InsertItemToSlot(IItemStack item, int slotIndex)
+	public void InsertItemToSlot(IItemStack item)
 	{
-		_logger.Debug($"Checking slot {slotIndex} : {CraftingSlots[slotIndex].ItemStack}");
-		var slot = CraftingSlots[slotIndex];
+		//get first empty CraftingSlot
+		var currentIndex = -1;
+		for (var i = 0; i < CraftingSlots.Length; i++)
+		{
+			if (CraftingSlots[i].ItemStack != null)
+			{
+				continue;
+			}
+			currentIndex = i;
+			break;
+		}
 		
+		var slot = CraftingSlots[currentIndex];
+
 		var tags = item.GetComponent<TagsComponent>();
 		if (!tags.Contains(TagsComponent.Tags.IsDrieable)) return;
 
 		if (slot.ItemStack != null)
 		{
-			_logger.Warn($"Slot {slotIndex} is already occupied.");
+			_logger.Error($"Slot {currentIndex} is already occupied.");
 			return;
 		}
 
-		_logger.Debug($"Inserting item {item.Name} to slot {slotIndex}");
+		_logger.Debug($"Inserting item {item.Name} to slot {currentIndex}");
 		var insertedItem = item.Clone();
-		
+
 		insertedItem.Amount = 1;
 		slot.ItemStack = insertedItem;
 		slot.AddItemAndStartCrafting(item, CraftingTime);
 		slot.CraftTimeOut += OnCraftTimeOut; // TODO: Ready
 
-		CraftingSlots[slotIndex] = slot;
-		ItemInserted?.Invoke(item, slotIndex);
+		CraftingSlots[currentIndex] = slot;
+		ItemInserted?.Invoke(item, currentIndex);
 	}
 
 	public IItemStack RemoveItemFromSlot(int slotIndex)
@@ -123,9 +134,9 @@ public class Dehydrator : ICraftingStation
 	private IItemStack ModifyItem(IItemStack item)
 	{
 		var result = ModifyComponent(item);
-		
+
 		//Get Item Template based on whether it's a Leaf, Flower or Fruit
-		result.BaseValue = (int) Math.Floor(item.BaseValue * ValueMultiplier);
+		result.BaseValue = (int)Math.Floor(item.BaseValue * ValueMultiplier);
 
 		_logger.Debug($"Item modified. Resulting item: {result}");
 		return result;
@@ -143,6 +154,7 @@ public class Dehydrator : ICraftingStation
 				comp.TheGoodStuff[effect] += value;
 			}
 		}
+
 		foreach (var (effect, value) in _medicineComponent.TheBadStuff)
 		{
 			if (!comp.TheBadStuff.ContainsKey(effect))
@@ -150,18 +162,27 @@ public class Dehydrator : ICraftingStation
 				comp.TheBadStuff[effect] += value;
 			}
 		}
-		
 
 		item.RemoveComponent<MedicineComponent>();
 		item.AddComponent(comp);
-		
+
 		var tags = item.GetComponent<TagsComponent>().Clone();
 		tags.Add(TagsComponent.Tags.IsDried);
 		tags.Remove(TagsComponent.Tags.IsDrieable);
-		
+
 		item.RemoveComponent<TagsComponent>();
 		item.AddComponent(tags);
-		
+
 		return item;
+	}
+
+	public void Interact()
+	{
+		EventBus.Instance.BeforeCraftingStationUiOpen(this);
+	}
+
+	public Vector2 GetGlobalInteractablePosition()
+	{
+		return GlobalPosition;
 	}
 }
