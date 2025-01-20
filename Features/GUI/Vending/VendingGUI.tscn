@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Features/GUI/Vending/VendingMachineUI.cs" id="1_mtkr8"]
 [ext_resource type="PackedScene" uid="uid://dy2bsx4d7l35p" path="res://Features/GUI/Vending/MiniInventory.tscn" id="2_vteot"]
 [ext_resource type="Texture2D" uid="uid://yvo33yjscsag" path="res://Assets/UI/VendingMachine/Base_right.png" id="3_t32op"]
-[ext_resource type="PackedScene" uid="uid://ci3xd0kudwy7k" path="res://Features/GUI/Vending/VendingItemView.tscn" id="4_v03kc"]
+[ext_resource type="PackedScene" uid="uid://dttp7hktpjqdx" path="res://Features/GUI/Vending/VendingItemView.tscn" id="4_v03kc"]
 [ext_resource type="Texture2D" uid="uid://bopd7g6vsty7t" path="res://Assets/UI/VendingMachine/Hebel.png" id="5_v8xxq"]
 [ext_resource type="Texture2D" uid="uid://b5hv1i828jc6" path="res://Assets/UI/VendingMachine/Slider.png" id="6_iyrxl"]
 [ext_resource type="Texture2D" uid="uid://cu7fp670pmqng" path="res://Assets/UI/VendingMachine/CashRetriever.png" id="8_pkwve"]
 [ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
-[ext_resource type="PackedScene" uid="uid://c82x6hxji8t8v" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
+[ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
 [ext_resource type="PackedScene" uid="uid://cusi423j6fnh2" path="res://Features/GUI/Vending/EmoteBubble.tscn" id="12_5lmun"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uti0s"]
@@ -75,53 +75,41 @@ theme_override_constants/v_separation = 0
 columns = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="VMItemSlotUI" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="VMItemSlotUI2" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView2" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="VMItemSlotUI3" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView3" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="VMItemSlotUI4" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView4" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="VMItemSlotUI5" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView5" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="VMItemSlotUI6" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView6" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="VMItemSlotUI7" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView7" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="VMItemSlotUI8" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView8" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="VMItemSlotUI9" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView9" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="VMItemSlotUI10" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView10" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="VMItemSlotUI11" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView11" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="VMItemSlotUI12" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
+[node name="ItemView12" parent="VendingMachine/Items" instance=ExtResource("4_v03kc")]
 layout_mode = 2
-size_flags_vertical = 2
 
 [node name="NameLabel" type="Label" parent="VendingMachine"]
 visible = false
