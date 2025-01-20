@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbpdq5274ohk8"]
+[gd_scene load_steps=12 format=3 uid="uid://bbpdq5274ohk8"]
 
 [ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="2_7jprp"]
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="2_p24nj"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="7_bhhsc"]
 [ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/TutorialDialogue2ndPart.tres" id="8_2olw0"]
 [ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="8_qtpvf"]
+[ext_resource type="Script" path="res://Scenes/TestScenes/NPC/InGameMinutesLabel.cs" id="11_ik035"]
 
 [node name="NpcTestingScenes" type="Node2D"]
 
@@ -61,3 +62,8 @@ position = Vector2(29, 121)
 
 [node name="DialogueView" parent="CanvasLayer" instance=ExtResource("8_qtpvf")]
 visible = false
+
+[node name="InGameMinutesLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 13.0
+script = ExtResource("11_ik035")

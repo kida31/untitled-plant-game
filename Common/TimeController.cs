@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using Godot;
-using Godot.NativeInterop;
 
 namespace untitledplantgame.Common;
 
@@ -18,7 +16,7 @@ public partial class TimeController : Node
 	/// The hour with which the day starts
 	/// Singleton instance that's accessible from anywhere
 	public static TimeController Instance { get; private set; }
-	
+
 	public delegate void DayChangedHandler(int day);
 
 	public event DayChangedHandler DayChanged;
@@ -49,7 +47,7 @@ public partial class TimeController : Node
 			QueueFree();
 			return;
 		}
-		
+
 		Instance = this;
 		CurrentSeconds = StartOfDaySeconds;
 		_wasNoon = false;
@@ -81,6 +79,43 @@ public partial class TimeController : Node
 		RecalculateTimeEvents();
 	}
 
+	/**
+	 * TODO: calculates in-game time every time tick (not every frame, as calculated in _Process())
+	 * emits a signal with the current time
+	 */
+	private void RecalculateTimeEvents()
+	{
+		const double minutesPerDay = 24 * 60;
+		const double minutesPerHour = 60;
+
+		var totalMinutes = (int)(CurrentSeconds / 60);
+
+		var currentDayMinutes = (int)(totalMinutes % minutesPerDay);
+		var hour = (int)(currentDayMinutes / minutesPerHour);
+		var minute = (int)(currentDayMinutes % minutesPerHour);
+
+		if (CurrentSeconds >= SecondsPerDay)
+		{
+			_logger.Debug($"Day {_currentDay} passed, emitting signal");
+			DayChanged?.Invoke(_currentDay);
+			_currentDay += 1;
+			CurrentSeconds = 0;
+			_wasNoon = false;
+		}
+
+		if (_currentMinute != minute)
+		{
+			_currentMinute = minute;
+			MinuteTicked?.Invoke(_currentDay, hour, minute);
+		}
+
+		if (currentDayMinutes >= 12 * 60 && !_wasNoon)
+		{
+			_wasNoon = true;
+			NoonOccured?.Invoke();
+		}
+	}
+
 	public void GoToNextDay()
 	{
 		FastForwardTo(StartOfDaySeconds);
@@ -98,43 +133,5 @@ public partial class TimeController : Node
 	{
 		Assert.AssertTrue(targetTime < SecondsPerDay, "Target time is greater than a day");
 		FastForwardFor((SecondsPerDay + targetTime - CurrentSeconds) % SecondsPerDay);
-	}
-	
-	/**
-	 * TODO: calculates in-game time every time tick (not every frame, as calculated in _Process())
-	 * emits a signal with the current time
-	 */
-	private void RecalculateTimeEvents()
-	{
-		const double minutesPerDay = 24 * 60;
-		const double minutesPerHour = 60;
-
-		var totalMinutes = (int)(CurrentSeconds / 60);
-		var currentDayMinutes = (int)(totalMinutes % minutesPerDay);
-		var hour = (int)(currentDayMinutes / minutesPerHour);
-		var minute = (int)(currentDayMinutes % minutesPerHour);
-		
-		if (CurrentSeconds >= SecondsPerDay)
-		{
-			_logger.Debug($"Day {_currentDay} passed, emitting signal");
-			DayChanged?.Invoke(_currentDay);
-			_currentDay += 1;
-			CurrentSeconds = 0;
-			_wasNoon = false;
-		}
-
-		if (_currentMinute != minute)
-		{
-			_currentMinute = minute;
-			MinuteTicked?.Invoke(_currentDay, hour, minute);
-			
-			ClockBasedEventController.Instance.ExecuteAllClockBasedEvents();
-		}
-
-		if (currentDayMinutes >= 12 * 60 && !_wasNoon)
-		{
-			_wasNoon = true;
-			NoonOccured?.Invoke();
-		}
 	}
 }
