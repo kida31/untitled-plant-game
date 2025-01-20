@@ -310,7 +310,7 @@ public class ItemDatabase
 			{
 				Id = "dried_flower",
 				Name = "Dried ",
-				WikiDescription = "It was dried.",
+				ToolTipDescription = "It was dried.",
 				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,

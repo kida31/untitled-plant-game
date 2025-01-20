@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
@@ -11,7 +12,7 @@ namespace untitledplantgame.Player;
 
 public partial class Player : CharacterBody2D
 {
-	private readonly Logger _logger = new Logger("Player");
+	private readonly Logger _logger = new ("Player");
 
 	// Input direction(?)
 	public Vector2 Direction = Vector2.Zero;
@@ -56,7 +57,7 @@ public partial class Player : CharacterBody2D
 		var rand = new RandomStockGenerator();
 		_inventory = new(20);
 		_inventory.InventoryChanged += () => { EventBus.Instance.PlayerInventoryChanged(this, _inventory); };
-		// _inventory.AddItem(rand.GetRandomItems(12).ToArray()); // For testing purposes
+		_inventory.AddItem(rand.GetRandomItems(12).Where(it => it.Category == ItemCategory.Medicine).ToArray()); // For testing purposes
 	}
 
 	private void OnItemPickUp(IItemStack obj)
