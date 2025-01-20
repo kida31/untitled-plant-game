@@ -26,8 +26,6 @@ position = Vector2(-3, 1372)
 position = Vector2(-1052, 2316)
 
 [node name="SeedShop" type="Area2D" parent="." groups=["Interactables"]]
-z_index = 2
-y_sort_enabled = true
 position = Vector2(465, 195)
 script = ExtResource("3_orgm4")
 
@@ -39,9 +37,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_re8t5")
 
 [node name="VendingMachineNPC" parent="." instance=ExtResource("2_ldf7o")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(730, 160)
+position = Vector2(729, 184)
 
 [node name="Plants" parent="." instance=ExtResource("7_36aju")]
 z_index = 0
