@@ -17,9 +17,9 @@ public class Dehydrator : ICraftingStation
 	private const Recipe.CraftingType CraftingType = Recipe.CraftingType.Drying;
 	private const double ValueMultiplier = 4.20; //TODO: find a good value
 
-	private static readonly IItemStack DriedLeaf = ItemDatabase.Instance.CreateItemStack("dried_leaf");
-	private static readonly IItemStack DriedFlower = ItemDatabase.Instance.CreateItemStack("dried_flower");
-	private static readonly IItemStack DriedFruit = ItemDatabase.Instance.CreateItemStack("dried_fruit");
+	private static IItemStack DriedLeaf => ItemDatabase.Instance.CreateItemStack("dried_leaf");
+	private static IItemStack DriedFlower => ItemDatabase.Instance.CreateItemStack("dried_flower");
+	private static IItemStack DriedFruit => ItemDatabase.Instance.CreateItemStack("dried_fruit");
 
 	public string ActionName { get; } = "Dehydrate";
 	public event Action<IItemStack, int> ItemInserted;
@@ -81,19 +81,20 @@ public class Dehydrator : ICraftingStation
 			{
 				continue;
 			}
+
 			currentIndex = i;
 			break;
 		}
 
 		if (currentIndex == -1) return false;
-		
+
 		var slot = CraftingSlots[currentIndex];
-		if(item.Amount < 1)
+		if (item.Amount < 1)
 		{
 			_logger.Error("Cannot insert item with amount less than 1.");
 			return false;
 		}
-		
+
 		var tags = item.GetComponent<TagsComponent>();
 		if (!tags.Contains(TagsComponent.Tags.IsDrieable)) return false;
 
@@ -106,7 +107,7 @@ public class Dehydrator : ICraftingStation
 		_logger.Debug($"Inserting item {item.Name} to slot {currentIndex}");
 		var insertedItem = item.Clone();
 		insertedItem.Amount = 1;
-		
+
 		slot.ItemStack = insertedItem;
 		slot.AddItemAndStartCrafting(insertedItem, CraftingTime);
 		slot.CraftTimeOut += OnCraftTimeOut; // TODO: Ready
@@ -121,10 +122,10 @@ public class Dehydrator : ICraftingStation
 		var item = CraftingSlots[slotIndex].ItemStack;
 		_logger.Debug($"Removing item {item} from slot {slotIndex}");
 		CraftingSlots[slotIndex].RemoveItem();
-		
+
 		return item;
 	}
-	
+
 	public List<IItemStack> RetrieveAllFinishedItems()
 	{
 		var items = new List<IItemStack>();
@@ -133,7 +134,7 @@ public class Dehydrator : ICraftingStation
 			if (CraftingSlots[i].IsCraftingComplete)
 			{
 				var item = RemoveItemFromSlot(i);
-				if(item == null) continue;
+				if (item == null) continue;
 				items.Add(item);
 			}
 		}
@@ -149,17 +150,51 @@ public class Dehydrator : ICraftingStation
 
 	private IItemStack ModifyItem(IItemStack item)
 	{
-		var result = ModifyComponent(item);
-
-		//Get Item Template based on whether it's a Leaf, Flower or Fruit
+		var result = ModifyComponents(item);
+		
+		var tags = item.GetComponent<TagsComponent>();
+		if (tags.Contains(TagsComponent.Tags.IsFlower))
+		{
+			item.Name = $"{DriedFlower.Name} {item.Name}";
+			item.Icon = DriedFlower.Icon;
+			item.ToolTipDescription = DriedFlower.ToolTipDescription;
+		}
+		else if (tags.Contains(TagsComponent.Tags.IsFruit))
+		{
+			item.Name = $"{DriedFruit.Name} {item.Name}";
+			item.Icon = DriedFruit.Icon;
+			item.ToolTipDescription = DriedFruit.ToolTipDescription;
+		}
+		else
+		{
+			item.Name = $"{DriedLeaf.Name} {item.Name}";
+			item.Icon = DriedLeaf.Icon;
+			item.ToolTipDescription = DriedLeaf.ToolTipDescription;
+		}
+		
 		result.BaseValue = (int)Math.Floor(item.BaseValue * ValueMultiplier);
 
 		_logger.Debug($"Item modified. Resulting item: {result}");
 		return result;
 	}
 
-	private IItemStack ModifyComponent(IItemStack item)
+	/// <summary>
+	/// Plants with Drieable Tag should always be Dried
+	/// MedicineComponent only modified if medicine component exists
+	/// </summary>
+	/// <param name="item">Modified item</param>
+	/// <returns></returns>
+	private IItemStack ModifyComponents(IItemStack item)
 	{
+		//remove drieable
+		var tags = item.GetComponent<TagsComponent>().Clone();
+		tags.Add(TagsComponent.Tags.IsDried);
+		tags.Remove(TagsComponent.Tags.IsDrieable);
+
+		item.RemoveComponent<TagsComponent>();
+		item.AddComponent(tags);
+
+		//modify medicine component
 		var comp = item?.GetComponent<MedicineComponent>()?.Clone();
 		if (comp == null) return item;
 
@@ -181,13 +216,6 @@ public class Dehydrator : ICraftingStation
 
 		item.RemoveComponent<MedicineComponent>();
 		item.AddComponent(comp);
-
-		var tags = item.GetComponent<TagsComponent>().Clone();
-		tags.Add(TagsComponent.Tags.IsDried);
-		tags.Remove(TagsComponent.Tags.IsDrieable);
-
-		item.RemoveComponent<TagsComponent>();
-		item.AddComponent(tags);
 
 		return item;
 	}
