@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_uchbd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -22)
 sprite_frames = ExtResource("2_3hfoe")
-animation = &"shears_down"
+animation = &"water_left"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_oih3d")
