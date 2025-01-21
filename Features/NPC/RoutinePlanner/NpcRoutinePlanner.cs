@@ -36,10 +36,7 @@ public partial class NpcRoutinePlanner : Node
 	{
 		await Task.Delay(ScriptExecutionOrderDelay);
 		_logger.Debug("Starting to execute the Npc's routines.");
-		EventBus.Instance.NpcDialogueWithPlayerStarted(
-			(AnimatedSprite2D) _npcExecutingRoutines.GetNode("PortraitSprite2D"),
-			_npcExecutingRoutines.GetNpcName()
-			);
+		EventBus.Instance.NpcDialogueWithPlayerStarted((AnimatedSprite2D) _npcExecutingRoutines.GetNode("PortraitSprite2D"));
 		
 		foreach (var npcRoutine in _routines)
 		{
