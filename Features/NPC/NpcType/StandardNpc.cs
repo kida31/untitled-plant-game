@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.NPC.NpcInteraction;
@@ -30,7 +31,13 @@ public partial class StandardNpc : Npc
 
 	public override string GetNpcName()
 	{
-		_logger.Info("Npc name was requested.");
+		// TODO: Cleanup
+		//_logger.Info("Npc name was requested.");
 		return _name;
+	}
+
+	public void AssignMethodToInteractionEvent(Action action)
+	{
+		_npcPlayerInteraction.InteractionEvent += action;
 	}
 }

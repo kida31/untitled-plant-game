@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=21 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
@@ -8,8 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://cr2712p8tviur" path="res://Scenes/Godfrey.tscn" id="4_r6pis"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
+[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="7_iyd84"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
+[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="8_dqxgm"]
+[ext_resource type="PackedScene" uid="uid://lufeqnjeabjx" path="res://Features/NPC/NpcTask/MovementTaskTarget.tscn" id="9_1ifh2"]
+[ext_resource type="Script" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="10_et227"]
 [ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
+[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/TutorialDialogue.tres" id="11_n2hb4"]
+[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/Tutorial/TutorialDialogue2ndPart.tres" id="12_c3vnp"]
+[ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/Tutorial/HarvestingTutorialDialogue.tres" id="13_fhanv"]
+[ext_resource type="Resource" uid="uid://dopykccwoa5os" path="res://Resources/Dialogue/VendingMachineTutorialDialogue.tres" id="14_q6j24"]
+[ext_resource type="Resource" uid="uid://yg4mwgstm60u" path="res://Resources/Dialogue/Tutorial/SeedBoyTutorialDialogue.tres" id="15_bqmo8"]
+[ext_resource type="Resource" uid="uid://ds2a5jertu4k4" path="res://Resources/Dialogue/Tutorial/TutorialDialogueEnd.tres" id="16_xovon"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
@@ -30,8 +40,39 @@ position = Vector2(728, 184)
 z_index = 1
 position = Vector2(464, 200)
 
-[node name="Godfrey" parent="." instance=ExtResource("4_r6pis")]
-position = Vector2(517, 332)
+[node name="Godfrey" parent="." node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("4_r6pis")]
+position = Vector2(704, 356)
+_routinePlanner = NodePath("RoutinePlanner2")
+
+[node name="RoutinePlanner2" type="Node" parent="Godfrey" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+script = ExtResource("7_iyd84")
+_npcExecutingRoutines = NodePath("..")
+_routines = [NodePath("MovementRoutine1"), NodePath("MovementRoutine2"), NodePath("MovementRoutine3")]
+
+[node name="MovementRoutine1" type="Node" parent="Godfrey/RoutinePlanner2"]
+script = ExtResource("8_dqxgm")
+RoutineStartMinutes = 45
+
+[node name="MovementTaskTarget" parent="Godfrey/RoutinePlanner2/MovementRoutine1" instance=ExtResource("9_1ifh2")]
+position = Vector2(773, 360)
+
+[node name="MovementRoutine2" type="Node" parent="Godfrey/RoutinePlanner2"]
+script = ExtResource("8_dqxgm")
+RoutineStartMinutes = 50
+
+[node name="MovementTaskTarget" parent="Godfrey/RoutinePlanner2/MovementRoutine2" instance=ExtResource("9_1ifh2")]
+position = Vector2(776, 496)
+
+[node name="MovementRoutine3" type="Node" parent="Godfrey/RoutinePlanner2"]
+script = ExtResource("8_dqxgm")
+RoutineStartMinutes = 55
+
+[node name="MovementTaskTarget" parent="Godfrey/RoutinePlanner2/MovementRoutine3" instance=ExtResource("9_1ifh2")]
+position = Vector2(593, 429)
+
+[node name="PlayerInitiatedDialogue" type="Node" parent="Godfrey/RoutinePlanner2"]
+script = ExtResource("10_et227")
+_dialogueResourceObject = Array[Object]([ExtResource("11_n2hb4"), ExtResource("12_c3vnp"), ExtResource("13_fhanv"), ExtResource("14_q6j24"), ExtResource("15_bqmo8"), ExtResource("16_xovon")])
 
 [node name="Plants" parent="." instance=ExtResource("7_36aju")]
 z_index = 0

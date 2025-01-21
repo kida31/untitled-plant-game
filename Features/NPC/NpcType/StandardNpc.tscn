@@ -72,10 +72,9 @@ _npcPlayerInteraction = NodePath("InteractionNode")
 shape = SubResource("CapsuleShape2D_fvi7q")
 
 [node name="CharacterSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &"angry"
+animation = &""
 
 [node name="PortraitSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_s0wvy")
 animation = &"angry"
 
