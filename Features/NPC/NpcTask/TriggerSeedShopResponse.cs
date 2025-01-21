@@ -3,6 +3,7 @@ using untitledplantgame.Shops;
 
 namespace untitledplantgame.NPC.NpcTask;
 
+// TODO: Cleanup
 public partial class TriggerSeedShopResponse : ResponseAction
 {
 	// Yes; Storing the seed shop inside the dialogue tree is not a good idea...

@@ -12,6 +12,7 @@ using Array = Godot.Collections.Array;
 
 namespace untitledplantgame.NPC.NpcTask;
 
+// TODO: Cleanup
 /**
  * This task is used to force the NPC to chat with the Player.
  * The NPC waits until the Player approaches him and initiates a conversation. The Player then has to finish the conversation.

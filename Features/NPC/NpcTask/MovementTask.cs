@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Godot;
 using untitledplantgame.Common;
 
+// TODO: Cleanup
+
 namespace untitledplantgame.NPC.NpcTask;
 
 /**

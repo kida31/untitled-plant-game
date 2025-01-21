@@ -9,6 +9,7 @@ using untitledplantgame.NPC.RoutinePlanner;
 
 namespace untitledplantgame.NPC.Routine;
 
+// TODO: Cleanup
 public partial class NpcRoutine : Node
 {
 	public enum Options { TimeOfDay, PlayerInteraction }

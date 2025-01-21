@@ -4,6 +4,7 @@ using untitledplantgame.Vending;
 
 namespace untitledplantgame.NPC.NpcTask;
 
+// TODO: Cleanup
 public partial class TriggerVendingMachineResponse : ResponseAction
 {
 	// Yes; Storing the vending machine inside the dialogue tree is not a good idea...

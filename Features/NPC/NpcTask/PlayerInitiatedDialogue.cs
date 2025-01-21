@@ -12,6 +12,7 @@ using untitledplantgame.NPC.RoutinePlanner;
 
 namespace untitledplantgame.NPC.NpcTask;
 
+// TODO: Cleanup
 public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 {
 	[Export] private Array<DialogueResourceObject> _dialogueResourceObject;
