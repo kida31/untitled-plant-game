@@ -10,37 +10,34 @@
 
 [node name="PanDan" node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("1_qjsqv")]
 _name = "Pan Dan"
-_routinePlanner = NodePath("SeedShopSprite/RoutinePlanner")
-
-[node name="CharacterSprite2D" parent="." index="1"]
-animation = &""
+_routinePlanner = NodePath("RoutinePlanner")
 
 [node name="SeedShopSprite" type="Sprite2D" parent="." index="4"]
 position = Vector2(0, -26)
 texture = ExtResource("2_j4u8e")
 hframes = 11
 
-[node name="RoutinePlanner" type="Node" parent="SeedShopSprite" index="0" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+[node name="RoutinePlanner" type="Node" parent="." index="5" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
 script = ExtResource("2_e08ef")
-_npcExecutingRoutines = NodePath("../..")
-_routines = [null]
+_npcExecutingRoutines = NodePath("..")
+_routines = [NodePath("OnPlayerInteraction")]
 
-[node name="OnPlayerInteraction" type="Node" parent="SeedShopSprite/RoutinePlanner" index="0"]
+[node name="OnPlayerInteraction" type="Node" parent="RoutinePlanner" index="0"]
 script = ExtResource("3_a24bk")
 RoutineTrigger = 1
 
-[node name="Dialogue" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction" index="0"]
+[node name="Dialogue" type="Node" parent="RoutinePlanner/OnPlayerInteraction" index="0"]
 script = ExtResource("4_p27pq")
 _dialogueResourceObject = ExtResource("5_hojrx")
 
-[node name="Dialogue_Yes_0_okCool" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue" index="0"]
+[node name="Dialogue_Yes_0_okCool" type="Node" parent="RoutinePlanner/OnPlayerInteraction/Dialogue" index="0"]
 
-[node name="OpenShop" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_Yes_0_okCool" index="0"]
+[node name="OpenShop" type="Node" parent="RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_Yes_0_okCool" index="0"]
 
-[node name="CloseShopLine" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_Yes_0_okCool/OpenShop" index="0"]
+[node name="CloseShopLine" type="Node" parent="RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_Yes_0_okCool/OpenShop" index="0"]
 script = ExtResource("4_p27pq")
 _dialogueResourceObject = ExtResource("6_2b1q6")
 
-[node name="Dialogue_No_1_sad" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue" index="1"]
+[node name="Dialogue_No_1_sad" type="Node" parent="RoutinePlanner/OnPlayerInteraction/Dialogue" index="1"]
 
-[node name="GoFreeRoam" type="Node" parent="SeedShopSprite/RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_No_1_sad" index="0"]
+[node name="GoFreeRoam" type="Node" parent="RoutinePlanner/OnPlayerInteraction/Dialogue/Dialogue_No_1_sad" index="0"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://darsx73t4n6d3"]
+[gd_scene load_steps=10 format=3 uid="uid://darsx73t4n6d3"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_b0v61"]
 [ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="2_gjf2v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_d4jk1"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_a0n3g"]
 [ext_resource type="Resource" uid="uid://djkgxlqpnhr00" path="res://Resources/Dialogue/VendingMachine/VM_init_1.tres" id="6_ki0ac"]
+[ext_resource type="Script" path="res://Features/NPC/NpcTask/TriggerVendingMachineResponse.cs" id="7_veciv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqkbf"]
 radius = 62.0322
@@ -16,9 +17,6 @@ size = Vector2(62, 12)
 [node name="VendingMachine" node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("1_b0v61")]
 _name = "Vending Machine"
 _routinePlanner = NodePath("RoutinePlanner")
-
-[node name="CharacterSprite2D" parent="." index="1"]
-animation = &""
 
 [node name="VendingMachineSprite" type="Sprite2D" parent="." index="4"]
 position = Vector2(0, -53)
@@ -36,16 +34,15 @@ shape = SubResource("RectangleShape2D_tqgu1")
 [node name="RoutinePlanner" type="Node" parent="." index="7" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
 script = ExtResource("3_rkpsh")
 _npcExecutingRoutines = NodePath("..")
-_routines = [null]
+_routines = [NodePath("TalkAndOpenVendingMachineRoutine")]
 
-[node name="OnPlayerInteraction" type="Node" parent="RoutinePlanner" index="0"]
+[node name="TalkAndOpenVendingMachineRoutine" type="Node" parent="RoutinePlanner" index="0"]
 script = ExtResource("4_d4jk1")
 RoutineTrigger = 1
 
-[node name="Dialogue" type="Node" parent="RoutinePlanner/OnPlayerInteraction" index="0"]
+[node name="Dialogue" type="Node" parent="RoutinePlanner/TalkAndOpenVendingMachineRoutine" index="0"]
 script = ExtResource("5_a0n3g")
 _dialogueResourceObject = ExtResource("6_ki0ac")
 
-[node name="Yes_0_openVM" type="Node" parent="RoutinePlanner/OnPlayerInteraction/Dialogue" index="0"]
-
-[node name="No_1_GoFreeRoam" type="Node" parent="RoutinePlanner/OnPlayerInteraction/Dialogue" index="1"]
+[node name="Yes_Response1" type="Node" parent="RoutinePlanner/TalkAndOpenVendingMachineRoutine/Dialogue" index="0"]
+script = ExtResource("7_veciv")

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="3_yt76g"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="4_m14tq"]
 [ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/TutorialDialogue.tres" id="5_1u5hu"]
-[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/Tutorial/TutorialDialogue2ndPart.tres" id="6_rsytf"]
+[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/TutorialDialogue2ndPart.tres" id="6_rsytf"]
 [ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/HarvestingTutorialDialogue.tres" id="7_mxa6v"]
 [ext_resource type="Resource" uid="uid://dopykccwoa5os" path="res://Resources/Dialogue/VendingMachineTutorialDialogue.tres" id="8_ey04w"]
 [ext_resource type="Resource" uid="uid://yg4mwgstm60u" path="res://Resources/Dialogue/SeedBoyTutorialDialogue.tres" id="9_u1oy4"]
@@ -14,63 +14,60 @@
 
 [node name="Godfrey" node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("1_ljkvf")]
 _name = "Godfrey the first Priest"
-_routinePlanner = NodePath("GodfreySprite/RoutinePlanner")
-
-[node name="CharacterSprite2D" parent="." index="1"]
-animation = &""
+_routinePlanner = NodePath("RoutinePlanner")
 
 [node name="GodfreySprite" type="Sprite2D" parent="." index="4"]
 position = Vector2(0, -30)
 texture = ExtResource("2_ujoa5")
 hframes = 11
 
-[node name="RoutinePlanner" type="Node" parent="GodfreySprite" index="0" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+[node name="RoutinePlanner" type="Node" parent="." index="5" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
 script = ExtResource("2_wp7ik")
-_npcExecutingRoutines = NodePath("../..")
-_routines = [null]
+_npcExecutingRoutines = NodePath("..")
+_routines = [NodePath("OnPlayerInteraction1"), NodePath("OnPlayerInteraction2"), NodePath("OnPlayerInteraction3"), NodePath("OnPlayerInteraction4"), NodePath("OnPlayerInteraction5")]
 
-[node name="OnPlayerInteraction1" type="Node" parent="GodfreySprite/RoutinePlanner" index="0"]
+[node name="OnPlayerInteraction1" type="Node" parent="RoutinePlanner" index="0"]
 script = ExtResource("3_yt76g")
 RoutineTrigger = 1
 
-[node name="Tut1" type="Node" parent="GodfreySprite/RoutinePlanner/OnPlayerInteraction1" index="0"]
+[node name="Tut1" type="Node" parent="RoutinePlanner/OnPlayerInteraction1" index="0"]
 script = ExtResource("4_m14tq")
 _dialogueResourceObject = ExtResource("5_1u5hu")
 
-[node name="Tut2" type="Node" parent="GodfreySprite/RoutinePlanner/OnPlayerInteraction1" index="1"]
+[node name="Tut2" type="Node" parent="RoutinePlanner/OnPlayerInteraction1" index="1"]
 script = ExtResource("4_m14tq")
 _dialogueResourceObject = ExtResource("6_rsytf")
 
-[node name="OnPlayerInteraction2" type="Node" parent="GodfreySprite/RoutinePlanner" index="1"]
+[node name="OnPlayerInteraction2" type="Node" parent="RoutinePlanner" index="1"]
 script = ExtResource("3_yt76g")
 RoutineTrigger = 1
 
-[node name="Harvesting" type="Node" parent="GodfreySprite/RoutinePlanner/OnPlayerInteraction2" index="0"]
+[node name="Harvesting" type="Node" parent="RoutinePlanner/OnPlayerInteraction2" index="0"]
 script = ExtResource("4_m14tq")
 _dialogueResourceObject = ExtResource("7_mxa6v")
 
-[node name="OnPlayerInteraction3" type="Node" parent="GodfreySprite/RoutinePlanner" index="2"]
+[node name="OnPlayerInteraction3" type="Node" parent="RoutinePlanner" index="2"]
 script = ExtResource("3_yt76g")
 RoutineTrigger = 1
 
-[node name="VendingMachine" type="Node" parent="GodfreySprite/RoutinePlanner/OnPlayerInteraction3" index="0"]
+[node name="VendingMachine" type="Node" parent="RoutinePlanner/OnPlayerInteraction3" index="0"]
 script = ExtResource("4_m14tq")
 _dialogueResourceObject = ExtResource("8_ey04w")
 
-[node name="OnPlayerInteraction4" type="Node" parent="GodfreySprite/RoutinePlanner" index="3"]
+[node name="OnPlayerInteraction4" type="Node" parent="RoutinePlanner" index="3"]
 script = ExtResource("3_yt76g")
 RoutineTrigger = 1
 
-[node name="SeedBoy" type="Node" parent="GodfreySprite/RoutinePlanner/OnPlayerInteraction4" index="0"]
+[node name="SeedBoy" type="Node" parent="RoutinePlanner/OnPlayerInteraction4" index="0"]
 script = ExtResource("4_m14tq")
 _dialogueResourceObject = ExtResource("9_u1oy4")
 
-[node name="OnPlayerInteraction5" type="Node" parent="GodfreySprite/RoutinePlanner" index="4"]
+[node name="OnPlayerInteraction5" type="Node" parent="RoutinePlanner" index="4"]
 script = ExtResource("3_yt76g")
 RoutineTrigger = 1
 
-[node name="TutEnd" type="Node" parent="GodfreySprite/RoutinePlanner/OnPlayerInteraction5" index="0"]
+[node name="TutEnd" type="Node" parent="RoutinePlanner/OnPlayerInteraction5" index="0"]
 script = ExtResource("4_m14tq")
 _dialogueResourceObject = ExtResource("10_f174y")
 
-[node name="WalkToPierLadderAndDisappear" type="Node" parent="GodfreySprite/RoutinePlanner/OnPlayerInteraction5" index="1"]
+[node name="WalkToPierLadderAndDisappear" type="Node" parent="RoutinePlanner/OnPlayerInteraction5" index="1"]
