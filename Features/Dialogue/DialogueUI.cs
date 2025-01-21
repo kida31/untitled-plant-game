@@ -144,6 +144,9 @@ public partial class DialogueUI : Control
 			void OnButtonOnPressed()
 			{
 				_dialogueSystem.InsertSelectedResponse(response);
+				//---Code from Panikk-Mode---
+				EventBus.Instance.ResponseButtonPressed(response);
+				//---Code from Panikk-Mode---
 				ClearResponses();
 			}
 
