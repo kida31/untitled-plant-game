@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.ExtensionMethods;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Database;
@@ -37,6 +38,7 @@ public partial class BookView : Control
 	{
 		// 1. Init self
 		_logger = new Logger(this);
+		this.FadeOut(0);
 
 		// 1.1. Subscribe to events
 		EventBus.Instance.OnPlayerInventoryChanged += UpdateInventory;
@@ -113,13 +115,18 @@ public partial class BookView : Control
 		_logger.Info("Opening...");
 		GameStateMachine.Instance.SetState(GameState.Book);
 		UpdateInventory(Game.Player, Game.Player.Inventory);
+		
 		Show();
+		this.FadeIn(0.2f); // TODO: Refactor this in all GUI elements. Seems silly to implement this in every GUI element
 	}
 
 	private void HideBook()
 	{
 		_logger.Info("Hiding...");
 		GameStateMachine.Instance.SetState(GameState.FreeRoam);
-		Hide();
+		
+		var tween = this.FadeOut(0.2f);
+		ToSignal(tween, Tween.SignalName.Finished).OnCompleted(Hide);
+		_logger.Debug("Book closed.");
 	}
 }

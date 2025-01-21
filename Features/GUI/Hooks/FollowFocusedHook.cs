@@ -49,22 +49,28 @@ public partial class FollowFocusedHook : Node
 
 	private void OnGuiFocusChanged(Control node)
 	{
-		if (_recentFocused != null)
+		if (!IsInstanceValid(node))
 		{
-			// Update focus
-			_recentFocused = node;
+			_recentFocused = null;
+			return;
 		}
-		else
+		
+		if (_recentFocused == null)
 		{
 			// First time focus
 			_recentFocused = node;
 			ForcePositionUpdate();
 		}
+		else
+		{
+			// Update focus
+			_recentFocused = node;
+		}
 	}
 
 	public override void _Process(double delta)
 	{
-		if (_recentFocused == null) return;
+		if (_recentFocused == null || !IsInstanceValid(_recentFocused)) return;
 		if (!_recentFocused.HasFocus())
 		{
 			_recentFocused = null;

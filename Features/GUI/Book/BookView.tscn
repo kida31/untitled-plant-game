@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c6y60vh6v2ec8" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.tscn" id="2_tyesk"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="4_pgjhc"]
 [ext_resource type="PackedScene" uid="uid://e3t5fwq4qne3" path="res://Features/GUI/Book/Pages/WikiPage.tscn" id="4_t387j"]
-[ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="5_75ox1"]
-[ext_resource type="Script" path="res://Features/GUI/GlobalTooltip.cs" id="6_qmcko"]
+[ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="5_hs6c8"]
+[ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="7_ucqdi"]
 [ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="7_vpmxr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkcs2"]
@@ -50,19 +50,41 @@ mouse_filter = 1
 offset_left = 1.0
 offset_right = 1.0
 
-[node name="GlobalTooltip" parent="." instance=ExtResource("5_75ox1")]
+[node name="GlobalTooltip" parent="." instance=ExtResource("5_hs6c8")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 1.0
-offset_right = 193.0
-script = ExtResource("6_qmcko")
-_fadeInSpeed = 1.0
-_delay = 0.5
-_offset = Vector2(0, 0)
+offset_right = 128.0
+offset_bottom = 32.0
 
 [node name="CursorHand" parent="." instance=ExtResource("7_vpmxr")]
 layout_mode = 1
 offset_left = 1.0
 offset_right = 97.0
+
+[node name="R2Button" parent="." instance=ExtResource("7_ucqdi")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -10.0
+offset_bottom = 22.0002
+grow_horizontal = 0
+grow_vertical = 0
+Button = 7
+
+[node name="L2Button" parent="." instance=ExtResource("7_ucqdi")]
+layout_mode = 1
+anchor_left = 0.0714286
+anchor_top = 0.0361842
+anchor_right = 0.121429
+anchor_bottom = 0.125073
+offset_left = -32.0
+offset_top = 283.0
+offset_right = -22.4
+offset_bottom = 287.978
+Button = 6

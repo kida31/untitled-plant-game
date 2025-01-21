@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" path="res://Scenes/TestScenes/Dialogue/TestDialogue.cs" id="1_mgpfb"]
 [ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="1_mt3pj"]
-[ext_resource type="Resource" path="res://Resources/Dialogue/TutorialDialogue.tres" id="2_edm0w"]
-[ext_resource type="Resource" path="res://Resources/Dialogue/HarvestingTutorialDialogue.tres" id="3_1xn4x"]
-[ext_resource type="Resource" path="res://Resources/Dialogue/VendingMachineTutorialDialogue.tres" id="4_aml6b"]
-[ext_resource type="Resource" path="res://Resources/Dialogue/TutorialDialogueEnd.tres" id="5_d1q3v"]
-[ext_resource type="Resource" path="res://Resources/Dialogue/SeedBoyTutorialDialogue.tres" id="5_k6w1k"]
+[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/TutorialDialogue.tres" id="2_edm0w"]
+[ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/HarvestingTutorialDialogue.tres" id="3_1xn4x"]
+[ext_resource type="Resource" uid="uid://dopykccwoa5os" path="res://Resources/Dialogue/VendingMachineTutorialDialogue.tres" id="4_aml6b"]
+[ext_resource type="Resource" uid="uid://ds2a5jertu4k4" path="res://Resources/Dialogue/TutorialDialogueEnd.tres" id="5_d1q3v"]
+[ext_resource type="Resource" uid="uid://yg4mwgstm60u" path="res://Resources/Dialogue/SeedBoyTutorialDialogue.tres" id="5_k6w1k"]
 
 [node name="TestDialogue" type="Node2D" node_paths=PackedStringArray("_button")]
+position = Vector2(-18, 6)
 script = ExtResource("1_mgpfb")
 _exampleDialogue = ExtResource("2_edm0w")
 _followupDialogue = Array[Object]([ExtResource("3_1xn4x"), ExtResource("4_aml6b"), ExtResource("5_k6w1k"), ExtResource("5_d1q3v")])
@@ -17,10 +18,6 @@ _button = NodePath("Button")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueScene" parent="CanvasLayer" instance=ExtResource("1_mt3pj")]
-offset_left = 331.0
-offset_top = 525.0
-offset_right = 331.0
-offset_bottom = 525.0
 
 [node name="Button" type="Button" parent="."]
 offset_left = 501.0

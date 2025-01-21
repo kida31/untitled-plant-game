@@ -1,4 +1,5 @@
 using untitledplantgame.Inventory;
+using untitledplantgame.NPC;
 
 namespace untitledplantgame.Crafting;
 
@@ -7,6 +8,6 @@ namespace untitledplantgame.Crafting;
 /// </summary>
 public interface ICraftingStation
 {
-	void InsertItemToSlot(IItemStack item, int slotIndex);
+	bool InsertItemToSlot(IItemStack item);
 	IItemStack RemoveItemFromSlot(int slotIndex);
 }

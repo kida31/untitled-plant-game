@@ -1,25 +1,66 @@
-[gd_scene load_steps=4 format=3 uid="uid://dafhmyiy5jrym"]
+[gd_scene load_steps=5 format=3 uid="uid://dafhmyiy5jrym"]
 
-[ext_resource type="PackedScene" uid="uid://v4q4n4opsed6" path="res://Features/VendingMachine/UI/ItemSlot.tscn" id="1_5jnsj"]
 [ext_resource type="Script" path="res://Features/Crafting/CraftingSlotUi.cs" id="2_3k3fw"]
+[ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="2_is5on"]
 [ext_resource type="Texture2D" uid="uid://cbwcajw24ox4e" path="res://Assets/UI/Book/Icons/NewItemIndicator.png" id="3_8b24n"]
 
-[node name="ItemSlot" node_paths=PackedStringArray("_progressBar", "_craftingCompleteTexture") instance=ExtResource("1_5jnsj")]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p7i2l"]
+texture = ExtResource("2_is5on")
+
+[node name="ItemSlot" type="PanelContainer" node_paths=PackedStringArray("_progressBar", "_craftingCompleteTexture", "_displayItemName", "_itemCurrentQuantity", "_itemTextureRect")]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_p7i2l")
 script = ExtResource("2_3k3fw")
 _progressBar = NodePath("CenterContainer/ProgressBar")
 _craftingCompleteTexture = NodePath("CraftingCompleteIndicator")
+_displayItemName = NodePath("QuantityLabel")
+_itemCurrentQuantity = NodePath("QuantityLabel")
+_itemTextureRect = NodePath("CenterContainer/ItemTexture")
 
-[node name="ProgressBar" type="ProgressBar" parent="CenterContainer" index="1"]
+[node name="CenterContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ItemTexture" type="TextureRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 4
+stretch_mode = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer"]
 layout_mode = 2
 size_flags_vertical = 1
+mouse_filter = 2
 max_value = 1.0
 fill_mode = 3
 show_percentage = false
 
-[node name="QuantityLabel" parent="." index="1"]
-visible = false
-
-[node name="CraftingCompleteIndicator" type="TextureRect" parent="." index="3"]
+[node name="QuantityLabel" type="Label" parent="."]
 visible = false
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
+theme_override_colors/font_shadow_color = Color(0.933333, 0.933333, 0.933333, 1)
+theme_override_constants/shadow_outline_size = 20
+theme_override_font_sizes/font_size = 16
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="HighlightPlaceholder" type="ColorRect" parent="."]
+visible = false
+modulate = Color(0.662745, 1, 1, 0.352941)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CraftingCompleteIndicator" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("3_8b24n")
+expand_mode = 1

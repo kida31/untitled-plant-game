@@ -36,13 +36,13 @@ public partial class TooltipView : Control
 	}
 
 	[Unstable("Not thoroughly tested")]
-	public List<Control> CustomContent
+	public Control CustomContent
 	{
 		get => _customContent;
 		set => SetCustomContent(value);
 	}
 
-	private List<Control> _customContent;
+	private Control _customContent;
 
 	public override void _Ready()
 	{
@@ -61,6 +61,12 @@ public partial class TooltipView : Control
 		DescriptionChanged += UpdateReference;
 		TitleChanged += UpdateReference;
 		// EndShittyLabelAdjustment
+	}
+
+	public override void _ExitTree()
+	{
+		// Clean up
+		_referenceLabel.ItemRectChanged -= AutoAdjustWidth;
 	}
 
 	private void SetTitle(string value)
@@ -84,28 +90,15 @@ public partial class TooltipView : Control
 	/// </remarks>
 	/// </summary>
 	/// <param name="content"></param>
-	private void SetCustomContent(List<Control> content)
+	private void SetCustomContent(Control content)
 	{
-		if (_customContent != null)
-		{
-			foreach (var node in _customContent)
-			{
-				_contentContainer.RemoveChild(node);
-				if (AutomaticallyFreeOldContent)
-				{
-					node.QueueFree();
-				}
-			}
-		}
+		_customContent?.QueueFree();
 
-		_customContent = content;
+		_customContent = content?.Duplicate() as Control;
 
 		if (_customContent != null)
 		{
-			foreach (var node in _customContent)
-			{
-				_contentContainer.AddChild(node);
-			}
+			_contentContainer.AddChild(_customContent);
 		}
 	}
 
@@ -137,7 +130,7 @@ public partial class TooltipView : Control
 
 	private void UpdateSeparator()
 	{
-		if (string.IsNullOrEmpty(Title) || string.IsNullOrEmpty(Description))
+		if (string.IsNullOrEmpty(Title) && string.IsNullOrEmpty(Description))
 		{
 			_separator.Hide();
 		}

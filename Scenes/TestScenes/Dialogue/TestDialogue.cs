@@ -1,19 +1,13 @@
 using Godot;
 using untitledplantgame.Common;
 using DialogueResourceObject = untitledplantgame.Dialogue.Models.DialogueResourceObject;
-using DialogueSystem = untitledplantgame.Dialogue.DialogueSystem;
-
 
 namespace untitledplantgame.Scenes.TestScenes.Dialogue;
 
 public partial class TestDialogue : Node2D
 {
-	[Export]
-	private DialogueResourceObject _exampleDialogue;
-
-	[Export]
-	private DialogueResourceObject[] _followupDialogue;
-
+	[Export] private DialogueResourceObject _exampleDialogue;
+	[Export] private DialogueResourceObject[] _followupDialogue;
 	[Export] private Button _button;
 	
 	private readonly Logger _logger = new("TutorialDialogue");
@@ -21,7 +15,7 @@ public partial class TestDialogue : Node2D
 
 	public override void _Ready()
 	{
-		EventBus.Instance.InvokeStartingDialogue(_exampleDialogue._dialogueId);
+		EventBus.Instance.InvokeStartingDialogue(_exampleDialogue);
 		_button.Pressed += LoadNextDialogue;
 	}
 
@@ -30,7 +24,7 @@ public partial class TestDialogue : Node2D
 		if(i < _followupDialogue.Length)
 		{
 			i++;
-			EventBus.Instance.InvokeStartingDialogue(_followupDialogue[i]._dialogueId);
+			EventBus.Instance.InvokeStartingDialogue(_followupDialogue[i]);
 			_button.FocusMode = Control.FocusModeEnum.None;
 			_logger.Debug($"current index {i}");
 		}

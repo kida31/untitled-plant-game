@@ -2,12 +2,15 @@ using System;
 using Godot;
 using untitledplantgame.Crafting;
 using untitledplantgame.Dialogue;
+using untitledplantgame.Dialogue.Models;
 using untitledplantgame.Inventory;
 using untitledplantgame.Plants;
 using untitledplantgame.Shops;
+using untitledplantgame.Vending;
 
 namespace untitledplantgame.Common;
 
+// TODO: Cleanup
 /**
  * NOTE:
  *
@@ -71,9 +74,9 @@ public partial class EventBus : Node
 		OnSeedshopClosed?.Invoke();
 	}
 
-	public event Action<VendingMachine.VendingMachine> BeforeVendingMachineOpened;
+	public event Action<VendingMachine> BeforeVendingMachineOpened;
 
-	public void BeforeVendingMachineOpen(VendingMachine.VendingMachine vendingMachine)
+	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
 	}
@@ -81,16 +84,16 @@ public partial class EventBus : Node
 	//Dialogue
 
 	/// <summary>
-	///     Invoked when a dialogue is starting, passes the dialogue name
+	///     Invoked when a dialogue is starting, passes the dialogue object
 	/// </summary>
-	public event Action<string> StartingDialogue;
+	public event Action<DialogueResourceObject> StartingDialogue;
 
 	/// <summary>
-	///     Emitted when a dialogue is started for the first time
+	///     Emitted when a dialogue is started, passes the dialogue system
 	/// </summary>
 	public event Action<IDialogueSystem> InitialiseDialogue;
 
-	public void InvokeStartingDialogue(string obj)
+	public void InvokeStartingDialogue(DialogueResourceObject obj)
 	{
 		StartingDialogue?.Invoke(obj);
 	}
@@ -110,14 +113,24 @@ public partial class EventBus : Node
 	}
 
 	//HUD
-
+	
 	public event Action<int, int> GoldChanged;
-
+	
+	// An event to change the portrait! Shouldn't be hard. But I don't know how to translate them into emotions
+	public event Action<AnimatedSprite2D, string> OnNpcStartDialogue;
+	
 	public void InvokeGoldChanged(int deltaGold, int newGold)
 	{
 		GoldChanged?.Invoke(deltaGold, newGold);
 	}
 
+
+	public void NpcDialogueWithPlayerStarted(AnimatedSprite2D portrait, string npcName)
+	{
+		OnNpcStartDialogue?.Invoke(portrait, npcName);
+	}
+	
+	
 	//Inventory
 
 	public event Action<int> OnFaithChange;
@@ -157,4 +170,18 @@ public partial class EventBus : Node
 	{
 		BeforeCraftingStationUiOpened?.Invoke(craftingStation);
 	}
+	
+	
+	
+	// Band-aid code for having actual things happening after selecting an answer.
+	
+	[Obsolete] // Now that's what I call a "WHAT DID I DO, WHERE DID MY STUFF GO?!?!?!?" panic moment
+	public event Action<string> OnResponseButtonPress;
+
+	[Obsolete] // Now that's what I call a "WHAT DID I DO, WHERE DID MY STUFF GO?!?!?!?" panic moment
+	public void ResponseButtonPressed(string message)
+	{
+		OnResponseButtonPress?.Invoke(message);
+	}
+
 }

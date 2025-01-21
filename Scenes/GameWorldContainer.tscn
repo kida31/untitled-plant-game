@@ -1,51 +1,84 @@
-[gd_scene load_steps=12 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=21 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
-[ext_resource type="PackedScene" uid="uid://c8w5v0k8jnu41" path="res://Features/NPC/VendingMachine/VendingMachineNPC.tscn" id="2_ldf7o"]
-[ext_resource type="PackedScene" uid="uid://6m0jv0pp1br6" path="res://Features/NPC/NPC.tscn" id="2_w1s7m"]
-[ext_resource type="Script" path="res://Features/NPC/SeedBoy.cs" id="3_orgm4"]
+[ext_resource type="PackedScene" uid="uid://darsx73t4n6d3" path="res://Scenes/VendingMachineCriss.tscn" id="3_5hcym"]
+[ext_resource type="PackedScene" uid="uid://ddthdftxrhg6x" path="res://Scenes/Pier.tscn" id="3_d7fyg"]
+[ext_resource type="PackedScene" uid="uid://osnne5a45tou" path="res://Scenes/SeedBoyCriss.tscn" id="3_ffnpq"]
+[ext_resource type="PackedScene" uid="uid://cr2712p8tviur" path="res://Scenes/Godfrey.tscn" id="4_r6pis"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
+[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="7_iyd84"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
+[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="8_dqxgm"]
+[ext_resource type="PackedScene" uid="uid://lufeqnjeabjx" path="res://Features/NPC/NpcTask/MovementTaskTarget.tscn" id="9_1ifh2"]
+[ext_resource type="Script" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="10_et227"]
 [ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
-[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="11_33dsb"]
-[ext_resource type="PackedScene" uid="uid://bvp3ydfiptsmt" path="res://Features/Item/InteractableItemPrefab.tscn" id="12_tpjy1"]
+[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/TutorialDialogue.tres" id="11_n2hb4"]
+[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/Tutorial/TutorialDialogue2ndPart.tres" id="12_c3vnp"]
+[ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/Tutorial/HarvestingTutorialDialogue.tres" id="13_fhanv"]
+[ext_resource type="Resource" uid="uid://dopykccwoa5os" path="res://Resources/Dialogue/VendingMachineTutorialDialogue.tres" id="14_q6j24"]
+[ext_resource type="Resource" uid="uid://yg4mwgstm60u" path="res://Resources/Dialogue/Tutorial/SeedBoyTutorialDialogue.tres" id="15_bqmo8"]
+[ext_resource type="Resource" uid="uid://ds2a5jertu4k4" path="res://Resources/Dialogue/Tutorial/TutorialDialogueEnd.tres" id="16_xovon"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
 
 [node name="GardenMapScene" parent="." instance=ExtResource("1_ouy3g")]
-y_sort_enabled = true
 
 [node name="HouseMapScene" parent="." instance=ExtResource("10_t60bx")]
 position = Vector2(-3, 1372)
 
-[node name="GenericItem" parent="." instance=ExtResource("12_tpjy1")]
-position = Vector2(750, 429)
-
-[node name="GenericItem2" parent="." instance=ExtResource("12_tpjy1")]
-position = Vector2(757, 448)
-
-[node name="Bed" parent="." instance=ExtResource("11_33dsb")]
-position = Vector2(888, 177)
-
-[node name="SeedShop" parent="." instance=ExtResource("2_w1s7m")]
-z_index = 2
+[node name="Pier" parent="." instance=ExtResource("3_d7fyg")]
 y_sort_enabled = true
-position = Vector2(465, 195)
-script = ExtResource("3_orgm4")
+position = Vector2(-1052, 2316)
 
-[node name="VendingMachineNPC" parent="." instance=ExtResource("2_ldf7o")]
+[node name="VendingMachine" parent="." instance=ExtResource("3_5hcym")]
+position = Vector2(728, 184)
+
+[node name="PanDan" parent="." instance=ExtResource("3_ffnpq")]
 z_index = 1
-y_sort_enabled = true
-position = Vector2(730, 160)
+position = Vector2(464, 200)
+
+[node name="Godfrey" parent="." node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("4_r6pis")]
+position = Vector2(704, 356)
+_routinePlanner = NodePath("RoutinePlanner2")
+
+[node name="RoutinePlanner2" type="Node" parent="Godfrey" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+script = ExtResource("7_iyd84")
+_npcExecutingRoutines = NodePath("..")
+_routines = [NodePath("MovementRoutine1"), NodePath("MovementRoutine2"), NodePath("MovementRoutine3")]
+
+[node name="MovementRoutine1" type="Node" parent="Godfrey/RoutinePlanner2"]
+script = ExtResource("8_dqxgm")
+RoutineStartMinutes = 45
+
+[node name="MovementTaskTarget" parent="Godfrey/RoutinePlanner2/MovementRoutine1" instance=ExtResource("9_1ifh2")]
+position = Vector2(773, 360)
+
+[node name="MovementRoutine2" type="Node" parent="Godfrey/RoutinePlanner2"]
+script = ExtResource("8_dqxgm")
+RoutineStartMinutes = 50
+
+[node name="MovementTaskTarget" parent="Godfrey/RoutinePlanner2/MovementRoutine2" instance=ExtResource("9_1ifh2")]
+position = Vector2(776, 496)
+
+[node name="MovementRoutine3" type="Node" parent="Godfrey/RoutinePlanner2"]
+script = ExtResource("8_dqxgm")
+RoutineStartMinutes = 55
+
+[node name="MovementTaskTarget" parent="Godfrey/RoutinePlanner2/MovementRoutine3" instance=ExtResource("9_1ifh2")]
+position = Vector2(593, 429)
+
+[node name="PlayerInitiatedDialogue" type="Node" parent="Godfrey/RoutinePlanner2"]
+script = ExtResource("10_et227")
+_dialogueResourceObject = Array[Object]([ExtResource("11_n2hb4"), ExtResource("12_c3vnp"), ExtResource("13_fhanv"), ExtResource("14_q6j24"), ExtResource("15_bqmo8"), ExtResource("16_xovon")])
 
 [node name="Plants" parent="." instance=ExtResource("7_36aju")]
+z_index = 0
+y_sort_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("1_mh621")]
-z_index = 1
-y_sort_enabled = true
 position = Vector2(640, 360)
 
 [node name="NightTint" type="CanvasModulate" parent="."]

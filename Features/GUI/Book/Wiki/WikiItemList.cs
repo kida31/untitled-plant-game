@@ -38,15 +38,7 @@ public partial class WikiItemList : Control
 		_materialButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Material);
 		_medicineButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Medicine);
 	}
-
-	public override void _UnhandledInput(InputEvent @event)
-	{
-		if (Input.IsKeyPressed(Key.F1))
-		{
-			_itemViews[^1].GrabFocus();
-		}
-	}
-
+	
 	public void SetItems(List<IItemStack> items)
 	{
 		Assert.AssertTrue(_itemViews.Count == _itemViewContainer.GetChildCount(), "Tracked views and actual are not equal");

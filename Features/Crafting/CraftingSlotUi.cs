@@ -1,10 +1,10 @@
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.VendingMachine;
+using untitledplantgame.GUI.Book.Inventories;
 
 namespace untitledplantgame.Crafting;
 
-public partial class CraftingSlotUi : ItemSlotUI
+public partial class CraftingSlotUi : InventoryItemView
 {
 	[Export] private ProgressBar _progressBar;
 	[Export] private TextureRect _craftingCompleteTexture;
@@ -29,7 +29,7 @@ public partial class CraftingSlotUi : ItemSlotUI
 		// TODO: "Crafting Complete"
 		// -> item.ModifyItem
 		// -> thisHere.OnCraftingComplete
-		SetItemStack(item);
+		UpdateItemView(item);
 		_isCraftingComplete = true;
 		_progressBar.Value = 1;
 	}
@@ -41,7 +41,7 @@ public partial class CraftingSlotUi : ItemSlotUI
 		_progressBar.Value = progress;
 	}
 
-	public void SetCraftingSlot(CraftingSlot slot)
+	public void UpdateCraftingSlot(CraftingSlot slot)
 	{
 		if(CraftingSlot != null)
 		{
@@ -54,7 +54,7 @@ public partial class CraftingSlotUi : ItemSlotUI
 		}
 		CraftingSlot = slot;
 		_logger.Debug($"Setting CraftingSlot with item {slot?.ItemStack}");
-		ItemStack = slot?.ItemStack;
+		UpdateItemView(slot?.ItemStack);
 		
 		if(slot != null)
 		{
