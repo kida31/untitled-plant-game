@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://1wnuc03ll3y"]
+[gd_scene load_steps=12 format=3 uid="uid://1wnuc03ll3y"]
 
 [ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_6ipep"]
 [ext_resource type="Texture2D" uid="uid://bklcso0wn7iqr" path="res://Assets/Sprites/idle.png" id="2_4g0uj"]
-[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_435mo"]
 [ext_resource type="Texture2D" uid="uid://o4fvncrv04mo" path="res://Assets/Sprites/damage.png" id="3_64ptj"]
 [ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="3_mu2uu"]
 
@@ -67,14 +66,12 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_6ipep")
 _name = "Jeff the Landshark"
-_defaultPortrait = ExtResource("2_435mo")
 _npcPlayerInteraction = NodePath("InteractionNode")
 
 [node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fvi7q")
 
 [node name="CharacterSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_s0wvy")
 animation = &"angry"
 
 [node name="PortraitSprite2D" type="AnimatedSprite2D" parent="."]

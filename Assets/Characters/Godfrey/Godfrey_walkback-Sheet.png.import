@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ao6clx6ie2r"
-path="res://.godot/imported/StartScreenBackground.png-d019befa1f86b50a135dc08551a4246f.ctex"
+uid="uid://2cphx1pfykhi"
+path="res://.godot/imported/Godfrey_walkback-Sheet.png-ec03b4a05eeaa6d9e46a4ebd9625baad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://StartScreenBackground.png"
-dest_files=["res://.godot/imported/StartScreenBackground.png-d019befa1f86b50a135dc08551a4246f.ctex"]
+source_file="res://Assets/Characters/Godfrey/Godfrey_walkback-Sheet.png"
+dest_files=["res://.godot/imported/Godfrey_walkback-Sheet.png-ec03b4a05eeaa6d9e46a4ebd9625baad.ctex"]
 
 [params]
 
