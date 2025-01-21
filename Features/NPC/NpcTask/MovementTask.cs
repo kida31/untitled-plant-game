@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Godot;
 using untitledplantgame.Common;
 
+// TODO: Cleanup
+
 namespace untitledplantgame.NPC.NpcTask;
 
 /**
@@ -13,8 +15,9 @@ namespace untitledplantgame.NPC.NpcTask;
  */
 public partial class MovementTask :  Area2D, INpcTask
 {
-	private Vector2 _lastValidVelocity;
 	private bool DestinationReached { get; set; }
+	private Vector2 _lastValidVelocity;
+	private Vector2 _anchorPoint; // I can't figure out why Godot won't give me the global position
 	private event EventHandler TaskStarted;
 	private event EventHandler TaskFinished;
 	private Npc _npcExecutingThisTasks;
@@ -29,8 +32,8 @@ public partial class MovementTask :  Area2D, INpcTask
 	public void InitializeTask(Npc owningNpc)
 	{
 		_npcExecutingThisTasks = owningNpc;
+		_anchorPoint = _npcExecutingThisTasks.GlobalPosition;
 		_logger.Debug("Task assigned " + _npcExecutingThisTasks.GetNpcName() + " as it's owner.");
-
 	}
 
 	public void StartTask()
@@ -56,7 +59,7 @@ public partial class MovementTask :  Area2D, INpcTask
 		
 		_npcExecutingThisTasks.Velocity = Vector2.Zero;
 		_logger.Debug("MovementTask was interrupted!");
-
+		GD.Print(_npcExecutingThisTasks.Velocity);
 	}
 
 	public void ResumeCurrentTask()
@@ -82,8 +85,9 @@ public partial class MovementTask :  Area2D, INpcTask
 		await Task.Yield();
 		StartTask();
 		
-		var newVelocity = Position - _npcExecutingThisTasks.Position;
+		var newVelocity = GlobalPosition - _npcExecutingThisTasks.GlobalPosition;
 		_npcExecutingThisTasks.Velocity = newVelocity.Normalized() * 100;
+		
 		
 		await WaitForConditionAsync();
 		_npcExecutingThisTasks.Velocity = Vector2.Zero;

@@ -10,6 +10,7 @@ using untitledplantgame.Vending;
 
 namespace untitledplantgame.Common;
 
+// TODO: Cleanup
 /**
  * NOTE:
  *
@@ -169,4 +170,18 @@ public partial class EventBus : Node
 	{
 		BeforeCraftingStationUiOpened?.Invoke(craftingStation);
 	}
+	
+	
+	
+	// Band-aid code for having actual things happening after selecting an answer.
+	
+	[Obsolete] // Now that's what I call a "WHAT DID I DO, WHERE DID MY STUFF GO?!?!?!?" panic moment
+	public event Action<string> OnResponseButtonPress;
+
+	[Obsolete] // Now that's what I call a "WHAT DID I DO, WHERE DID MY STUFF GO?!?!?!?" panic moment
+	public void ResponseButtonPressed(string message)
+	{
+		OnResponseButtonPress?.Invoke(message);
+	}
+
 }

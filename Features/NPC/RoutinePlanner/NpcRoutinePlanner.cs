@@ -27,6 +27,11 @@ public partial class NpcRoutinePlanner : Node
 		return _npcExecutingRoutines;
 	}
 	
+	/*
+	 * Rider doesn't know this, but routines are called routines precisely because they are done in an endless loop.
+	 *
+	 * Npc are programmed to start over once every routine is checked!
+	 */
 	private async void ExecuteAllRoutines()
 	{
 		await Task.Delay(ScriptExecutionOrderDelay);
@@ -41,5 +46,7 @@ public partial class NpcRoutinePlanner : Node
 			npcRoutine.InitializeRoutine(this);
 			await npcRoutine.ExecuteAllTasks();
 		}
+		
+		ExecuteAllRoutines();
 	}
 }
