@@ -14,12 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://lufeqnjeabjx" path="res://Features/NPC/NpcTask/MovementTaskTarget.tscn" id="9_1ifh2"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="10_et227"]
 [ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
-[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/TutorialDialogue.tres" id="11_n2hb4"]
-[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/TutorialDialogue2ndPart.tres" id="12_c3vnp"]
-[ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/HarvestingTutorialDialogue.tres" id="13_fhanv"]
+[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/TutorialDialogue.tres" id="11_n2hb4"]
+[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/Tutorial/TutorialDialogue2ndPart.tres" id="12_c3vnp"]
+[ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/Tutorial/HarvestingTutorialDialogue.tres" id="13_fhanv"]
 [ext_resource type="Resource" uid="uid://dopykccwoa5os" path="res://Resources/Dialogue/VendingMachineTutorialDialogue.tres" id="14_q6j24"]
-[ext_resource type="Resource" uid="uid://yg4mwgstm60u" path="res://Resources/Dialogue/SeedBoyTutorialDialogue.tres" id="15_bqmo8"]
-[ext_resource type="Resource" uid="uid://ds2a5jertu4k4" path="res://Resources/Dialogue/TutorialDialogueEnd.tres" id="16_xovon"]
+[ext_resource type="Resource" uid="uid://yg4mwgstm60u" path="res://Resources/Dialogue/Tutorial/SeedBoyTutorialDialogue.tres" id="15_bqmo8"]
+[ext_resource type="Resource" uid="uid://ds2a5jertu4k4" path="res://Resources/Dialogue/Tutorial/TutorialDialogueEnd.tres" id="16_xovon"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
