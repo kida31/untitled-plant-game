@@ -31,7 +31,7 @@ public partial class StandardNpc : Npc
 
 	public override string GetNpcName()
 	{
-		_logger.Info("Npc name was requested.");
+		//_logger.Info("Npc name was requested.");
 		return _name;
 	}
 

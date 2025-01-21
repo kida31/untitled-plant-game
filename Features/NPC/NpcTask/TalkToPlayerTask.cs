@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
@@ -60,6 +61,7 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 		_npcInteraction = (NpcPlayerInteraction) _npcExecutingThisTasks.FindChild("InteractionNode");
 		_npcInteraction.InteractionEvent += StartTask;
 		_logger.Debug("Task assigned " + _npcExecutingThisTasks.GetNpcName() + " as it's owner.");
+		
 	}
 
 	public void StartTask()
@@ -91,7 +93,6 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 	private async void DelayUnsubscribe()
 	{
 		await Task.Yield();
-		GD.Print("3");
 		EventBus.Instance.OnResponseButtonPress -= TriggerActionAfterResponse;
 		await Task.Delay(1);
 	}
@@ -149,9 +150,10 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 
 	private void TriggerActionAfterResponse(string responseText)
 	{
+		var lastResponses = GetDeepestResponses(_dialogueResourceObject);
 		var index = 0;
-		//TODO: Check null condition
-		foreach (var responseObjects in _dialogueResourceObject._responses)
+		
+		foreach (var responseObjects in lastResponses)
 		{
 			var currentResponseButton = responseObjects._responseButton;
 
@@ -169,5 +171,61 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 			index++;
 			
 		}
+	}
+
+	private DialogueResponse[] GetDeepestResponses(DialogueResourceObject dialogueResourceObject)
+	{
+		int maxDepth = 0;
+		List<DialogueResponse> deepestList = new List<DialogueResponse>();
+
+		void Traverse(DialogueResponse response, int depth)
+		{
+			// If _responseDialogue is null, treat this response as the last one in its branch
+			if (response._responseDialogue == null)
+			{
+				if (depth > maxDepth)
+				{
+					maxDepth = depth;
+					deepestList.Clear();
+					deepestList.Add(response);
+				}
+				else if (depth == maxDepth)
+				{
+					deepestList.Add(response);
+				}
+				return;
+			}
+
+			// If _responseDialogue._responses is null or empty, it's also a leaf
+			var subResponses = response._responseDialogue._responses;
+			if (subResponses == null || subResponses.Length == 0)
+			{
+				if (depth > maxDepth)
+				{
+					maxDepth = depth;
+					deepestList.Clear();
+					deepestList.Add(response);
+				}
+				else if (depth == maxDepth)
+				{
+					deepestList.Add(response);
+				}
+				return;
+			}
+
+			// Recursive case: traverse into sub-responses
+			foreach (var subResponse in subResponses)
+			{
+				Traverse(subResponse, depth + 1);
+			}
+		}
+
+		// Start recursion for each top-level response
+		foreach (var response in dialogueResourceObject._responses)
+		{
+			Traverse(response, 1);
+		}
+
+		return deepestList.ToArray();
 	}
 }

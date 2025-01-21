@@ -18,6 +18,9 @@ size = Vector2(62, 12)
 _name = "Vending Machine"
 _routinePlanner = NodePath("RoutinePlanner")
 
+[node name="PortraitSprite2D" parent="." index="2"]
+visible = false
+
 [node name="VendingMachineSprite" type="Sprite2D" parent="." index="4"]
 position = Vector2(0, -53)
 texture = ExtResource("2_gjf2v")

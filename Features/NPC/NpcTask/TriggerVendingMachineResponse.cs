@@ -6,6 +6,7 @@ namespace untitledplantgame.NPC.NpcTask;
 
 public partial class TriggerVendingMachineResponse : ResponseAction
 {
+	// Yes; Storing the vending machine inside the dialogue tree is not a good idea...
 	private VendingMachine _vendingMachine;
 	private Logger _logger;
 	
@@ -18,7 +19,7 @@ public partial class TriggerVendingMachineResponse : ResponseAction
 	
 	public override void ActionAfterResponse()
 	{
-		_logger.Debug("VendingMachineOpened");
+		_logger.Debug("VendingMachine opened.");
 		EventBus.Instance.BeforeVendingMachineOpen(_vendingMachine);
 	}
 }

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Godot.Collections;
 using untitledplantgame.Common;
@@ -14,7 +15,9 @@ namespace untitledplantgame.NPC.NpcTask;
 public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 {
 	[Export] private Array<DialogueResourceObject> _dialogueResourceObject;
-	
+	[Export] private bool _randomOrderOfDialogueLines;
+
+	private int _index;
 	private bool DialogueFinished { get; set; }
 	private event EventHandler TaskStarted;
 	private event EventHandler TaskFinished;
@@ -26,6 +29,7 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 
 	public override void _Ready()
 	{
+		GD.Print(_dialogueResourceObject.Count);
 		_logger = new Logger(this);
 		_routinePlanner = (NpcRoutinePlanner) GetParent(); // We will enforce this as a soft rule ⇒ RoutinePlanner MUST be the parent!
 		
@@ -42,9 +46,24 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 	private void StartDialogue()
 	{
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
-		EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject[new Random().Next(_dialogueResourceObject.Count)]);
+
+		if (_randomOrderOfDialogueLines)
+		{
+			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject[new Random().Next(_dialogueResourceObject.Count)]);
+		}
+		else
+		{
+			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject[_index]);
+			_index++;
+			
+			if (_index == _dialogueResourceObject.Count)
+			{
+				_index = 0;
+			}
+		}
+	
 		TaskStarted?.Invoke(this, EventArgs.Empty);
-		
+		// TODO; Need variable to block the starting process of new tasks/routines.
 		_routinePlanner.ActiveTask?.InterruptCurrentTask();
 		_logger.Info("Player stopped the current routine by starting a Dialogue with an Npc.");
 		ResumeRoutineIfFinished();

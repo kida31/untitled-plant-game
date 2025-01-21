@@ -76,7 +76,7 @@ public partial class NpcRoutine : Node
 	{
 		_logger.Debug("Starting to execute all tasks in this routine.");
 		await Task.Yield();
-	
+		
 		if (RoutineTrigger == Options.TimeOfDay)
 		{
 			await WaitUntilCorrectTimeOfDay();
@@ -86,9 +86,12 @@ public partial class NpcRoutine : Node
 			await WaitUntilPlayerInteracted();
 		}
 		
+		
+		
 		foreach (var npcTask in _npcTasks)
 		{
 			_owningRoutinePlanner.ActiveTask = npcTask;
+			
 			npcTask.InitializeTask(_owningRoutinePlanner.GetNpcExecutingRoutines());
 			await npcTask.ExecuteNpcTask();
 		}
@@ -99,8 +102,11 @@ public partial class NpcRoutine : Node
 		_owningRoutinePlanner.ActiveTask = null;
 	}
 
-	private void TimeToTriggerRoutine()
+	private async void TimeToTriggerRoutine()
 	{
+		await Task.Yield();
+		
+		await Task.Delay(1);
 		_correctTimeOfDay = true;
 		RightTimeOfDayReached?.Invoke(this, EventArgs.Empty);
 	}
@@ -116,13 +122,12 @@ public partial class NpcRoutine : Node
 			{
 				return;
 			}
-			
 			tcs.TrySetResult(true);
 			RightTimeOfDayReached -= onConditionMet;
 		};
 		
 		RightTimeOfDayReached += onConditionMet;
-
+		
 		return tcs.Task;
 	}
 
