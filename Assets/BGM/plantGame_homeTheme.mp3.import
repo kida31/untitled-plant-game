@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/plantGame_homeTheme.mp3-fdb8b6b531c8096cf7e70
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
