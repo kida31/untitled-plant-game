@@ -12,7 +12,7 @@ public partial class DialogueUI : Control
 
 	[Export] private RichTextLabel _nameLabel;
 	[Export] private RichTextLabel _dialogueTextLabel;
-	[Export] private TextureRect _portrait;
+	[Export] private AnimatedSprite2D _animatedSprite2D;
 	[Export] private BoxContainer _responseContainer;
 
 	private DialogueResourceObject _currentDialogue;
@@ -38,7 +38,7 @@ public partial class DialogueUI : Control
 		AddChild(_dialogueAnimation);
 
 		//Events
-		//EventBus.Instance.OnNpcStartDialogue += ChangeToIdentity;
+		EventBus.Instance.OnNpcStartDialogue += ChangeToIdentity;
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
 		_logger.Debug("Subscribed to dialogue system intialising.");
 		_skipCooldownTimer.Timeout += () => _smashable = true;
@@ -68,12 +68,14 @@ public partial class DialogueUI : Control
 		_dialogueSystem.OnDialogueEnd += HideDialogueUi;
 		_dialogueSystem.OnResponding += DisplayResponses;
 	}
-	/*
-	private void ChangeToIdentity(AnimatedSprite2D portrait)
+
+	private void ChangeToIdentity(AnimatedSprite2D portrait, string npcName)
 	{
 		_animatedSprite2D.SpriteFrames = portrait.SpriteFrames;
 		var save = _animatedSprite2D.SpriteFrames;
-	}*/
+
+		_nameLabel.Text = npcName;
+	}
 
 	private void OnDialogueBlockStarted(DialogueResourceObject dialogue)
 	{
@@ -121,12 +123,11 @@ public partial class DialogueUI : Control
 	//Displays dialogue on the screen
 	private void ShowDialogueLine(DialogueLine line)
 	{
-		_nameLabel.Text = line.speakerName ?? "";
-		_dialogueTextLabel.Text = line.dialogueText ?? "";
-		_portrait.Texture = line.portrait ?? _portrait.Texture;
-		
+		_nameLabel.Text = line.speakerName;
+		_dialogueTextLabel.Text = line.dialogueText;
 		_dialogueAnimation.AnimateNextDialogueLine(_dialogueTextLabel, line);
 		
+		_animatedSprite2D.Play(line.DialogueExpression.ToString());
 		Visible = true;
 	}
 
@@ -144,7 +145,7 @@ public partial class DialogueUI : Control
 			{
 				_dialogueSystem.InsertSelectedResponse(response);
 				//---Code from Panikk-Mode---
-				//EventBus.Instance.ResponseButtonPressed(response);
+				EventBus.Instance.ResponseButtonPressed(response);
 				//---Code from Panikk-Mode---
 				ClearResponses();
 			}
