@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://bod2ukhcoo74l"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=11 format=3 uid="uid://bod2ukhcoo74l"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_87vtf"]
+[ext_resource type="Texture2D" uid="uid://cse8qg8wjlvxb" path="res://Assets/Characters/Godfrey/Godfrey-portrait.jpeg" id="1_gt77f"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_yotbo"]
 [ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/Tutorial/TutorialDialogue2ndPart.tres" id="2_ekt0i"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_b7jqa"]
@@ -10,18 +11,21 @@ script = ExtResource("1_yotbo")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = 0
 dialogueText = "Hello newcomer! I am Gottfried and I am somewhat of a leader around here."
+portrait = ExtResource("1_gt77f")
 
 [sub_resource type="Resource" id="Resource_j1jl0"]
 script = ExtResource("1_yotbo")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = 0
 dialogueText = "It’s great that you chose to inhabit this empty house. You know it’s been the herbalists house before they… left us."
+portrait = ExtResource("1_gt77f")
 
 [sub_resource type="Resource" id="Resource_06d51"]
 script = ExtResource("1_yotbo")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = 0
 dialogueText = "I hope your skills as a herbalist are good, because we could really need one right now."
+portrait = ExtResource("1_gt77f")
 
 [sub_resource type="Resource" id="Resource_dkqhy"]
 script = ExtResource("3_b7jqa")

@@ -1,49 +1,57 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://c8ao4gjije4hk"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=11 format=3 uid="uid://bth6uabbv4hdw"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_18mhc"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_rwsxv"]
+[ext_resource type="Texture2D" uid="uid://cse8qg8wjlvxb" path="res://Assets/Characters/Godfrey/Godfrey-portrait.jpeg" id="1_vrrm1"]
 
 [sub_resource type="Resource" id="Resource_82fqt"]
 script = ExtResource("1_rwsxv")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = 0
 dialogueText = "Oh… well. That’s unexpected. "
+portrait = ExtResource("1_vrrm1")
 
 [sub_resource type="Resource" id="Resource_ldvuu"]
 script = ExtResource("1_rwsxv")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = 0
 dialogueText = "But you know what they say… Those who don’t work, don’t eat."
+portrait = ExtResource("1_vrrm1")
 
 [sub_resource type="Resource" id="Resource_x1toj"]
 script = ExtResource("1_rwsxv")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = 0
 dialogueText = "I can teach you the basics of what I know but you have to figure out the rest by yourself."
+portrait = ExtResource("1_vrrm1")
 
 [sub_resource type="Resource" id="Resource_wdl46"]
 script = ExtResource("1_rwsxv")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = 0
 dialogueText = "An herbalist grows all kind of medicinal herbs and then uses those to make medicine to sell them to us in the village."
+portrait = ExtResource("1_vrrm1")
 
 [sub_resource type="Resource" id="Resource_4o0ft"]
 script = ExtResource("1_rwsxv")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = 0
 dialogueText = "Over there you can see a Chubery sapling. Herbs need to be watered in every stage in order to grow."
+portrait = ExtResource("1_vrrm1")
 
 [sub_resource type="Resource" id="Resource_okke3"]
 script = ExtResource("1_rwsxv")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = 0
 dialogueText = "I see you have got two tools already. For watering you’d obviously need your watering can so you should definitely equip your watering can. You can only switch between the two anyways…"
+portrait = ExtResource("1_vrrm1")
 
 [sub_resource type="Resource" id="Resource_cl8ob"]
 script = ExtResource("1_rwsxv")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = 0
 dialogueText = "How about you water these two plants by pressing and holding X on your Controller, and then come back to me?"
+portrait = ExtResource("1_vrrm1")
 
 [resource]
 script = ExtResource("1_18mhc")
