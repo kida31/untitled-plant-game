@@ -20,12 +20,18 @@ public class SeedBag : Tool
 
 	protected override void OnStart(Player.Player user)
 	{
+		CurrentSeedItem = null;
+		
 		var inventory = user.Inventory.GetInventory(ItemCategory.Seed);
-		CurrentSeedItem = inventory.FirstOrDefault() as ItemStack; // This might break if ItemStack is not properly updated (independent of IItemstack)
-
-		if(CurrentSeedItem == null)
+		foreach (var item in inventory)
 		{
-			_logger.Info("No seeds in the seed bag");
+			if (item == null)
+			{
+				continue;
+			}
+
+			CurrentSeedItem = item;
+			_logger.Debug($"Current seed in seed bag: {CurrentSeedItem}");
 			return;
 		}
 		
@@ -33,6 +39,8 @@ public class SeedBag : Tool
 		{
 			_logger.Error("There should only be seeds in the seed bag");
 		}
+		
+		_logger.Debug("No seed in the seed bag");
 	}
 
 	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
