@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
-[ext_resource type="PackedScene" uid="uid://darsx73t4n6d3" path="res://Scenes/VendingMachineCriss.tscn" id="3_5hcym"]
-[ext_resource type="PackedScene" uid="uid://ddthdftxrhg6x" path="res://Scenes/Pier.tscn" id="3_d7fyg"]
-[ext_resource type="PackedScene" uid="uid://osnne5a45tou" path="res://Scenes/SeedBoyCriss.tscn" id="3_ffnpq"]
-[ext_resource type="PackedScene" uid="uid://cr2712p8tviur" path="res://Scenes/Godfrey.tscn" id="4_r6pis"]
+[ext_resource type="PackedScene" path="res://Scenes/VendingMachineCriss.tscn" id="3_5hcym"]
+[ext_resource type="PackedScene" uid="uid://68an8ryr548m" path="res://Scenes/Pier.tscn" id="3_d7fyg"]
+[ext_resource type="PackedScene" path="res://Scenes/SeedBoyCriss.tscn" id="3_ffnpq"]
+[ext_resource type="PackedScene" path="res://Scenes/Godfrey.tscn" id="4_r6pis"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
-[ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
+[ext_resource type="PackedScene" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
 [ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
 

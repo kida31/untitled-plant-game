@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckpxuei42sa5c"]
+[gd_scene load_steps=5 format=3 uid="uid://ckpxuei42sa5c"]
 
 [ext_resource type="PackedScene" uid="uid://3ndp3em1fi7h" path="res://Scenes/GUIContainer.tscn" id="1_c43ed"]
 [ext_resource type="PackedScene" uid="uid://cv1fhyjs170lk" path="res://Scenes/GameWorldContainer.tscn" id="3_m582q"]
 [ext_resource type="Script" path="res://Features/Audio/BgmManager.cs" id="3_uj78n"]
+[ext_resource type="AudioStream" uid="uid://bbpby1pm2omr0" path="res://Assets/BGM/plantGame_menueTheme.mp3" id="4_jwkdt"]
 
 [node name="Main" type="Node"]
 
@@ -15,6 +16,7 @@ script = ExtResource("3_uj78n")
 _crossfadeDuration = 1.0
 _audioStreamPlayerA = NodePath("AudioStreamPlayer")
 _audioStreamPlayerB = NodePath("AudioStreamPlayer2")
+_defaultMusic = ExtResource("4_jwkdt")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node"]
 autoplay = true
