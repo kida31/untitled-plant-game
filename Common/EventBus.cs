@@ -184,4 +184,9 @@ public partial class EventBus : Node
 		OnResponseButtonPress?.Invoke(message);
 	}
 
+	public event Action<IBgmArea> BgmAreaChanged;
+	public void InvokeBgmAreaChanged(IBgmArea area)
+	{
+		BgmAreaChanged?.Invoke(area);
+	}
 }
