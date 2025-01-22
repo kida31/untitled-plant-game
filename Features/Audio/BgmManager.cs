@@ -14,6 +14,8 @@ public partial class BgmManager : Node
 	[Export] AudioStreamPlayer _audioStreamPlayerA;
 	[Export] AudioStreamPlayer _audioStreamPlayerB;
 
+	[Export] AudioStream _defaultMusic;
+
 	private Tween _tweenA;
 	private Tween _tweenB;
 
@@ -25,6 +27,8 @@ public partial class BgmManager : Node
 	{
 		_logger = new(this);
 		EventBus.Instance.BgmAreaChanged += OnBgmAreaChanged;
+
+		CrossFade(_defaultMusic);
 	}
 
 	private void OnBgmAreaChanged(IBgmArea area)
