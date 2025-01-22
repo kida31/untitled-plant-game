@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_87vtf"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_yotbo"]
-[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/TutorialDialogue2ndPart.tres" id="2_ekt0i"]
+[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/Tutorial/TutorialDialogue2ndPart.tres" id="2_ekt0i"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_b7jqa"]
 
 [sub_resource type="Resource" id="Resource_82d0x"]
