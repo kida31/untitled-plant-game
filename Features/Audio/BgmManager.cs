@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using untitledplantgame.Common;
 
@@ -8,24 +9,22 @@ public partial class BgmManager : Node
 	private const float MuteDb = -80;
 	private const float DefaultDb = 0;
 	private const string VolumeDbPath = "volume_db";
-	
+
 	[Export] private float _crossfadeDuration;
 	[Export] AudioStreamPlayer _audioStreamPlayerA;
 	[Export] AudioStreamPlayer _audioStreamPlayerB;
 
 	private Tween _tweenA;
 	private Tween _tweenB;
-	
+
 	private IBgmArea _currentBgmArea;
 
 	private Logger _logger;
-	
+
 	public override void _Ready()
 	{
 		_logger = new(this);
 		EventBus.Instance.BgmAreaChanged += OnBgmAreaChanged;
-		
-		AudioStreamPlayer.SignalName.
 	}
 
 	private void OnBgmAreaChanged(IBgmArea area)
@@ -44,16 +43,26 @@ public partial class BgmManager : Node
 		if (_audioStreamPlayerA.Playing)
 		{
 			// From A to B track
+			// _logger.Info("Play B");
 			_audioStreamPlayerB.Stream = nextTrack;
 			_audioStreamPlayerB.Play();
-			FadeAToB().OnCompleted(_audioStreamPlayerA.Stop);
+			FadeAToB().OnCompleted(() =>
+			{
+				// _logger.Info("Stop A");
+				_audioStreamPlayerA.Stop();
+			});
 		}
 		else
 		{
 			// From B to A track
+			// _logger.Info("Play A");
 			_audioStreamPlayerA.Stream = nextTrack;
 			_audioStreamPlayerA.Play();
-			FadeBToA().OnCompleted(_audioStreamPlayerB.Stop);
+			FadeBToA().OnCompleted(() =>
+			{
+				// _logger.Info("Stop B");
+				_audioStreamPlayerB.Stop();
+			});
 		}
 	}
 
@@ -61,12 +70,14 @@ public partial class BgmManager : Node
 	{
 		_tweenA?.Stop();
 		_tweenA = CreateTween();
-		_tweenA.TweenProperty(_audioStreamPlayerB, VolumeDbPath, MuteDb, _crossfadeDuration);
-		
+		_tweenA.TweenMethod(Callable.From<float>(SetA), 1.0, 0.0, _crossfadeDuration);
+		// _logger.Info("Fade out A");
+
 		_tweenB?.Stop();
 		_tweenB = CreateTween();
-		_tweenB.TweenProperty(_audioStreamPlayerA, VolumeDbPath, DefaultDb, _crossfadeDuration);
-		
+		_tweenB.TweenMethod(Callable.From<float>(SetB), 0.0, 1.0, _crossfadeDuration);
+		// _logger.Info("Fade in B");
+
 		return ToSignal(_tweenA, Tween.SignalName.Finished);
 	}
 
@@ -74,12 +85,23 @@ public partial class BgmManager : Node
 	{
 		_tweenB?.Stop();
 		_tweenB = CreateTween();
-		_tweenB.TweenProperty(_audioStreamPlayerB, VolumeDbPath, MuteDb, _crossfadeDuration);
-		
+		_tweenB.TweenMethod(Callable.From<float>(SetB), 1.0, 0.0, _crossfadeDuration);
+		// _logger.Info("Fade out B");
+
 		_tweenA?.Stop();
 		_tweenA = CreateTween();
-		_tweenA.TweenProperty(_audioStreamPlayerA, VolumeDbPath, DefaultDb, _crossfadeDuration);
-		
+		_tweenA.TweenMethod(Callable.From<float>(SetA), 0.0, 1.0, _crossfadeDuration);
+		// _logger.Info("Fade in A");
+
 		return ToSignal(_tweenB, Tween.SignalName.Finished);
+	}
+
+	private void SetA(float value)
+	{
+		_audioStreamPlayerA.VolumeDb = Mathf.LinearToDb(value);
+	}
+	private void SetB(float value)
+	{
+		_audioStreamPlayerB.VolumeDb = Mathf.LinearToDb(value);
 	}
 }
