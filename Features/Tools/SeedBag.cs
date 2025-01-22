@@ -20,6 +20,8 @@ public class SeedBag : Tool
 
 	protected override void OnStart(Player.Player user)
 	{
+		CurrentSeedItem = null;
+		
 		var inventory = user.Inventory.GetInventory(ItemCategory.Seed);
 		foreach (var item in inventory)
 		{
