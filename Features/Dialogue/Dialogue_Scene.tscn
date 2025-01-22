@@ -1,11 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc8tr4q35n0q8"]
+[gd_scene load_steps=10 format=3 uid="uid://cc8tr4q35n0q8"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/DialogueUI.cs" id="1_hawac"]
-[ext_resource type="Texture2D" uid="uid://cw4kud6jqxsdq" path="res://Assets/Items/FishingMyFishies/Fish1.png" id="2_t8wtf"]
-[ext_resource type="Texture2D" uid="uid://dyaetbwehoiqp" path="res://Assets/UI/Book/Containers&Labels/TextLabel.png" id="3_jddyy"]
+[ext_resource type="Texture2D" uid="uid://o4fvncrv04mo" path="res://Assets/Sprites/damage.png" id="2_cnal3"]
+[ext_resource type="Texture2D" uid="uid://be34y66w0usqf" path="res://Assets/UI/chatbox_rounded.png" id="3_2ukc1"]
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]
 
-[node name="DialogueView" type="Control" node_paths=PackedStringArray("_nameLabel", "_dialogueTextLabel", "_portrait", "_responseContainer")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_soyak"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuaaj"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sfre"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oefjw"]
+atlas = ExtResource("2_cnal3")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3m0r1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soyak")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuaaj")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sfre")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oefjw")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}]
+
+[node name="DialogueView" type="Control" node_paths=PackedStringArray("_nameLabel", "_dialogueTextLabel", "_animatedSprite2D", "_responseContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,18 +66,14 @@ grow_vertical = 2
 script = ExtResource("1_hawac")
 _nameLabel = NodePath("NameDiv/MarginContainer/Name")
 _dialogueTextLabel = NodePath("DialogueField/MarginContainer/DialogueText")
-_portrait = NodePath("Portrait")
+_animatedSprite2D = NodePath("Portrait")
 _responseContainer = NodePath("Responses")
 
-[node name="Portrait" type="TextureRect" parent="."]
+[node name="Portrait" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-layout_mode = 0
-anchor_left = 0.229687
-anchor_top = 0.397222
-anchor_right = 0.279687
-anchor_bottom = 0.486111
-texture = ExtResource("2_t8wtf")
-metadata/_edit_use_anchors_ = true
+position = Vector2(169, 142)
+sprite_frames = SubResource("SpriteFrames_3m0r1")
+animation = &"happy"
 
 [node name="Responses" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -55,14 +102,10 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 
-[node name="ColorRect" type="ColorRect" parent="DialogueField"]
-layout_mode = 2
-color = Color(0.873, 0.761, 0.639, 0.8)
-
 [node name="DialogueBox" type="NinePatchRect" parent="DialogueField"]
 layout_mode = 2
-texture = ExtResource("3_jddyy")
-region_rect = Rect2(0.185928, 0.185112, 31.8307, 31.7159)
+texture = ExtResource("3_2ukc1")
+region_rect = Rect2(0.185928, 0.185112, 29.037, 29.3333)
 patch_margin_left = 8
 patch_margin_top = 7
 patch_margin_right = 7
