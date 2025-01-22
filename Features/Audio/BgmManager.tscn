@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://e02qeg5fovnj"]
+
+[ext_resource type="Script" path="res://Features/Audio/BgmManager.cs" id="1_ei5lh"]
+[ext_resource type="AudioStream" uid="uid://bbpby1pm2omr0" path="res://Assets/BGM/plantGame_menueTheme.mp3" id="2_y4d27"]
+
+[node name="Node" type="Node" node_paths=PackedStringArray("_audioStreamPlayerA", "_audioStreamPlayerB")]
+script = ExtResource("1_ei5lh")
+_crossfadeDuration = 1.0
+_audioStreamPlayerA = NodePath("AudioStreamPlayer")
+_audioStreamPlayerB = NodePath("AudioStreamPlayer2")
+_defaultMusic = ExtResource("2_y4d27")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+autoplay = true
