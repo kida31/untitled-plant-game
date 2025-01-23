@@ -1,33 +1,26 @@
 using System;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Tools.ToolDatas;
 
 namespace untitledplantgame.Tools;
 
-// TODO: Implement cast time
 // Problem, cast time logic needs to be in/by a Node
 // Part of the logic (Use()) is in Tool. Logic should be in one place only.
-public abstract class Tool
+public abstract partial class Tool : Resource, IDisplayData, IToolUseData
 {
 	public event Action FinishedCasting;
-	public float ChannelingTime => _channelingTime;
+	[Export] public virtual string Name { get; protected set; }
+	[Export(PropertyHint.MultilineText)] public virtual string Description { get; protected set; }
+	[Export] public virtual Texture2D Icon { get; protected set; }
+	[Export] public virtual float ChannelingTime { get; protected set; }
+	[Export] public virtual float Radius { get; protected set; } = 12;
+	[Export] public virtual float Range { get; protected set; } = 24;
 
-	private readonly float _radius;
-	private readonly float _range;
-	private readonly float _channelingTime;
-
-	private Player.Player _user;
 	private ChannelingBar _channelingBar;
 	private ToolHitScan _hitScanArea;
 
-	private Logger _logger = new("Tool");
-
-	public Tool(float radius, float range, float channelingTime)
-	{
-		_radius = radius;
-		_range = range;
-		_channelingTime = channelingTime;
-	}
+	private readonly Logger _logger = new("Tool");
 
 	// Having every tool be channeling smells bad
 	public void StartChanneling(Player.Player user)
@@ -36,24 +29,24 @@ public abstract class Tool
 		_OnStart(user);
 
 
-		_hitScanArea = new ToolHitScan(_radius);
+		_hitScanArea = new ToolHitScan(Radius);
 		_hitScanArea.TopLevel = true;
 		_hitScanArea.Hit += (hits) => _OnInitialHit(user, hits);
 		user.AddChild(_hitScanArea);
-		_hitScanArea.GlobalPosition = user.GlobalPosition + user.FrontDirection * _range;
+		_hitScanArea.GlobalPosition = user.GlobalPosition + user.FrontDirection * Range;
 	}
 
 	public void Cancel(Player.Player user)
 	{
 		_logger.Debug("Cancel channeling");
-		if (GodotObject.IsInstanceValid(_channelingBar))
+		if (IsInstanceValid(_channelingBar))
 		{
 			_channelingBar?.QueueFree();
 		}
 
 		_channelingBar = null;
 
-		if (GodotObject.IsInstanceValid(_hitScanArea))
+		if (IsInstanceValid(_hitScanArea))
 		{
 			_hitScanArea?.QueueFree();
 		}
@@ -65,6 +58,10 @@ public abstract class Tool
 	protected abstract bool OnInitialHit(Player.Player user, Node2D[] hits);
 	protected abstract bool OnHit(Player.Player user, Node2D[] hits);
 	protected abstract void OnMiss(Player.Player user);
+
+	protected virtual void OnFinishCast(Player.Player user)
+	{
+	}
 
 	private void _OnStart(Player.Player user)
 	{
@@ -78,8 +75,8 @@ public abstract class Tool
 
 		if (hits.Length > 0) OnInitialHit(user, hits);
 
-		_channelingBar = new ChannelingBar(user, _channelingTime);
-		// TODO replace with actual new hit scan
+		_channelingBar = new ChannelingBar(user, ChannelingTime);
+		// Consider scanning again after StartChanneling
 		_channelingBar.Completed += () => _OnHit(user, hits);
 		user.AddChild(_channelingBar);
 	}
@@ -109,6 +106,7 @@ public abstract class Tool
 		_logger.Debug("Finish casting");
 		_channelingBar?.QueueFree();
 		_channelingBar = null;
+		OnFinishCast(user);
 		FinishedCasting?.Invoke();
 	}
 }

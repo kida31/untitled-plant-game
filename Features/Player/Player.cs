@@ -34,10 +34,11 @@ public partial class Player : CharacterBody2D
 	private readonly Toolbelt _toolbelt = new(
 		new Tool[]
 		{
-			new Shears(12, 16),
-			new WateringCan(50, 1000, true, 12, 24),
-			new SeedBag(12, 24, 1f),
-			new Shovel(12, 16, 1.5f)
+			// Hardcoded tools for now
+			GD.Load<Tool>("res://Features/Tools/Data/WateringCan.tres"),
+			GD.Load<Tool>("res://Features/Tools/Data/SeedBag.tres"),
+			GD.Load<Tool>("res://Features/Tools/Data/Shovel.tres"),
+			GD.Load<Tool>("res://Features/Tools/Data/Shears.tres")
 		}
 	);
 

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SeedBag" load_steps=3 format=3 uid="uid://bpaygf61q330d"]
+
+[ext_resource type="Script" path="res://Features/Tools/SeedBag.cs" id="1_h6s5j"]
+[ext_resource type="Texture2D" uid="uid://cddp1h65h56vi" path="res://Assets/Tools/SeedBag.png" id="1_pp6ai"]
+
+[resource]
+script = ExtResource("1_h6s5j")
+Name = ""
+Description = ""
+Icon = ExtResource("1_pp6ai")
+ChannelingTime = 1.0
+Radius = 12.0
+Range = 24.0
