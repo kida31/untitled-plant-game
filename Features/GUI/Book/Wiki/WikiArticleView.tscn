@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmc1oq8o2if8d"]
+[gd_scene load_steps=8 format=3 uid="uid://bmc1oq8o2if8d"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiArticleView.cs" id="1_6vmcs"]
 [ext_resource type="Texture2D" uid="uid://cau3g6e5xdjb1" path="res://Assets/UI/Book/Pages/RightWiki_empty.png" id="2_mb5lo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dgkb2riflkmgf" path="res://Assets/UI/Book/Pages/Demo/RightWiki_filled.png" id="3_n81vm"]
 [ext_resource type="PackedScene" uid="uid://rkiq7gr8ft71" path="res://Features/GUI/Book/Wiki/WikiRelatedItemView.tscn" id="5_ptoeu"]
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_wi3q8"]
+[ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="6_t3k63"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("_iconTextureRect", "_itemDescription", "_itemNameAndCategory", "_itemStats", "_relatedItemViews")]
 layout_mode = 3
@@ -17,7 +18,7 @@ script = ExtResource("1_6vmcs")
 _iconTextureRect = NodePath("AspectRatioContainer/ItemIcon")
 _itemDescription = NodePath("Description/TextMargin/Label")
 _itemNameAndCategory = NodePath("Name/TextMargin/Label")
-_itemStats = NodePath("Stats/TextMargin/Label")
+_itemStats = NodePath("")
 _relatedItemViews = [NodePath("RelatedStuff/RelatedItem"), NodePath("RelatedStuff/RelatedItem2"), NodePath("RelatedStuff/RelatedItem3"), NodePath("RelatedStuff/RelatedItem4")]
 metadata/_edit_use_anchors_ = true
 
@@ -80,7 +81,7 @@ layout_mode = 2
 anchor_left = 0.133929
 anchor_top = 0.236843
 anchor_right = 0.924108
-anchor_bottom = 0.585527
+anchor_bottom = 0.621711
 offset_right = 0.0
 offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
@@ -91,24 +92,59 @@ theme_override_constants/margin_top = 6
 [node name="Label" parent="Description/TextMargin" index="0"]
 autowrap_mode = 2
 
-[node name="Stats" parent="." instance=ExtResource("5_wi3q8")]
+[node name="Stats" type="MarginContainer" parent="."]
 layout_mode = 2
 anchor_left = 0.133929
-anchor_top = 0.598684
+anchor_top = 0.634868
 anchor_right = 0.924107
 anchor_bottom = 0.759868
-offset_right = 0.0
-offset_bottom = 0.0
 size_flags_horizontal = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="TextMargin" parent="Stats" index="1"]
-theme_override_constants/margin_top = 6
+[node name="NinePatchRect" type="NinePatchRect" parent="Stats"]
+layout_mode = 2
+texture = ExtResource("6_t3k63")
+region_rect = Rect2(0, 0, 64, 32)
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
 
-[node name="Label" parent="Stats/TextMargin" index="0"]
-text = "+3 Cooling
-+1 Soothing
-+1 Awesomeness"
+[node name="MarginContainer" type="MarginContainer" parent="Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="Stats/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Label" type="Label" parent="Stats/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "+1 Cooling"
+
+[node name="Label2" type="Label" parent="Stats/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "+2 Awesome"
+
+[node name="Label3" type="Label" parent="Stats/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "+3 Soothing"
+
+[node name="Label4" type="Label" parent="Stats/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
 [node name="RelatedStuff" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -134,4 +170,3 @@ layout_mode = 2
 
 [editable path="Name"]
 [editable path="Description"]
-[editable path="Stats"]
