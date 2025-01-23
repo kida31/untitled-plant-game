@@ -111,7 +111,7 @@ Tile = NodePath("..")
 position = Vector2(625, 210)
 
 [node name="PlantPrefab" parent="LicarySoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
-PlantName = "Drupoleaum"
+PlantName = "Licary"
 Stage = 3
 Tile = NodePath("..")
 
@@ -119,9 +119,8 @@ Tile = NodePath("..")
 position = Vector2(780, 305)
 
 [node name="PlantPrefab" parent="DrupoSoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
-position = Vector2(-780, -305)
 PlantName = "Drupoleaum"
-Stage = 5
+Stage = 4
 Tile = NodePath("..")
 
 [node name="Soil10" parent="." instance=ExtResource("3_y13yj")]
