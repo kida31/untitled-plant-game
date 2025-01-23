@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cubvwsu3b6pdw"
-path="res://.godot/imported/WaterCan_alt.png-f05489ded9bdfb273d026bfc52101a62.ctex"
+uid="uid://bp83hgia0uh76"
+path="res://.godot/imported/Godfrey_shocked.png-dfc2ff58360c64e1fad07627505df54b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tools/WaterCan_alt.png"
-dest_files=["res://.godot/imported/WaterCan_alt.png-f05489ded9bdfb273d026bfc52101a62.ctex"]
+source_file="res://Assets/Characters/Godfrey/Godfrey_shocked.png"
+dest_files=["res://.godot/imported/Godfrey_shocked.png-dfc2ff58360c64e1fad07627505df54b.ctex"]
 
 [params]
 
