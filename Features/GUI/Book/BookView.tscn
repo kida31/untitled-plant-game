@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://cca7okqb2j4c7"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/BookView.cs" id="1_rrual"]
-[ext_resource type="PackedScene" uid="uid://c6y60vh6v2ec8" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.tscn" id="2_tyesk"]
-[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="4_pgjhc"]
-[ext_resource type="PackedScene" uid="uid://e3t5fwq4qne3" path="res://Features/GUI/Book/Pages/WikiPage.tscn" id="4_t387j"]
+[ext_resource type="PackedScene" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.tscn" id="2_tyesk"]
+[ext_resource type="PackedScene" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="4_pgjhc"]
+[ext_resource type="PackedScene" path="res://Features/GUI/Book/Pages/WikiPage.tscn" id="4_t387j"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="5_hs6c8"]
 [ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="7_ucqdi"]
-[ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="7_vpmxr"]
+[ext_resource type="PackedScene" uid="uid://qruua750qmw4" path="res://Features/GUI/CursorHandView.tscn" id="7_vpmxr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkcs2"]
 draw_center = false
