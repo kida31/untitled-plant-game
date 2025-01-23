@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using untitledplantgame.Audio;
 using untitledplantgame.Crafting;
 using untitledplantgame.Dialogue;
 using untitledplantgame.Dialogue.Models;

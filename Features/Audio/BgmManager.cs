@@ -6,10 +6,10 @@ namespace untitledplantgame.Audio;
 public partial class BgmManager : Node
 {
 	[Export] private float _crossFadeDuration;
-	[Export] AudioStreamPlayer _audioStreamPlayerA;
-	[Export] AudioStreamPlayer _audioStreamPlayerB;
+	[Export] private AudioStreamPlayer _audioStreamPlayerA;
+	[Export] private AudioStreamPlayer _audioStreamPlayerB;
 
-	[Export] AudioStream _defaultMusic;
+	[Export] private AudioStream _defaultMusic;
 
 	private Tween _tweenA;
 	private Tween _tweenB;

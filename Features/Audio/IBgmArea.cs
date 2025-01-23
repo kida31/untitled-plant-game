@@ -1,6 +1,6 @@
 using Godot;
 
-namespace untitledplantgame;
+namespace untitledplantgame.Audio;
 
 public interface IBgmArea
 {
