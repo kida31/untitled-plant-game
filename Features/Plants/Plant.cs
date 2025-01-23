@@ -19,12 +19,12 @@ public enum GrowthStage
 	Dead,
 }
 
-public partial class Plant : StaticBody2D
+public partial class Plant : Area2D
 {
 	private const string PlantPath = "res://Features/Plants/PlantPrefab.tscn";
 	private static readonly PackedScene PlantScene = GD.Load<PackedScene>(PlantPath);
 	[Export(PropertyHint.Enum, "Chuberry,Licary,Drupoleaum")] public string PlantName { get; private set; }
-	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Seed;
+	[Export] public GrowthStage Stage { get; private set; }
 	[Export] public SoilTile Tile { get; set; }
 
 	public event Action<Plant> BeforePlantRemoved;
