@@ -4,7 +4,6 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.Tools;
 
-// TODO: Implement cast time
 // Problem, cast time logic needs to be in/by a Node
 // Part of the logic (Use()) is in Tool. Logic should be in one place only.
 public abstract class Tool
@@ -20,9 +19,9 @@ public abstract class Tool
 	private ChannelingBar _channelingBar;
 	private ToolHitScan _hitScanArea;
 
-	private Logger _logger = new("Tool");
+	private readonly Logger _logger = new("Tool");
 
-	public Tool(float radius, float range, float channelingTime)
+	protected Tool(float radius, float range, float channelingTime)
 	{
 		_radius = radius;
 		_range = range;
@@ -40,7 +39,7 @@ public abstract class Tool
 		_hitScanArea.TopLevel = true;
 		_hitScanArea.Hit += (hits) => _OnInitialHit(user, hits);
 		user.AddChild(_hitScanArea);
-		_hitScanArea.GlobalPosition = user.GlobalPosition + user.FrontDirection * _range;
+		_hitScanArea.GlobalPosition = user.GlobalPosition + user.FaceDirection * _range;
 	}
 
 	public void Cancel(Player.Player user)
