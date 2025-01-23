@@ -6,9 +6,9 @@
 [node name="BgmManager" type="Node" node_paths=PackedStringArray("_audioStreamPlayerA", "_audioStreamPlayerB")]
 script = ExtResource("1_ei5lh")
 _crossFadeDuration = 1.0
+_defaultMusic = ExtResource("2_y4d27")
 _audioStreamPlayerA = NodePath("AudioStreamPlayer")
 _audioStreamPlayerB = NodePath("AudioStreamPlayer2")
-_defaultMusic = ExtResource("2_y4d27")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true

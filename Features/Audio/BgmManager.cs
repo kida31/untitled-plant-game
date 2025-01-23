@@ -6,16 +6,14 @@ namespace untitledplantgame.Audio;
 public partial class BgmManager : Node
 {
 	[Export] private float _crossFadeDuration;
+	[Export] private AudioStream _defaultMusic;
+	
+	[ExportGroup("Setup")]
 	[Export] private AudioStreamPlayer _audioStreamPlayerA;
 	[Export] private AudioStreamPlayer _audioStreamPlayerB;
-
-	[Export] private AudioStream _defaultMusic;
-
-	private Tween _tweenA;
-	private Tween _tweenB;
-
+	
+	private Tween _transitionTween;
 	private IBgmArea _currentBgmArea;
-
 	private Logger _logger;
 
 	public override void _Ready()
@@ -58,28 +56,20 @@ public partial class BgmManager : Node
 
 	private SignalAwaiter FadeAToB()
 	{
-		_tweenA?.Stop();
-		_tweenA = CreateTween();
-		_tweenA.TweenMethod(Callable.From<float>(SetA), 1.0, 0.0, _crossFadeDuration);
-
-		_tweenB?.Stop();
-		_tweenB = CreateTween();
-		_tweenB.TweenMethod(Callable.From<float>(SetB), 0.0, 1.0, _crossFadeDuration);
-
-		return ToSignal(_tweenA, Tween.SignalName.Finished);
+		_transitionTween?.Stop();
+		_transitionTween = CreateTween();
+		_transitionTween.TweenMethod(Callable.From<float>(SetA), 1.0, 0.0, _crossFadeDuration);
+		_transitionTween.Parallel().TweenMethod(Callable.From<float>(SetB), 0.0, 1.0, _crossFadeDuration);
+		return ToSignal(_transitionTween, Tween.SignalName.Finished);
 	}
 
 	private SignalAwaiter FadeBToA()
 	{
-		_tweenB?.Stop();
-		_tweenB = CreateTween();
-		_tweenB.TweenMethod(Callable.From<float>(SetB), 1.0, 0.0, _crossFadeDuration);
-
-		_tweenA?.Stop();
-		_tweenA = CreateTween();
-		_tweenA.TweenMethod(Callable.From<float>(SetA), 0.0, 1.0, _crossFadeDuration);
-
-		return ToSignal(_tweenB, Tween.SignalName.Finished);
+		_transitionTween?.Stop();
+		_transitionTween = CreateTween();
+		_transitionTween.TweenMethod(Callable.From<float>(SetB), 1.0, 0.0, _crossFadeDuration);
+		_transitionTween.Parallel().TweenMethod(Callable.From<float>(SetA), 0.0, 1.0, _crossFadeDuration);
+		return ToSignal(_transitionTween, Tween.SignalName.Finished);
 	}
 
 	private void SetA(float value)
