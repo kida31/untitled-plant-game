@@ -3,41 +3,61 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.Audio;
 
+/// <summary>
+///     Manages the background music (BGM) for the game.
+///     Cross-fades between tracks.
+/// </summary>
 public partial class BgmManager : Node
 {
 	[Export] private float _crossFadeDuration;
 	[Export] private AudioStream _defaultMusic;
-	
-	[ExportGroup("Setup")]
-	[Export] private AudioStreamPlayer _audioStreamPlayerA;
+
+	[ExportGroup("Node Setup")] [Export] private AudioStreamPlayer _audioStreamPlayerA;
 	[Export] private AudioStreamPlayer _audioStreamPlayerB;
-	
+
 	private Tween _transitionTween;
-	private IBgmArea _currentBgmArea;
+	private AudioStream _currentBgm;
 	private Logger _logger;
 
 	public override void _Ready()
 	{
 		_logger = new(this);
-		EventBus.Instance.BgmAreaChanged += OnBgmAreaChanged;
+		Play(_defaultMusic);
 
-		CrossFade(_defaultMusic);
+		EventBus.Instance.BgmAreaChanged += OnBgmAreaChanged;
 	}
 
-	private void OnBgmAreaChanged(IBgmArea area)
+	public override void _ExitTree()
 	{
-		if (_currentBgmArea == area)
+		EventBus.Instance.BgmAreaChanged -= OnBgmAreaChanged;
+	}
+
+	/// <summary>
+	///     Plays the specified audio track.
+	///     Cross-fades between tracks if there is already a track playing.
+	///     Calling Play() with the same track will not restart the track.
+	/// </summary>
+	/// <param name="stream"></param>
+	public void Play(AudioStream stream)
+	{
+		if (_currentBgm == stream)
 		{
 			return;
 		}
 
-		_currentBgmArea = area;
-		CrossFade(area.GetBgm());
+		_logger.Info($"Playing \"{stream.ResourcePath?.GetFile().GetBaseName()}\"");
+		_currentBgm = stream;
+		CrossFade(stream);
+	}
+
+	private void OnBgmAreaChanged(IBgmArea area)
+	{
+		Play(area?.GetBgm());
 	}
 
 	private void CrossFade(AudioStream nextTrack)
 	{
-		_logger.Info($"Cross-fading from {_audioStreamPlayerA.Stream?.ResourcePath} to {nextTrack.ResourcePath}");
+		_logger.Debug($"Cross-fading from \"{_audioStreamPlayerA.Stream?.ResourcePath}\" to \"{nextTrack.ResourcePath}\"");
 		if (_audioStreamPlayerA.Playing)
 		{
 			// From A to B track
