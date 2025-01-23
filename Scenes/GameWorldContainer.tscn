@@ -39,7 +39,7 @@ y_sort_enabled = false
 z_index = -2
 
 [node name="HouseMapScene" parent="." instance=ExtResource("10_t60bx")]
-position = Vector2(-3, 1372)
+position = Vector2(958, 1978)
 
 [node name="Player" parent="." instance=ExtResource("1_mh621")]
 position = Vector2(640, 360)
