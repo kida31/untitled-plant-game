@@ -11,7 +11,6 @@ public partial class BgmArea2D : Area2D, IBgmArea
 	{
 		AreaEntered += OnAreaEntered;
 		BodyEntered += OnBodyEntered;
-		GD.Print("Resource:", _bgm.ResourceName);
 	}
 
 	public AudioStream GetBgm()
