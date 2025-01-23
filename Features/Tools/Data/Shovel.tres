@@ -1,13 +1,13 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://cylhqbpmmho6g"]
 
-[ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="1_8axyk"]
-[ext_resource type="Script" path="res://Features/Tools/Shovel.cs" id="1_defby"]
+[ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="1_qjl0s"]
+[ext_resource type="Script" path="res://Features/Tools/Shovel.cs" id="2_mu8yv"]
 
 [resource]
-script = ExtResource("1_defby")
-Name = ""
-Description = ""
-Icon = ExtResource("1_8axyk")
+script = ExtResource("2_mu8yv")
+Name = "Shovel"
+Description = "Shovel bonk plant. Plant goes dead."
+Icon = ExtResource("1_qjl0s")
 ChannelingTime = 2.0
 Radius = 12.0
 Range = 24.0

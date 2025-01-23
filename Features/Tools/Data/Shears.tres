@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("2_2bda8")
-Name = ""
-Description = ""
+Name = "Garden Scissors"
+Description = "Gently extracts fruits or leaves from your plants."
 Icon = ExtResource("1_a5e7i")
 ChannelingTime = 1.0
 Radius = 12.0
