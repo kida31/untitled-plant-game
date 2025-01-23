@@ -19,7 +19,7 @@ public partial class ToolCircle : TextureRect, ITooltipable
 		}
 	}
 
-	public string Title => _tool?.Name;
-	public string Description => _tool?.Description;
-	public Control Content { get; }
+	public virtual string Title => _tool?.Name;
+	public virtual string Description => _tool?.Description;
+	public virtual Control Content { get; }
 }

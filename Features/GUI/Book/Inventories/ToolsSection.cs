@@ -44,9 +44,8 @@ public partial class ToolsSection : HBoxContainer
 			
 			GD.PushError("AWGAKLWGJLK");
 			_logger.Error("One or more ToolBlobViews are null.");
-			return;
 		}
-		_wateringCanBlob.Tool = tools?.FirstOrDefault(t => t is WateringCan);
+		// _wateringCanBlob.Tool = tools?.FirstOrDefault(t => t is WateringCan);
 		_shearsBlob.Tool = tools?.FirstOrDefault(t => t is Shears);
 		_shovelBlob.Tool = tools?.FirstOrDefault(t => t is Shovel);
 		_fishingRod.Tool = tools?.FirstOrDefault(t => false /* is FishingRod */);

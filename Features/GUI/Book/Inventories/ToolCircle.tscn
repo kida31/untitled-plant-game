@@ -4,13 +4,14 @@
 [ext_resource type="Script" path="res://Features/GUI/Book/Inventories/ToolCircle.cs" id="2_t0tl6"]
 [ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="3_l2f4y"]
 
-[node name="ToolCircle" type="TextureRect"]
+[node name="ToolCircle" type="TextureRect" node_paths=PackedStringArray("_toolImage")]
 size_flags_horizontal = 6
 size_flags_vertical = 4
 focus_mode = 2
 texture = ExtResource("1_kd20u")
 stretch_mode = 5
 script = ExtResource("2_t0tl6")
+_toolImage = NodePath("ToolIcon")
 
 [node name="ToolIcon" type="TextureRect" parent="."]
 layout_mode = 1

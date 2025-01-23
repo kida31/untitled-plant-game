@@ -11,6 +11,8 @@ public partial class SeedBagToolCircle : ToolCircle
 {
 	[Export] private TextureRect _seedImage;
 
+	private Action _onInventoryChangedHandler;
+	
 	public override Tool Tool
 	{
 		get => base.Tool;
@@ -28,15 +30,43 @@ public partial class SeedBagToolCircle : ToolCircle
 		}
 	}
 
+	public override string Title
+	{
+		get
+		{
+			var seed = GetFirstSeed();
+			if (seed != null)
+			{
+				return base.Title + $"({seed.Name})";
+			}
+			return base.Title;
+		}
+	}
+
 	public override void _Ready()
 	{
-		Game.Player.Inventory.InventoryChanged += OnInventoryChanged;
+		VisibilityChanged += OnVisibilityChanged;
+	}
+
+	private void OnVisibilityChanged()
+	{
+		if (!IsVisibleInTree() || !IsNodeReady()) return;
+		
+		// Unsubscribe from the old event, if any
+		Game.Player.Inventory.InventoryChanged -= _onInventoryChangedHandler;
+		Game.Player.Inventory.InventoryChanged += _onInventoryChangedHandler;
+		OnInventoryChanged();
 	}
 
 	private void OnInventoryChanged()
 	{
+
+		_seedImage.Texture = GetFirstSeed()?.Icon;
+	}
+
+	private static IItemStack GetFirstSeed()
+	{
 		var seedInventory = Game.Player.Inventory.GetInventory(ItemCategory.Seed);
-		var seed = seedInventory.FirstOrDefault(it => it != null);
-		_seedImage.Texture = seed?.Icon;
+		return seedInventory.FirstOrDefault(it => it != null);
 	}
 }
