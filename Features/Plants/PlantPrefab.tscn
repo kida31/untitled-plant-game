@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l17x"]
 size = Vector2(32, 32)
 
-[node name="PlantPrefab" type="StaticBody2D" groups=["Plant"]]
+[node name="PlantPrefab" type="Area2D" groups=["Plant"]]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_ixu4t")
