@@ -12,7 +12,7 @@ public partial class DialogueUI : Control
 
 	[Export] private RichTextLabel _nameLabel;
 	[Export] private RichTextLabel _dialogueTextLabel;
-	[Export] private Sprite2D _sprite;
+	[Export] private TextureRect _sprite;
 	[Export] private BoxContainer _responseContainer;
 
 	private DialogueResourceObject _currentDialogue;
