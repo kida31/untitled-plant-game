@@ -7,6 +7,7 @@
 [node name="ToolCircle" type="TextureRect"]
 size_flags_horizontal = 6
 size_flags_vertical = 4
+focus_mode = 2
 texture = ExtResource("1_kd20u")
 stretch_mode = 5
 script = ExtResource("2_t0tl6")
