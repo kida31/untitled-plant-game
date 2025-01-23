@@ -54,24 +54,50 @@ public abstract partial class Tool : Resource, IDisplayData, IToolUseData
 		_hitScanArea = null;
 	}
 
+	/// <summary>
+	///		This is called when the player starts casting the tool.
+	/// </summary>
+	/// <param name="user"></param>
 	protected virtual void OnStart(Player.Player user)
 	{
 	}
 
+	/// <summary>
+	///		This is called when the player starts casting the tool. The hits are the nodes that the tool hit.
+	///		This method should return true if the tool handled any hits.
+	/// </summary>
+	/// <param name="user"></param>
+	/// <param name="hits"></param>
+	/// <returns></returns>
 	protected virtual bool OnInitialHit(Player.Player user, Node2D[] hits)
 	{
 		return false;
 	}
 
+	/// <summary>
+	///		 This is called when the player finishes casting the tool. The hits are the nodes that the tool hit.
+	///		 This method should return true if the tool handled any hits.
+	/// </summary>
+	/// <param name="user"></param>
+	/// <param name="hits"></param>
+	/// <returns></returns>
 	protected virtual bool OnHit(Player.Player user, Node2D[] hits)
 	{
 		return false;
 	}
 
+	/// <summary>
+	///		 This is called when the player finishes casting the tool and OnHit returned false or no hits were found.
+	/// </summary>
+	/// <param name="user"></param>
 	protected virtual void OnMiss(Player.Player user)
 	{
 	}
 
+	/// <summary>
+	///		 This is always called at the end of the casting.
+	/// </summary>
+	/// <param name="user"></param>
 	protected virtual void OnFinishCast(Player.Player user)
 	{
 	}
