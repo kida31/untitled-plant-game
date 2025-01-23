@@ -10,8 +10,4 @@ public partial class RequirementData : Resource
 	[Export] public float MinLevel { get; private set; }
 
 	[Export] public float MaxLevel { get; private set; }
-
-	[Export] public float ConsumptionRate { get; private set; }
-
-	[Export] public float AbsorptionRate { get; private set; }
 }

@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://Features/Plants/Plant.cs" id="1_ixu4t"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_68yvc"]
-radius = 20.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6l17x"]
+size = Vector2(32, 32)
 
-[node name="PlantPrefab" type="StaticBody2D" groups=["Plant"]]
+[node name="PlantPrefab" type="Area2D" groups=["Plant"]]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_ixu4t")
 PlantName = "Chuberry"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_68yvc")
+shape = SubResource("RectangleShape2D_6l17x")

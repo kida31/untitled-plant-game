@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Features/Plants/Soil/SoilTile.cs" id="1_0lhsy"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a4san"]
-radius = 19.0263
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpd0h"]
+size = Vector2(32, 32)
 
 [node name="Soil" type="Area2D"]
 script = ExtResource("1_0lhsy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_a4san")
+shape = SubResource("RectangleShape2D_vpd0h")
