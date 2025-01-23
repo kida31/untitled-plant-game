@@ -19,14 +19,16 @@ public enum GrowthStage
 	Dead,
 }
 
-public partial class Plant : StaticBody2D
+public partial class Plant : Area2D
 {
 	private const string PlantPath = "res://Features/Plants/PlantPrefab.tscn";
 	private static readonly PackedScene PlantScene = GD.Load<PackedScene>(PlantPath);
-	[Export(PropertyHint.Enum, "Chuberry,Licary,Drupoleaum")] public string PlantName { get; private set; }
-	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Seed;
-	[Export] public SoilTile Tile { get; set; }
 
+	[Export(PropertyHint.Enum, "Chuberry,Licary,Drupoleaum")]
+	public string PlantName { get; private set; }
+
+	[Export] public GrowthStage Stage { get; private set; }
+	[Export] public SoilTile Tile { get; set; }
 	public event Action<Plant> BeforePlantRemoved;
 	public event Action<Plant> PlantGrown;
 
@@ -36,9 +38,6 @@ public partial class Plant : StaticBody2D
 	private bool _isHarvestable;
 	private float _absorptionRate;
 	private float _consumptionRate;
-
-	private int _cyclesToGrow;
-	private int _currentCycle;
 
 	public Plant()
 	{
@@ -76,7 +75,6 @@ public partial class Plant : StaticBody2D
 
 		if (CheckRequirements())
 		{
-			_currentCycle++;
 			AdvanceStage();
 		}
 	}
@@ -122,13 +120,15 @@ public partial class Plant : StaticBody2D
 
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
 		var plantRequirements = new Dictionary<string, Requirement>();
+		_absorptionRate = plantData.AbsorptionRate;
+		_consumptionRate = plantData.ConsumptionRate;
 
 		if (plantData.DataForGrowthStages.Length <= (int)Stage)
 		{
 			_logger.Error("Plant data does not contain data for the current stage.");
 			return;
 		}
-		
+
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
@@ -136,12 +136,8 @@ public partial class Plant : StaticBody2D
 			plantRequirements[data.Name.ToString()] = new Requirement(data.MaxLevel, data.MinLevel);
 		}
 
-		_cyclesToGrow = plantData.DataForGrowthStages[(int)Stage].DaysToGrow;
 		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
-		_absorptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].AbsorptionRate;
-		_consumptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].ConsumptionRate;
 
-		_currentCycle = 0;
 		_currentRequirements = plantRequirements;
 		PlantName = plantData.PlantName;
 	}
@@ -159,7 +155,7 @@ public partial class Plant : StaticBody2D
 				break;
 		}
 
-		_logger.Debug($"Requirement {fulfilled} for stage {Stage}, current day count at {_currentCycle} of {_cyclesToGrow}.");
+		_logger.Debug($"Requirement {fulfilled} for stage {Stage}.");
 
 		return fulfilled && Stage != GrowthStage.Ripening && Stage != GrowthStage.Dead;
 	}
@@ -181,9 +177,6 @@ public partial class Plant : StaticBody2D
 	/// </summary>
 	private void AdvanceStage()
 	{
-		if (_currentCycle < _cyclesToGrow)
-			return;
-
 		Stage++;
 		_logger.Info($"Plant {PlantName} advanced to {Stage}.");
 		PlantGrown?.Invoke(this);
@@ -239,8 +232,8 @@ public partial class Plant : StaticBody2D
 
 	private IItemStack GetHarvestItem()
 	{
-		if(!_isHarvestable) return null;
-		
+		if (!_isHarvestable) return null;
+
 		var itemStack = ItemDatabase.Instance.CreateItemStack($"{PlantName}_{Stage}_harvested");
 		return itemStack;
 	}
