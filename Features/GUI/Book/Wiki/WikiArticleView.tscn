@@ -11,7 +11,8 @@
 layout_mode = 3
 anchor_right = 0.207407
 anchor_bottom = 0.562963
-offset_right = 1.52588e-05
+offset_right = 91.2595
+offset_bottom = 101.333
 script = ExtResource("1_6vmcs")
 _iconTextureRect = NodePath("AspectRatioContainer/ItemIcon")
 _itemDescription = NodePath("Description/TextMargin/Label")
@@ -77,24 +78,24 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(91, 0)
 layout_mode = 2
 anchor_left = 0.133929
-anchor_top = 0.240132
-anchor_right = 0.629464
-anchor_bottom = 0.759868
+anchor_top = 0.236843
+anchor_right = 0.924108
+anchor_bottom = 0.585527
 offset_right = 0.0
 offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 
 [node name="TextMargin" parent="Description" index="1"]
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 6
 
 [node name="Label" parent="Description/TextMargin" index="0"]
 autowrap_mode = 2
 
 [node name="Stats" parent="." instance=ExtResource("5_wi3q8")]
 layout_mode = 2
-anchor_left = 0.705357
-anchor_top = 0.240132
-anchor_right = 0.928571
+anchor_left = 0.133929
+anchor_top = 0.598684
+anchor_right = 0.924107
 anchor_bottom = 0.759868
 offset_right = 0.0
 offset_bottom = 0.0
@@ -102,10 +103,12 @@ size_flags_horizontal = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="TextMargin" parent="Stats" index="1"]
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 6
 
 [node name="Label" parent="Stats/TextMargin" index="0"]
-text = "Abc12"
+text = "+3 Cooling
++1 Soothing
++1 Awesomeness"
 
 [node name="RelatedStuff" type="HBoxContainer" parent="."]
 layout_mode = 2
