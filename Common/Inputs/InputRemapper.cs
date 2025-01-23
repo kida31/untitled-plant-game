@@ -116,20 +116,16 @@ public partial class InputRemapper : Node
 
 	private void OnGameStateChanged(GameState prevState, GameState newState)
 	{
-		void TriggerReleaseOnAllActions()
+		void ReleaseAllActions()
 		{
 			foreach (var actionName in InputMap.GetActions())
 			{
-				var actionEvent = new InputEventAction();
-				actionEvent.SetAction(actionName);
-				actionEvent.SetPressed(false);
-				actionEvent.SetStrength(0);
-				Input.ParseInputEvent(actionEvent);
+				Input.ActionRelease(actionName);
 			}
 		}
 
 		// Not sure if this is necessary or would feel awkward.
-		TriggerReleaseOnAllActions();
+		ReleaseAllActions();
 		UnbindInputEvents(prevState);
 		BindInputEvents(newState);
 	}
