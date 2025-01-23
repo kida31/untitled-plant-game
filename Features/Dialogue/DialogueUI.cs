@@ -12,7 +12,7 @@ public partial class DialogueUI : Control
 
 	[Export] private RichTextLabel _nameLabel;
 	[Export] private RichTextLabel _dialogueTextLabel;
-	[Export] private Sprite2D _animatedSprite2D;
+	[Export] private Sprite2D _sprite;
 	[Export] private BoxContainer _responseContainer;
 
 	private DialogueResourceObject _currentDialogue;
@@ -127,7 +127,7 @@ public partial class DialogueUI : Control
 		_dialogueTextLabel.Text = line.dialogueText;
 		_dialogueAnimation.AnimateNextDialogueLine(_dialogueTextLabel, line);
 
-		_animatedSprite2D.Texture = line.DialogueExpression;
+		_sprite.Texture = line.DialogueExpression ?? _sprite.Texture;
 		Visible = true;
 	}
 
