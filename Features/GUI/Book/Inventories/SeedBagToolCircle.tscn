@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://byldrvainuqxu"]
+
+[ext_resource type="PackedScene" uid="uid://dxbuerk0f7x6" path="res://Features/GUI/Book/Inventories/ToolCircle.tscn" id="1_whxdp"]
+[ext_resource type="Script" path="res://Features/GUI/Book/Inventories/SeedBagToolCircle.cs" id="2_g8yg8"]
+
+[node name="SeeedBagToolCircle" instance=ExtResource("1_whxdp")]
+script = ExtResource("2_g8yg8")
+
+[node name="ToolIcon" parent="." index="0"]
+visible = false
+
+[node name="SeedIcon" type="TextureRect" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
