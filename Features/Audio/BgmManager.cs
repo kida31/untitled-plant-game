@@ -33,7 +33,7 @@ public partial class BgmManager : Node
 		
 		Instance = this;
 		_logger = new(this);
-		Play(_defaultMusic);
+		Play(_defaultMusic); // Consider moving this to another class
 
 		EventBus.Instance.BgmAreaChanged += OnBgmAreaChanged;
 	}
