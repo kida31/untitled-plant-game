@@ -10,9 +10,9 @@ namespace untitledplantgame.Tools;
 public class SeedBag : Tool
 {
 	public IItemStack CurrentSeedItem;
-	
+
 	private Logger _logger;
-	
+
 	public SeedBag(float radius, float range, float channelingTime) : base(radius, range, channelingTime)
 	{
 		_logger = new Logger("SeedBag");
@@ -21,7 +21,7 @@ public class SeedBag : Tool
 	protected override void OnStart(Player.Player user)
 	{
 		CurrentSeedItem = null;
-		
+
 		var inventory = user.Inventory.GetInventory(ItemCategory.Seed);
 		foreach (var item in inventory)
 		{
@@ -34,12 +34,12 @@ public class SeedBag : Tool
 			_logger.Debug($"Current seed in seed bag: {CurrentSeedItem}");
 			return;
 		}
-		
+
 		if (CurrentSeedItem?.Category != ItemCategory.Seed)
 		{
 			_logger.Error("There should only be seeds in the seed bag");
 		}
-		
+
 		_logger.Debug("No seed in the seed bag");
 	}
 
@@ -51,11 +51,12 @@ public class SeedBag : Tool
 			_logger.Warn("There is no soil tile to plant on");
 			return false;
 		}
+
 		if (IsSoilOccupied(closestTile))
 		{
 			return false;
 		}
-		
+
 		return hits.OfType<SoilTile>().Any();
 	}
 
@@ -67,12 +68,13 @@ public class SeedBag : Tool
 			_logger.Warn("There is no soil tile to plant on");
 			return false;
 		}
+
 		if (IsSoilOccupied(closestTile))
 		{
 			return false;
 		}
-		
-		if(CurrentSeedItem == null)
+
+		if (CurrentSeedItem == null)
 		{
 			_logger.Info("No seed in the seed bag");
 			return false;
@@ -82,17 +84,17 @@ public class SeedBag : Tool
 		{
 			_logger.Error("There's something wrong with this seed." + CurrentSeedItem);
 		}
-		
+
 		var plantName = CurrentSeedItem.GetComponent<SeedComponent>().PlantName;
 		var currentPlant = Plant.Create(plantName);
 		closestTile.PlantSeed(currentPlant);
-		
+
 		var newSeedItem = CurrentSeedItem.Clone();
 		newSeedItem.Amount = 1;
 		user.Inventory.RemoveItem(newSeedItem);
-		
+
 		_logger.Debug($"Planted seed of {currentPlant.PlantName} on tile");
-		
+
 		return true;
 	}
 

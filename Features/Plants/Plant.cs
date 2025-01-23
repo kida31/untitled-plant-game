@@ -23,10 +23,12 @@ public partial class Plant : Area2D
 {
 	private const string PlantPath = "res://Features/Plants/PlantPrefab.tscn";
 	private static readonly PackedScene PlantScene = GD.Load<PackedScene>(PlantPath);
-	[Export(PropertyHint.Enum, "Chuberry,Licary,Drupoleaum")] public string PlantName { get; private set; }
+
+	[Export(PropertyHint.Enum, "Chuberry,Licary,Drupoleaum")]
+	public string PlantName { get; private set; }
+
 	[Export] public GrowthStage Stage { get; private set; }
 	[Export] public SoilTile Tile { get; set; }
-
 	public event Action<Plant> BeforePlantRemoved;
 	public event Action<Plant> PlantGrown;
 
@@ -126,7 +128,7 @@ public partial class Plant : Area2D
 			_logger.Error("Plant data does not contain data for the current stage.");
 			return;
 		}
-		
+
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
@@ -230,8 +232,8 @@ public partial class Plant : Area2D
 
 	private IItemStack GetHarvestItem()
 	{
-		if(!_isHarvestable) return null;
-		
+		if (!_isHarvestable) return null;
+
 		var itemStack = ItemDatabase.Instance.CreateItemStack($"{PlantName}_{Stage}_harvested");
 		return itemStack;
 	}
