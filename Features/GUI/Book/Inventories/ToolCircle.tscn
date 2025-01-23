@@ -5,6 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="3_l2f4y"]
 
 [node name="ToolCircle" type="TextureRect" node_paths=PackedStringArray("_toolImage")]
+anchors_preset = -1
+anchor_right = 0.05
+anchor_bottom = 0.0888889
+offset_right = -32.0
+offset_bottom = -32.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 focus_mode = 2
@@ -12,6 +17,7 @@ texture = ExtResource("1_kd20u")
 stretch_mode = 5
 script = ExtResource("2_t0tl6")
 _toolImage = NodePath("ToolIcon")
+metadata/_edit_use_anchors_ = true
 
 [node name="ToolIcon" type="TextureRect" parent="."]
 layout_mode = 1
@@ -21,3 +27,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_l2f4y")
+expand_mode = 1

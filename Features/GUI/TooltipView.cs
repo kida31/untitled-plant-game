@@ -12,7 +12,7 @@ namespace untitledplantgame.GUI;
 public partial class TooltipView : Control
 {
 	private const bool AutomaticallyFreeOldContent = true;
-	private static float MaxWidth = 400f;
+	private static float MaxWidth = 200; // in pixels
 
 	public event Action<string> TitleChanged;
 	public event Action<string> DescriptionChanged;

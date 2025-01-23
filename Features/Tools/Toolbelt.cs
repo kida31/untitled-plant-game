@@ -1,7 +1,8 @@
 using System;
 using System.Collections.ObjectModel;
 using untitledplantgame.Common;
-using untitledplantgame.Tools;
+
+namespace untitledplantgame.Tools;
 
 public class Toolbelt
 {
@@ -12,7 +13,6 @@ public class Toolbelt
 	public Tool CurrentTool => _toolIndex < 0 ? null : _tools[_toolIndex];
 	public Tool LeftTool => GetLeftToolOrNull();
 	public Tool RightTool => GetRightToolOrNull();
-
 
 	public ReadOnlyCollection<Tool> Tools => Array.AsReadOnly(_tools);
 

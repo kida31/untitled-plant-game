@@ -37,7 +37,7 @@ public partial class SeedBagToolCircle : ToolCircle
 			var seed = GetFirstSeed();
 			if (seed != null)
 			{
-				return base.Title + $"({seed.Name})";
+				return $"{base.Title} ({seed.Name})";
 			}
 			return base.Title;
 		}
