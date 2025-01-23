@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cubvwsu3b6pdw"
-path="res://.godot/imported/WaterCan_alt.png-f05489ded9bdfb273d026bfc52101a62.ctex"
+uid="uid://c044iw7or44e5"
+path="res://.godot/imported/shers.png-4f1e8b03224d580885b647097bd1753d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tools/WaterCan_alt.png"
-dest_files=["res://.godot/imported/WaterCan_alt.png-f05489ded9bdfb273d026bfc52101a62.ctex"]
+source_file="res://Assets/Tools/shers.png"
+dest_files=["res://.godot/imported/shers.png-4f1e8b03224d580885b647097bd1753d.ctex"]
 
 [params]
 

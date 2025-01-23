@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmnj08rmwjy4y"
-path="res://.godot/imported/WateringCan_alt2.png-47bb2edf34e1fa346320152d7011aa7e.ctex"
+uid="uid://bf73odxs6nikc"
+path="res://.godot/imported/water.png-9c50a2801e2044b4e2bc84e2fccbf5d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tools/WateringCan_alt2.png"
-dest_files=["res://.godot/imported/WateringCan_alt2.png-47bb2edf34e1fa346320152d7011aa7e.ctex"]
+source_file="res://Assets/Tools/water.png"
+dest_files=["res://.godot/imported/water.png-9c50a2801e2044b4e2bc84e2fccbf5d2.ctex"]
 
 [params]
 
