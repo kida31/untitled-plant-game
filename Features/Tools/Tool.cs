@@ -54,10 +54,23 @@ public abstract partial class Tool : Resource, IDisplayData, IToolUseData
 		_hitScanArea = null;
 	}
 
-	protected abstract void OnStart(Player.Player user);
-	protected abstract bool OnInitialHit(Player.Player user, Node2D[] hits);
-	protected abstract bool OnHit(Player.Player user, Node2D[] hits);
-	protected abstract void OnMiss(Player.Player user);
+	protected virtual void OnStart(Player.Player user)
+	{
+	}
+
+	protected virtual bool OnInitialHit(Player.Player user, Node2D[] hits)
+	{
+		return false;
+	}
+
+	protected virtual bool OnHit(Player.Player user, Node2D[] hits)
+	{
+		return false;
+	}
+
+	protected virtual void OnMiss(Player.Player user)
+	{
+	}
 
 	protected virtual void OnFinishCast(Player.Player user)
 	{
