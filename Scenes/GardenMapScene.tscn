@@ -777,7 +777,6 @@ script = ExtResource("1_uo15o")
 [node name="Plants" type="TileMapLayer" parent="."]
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAZAAkAAQAGAAAAAAAYAAkAAgAEAAAAAAAZAAwAAwAFAAAAAAAZAA0AAAAAAAAAAAAaAAYAAQABAAAAAAAaAAcAAgABAAAAAAASAAYAAwAGAAAAAAAWABEAAwADAAAAAAAWABAAAQADAAAAAAAZABAAAgAFAAAAAAAaABAAAQACAAAAAAATAAYAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_sor4m")
 script = ExtResource("17_qgpau")
 
