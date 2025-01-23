@@ -12,7 +12,7 @@ public partial class ButtonIndicator : Control
 	private const string XboxButtonAssetsRoot = ButtonAssetsRoot + "XBOX/";
 	private const string PlaystationButtonAssetsRoot = ButtonAssetsRoot + "Playstation/";
 
-	private const GamepadType DefaultGamepad = GamepadType.Xbox;
+	private const GamepadType DefaultGamepad = GamepadType.Playstation;
 
 	enum GamepadType
 	{
@@ -43,15 +43,8 @@ public partial class ButtonIndicator : Control
 	/// <summary>
 	/// Gamepad type for displayed button. This is a read only property
 	/// </summary>
-	[Export]
-	private GamepadType Gamepad
-	{
-		get => DefaultGamepad;
-		set
-		{
-			/* ignored */
-		}
-	}
+	// [Export]
+	private GamepadType Gamepad => DefaultGamepad;
 
 	[Export]
 	public SimpleButton Button
@@ -208,12 +201,12 @@ public partial class ButtonIndicator : Control
 				return;
 
 			case (GamepadType.Playstation, SimpleButton.LeftTrigger_LT_L2):
-				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "L2_default.png");
-				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "L2_pressed.png");
+				_textureButton.TextureNormal = TryLoadOrLogError(PlaystationButtonAssetsRoot + "L2_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(PlaystationButtonAssetsRoot + "L2_pressed.png");
 				return;
 			case (GamepadType.Playstation, SimpleButton.RightTrigger_RT_R2):
-				_textureButton.TextureNormal = TryLoadOrLogError(XboxButtonAssetsRoot + "R2_default.png");
-				_textureButton.TexturePressed = TryLoadOrLogError(XboxButtonAssetsRoot + "R2_pressed.png");
+				_textureButton.TextureNormal = TryLoadOrLogError(PlaystationButtonAssetsRoot + "R2_default.png");
+				_textureButton.TexturePressed = TryLoadOrLogError(PlaystationButtonAssetsRoot + "R2_pressed.png");
 				return;
 			case (GamepadType.Playstation, SimpleButton.Start):
 			case (GamepadType.Playstation, SimpleButton.Select):
@@ -228,7 +221,7 @@ public partial class ButtonIndicator : Control
 		var result = GD.Load<Texture2D>(resourcePath);
 		if (result == null)
 		{
-			_logger.Error("Failed to load resource: " + resourcePath);
+			GD.PushError("Failed to load resource: " + resourcePath);
 		}
 
 		return result;
