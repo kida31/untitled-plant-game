@@ -35,7 +35,7 @@ public class SeedBag : Tool
 			return;
 		}
 		
-		if (CurrentSeedItem.Category != ItemCategory.Seed)
+		if (CurrentSeedItem?.Category != ItemCategory.Seed)
 		{
 			_logger.Error("There should only be seeds in the seed bag");
 		}
