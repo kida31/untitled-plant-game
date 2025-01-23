@@ -8,7 +8,6 @@
 [sub_resource type="Resource" id="Resource_tlar2"]
 script = ExtResource("1_34iy2")
 speakerName = "Bed"
-DialogueExpression = 0
 dialogueText = "Would you like to go to Bed?"
 
 [sub_resource type="Resource" id="Resource_kr3qh"]

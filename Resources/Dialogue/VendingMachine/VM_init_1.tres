@@ -1,20 +1,21 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://djkgxlqpnhr00"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://djkgxlqpnhr00"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_7b3gf"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_rx6l3"]
+[ext_resource type="Texture2D" uid="uid://bj7ibwubk6xqn" path="res://Assets/Characters/VMsan/vendingMachinePortrait.png" id="1_y4p5x"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_aghnh"]
 
 [sub_resource type="Resource" id="Resource_i0uay"]
 script = ExtResource("1_rx6l3")
 speakerName = "Vending Machine"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_y4p5x")
 dialogueText = "One medicine a day keeps the doctor away!"
 
 [sub_resource type="Resource" id="Resource_bf2ec"]
 script = ExtResource("1_rx6l3")
 speakerName = "Vending Machine"
-DialogueExpression = 0
-dialogueText = "Do you want to sell some?"
+DialogueExpression = ExtResource("1_y4p5x")
+dialogueText = "Do you want to sell?"
 
 [sub_resource type="Resource" id="Resource_g0300"]
 script = ExtResource("2_aghnh")

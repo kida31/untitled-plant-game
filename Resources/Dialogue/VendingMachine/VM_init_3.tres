@@ -1,19 +1,20 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://u6yu2am3tt1k"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://u6yu2am3tt1k"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_0t0jd"]
+[ext_resource type="Texture2D" uid="uid://bj7ibwubk6xqn" path="res://Assets/Characters/VMsan/vendingMachinePortrait.png" id="1_ghqmy"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_nodvh"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_p3k10"]
 
 [sub_resource type="Resource" id="Resource_i0uay"]
 script = ExtResource("1_0t0jd")
 speakerName = "Vending Machine"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_ghqmy")
 dialogueText = "One time there was a huge wave and now there are seashells on me."
 
 [sub_resource type="Resource" id="Resource_ttkip"]
 script = ExtResource("1_0t0jd")
 speakerName = "Vending Machine"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_ghqmy")
 dialogueText = "Do you want to sell some medicine?"
 
 [sub_resource type="Resource" id="Resource_g0300"]

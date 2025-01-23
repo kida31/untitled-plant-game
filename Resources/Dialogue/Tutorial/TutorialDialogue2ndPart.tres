@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=13 format=3 uid="uid://c8ao4gjije4hk"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=14 format=3 uid="uid://c8ao4gjije4hk"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_18mhc"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_rwsxv"]
 [ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_yiu25"]
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="3_n4glt"]
+[ext_resource type="Texture2D" uid="uid://5kx22qfxe5uu" path="res://Assets/Items/chubery_seed.png" id="4_dst2y"]
 [ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="4_empvu"]
 
 [sub_resource type="Resource" id="Resource_82fqt"]
@@ -33,8 +34,8 @@ dialogueText = "An herbalist grows all kind of medicinal herbs and then uses tho
 [sub_resource type="Resource" id="Resource_4o0ft"]
 script = ExtResource("1_rwsxv")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = ExtResource("4_empvu")
-dialogueText = "Over there you can see a Chubery sapling. Herbs need to be watered in every stage in order to grow."
+DialogueExpression = ExtResource("4_dst2y")
+dialogueText = "Over there you can see a Chubery seed. Herbs need to be watered in every stage in order to grow."
 
 [sub_resource type="Resource" id="Resource_okke3"]
 script = ExtResource("1_rwsxv")

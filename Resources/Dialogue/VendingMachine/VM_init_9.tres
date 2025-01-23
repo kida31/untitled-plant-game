@@ -1,19 +1,20 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://b66bsn0f7b7ai"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://b66bsn0f7b7ai"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_37yfd"]
+[ext_resource type="Texture2D" uid="uid://bj7ibwubk6xqn" path="res://Assets/Characters/VMsan/vendingMachinePortrait.png" id="1_uvf61"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_lp0bq"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_v0bi1"]
 
 [sub_resource type="Resource" id="Resource_i0uay"]
 script = ExtResource("1_37yfd")
 speakerName = "Vending Machine"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_uvf61")
 dialogueText = "Now that you’re here, I’m finally useful again."
 
 [sub_resource type="Resource" id="Resource_bf2ec"]
 script = ExtResource("1_37yfd")
 speakerName = "Vending Machine"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_uvf61")
 dialogueText = "Do you want to sell some medicine?"
 
 [sub_resource type="Resource" id="Resource_g0300"]

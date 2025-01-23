@@ -1,19 +1,20 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://bc52bpnicwkvs"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://bc52bpnicwkvs"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_3sugn"]
+[ext_resource type="Texture2D" uid="uid://bj7ibwubk6xqn" path="res://Assets/Characters/VMsan/vendingMachinePortrait.png" id="1_5dgpo"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_hqfw6"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_jxwg0"]
 
 [sub_resource type="Resource" id="Resource_i0uay"]
 script = ExtResource("1_3sugn")
 speakerName = "Vending Machine"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_5dgpo")
 dialogueText = "Sometimes I wish I wouldn’t only sell medicine, but it’s way healthier than soda."
 
 [sub_resource type="Resource" id="Resource_bf2ec"]
 script = ExtResource("1_3sugn")
 speakerName = "Vending Machine"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_5dgpo")
 dialogueText = "Do you want to sell some medicine?"
 
 [sub_resource type="Resource" id="Resource_g0300"]
