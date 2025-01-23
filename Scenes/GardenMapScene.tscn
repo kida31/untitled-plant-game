@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Features/Plants/Soil/SoilMap.cs" id="1_uo15o"]
 [ext_resource type="Script" path="res://Features/Audio/BgmArea2D.cs" id="1_wrnkw"]
-[ext_resource type="PackedScene" path="res://Scenes/water.tscn" id="1_xlm3o"]
+[ext_resource type="PackedScene" uid="uid://b48o50ukwtc4v" path="res://Scenes/water.tscn" id="1_xlm3o"]
 [ext_resource type="Texture2D" uid="uid://capj2kjiyfndo" path="res://Assets/Tilesets/TX Tileset Grass.png" id="1_y6de5"]
 [ext_resource type="Texture2D" uid="uid://b0jfimskhcnql" path="res://Assets/Tilesets/Pier.png" id="2_8reyx"]
 [ext_resource type="AudioStream" uid="uid://kp5gdrb8dau7" path="res://Assets/BGM/gardenTheme_withGardenAtmo.mp3" id="2_g0xi1"]
@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cv6hjqm0nnrau" path="res://Assets/Tilesets/soiltiles_tileset_better_rgb.png" id="16_mugcb"]
 [ext_resource type="Texture2D" uid="uid://oon4v18kv3jk" path="res://Assets/Overworld/Garden/pier_ladder.png" id="16_v0da8"]
 [ext_resource type="Script" path="res://Features/Plants/PlantMap.cs" id="17_qgpau"]
-[ext_resource type="PackedScene" path="res://Features/NPC/Door.tscn" id="18_eh65c"]
+[ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="18_eh65c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3qw3d"]
 radius = 661.17
