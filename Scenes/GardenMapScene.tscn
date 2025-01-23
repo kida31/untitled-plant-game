@@ -730,6 +730,7 @@ shape = SubResource("CircleShape2D_3qw3d")
 
 [node name="Water" parent="." instance=ExtResource("1_xlm3o")]
 z_index = -2
+position = Vector2(494, 424)
 
 [node name="Ground" type="TileMapLayer" parent="."]
 z_index = -1
