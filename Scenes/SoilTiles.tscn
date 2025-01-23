@@ -1,8 +1,91 @@
-[gd_scene load_steps=4 format=3 uid="uid://js6xll5oktc4"]
+[gd_scene load_steps=19 format=4 uid="uid://js6xll5oktc4"]
 
 [ext_resource type="Script" path="res://Features/Plants/PlantController.cs" id="2_wxa00"]
 [ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="3_y13yj"]
+[ext_resource type="Texture2D" uid="uid://dempy0e7dsgb7" path="res://Assets/Overworld/Garden/small_planter_round.png" id="4_h1yfj"]
 [ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/PlantPrefab.tscn" id="4_kxbuo"]
+[ext_resource type="Texture2D" uid="uid://5d8yf6rhn855" path="res://Assets/Overworld/Garden/planters_tileset_rgb.png" id="5_jgccg"]
+[ext_resource type="Texture2D" uid="uid://h83g282s043x" path="res://Assets/Overworld/Garden/ladder_tileset_improved.png" id="6_qm2n2"]
+[ext_resource type="Texture2D" uid="uid://bvw5lymyjpgs2" path="res://Assets/Overworld/Garden/crates_tileset.png" id="7_r476f"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_dj6ds"]
+tile_data = PackedInt32Array(0, 2, 0, 65536, 2, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_tfrb6"]
+tile_data = PackedInt32Array(65536, 7, 5, 131072, 7, 6, 196608, 7, 7, 1, 65543, 4, 65537, 65543, 5, 131073, 65543, 6, 196609, 65543, 7, 2, 131079, 4, 65538, 131079, 5, 131074, 131079, 6, 196610, 131079, 7)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_78530"]
+tile_data = PackedInt32Array(196608, 7, 3, 1, 65543, 0, 65537, 65543, 1, 131073, 65543, 2, 196609, 65543, 3, 2, 131079, 0, 65538, 131079, 1, 131074, 131079, 2, 196610, 131079, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_veqoy"]
+tile_data = PackedInt32Array(0, 262151, 0, 65536, 262151, 1, 131072, 262151, 2, 1, 327687, 0, 65537, 327687, 1, 131073, 327687, 2, 2, 393223, 0, 65538, 393223, 1, 131074, 393223, 2, 3, 458759, 0, 65539, 458759, 1, 131075, 458759, 2)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_8slol"]
+tile_data = PackedInt32Array(0, 262151, 3, 65536, 262151, 4, 131072, 262151, 5, 1, 327687, 3, 65537, 327687, 4, 131073, 327687, 5, 2, 393223, 3, 65538, 393223, 4, 131074, 393223, 5, 3, 458759, 3, 65539, 458759, 4, 131075, 458759, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_j2vwc"]
+tile_data = PackedInt32Array(0, 7, 0, 65536, 7, 1, 131072, 7, 2, 196608, 7, 3, 1, 65543, 0, 65537, 65543, 1, 131073, 65543, 2, 196609, 65543, 3, 2, 131079, 0, 65538, 131079, 1, 131074, 131079, 2, 196610, 131079, 3)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6oeet"]
+texture = ExtResource("4_h1yfj")
+texture_region_size = Vector2i(1, 1)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2yps6"]
+texture = ExtResource("5_jgccg")
+texture_region_size = Vector2i(32, 32)
+4:0/size_in_atlas = Vector2i(4, 3)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(18, 31)
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -36, 28, -36, 28, 8, -64, 8)
+4:3/size_in_atlas = Vector2i(4, 3)
+4:3/0 = 0
+4:3/0/texture_origin = Vector2i(14, 33)
+4:3/0/y_sort_origin = -1
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-60, -36, 32, -36, 32, 12, -60, 12)
+0:4/size_in_atlas = Vector2i(3, 4)
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, 48)
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -68, 20, -68, 20, 8, -20, 8)
+0:0/size_in_atlas = Vector2i(3, 4)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 48)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -68, 16, -68, 16, 0, -16, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kp3yb"]
+texture = ExtResource("6_qm2n2")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16, 12, -16, 12, 12, -12, 12, -12, -16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16, 12, -16, 12, 12, -12, 12, -12, -16)
+2:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dqquf"]
+texture = ExtResource("7_r476f")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4, 16, -4, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4, 16, -4, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4, 16, -4, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4, 16, -4, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_yrab1"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/4 = SubResource("TileSetAtlasSource_6oeet")
+sources/7 = SubResource("TileSetAtlasSource_2yps6")
+sources/8 = SubResource("TileSetAtlasSource_kp3yb")
+sources/9 = SubResource("TileSetAtlasSource_dqquf")
+pattern_0 = SubResource("TileMapPattern_dj6ds")
+pattern_1 = SubResource("TileMapPattern_tfrb6")
+pattern_2 = SubResource("TileMapPattern_78530")
+pattern_3 = SubResource("TileMapPattern_veqoy")
+pattern_4 = SubResource("TileMapPattern_8slol")
+pattern_5 = SubResource("TileMapPattern_j2vwc")
 
 [node name="Plants" type="Node2D"]
 z_index = 1
@@ -11,24 +94,67 @@ y_sort_enabled = true
 [node name="PlantController" type="Node" parent="."]
 script = ExtResource("2_wxa00")
 
-[node name="Soil" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(395, 343)
+[node name="ChuSeedSoil" parent="." instance=ExtResource("3_y13yj")]
+position = Vector2(439, 338)
 
-[node name="Soil2" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(443, 345)
-
-[node name="Tutorial_Chuberry" parent="Soil2" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
-position = Vector2(-1, -5)
+[node name="Tutorial_Chuberry" parent="ChuSeedSoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
 Tile = NodePath("..")
 
+[node name="ChuGrownSoil" parent="." instance=ExtResource("3_y13yj")]
+position = Vector2(400, 336)
+
+[node name="PlantPrefab" parent="ChuGrownSoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
+Stage = 6
+Tile = NodePath("..")
+
+[node name="LicarySoil" parent="." instance=ExtResource("3_y13yj")]
+position = Vector2(625, 210)
+
+[node name="PlantPrefab" parent="LicarySoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
+PlantName = "Drupoleaum"
+Stage = 3
+Tile = NodePath("..")
+
+[node name="DrupoSoil" parent="." instance=ExtResource("3_y13yj")]
+position = Vector2(780, 305)
+
+[node name="PlantPrefab" parent="DrupoSoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
+position = Vector2(-780, -305)
+PlantName = "Drupoleaum"
+Stage = 5
+Tile = NodePath("..")
+
+[node name="Soil10" parent="." instance=ExtResource("3_y13yj")]
+position = Vector2(753, 531)
+
+[node name="Soil11" parent="." instance=ExtResource("3_y13yj")]
+position = Vector2(752, 497)
+
+[node name="Soil12" parent="." instance=ExtResource("3_y13yj")]
+position = Vector2(817, 401)
+
+[node name="Soil13" parent="." instance=ExtResource("3_y13yj")]
+position = Vector2(779, 400)
+
+[node name="Soil14" parent="." instance=ExtResource("3_y13yj")]
+position = Vector2(815, 305)
+
+[node name="Soil9" parent="." instance=ExtResource("3_y13yj")]
+position = Vector2(587, 210)
+
 [node name="Soil3" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(561, 400)
+position = Vector2(560, 400)
 
 [node name="Soil5" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(464, 528)
+position = Vector2(464, 526)
 
 [node name="Soil6" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(464, 566)
+position = Vector2(464, 562)
 
 [node name="Soil4" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(560, 438)
+position = Vector2(560, 435)
+
+[node name="Planters" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAARAA4ABwAAAAAAAAAMAAYACQABAAAAAAANAAYACQACAAAAAAAOAAYACQABAAAAAAAPAAYACQADAAAAAAANAAsABwAEAAMAAAAOABIABwAAAAQAAAAZAAoABwAEAAAAAAATAAcABwAEAAAAAAAZAA0ABwAEAAAAAAAXABEABwAAAAQAAAA=")
+tile_set = SubResource("TileSet_yrab1")
