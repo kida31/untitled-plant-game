@@ -5,10 +5,13 @@ namespace untitledplantgame.Audio;
 
 /// <summary>
 ///     Manages the background music (BGM) for the game.
-///     Cross-fades between tracks.
+///     Cross-fades between tracks. There can only be one BgmManager in the scene.
+///		Only one track can play at a time.
 /// </summary>
 public partial class BgmManager : Node
 {
+	public static BgmManager Instance { get; private set; }
+	
 	[Export] private float _crossFadeDuration;
 	[Export] private AudioStream _defaultMusic;
 
@@ -21,6 +24,14 @@ public partial class BgmManager : Node
 
 	public override void _Ready()
 	{
+		if (Instance != null)
+		{
+			_logger.Error("Multiple instances of BgmManager detected. Deleting this instance.");
+			QueueFree();
+			return;
+		}
+		
+		Instance = this;
 		_logger = new(this);
 		Play(_defaultMusic);
 
