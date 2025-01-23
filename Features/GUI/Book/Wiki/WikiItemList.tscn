@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c77ama5r0mirv"]
+[gd_scene load_steps=10 format=3 uid="uid://c77ama5r0mirv"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/ScrollViewController.cs" id="1_2ipb1"]
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiItemList.cs" id="1_lt328"]
@@ -6,8 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bucuvgskvuhrl" path="res://Assets/UI/Book/Pages/LeftWiki_empty.png" id="3_yllv7"]
 [ext_resource type="Texture2D" uid="uid://b3076kp3u3e03" path="res://Assets/UI/Book/Pages/Demo/LeftWiki_filled.png" id="4_8trht"]
 [ext_resource type="Texture2D" uid="uid://b0udl2fbk1ct8" path="res://Assets/UI/Book/Containers&Labels/ToolContainer.png" id="5_58xx7"]
+[ext_resource type="Texture2D" uid="uid://b4u1cuyool30a" path="res://Assets/UI/Book/Icons/CategoryIcon_seed.png" id="6_woswq"]
+[ext_resource type="Texture2D" uid="uid://bds0kweewedm8" path="res://Assets/UI/Book/Icons/CategoryIcon_medicine.png" id="7_h46q2"]
+[ext_resource type="Texture2D" uid="uid://u7b2fe6qibri" path="res://Assets/UI/Book/Icons/CategoryIcon_misc.png" id="8_dk65u"]
 
-[node name="WikiItemList" type="Control" node_paths=PackedStringArray("_itemViewContainer", "_materialButton", "_medicineButton", "_plantButton")]
+[node name="WikiItemList" type="Control" node_paths=PackedStringArray("_itemViewContainer", "_plantButton", "_medicineButton", "_materialButton")]
 clip_children = 2
 custom_minimum_size = Vector2(224, 304)
 layout_mode = 3
@@ -18,9 +21,9 @@ size_flags_horizontal = 3
 script = ExtResource("1_lt328")
 _itemViewContainer = NodePath("MarginContainer/ScrollContainer/MarginAll/ItemViewContainer")
 _itemViewPrefab = ExtResource("2_kax1w")
-_materialButton = NodePath("SectionsButtons/Div2/Button")
-_medicineButton = NodePath("SectionsButtons/Div3/Button")
-_plantButton = NodePath("SectionsButtons/Div/Button")
+_plantButton = NodePath("SectionsButtons/Div/Button1")
+_medicineButton = NodePath("SectionsButtons/Div2/Button2")
+_materialButton = NodePath("SectionsButtons/Div3/Button3")
 metadata/_edit_use_anchors_ = true
 
 [node name="BG" type="TextureRect" parent="."]
@@ -62,13 +65,20 @@ layout_mode = 2
 texture = ExtResource("5_58xx7")
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="SectionsButtons/Div"]
+[node name="Button1" type="Button" parent="SectionsButtons/Div"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Plants"
 flat = true
 clip_text = true
 icon_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="SectionsButtons/Div/Button1"]
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("6_woswq")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Div2" type="MarginContainer" parent="SectionsButtons"]
 layout_mode = 2
@@ -80,13 +90,20 @@ layout_mode = 2
 texture = ExtResource("5_58xx7")
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="SectionsButtons/Div2"]
+[node name="Button2" type="Button" parent="SectionsButtons/Div2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Material"
 flat = true
 clip_text = true
 icon_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="SectionsButtons/Div2/Button2"]
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("7_h46q2")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Div3" type="MarginContainer" parent="SectionsButtons"]
 layout_mode = 2
@@ -98,13 +115,20 @@ layout_mode = 2
 texture = ExtResource("5_58xx7")
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="SectionsButtons/Div3"]
+[node name="Button3" type="Button" parent="SectionsButtons/Div3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Medicine"
 flat = true
 clip_text = true
 icon_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="SectionsButtons/Div3/Button3"]
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("8_dk65u")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

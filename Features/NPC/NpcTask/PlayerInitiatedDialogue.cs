@@ -30,7 +30,6 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 
 	public override void _Ready()
 	{
-		GD.Print(_dialogueResourceObject.Count);
 		_logger = new Logger(this);
 		_routinePlanner = (NpcRoutinePlanner) GetParent(); // We will enforce this as a soft rule ⇒ RoutinePlanner MUST be the parent!
 		
