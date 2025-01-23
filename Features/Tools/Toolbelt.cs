@@ -13,7 +13,6 @@ public class Toolbelt
 	public Tool LeftTool => GetLeftToolOrNull();
 	public Tool RightTool => GetRightToolOrNull();
 
-
 	public ReadOnlyCollection<Tool> Tools => Array.AsReadOnly(_tools);
 
 	private Tool[] _tools;
