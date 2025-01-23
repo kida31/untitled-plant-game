@@ -35,7 +35,7 @@ dialogueText = "An herbalist grows all kind of medicinal herbs and then uses tho
 script = ExtResource("1_rwsxv")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = ExtResource("4_dst2y")
-dialogueText = "Over there you can see a Chubery seed. Herbs need to be watered in every stage in order to grow."
+dialogueText = "Over there you can see a Chubery seed. Herbs need to be watered in every stage in order to grow. The old herbalist seems to have left a few plants, so please consider them yours."
 
 [sub_resource type="Resource" id="Resource_okke3"]
 script = ExtResource("1_rwsxv")
@@ -47,7 +47,7 @@ dialogueText = "I see you have got all the tools needed already. For watering yo
 script = ExtResource("1_rwsxv")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = ExtResource("4_empvu")
-dialogueText = "How about you water these two plants by pressing and holding X on your Controller, and then come back to me?"
+dialogueText = "How about you water your new plants by pressing and holding X on your Controller, and then come back to me?"
 
 [resource]
 script = ExtResource("1_18mhc")
