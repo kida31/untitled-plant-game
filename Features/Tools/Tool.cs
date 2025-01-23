@@ -33,7 +33,7 @@ public abstract partial class Tool : Resource, IDisplayData, IToolUseData
 		_hitScanArea.TopLevel = true;
 		_hitScanArea.Hit += (hits) => _OnInitialHit(user, hits);
 		user.AddChild(_hitScanArea);
-		_hitScanArea.GlobalPosition = user.GlobalPosition + user.FrontDirection * Range;
+		_hitScanArea.GlobalPosition = user.GlobalPosition + user.FaceDirection * Range;
 	}
 
 	public void Cancel(Player.Player user)

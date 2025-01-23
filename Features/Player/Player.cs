@@ -12,26 +12,27 @@ namespace untitledplantgame.Player;
 
 public partial class Player : CharacterBody2D
 {
-	private readonly Logger _logger = new ("Player");
+	[Export] private PlayerAnimatedSprite _playerAnimatedSprite;
 
-	// Input direction(?)
-	public Vector2 Direction = Vector2.Zero;
+	private readonly Logger _logger = new("Player");
+
+	private Vector2 _faceDirection = Vector2.Down;
+	private Vector2 _inputDirection = Vector2.Zero;
+	private PlayerStateMachine _stateMachine;
 
 	/// <summary>
-	/// The direction the player is facing.
+	///     The direction the player should be moving. Currently always equal to input direction.
 	/// </summary>
-	public Vector2 FrontDirection => _frontDirection;
+	public Vector2 Direction => _inputDirection;
 
-	public BigInventory Inventory => _inventory;
-	public Toolbelt Toolbelt => _toolbelt;
+	/// <summary>
+	///     The direction the player is facing. This is the direction the player is looking at. Visually
+	/// </summary>
+	public Vector2 FaceDirection => _faceDirection;
 
-	private Vector2 _cardinalDirection = Vector2.Down;
-	private Vector2 _frontDirection = Vector2.Down; // The direction the player is facing.
-	private AnimatedSprite2D _animatedSprite2D;
-	private PlayerStateMachine _stateMachine;
-	private BigInventory _inventory;
+	public BigInventory Inventory { get; private set; }
 
-	private readonly Toolbelt _toolbelt = new(
+	public Toolbelt Toolbelt { get; } = new(
 		new Tool[]
 		{
 			// Hardcoded tools for now
@@ -49,16 +50,15 @@ public partial class Player : CharacterBody2D
 		Game.Instance.Provide(this);
 
 		_stateMachine = GetNode<PlayerStateMachine>("StateMachine");
-		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_stateMachine.Initialize(this);
 
 		EventBus.Instance.OnItemPickUp += OnItemPickUp;
 
 		// Initialize inventory
 		var rand = new RandomStockGenerator();
-		_inventory = new(20);
-		_inventory.InventoryChanged += () => { EventBus.Instance.PlayerInventoryChanged(this, _inventory); };
-		_inventory.AddItem(rand.GetRandomItems(12).Where(it => it.Category == ItemCategory.Medicine).ToArray()); // For testing purposes
+		Inventory = new(20);
+		Inventory.InventoryChanged += () => { EventBus.Instance.PlayerInventoryChanged(this, Inventory); };
+		Inventory.AddItem(rand.GetRandomItems(12).Where(it => it.Category == ItemCategory.Medicine).ToArray()); // For testing purposes
 	}
 
 	private void OnItemPickUp(IItemStack obj)
@@ -69,114 +69,66 @@ public partial class Player : CharacterBody2D
 			return;
 		}
 
-		var leftovers = _inventory.AddItem(obj);
+		var leftovers = Inventory.AddItem(obj);
 		if (leftovers.Count > 0)
 		{
 			_logger.Warn("Inventory full, could not pick up all items. This is not handled");
 		}
 	}
 
-	private Player InitializePlayer()
-	{
-		return this;
-	}
-
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (GameStateMachine.Instance.CurrentState != GameState.FreeRoam)
 		{
-			Direction = Vector2.Zero; // default value, movement is an exception
+			_inputDirection = Vector2.Zero; // default value, movement is an exception
 		}
 	}
 
-	public void GetSetInputDirection()
+	public override void _Process(double delta)
 	{
-		Direction = Input.GetVector(FreeRoam.Left, FreeRoam.Right, FreeRoam.Up, FreeRoam.Down).Normalized();
+		UpdateFaceDirection();
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		MoveAndSlide();
-		UpdateFrontDirection();
 	}
 
-	public bool SetDirection()
+	public void GetSetDirection()
 	{
-		Vector2 newDirection = _cardinalDirection;
-
-		if (Direction == Vector2.Zero)
-			return false;
-
-		if (Direction.Y == 0)
-		{
-			if (Direction.X < 0)
-			{
-				newDirection = Vector2.Left;
-				_animatedSprite2D.FlipH = true;
-			}
-
-			else
-			{
-				newDirection = Vector2.Right;
-				_animatedSprite2D.FlipH = false;
-			}
-		}
-
-		if (Direction.X == 0)
-		{
-			if (Direction.Y > 0)
-				newDirection = Vector2.Down;
-			else
-				newDirection = Vector2.Up;
-		}
-
-		_cardinalDirection = newDirection;
-		return true;
+		_inputDirection = Input.GetVector(FreeRoam.Left, FreeRoam.Right, FreeRoam.Up, FreeRoam.Down).Normalized();
 	}
 
 	/// <summary>
 	/// Update front direction (the direction the player is facing).
 	/// The front direction equals the latest input direction. "Clamping" to NWSE (non-diagonal).
-	/// Horizontal directions have priority. If horizontal direction is zero, vertical direction is chosen.
+	/// The direction with the highest magnitude is the front direction.
 	/// If there is no input direction, keep latest front direction value.
 	/// </summary>
-	private void UpdateFrontDirection()
+	private void UpdateFaceDirection()
 	{
 		if (Direction == Vector2.Zero)
 		{
 			return;
 		}
 
-		_frontDirection = Direction;
-		if (Direction.X != 0)
+		// Set the bigger one to 1/-1, the other to 0
+		if (Math.Abs(Direction.X) > Math.Abs(Direction.Y))
 		{
-			_frontDirection.Y = 0;
+			_faceDirection = Vector2.Zero;
+			_faceDirection.X = Direction.X;
 		}
 		else
 		{
-			_frontDirection.X = 0;
+			_faceDirection = Vector2.Zero;
+			_faceDirection.Y = Direction.Y;
 		}
 
-		_frontDirection = _frontDirection.Normalized();
+		_faceDirection = _faceDirection.Normalized();
 	}
 
-	public void UpdateAnimation(string state)
+	public void UpdateAnimation(string animationName)
 	{
-		var animationState = state + "_" + AnimationDirection();
-		_animatedSprite2D.Play(animationState);
-	}
-
-	string AnimationDirection()
-	{
-		if (_cardinalDirection == Vector2.Down)
-			return "down";
-		if (_cardinalDirection == Vector2.Up)
-			return "up";
-		if (_cardinalDirection == Vector2.Left)
-			return "left";
-		if (_cardinalDirection == Vector2.Right)
-			return "right";
-
-		throw new InvalidOperationException("Invalid direction; Unreachable Code");
+		_playerAnimatedSprite?.UpdateAnimation(animationName);
 	}
 }

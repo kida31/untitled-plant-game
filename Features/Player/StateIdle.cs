@@ -31,7 +31,7 @@ public partial class StateIdle : State
 
 	public override State HandleInput(InputEvent inputEvent)
 	{
-		Player.GetSetInputDirection();
+		Player.GetSetDirection();
 		if (inputEvent.IsActionPressed(FreeRoam.SwitchToNextTool))
 		{
 			Player.Toolbelt.GoToNext();
@@ -47,7 +47,6 @@ public partial class StateIdle : State
 			return _useToolState;
 		}
 
-		//Velocity = direction * MoveSpeed;
 		if (inputEvent.IsActionPressed(FreeRoam.Interact))
 		{
 			InteractionManager.Instance.PerformInteraction();

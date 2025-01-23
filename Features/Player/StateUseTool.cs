@@ -47,7 +47,7 @@ public partial class StateUseTool : State
 
 	public override State Process(double delta)
 	{
-		Player.SetDirection();
+		Player.GetSetDirection();
 		Player.Velocity = Vector2.Zero;
 
 		if (!Input.IsActionPressed(FreeRoam.UseTool))
@@ -63,7 +63,7 @@ public partial class StateUseTool : State
 
 	public override State HandleInput(InputEvent inputEvent)
 	{
-		Player.GetSetInputDirection();
+		Player.GetSetDirection();
 		return null;
 	}
 
