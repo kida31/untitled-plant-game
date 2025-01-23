@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ub55y2eyhgq5" path="res://Assets/Items/Duck.png" id="2_tmc4o"]
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]
 
-[node name="DialogueView" type="Control" node_paths=PackedStringArray("_nameLabel", "_dialogueTextLabel", "_animatedSprite2D", "_responseContainer")]
+[node name="DialogueView" type="Control" node_paths=PackedStringArray("_nameLabel", "_dialogueTextLabel", "_sprite", "_responseContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_hawac")
 _nameLabel = NodePath("NameDiv/MarginContainer/Name")
 _dialogueTextLabel = NodePath("DialogueField/MarginContainer/DialogueText")
-_animatedSprite2D = NodePath("Portrait")
+_sprite = NodePath("Portrait")
 _responseContainer = NodePath("Responses")
 
 [node name="Portrait" type="Sprite2D" parent="."]
