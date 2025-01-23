@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=14 format=3 uid="uid://c8ao4gjije4hk"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=15 format=3 uid="uid://c8ao4gjije4hk"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_18mhc"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_rwsxv"]
@@ -41,7 +41,13 @@ dialogueText = "Over there you can see a Chubery seed. Herbs need to be watered 
 script = ExtResource("1_rwsxv")
 speakerName = "Gottfried the first Priest"
 DialogueExpression = ExtResource("3_n4glt")
-dialogueText = "I see you have got all the tools needed already. For watering you’d obviously need your watering can so you should definitely equip your watering can. Equip it by choosing the watering can icon in your Toolbelt. If you use your Bumper Buttons R1 and L1 you can rotate your tools."
+dialogueText = "I see you have got all the tools needed already. For watering you’d obviously need your watering can so you should definitely equip your watering can. "
+
+[sub_resource type="Resource" id="Resource_riqon"]
+script = ExtResource("1_rwsxv")
+speakerName = "Gottfried the first Priest"
+DialogueExpression = ExtResource("3_n4glt")
+dialogueText = "Equip it by choosing the watering can icon in your Toolbelt. If you use your Bumper Buttons R1 and L1 you can rotate your tools."
 
 [sub_resource type="Resource" id="Resource_cl8ob"]
 script = ExtResource("1_rwsxv")
@@ -52,5 +58,5 @@ dialogueText = "How about you water your new plants by pressing and holding X on
 [resource]
 script = ExtResource("1_18mhc")
 _dialogueId = "Gottfried2ndPart"
-_dialogueText = Array[Object]([SubResource("Resource_82fqt"), SubResource("Resource_ldvuu"), SubResource("Resource_x1toj"), SubResource("Resource_wdl46"), SubResource("Resource_4o0ft"), SubResource("Resource_okke3"), SubResource("Resource_cl8ob")])
+_dialogueText = Array[Object]([SubResource("Resource_82fqt"), SubResource("Resource_ldvuu"), SubResource("Resource_x1toj"), SubResource("Resource_wdl46"), SubResource("Resource_4o0ft"), SubResource("Resource_okke3"), SubResource("Resource_riqon"), SubResource("Resource_cl8ob")])
 _responses = null
