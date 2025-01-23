@@ -1,7 +1,7 @@
 using Godot;
 using untitledplantgame.Common;
 
-namespace untitledplantgame;
+namespace untitledplantgame.Audio;
 
 public partial class BgmArea2D : Area2D, IBgmArea
 {
@@ -20,11 +20,7 @@ public partial class BgmArea2D : Area2D, IBgmArea
 
 	private void OnAreaEntered(Area2D area)
 	{
-		// Player is not an Area currently
-		// if (area is Player.Player)
-		// {
-		// 	EventBus.Instance.BgmAreaChanged(this);
-		// }
+		// Player is not an Area
 	}
 
 	private void OnBodyEntered(Node2D body)
