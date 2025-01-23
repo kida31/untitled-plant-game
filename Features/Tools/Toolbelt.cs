@@ -1,7 +1,8 @@
 using System;
 using System.Collections.ObjectModel;
 using untitledplantgame.Common;
-using untitledplantgame.Tools;
+
+namespace untitledplantgame.Tools;
 
 public class Toolbelt
 {
