@@ -1,4 +1,5 @@
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.GUI;
@@ -27,6 +28,7 @@ public partial class GlobalTooltip : TooltipView
 	private Control _target;
 	private Tween _fadeTween;
 	private Timer _delayTimer;
+	private Logger _logger;
 	private bool HasContent => !string.IsNullOrEmpty(Title) || !string.IsNullOrEmpty(Description) || CustomContent != null;
 
 	public override void _Ready()
@@ -39,6 +41,8 @@ public partial class GlobalTooltip : TooltipView
 		_delayTimer.OneShot = true;
 		_delayTimer.Timeout += SetContent;
 		AddChild(_delayTimer);
+
+		_logger = new Logger(this);
 	}
 
 	public override void _Process(double delta)
@@ -57,6 +61,11 @@ public partial class GlobalTooltip : TooltipView
 			var rect = _target.GetGlobalRect();
 			var center = rect.Position + rect.Size / 2;
 			GlobalPosition = center + _offset;
+
+			// Only allow tooltip to be positioned within viewport
+			var vpRect = GetViewport().GetVisibleRect();
+			var validArea = Vector2.Zero.Max(vpRect.Position + vpRect.Size - GetGlobalRect().Size);
+			GlobalPosition = GlobalPosition.Clamp(Vector2.Zero, validArea);
 
 			var weight = _fadeInSpeed > 0 ? delta * _fadeInSpeed : 1;
 			Modulate = Modulate.Lerp(new Color(Modulate) {A = 1}, (float) weight);

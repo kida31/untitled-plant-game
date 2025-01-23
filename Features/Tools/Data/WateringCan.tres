@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://beagdq1bqk3ul"]
+
+[ext_resource type="Script" path="res://Features/Tools/WateringCan.cs" id="1_04miq"]
+[ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="1_tenue"]
+
+[resource]
+script = ExtResource("1_04miq")
+_wateringAmount = 50.0
+_waterCapacity = 1000.0
+_isBottomless = true
+Name = "Basic Watering Can"
+Description = "This watering can is a can with water to water waterable plants via splashing water said plants."
+Icon = ExtResource("1_tenue")
+ChannelingTime = 0.0
+Radius = 12.0
+Range = 24.0

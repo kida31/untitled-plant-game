@@ -2,25 +2,21 @@ using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item.Components;
 using untitledplantgame.Plants;
-using SeedComponent = untitledplantgame.Item.Components.SeedComponent;
 
 namespace untitledplantgame.Tools;
 
-public class SeedBag : Tool
+[GlobalClass]
+public partial class SeedBag : Tool
 {
-	public IItemStack CurrentSeedItem;
+	private IItemStack _currentSeedItem;
 
-	private Logger _logger;
-
-	public SeedBag(float radius, float range, float channelingTime) : base(radius, range, channelingTime)
-	{
-		_logger = new Logger("SeedBag");
-	}
+	private readonly Logger _logger = new("SeedBag");
 
 	protected override void OnStart(Player.Player user)
 	{
-		CurrentSeedItem = null;
+		_currentSeedItem = null;
 
 		var inventory = user.Inventory.GetInventory(ItemCategory.Seed);
 		foreach (var item in inventory)
@@ -30,12 +26,12 @@ public class SeedBag : Tool
 				continue;
 			}
 
-			CurrentSeedItem = item;
-			_logger.Debug($"Current seed in seed bag: {CurrentSeedItem}");
+			_currentSeedItem = item;
+			_logger.Debug($"Current seed in seed bag: {_currentSeedItem}");
 			return;
 		}
 
-		if (CurrentSeedItem?.Category != ItemCategory.Seed)
+		if (_currentSeedItem?.Category != ItemCategory.Seed)
 		{
 			_logger.Error("There should only be seeds in the seed bag");
 		}
@@ -74,22 +70,22 @@ public class SeedBag : Tool
 			return false;
 		}
 
-		if (CurrentSeedItem == null)
+		if (_currentSeedItem == null)
 		{
 			_logger.Info("No seed in the seed bag");
 			return false;
 		}
 
-		if (CurrentSeedItem.GetComponent<SeedComponent>() == null)
+		if (_currentSeedItem.GetComponent<SeedComponent>() == null)
 		{
-			_logger.Error("There's something wrong with this seed." + CurrentSeedItem);
+			_logger.Error("There's something wrong with this seed." + _currentSeedItem);
 		}
 
-		var plantName = CurrentSeedItem.GetComponent<SeedComponent>().PlantName;
+		var plantName = _currentSeedItem.GetComponent<SeedComponent>().PlantName;
 		var currentPlant = Plant.Create(plantName);
 		closestTile.PlantSeed(currentPlant);
 
-		var newSeedItem = CurrentSeedItem.Clone();
+		var newSeedItem = _currentSeedItem.Clone();
 		newSeedItem.Amount = 1;
 		user.Inventory.RemoveItem(newSeedItem);
 

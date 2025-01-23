@@ -6,23 +6,14 @@ using untitledplantgame.Plants;
 
 namespace untitledplantgame.Tools;
 
-public class WateringCan : Tool
+public partial class WateringCan : Tool
 {
-	private readonly float _wateringAmount;
-	private readonly float _waterCapacity; // TODO: Implement
-	private readonly bool _isBottomless;
+	[Export] private float _wateringAmount;
+	[Export] private float _waterCapacity; // TODO: Implement
+	[Export] private bool _isBottomless;
 
 	private float _currentWaterLevel;
-	private readonly Logger _logger;
-
-	public WateringCan(float wateringAmount, float waterCapacity, bool isBottomless, float radius, float range) : base(radius, range, 0.5f)
-	{
-		_wateringAmount = wateringAmount;
-		_waterCapacity = waterCapacity;
-		_isBottomless = isBottomless;
-		_currentWaterLevel = 0;
-		_logger = new Logger("WateringCan");
-	}
+	private readonly Logger _logger = new("WateringCan");
 
 	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
 	{
@@ -60,6 +51,7 @@ public class WateringCan : Tool
 	{
 		_logger.Debug("Did not water anything. Waste of water");
 	}
+
 
 	protected override void OnStart(Player.Player user)
 	{

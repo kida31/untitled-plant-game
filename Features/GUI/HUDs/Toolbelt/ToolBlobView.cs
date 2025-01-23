@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using untitledplantgame.Tools;
 
@@ -23,27 +22,13 @@ public partial class ToolBlobView : Control
 
 	[Export] private AnimationPlayer _animationPlayer;
 	[Export] private TextureRect _toolIcon;
-	
-	[ExportGroup("Placeholder hardcoded icons")]
-	[Export] private Texture2D _wateringCanIcon;
-	[Export] private Texture2D _shovelIcon;
-	[Export] private Texture2D _shearsIcon;
-	[Export] private Texture2D _seedBagIcon;
 
 	public Tool Tool {
 		get => _tool;
 		set
 		{
 			_tool = value;
-			_toolIcon.Texture = _tool switch
-			{
-				// Placeholder
-				WateringCan => _wateringCanIcon,
-				Shears => _shearsIcon,
-				SeedBag => _seedBagIcon,
-				Shovel => _shovelIcon,
-				_ => null,
-			};
+			_toolIcon.Texture = _tool?.Icon;
 		}
 	}
 

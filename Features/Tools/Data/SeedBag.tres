@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SeedBag" load_steps=3 format=3 uid="uid://bpaygf61q330d"]
+
+[ext_resource type="Texture2D" uid="uid://cddp1h65h56vi" path="res://Assets/Tools/SeedBag.png" id="1_c36ed"]
+[ext_resource type="Script" path="res://Features/Tools/SeedBag.cs" id="2_awtmu"]
+
+[resource]
+script = ExtResource("2_awtmu")
+Name = "Seed Bag"
+Description = "This can hold your precious seeds. Sow them everywhere. Let there be plants!"
+Icon = ExtResource("1_c36ed")
+ChannelingTime = 1.0
+Radius = 12.0
+Range = 24.0
