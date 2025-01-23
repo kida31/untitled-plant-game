@@ -68,8 +68,8 @@ public partial class DialogueSystem : Node, IDialogueSystem
 				EndDialogue();
 				return;
 			case DialogueEvent d:
-				d.Execute();
 				EndDialogue();
+				d.Execute();
 				return;
 			default:
 				SetAndResetDialogueBlock(nextDialogue);
