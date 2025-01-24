@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1nilobllr1kv"]
+
+[ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_qxixi"]
+[ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_kfvnw"]
+[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_rqje8"]
+[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_gy8vv"]
+[ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_fqbd8"]
+[ext_resource type="Resource" uid="uid://x6k03jyr10uv" path="res://Resources/Dialogue/Pier/500m_left.tres" id="6_avjds"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvi7q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlqdi"]
+radius = 34.0147
+
+[node name="500mSign" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction", "_routinePlanner")]
+position = Vector2(112, -401)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_qxixi")
+_name = "1km Sign"
+_npcPlayerInteraction = NodePath("InteractionNode")
+_routinePlanner = NodePath("RoutinePlanner")
+
+[node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_fvi7q")
+
+[node name="InteractionNode" type="Area2D" parent="."]
+script = ExtResource("2_kfvnw")
+
+[node name="InteractionCollisionShape2D" type="CollisionShape2D" parent="InteractionNode"]
+shape = SubResource("CircleShape2D_jlqdi")
+
+[node name="RoutinePlanner" type="Node" parent="." node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+script = ExtResource("3_rqje8")
+_npcExecutingRoutines = NodePath("..")
+_routines = [null]
+
+[node name="OnPlayerInteraction" type="Node" parent="RoutinePlanner"]
+script = ExtResource("4_gy8vv")
+RoutineTrigger = 1
+
+[node name="TalkToSign" type="Node" parent="RoutinePlanner/OnPlayerInteraction"]
+script = ExtResource("5_fqbd8")
+_dialogueResourceObject = ExtResource("6_avjds")
