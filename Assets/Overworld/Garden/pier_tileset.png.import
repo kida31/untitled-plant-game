@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy0uyts2e0kox"
-path="res://.godot/imported/wall_tileset.png-5dfe75f14cf46c5d6c0fb27383ef04a4.ctex"
+uid="uid://dl3ytowjsie7x"
+path="res://.godot/imported/pier_tileset.png-b0ae04bf2d64d97a985b38456d649638.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/wall_tileset.png"
-dest_files=["res://.godot/imported/wall_tileset.png-5dfe75f14cf46c5d6c0fb27383ef04a4.ctex"]
+source_file="res://Assets/Overworld/Garden/pier_tileset.png"
+dest_files=["res://.godot/imported/pier_tileset.png-b0ae04bf2d64d97a985b38456d649638.ctex"]
 
 [params]
 

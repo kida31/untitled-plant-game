@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brsh7tu35h1n2"
-path="res://.godot/imported/tree.png-6e0fa1ef01ab564689142cbf21ce51fb.ctex"
+uid="uid://5kx22qfxe5uu"
+path="res://.godot/imported/chubery_seed.png-6521f24a25e6a01ff8589ecf9d4835b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Overworld/Garden/tree.png"
-dest_files=["res://.godot/imported/tree.png-6e0fa1ef01ab564689142cbf21ce51fb.ctex"]
+source_file="res://Assets/Items/Plants/chubery_seed.png"
+dest_files=["res://.godot/imported/chubery_seed.png-6521f24a25e6a01ff8589ecf9d4835b3.ctex"]
 
 [params]
 

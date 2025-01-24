@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Database;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
+using untitledplantgame.Item.Components;
 
 namespace untitledplantgame.Plants;
 
@@ -84,20 +85,17 @@ public partial class Plant : Area2D
 	/// </summary>
 	public IItemStack Harvest()
 	{
-		if (_isHarvestable)
-		{
-			_logger.Debug($"Plant {PlantName} has been harvested.");
-			Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
-			SetRequirements();
-			_logger.Debug("plant has reached stage " + Stage);
-		}
-		else
-		{
-			_logger.Debug($"Plant {PlantName} is not ready to be harvested.");
-			return null;
-		}
+		if (!_isHarvestable) return null;
 
-		return GetHarvestItem();
+		_logger.Debug($"Plant {PlantName} has been harvested.");
+		var harvestedItems = GetHarvestItem();
+
+		Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
+		SetRequirements();
+		_logger.Debug("plant has reached stage " + Stage);
+		EventBus.Instance.OnPlantHarvested(this);
+
+		return harvestedItems;
 	}
 
 	/// <summary>
@@ -116,7 +114,7 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void SetRequirements()
 	{
-		_logger.Debug($"Setting requirements for plant {PlantName}.");
+		_logger.Debug($"Setting requirements for plant {PlantName} with stage {Stage}.");
 
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
 		var plantRequirements = new Dictionary<string, Requirement>();
@@ -233,8 +231,17 @@ public partial class Plant : Area2D
 	private IItemStack GetHarvestItem()
 	{
 		if (!_isHarvestable) return null;
+		_logger.Debug($"Looking for harvested items for {PlantName} with stage {Stage}.");
+		var comparable = new HarvestedComponent(PlantName, Stage);
+		var itemStacks = ItemDatabase.Instance.GetAllItems()
+			.Find(i =>
+			{
+				var component = i.GetComponent<HarvestedComponent>();
+				return component != null && component.Equals(comparable);
+			});
 
-		var itemStack = ItemDatabase.Instance.CreateItemStack($"{PlantName}_{Stage}_harvested");
-		return itemStack;
+		_logger.Debug("Harvested items: " + itemStacks);
+
+		return itemStacks;
 	}
 }

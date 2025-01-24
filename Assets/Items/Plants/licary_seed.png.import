@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b055ddfxb6hkf"
-path="res://.godot/imported/tree_smaller.png-eb5ebe0b12e94cf3d0da3f9d3a82a46d.ctex"
+uid="uid://brvifp016fd4l"
+path="res://.godot/imported/licary_seed.png-4f9d48d1efbe1234f2ff489b257b5190.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Overworld/Garden/tree_smaller.png"
-dest_files=["res://.godot/imported/tree_smaller.png-eb5ebe0b12e94cf3d0da3f9d3a82a46d.ctex"]
+source_file="res://Assets/Items/Plants/licary_seed.png"
+dest_files=["res://.godot/imported/licary_seed.png-4f9d48d1efbe1234f2ff489b257b5190.ctex"]
 
 [params]
 

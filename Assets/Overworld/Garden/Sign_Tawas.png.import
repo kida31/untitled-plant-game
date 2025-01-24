@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsjx5iswuvktp"
-path="res://.godot/imported/Drupoleaum_Fruits.png-1d8d51c3485882624bac1a327cd01455.ctex"
+uid="uid://dutej8e00ofqq"
+path="res://.godot/imported/Sign_Tawas.png-6d878eababfbea2688f1297fd78184ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/Drupoleaum_Fruits.png"
-dest_files=["res://.godot/imported/Drupoleaum_Fruits.png-1d8d51c3485882624bac1a327cd01455.ctex"]
+source_file="res://Assets/Overworld/Garden/Sign_Tawas.png"
+dest_files=["res://.godot/imported/Sign_Tawas.png-6d878eababfbea2688f1297fd78184ee.ctex"]
 
 [params]
 
