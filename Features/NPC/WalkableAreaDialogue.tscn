@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqqhj7jxwv1q5"]
+
+[ext_resource type="Script" path="res://Features/NPC/WalkableAreaDialogue.cs" id="1_bbpvy"]
+[ext_resource type="Resource" uid="uid://dqv210o7xertv" path="res://Resources/Dialogue/Bed/GoToSleep.tres" id="2_iprjn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5sl4"]
+size = Vector2(29, 10.6)
+
+[node name="WalkableArea" type="Area2D"]
+script = ExtResource("1_bbpvy")
+_dialogueResourceObject = ExtResource("2_iprjn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2.5)
+scale = Vector2(2, 5)
+shape = SubResource("RectangleShape2D_p5sl4")
