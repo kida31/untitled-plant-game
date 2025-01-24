@@ -86,20 +86,16 @@ public partial class Plant : Area2D
 	/// </summary>
 	public List<IItemStack> Harvest()
 	{
-		if (_isHarvestable)
-		{
-			_logger.Debug($"Plant {PlantName} has been harvested.");
-			Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
-			SetRequirements();
-			_logger.Debug("plant has reached stage " + Stage);
-		}
-		else
-		{
-			_logger.Debug($"Plant {PlantName} is not ready to be harvested.");
-			return null;
-		}
+		if (!_isHarvestable) return null;
 
-		return GetHarvestItem();
+		_logger.Debug($"Plant {PlantName} has been harvested.");
+		var harvestedItems = GetHarvestItem();
+		
+		Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
+		SetRequirements();
+		_logger.Debug("plant has reached stage " + Stage);
+
+		return harvestedItems;
 	}
 
 	/// <summary>
@@ -118,7 +114,7 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void SetRequirements()
 	{
-		_logger.Debug($"Setting requirements for plant {PlantName}.");
+		_logger.Debug($"Setting requirements for plant {PlantName} with stage {Stage}.");
 
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
 		var plantRequirements = new Dictionary<string, Requirement>();
@@ -235,11 +231,12 @@ public partial class Plant : Area2D
 	private List<IItemStack> GetHarvestItem()
 	{
 		if (!_isHarvestable) return null;
-
+		_logger.Debug($"Looking for harvested items for {PlantName} with stage {Stage}.");
 		var itemStacks = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>
 		{
 			new HarvestedComponent(PlantName, Stage)
 		});
+		_logger.Debug("Harvested items: " + itemStacks);
 		
 		return itemStacks;
 	}
