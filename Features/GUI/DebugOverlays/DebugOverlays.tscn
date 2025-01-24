@@ -1,49 +1,80 @@
-[gd_scene load_steps=6 format=3 uid="uid://df0cg0vcow1n2"]
+[gd_scene load_steps=8 format=3 uid="uid://df0cg0vcow1n2"]
 
+[ext_resource type="Theme" uid="uid://dqv5ijlnkdf75" path="res://Assets/DebugTheme.tres" id="1_1ftpd"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugKeybindings.cs" id="1_2qjov"]
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugOverlays.cs" id="1_cr3m0"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentFocus.cs" id="1_spicd"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugLastClicked.cs" id="2_4xlmf"]
 [ext_resource type="Script" path="res://InGameLogOverlay.cs" id="2_lomx1"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugGameState.cs" id="4_k0vro"]
 
-[node name="DebugOverlays" type="PanelContainer"]
-top_level = true
+[node name="DebugOverlays" type="BoxContainer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -64.0
-offset_right = 318.0
+offset_top = -106.0
+offset_right = 500.0
 grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
+theme = ExtResource("1_1ftpd")
+alignment = 2
+vertical = true
+script = ExtResource("1_cr3m0")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-size_flags_vertical = 8
-mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="Keybindings" type="Label" parent="VBoxContainer"]
+[node name="Keybindings" type="Label" parent="PanelContainer"]
 layout_mode = 2
+size_flags_vertical = 1
 text = "Keybinds"
 script = ExtResource("1_2qjov")
 
-[node name="CurrentFocus" type="Label" parent="VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="CurrentFocus" type="Label" parent="PanelContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
 text = "CurrentFocus"
 script = ExtResource("1_spicd")
 
-[node name="LastClicked" type="Label" parent="VBoxContainer"]
+[node name="PanelContainer3" type="PanelContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="LastClicked" type="Label" parent="PanelContainer3"]
+layout_mode = 2
+size_flags_vertical = 1
 text = "LastClicked"
 script = ExtResource("2_4xlmf")
 
-[node name="GameState" type="Label" parent="VBoxContainer"]
+[node name="PanelContainer4" type="PanelContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="GameState" type="Label" parent="PanelContainer4"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "GameState"
 script = ExtResource("4_k0vro")
 
-[node name="Logs" type="RichTextLabel" parent="VBoxContainer"]
+[node name="PanelContainer5" type="PanelContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="Logs" type="RichTextLabel" parent="PanelContainer5"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
 mouse_filter = 2
 bbcode_enabled = true
 text = "LogMessages"

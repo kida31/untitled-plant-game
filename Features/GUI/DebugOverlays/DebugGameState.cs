@@ -14,11 +14,11 @@ public partial class DebugGameState : Label
 
 	private void OnStateChanged(GameState _, GameState nextState)
 	{
-// Log
+		// Log
 		_stateHistory.Enqueue(nextState);
 
-// Update
-		var recentStates = _stateHistory.TakeLast(5).Select(v => v.Name);
-		Text = "GameState: " + string.Join(" -> ", recentStates);
+		// Update
+		var recentStates = _stateHistory.Select((v, i) => $"{v.Name}({i})").TakeLast(5);
+		Text = $"GameState: {string.Join(" -> ", recentStates)}";
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Item;
@@ -67,8 +68,11 @@ public interface IItemStack
 	T GetComponent<T>()
 		where T : AComponent;
 	
-	T GetComponent<T>(T component)
-		where T : AComponent => GetComponent<T>();
+	T GetComponent<T>(T component) where T : AComponent
+	{
+		var match = Components.FirstOrDefault(c => c.GetType() == component.GetType());
+		return match as T;
+	}
 
 	/// <summary>
 	///     Adds a component to the item
