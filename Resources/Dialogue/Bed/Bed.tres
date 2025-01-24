@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://dqv210o7xertv"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://dqv210o7xertv"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_34iy2"]
 [ext_resource type="Script" path="res://Features/Dialogue/Events/GoToBed.cs" id="2_nsrvf"]
@@ -10,16 +10,21 @@ script = ExtResource("1_34iy2")
 speakerName = "Bed"
 dialogueText = "Would you like to go to Bed?"
 
-[sub_resource type="Resource" id="Resource_kr3qh"]
+[sub_resource type="Resource" id="Resource_bw73u"]
 script = ExtResource("2_nsrvf")
-_dialogueId = ""
-_dialogueText = null
+speakerName = ""
+dialogueText = ""
+
+[sub_resource type="Resource" id="Resource_4bauo"]
+script = ExtResource("4_f6psa")
+_dialogueId = "GoSleep"
+_dialogueText = Array[Object]([SubResource("Resource_bw73u")])
 _responses = null
 
 [sub_resource type="Resource" id="Resource_2aaa4"]
 script = ExtResource("3_ncpkl")
 _responseButton = "Yes"
-_responseDialogue = SubResource("Resource_kr3qh")
+_responseDialogue = SubResource("Resource_4bauo")
 
 [sub_resource type="Resource" id="Resource_s6ni2"]
 script = ExtResource("3_ncpkl")

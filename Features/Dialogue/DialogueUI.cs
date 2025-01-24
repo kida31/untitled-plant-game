@@ -122,7 +122,26 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 	//Displays dialogue on the screen
 	private void ShowDialogueLine(DialogueLine line)
 	{
-		_nameLabel.Text = line.speakerName;
+		switch (line)
+		{
+			case null:
+				_logger.Error("Dialogue line is null.");
+				return;
+			case DialogueEvent d:
+				d.Execute();
+				OnEndOfDialogueBlock();
+				return;
+		}
+
+		
+		if(line.speakerName != null)
+		{
+			_nameLabel.Text = line.speakerName;
+			_nameLabel.Visible = true;
+		} else {
+			_nameLabel.Visible = false;
+		}
+		
 		_dialogueTextLabel.Text = line.dialogueText;
 		_dialogueAnimation.AnimateNextDialogueLine(_dialogueTextLabel, line);
 
@@ -153,7 +172,7 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 			{
 				_dialogueSystem.InsertSelectedResponse(response);
 				//---Code from Panikk-Mode---
-				EventBus.Instance.ResponseButtonPressed(response);
+				//EventBus.Instance.ResponseButtonPressed(response);
 				//---Code from Panikk-Mode---
 				ClearResponses();
 			}
