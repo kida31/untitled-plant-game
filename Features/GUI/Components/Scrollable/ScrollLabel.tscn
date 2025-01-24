@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhr5lflvgvgi0"]
+[gd_scene load_steps=3 format=3 uid="uid://bdrc3cl4fvmwx"]
 
 [ext_resource type="Script" path="res://Features/GUI/Components/Scrollable/ScrollLabel.cs" id="1_sjxay"]
 [ext_resource type="Script" path="res://Features/GUI/Components/Scrollable/AutoScroll.cs" id="2_c4j3f"]
