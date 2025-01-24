@@ -22,6 +22,7 @@ public partial class WikiArticleView : Control
 
 	private IItemStack _itemStack;
 	private bool _isShowingDescription;
+	private Tween _tween;
 
 	public override void _Ready()
 	{
@@ -66,17 +67,26 @@ public partial class WikiArticleView : Control
 			return;
 		}
 
-		const float duration = 0.2f;
+		const float duration = 0.1f;
+		_tween?.Stop();
 		if (_isShowingDescription)
 		{
-			_itemStats.FadeIn(duration);
-			_itemDescription.FadeOut(duration);
+			// Chain animation
+			_tween = _itemDescription.FadeOut(duration);
+			_itemStats.Show();
+			_tween = _itemStats.FadeIn(duration, tween: _tween);
+			ToSignal(_tween, Tween.SignalName.Finished)
+				.OnCompleted(_itemDescription.Hide);
 		}
 		else
 		{
-			_itemStats.FadeOut(duration);
-			_itemDescription.FadeIn(duration);
+			_tween = _itemStats.FadeOut(duration);
+			_itemDescription.Show();
+			_tween = _itemDescription.FadeIn(duration, tween: _tween);
+			ToSignal(_tween, Tween.SignalName.Finished)
+				.OnCompleted(_itemStats.Hide);
 		}
+
 		_isShowingDescription = !_isShowingDescription;
 	}
 
