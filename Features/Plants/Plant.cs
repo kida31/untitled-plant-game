@@ -234,8 +234,13 @@ public partial class Plant : Area2D
 	{
 		if (!_isHarvestable) return null;
 		_logger.Debug($"Looking for harvested items for {PlantName} with stage {Stage}.");
-		var itemStacks = ItemDatabase.Instance.ItemStacks.FirstOrDefault(i =>
-			i.GetComponent<HarvestedComponent>().Equals(new HarvestedComponent(PlantName, Stage)));
+		var comparable = new HarvestedComponent(PlantName, Stage);
+		var itemStacks = ItemDatabase.Instance.ItemStacks
+			.Find(i =>
+			{
+				var component = i.GetComponent<HarvestedComponent>();
+				return component != null && component.Equals(comparable);
+			});
 
 		_logger.Debug("Harvested items: " + itemStacks);
 
