@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_m4ye3"]
 script = ExtResource("1_y7d57")
 speakerName = "Pan Dan"
-DialogueExpression = 0
 dialogueText = "I tripped over a log and fell onto these seeds, would you buy those?"
 
 [sub_resource type="Resource" id="Resource_sige0"]

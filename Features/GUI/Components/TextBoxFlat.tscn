@@ -1,12 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://ru6miowo20bv"]
 
-[ext_resource type="Texture2D" uid="uid://dyaetbwehoiqp" path="res://Assets/UI/BookUI/Containers&Labels/TextLabel.png" id="1_v5pan"]
+[ext_resource type="Texture2D" uid="uid://dyaetbwehoiqp" path="res://Assets/UI/Book/Containers&Labels/TextLabel.png" id="1_v5pan"]
 
 [node name="TextBox" type="Label"]
 offset_right = 23.0
 offset_bottom = 14.0
 theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
-theme_override_font_sizes/font_size = 16
 text = "Abc12"
 vertical_alignment = 1
 text_overrun_behavior = 3
