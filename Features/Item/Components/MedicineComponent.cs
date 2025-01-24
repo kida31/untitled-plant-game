@@ -19,6 +19,7 @@ public partial class MedicineComponent : AComponent
 
 	public MedicineComponent()
 	{
+		// Empty constructor for serialization
 	}
 
 	//I want this logic for processing plants by themselves
@@ -100,9 +101,9 @@ public partial class MedicineComponent : AComponent
 	public override string ToString()
 	{
 		var result = "";
-		foreach (var VARIABLE in TheGoodStuff)
+		foreach (var (effectName, strength) in TheGoodStuff)
 		{
-			result += $" {VARIABLE.Key} : {VARIABLE.Value}";
+			result += $" {effectName} : {strength}";
 		}
 
 		return "MedicinalComponent with effects: " + result;
