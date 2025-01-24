@@ -9,7 +9,7 @@ public partial class DialogueLine : Resource //DO NOT rename variables or the re
 	public string speakerName;
 
 	[Export]
-	public DialogueExpression DialogueExpression;
+	public CompressedTexture2D DialogueExpression;
 
 	[Export]
 	public string dialogueText;

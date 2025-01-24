@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://df0cg0vcow1n2"]
+[gd_scene load_steps=6 format=3 uid="uid://df0cg0vcow1n2"]
 
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugKeybindings.cs" id="1_2qjov"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentFocus.cs" id="1_spicd"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugLastClicked.cs" id="2_4xlmf"]
 [ext_resource type="Script" path="res://InGameLogOverlay.cs" id="2_lomx1"]
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugGameState.cs" id="4_k0vro"]
 
 [node name="DebugOverlays" type="PanelContainer"]
 top_level = true
@@ -35,6 +36,10 @@ script = ExtResource("1_spicd")
 layout_mode = 2
 text = "LastClicked"
 script = ExtResource("2_4xlmf")
+
+[node name="GameState" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("4_k0vro")
 
 [node name="Logs" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
