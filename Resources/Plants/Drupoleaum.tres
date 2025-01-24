@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=22 format=3 uid="uid://cb1aih8l73aw8"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=25 format=3 uid="uid://cb1aih8l73aw8"]
 
 [ext_resource type="Script" path="res://Features/Plants/Models/PlantData.cs" id="1_40thf"]
 [ext_resource type="Script" path="res://Features/Plants/Models/RequirementData.cs" id="1_yucea"]
@@ -7,136 +7,125 @@
 [sub_resource type="Resource" id="Resource_dwqhs"]
 script = ExtResource("1_yucea")
 Name = 1
-MinLevel = 0.0
-MaxLevel = 20.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+MinLevel = 10.0
+MaxLevel = 50.0
 
 [sub_resource type="Resource" id="Resource_2jqe6"]
 script = ExtResource("1_yucea")
 Name = 0
-MinLevel = 0.0
-MaxLevel = 5.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+MinLevel = 20.0
+MaxLevel = 80.0
 
 [sub_resource type="Resource" id="Resource_325r3"]
 script = ExtResource("2_dnou2")
 GrowthRequirements = Array[Object]([SubResource("Resource_dwqhs"), SubResource("Resource_2jqe6")])
-DaysToGrow = 2
 IsHarvestable = false
 
 [sub_resource type="Resource" id="Resource_msfu7"]
 script = ExtResource("1_yucea")
 Name = 1
-MinLevel = 5.0
-MaxLevel = 25.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+MinLevel = 50.0
+MaxLevel = 100.0
 
 [sub_resource type="Resource" id="Resource_wahim"]
 script = ExtResource("1_yucea")
 Name = 0
-MinLevel = 5.0
-MaxLevel = 10.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+MinLevel = 50.0
+MaxLevel = 90.0
 
 [sub_resource type="Resource" id="Resource_p1qrr"]
 script = ExtResource("2_dnou2")
 GrowthRequirements = Array[Object]([SubResource("Resource_msfu7"), SubResource("Resource_wahim")])
-DaysToGrow = 2
 IsHarvestable = false
 
 [sub_resource type="Resource" id="Resource_llt00"]
 script = ExtResource("1_yucea")
 Name = 1
-MinLevel = 10.0
-MaxLevel = 30.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+MinLevel = 40.0
+MaxLevel = 100.0
 
 [sub_resource type="Resource" id="Resource_no7n7"]
 script = ExtResource("1_yucea")
 Name = 0
-MinLevel = 10.0
-MaxLevel = 15.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+MinLevel = 60.0
+MaxLevel = 120.0
 
 [sub_resource type="Resource" id="Resource_miew2"]
 script = ExtResource("2_dnou2")
 GrowthRequirements = Array[Object]([SubResource("Resource_llt00"), SubResource("Resource_no7n7")])
-DaysToGrow = 3
 IsHarvestable = false
 
 [sub_resource type="Resource" id="Resource_i1mbl"]
 script = ExtResource("1_yucea")
 Name = 1
-MinLevel = 15.0
-MaxLevel = 35.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+MinLevel = 30.0
+MaxLevel = 100.0
 
 [sub_resource type="Resource" id="Resource_dxjd5"]
 script = ExtResource("1_yucea")
 Name = 0
-MinLevel = 15.0
-MaxLevel = 20.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+MinLevel = 75.0
+MaxLevel = 120.0
 
 [sub_resource type="Resource" id="Resource_vprjf"]
 script = ExtResource("2_dnou2")
 GrowthRequirements = Array[Object]([SubResource("Resource_i1mbl"), SubResource("Resource_dxjd5")])
-DaysToGrow = 3
 IsHarvestable = false
 
 [sub_resource type="Resource" id="Resource_8xkew"]
 script = ExtResource("1_yucea")
-Name = 0
-MinLevel = 20.0
-MaxLevel = 40.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+Name = 1
+MinLevel = 40.0
+MaxLevel = 100.0
 
 [sub_resource type="Resource" id="Resource_0ow42"]
 script = ExtResource("1_yucea")
 Name = 0
-MinLevel = 20.0
-MaxLevel = 30.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+MinLevel = 75.0
+MaxLevel = 120.0
 
 [sub_resource type="Resource" id="Resource_w7rc2"]
 script = ExtResource("2_dnou2")
 GrowthRequirements = Array[Object]([SubResource("Resource_8xkew"), SubResource("Resource_0ow42")])
-DaysToGrow = 4
-IsHarvestable = true
+IsHarvestable = false
 
 [sub_resource type="Resource" id="Resource_qx4pm"]
 script = ExtResource("1_yucea")
 Name = 1
-MinLevel = 25.0
-MaxLevel = 45.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+MinLevel = 50.0
+MaxLevel = 110.0
 
 [sub_resource type="Resource" id="Resource_83m2e"]
 script = ExtResource("1_yucea")
 Name = 0
-MinLevel = 25.0
-MaxLevel = 35.0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+MinLevel = 80.0
+MaxLevel = 120.0
 
 [sub_resource type="Resource" id="Resource_oef1i"]
 script = ExtResource("2_dnou2")
 GrowthRequirements = Array[Object]([SubResource("Resource_qx4pm"), SubResource("Resource_83m2e")])
-DaysToGrow = 3
+IsHarvestable = true
+
+[sub_resource type="Resource" id="Resource_jy44q"]
+script = ExtResource("1_yucea")
+Name = 0
+MinLevel = 80.0
+MaxLevel = 120.0
+
+[sub_resource type="Resource" id="Resource_1pdsk"]
+script = ExtResource("1_yucea")
+Name = 1
+MinLevel = 60.0
+MaxLevel = 120.0
+
+[sub_resource type="Resource" id="Resource_k3nmq"]
+script = ExtResource("2_dnou2")
+GrowthRequirements = Array[Object]([SubResource("Resource_jy44q"), SubResource("Resource_1pdsk")])
 IsHarvestable = true
 
 [resource]
 script = ExtResource("1_40thf")
 PlantName = "Drupoleaum"
-DataForGrowthStages = Array[Object]([SubResource("Resource_325r3"), SubResource("Resource_p1qrr"), SubResource("Resource_miew2"), SubResource("Resource_vprjf"), SubResource("Resource_w7rc2"), SubResource("Resource_oef1i")])
+ConsumptionRate = 40
+AbsorptionRate = 50
+DataForGrowthStages = Array[Object]([SubResource("Resource_325r3"), SubResource("Resource_p1qrr"), SubResource("Resource_miew2"), SubResource("Resource_vprjf"), SubResource("Resource_w7rc2"), SubResource("Resource_oef1i"), SubResource("Resource_k3nmq")])

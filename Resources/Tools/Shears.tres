@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://chhf61aloiv17"]
+
+[ext_resource type="Script" path="res://Features/Tools/Shears.cs" id="2_2bda8"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uvbao"]
+load_path = "res://.godot/imported/GardenScissors.png-e99ae96baef75052a088d6cd44155367.ctex"
+
+[resource]
+script = ExtResource("2_2bda8")
+Name = "Garden Scissors"
+Description = "Gently extracts fruits or leaves from your plants."
+Icon = SubResource("CompressedTexture2D_uvbao")
+ChannelingTime = 1.0
+Radius = 12.0
+Range = 24.0

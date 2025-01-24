@@ -1,9 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://cr2712p8tviur"]
+[gd_scene load_steps=40 format=3 uid="uid://cr2712p8tviur"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_ljkvf"]
 [ext_resource type="Texture2D" uid="uid://6vwbt72gbl2k" path="res://Assets/Characters/Godfrey/Godfrey_idle-Sheet.png" id="2_ujoa5"]
 [ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_c2lkg"]
+[ext_resource type="Texture2D" uid="uid://o1rnpbgpuum" path="res://Assets/Characters/Godfrey/Godfrey_angry.png" id="3_ntnv6"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="4_oqor7"]
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_ryo3x"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="5_d4tnh"]
 [ext_resource type="PackedScene" uid="uid://lufeqnjeabjx" path="res://Features/NPC/NpcTask/MovementTaskTarget.tscn" id="5_wrpdt"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="6_8afnb"]
 [ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/TutorialDialogue.tres" id="7_v4eb2"]
@@ -13,22 +16,233 @@
 [ext_resource type="Resource" uid="uid://yg4mwgstm60u" path="res://Resources/Dialogue/Tutorial/SeedBoyTutorialDialogue.tres" id="11_owjbx"]
 [ext_resource type="Resource" uid="uid://ds2a5jertu4k4" path="res://Resources/Dialogue/Tutorial/TutorialDialogueEnd.tres" id="12_tpypq"]
 
-[node name="Godfrey" node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("1_ljkvf")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4k6y"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhdql"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ll4"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l32pd"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu2a1"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0vra"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3xsg"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3b3n"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twtyi"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hpqv"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(288, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0faw2"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(320, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aanak"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(320, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dyeu"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(288, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u8wp"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p0s7"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebukw"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs545"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdg63"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7vcr"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhcqg"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0eb5o"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giwv6"]
+atlas = ExtResource("2_ujoa5")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ts0yk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4k6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhdql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ll4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l32pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu2a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0vra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3xsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3b3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twtyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hpqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0faw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aanak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dyeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u8wp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6p0s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebukw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xs545")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdg63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7vcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhcqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0eb5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giwv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4k6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4k6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4k6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4k6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4k6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4k6y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_838gj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ntnv6")
+}],
+"loop": true,
+"name": &"godfrey_angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_oqor7")
+}],
+"loop": true,
+"name": &"godfrey_happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_d4tnh")
+}],
+"loop": true,
+"name": &"godfrey_shook",
+"speed": 5.0
+}]
+
+[node name="Godfrey" node_paths=PackedStringArray("_routinePlanner", "_portraitSprite2D") instance=ExtResource("1_ljkvf")]
 _name = "Godfrey the first Priest"
 _routinePlanner = NodePath("GodfreyRandomWalk")
+_portraitSprite2D = NodePath("CharacterSprite2D")
+
+[node name="CharacterSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_ts0yk")
+animation = &"idle"
+frame = 15
+frame_progress = 0.347857
 
 [node name="PortraitSprite2D" parent="." index="2"]
 visible = false
+sprite_frames = SubResource("SpriteFrames_838gj")
+animation = &"godfrey_shook"
 
-[node name="GodfreySprite" type="Sprite2D" parent="." index="4"]
-position = Vector2(0, -30)
-texture = ExtResource("2_ujoa5")
-hframes = 11
-
-[node name="GodfreyRandomWalk" type="Node" parent="." index="5" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+[node name="GodfreyRandomWalk" type="Node" parent="." index="4" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
 script = ExtResource("3_c2lkg")
 _npcExecutingRoutines = NodePath("..")
-_routines = [null, null, null]
+_routines = [NodePath("MovementRoutine1"), NodePath("MovementRoutine2"), NodePath("MovementRoutine3")]
 
 [node name="MovementRoutine1" type="Node" parent="GodfreyRandomWalk" index="0"]
 script = ExtResource("4_ryo3x")

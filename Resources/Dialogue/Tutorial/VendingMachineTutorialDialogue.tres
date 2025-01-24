@@ -1,48 +1,51 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://dopykccwoa5os"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=13 format=3 uid="uid://dopykccwoa5os"]
 
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_4tb82"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_454lr"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_hsvq2"]
+[ext_resource type="Texture2D" uid="uid://kihg62biqd01" path="res://Assets/Overworld/Garden/vendingMachine.png" id="3_gdfeg"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="4_x6cgm"]
 
 [sub_resource type="Resource" id="Resource_iey8o"]
 script = ExtResource("1_454lr")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_4tb82")
 dialogueText = "Did you know that chubery fruits are really popular? "
 
 [sub_resource type="Resource" id="Resource_wieva"]
 script = ExtResource("1_454lr")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("3_gdfeg")
 dialogueText = "I bet if you put it on sale in that vending machine over there, people will come buy it."
 
 [sub_resource type="Resource" id="Resource_w4rvn"]
 script = ExtResource("1_454lr")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_4tb82")
 dialogueText = "The previous owner used to fill the machine up every day but these days it’s just empty."
 
 [sub_resource type="Resource" id="Resource_tapf8"]
 script = ExtResource("1_454lr")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("4_x6cgm")
 dialogueText = "I’ll tell the people that you will take care of the machine again!"
 
 [sub_resource type="Resource" id="Resource_cyjdd"]
 script = ExtResource("1_454lr")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
-dialogueText = "Oh. Just press A to open it. "
+DialogueExpression = ExtResource("1_4tb82")
+dialogueText = "Oh. When you're standing in front of it, just press A to open it. "
 
 [sub_resource type="Resource" id="Resource_p8ncf"]
 script = ExtResource("1_454lr")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_4tb82")
 dialogueText = "You can decide the price yourself but the people will have an opinion about the price…"
 
 [sub_resource type="Resource" id="Resource_gojdt"]
 script = ExtResource("1_454lr")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_4tb82")
 dialogueText = "Best not to anger them, right? First impressions and all that…. *chuckles* "
 
 [resource]

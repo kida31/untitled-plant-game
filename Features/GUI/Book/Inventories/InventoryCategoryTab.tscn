@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://caiu3dqnnxl28"]
+[gd_scene load_steps=7 format=3 uid="uid://fhfmty750v8m"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryCategoryTab.cs" id="1_o154g"]
 [ext_resource type="Texture2D" uid="uid://ovau2703fwu" path="res://Assets/UI/Book/Icons/tab_active.png" id="2_k56mi"]
@@ -178,7 +178,6 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 16
 text = "Plants"
 horizontal_alignment = 1
 vertical_alignment = 1

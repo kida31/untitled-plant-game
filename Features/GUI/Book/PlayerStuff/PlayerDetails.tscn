@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtgjnb2g3iphl"]
+[gd_scene load_steps=8 format=3 uid="uid://dnjm2aotqw827"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/PlayerDetailsView.cs" id="1_88tm0"]
 [ext_resource type="Texture2D" uid="uid://ijkype7hlovv" path="res://Assets/UI/Book/Pages/RightInventory_empty.png" id="2_srt7k"]
@@ -60,7 +60,6 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
-theme_override_font_sizes/font_size = 16
 text = "Abc12"
 vertical_alignment = 1
 text_overrun_behavior = 3
@@ -69,7 +68,6 @@ text_overrun_behavior = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
-theme_override_font_sizes/font_size = 16
 text = "Abc12"
 vertical_alignment = 1
 text_overrun_behavior = 3
@@ -78,7 +76,6 @@ text_overrun_behavior = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
-theme_override_font_sizes/font_size = 16
 text = "Abc12"
 vertical_alignment = 1
 text_overrun_behavior = 3
@@ -87,7 +84,6 @@ text_overrun_behavior = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.6875, 0.553012, 0.401311, 1)
-theme_override_font_sizes/font_size = 16
 text = "Abc12"
 vertical_alignment = 1
 text_overrun_behavior = 3

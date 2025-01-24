@@ -19,7 +19,7 @@ public partial class ToolbeltView : Control
 		// Search for player until found
 		var placeholderBecauseImTooStupidToDoProperDependencies = new Timer();
 		placeholderBecauseImTooStupidToDoProperDependencies.Autostart = true;
-		placeholderBecauseImTooStupidToDoProperDependencies.WaitTime = .5f;
+		placeholderBecauseImTooStupidToDoProperDependencies.WaitTime = .1f;
 		placeholderBecauseImTooStupidToDoProperDependencies.OneShot = false;
 		placeholderBecauseImTooStupidToDoProperDependencies.Timeout += () =>
 		{
@@ -37,6 +37,7 @@ public partial class ToolbeltView : Control
 			_player.Toolbelt.WentToPreviousTool += () => AnimateToolChange(false);
 			placeholderBecauseImTooStupidToDoProperDependencies.Stop();
 			placeholderBecauseImTooStupidToDoProperDependencies.QueueFree();
+			UpdateToolBlobs();
 		};
 		AddChild(placeholderBecauseImTooStupidToDoProperDependencies);
 
