@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5kx22qfxe5uu"
-path="res://.godot/imported/chubery_seed.png-59be59a5f37a47033c8ce502b51c6402.ctex"
+uid="uid://cvf2qbnugufmd"
+path="res://.godot/imported/Drupoleaum_seeds.png-ee7cd346458861e62b5694e4acaafc68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/chubery_seed.png"
-dest_files=["res://.godot/imported/chubery_seed.png-59be59a5f37a47033c8ce502b51c6402.ctex"]
+source_file="res://Assets/Items/Plants/Drupoleaum_seeds.png"
+dest_files=["res://.godot/imported/Drupoleaum_seeds.png-ee7cd346458861e62b5694e4acaafc68.ctex"]
 
 [params]
 

@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://brsh7tu35h1n2" path="res://Assets/Overworld/Garden/tree.png" id="7_iwcgk"]
 [ext_resource type="Texture2D" uid="uid://b055ddfxb6hkf" path="res://Assets/Overworld/Garden/tree_smaller.png" id="8_wbixf"]
 [ext_resource type="Texture2D" uid="uid://xc4kgq08uta1" path="res://Assets/Overworld/Garden/Sign.png" id="9_xqpwc"]
-[ext_resource type="PackedScene" path="res://Features/NPC/Door.tscn" id="10_x262s"]
+[ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="10_x262s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f71b1"]
 resource_local_to_scene = true

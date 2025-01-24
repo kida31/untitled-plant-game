@@ -14,10 +14,16 @@ public partial class PlantMap : TileMapLayer
 		_logger.Debug("READY");
 		_tileLayer = this;
 		EventBus.Instance.OnSeedPlanted += OnSeedPlanted;
+		EventBus.Instance.PlantHarvested += PlantHarvested;
 		CallDeferred(nameof(GetPlantTiles));
 	}
 
-	private void OnPlantGrown(Plant plant)
+	private void PlantHarvested(Plant obj)
+	{
+		OnPlantSpriteChange(obj);
+	}
+
+	private void OnPlantSpriteChange(Plant plant)
 	{
 		var name = plant.PlantName;
 		var pos = ToLocal(plant.GlobalPosition);
@@ -45,16 +51,16 @@ public partial class PlantMap : TileMapLayer
 		{
 			if (plant is not Plant p) return;
 			p.BeforePlantRemoved += OnBeforePlantRemoved;
-			p.PlantGrown += OnPlantGrown;
-			OnPlantGrown(p);
+			p.PlantGrown += OnPlantSpriteChange;
+			OnPlantSpriteChange(p);
 		}
 	}
 
 	private void OnSeedPlanted(Plant obj)
 	{
 		obj.BeforePlantRemoved += OnBeforePlantRemoved;
-		obj.PlantGrown += OnPlantGrown;
-		OnPlantGrown(obj);
+		obj.PlantGrown += OnPlantSpriteChange;
+		OnPlantSpriteChange(obj);
 	}
 
 	//TODO Make it work with shovel tool
@@ -64,7 +70,7 @@ public partial class PlantMap : TileMapLayer
 		var mapPos = _tileLayer.LocalToMap(pos);
 		_tileLayer.EraseCell(mapPos);
 		plant.BeforePlantRemoved -= OnBeforePlantRemoved;
-		plant.PlantGrown -= OnPlantGrown;
+		plant.PlantGrown -= OnPlantSpriteChange;
 	}
 
 	private int GetTileSetId(string name)

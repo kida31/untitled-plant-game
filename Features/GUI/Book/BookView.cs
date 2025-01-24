@@ -4,9 +4,9 @@ using untitledplantgame.Common;
 using untitledplantgame.Common.ExtensionMethods;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
-using untitledplantgame.Database;
 using untitledplantgame.GUI.Book.Pages;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 
 namespace untitledplantgame.GUI.Book;
 
@@ -49,7 +49,7 @@ public partial class BookView : Control
 		// 2. Init Inventory
 
 		// 3. Init Wiki
-		var items = ItemDatabase.Instance.ItemStacks;
+		var items = ItemDatabase.Instance.GetAllItems();
 		_wikiPage.UpdateItems(items);
 		_wikiPage.ItemStackPressed += item => _wikiPage.UpdateArticle(item);
 	}
