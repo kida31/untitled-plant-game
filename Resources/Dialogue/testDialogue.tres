@@ -8,7 +8,6 @@
 [sub_resource type="Resource" id="Resource_o0fig"]
 script = ExtResource("1_lnhut")
 speakerName = "Seed Boy"
-DialogueExpression = 0
 dialogueText = "Here are the things that I collected today"
 
 [sub_resource type="Resource" id="Resource_l8iug"]
@@ -31,7 +30,6 @@ _responseDialogue = ExtResource("2_rqr2m")
 [sub_resource type="Resource" id="Resource_01t4l"]
 script = ExtResource("1_lnhut")
 speakerName = "SeedBoy"
-DialogueExpression = 0
 dialogueText = "NANI?!"
 
 [sub_resource type="Resource" id="Resource_cfjoq"]

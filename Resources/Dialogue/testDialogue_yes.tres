@@ -6,7 +6,6 @@
 [sub_resource type="Resource" id="Resource_tutyv"]
 script = ExtResource("1_vs0op")
 speakerName = "Seedboy"
-DialogueExpression = 0
 dialogueText = "Yo whatsup idk"
 
 [resource]
