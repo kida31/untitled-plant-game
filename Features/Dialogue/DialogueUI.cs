@@ -172,7 +172,7 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 			{
 				_dialogueSystem.InsertSelectedResponse(response);
 				//---Code from Panikk-Mode---
-				//EventBus.Instance.ResponseButtonPressed(response);
+				EventBus.Instance.ResponseButtonPressed(response);
 				//---Code from Panikk-Mode---
 				ClearResponses();
 			}
