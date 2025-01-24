@@ -8,8 +8,6 @@ public partial class InGameLogOverlay : RichTextLabel
 	
 	public override void _Ready()
 	{
-		Visible = EventBus.DisplayLog;
-		
 		// Subscribe to the logger's events
 		Logger.MessageLogged += OnLogged;
 	}

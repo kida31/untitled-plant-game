@@ -281,14 +281,14 @@ public class CursorInventory : ICursorInventory
 		var item = inventory.GetItem(itemIndex).Clone();
 		if (item == null)
 		{
-			_logger.Error("");
+			_logger.Error("No such item in inventory");
 			return;
 		}
 
 		var result = inventory.RemoveItemFromSlot(itemIndex, item);
 		if (result != null)
 		{
-			_logger.Error("");
+			_logger.Error($"Failed to remove from slot={itemIndex} item={item}");
 			return;
 		}
 
