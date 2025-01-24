@@ -174,9 +174,9 @@ public class ItemDatabase
 			{
 				Id = "chuberrySeed",
 				Name = "Chuberry Seed",
-				ToolTipDescription = "The seeds of a chubery plant.",
+				ToolTipDescription = "The seeds of a chuberry plant.",
 				WikiDescription =
-					"The seeds of a chubery plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
+					"The seeds of a chuberry plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_seed.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
@@ -187,9 +187,9 @@ public class ItemDatabase
 			{
 				Id = "chuberryFruit",
 				Name = "Chuberry Fruit",
-				ToolTipDescription = "The fruits of a chubery plant.",
+				ToolTipDescription = "The fruits of a chuberry plant.",
 				WikiDescription =
-					"The berries of a chubery plant. While the plant itself looks quite gnarly, the berries are surprisingly juicy. It can be pressed into juice, though most people just dry them and eat them as a snack or ingredient in cooking and baking. " +
+					"The berries of a chuberry plant. While the plant itself looks quite gnarly, the berries are surprisingly juicy. It can be pressed into juice, though most people just dry them and eat them as a snack or ingredient in cooking and baking. " +
 					"It helps boost the immune system, so it’s a widely used plant by many in Tawas. Use it preventive or as an acute immune booster. ",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
 				Category = ItemCategory.Medicine,
@@ -231,7 +231,8 @@ public class ItemDatabase
 				Name = "Drupoleaum Flower",
 				ToolTipDescription = "The flowers of a Drupoleaum plant.",
 				WikiDescription =
-					"The flowers of a drupoleaum plant. Traditionally the people of Liyor held a flower festival to celebrate the blooming of the first Drupolearum flower. As the wild variations of drupoleaum vined up trees, a popular game was to find the highest growing flower and offer it to the goddess’s shrine. Nowadays, the flowers are a popular tea variant and help with finding sleep.",
+					"The flowers of a drupoleaum plant. Traditionally the people of Liyor held a flower festival to celebrate the blooming of the first Drupoleaum flower." +
+					" As the wild variations of drupoleaum vined up trees, a popular game was to find the highest growing flower and offer it to the goddess’s shrine. Nowadays, the flowers are a popular tea variant and help with finding sleep.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
@@ -256,7 +257,7 @@ public class ItemDatabase
 				Name = "Drupoleaum Fruit",
 				ToolTipDescription = "The fruits of a Drupoleaum plant.",
 				WikiDescription =
-					"The berries of a drupoleaum plant. For a long time, the use of drupoleaum berries wasn’t common, as the majority of flowers got picked before ever developing into fruits." +
+					"The berries of a drupoleaum plant. For a long time, the use of drupoleaum berries was not common, as the majority of flowers got picked before ever developing into fruits." +
 					" Just recently their anti-inflammatory effects have become known which led to a high demand for berries after the Big Flooding.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Fruits.png"),
 				Category = ItemCategory.Medicine,
