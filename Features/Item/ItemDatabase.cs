@@ -16,10 +16,15 @@ namespace untitledplantgame.Item;
 public class ItemDatabase
 {
 	public List<Recipe> Recipes { get; private set; }
-	public List<IItemStack> ItemStacks { get; private set; }
-	private static ItemDatabase _instance;
 
+	public List<IItemStack> GetAllItems()
+	{
+		return _itemStacks.Select(it => it?.Clone()).ToList();
+	}
+
+	private static ItemDatabase _instance;
 	private readonly Logger _logger = new("ItemDatabase");
+	private readonly List<IItemStack> _itemStacks;
 
 	public static ItemDatabase Instance
 	{
@@ -29,7 +34,7 @@ public class ItemDatabase
 
 	private ItemDatabase()
 	{
-		ItemStacks = FillDataBaseItemStackList();
+		_itemStacks = FillDataBaseItemStackList();
 		Recipes = FillDataBaseRecipeList();
 	}
 
@@ -42,7 +47,7 @@ public class ItemDatabase
 	/// <returns></returns>
 	public IItemStack CreateItemStack(string itemId, int amount = 1)
 	{
-		var item = ItemStacks.FirstOrDefault(itemStack => itemStack.Id == itemId)?.Clone();
+		var item = _itemStacks.FirstOrDefault(itemStack => itemStack.Id == itemId)?.Clone();
 		if (item == null)
 		{
 			_logger.Error("Item with ID: " + itemId + " does not exist in the Database.");
@@ -67,7 +72,7 @@ public class ItemDatabase
 		var specificItemStack = new List<IItemStack>();
 		var group1 = components.GroupBy(item => item.GetType()).ToDictionary(g => g.Key, g => g.Count());
 
-		foreach (var itemStack in ItemStacks)
+		foreach (var itemStack in _itemStacks)
 		{
 			var group2 = itemStack.Components.GroupBy(item => item.GetType()).ToDictionary(g => g.Key, g => g.Count());
 
@@ -180,8 +185,8 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_seed.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "chuberryFruit" },
-				Components = new Array<AComponent> { new SeedComponent("Chuberry") },
+				RelatedItemIds = new Array<string> {"chuberryFruit"},
+				Components = new Array<AComponent> {new SeedComponent("Chuberry")}
 			},
 			new ItemStack()
 			{
@@ -194,18 +199,19 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "chuberrySeed" },
+				RelatedItemIds = new Array<string> {"chuberrySeed"},
 				Components = new()
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
 					new HarvestedComponent("Chuberry", GrowthStage.Ripening),
-					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>{
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+					{
 						{MedicinalEffect.Warming, 1},
 						{MedicinalEffect.WoundHealing, 2},
 					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
 					{
-						{ IllnessEffect.Heartburn, 2},
-						{ IllnessEffect.Diarrhea, 1},
+						{IllnessEffect.Heartburn, 2},
+						{IllnessEffect.Diarrhea, 1}
 					})
 				}
 			},
@@ -219,7 +225,7 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_seeds.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumFruits" },
+				RelatedItemIds = new Array<string> {"drupoleaumFlower", "drupoleaumFruits"},
 				Components = new Array<AComponent>
 				{
 					new SeedComponent("Drupoleaum")
@@ -236,18 +242,19 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "drupoleaumSeed", "drupoleaumFruits" },
+				RelatedItemIds = new Array<string> {"drupoleaumSeed", "drupoleaumFruits"},
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower),
 					new HarvestedComponent("Drupoleaum", GrowthStage.Flowering),
-					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>{
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+					{
 						{MedicinalEffect.Cooling, 2},
 						{MedicinalEffect.Calming, 1},
 					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
 					{
-						{ IllnessEffect.Heartburn, 2},
-						{ IllnessEffect.Nausea, 1},
+						{IllnessEffect.Heartburn, 2},
+						{IllnessEffect.Nausea, 1}
 					})
 				}
 			},
@@ -262,19 +269,20 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Fruits.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumSeed" },
+				RelatedItemIds = new Array<string> {"drupoleaumFlower", "drupoleaumSeed"},
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
 					new HarvestedComponent("Drupoleaum", GrowthStage.Ripening),
-					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>{
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+					{
 						{MedicinalEffect.Cooling, 2},
 						{MedicinalEffect.Calming, 3},
-						{ MedicinalEffect.AntiInflammatory, 1}
+						{MedicinalEffect.AntiInflammatory, 1}
 					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
 					{
-						{ IllnessEffect.Heartburn, 2},
-						{ IllnessEffect.Nausea, 1},
+						{IllnessEffect.Heartburn, 2},
+						{IllnessEffect.Nausea, 1}
 					})
 				}
 			},
@@ -288,7 +296,7 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_seed.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit" },
+				RelatedItemIds = new Array<string> {"licaryFlowers", "licaryFlowers", "licaryFruit"},
 				Components = new Array<AComponent>
 				{
 					new SeedComponent("Licary")
@@ -305,18 +313,19 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit" },
+				RelatedItemIds = new Array<string> {"licarySeed", "licaryFruit"},
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower),
 					new HarvestedComponent("Licary", GrowthStage.Flowering),
-					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>{
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+					{
 						{MedicinalEffect.Warming, 1},
 						{MedicinalEffect.PainRelief, 2},
 					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
 					{
-						{ IllnessEffect.Migraine, 2},
-						{ IllnessEffect.HeartAttack, 1},
+						{IllnessEffect.Migraine, 2},
+						{IllnessEffect.HeartAttack, 1}
 					})
 				}
 			},
@@ -331,19 +340,20 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers" },
+				RelatedItemIds = new Array<string> {"licarySeed", "licaryFlowers"},
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
 					new HarvestedComponent("Licary", GrowthStage.Ripening),
-					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>{
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+					{
 						{MedicinalEffect.Warming, 3},
 						{MedicinalEffect.PainRelief, 1},
-						{ MedicinalEffect.AntiOxidant, 3}
+						{MedicinalEffect.AntiOxidant, 3}
 					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
 					{
-						{ IllnessEffect.Indigestion, 2},
-						{ IllnessEffect.HeartAttack, 1},
+						{IllnessEffect.Indigestion, 2},
+						{IllnessEffect.HeartAttack, 1}
 					})
 				}
 			},
@@ -373,7 +383,7 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFlower),
 				},
 				Amount = 1,
-				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryFruit" },
+				RelatedItemIds = new Array<string> {"chuberrySeed", "chuberryFruit"}
 			},
 			new ItemStack
 			{
@@ -388,7 +398,7 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsLeaf)
 				},
 				Amount = 1,
-				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryFruit" },
+				RelatedItemIds = new Array<string> {"chuberrySeed", "chuberryFruit"}
 			},
 		};
 	}

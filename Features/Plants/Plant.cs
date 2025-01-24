@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
@@ -235,7 +233,7 @@ public partial class Plant : Area2D
 		if (!_isHarvestable) return null;
 		_logger.Debug($"Looking for harvested items for {PlantName} with stage {Stage}.");
 		var comparable = new HarvestedComponent(PlantName, Stage);
-		var itemStacks = ItemDatabase.Instance.ItemStacks
+		var itemStacks = ItemDatabase.Instance.GetAllItems()
 			.Find(i =>
 			{
 				var component = i.GetComponent<HarvestedComponent>();

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Common;
-using untitledplantgame.Database;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
 
@@ -167,7 +166,7 @@ public class RandomStockGenerator
 	/// <returns></returns>
 	public List<IItemStack> GetRandomItems(int n)
 	{
-		var items = ItemDatabase.Instance.ItemStacks
+		var items = ItemDatabase.Instance.GetAllItems()
 			.OrderBy(o => Rand.Next())
 			.ToList<IItemStack>();
 		items.ForEach(it => it.Amount = Rand.Next(1, it.MaxStackSize));
