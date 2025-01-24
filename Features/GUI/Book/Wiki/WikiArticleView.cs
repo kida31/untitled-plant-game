@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using untitledplantgame.Database;
-using untitledplantgame.GUI.Components;
+using untitledplantgame.Common.ExtensionMethods;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
 
@@ -12,18 +11,17 @@ namespace untitledplantgame.GUI.Book.Wiki;
 /// <summary>
 ///     This node is a control that displays a single article in the wiki.
 /// </summary>
-public partial class WikiArticleView : Node
+public partial class WikiArticleView : Control
 {
 	[Export] private TextureRect _iconTextureRect;
 	[Export] private RichTextLabel _itemDescription; // RichTextLabel or Label, anything that has .Text
 	[Export] private Label _itemNameAndCategory;
-
-	// TODO show related items
-
-	private IItemStack _itemStack;
-	[Export] private Label _itemStats;
+	[Export] private RichTextLabel _itemStats;
 	[Export] private WikiRelatedItemView[] _relatedItemViews = Array.Empty<WikiRelatedItemView>();
 	public event Action<IItemStack> RelatedItemClicked;
+
+	private IItemStack _itemStack;
+	private bool _isShowingDescription;
 
 	public override void _Ready()
 	{
@@ -50,6 +48,36 @@ public partial class WikiArticleView : Node
 
 			clickable.Pressed += OnPressHandler;
 		}
+
+		VisibilityChanged += () =>
+		{
+			if (!IsVisibleInTree()) return;
+			_isShowingDescription = true;
+			_itemStats.FadeOut(0f);
+			_itemDescription.FadeOut(0);
+			_itemDescription.FadeIn(0.4f);
+		};
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (!IsVisibleInTree() || !@event.IsActionPressed(Common.Inputs.GameActions.Book.West))
+		{
+			return;
+		}
+
+		const float duration = 0.2f;
+		if (_isShowingDescription)
+		{
+			_itemStats.FadeIn(duration);
+			_itemDescription.FadeOut(duration);
+		}
+		else
+		{
+			_itemStats.FadeOut(duration);
+			_itemDescription.FadeIn(duration);
+		}
+		_isShowingDescription = !_isShowingDescription;
 	}
 
 	public void UpdateItemStack(IItemStack itemStack)
