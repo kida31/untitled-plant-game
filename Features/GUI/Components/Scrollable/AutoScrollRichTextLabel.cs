@@ -17,7 +17,6 @@ public partial class AutoScrollRichTextLabel : RichTextLabel
 	[Export(PropertyHint.Range, "0,50")] private float _scrollSpeedPps;
 
 	private Tween _tween;
-	private ScrollBar _scrollBar;
 
 	public override string[] _GetConfigurationWarnings()
 	{
@@ -45,30 +44,20 @@ public partial class AutoScrollRichTextLabel : RichTextLabel
 		// if editor, do nothing
 		if (Engine.IsEditorHint()) return;
 
-		_scrollBar = GetVScrollBar();
+
 		VisibilityChanged += StartScrolling;
 		Finished += StartScrolling;
-	}
-
-	private void OnContentChanged()
-	{
-		StartScrolling();
-	}
-
-	private void OnVisibilityChanged()
-	{
-		if (!IsVisibleInTree()) return;
-		StartScrolling();
 	}
 
 	private void StartScrolling()
 	{
 		ScrollToLine(0);
 
-		var yMax = _scrollBar.MaxValue;
+		var scrollBar = GetVScrollBar();
+		var yMax = scrollBar.MaxValue;
 		_tween?.Stop();
 		_tween = CreateTween();
-		_tween.TweenMethod(Callable.From<double>(_scrollBar.SetValue), 0, yMax, yMax / _scrollSpeedPps)
+		_tween.TweenMethod(Callable.From<double>(scrollBar.SetValue), 0, yMax, yMax / _scrollSpeedPps)
 			.SetDelay(_scrollDelay);
 	}
 }
