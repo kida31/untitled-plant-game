@@ -17,11 +17,12 @@ public partial class WikiItemList : Control
 	[Export] private PackedScene _itemViewPrefab;
 
 	private List<WikiItemView> _itemViews;
-	[Export] private Button _materialButton;
-	[Export] private Button _medicineButton;
-	[Export] private Button _otherButton;
 
-	[ExportCategory("SectionButtons")] [Export] private Button _plantButton;
+	[ExportCategory("SectionButtons")]
+	[Export] private Button _plantButton;
+	[Export] private Button _medicineButton;
+	[Export] private Button _materialButton;
+
 	public event Action<IItemStack> ItemStackPressed; // TODO: Use local events instead of event bus where possible
 
 	public override void _Ready()
@@ -35,14 +36,30 @@ public partial class WikiItemList : Control
 		// Connect inputs
 		// TODO this could be delegated to upper layer
 		_plantButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Seed);
-		_materialButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Material);
 		_medicineButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Medicine);
+		_materialButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Material);
 	}
-	
+
 	public void SetItems(List<IItemStack> items)
 	{
 		Assert.AssertTrue(_itemViews.Count == _itemViewContainer.GetChildCount(), "Tracked views and actual are not equal");
 
+		items = items.OrderBy(it =>
+		{
+			if (it.Category == ItemCategory.Seed)
+			{
+				return 0;
+			}
+			if (it.Category == ItemCategory.Medicine)
+			{
+				return 1;
+			}
+			if (it.Category == ItemCategory.Material)
+			{
+				return 2;
+			}
+			return 99;
+		}).ToList();
 		// Remove nodes if too many
 		while (_itemViews.Count > items.Count)
 		{

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cc8tr4q35n0q8"]
+[gd_scene load_steps=9 format=3 uid="uid://cc8tr4q35n0q8"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/DialogueUI.cs" id="1_hawac"]
 [ext_resource type="Texture2D" uid="uid://o4fvncrv04mo" path="res://Assets/Sprites/damage.png" id="2_cnal3"]
-[ext_resource type="Texture2D" uid="uid://be34y66w0usqf" path="res://Assets/UI/chatbox_rounded.png" id="3_2ukc1"]
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_soyak"]
@@ -104,8 +103,8 @@ size_flags_vertical = 8
 
 [node name="DialogueBox" type="NinePatchRect" parent="DialogueField"]
 layout_mode = 2
-texture = ExtResource("3_2ukc1")
-region_rect = Rect2(0.185928, 0.185112, 29.037, 29.3333)
+texture = ExtResource("4_kwwp3")
+region_rect = Rect2(0.185928, 0.185112, 64.3296, 32.1678)
 patch_margin_left = 8
 patch_margin_top = 7
 patch_margin_right = 7

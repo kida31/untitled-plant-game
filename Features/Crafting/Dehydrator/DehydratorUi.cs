@@ -94,6 +94,7 @@ public partial class DehydratorUi : Control
 		_playerInventory.ShowInventory(Game.Player.Inventory.GetInventory(ItemCategory.Medicine));
 		_playerInventory.Show();
 		Show();
+		_playerInventory.GrabFocus(); // Grab primary focus
 	}
 
 	private void PressedCraftingSlot(CraftingSlotUi slot, int index)

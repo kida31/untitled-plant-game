@@ -25,17 +25,19 @@ public partial class StateWalk : State
 	public override State Process(double delta)
 	{
 		if (Player.Direction == Vector2.Zero)
+		{
 			return _idleState;
+		}
+			
 
 		Player.Velocity = Player.Direction * _movespeed;
-		if (Player.SetDirection())
-			Player.UpdateAnimation("walk");
+		Player.UpdateAnimation("walk");
 		return null;
 	}
 
 	public override State HandleInput(InputEvent inputEvent)
 	{
-		Player.GetSetInputDirection();
+		Player.GetSetDirection();
 		if (inputEvent.IsActionPressed(FreeRoam.SwitchToNextTool))
 		{
 			Player.Toolbelt.GoToNext();
@@ -51,7 +53,6 @@ public partial class StateWalk : State
 			return _useToolState;
 		}
 
-		//Velocity = direction * MoveSpeed;
 		if (inputEvent.IsActionPressed(FreeRoam.Interact))
 		{
 			InteractionManager.Instance.PerformInteraction();

@@ -46,23 +46,6 @@ visible = false
 layout_mode = 2
 mouse_filter = 1
 
-[node name="UIFocus" parent="." instance=ExtResource("4_pgjhc")]
-offset_left = 1.0
-offset_right = 1.0
-
-[node name="GlobalTooltip" parent="." instance=ExtResource("5_hs6c8")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 128.0
-offset_bottom = 32.0
-
-[node name="CursorHand" parent="." instance=ExtResource("7_vpmxr")]
-layout_mode = 1
-offset_left = 1.0
-offset_right = 97.0
-
 [node name="R2Button" parent="." instance=ExtResource("7_ucqdi")]
 layout_mode = 1
 anchors_preset = 3
@@ -88,3 +71,20 @@ offset_top = 283.0
 offset_right = -22.4
 offset_bottom = 287.978
 Button = 6
+
+[node name="UIFocus" parent="." instance=ExtResource("4_pgjhc")]
+offset_left = 1.0
+offset_right = 1.0
+
+[node name="GlobalTooltip" parent="." instance=ExtResource("5_hs6c8")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 128.0
+offset_bottom = 32.0
+
+[node name="CursorHand" parent="." instance=ExtResource("7_vpmxr")]
+layout_mode = 1
+offset_left = 1.0
+offset_right = 1.0
