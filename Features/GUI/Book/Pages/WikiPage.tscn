@@ -142,4 +142,3 @@ metadata/_edit_use_anchors_ = true
 [editable path="WikiArticleView"]
 [editable path="WikiArticleView/Name"]
 [editable path="WikiArticleView/Description"]
-[editable path="WikiArticleView/Stats"]

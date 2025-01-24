@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmc1oq8o2if8d"]
+[gd_scene load_steps=11 format=3 uid="uid://bmc1oq8o2if8d"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiArticleView.cs" id="1_6vmcs"]
 [ext_resource type="Texture2D" uid="uid://cau3g6e5xdjb1" path="res://Assets/UI/Book/Pages/RightWiki_empty.png" id="2_mb5lo"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dgkb2riflkmgf" path="res://Assets/UI/Book/Pages/Demo/RightWiki_filled.png" id="3_n81vm"]
 [ext_resource type="PackedScene" uid="uid://rkiq7gr8ft71" path="res://Features/GUI/Book/Wiki/WikiRelatedItemView.tscn" id="5_ptoeu"]
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_wi3q8"]
+[ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="6_5r6ai"]
+[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/ScrollTextBox.cs" id="6_bc3bj"]
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="6_t3k63"]
+[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/AutoScrollHook.cs" id="7_c84pf"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("_iconTextureRect", "_itemDescription", "_itemNameAndCategory", "_itemStats", "_relatedItemViews")]
 layout_mode = 3
@@ -16,9 +19,9 @@ offset_right = 91.2595
 offset_bottom = 101.333
 script = ExtResource("1_6vmcs")
 _iconTextureRect = NodePath("AspectRatioContainer/ItemIcon")
-_itemDescription = NodePath("Description/TextMargin/Label")
+_itemDescription = NodePath("Description/TextMargin/ScrollContainer")
 _itemNameAndCategory = NodePath("Name/TextMargin/Label")
-_itemStats = NodePath("")
+_itemStats = NodePath("Stats")
 _relatedItemViews = [NodePath("RelatedStuff/RelatedItem"), NodePath("RelatedStuff/RelatedItem2"), NodePath("RelatedStuff/RelatedItem3"), NodePath("RelatedStuff/RelatedItem4")]
 metadata/_edit_use_anchors_ = true
 
@@ -80,8 +83,8 @@ custom_minimum_size = Vector2(91, 0)
 layout_mode = 2
 anchor_left = 0.133929
 anchor_top = 0.236843
-anchor_right = 0.924108
-anchor_bottom = 0.621711
+anchor_right = 0.691965
+anchor_bottom = 0.743422
 offset_right = 0.0
 offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
@@ -89,19 +92,67 @@ metadata/_edit_use_anchors_ = true
 [node name="TextMargin" parent="Description" index="1"]
 theme_override_constants/margin_top = 6
 
-[node name="Label" parent="Description/TextMargin" index="0"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Description/TextMargin" index="0" node_paths=PackedStringArray("_label")]
+layout_mode = 2
+scroll_vertical = 123
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("6_bc3bj")
+_label = NodePath("Label")
+
+[node name="Node" type="Node" parent="Description/TextMargin/ScrollContainer"]
+script = ExtResource("7_c84pf")
+_scrollDelay = 2.0
+_scrollSpeedPx = 10.0
+
+[node name="Label" type="Label" parent="Description/TextMargin/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Blhabla
+e
+aseb
+ase
+ba
+seb
+as
+eb
+ase
+b
+ase
+ba
+seb
+as
+eb
+ase
+ba
+seb
+as
+eb
+ase
+b
+aseb
+
+agaeg
+"
+autowrap_mode = 2
+
+[node name="Label" parent="Description/TextMargin" index="1"]
+visible = false
 autowrap_mode = 2
 
 [node name="Stats" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 2
 anchor_left = 0.133929
-anchor_top = 0.634868
+anchor_top = 0.236842
 anchor_right = 0.924107
-anchor_bottom = 0.759868
+anchor_bottom = 0.743422
 size_flags_horizontal = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Stats"]
+visible = false
 layout_mode = 2
 texture = ExtResource("6_t3k63")
 region_rect = Rect2(0, 0, 64, 32)
@@ -125,26 +176,34 @@ columns = 2
 
 [node name="Label" type="Label" parent="Stats/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "+1 Cooling"
 
 [node name="Label2" type="Label" parent="Stats/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "+2 Awesome"
 
 [node name="Label3" type="Label" parent="Stats/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "+3 Soothing"
 
 [node name="Label4" type="Label" parent="Stats/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="InputIndicator" parent="." instance=ExtResource("6_5r6ai")]
+layout_mode = 1
+anchor_left = 0.834822
+anchor_top = 0.671053
+anchor_right = 0.977679
+anchor_bottom = 0.776317
+Button = 2
 
 [node name="RelatedStuff" type="HBoxContainer" parent="."]
 layout_mode = 2

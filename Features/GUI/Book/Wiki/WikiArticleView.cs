@@ -4,22 +4,25 @@ using System.Linq;
 using Godot;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
+using static untitledplantgame.Common.Inputs.GameActions.Book;
 
 namespace untitledplantgame.GUI.Book.Wiki;
 
 /// <summary>
 ///     This node is a control that displays a single article in the wiki.
 /// </summary>
-public partial class WikiArticleView : Node
+public partial class WikiArticleView : Control
 {
+	public Action ItemChanged;
+	
 	[Export] private TextureRect _iconTextureRect;
-	[Export] private Label _itemDescription;
+	[Export] private ScrollTextBox _itemDescription;
 	[Export] private Label _itemNameAndCategory;
 
 	// TODO show related items
 
 	private IItemStack _itemStack;
-	[Export] private Label _itemStats;
+	[Export] private Control _itemStats;
 	[Export] private WikiRelatedItemView[] _relatedItemViews = Array.Empty<WikiRelatedItemView>();
 	public event Action<IItemStack> RelatedItemClicked;
 
@@ -47,6 +50,31 @@ public partial class WikiArticleView : Node
 			}
 
 			clickable.Pressed += OnPressHandler;
+		}
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (!IsVisibleInTree()) return;
+
+		if (!@event.IsAction(Common.Inputs.GameActions.Book.West))	return;
+
+		if (@event.IsReleased()) return;
+
+		SwitchPage();
+	}
+
+	private void SwitchPage()
+	{
+		if (_itemStats.Visible)
+		{
+			_itemStats.Hide();
+			_itemDescription.Show();
+		}
+		else
+		{
+			_itemStats.Show();
+			_itemDescription.Hide();
 		}
 	}
 
