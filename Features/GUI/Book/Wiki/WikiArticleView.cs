@@ -5,6 +5,7 @@ using Godot;
 using untitledplantgame.Database;
 using untitledplantgame.GUI.Components;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 
 namespace untitledplantgame.GUI.Book.Wiki;
 
