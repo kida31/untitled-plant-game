@@ -1,30 +1,33 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=7 format=3 uid="uid://doio1ea88264e"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://doio1ea88264e"]
 
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_4jhs2"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_df32s"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_xavc0"]
+[ext_resource type="Texture2D" uid="uid://c76emfoxjb16l" path="res://Assets/Tools/GardenScissors.png" id="3_r22tv"]
+[ext_resource type="Texture2D" uid="uid://dkt14ugsh0y5v" path="res://Assets/Items/Plants/chubery_wholePlant.png" id="4_dirmi"]
 
 [sub_resource type="Resource" id="Resource_esj0x"]
 script = ExtResource("1_df32s")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_4jhs2")
 dialogueText = "Uh huh. I can also tell you about harvesting plants. "
 
 [sub_resource type="Resource" id="Resource_hhqf7"]
 script = ExtResource("1_df32s")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_4jhs2")
 dialogueText = "Herbs can be harvested in different stages of their lifecycle. "
 
 [sub_resource type="Resource" id="Resource_wfp6x"]
 script = ExtResource("1_df32s")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("3_r22tv")
 dialogueText = "You can use your gardening scissors after equipping it by pressing and holding X too. "
 
 [sub_resource type="Resource" id="Resource_wrtgg"]
 script = ExtResource("1_df32s")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("4_dirmi")
 dialogueText = "How about you try cutting this Chubery plant that is already bearing fruit?"
 
 [resource]
