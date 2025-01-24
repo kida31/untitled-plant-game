@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Database;
+using untitledplantgame.GUI.Components;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
 
@@ -14,7 +15,7 @@ namespace untitledplantgame.GUI.Book.Wiki;
 public partial class WikiArticleView : Node
 {
 	[Export] private TextureRect _iconTextureRect;
-	[Export] private Label _itemDescription;
+	[Export] private RichTextLabel _itemDescription; // RichTextLabel or Label, anything that has .Text
 	[Export] private Label _itemNameAndCategory;
 
 	// TODO show related items
@@ -63,7 +64,7 @@ public partial class WikiArticleView : Node
 		_iconTextureRect.Texture = _itemStack?.Icon ?? null;
 		_itemNameAndCategory.Text = _itemStack != null ? $"{_itemStack.Name} - {_itemStack.Category.Name}" : "";
 		_itemDescription.Text = _itemStack?.WikiDescription ?? "";
-		// _itemStats.Text = "Stats!... \nStats!... \nStats!..."; // TODO:
+		_itemStats.Text = "Stats!... \nStats!... \nStats!..."; // TODO:
 
 		List<IItemStack> relatedItems = new();
 		if (_itemStack is ItemStack itemStack)
