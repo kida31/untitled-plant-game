@@ -4,6 +4,7 @@ using System.Linq;
 using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
+using untitledplantgame.Item.Components;
 
 namespace untitledplantgame.Shops;
 
@@ -167,6 +168,8 @@ public class RandomStockGenerator
 	public List<IItemStack> GetRandomItems(int n)
 	{
 		var items = ItemDatabase.Instance.GetAllItems()
+			// Ignore dried objects
+			.Where(o => !o.GetComponent<TagsComponent>().Contains(TagsComponent.Tags.IsDried))
 			.OrderBy(o => Rand.Next())
 			.ToList<IItemStack>();
 		items.ForEach(it => it.Amount = Rand.Next(1, it.MaxStackSize));
