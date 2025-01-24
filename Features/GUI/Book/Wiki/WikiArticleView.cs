@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using untitledplantgame.Database;
+using untitledplantgame.GUI.Components;
 using untitledplantgame.Inventory;
 
 namespace untitledplantgame.GUI.Book.Wiki;
@@ -13,7 +14,7 @@ namespace untitledplantgame.GUI.Book.Wiki;
 public partial class WikiArticleView : Node
 {
 	[Export] private TextureRect _iconTextureRect;
-	[Export] private Label _itemDescription;
+	[Export] private ScrollLabel _itemDescription; // RichTextLabel or Label, anything that has .Text
 	[Export] private Label _itemNameAndCategory;
 
 	// TODO show related items

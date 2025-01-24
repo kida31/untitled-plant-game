@@ -40,9 +40,9 @@ public partial class AutoScroll : Node
 		}
 
 		_owner.VisibilityChanged += OnVisibilityChanged;
-		_owner.ContentChanged += OnContentChanged;
+		_owner.GetVScrollBar().Changed += OnContentChanged;
 	}
-	
+
 	private void OnContentChanged()
 	{
 		StartScrolling();
@@ -64,7 +64,7 @@ public partial class AutoScroll : Node
 		_tween.TweenMethod(Callable.From<float>(SetYScroll), 0, 0, 0).SetDelay(_scrollDelay);
 		_tween.TweenMethod(Callable.From<float>(SetYScroll), 0, yMax, yMax / _scrollSpeedPx);
 	}
-
+	
 	private void SetYScroll(float value)
 	{
 		_owner.GetVScrollBar().Value = value;
