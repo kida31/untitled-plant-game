@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_48ijb"]
 [ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="4_q3o43"]
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_d341g"]
-[ext_resource type="Texture2D" uid="uid://dsrjntfr6kb41" path="res://Assets/Items/chubery_harvested.png" id="5_i6nc1"]
+[ext_resource type="Texture2D" uid="uid://dsrjntfr6kb41" path="res://Assets/Items/Plants/chubery_harvested.png" id="5_i6nc1"]
 
 [node name="WikiItemView" type="Control" node_paths=PackedStringArray("_iconTextureRect", "_itemName")]
 custom_minimum_size = Vector2(128, 32)

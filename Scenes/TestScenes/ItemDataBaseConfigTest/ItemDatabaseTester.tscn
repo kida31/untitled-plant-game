@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c7yeloeus6st8"]
 
 [ext_resource type="Script" path="res://Features/Item/ItemDatabaseTester.cs" id="1_l461o"]
-[ext_resource type="Texture2D" uid="uid://dsrjntfr6kb41" path="res://Assets/Items/chubery_harvested.png" id="2_q8hsh"]
+[ext_resource type="Texture2D" uid="uid://dqducm8634867" path="res://Assets/Items/Plants/chubery_harvested.png" id="2_q8hsh"]
 [ext_resource type="Script" path="res://Features/Item/Components/SeedComponent.cs" id="4_l7ng7"]
 [ext_resource type="Script" path="res://Features/Inventory/ItemStack.cs" id="5_81v5p"]
 
