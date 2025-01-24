@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://rkiq7gr8ft71" path="res://Features/GUI/Book/Wiki/WikiRelatedItemView.tscn" id="5_ptoeu"]
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_wi3q8"]
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="6_w5uny"]
-[ext_resource type="PackedScene" uid="uid://dhr5lflvgvgi0" path="res://Features/GUI/Components/Scrollable/ScrollLabel.tscn" id="7_8rimp"]
+[ext_resource type="Script" path="res://Features/GUI/Components/Scrollable/AutoScrollRichTextLabel.cs" id="7_nfp50"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("_iconTextureRect", "_itemDescription", "_itemNameAndCategory", "_itemStats", "_relatedItemViews")]
 custom_minimum_size = Vector2(224, 304)
@@ -89,16 +89,18 @@ patch_margin_top = 11
 patch_margin_right = 11
 patch_margin_bottom = 11
 
-[node name="DescriptionLabel" parent="NinePatchRect" instance=ExtResource("7_8rimp")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0789474
-anchor_top = 0.0509554
-anchor_right = 0.912281
-anchor_bottom = 0.942675
-grow_horizontal = 1
-grow_vertical = 1
-metadata/_edit_use_anchors_ = true
+[node name="DescriptionLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 106.0
+offset_bottom = 149.0
+bbcode_enabled = true
+text = "Watashi senpai green tea hai oneesan desu ecchi loli moe japanophile ghost in the shell godzilla josei doujinshi grave of the fireflies. Chibi grave of the fireflies sakura ultra man totoro sushi dub ultra man green tea dandere inuyasha. Konichiwa josei cherry blossom ecchi watashi iie japan oneesan yuki okonomiyaki chibi japan totoro. Japanophile seme erogi mangaka seme hikikomori cherry blossom cowboy bebop konichiwa otaku fanservice chibi. Doujinshi anime grave of the fireflies cherry blossom anime onigiri fanservice japanese yuki green tea nekomimi cosplay ultra man hikikomori desu. "
+scroll_active = false
+script = ExtResource("7_nfp50")
+_scrollDelay = 1.0
+_scrollSpeedPps = 30.0
 
 [node name="Stats" parent="." instance=ExtResource("5_wi3q8")]
 layout_mode = 2
@@ -140,5 +142,4 @@ layout_mode = 2
 layout_mode = 2
 
 [editable path="Name"]
-[editable path="NinePatchRect/DescriptionLabel"]
 [editable path="Stats"]
