@@ -1,12 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://js6xll5oktc4"]
+[gd_scene load_steps=13 format=4 uid="uid://js6xll5oktc4"]
 
 [ext_resource type="Script" path="res://Features/Plants/PlantController.cs" id="2_wxa00"]
 [ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="3_y13yj"]
-[ext_resource type="Texture2D" uid="uid://dempy0e7dsgb7" path="res://Assets/Overworld/Garden/small_planter_round.png" id="4_h1yfj"]
 [ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/PlantPrefab.tscn" id="4_kxbuo"]
 [ext_resource type="Texture2D" uid="uid://5d8yf6rhn855" path="res://Assets/Overworld/Garden/planters_tileset_rgb.png" id="5_jgccg"]
-[ext_resource type="Texture2D" uid="uid://h83g282s043x" path="res://Assets/Overworld/Garden/ladder_tileset_improved.png" id="6_qm2n2"]
-[ext_resource type="Texture2D" uid="uid://bvw5lymyjpgs2" path="res://Assets/Overworld/Garden/crates_tileset.png" id="7_r476f"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_dj6ds"]
 tile_data = PackedInt32Array(0, 2, 0, 65536, 2, 1)
@@ -25,11 +22,6 @@ tile_data = PackedInt32Array(0, 262151, 3, 65536, 262151, 4, 131072, 262151, 5, 
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_j2vwc"]
 tile_data = PackedInt32Array(0, 7, 0, 65536, 7, 1, 131072, 7, 2, 196608, 7, 3, 1, 65543, 0, 65537, 65543, 1, 131073, 65543, 2, 196609, 65543, 3, 2, 131079, 0, 65538, 131079, 1, 131074, 131079, 2, 196610, 131079, 3)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6oeet"]
-texture = ExtResource("4_h1yfj")
-texture_region_size = Vector2i(1, 1)
-0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2yps6"]
 texture = ExtResource("5_jgccg")
@@ -52,34 +44,10 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/texture_origin = Vector2i(0, 48)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -68, 16, -68, 16, 0, -16, 0)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kp3yb"]
-texture = ExtResource("6_qm2n2")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16, 12, -16, 12, 12, -12, 12, -12, -16)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16, 12, -16, 12, 12, -12, 12, -12, -16)
-2:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dqquf"]
-texture = ExtResource("7_r476f")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4, 16, -4, 16, 16, -16, 16)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4, 16, -4, 16, 16, -16, 16)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4, 16, -4, 16, 16, -16, 16)
-3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4, 16, -4, 16, 16, -16, 16)
-
 [sub_resource type="TileSet" id="TileSet_yrab1"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/4 = SubResource("TileSetAtlasSource_6oeet")
 sources/7 = SubResource("TileSetAtlasSource_2yps6")
-sources/8 = SubResource("TileSetAtlasSource_kp3yb")
-sources/9 = SubResource("TileSetAtlasSource_dqquf")
 pattern_0 = SubResource("TileMapPattern_dj6ds")
 pattern_1 = SubResource("TileMapPattern_tfrb6")
 pattern_2 = SubResource("TileMapPattern_78530")
@@ -155,5 +123,5 @@ position = Vector2(560, 435)
 
 [node name="Planters" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAARAA4ABwAAAAAAAAAMAAYACQABAAAAAAANAAYACQACAAAAAAAOAAYACQABAAAAAAAPAAYACQADAAAAAAANAAsABwAEAAMAAAAOABIABwAAAAQAAAAZAAoABwAEAAAAAAATAAcABwAEAAAAAAAZAA0ABwAEAAAAAAAXABEABwAAAAQAAAA=")
+tile_map_data = PackedByteArray("AAARAA4ABwAAAAAAAAANAAsABwAEAAMAAAAOABIABwAAAAQAAAAZAAoABwAEAAAAAAATAAcABwAEAAAAAAAZAA0ABwAEAAAAAAAXABEABwAAAAQAAAA=")
 tile_set = SubResource("TileSet_yrab1")
