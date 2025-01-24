@@ -25,12 +25,13 @@ public partial class SceneTransition : Control
 	public async Task FadeIn()
 	{
 		animationPlayer.Play("FadeIn");
-		await ToSignal(animationPlayer, "animation_finished");
+		await ToSignal(animationPlayer, AnimationMixer.SignalName.AnimationFinished);
+		
 	}
 
 	public async Task FadeOut()
 	{
 		animationPlayer.PlayBackwards("FadeIn");
-		await ToSignal(animationPlayer, "animation_finished");
+		await ToSignal(animationPlayer, AnimationMixer.SignalName.AnimationFinished);
 	}
 }
