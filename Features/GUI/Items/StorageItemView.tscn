@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dph8f75f6i3md"]
 
-[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="1_yuvwh"]
+[ext_resource type="PackedScene" uid="uid://dwbays1hac0a0" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="1_yuvwh"]
 [ext_resource type="Script" path="res://Features/GUI/Items/StorageItemView.cs" id="2_td5mh"]
 
 [node name="StorageItemView" instance=ExtResource("1_yuvwh")]
