@@ -4,6 +4,7 @@ using System.Linq;
 using Godot;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 
 namespace untitledplantgame.GUI.Book.Wiki;
 

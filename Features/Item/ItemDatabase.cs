@@ -6,12 +6,11 @@ using Godot.Collections;
 using untitledplantgame.Common;
 using untitledplantgame.Crafting;
 using untitledplantgame.Inventory;
-using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
 using untitledplantgame.Medicine;
 using untitledplantgame.Plants;
 
-namespace untitledplantgame.Database;
+namespace untitledplantgame.Item;
 
 [Singleton]
 public class ItemDatabase
@@ -39,6 +38,7 @@ public class ItemDatabase
 	/// Looks for an ItemStack with the specified ID. Returns a clone of the ItemStack.
 	/// </summary>
 	/// <param name="itemId"></param>
+	/// <param name="amount"></param>
 	/// <returns></returns>
 	public IItemStack CreateItemStack(string itemId, int amount = 1)
 	{
@@ -216,7 +216,7 @@ public class ItemDatabase
 				ToolTipDescription = "The seeds of a Drupoleaum plant.",
 				WikiDescription =
 					"The seeds of a Drupoleaum plant. They have to be planted in soil and watered regularly. It will grow up a stalk.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Flowers.png"), //TODO: add seed icon
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_seeds.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumFruits" },
@@ -284,7 +284,7 @@ public class ItemDatabase
 				ToolTipDescription = "The seeds of a Licary plant.",
 				WikiDescription =
 					"The seeds of a Licary plant. They have to be planted in soil and watered regularly to reward you with multiple harvestable Items.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_seeds.png"),
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_seed.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit" },

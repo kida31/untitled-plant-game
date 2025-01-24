@@ -7,6 +7,7 @@ using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Database;
 using untitledplantgame.GUI.Book.Pages;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 
 namespace untitledplantgame.GUI.Book;
 

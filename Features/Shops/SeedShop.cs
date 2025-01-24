@@ -4,6 +4,7 @@ using System.Linq;
 using untitledplantgame.Common;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 using untitledplantgame.Statistics.StatTypes;
 using untitledplantgame.Systems;
 

@@ -4,6 +4,7 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
 using untitledplantgame.Medicine;
 using MedicineComponent = untitledplantgame.Item.Components.MedicineComponent;
