@@ -191,7 +191,7 @@ public class ItemDatabase
 				WikiDescription =
 					"The berries of a chuberry plant. While the plant itself looks quite gnarly, the berries are surprisingly juicy. It can be pressed into juice, though most people just dry them and eat them as a snack or ingredient in cooking and baking. " +
 					"It helps boost the immune system, so it’s a widely used plant by many in Tawas. Use it preventive or as an acute immune booster. ",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "chuberrySeed" },
@@ -233,7 +233,7 @@ public class ItemDatabase
 				WikiDescription =
 					"The flowers of a drupoleaum plant. Traditionally the people of Liyor held a flower festival to celebrate the blooming of the first Drupoleaum flower." +
 					" As the wild variations of drupoleaum vined up trees, a popular game was to find the highest growing flower and offer it to the goddess’s shrine. Nowadays, the flowers are a popular tea variant and help with finding sleep.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Flowers.png"),
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "drupoleaumSeed", "drupoleaumFruits" },
@@ -259,7 +259,7 @@ public class ItemDatabase
 				WikiDescription =
 					"The berries of a drupoleaum plant. For a long time, the use of drupoleaum berries was not common, as the majority of flowers got picked before ever developing into fruits." +
 					" Just recently their anti-inflammatory effects have become known which led to a high demand for berries after the Big Flooding.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Fruits.png"),
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Fruits.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumSeed" },
@@ -302,7 +302,7 @@ public class ItemDatabase
 				WikiDescription =
 					"The flowers of a licary plant. Their four bright yellow leaves often get associated with the power of the sun so a tea made out of these flowers is a popular morning drink. " +
 					"Whenever the colder days arrive, people stock up on these flowers to always have the sun around.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"),
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit" },
@@ -328,7 +328,7 @@ public class ItemDatabase
 				WikiDescription =
 					"The fruits of a licary plant. The small but bright orange fruit has a hard outer skin that makes it uncomfortable to eat." +
 					" It’s anti-oxidant effect makes it a popular juice though. Parents usually pack small bottles of Licary juice as lunch drinks for their kids at school.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_harvested.png"),
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers" },
