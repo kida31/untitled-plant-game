@@ -5,7 +5,7 @@ using untitledplantgame.Dialogue.Models;
 
 namespace untitledplantgame.NPC;
 
-public partial class Bed : Area2D
+public partial class WalkableAreaDialogue : Area2D
 {
 	[Export] private DialogueResourceObject _dialogueResourceObject;
 

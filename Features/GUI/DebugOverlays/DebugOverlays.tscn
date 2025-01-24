@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://df0cg0vcow1n2"]
 
-[ext_resource type="Theme" uid="uid://dqv5ijlnkdf75" path="res://Assets/DebugTheme.tres" id="1_1ftpd"]
+[ext_resource type="Theme" uid="uid://dbk4arsk2qmin" path="res://Assets/DebugTheme.tres" id="1_1ftpd"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugKeybindings.cs" id="1_2qjov"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugOverlays.cs" id="1_cr3m0"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentFocus.cs" id="1_spicd"]

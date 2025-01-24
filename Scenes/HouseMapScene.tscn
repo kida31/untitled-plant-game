@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://06mxrjn0jar7" path="res://Assets/Overworld/House/Chair.png" id="4_at0mk"]
 [ext_resource type="Texture2D" uid="uid://cm6gpqhcielxe" path="res://Assets/Overworld/House/WallPlant.png" id="5_f6pnw"]
 [ext_resource type="Texture2D" uid="uid://o8mbllj8givt" path="res://Assets/Overworld/House/hanging_shelf.png" id="5_heyij"]
-[ext_resource type="PackedScene" uid="uid://bqqhj7jxwv1q5" path="res://Features/NPC/Bed.tscn" id="5_t1uyc"]
+[ext_resource type="PackedScene" uid="uid://dsnhxqc3s81hr" path="res://Features/NPC/WalkableAreaDialogue.tscn" id="5_t1uyc"]
 [ext_resource type="Texture2D" uid="uid://btrjefeco6yc6" path="res://Assets/Overworld/House/Pillow_long.png" id="5_xxfd4"]
 [ext_resource type="Texture2D" uid="uid://bg6sungsm67xq" path="res://Assets/Overworld/House/PlantFence.png" id="6_ixvoq"]
 [ext_resource type="Texture2D" uid="uid://dvhnxweerw26d" path="res://Assets/Overworld/House/long_plants.png" id="6_uljed"]
