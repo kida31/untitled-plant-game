@@ -6,13 +6,13 @@ using untitledplantgame.Dialogue.Models;
 
 namespace untitledplantgame.Dialogue;
 
-public partial class DialogueUI : Control
+public partial class DialogueUI : Control //Renaming keeps breaking Godot please don't rename
 {
 	private IDialogueSystem _dialogueSystem;
 
 	[Export] private RichTextLabel _nameLabel;
 	[Export] private RichTextLabel _dialogueTextLabel;
-	[Export] private AnimatedSprite2D _animatedSprite2D;
+	[Export] private TextureRect _sprite;
 	[Export] private BoxContainer _responseContainer;
 
 	private DialogueResourceObject _currentDialogue;
@@ -38,9 +38,8 @@ public partial class DialogueUI : Control
 		AddChild(_dialogueAnimation);
 
 		//Events
-		EventBus.Instance.OnNpcStartDialogue += ChangeToIdentity;
+		//EventBus.Instance.OnNpcStartDialogue += ChangeToIdentity;
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
-		_logger.Debug("Subscribed to dialogue system intialising.");
 		_skipCooldownTimer.Timeout += () => _smashable = true;
 	}
 
@@ -71,10 +70,10 @@ public partial class DialogueUI : Control
 
 	private void ChangeToIdentity(AnimatedSprite2D portrait, string npcName)
 	{
-		_animatedSprite2D.SpriteFrames = portrait.SpriteFrames;
-		var save = _animatedSprite2D.SpriteFrames;
+		//_animatedSprite2D.SpriteFrames = portrait.SpriteFrames;
+		//var save = _animatedSprite2D.SpriteFrames;
 
-		_nameLabel.Text = npcName;
+		//_nameLabel.Text = npcName;
 	}
 
 	private void OnDialogueBlockStarted(DialogueResourceObject dialogue)
@@ -123,11 +122,39 @@ public partial class DialogueUI : Control
 	//Displays dialogue on the screen
 	private void ShowDialogueLine(DialogueLine line)
 	{
-		_nameLabel.Text = line.speakerName;
+		switch (line)
+		{
+			case null:
+				_logger.Error("Dialogue line is null.");
+				return;
+			case DialogueEvent d:
+				d.Execute();
+				OnEndOfDialogueBlock();
+				return;
+		}
+
+		
+		if(line.speakerName != null)
+		{
+			_nameLabel.Text = line.speakerName;
+			_nameLabel.Visible = true;
+		} else {
+			_nameLabel.Visible = false;
+		}
+		
 		_dialogueTextLabel.Text = line.dialogueText;
 		_dialogueAnimation.AnimateNextDialogueLine(_dialogueTextLabel, line);
+
+		if(line.DialogueExpression != null)
+		{
+			_sprite.Texture = line.DialogueExpression;
+			_sprite.Visible = true;
+		}
+		else
+		{
+			_sprite.Visible = false;
+		}
 		
-		_animatedSprite2D.Play(line.DialogueExpression.ToString());
 		Visible = true;
 	}
 

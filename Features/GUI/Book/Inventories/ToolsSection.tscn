@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dle63yl5kosem"]
+
+[ext_resource type="Script" path="res://Features/GUI/Book/Inventories/ToolsSection.cs" id="1_13k5k"]
+[ext_resource type="PackedScene" uid="uid://dxbuerk0f7x6" path="res://Features/GUI/Book/Inventories/ToolCircle.tscn" id="2_nbinc"]
+[ext_resource type="PackedScene" uid="uid://byldrvainuqxu" path="res://Features/GUI/Book/Inventories/SeedBagToolCircle.tscn" id="3_f5sco"]
+
+[node name="ToolsSection" type="HBoxContainer" node_paths=PackedStringArray("_wateringCanBlob", "_shearsBlob", "_shovelBlob", "_fishingRod", "_seedBagBlob")]
+anchors_preset = -1
+anchor_left = 0.0982143
+anchor_top = 0.805921
+anchor_right = 0.888393
+anchor_bottom = 0.911184
+alignment = 1
+script = ExtResource("1_13k5k")
+_wateringCanBlob = NodePath("ToolCircle")
+_shearsBlob = NodePath("ToolCircle2")
+_shovelBlob = NodePath("ToolCircle3")
+_fishingRod = NodePath("ToolCircle4")
+_seedBagBlob = NodePath("SeedbagToolCircle")
+metadata/_edit_use_anchors_ = true
+
+[node name="ToolCircle" parent="." instance=ExtResource("2_nbinc")]
+layout_mode = 2
+
+[node name="ToolCircle2" parent="." instance=ExtResource("2_nbinc")]
+layout_mode = 2
+
+[node name="ToolCircle3" parent="." instance=ExtResource("2_nbinc")]
+layout_mode = 2
+
+[node name="ToolCircle4" parent="." instance=ExtResource("2_nbinc")]
+layout_mode = 2
+
+[node name="SeedbagToolCircle" parent="." instance=ExtResource("3_f5sco")]
+layout_mode = 2

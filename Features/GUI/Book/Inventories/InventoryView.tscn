@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8qlvfu5vslvx"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryView.cs" id="1_p2s7o"]
-[ext_resource type="PackedScene" uid="uid://nyv2tqdcvli1" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="2_6vgaw"]
+[ext_resource type="PackedScene" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="2_6vgaw"]
 [ext_resource type="Texture2D" uid="uid://3q24yxii22y2" path="res://Assets/UI/Book/Pages/LeftInventory_empty.png" id="3_1de0y"]
 [ext_resource type="Texture2D" uid="uid://ddbxhrxrxirqa" path="res://Assets/UI/Book/Pages/Demo/LeftInventory_filled.png" id="3_d563x"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="4_ukuta"]
-[ext_resource type="Texture2D" uid="uid://b0udl2fbk1ct8" path="res://Assets/UI/Book/Containers&Labels/ToolContainer.png" id="6_eklgx"]
+[ext_resource type="PackedScene" path="res://Features/GUI/Book/Inventories/ToolsSection.tscn" id="6_k1n6h"]
 
 [node name="InventoryView" type="Control" node_paths=PackedStringArray("_inventoryItemViewContainer", "_itemNameLabel")]
 custom_minimum_size = Vector2(224, 304)
@@ -171,41 +171,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ToolsSection" type="HBoxContainer" parent="."]
-layout_mode = 2
-anchor_left = 0.0982143
-anchor_top = 0.805921
-anchor_right = 0.888393
-anchor_bottom = 0.911184
-alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="ToolsSection"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("6_eklgx")
-stretch_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="ToolsSection"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("6_eklgx")
-stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="ToolsSection"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("6_eklgx")
-stretch_mode = 5
-
-[node name="TextureRect4" type="TextureRect" parent="ToolsSection"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("6_eklgx")
-stretch_mode = 5
-
-[node name="TextureRect5" type="TextureRect" parent="ToolsSection"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("6_eklgx")
-stretch_mode = 5
+[node name="ToolsSectionForReal" parent="." instance=ExtResource("6_k1n6h")]
+layout_mode = 1
+anchor_left = 0.0892857
+anchor_top = 0.815789
+anchor_right = 0.25
+anchor_bottom = 0.815789
+offset_right = 140.0
+offset_bottom = 32.0
