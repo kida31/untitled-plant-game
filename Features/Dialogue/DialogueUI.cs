@@ -40,7 +40,6 @@ public partial class DialogueUI : Control
 		//Events
 		//EventBus.Instance.OnNpcStartDialogue += ChangeToIdentity;
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
-		_logger.Debug("Subscribed to dialogue system intialising.");
 		_skipCooldownTimer.Timeout += () => _smashable = true;
 	}
 
@@ -127,7 +126,16 @@ public partial class DialogueUI : Control
 		_dialogueTextLabel.Text = line.dialogueText;
 		_dialogueAnimation.AnimateNextDialogueLine(_dialogueTextLabel, line);
 
-		_sprite.Texture = line.DialogueExpression ?? _sprite.Texture;
+		if(line.DialogueExpression != null)
+		{
+			_sprite.Texture = line.DialogueExpression;
+			_sprite.Visible = true;
+		}
+		else
+		{
+			_sprite.Visible = false;
+		}
+		
 		Visible = true;
 	}
 
