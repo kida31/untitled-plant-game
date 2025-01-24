@@ -9,7 +9,7 @@ namespace untitledplantgame.Dialogue.Events;
 [GlobalClass]
 public partial class GoToBed : DialogueEvent
 {
-	private const int TransitionDuration = 1500;
+	private const int TransitionDuration = 1000;
 	
 	public override void Execute()
 	{
