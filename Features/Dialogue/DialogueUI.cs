@@ -6,7 +6,7 @@ using untitledplantgame.Dialogue.Models;
 
 namespace untitledplantgame.Dialogue;
 
-public partial class DialogueUI : Control
+public partial class DialogueUI : Control //Renaming keeps breaking Godot please don't rename
 {
 	private IDialogueSystem _dialogueSystem;
 
