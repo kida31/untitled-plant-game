@@ -262,6 +262,7 @@ public class Inventory : IInventory
 		// Slot does not have compatible item, do nothing
 		if (!existingItem.HasSameIdAndProps(item))
 		{
+			_logger.Warn($"Items do not match. Expected {existingItem}, but got {item}");
 			return item;
 		}
 		
@@ -270,6 +271,7 @@ public class Inventory : IInventory
 		// If more items are requested than exist, we return with full item stack
 		if (existingItem.Amount < item.Amount)
 		{
+			_logger.Warn("Tried to remove partial stack");
 			return item;
 		}
 		

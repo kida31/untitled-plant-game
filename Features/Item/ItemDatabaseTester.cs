@@ -1,14 +1,7 @@
-using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using untitledplantgame.Common;
-using untitledplantgame.Crafting;
-using untitledplantgame.Entity;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
-using untitledplantgame.Item.Components;
-using untitledplantgame.Statistics;
-using untitledplantgame.Statistics.StatTypes;
 
 namespace untitledplantgame.Database;
 
@@ -18,7 +11,7 @@ public partial class ItemDatabaseTester : Node
 	[Export]
 	private ItemStack[] _items
 	{
-		get => ItemDatabase.Instance?.ItemStacks.Select(it => new ItemStack(it)).ToArray();
+		get => (ItemDatabase.Instance?.GetAllItems()).Select(it => new ItemStack(it)).ToArray();
 		set { }
 	}
 

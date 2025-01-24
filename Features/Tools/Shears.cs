@@ -23,9 +23,14 @@ public partial class Shears : Tool
 			return false;
 		}
 
-		closestPlant.Harvest();
-		_logger.Debug("...pipiab");
-		// TODO: move result to player inventory
+		var harvestedItem = closestPlant.Harvest();
+		if(harvestedItem == null)
+		{
+			_logger.Debug("No items were harvested from the plant");
+			return false;
+		}
+		
+		user.Inventory.AddItem(harvestedItem);
 		return true;
 	}
 
