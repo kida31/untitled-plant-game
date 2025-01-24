@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://b48o50ukwtc4v"]
 
 [ext_resource type="Shader" path="res://Scenes/water.gdshader" id="1_qiytf"]
-[ext_resource type="Texture2D" uid="uid://4cfy612ib68k" path="res://Assets/IndoorAssets/bed.png" id="2_yi06m"]
+[ext_resource type="Texture2D" uid="uid://4cfy612ib68k" path="res://Assets/Overworld/House/bed.png" id="2_yi06m"]
 [ext_resource type="Texture2D" uid="uid://8pww3ig28h03" path="res://Assets/Tilesets/Sand.png" id="3_y064w"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_d3wi6"]
