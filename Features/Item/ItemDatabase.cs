@@ -345,7 +345,7 @@ public class ItemDatabase
 			{
 				Id = "dried_fruit",
 				Name = "Dried ",
-				WikiDescription = "It was dried.",
+				ToolTipDescription = "It was dried.",
 				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
@@ -373,7 +373,7 @@ public class ItemDatabase
 			{
 				Id = "dried_leaves",
 				Name = "Dried ",
-				WikiDescription = "It was dried.",
+				ToolTipDescription = "It was dried.",
 				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
