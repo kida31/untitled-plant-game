@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b055ddfxb6hkf"
-path="res://.godot/imported/tree_smaller.png-eb5ebe0b12e94cf3d0da3f9d3a82a46d.ctex"
+uid="uid://dl3ytowjsie7x"
+path="res://.godot/imported/pier_tileset.png-b0ae04bf2d64d97a985b38456d649638.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Overworld/Garden/tree_smaller.png"
-dest_files=["res://.godot/imported/tree_smaller.png-eb5ebe0b12e94cf3d0da3f9d3a82a46d.ctex"]
+source_file="res://Assets/Overworld/Garden/pier_tileset.png"
+dest_files=["res://.godot/imported/pier_tileset.png-b0ae04bf2d64d97a985b38456d649638.ctex"]
 
 [params]
 
