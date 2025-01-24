@@ -8,6 +8,7 @@ using untitledplantgame.Crafting;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
+using untitledplantgame.Plants;
 
 namespace untitledplantgame.Database;
 
@@ -175,7 +176,7 @@ public class ItemDatabase
 				ToolTipDescription = "The seeds of a chubery plant.",
 				WikiDescription =
 					"The seeds of a chubery plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_seed.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "chuberryFruit" },
@@ -194,7 +195,8 @@ public class ItemDatabase
 				RelatedItemIds = new Array<string> { "chuberrySeed" },
 				Components = new()
 				{
-					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
+					new HarvestedComponent("Chuberry", GrowthStage.Ripening),
 				}
 			},
 			new ItemStack
@@ -226,7 +228,8 @@ public class ItemDatabase
 				RelatedItemIds = new Array<string> { "drupoleaumSeed", "drupoleaumFruits" },
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower)
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower),
+					new HarvestedComponent("Drupoleaum", GrowthStage.Flowering),
 				}
 			},
 			new ItemStack
@@ -242,7 +245,8 @@ public class ItemDatabase
 				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumSeed" },
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
+					new HarvestedComponent("Drupoleaum", GrowthStage.Ripening),
 				}
 			},
 			new ItemStack
@@ -252,7 +256,7 @@ public class ItemDatabase
 				ToolTipDescription = "The seeds of a Licary plant.",
 				WikiDescription =
 					"The seeds of a Licary plant. They have to be planted in soil and watered regularly to reward you with multiple harvestable Items.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"), //TODO add icon
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_seeds.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
 				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit" },
@@ -274,7 +278,8 @@ public class ItemDatabase
 				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit" },
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower)
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower),
+					new HarvestedComponent("Licary", GrowthStage.Flowering),
 				}
 			},
 			new ItemStack
@@ -290,7 +295,8 @@ public class ItemDatabase
 				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers" },
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
+					new HarvestedComponent("Licary", GrowthStage.Ripening),
 				}
 			},
 			new ItemStack
