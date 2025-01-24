@@ -37,6 +37,7 @@ public partial class ToolbeltView : Control
 			_player.Toolbelt.WentToPreviousTool += () => AnimateToolChange(false);
 			placeholderBecauseImTooStupidToDoProperDependencies.Stop();
 			placeholderBecauseImTooStupidToDoProperDependencies.QueueFree();
+			UpdateToolBlobs();
 		};
 		AddChild(placeholderBecauseImTooStupidToDoProperDependencies);
 
