@@ -1,36 +1,37 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://ds2a5jertu4k4"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://ds2a5jertu4k4"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_8ng0m"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_g76ho"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_yrkhe"]
 
 [sub_resource type="Resource" id="Resource_acleb"]
 script = ExtResource("1_g76ho")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_yrkhe")
 dialogueText = "Well… being an herbalist is not the easiest of jobs but somehow I feel like you have an affinity for it. "
 
 [sub_resource type="Resource" id="Resource_tmh6s"]
 script = ExtResource("1_g76ho")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_yrkhe")
 dialogueText = "I have to go back to my duties now."
 
 [sub_resource type="Resource" id="Resource_yg4ah"]
 script = ExtResource("1_g76ho")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_yrkhe")
 dialogueText = "If you follow the pier you will reach the village but as it seems the devs have not made it accessible for you yet."
 
 [sub_resource type="Resource" id="Resource_66we5"]
 script = ExtResource("1_g76ho")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_yrkhe")
 dialogueText = "Too bad…"
 
 [sub_resource type="Resource" id="Resource_i3e76"]
 script = ExtResource("1_g76ho")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_yrkhe")
 dialogueText = "Alright then, see you around!"
 
 [resource]

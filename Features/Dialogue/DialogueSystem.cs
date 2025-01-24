@@ -67,10 +67,6 @@ public partial class DialogueSystem : Node, IDialogueSystem
 				_logger.Debug("No follow up dialogue");
 				EndDialogue();
 				return;
-			case DialogueEvent d:
-				d.Execute();
-				EndDialogue();
-				return;
 			default:
 				SetAndResetDialogueBlock(nextDialogue);
 				break;
@@ -86,7 +82,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 			return;
 		}
 		
-		OnResponding?.Invoke(_currentDialogue._responses.Select(r => r._responseButton).ToArray());
+		OnResponding?.Invoke(_currentDialogue._responses.Select( r => r._responseButton).ToArray());
 	}
 
 	private void EndDialogue()

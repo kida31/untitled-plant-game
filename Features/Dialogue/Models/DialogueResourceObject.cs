@@ -2,6 +2,10 @@ using Godot;
 
 namespace untitledplantgame.Dialogue.Models;
 
+/// <summary>
+/// This class can be the starting point for a conversation.
+/// It represents the major block of spoken text.
+/// </summary>
 [GlobalClass]
 public partial class DialogueResourceObject : Resource //DO NOT rename variables or the resource will break
 {

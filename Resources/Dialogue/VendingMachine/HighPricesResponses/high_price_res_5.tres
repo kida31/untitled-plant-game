@@ -6,7 +6,6 @@
 [sub_resource type="Resource" id="Resource_mry7g"]
 script = ExtResource("1_x3lon")
 speakerName = "Laya"
-DialogueExpression = 0
 dialogueText = "If I put a „SALE“ tag on it, I bet they would buy it immediately."
 
 [resource]

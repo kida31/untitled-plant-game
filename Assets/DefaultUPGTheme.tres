@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://c84stviqfe4lr" path="res://Assets/Fonts/bitpotion/BitPotionExt.ttf" id="1_kqvm5"]
 [ext_resource type="FontFile" uid="uid://ctogc4uddws7b" path="res://Assets/Fonts/born2bsportfs/Born2bSportyFS.otf" id="2_ojpsa"]
-[ext_resource type="FontFile" uid="uid://ckakdat0jsjad" path="res://Assets/Fonts/bitpotion/BitPotion.ttf" id="3_pgtec"]
+[ext_resource type="FontFile" uid="uid://toqjl5ningkb" path="res://Assets/Fonts/hydrophilia/HydrophiliaIced-Regular.ttf" id="3_c1q4a"]
 
 [sub_resource type="FontVariation" id="FontVariation_2cw87"]
 base_font = ExtResource("1_kqvm5")
@@ -10,8 +10,8 @@ variation_transform = Transform2D(1.5, 0, 0, 1, 0, 0)
 spacing_glyph = 1
 
 [resource]
-default_font = ExtResource("3_pgtec")
-default_font_size = 16
+default_font = ExtResource("3_c1q4a")
+default_font_size = 11
 HeaderLabel/base_type = &"Label"
 HeaderLabel/font_sizes/font_size = 32
 HeaderMedium/base_type = &"RichTextLabel"
