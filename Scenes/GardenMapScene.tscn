@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://ciy3cfmtd600v"]
+[gd_scene load_steps=50 format=4 uid="uid://ciy3cfmtd600v"]
 
 [ext_resource type="Script" path="res://Features/Plants/Soil/SoilMap.cs" id="1_uo15o"]
 [ext_resource type="Script" path="res://Features/Audio/BgmArea2D.cs" id="1_wrnkw"]
@@ -9,16 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://csfwrdc81ybx0" path="res://Assets/Tilesets/TX Tileset Stone Ground.png" id="3_2cek8"]
 [ext_resource type="Texture2D" uid="uid://h83g282s043x" path="res://Assets/Overworld/Garden/ladder_tileset_improved.png" id="3_rcpjb"]
 [ext_resource type="Texture2D" uid="uid://ctomw1ove5828" path="res://Assets/Tilesets/TX Tileset Wall.png" id="4_5u7nl"]
-[ext_resource type="Texture2D" uid="uid://c22xfmspxhj70" path="res://Assets/Overworld/Garden/tileset_stones.png" id="7_l5mav"]
 [ext_resource type="Texture2D" uid="uid://canumkd4edu8q" path="res://Assets/Overworld/Garden/front_wall_prettier.png" id="7_sjjmn"]
 [ext_resource type="Texture2D" uid="uid://bg6sungsm67xq" path="res://Assets/Overworld/House/PlantFence.png" id="8_khsoa"]
-[ext_resource type="Texture2D" uid="uid://cpd5g3usnjwuo" path="res://Assets/Overworld/Garden/tileset_stones_improved.png" id="8_w65j4"]
 [ext_resource type="Texture2D" uid="uid://d1i5xtiv6s2iw" path="res://Assets/Overworld/Garden/Kante.png" id="11_4i7wi"]
 [ext_resource type="Texture2D" uid="uid://cc08shc1btj02" path="res://Assets/Tilesets/Plant/chubery_sheet.png" id="11_r31rj"]
 [ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/Tilesets/Plant/DeadPlant.png" id="12_h45qb"]
 [ext_resource type="Texture2D" uid="uid://dgr1wagj37jdb" path="res://Assets/Tilesets/Plant/drupoleaum_sheet.png" id="13_agfdp"]
 [ext_resource type="Texture2D" uid="uid://sn1nsmppmr7p" path="res://Assets/Overworld/Garden/Fence.png" id="13_hgn1h"]
 [ext_resource type="Texture2D" uid="uid://dxjrcllnnc3s2" path="res://Assets/Tilesets/Plant/Licary_SpriteSheet.png" id="14_eauha"]
+[ext_resource type="Texture2D" uid="uid://dl3ytowjsie7x" path="res://Assets/Overworld/Garden/pier_tileset.png" id="14_fqofp"]
 [ext_resource type="Texture2D" uid="uid://cv6hjqm0nnrau" path="res://Assets/Tilesets/soiltiles_tileset_better_rgb.png" id="16_mugcb"]
 [ext_resource type="Texture2D" uid="uid://oon4v18kv3jk" path="res://Assets/Overworld/Garden/pier_ladder.png" id="16_v0da8"]
 [ext_resource type="Script" path="res://Features/Plants/PlantMap.cs" id="17_qgpau"]
@@ -345,66 +344,6 @@ sources/1 = SubResource("TileSetAtlasSource_pqn0i")
 pattern_0 = SubResource("TileMapPattern_5sudo")
 pattern_1 = SubResource("TileMapPattern_swsaa")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3erp"]
-texture = ExtResource("7_l5mav")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3jqgn"]
-texture = ExtResource("8_w65j4")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, -4)
-1:0/0 = 0
-1:0/0/texture_origin = Vector2i(0, -6)
-2:0/0 = 0
-2:0/0/texture_origin = Vector2i(0, -7)
-3:0/0 = 0
-3:0/0/texture_origin = Vector2i(0, -5)
-4:0/0 = 0
-4:0/0/texture_origin = Vector2i(0, -5)
-0:1/0 = 0
-0:1/0/texture_origin = Vector2i(0, -2)
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.88889, 1.77778, 12.4444, 1.77778, 12, 16, -8.88889, 16)
-1:1/0 = 0
-1:1/0/texture_origin = Vector2i(0, -1)
-2:1/0 = 0
-2:1/0/texture_origin = Vector2i(0, -2)
-3:1/0 = 0
-3:1/0/texture_origin = Vector2i(0, -3)
-4:1/0 = 0
-4:1/0/texture_origin = Vector2i(0, -3)
-4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.875, 3.25, -8.875, 16, 11.625, 16, 12.125, 3.75)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t1d7m"]
-texture = ExtResource("8_khsoa")
-texture_region_size = Vector2i(32, 32)
-0:0/size_in_atlas = Vector2i(4, 4)
-0:0/next_alternative_id = 2
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 63)
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-63, -5, 62, -5.5, 61.5, 0.5, -61, 1.5)
-0:0/1 = 1
-0:0/1/flip_h = true
-0:0/1/texture_origin = Vector2i(0, 63)
-0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-62, -5, 63, -5.5, 59, 1, -61.5, 1)
-
-[sub_resource type="TileSet" id="TileSet_33ov5"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_n3erp")
-sources/1 = SubResource("TileSetAtlasSource_3jqgn")
-sources/2 = SubResource("TileSetAtlasSource_t1d7m")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pxxg0"]
 texture = ExtResource("13_hgn1h")
 texture_region_size = Vector2i(32, 32)
@@ -512,6 +451,90 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_pxxg0")
 sources/1 = SubResource("TileSetAtlasSource_tqwi8")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t1d7m"]
+texture = ExtResource("8_khsoa")
+texture_region_size = Vector2i(32, 32)
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 63)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-63, -5, 62, -5.5, 61.5, 0.5, -61, 1.5)
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/1/texture_origin = Vector2i(0, 63)
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-62, -5, 63, -5.5, 59, 1, -61.5, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_23bv0"]
+texture = ExtResource("14_fqofp")
+texture_region_size = Vector2i(32, 32)
+0:0/size_in_atlas = Vector2i(1, 3)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 38, 8, 38.25, 7.75, 46.75, -7.5, 46.75)
+1:0/size_in_atlas = Vector2i(2, 4)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.25, 40, -18.5, 50.75, 14.75, 51.75, 6.25, 40.25)
+3:0/size_in_atlas = Vector2i(2, 4)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.25, 40, -19.5, 53.75, 16.75, 54, 6.25, 40.25)
+5:0/size_in_atlas = Vector2i(1, 2)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 29.75, -3, 22.5, 3, 22.25, 2.75, 30.5)
+6:0/size_in_atlas = Vector2i(1, 2)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 29.75, -3, 22.5, 3, 22.25, 2.75, 30.5)
+7:0/size_in_atlas = Vector2i(1, 2)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 29.75, -3, 22.5, 3, 22.25, 2.75, 30.5)
+5:2/size_in_atlas = Vector2i(1, 2)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 29.75, -3, 22.5, 3, 22.25, 2.75, 30.5)
+6:2/size_in_atlas = Vector2i(1, 2)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 29.75, -3, 22.5, 3, 22.25, 2.75, 30.5)
+7:2/size_in_atlas = Vector2i(1, 2)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 29.75, -3, 22.5, 3, 22.25, 2.75, 30.5)
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.75, 7, 12, 7.25, 11.25, 14, 1, 14)
+7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.75, 7, 12, 7.25, 11.25, 14, 1, 14)
+6:5/0 = 0
+6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 0, 8, 0, 16, -8, 16)
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 0, 8, 0, 16, -8, 16)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.75, 3.5, 9.75, 3.75, 9.75, 16, -11.25, 16)
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.75, 3.5, 9.75, 3.75, 9.75, 16, -11.25, 16)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.25, 6.25, 10.75, 5.75, 10, 12.5, -10.25, 12.25)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.75, 5.5, 12.75, 6.75, 13, 9.75, -11.5, 8.75)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.75, 5.5, 12.75, 6.75, 13, 9.75, -11.5, 8.75)
+3:5/0 = 0
+2:5/0 = 0
+2:4/0 = 0
+1:4/0 = 0
+1:5/0 = 0
+0:4/0 = 0
+0:6/0 = 0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6, 16, 5.75, 16, 13.5, -16, 14)
+1:6/0 = 0
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6, 16, 5.75, 16, 13.5, -16, 14)
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6, 16, 5.75, 16, 13.5, -16, 14)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 6, 16, 5.75, 16, 13.5, -16, 14)
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, 7, 11, 7.5, 10.5, 12, -8.25, 11.75)
+
+[sub_resource type="TileSet" id="TileSet_33ov5"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/2 = SubResource("TileSetAtlasSource_t1d7m")
+sources/3 = SubResource("TileSetAtlasSource_23bv0")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw5e7"]
 texture = ExtResource("16_mugcb")
@@ -667,11 +690,6 @@ z_index = -2
 position = Vector2(640, 784)
 texture = ExtResource("7_sjjmn")
 
-[node name="WorldDecoration" type="TileMapLayer" parent="."]
-y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAZAA8AAQADAAAAAAAMAAsAAQADAAAAAAAQABEAAQACAAAAAAAVAA4AAQACAAAAAAASAAkAAQAAAAAAAAAbAA4AAQAAAAAAAAAZABIAAQADAAAAAAAbABIAAQADAAAAAAAaABIAAQACAAAAAAAbAAkAAQABAAEAAAA=")
-tile_set = SubResource("TileSet_33ov5")
-
 [node name="Fence" type="TileMapLayer" parent="."]
 y_sort_enabled = true
 position = Vector2(0, -16)
@@ -680,7 +698,7 @@ tile_set = SubResource("TileSet_wyfdb")
 
 [node name="WorldDecorationPhysics" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAWAAkAAQAAAAEAAAARAA8AAQAAAAEAAAAZAAgAAQAAAAEAAAALAAYAAQAEAAEAAAAWAAQAAgAAAAAAAQAaAAQAAgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAWAAQAAgAAAAAAAQAaAAQAAgAAAAAAAAAMAAYAAwAAAAYAAAANAAYAAwABAAYAAAAOAAYAAwACAAYAAAAPAAYAAwADAAYAAAALAAYAAwAAAAUAAAATAAQAAwAEAAUAAAAOAA4AAwAEAAQAAAAVABAAAwADAAQAAAAMAA8AAwABAAQAAAAXAAcAAwAAAAQAAAAbAAYAAwACAAUAAAALAA0AAwAAAAUAAAALABIAAwACAAQAAAAcABIAAwABAAQAAAA=")
 tile_set = SubResource("TileSet_33ov5")
 
 [node name="Soil" type="TileMapLayer" parent="."]
