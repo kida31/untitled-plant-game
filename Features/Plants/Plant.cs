@@ -94,6 +94,7 @@ public partial class Plant : Area2D
 		Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
 		SetRequirements();
 		_logger.Debug("plant has reached stage " + Stage);
+		EventBus.Instance.OnPlantHarvested(this);
 
 		return harvestedItems;
 	}

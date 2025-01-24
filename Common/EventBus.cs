@@ -105,8 +105,14 @@ public partial class EventBus : Node
 	}
 
 	//Plants
+	public event Action<Plant> PlantHarvested;
 
 	public event Action<Plant> OnSeedPlanted;
+	
+	public void OnPlantHarvested(Plant obj)
+	{
+		PlantHarvested?.Invoke(obj);
+	}
 
 	public void SeedPlanted(Plant plant)
 	{
