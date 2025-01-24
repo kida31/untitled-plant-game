@@ -201,7 +201,7 @@ public class Dehydrator : ICraftingStation
 
 		foreach (var (effect, value) in _medicineComponent.TheGoodStuff)
 		{
-			if (!comp.TheGoodStuff.ContainsKey(effect))
+			if (comp.TheGoodStuff.ContainsKey(effect))
 			{
 				comp.TheGoodStuff[effect] += value;
 			}
@@ -209,7 +209,7 @@ public class Dehydrator : ICraftingStation
 
 		foreach (var (effect, value) in _medicineComponent.TheBadStuff)
 		{
-			if (!comp.TheBadStuff.ContainsKey(effect))
+			if (comp.TheBadStuff.ContainsKey(effect))
 			{
 				comp.TheBadStuff[effect] += value;
 			}
