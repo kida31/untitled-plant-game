@@ -3,6 +3,9 @@ using Godot;
 
 namespace untitledplantgame.GUI.Components.Scrollable;
 
+/// <summary>
+///		A control for displaying text that also automatically scrolls.
+/// </summary>
 [Tool]
 public partial class AutoScrollRichTextLabel : RichTextLabel
 {
@@ -43,7 +46,6 @@ public partial class AutoScrollRichTextLabel : RichTextLabel
 	{
 		// if editor, do nothing
 		if (Engine.IsEditorHint()) return;
-
 
 		VisibilityChanged += StartScrolling;
 		Finished += StartScrolling;

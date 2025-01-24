@@ -20,12 +20,17 @@ public partial class Plugin : EditorPlugin
 		// Log Level Thingy in toolbar
 		_logLevelDropdown = ResourceLoader.Load<PackedScene>(LogLevelDropdownPath).Instantiate<Control>();
 		AddControlToContainer(LogLevelDropdownContainer, _logLevelDropdown);
+		// Consider moving script to addon
+		var autoScrollScript = GD.Load<Script>("res://Features/GUI/Components/Scrollable/AutoScrollRichTextLabel.cs");
+		var icon = EditorInterface.Singleton.GetEditorTheme().GetIcon("RichTextLabel", "EditorIcons");
+		AddCustomType("AutoScrollRichTextLabel", "RichTextLabel", autoScrollScript, icon);
 	}
 
 	public override void _ExitTree()
 	{
 		RemoveControlFromContainer(LogLevelDropdownContainer, _logLevelDropdown);
 		_logLevelDropdown.QueueFree();
+		RemoveCustomType("AutoScrollRichTextLabel");
 	}
 }
 #endif
