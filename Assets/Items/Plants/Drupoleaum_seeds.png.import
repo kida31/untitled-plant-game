@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c214jedkgbtbj"
-path="res://.godot/imported/licary_leaves.png-156150c2deda4cd4e351e217b39af83f.ctex"
+uid="uid://cvf2qbnugufmd"
+path="res://.godot/imported/Drupoleaum_seeds.png-ee7cd346458861e62b5694e4acaafc68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/Plants/licary_leaves.png"
-dest_files=["res://.godot/imported/licary_leaves.png-156150c2deda4cd4e351e217b39af83f.ctex"]
+source_file="res://Assets/Items/Plants/Drupoleaum_seeds.png"
+dest_files=["res://.godot/imported/Drupoleaum_seeds.png-ee7cd346458861e62b5694e4acaafc68.ctex"]
 
 [params]
 
