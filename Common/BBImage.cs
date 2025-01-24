@@ -7,7 +7,7 @@
 /// </summary>
 public class BbImage
 {
-	public static BbImage Coin => new("res://Assets/UI/Book/Icons/CoinIcon.png");
+	public static BbImage Coin => new("res://Assets/UI/Book/Icons/mini_coin.png");
 
 	public string Path { get; }
 	public int X { get; set; }
