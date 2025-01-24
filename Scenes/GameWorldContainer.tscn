@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=12 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
