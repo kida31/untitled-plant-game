@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Database;
@@ -84,13 +85,13 @@ public partial class Plant : Area2D
 	/// <summary>
 	/// Harvests the plant if it is harvestable.
 	/// </summary>
-	public List<IItemStack> Harvest()
+	public IItemStack Harvest()
 	{
 		if (!_isHarvestable) return null;
 
 		_logger.Debug($"Plant {PlantName} has been harvested.");
 		var harvestedItems = GetHarvestItem();
-		
+
 		Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
 		SetRequirements();
 		_logger.Debug("plant has reached stage " + Stage);
@@ -229,16 +230,15 @@ public partial class Plant : Area2D
 		_logger.Debug($"Plant {PlantName} has died due to lack of water.");
 	}
 
-	private List<IItemStack> GetHarvestItem()
+	private IItemStack GetHarvestItem()
 	{
 		if (!_isHarvestable) return null;
 		_logger.Debug($"Looking for harvested items for {PlantName} with stage {Stage}.");
-		var itemStacks = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>
-		{
-			new HarvestedComponent(PlantName, Stage)
-		});
+		var itemStacks = ItemDatabase.Instance.ItemStacks.FirstOrDefault(i =>
+			i.GetComponent<HarvestedComponent>().Equals(new HarvestedComponent(PlantName, Stage)));
+
 		_logger.Debug("Harvested items: " + itemStacks);
-		
+
 		return itemStacks;
 	}
 }

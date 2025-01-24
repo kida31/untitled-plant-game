@@ -43,7 +43,7 @@ public partial class TestAPlant : Node2D
 	private void OnHarvestButtonPressed()
 	{
 		var item = _plant.Harvest();
-		InteractableItem interact = new InteractableItem(item[0]);
+		InteractableItem interact = new InteractableItem(item);
 		//TODO might need to add it somewhere else, not root
 		//How can this be removed from root when loading new scenes?
 		//Do we save if somewhere so it appears again?

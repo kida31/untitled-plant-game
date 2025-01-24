@@ -23,14 +23,14 @@ public partial class Shears : Tool
 			return false;
 		}
 
-		var harvestedItems = closestPlant.Harvest();
-		if(harvestedItems == null)
+		var harvestedItem = closestPlant.Harvest();
+		if(harvestedItem == null)
 		{
 			_logger.Debug("No items were harvested from the plant");
 			return false;
 		}
 		
-		user.Inventory.AddItem(harvestedItems.ToArray());
+		user.Inventory.AddItem(harvestedItem);
 		return true;
 	}
 
