@@ -169,7 +169,7 @@ public class RandomStockGenerator
 	{
 		var items = ItemDatabase.Instance.GetAllItems()
 			// Ignore dried objects
-			.Where(o => !o.GetComponent<TagsComponent>().Contains(TagsComponent.Tags.IsDried))
+			.Where(o => !o.GetComponent<TagsComponent>()?.Contains(TagsComponent.Tags.IsDried) ?? true)
 			.OrderBy(o => Rand.Next())
 			.ToList<IItemStack>();
 		items.ForEach(it => it.Amount = Rand.Next(1, it.MaxStackSize));
