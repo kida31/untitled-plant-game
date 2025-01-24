@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://dqv210o7xertv"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://byh3dsgfr7x57"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_34iy2"]
 [ext_resource type="Script" path="res://Features/Dialogue/Events/GoToBed.cs" id="2_nsrvf"]
