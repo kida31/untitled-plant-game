@@ -8,6 +8,7 @@ using untitledplantgame.Crafting;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
+using untitledplantgame.Medicine;
 using untitledplantgame.Plants;
 
 namespace untitledplantgame.Database;
@@ -197,6 +198,14 @@ public class ItemDatabase
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
 					new HarvestedComponent("Chuberry", GrowthStage.Ripening),
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>{
+						{MedicinalEffect.Warming, 1},
+						{MedicinalEffect.WoundHealing, 2},
+					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
+					{
+						{ IllnessEffect.Heartburn, 2},
+						{ IllnessEffect.Diarrhea, 1},
+					})
 				}
 			},
 			new ItemStack
@@ -230,6 +239,14 @@ public class ItemDatabase
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower),
 					new HarvestedComponent("Drupoleaum", GrowthStage.Flowering),
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>{
+						{MedicinalEffect.Cooling, 2},
+						{MedicinalEffect.Calming, 1},
+					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
+					{
+						{ IllnessEffect.Heartburn, 2},
+						{ IllnessEffect.Nausea, 1},
+					})
 				}
 			},
 			new ItemStack
@@ -247,6 +264,15 @@ public class ItemDatabase
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
 					new HarvestedComponent("Drupoleaum", GrowthStage.Ripening),
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>{
+						{MedicinalEffect.Cooling, 2},
+						{MedicinalEffect.Calming, 3},
+						{ MedicinalEffect.AntiInflammatory, 1}
+					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
+					{
+						{ IllnessEffect.Heartburn, 2},
+						{ IllnessEffect.Nausea, 1},
+					})
 				}
 			},
 			new ItemStack
@@ -280,6 +306,14 @@ public class ItemDatabase
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower),
 					new HarvestedComponent("Licary", GrowthStage.Flowering),
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>{
+						{MedicinalEffect.Warming, 1},
+						{MedicinalEffect.PainRelief, 2},
+					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
+					{
+						{ IllnessEffect.Migraine, 2},
+						{ IllnessEffect.HeartAttack, 1},
+					})
 				}
 			},
 			new ItemStack
@@ -297,6 +331,14 @@ public class ItemDatabase
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
 					new HarvestedComponent("Licary", GrowthStage.Ripening),
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>{
+						{MedicinalEffect.Warming, 3},
+						{MedicinalEffect.PainRelief, 2},
+					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
+					{
+						{ IllnessEffect.Indigestion, 2},
+						{ IllnessEffect.HeartAttack, 1},
+					})
 				}
 			},
 			new ItemStack
