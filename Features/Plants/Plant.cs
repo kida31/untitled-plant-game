@@ -4,6 +4,8 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Database;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
+using untitledplantgame.Item.Components;
 
 namespace untitledplantgame.Plants;
 
@@ -82,7 +84,7 @@ public partial class Plant : Area2D
 	/// <summary>
 	/// Harvests the plant if it is harvestable.
 	/// </summary>
-	public IItemStack Harvest()
+	public List<IItemStack> Harvest()
 	{
 		if (_isHarvestable)
 		{
@@ -230,11 +232,15 @@ public partial class Plant : Area2D
 		_logger.Debug($"Plant {PlantName} has died due to lack of water.");
 	}
 
-	private IItemStack GetHarvestItem()
+	private List<IItemStack> GetHarvestItem()
 	{
 		if (!_isHarvestable) return null;
 
-		var itemStack = ItemDatabase.Instance.CreateItemStack($"{PlantName}_{Stage}_harvested");
-		return itemStack;
+		var itemStacks = ItemDatabase.Instance.GetItemStacksWithSpecifiedComponents(new List<AComponent>
+		{
+			new HarvestedComponent(PlantName, Stage)
+		});
+		
+		return itemStacks;
 	}
 }
