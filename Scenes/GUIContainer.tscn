@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="2_y866b"]
 [ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="5_ctdgk"]
 [ext_resource type="PackedScene" uid="uid://c55xp0xg83mt1" path="res://Features/GUI/HUDs/HUD.tscn" id="5_gr4nr"]
-[ext_resource type="PackedScene" uid="uid://dbt63s227d4pq" path="res://Features/GUI/Effects/NonGameplayEffect.tscn" id="5_ii0a5"]
+[ext_resource type="PackedScene" path="res://Features/GUI/Effects/NonGameplayEffect.tscn" id="5_ii0a5"]
 [ext_resource type="PackedScene" uid="uid://cca7okqb2j4c7" path="res://Features/GUI/Book/BookView.tscn" id="5_sy5d4"]
 [ext_resource type="PackedScene" uid="uid://fpjia0r4x37g" path="res://Features/Crafting/Dehydrator/DehydratorInventoryView.tscn" id="5_yxd3d"]
 [ext_resource type="Script" path="res://Features/GUI/Effects/TriggerOnNonGameplay.cs" id="6_wbn0r"]
-[ext_resource type="PackedScene" uid="uid://cwe0di17r2yd" path="res://Features/TeleportPlayer/SceneTransition.tscn" id="8_jtjsl"]
+[ext_resource type="PackedScene" path="res://Features/TeleportPlayer/SceneTransition.tscn" id="8_jtjsl"]
 [ext_resource type="PackedScene" uid="uid://df0cg0vcow1n2" path="res://Features/GUI/DebugOverlays/DebugOverlays.tscn" id="9_m21er"]
 
 [node name="GUIContainer" type="CanvasLayer"]

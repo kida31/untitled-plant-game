@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_m4ye3"]
 script = ExtResource("1_uf7ff")
 speakerName = "Pan Dan"
-DialogueExpression = 0
 dialogueText = "I found a jar but there were no sweets, just these seeds so maybe you like them more than I do?"
 
 [sub_resource type="Resource" id="Resource_sige0"]
