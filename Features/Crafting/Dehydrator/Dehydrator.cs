@@ -156,19 +156,19 @@ public class Dehydrator : ICraftingStation
 		var tags = item.GetComponent<TagsComponent>();
 		if (tags.Contains(TagsComponent.Tags.IsFlower))
 		{
-			item.Name = $"{DriedFlower.Name} {item.Name}";
+			item.Name = $"Dried {item.Name}";
 			item.Icon = DriedFlower.Icon;
 			item.ToolTipDescription = DriedFlower.ToolTipDescription;
 		}
 		else if (tags.Contains(TagsComponent.Tags.IsFruit))
 		{
-			item.Name = $"{DriedFruit.Name} {item.Name}";
+			item.Name = $"Dried {item.Name}";
 			item.Icon = DriedFruit.Icon;
 			item.ToolTipDescription = DriedFruit.ToolTipDescription;
 		}
 		else
 		{
-			item.Name = $"{DriedLeaf.Name} {item.Name}";
+			item.Name = $"Dried {item.Name}";
 			item.Icon = DriedLeaf.Icon;
 			item.ToolTipDescription = DriedLeaf.ToolTipDescription;
 		}
