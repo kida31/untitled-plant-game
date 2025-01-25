@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=12 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
@@ -11,10 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="7_nwxdh"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
 [ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
-[ext_resource type="Script" path="res://Features/NPC/NpcType/SimpleTalkingObject.cs" id="12_v41lp"]
-[ext_resource type="Texture2D" uid="uid://dutej8e00ofqq" path="res://Assets/Overworld/Garden/Sign_Tawas.png" id="13_e5m7g"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_k78ub"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
@@ -22,6 +18,7 @@ y_sort_enabled = true
 [node name="GardenMapScene" parent="." instance=ExtResource("1_ouy3g")]
 
 [node name="Pier" parent="." instance=ExtResource("3_d7fyg")]
+y_sort_enabled = true
 position = Vector2(-1052, 2316)
 
 [node name="VendingMachine" parent="." instance=ExtResource("3_5hcym")]
@@ -53,17 +50,3 @@ position = Vector2(577.5, 328.625)
 scale = Vector2(1.19896, 1.19896)
 script = ExtResource("6_4ec11")
 _gradientTexture = ExtResource("7_xmbsw")
-
-[node name="SimpleTalkingObject" type="Area2D" parent="."]
-position = Vector2(577.5, 328.625)
-scale = Vector2(1.19896, 1.19896)
-script = ExtResource("12_v41lp")
-_portraitTexture = ExtResource("13_e5m7g")
-_name = "Tawas Sign"
-_dialog = "Almost there.
-Trust me!
-
-You can also leave 2 spaces for readability"
-
-[node name="InteractionArea (mandatory)" type="CollisionShape2D" parent="SimpleTalkingObject"]
-shape = SubResource("CircleShape2D_k78ub")
