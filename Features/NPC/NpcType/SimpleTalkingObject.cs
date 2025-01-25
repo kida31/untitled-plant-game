@@ -16,6 +16,8 @@ public partial class SimpleTalkingObject : AInteractable
 	/// </summary>
 	[Export(PropertyHint.MultilineText)] private string _dialog;
 
+	public override string ActionName => "Inspect";
+
 	private DialogueResourceObject _dialogObject;
 
 	public override void _Ready()
@@ -24,7 +26,7 @@ public partial class SimpleTalkingObject : AInteractable
 
 		// Create dialog object from the exported variables
 		var lines = _dialog
-			.Split("\n")
+			.Split("\n", StringSplitOptions.RemoveEmptyEntries)
 			.Select(line =>
 			{
 				var dialogLine = new DialogueLine();
