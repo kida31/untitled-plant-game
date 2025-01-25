@@ -5,8 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_lpqko"]
 script = ExtResource("1_ibveo")
-speakerName = ""
-DialogueExpression = 0
+speakerName = "Sign"
 dialogueText = "Tawas in 1km."
 
 [resource]
