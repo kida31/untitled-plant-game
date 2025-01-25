@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
 [ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghoki"]
+size = Vector2(22, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ryxll"]
 radius = 34.0147
@@ -19,15 +19,14 @@ script = ExtResource("1_ypuiu")
 _playerAnimatedSprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
-rotation = 1.5708
-shape = SubResource("CircleShape2D_bkgeg")
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_ghoki")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("_player")]
 position = Vector2(0, -31)
 sprite_frames = ExtResource("2_3hfoe")
-animation = &"walk_left"
-frame_progress = 0.575281
+animation = &"walk_right"
+frame_progress = 0.209698
 script = ExtResource("3_utdyr")
 _player = NodePath("..")
 
