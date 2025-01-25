@@ -128,8 +128,8 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 				_logger.Error("Dialogue line is null.");
 				return;
 			case DialogueEvent d:
-				d.Execute();
 				OnEndOfDialogueBlock();
+				d.Execute();
 				return;
 		}
 
@@ -171,9 +171,6 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 			void OnButtonOnPressed()
 			{
 				_dialogueSystem.InsertSelectedResponse(response);
-				//---Code from Panikk-Mode---
-				EventBus.Instance.ResponseButtonPressed(response);
-				//---Code from Panikk-Mode---
 				ClearResponses();
 			}
 

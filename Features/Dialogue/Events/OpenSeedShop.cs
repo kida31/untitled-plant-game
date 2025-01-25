@@ -8,11 +8,16 @@ namespace untitledplantgame.Dialogue.Events;
 [GlobalClass]
 public partial class OpenSeedShop : DialogueEvent
 {
-	private SeedShop _seedShop;
-	public override void Execute()
+	private readonly SeedShop _seedShop;
+
+	public OpenSeedShop()
 	{
 		_seedShop = new SeedShop();
 		_seedShop.GenerateRandomShopStock();
+	}
+	
+	public override void Execute()
+	{
 		EventBus.Instance.SeedShopOpening(_seedShop);
 	}
 }
