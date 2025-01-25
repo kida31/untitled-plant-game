@@ -33,6 +33,8 @@ public partial class Plant : Area2D
 	public event Action<Plant> BeforePlantRemoved;
 	public event Action<Plant> PlantGrown;
 
+	public event Action<Plant> PlantDied; 
+
 	private Dictionary<string, Requirement> _currentRequirements;
 	private readonly Logger _logger;
 
@@ -145,6 +147,8 @@ public partial class Plant : Area2D
 	/// </summary>
 	private bool CheckRequirements()
 	{
+		if (Stage is GrowthStage.Dead or GrowthStage.Ripening) return false;
+		
 		var fulfilled = false;
 		foreach (var requirement in _currentRequirements)
 		{
@@ -153,9 +157,9 @@ public partial class Plant : Area2D
 				break;
 		}
 
-		_logger.Debug($"Requirement {fulfilled} for stage {Stage}.");
+		_logger.Debug($"Requirement {fulfilled} for stage {Stage} on plant {PlantName}.");
 
-		return fulfilled && Stage != GrowthStage.Ripening && Stage != GrowthStage.Dead;
+		return fulfilled;
 	}
 
 	/// <summary>
@@ -225,6 +229,7 @@ public partial class Plant : Area2D
 	{
 		Stage = GrowthStage.Dead;
 		_isHarvestable = false;
+		PlantDied?.Invoke(this);
 		_logger.Debug($"Plant {PlantName} has died due to lack of water.");
 	}
 
