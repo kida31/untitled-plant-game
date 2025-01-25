@@ -77,12 +77,14 @@ Button = 6
 
 [node name="ButtonLine" parent="." instance=ExtResource("5_1mxlj")]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
-offset_top = 40.0
-offset_bottom = 40.0
+offset_left = -202.0
+offset_top = 21.0
+offset_right = -202.0
+offset_bottom = 21.0
+grow_horizontal = 0
 grow_vertical = 0
 
 [node name="UIFocus" parent="." instance=ExtResource("4_pgjhc")]
