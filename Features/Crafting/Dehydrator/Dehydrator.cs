@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Database;
@@ -25,7 +26,6 @@ public class Dehydrator : ICraftingStation
 	public CraftingSlot[] CraftingSlots { get;}
 
 	private readonly Logger _logger;
-	private bool _hasFinishedItems;
 
 	private readonly MedicineComponent _medicineComponent = new(
 		new Dictionary<MedicinalEffect, int>
@@ -118,18 +118,7 @@ public class Dehydrator : ICraftingStation
 	
 	private bool CheckHasFinishedItems()
 	{
-		_hasFinishedItems = false;
-		foreach (var slot in CraftingSlots)
-		{
-			if (!slot.IsCraftingComplete)
-			{
-				continue;
-			}
-
-			_hasFinishedItems = true;
-			break;
-		}
-		return _hasFinishedItems;
+		return CraftingSlots.Any(slot => slot.IsCraftingComplete);
 	}
 
 	public IItemStack RemoveItemFromSlot(int slotIndex)
@@ -159,7 +148,13 @@ public class Dehydrator : ICraftingStation
 
 	private void OnCraftTimeOut(CraftingSlot slot)
 	{
-		var item = slot.ItemStack;
+		var item = slot?.ItemStack;
+		if (item == null)
+		{
+			_logger.Error("Item or slot is null.");
+			return;
+		}
+		
 		slot.ItemStack = ModifyItem(item);
 		CraftingSlotUpdated?.Invoke(CheckHasFinishedItems());
 	}
@@ -203,7 +198,8 @@ public class Dehydrator : ICraftingStation
 	private IItemStack ModifyComponents(IItemStack item)
 	{
 		//remove drieable
-		var tags = item.GetComponent<TagsComponent>().Clone();
+		var tags = item.GetComponent<TagsComponent>()?.Clone();
+
 		tags.Add(TagsComponent.Tags.IsDried);
 		tags.Remove(TagsComponent.Tags.IsDrieable);
 
