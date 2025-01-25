@@ -8,6 +8,14 @@ namespace untitledplantgame.Audio
 	{
 		[Export] private float _volume = 100; // Default volume
 		private List<AudioStreamPlayer> _audioPlayers = new List<AudioStreamPlayer>();
+		private Dictionary<string, AudioStreamPlayer> _sounds = new Dictionary<string, AudioStreamPlayer>()
+		{
+			{"menu-ui_Play_Game", new AudioStreamPlayer()},
+			{"menu-ui_Hover_Sound", new AudioStreamPlayer()},
+			{"menu-ui_Exit_Game", new AudioStreamPlayer()},
+			{"menu-ui_Click_Button", new AudioStreamPlayer()}
+		};
+
 
 		public override void _Ready()
 		{

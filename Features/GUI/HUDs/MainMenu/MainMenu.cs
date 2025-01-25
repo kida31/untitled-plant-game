@@ -24,22 +24,16 @@ public partial class MainMenu : Control
 
 	private void OnStartButtonPressed()
 	{
-		
-		_sfx.PlaySound("res://Assets/SFX/atmo_rain_thunder.wav");
 		GetTree().ChangeSceneToFile("res://Main.tscn");
 	}
 
 	private void OpenSettings()
 	{
-		// Play sound here if needed
-		_sfx.PlaySound("res://Assets/SFX/your_settings_sound.wav"); // Replace with actual sound path
 		GetTree().ChangeSceneToFile("res://Features/GUI/HUDs/SettingsMenu/Settings.tscn");
 	}
 
 	private void OnExitButtonPressed()
 	{
-		// Play sound effect here if needed
-		_sfx.PlaySound("res://Assets/SFX/your_exit_sound.wav"); // Replace with actual sound path
 		GetTree().Quit();
 	}
 }
