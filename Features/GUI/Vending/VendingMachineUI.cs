@@ -152,6 +152,8 @@ public partial class VendingMachineUI : Control
 			itemView.SlotIndex = index;
 		}
 
+		_withdrawButton.Visible = _vendingMachine.Gold > 0;
+		
 		UpdateItemPriceVisuals();
 	}
 
