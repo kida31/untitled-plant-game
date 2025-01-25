@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://dspr0pf5hudj6"]
+
+[ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="1_0ac5h"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_top = -32.0
+offset_right = 219.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LeftTrigger" parent="HBoxContainer" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+Button = 6
+
+[node name="Inventory" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"HeaderSmall"
+text = "Inventory"
+
+[node name="LeftBumper" parent="HBoxContainer" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+Button = 4
+
+[node name="TabLeft" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"HeaderSmall"
+text = "Category tab left"
+
+[node name="RightBumper" parent="HBoxContainer" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+Button = 5
+
+[node name="TabRight" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"HeaderSmall"
+text = "Category tab right
+"
+
+[node name="RightTrigger" parent="HBoxContainer" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+Button = 7
+
+[node name="Encyclopedia" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
+text = "Encyclopedia"

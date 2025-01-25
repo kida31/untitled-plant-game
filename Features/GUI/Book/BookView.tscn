@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cca7okqb2j4c7"]
+[gd_scene load_steps=10 format=3 uid="uid://cca7okqb2j4c7"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/BookView.cs" id="1_rrual"]
-[ext_resource type="PackedScene" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.tscn" id="2_tyesk"]
-[ext_resource type="PackedScene" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="4_pgjhc"]
-[ext_resource type="PackedScene" path="res://Features/GUI/Book/Pages/WikiPage.tscn" id="4_t387j"]
+[ext_resource type="PackedScene" uid="uid://c6y60vh6v2ec8" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.tscn" id="2_tyesk"]
+[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="4_pgjhc"]
+[ext_resource type="PackedScene" uid="uid://e3t5fwq4qne3" path="res://Features/GUI/Book/Pages/WikiPage.tscn" id="4_t387j"]
+[ext_resource type="PackedScene" uid="uid://dspr0pf5hudj6" path="res://Features/GUI/ButtonLine.tscn" id="5_1mxlj"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="5_hs6c8"]
 [ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="7_ucqdi"]
 [ext_resource type="PackedScene" uid="uid://qruua750qmw4" path="res://Features/GUI/CursorHandView.tscn" id="7_vpmxr"]
@@ -47,6 +48,7 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="R2Button" parent="." instance=ExtResource("7_ucqdi")]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -61,6 +63,7 @@ grow_vertical = 0
 Button = 7
 
 [node name="L2Button" parent="." instance=ExtResource("7_ucqdi")]
+visible = false
 layout_mode = 1
 anchor_left = 0.0714286
 anchor_top = 0.0361842
@@ -71,6 +74,16 @@ offset_top = 283.0
 offset_right = -22.4
 offset_bottom = 287.978
 Button = 6
+
+[node name="ButtonLine" parent="." instance=ExtResource("5_1mxlj")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_top = 40.0
+offset_bottom = 40.0
+grow_vertical = 0
 
 [node name="UIFocus" parent="." instance=ExtResource("4_pgjhc")]
 offset_left = 1.0
