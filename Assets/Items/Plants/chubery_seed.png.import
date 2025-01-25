@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy0uyts2e0kox"
-path="res://.godot/imported/wall_tileset.png-5dfe75f14cf46c5d6c0fb27383ef04a4.ctex"
+uid="uid://5kx22qfxe5uu"
+path="res://.godot/imported/chubery_seed.png-6521f24a25e6a01ff8589ecf9d4835b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/wall_tileset.png"
-dest_files=["res://.godot/imported/wall_tileset.png-5dfe75f14cf46c5d6c0fb27383ef04a4.ctex"]
+source_file="res://Assets/Items/Plants/chubery_seed.png"
+dest_files=["res://.godot/imported/chubery_seed.png-6521f24a25e6a01ff8589ecf9d4835b3.ctex"]
 
 [params]
 

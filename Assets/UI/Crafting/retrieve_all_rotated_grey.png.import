@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvf2qbnugufmd"
-path="res://.godot/imported/Drupoleaum_seeds.png-8e6ba20bcad32fc8e6981adb85393a12.ctex"
+uid="uid://1wy6xl7bslg2"
+path="res://.godot/imported/retrieve_all_rotated_grey.png-f0c066ba7fee826dbefdc79515148d59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/Drupoleaum_seeds.png"
-dest_files=["res://.godot/imported/Drupoleaum_seeds.png-8e6ba20bcad32fc8e6981adb85393a12.ctex"]
+source_file="res://Assets/UI/Crafting/retrieve_all_rotated_grey.png"
+dest_files=["res://.godot/imported/retrieve_all_rotated_grey.png-f0c066ba7fee826dbefdc79515148d59.ctex"]
 
 [params]
 

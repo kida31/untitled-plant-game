@@ -77,6 +77,12 @@ public partial class ItemStack : Resource, IItemStack
 	public T GetComponent<T>()
 		where T : AComponent
 	{
+		if (typeof(T) == typeof(AComponent))
+		{
+			_logger.Error("Cannot get component of type AComponent. Use a derived type instead.");
+			return null;
+		}
+		
 		var idx = Components.ToList().FindIndex(component => component is T);
 		if (idx != -1)
 		{

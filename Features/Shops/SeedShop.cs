@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Common;
-using untitledplantgame.Database;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 using untitledplantgame.Statistics.StatTypes;
 using untitledplantgame.Systems;
 
@@ -67,7 +67,7 @@ public class SeedShop : IShop
 	public void GenerateRandomShopStock()
 	{
 		// Placeholder
-		var allSeeds = ItemDatabase.Instance.ItemStacks
+		var allSeeds = ItemDatabase.Instance.GetAllItems()
 			.Where(it => it.Category == ItemCategory.Seed);
 		var seedsWithRandomAmount = allSeeds
 			.Select(s =>

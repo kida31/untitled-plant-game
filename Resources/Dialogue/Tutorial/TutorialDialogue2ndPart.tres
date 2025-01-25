@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_rwsxv"]
 [ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_yiu25"]
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="3_n4glt"]
-[ext_resource type="Texture2D" uid="uid://5kx22qfxe5uu" path="res://Assets/Items/chubery_seed.png" id="4_dst2y"]
+[ext_resource type="Texture2D" uid="uid://5kx22qfxe5uu" path="res://Assets/Items/Plants/chubery_seed.png" id="4_dst2y"]
 [ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="4_empvu"]
 
 [sub_resource type="Resource" id="Resource_82fqt"]

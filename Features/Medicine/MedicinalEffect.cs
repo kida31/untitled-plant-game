@@ -12,4 +12,5 @@ public enum MedicinalEffect
 	PainRelief,
 	Antibacterial,
 	FeverReducing,
+	AntiOxidant,
 }
