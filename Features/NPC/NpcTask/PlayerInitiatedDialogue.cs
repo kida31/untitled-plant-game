@@ -18,7 +18,7 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 	[Export] private Array<DialogueResourceObject> _dialogueResourceObject;
 	[Export] private bool _randomOrderOfDialogueLines;
 
-	private int _index;
+	private int _amountOfDialogueLinesUsed;
 	private bool DialogueFinished { get; set; }
 	private event EventHandler TaskStarted;
 	private event EventHandler TaskFinished;
@@ -53,12 +53,12 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 		}
 		else
 		{
-			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject[_index]);
-			_index++;
+			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject[_amountOfDialogueLinesUsed]);
+			_amountOfDialogueLinesUsed++;
 			
-			if (_index == _dialogueResourceObject.Count)
+			if (_amountOfDialogueLinesUsed == _dialogueResourceObject.Count)
 			{
-				_index = 0;
+				_amountOfDialogueLinesUsed = 0;
 			}
 		}
 	
@@ -66,7 +66,7 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 		// TODO; Need variable to block the starting process of new tasks/routines.
 		_routinePlanner.ActiveTask?.InterruptCurrentTask();
 		_logger.Info("Player stopped the current routine by starting a Dialogue with an Npc.");
-		ResumeRoutineIfFinished();
+		//ResumeRoutineIfFinished();
 	}
 	
 	private void FinishDialogue()
