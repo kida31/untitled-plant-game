@@ -683,6 +683,7 @@ sources/1 = SubResource("TileSetAtlasSource_qplcf")
 y_sort_enabled = true
 
 [node name="BgmTriggerArea" type="Area2D" parent="."]
+visible = false
 position = Vector2(455, 530)
 script = ExtResource("1_wrnkw")
 _bgm = ExtResource("2_g0xi1")
@@ -747,4 +748,3 @@ entryDoorName = "PierLadder"
 
 [node name="SoilTiles" parent="." instance=ExtResource("27_sla4y")]
 z_index = 0
-y_sort_enabled = false

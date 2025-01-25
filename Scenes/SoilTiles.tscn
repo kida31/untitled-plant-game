@@ -28,17 +28,19 @@ texture = ExtResource("5_jgccg")
 texture_region_size = Vector2i(32, 32)
 4:0/size_in_atlas = Vector2i(4, 3)
 4:0/0 = 0
-4:0/0/texture_origin = Vector2i(18, 31)
-4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -36, 28, -36, 28, 8, -64, 8)
+4:0/0/texture_origin = Vector2i(16, 32)
+4:0/0/y_sort_origin = 9
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-62, -30, 30, -30, 30, 8, -62, 8)
 4:3/size_in_atlas = Vector2i(4, 3)
 4:3/0 = 0
-4:3/0/texture_origin = Vector2i(14, 33)
-4:3/0/y_sort_origin = -1
-4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-60, -36, 32, -36, 32, 12, -60, 12)
+4:3/0/texture_origin = Vector2i(-16, 32)
+4:3/0/y_sort_origin = 13
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-62, -28, 30, -28, 30, 14, -62, 14)
 0:4/size_in_atlas = Vector2i(3, 4)
 0:4/0 = 0
 0:4/0/texture_origin = Vector2i(0, 48)
-0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -68, 20, -68, 20, 8, -20, 8)
+0:4/0/y_sort_origin = 6
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -64, 20, -64, 20, 6, -20, 6)
 0:0/size_in_atlas = Vector2i(3, 4)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 48)
@@ -63,20 +65,20 @@ y_sort_enabled = true
 script = ExtResource("2_wxa00")
 
 [node name="ChuSeedSoil" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(439, 338)
+position = Vector2(465, 337)
 
 [node name="Tutorial_Chuberry" parent="ChuSeedSoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
 Tile = NodePath("..")
 
 [node name="ChuGrownSoil" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(400, 336)
+position = Vector2(432, 337)
 
 [node name="PlantPrefab" parent="ChuGrownSoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
 Stage = 6
 Tile = NodePath("..")
 
 [node name="LicarySoil" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(625, 210)
+position = Vector2(625, 207)
 
 [node name="PlantPrefab" parent="LicarySoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
 PlantName = "Licary"
@@ -84,7 +86,7 @@ Stage = 3
 Tile = NodePath("..")
 
 [node name="DrupoSoil" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(780, 305)
+position = Vector2(780, 303)
 
 [node name="PlantPrefab" parent="DrupoSoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
 PlantName = "Drupoleaum"
@@ -92,10 +94,10 @@ Stage = 4
 Tile = NodePath("..")
 
 [node name="Soil10" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(753, 531)
+position = Vector2(752, 528)
 
 [node name="Soil11" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(752, 497)
+position = Vector2(752, 496)
 
 [node name="Soil12" parent="." instance=ExtResource("3_y13yj")]
 position = Vector2(817, 401)
@@ -107,7 +109,7 @@ position = Vector2(779, 400)
 position = Vector2(815, 305)
 
 [node name="Soil9" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(587, 210)
+position = Vector2(592, 207)
 
 [node name="Soil3" parent="." instance=ExtResource("3_y13yj")]
 position = Vector2(560, 400)
