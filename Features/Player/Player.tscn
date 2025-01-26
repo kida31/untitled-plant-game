@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=10 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="SpriteFrames" uid="uid://upqodpbedg8s" path="res://Features/Player/PlayerSpriteFrames.tres" id="2_3hfoe"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Features/Player/StateIdle.cs" id="5_k3tas"]
 [ext_resource type="Script" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
 [ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
+[ext_resource type="Script" path="res://Features/Player/PixelFloorCamera2D.cs" id="8_nj75v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
 radius = 8.0
@@ -40,13 +41,13 @@ script = ExtResource("6_6k3md")
 [node name="UseTool" type="Node" parent="StateMachine"]
 script = ExtResource("7_lrvm3")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("_player")]
 offset = Vector2(0, -32)
-process_callback = 0
 position_smoothing_speed = 2.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.1
-drag_top_margin = 0.1
-drag_right_margin = 0.1
-drag_bottom_margin = 0.1
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
+script = ExtResource("8_nj75v")
+_player = NodePath("..")
+_smoothing = 34.1509

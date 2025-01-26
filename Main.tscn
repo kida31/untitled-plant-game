@@ -1,10 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckpxuei42sa5c"]
+[gd_scene load_steps=7 format=3 uid="uid://ckpxuei42sa5c"]
 
 [ext_resource type="PackedScene" uid="uid://3ndp3em1fi7h" path="res://Scenes/GUIContainer.tscn" id="1_c43ed"]
+[ext_resource type="Script" path="res://Main.cs" id="1_vfi5v"]
 [ext_resource type="PackedScene" uid="uid://cv1fhyjs170lk" path="res://Scenes/GameWorldContainer.tscn" id="3_m582q"]
+[ext_resource type="Shader" path="res://ViewportShader.gdshader" id="3_mjorn"]
+[ext_resource type="Script" path="res://PixelViewport.cs" id="4_ldgxj"]
 
-[node name="Main" type="Node"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlrmi"]
+shader = ExtResource("3_mjorn")
+shader_parameter/cam_offset = Vector2(0, 0)
+
+[node name="Main" type="Node" node_paths=PackedStringArray("_subViewport")]
+script = ExtResource("1_vfi5v")
+_subViewport = NodePath("SubViewportContainer/SubViewport")
 
 [node name="GUIContainer" parent="." instance=ExtResource("1_c43ed")]
 
-[node name="GameWorldContainer" parent="." instance=ExtResource("3_m582q")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_qlrmi")
+offset_right = 640.0
+offset_bottom = 360.0
+script = ExtResource("4_ldgxj")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+canvas_item_default_texture_filter = 0
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="GameWorldContainer" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_m582q")]
