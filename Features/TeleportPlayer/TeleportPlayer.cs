@@ -23,7 +23,7 @@ public partial class TeleportPlayer : Node
 	async public void TPP(Door currentDoor)
 	{
 		var player = GetTree().GetNodesInGroup(GameGroup.Player)[0] as Player;
-		var camera = player.GetNode<Camera2D>("Camera2D");
+
 		var interactables = GetTree().GetNodesInGroup(GameGroup.Interactables);
 		Vector2 targetPosition = Vector2.Zero;
 		var trans = GetTree().Root.GetNode("Main").GetNode("GUIContainer").GetNode<SceneTransition>("SceneTransition");
@@ -40,13 +40,7 @@ public partial class TeleportPlayer : Node
 		if (targetPosition != Vector2.Zero)
 		{
 			await trans.FadeIn();
-
-			camera.PositionSmoothingEnabled = false;
-			player.GlobalPosition = targetPosition;
-			camera.GlobalPosition = targetPosition;
-			camera.ForceUpdateScroll();
-			camera.PositionSmoothingEnabled = true;
-
+			player!.GlobalPosition = targetPosition;
 			await trans.FadeOut();
 
 			_logger.Debug($"Player moved to {targetPosition}");

@@ -42,6 +42,7 @@ script = ExtResource("6_6k3md")
 script = ExtResource("7_lrvm3")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("_player")]
+top_level = true
 offset = Vector2(0, -32)
 position_smoothing_speed = 2.0
 drag_left_margin = 0.05
@@ -50,4 +51,4 @@ drag_right_margin = 0.05
 drag_bottom_margin = 0.05
 script = ExtResource("8_nj75v")
 _player = NodePath("..")
-_smoothing = 311.172
+_speed = 2.0

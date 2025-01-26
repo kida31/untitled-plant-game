@@ -6,7 +6,7 @@ namespace untitledplantgame.Player;
 public partial class PixelFloorCamera2D : Camera2D
 {
 	[Export] private Player _player;
-	[Export(PropertyHint.ExpEasing)] private float _smoothing = Int32.MaxValue;
+	[Export(PropertyHint.Range, "0.0,5.0")] private float _speed;
 	[Export(PropertyHint.Range, "0.0,1.0")] private float _mouseInfluence;
 	[Export] private Vector2 _mouseBoundary = Vector2.Zero;
 
@@ -28,13 +28,13 @@ public partial class PixelFloorCamera2D : Camera2D
 		var targetPosition = _player.GlobalPosition.Lerp(GetGlobalMousePosition(), _mouseInfluence);
 		targetPosition = targetPosition.Clamp(
 			_player.GlobalPosition - _gameSize * _mouseBoundary,
-			_player.GlobalPosition + _gameSize * _mouseBoundary
-		);
+			_player.GlobalPosition + _gameSize * _mouseBoundary);
 
-		_actualPosition = _actualPosition.Lerp(targetPosition, (float) delta * 100 / Math.Max(1, _smoothing));
-
-		var error = _actualPosition.Round() - _actualPosition;
-		PixelViewport.Instance.SetOffset(error);
+		_actualPosition = _actualPosition.Lerp(targetPosition, (float) Math.Clamp(_speed * delta, 0.0f, 1.0f));
 		GlobalPosition = _actualPosition.Round();
+
+		// Forward the error to the PixelViewport
+		var error = GlobalPosition - _actualPosition;
+		PixelViewport.Instance.SetOffset(error);
 	}
 }
