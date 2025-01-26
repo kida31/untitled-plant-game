@@ -127,5 +127,5 @@ IsHarvestable = true
 script = ExtResource("1_40thf")
 PlantName = "Drupoleaum"
 ConsumptionRate = 40
-AbsorptionRate = 50
+AbsorptionRate = 60
 DataForGrowthStages = Array[Object]([SubResource("Resource_325r3"), SubResource("Resource_p1qrr"), SubResource("Resource_miew2"), SubResource("Resource_vprjf"), SubResource("Resource_w7rc2"), SubResource("Resource_oef1i"), SubResource("Resource_k3nmq")])

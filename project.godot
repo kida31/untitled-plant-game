@@ -47,8 +47,8 @@ BgmManager="*res://Features/Audio/BgmManager.tscn"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/window_width_override=960
+window/size/window_height_override=540
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
@@ -205,4 +205,4 @@ textures/vram_compression/import_etc2_astc=true
 
 [untitled_plant_game]
 
-logging/log_level="Info"
+logging/log_level="Debug"

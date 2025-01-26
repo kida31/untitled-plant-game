@@ -127,5 +127,5 @@ IsHarvestable = true
 script = ExtResource("1_77ck6")
 PlantName = "Licary"
 ConsumptionRate = 30
-AbsorptionRate = 40
+AbsorptionRate = 45
 DataForGrowthStages = Array[Object]([SubResource("Resource_wqbh2"), SubResource("Resource_ecvvi"), SubResource("Resource_prixi"), SubResource("Resource_egv7k"), SubResource("Resource_7q8v8"), SubResource("Resource_o7pu8"), SubResource("Resource_aqcqa")])
