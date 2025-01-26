@@ -32,9 +32,9 @@ public partial class PixelFloorCamera2D : Camera2D
 		);
 
 		_actualPosition = _actualPosition.Lerp(targetPosition, (float) delta * 100 / Math.Max(1, _smoothing));
-		GlobalPosition = _actualPosition.Round();
 
-		var error = GlobalPosition - _actualPosition;
+		var error = _actualPosition.Round() - _actualPosition;
 		PixelViewport.Instance.SetOffset(error);
+		GlobalPosition = _actualPosition.Round();
 	}
 }
