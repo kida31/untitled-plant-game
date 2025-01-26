@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c6y60vh6v2ec8" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.tscn" id="2_tyesk"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="4_pgjhc"]
 [ext_resource type="PackedScene" uid="uid://e3t5fwq4qne3" path="res://Features/GUI/Book/Pages/WikiPage.tscn" id="4_t387j"]
-[ext_resource type="PackedScene" uid="uid://dspr0pf5hudj6" path="res://Features/GUI/ButtonLine.tscn" id="5_1mxlj"]
+[ext_resource type="PackedScene" uid="uid://c58nh44afib7e" path="res://Features/GUI/ButtonLine.tscn" id="5_1mxlj"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="5_hs6c8"]
 [ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="7_ucqdi"]
 [ext_resource type="PackedScene" uid="uid://qruua750qmw4" path="res://Features/GUI/CursorHandView.tscn" id="7_vpmxr"]
@@ -80,9 +80,9 @@ layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
-offset_left = -202.0
+offset_left = -160.0
 offset_top = 21.0
-offset_right = -202.0
+offset_right = -160.0
 offset_bottom = 21.0
 grow_horizontal = 0
 grow_vertical = 0

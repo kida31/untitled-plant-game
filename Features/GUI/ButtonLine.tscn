@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dspr0pf5hudj6"]
+[gd_scene load_steps=3 format=3 uid="uid://c58nh44afib7e"]
 
 [ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="1_0ac5h"]
 
@@ -31,47 +31,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 Button = 6
 
-[node name="Inventory" type="Label" parent="HBoxContainer"]
+[node name="slash_left" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_type_variation = &"HeaderSmall"
 theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
-text = "Inventory"
-
-[node name="LeftBumper" parent="HBoxContainer" instance=ExtResource("1_0ac5h")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-Button = 4
-
-[node name="TabLeft" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_type_variation = &"HeaderSmall"
-theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
-text = "Category tab left"
-
-[node name="Panel" type="Panel" parent="HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ortgu")
-
-[node name="RightBumper" parent="HBoxContainer" instance=ExtResource("1_0ac5h")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-Button = 5
-
-[node name="TabRight" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_type_variation = &"HeaderSmall"
-theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
-text = "Category tab right
-"
+text = "/"
 
 [node name="RightTrigger" parent="HBoxContainer" instance=ExtResource("1_0ac5h")]
 layout_mode = 2
@@ -79,9 +45,42 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 Button = 7
 
-[node name="Encyclopedia" type="Label" parent="HBoxContainer"]
+[node name="switch_pages" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
-text = "Encyclopedia"
+text = "switch pages"
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ortgu")
+
+[node name="LeftBumper" parent="HBoxContainer" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+Button = 4
+
+[node name="slash_right" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
+text = "/"
+
+[node name="RightBumper" parent="HBoxContainer" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+Button = 5
+
+[node name="switch_categories" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
+text = "switch categories"
