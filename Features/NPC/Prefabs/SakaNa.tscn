@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlh6j0ry4yfo0"]
+
+[ext_resource type="Texture2D" uid="uid://be44svg1tcea" path="res://Assets/Characters/NaFamily/fisherman overworld sprite.png" id="1_q35ku"]
+
+[node name="SakaNa" type="Node2D"]
+
+[node name="FishermanOverworldSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_q35ku")
+flip_h = true

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://de18gftjwro86"]
+
+[ext_resource type="Texture2D" uid="uid://cdcnpdve7pcec" path="res://Assets/Characters/NaFamily/fish lady overworld sprite.png" id="1_bs2vo"]
+
+[node name="TuNa" type="Node2D"]
+
+[node name="FishLadyOverworldSprite" type="Sprite2D" parent="."]
+position = Vector2(-1, -32)
+texture = ExtResource("1_bs2vo")
