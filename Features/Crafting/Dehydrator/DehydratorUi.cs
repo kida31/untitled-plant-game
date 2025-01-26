@@ -48,6 +48,12 @@ public partial class DehydratorUi : Control
 		}
 	}
 
+	private void UpdateWithdrawButton(bool hasFinishedItems)
+	{
+		_retrieveAllItemsButton.Visible = hasFinishedItems;
+		_logger.Debug($"Button is visible: {_retrieveAllItemsButton.Visible}");
+	}
+
 	private void OnInventoryWantsToDoSomethingWithItem(NewInventoryItemView obj)
 	{
 		if(obj.ItemStack == null) return;
@@ -87,7 +93,7 @@ public partial class DehydratorUi : Control
 				slotUi.UpdateCraftingSlot(slots[i]);
 			}
 		}
-
+		_craftingStation.CraftingSlotUpdated += UpdateWithdrawButton;
 		_craftingStation.ItemInserted += OnCraftingStationUiItemInserted;
 		GameStateMachine.Instance.SetState(GameState.Crafting);
 		

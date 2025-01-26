@@ -1,14 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://c108xawc8eseh"]
+[gd_scene load_steps=17 format=3 uid="uid://c108xawc8eseh"]
 
 [ext_resource type="Script" path="res://Features/GUI/Vending/VendingMachineUI.cs" id="1_mtkr8"]
-[ext_resource type="PackedScene" path="res://Features/GUI/Vending/MiniInventory.tscn" id="2_vteot"]
+[ext_resource type="PackedScene" uid="uid://dy2bsx4d7l35p" path="res://Features/GUI/Vending/MiniInventory.tscn" id="2_vteot"]
 [ext_resource type="Texture2D" uid="uid://yvo33yjscsag" path="res://Assets/UI/VendingMachine/Base_right.png" id="3_t32op"]
 [ext_resource type="PackedScene" uid="uid://dttp7hktpjqdx" path="res://Features/GUI/Vending/VendingItemView.tscn" id="4_v03kc"]
 [ext_resource type="Texture2D" uid="uid://bopd7g6vsty7t" path="res://Assets/UI/VendingMachine/Hebel.png" id="5_v8xxq"]
 [ext_resource type="Texture2D" uid="uid://b5hv1i828jc6" path="res://Assets/UI/VendingMachine/Slider.png" id="6_iyrxl"]
-[ext_resource type="Texture2D" uid="uid://cu7fp670pmqng" path="res://Assets/UI/VendingMachine/CashRetriever.png" id="8_pkwve"]
-[ext_resource type="PackedScene" uid="uid://qruua750qmw4" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
-[ext_resource type="PackedScene" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
+[ext_resource type="Texture2D" uid="uid://cgnox3kn0n8xm" path="res://Assets/UI/Book/Icons/CoinIcon.png" id="7_nnt8r"]
+[ext_resource type="Texture2D" uid="uid://csba1gh3owpk6" path="res://Assets/UI/VendingMachine/CashRetriever_outlined.png" id="8_fnty8"]
+[ext_resource type="Texture2D" uid="uid://bxdx84o8n40rg" path="res://Assets/UI/Book/Icons/3coins.png" id="8_pvodt"]
+[ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
+[ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
 [ext_resource type="PackedScene" uid="uid://cusi423j6fnh2" path="res://Features/GUI/Vending/EmoteBubble.tscn" id="12_5lmun"]
 
@@ -146,6 +148,24 @@ step = 0.25
 value = 1.0
 metadata/_edit_use_anchors_ = true
 
+[node name="cheap" type="TextureRect" parent="VendingMachine/MoneySlider"]
+layout_mode = 0
+offset_top = 14.0
+offset_right = 16.0
+offset_bottom = 30.0
+texture = ExtResource("7_nnt8r")
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="expensive" type="TextureRect" parent="VendingMachine/MoneySlider"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 14.0
+offset_right = 143.0
+offset_bottom = 30.0
+texture = ExtResource("8_pvodt")
+stretch_mode = 2
+
 [node name="MoneyLabel" type="RichTextLabel" parent="VendingMachine"]
 layout_mode = 2
 offset_left = 198.791
@@ -154,17 +174,17 @@ offset_right = 233.791
 offset_bottom = 280.143
 size_flags_horizontal = 4
 bbcode_enabled = true
-text = "[center]0[img=center,center,8x8]res://Assets/UI/Book/Icons/CoinIcon.png[/img][/center]"
+text = "[center]0[img=center,center,8x8]res://Assets/UI/Book/Icons/mini_coin.png[/img][/center]"
 fit_content = true
 
 [node name="WithdrawButton" type="Button" parent="VendingMachine"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 offset_left = 188.0
-offset_top = 229.0
+offset_top = 228.0
 offset_right = 244.0
-offset_bottom = 269.0
-icon = ExtResource("8_pkwve")
+offset_bottom = 271.0
+icon = ExtResource("8_fnty8")
 flat = true
 icon_alignment = 1
 

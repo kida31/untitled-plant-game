@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7vjermtotwyn" path="res://Assets/UI/VendingMachine/VendingMachineUI.png" id="1_t6v78"]
 [ext_resource type="Texture2D" uid="uid://dsrjntfr6kb41" path="res://Assets/Items/chubery_harvested.png" id="3_pcujs"]
 
-[node name="ItemView" type="Control" node_paths=PackedStringArray("_priceLabel", "_displayItemName", "_itemCurrentQuantity", "_itemTextureRect")]
+[node name="ItemView" type="Control" node_paths=PackedStringArray("_priceLabel", "_itemCurrentQuantity", "_itemTextureRect")]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
@@ -15,7 +15,6 @@ size_flags_vertical = 6
 focus_mode = 2
 script = ExtResource("1_gm56j")
 _priceLabel = NodePath("PriceLabel")
-_displayItemName = NodePath("MarginContainer/ItemName")
 _itemCurrentQuantity = NodePath("MarginContainer/ItemQuantity")
 _itemTextureRect = NodePath("MarginContainer/ImagePadding/ItemIcon")
 
@@ -77,7 +76,6 @@ anchor_top = 0.96875
 anchor_right = 1.0
 anchor_bottom = 1.5625
 bbcode_enabled = true
-text = "[center]5[img=8x8]res://Assets/UI/Book/Icons/CoinIcon.png[/img][/center]"
+text = "[center]5[img]res://Assets/UI/Book/Icons/mini_coin.png[/img][/center]"
 fit_content = true
 autowrap_mode = 0
-metadata/_edit_use_anchors_ = true

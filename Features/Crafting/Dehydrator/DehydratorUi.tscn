@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://y78tki415ik5"]
+[gd_scene load_steps=9 format=3 uid="uid://y78tki415ik5"]
 
 [ext_resource type="Script" path="res://Features/Crafting/Dehydrator/DehydratorUi.cs" id="1_p40jb"]
 [ext_resource type="Texture2D" uid="uid://bsff074nxvmgu" path="res://Assets/UI/Crafting/dehydrator_UI.png" id="2_vppst"]
+[ext_resource type="Texture2D" uid="uid://1wy6xl7bslg2" path="res://Assets/UI/Crafting/retrieve_all_rotated_grey.png" id="3_3jvto"]
 [ext_resource type="PackedScene" uid="uid://dafhmyiy5jrym" path="res://Features/Crafting/crafting_slot.tscn" id="3_licfq"]
-[ext_resource type="Texture2D" uid="uid://hfq05pqfpnyr" path="res://Assets/UI/Crafting/retrieve_all.png" id="3_nxqjy"]
+[ext_resource type="Texture2D" uid="uid://53b0o5exsw7p" path="res://Assets/UI/Crafting/retrieve_all_rotated.png" id="3_udhhc"]
 [ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="4_xr746"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jscte"]
+texture = ExtResource("3_3jvto")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8us2i"]
 texture = ExtResource("4_xr746")
@@ -31,15 +35,26 @@ grow_vertical = 2
 texture = ExtResource("2_vppst")
 expand_mode = 1
 
+[node name="WithdrawButtonGrey" type="Button" parent="."]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 108.0
+offset_right = 275.0
+offset_bottom = 148.0
+theme_type_variation = &"FlatButton"
+icon = ExtResource("3_3jvto")
+
 [node name="WithdrawButton" type="Button" parent="."]
+visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-offset_left = 197.0
-offset_top = 186.0
-offset_right = 237.0
-offset_bottom = 226.0
+offset_left = 235.0
+offset_top = 108.0
+offset_right = 275.0
+offset_bottom = 148.0
 size_flags_vertical = 10
-icon = ExtResource("3_nxqjy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_jscte")
+icon = ExtResource("3_udhhc")
 flat = true
 icon_alignment = 1
 
