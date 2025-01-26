@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_m4ye3"]
 script = ExtResource("1_xhb2i")
 speakerName = "Pan Dan"
-DialogueExpression = 0
 dialogueText = "Yo, Laya have you ever seen these seeds?"
 
 [sub_resource type="Resource" id="Resource_sige0"]

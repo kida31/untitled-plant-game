@@ -1,29 +1,35 @@
-[gd_scene load_steps=9 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=10 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="SpriteFrames" uid="uid://upqodpbedg8s" path="res://Features/Player/PlayerSpriteFrames.tres" id="2_3hfoe"]
+[ext_resource type="Script" path="res://Features/Player/PlayerAnimatedSprite.cs" id="3_utdyr"]
 [ext_resource type="Script" path="res://Features/Player/PlayerStateMachine.cs" id="4_oih3d"]
 [ext_resource type="Script" path="res://Features/Player/StateIdle.cs" id="5_k3tas"]
 [ext_resource type="Script" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
 [ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uchbd"]
-size = Vector2(26, 4)
+[sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ryxll"]
 radius = 34.0147
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerAnimatedSprite") groups=["player"]]
 script = ExtResource("1_ypuiu")
+_playerAnimatedSprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_uchbd")
+rotation = 1.5708
+shape = SubResource("CircleShape2D_bkgeg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -22)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("_player")]
+position = Vector2(0, -31)
 sprite_frames = ExtResource("2_3hfoe")
-animation = &"water_left"
+animation = &"walk_left"
+frame_progress = 0.575281
+script = ExtResource("3_utdyr")
+_player = NodePath("..")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_oih3d")

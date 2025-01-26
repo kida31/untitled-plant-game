@@ -6,14 +6,9 @@ using untitledplantgame.Plants;
 // NOTE: Make APlant implement IHarvestable instead of we have multiple harvestable objects
 namespace untitledplantgame.Tools;
 
-public class Shears : Tool
+public partial class Shears : Tool
 {
-	private Logger _logger;
-
-	public Shears(float radius, float range) : base(radius, range, 1.5f)
-	{
-		_logger = new("Shears");
-	}
+	private readonly Logger _logger = new("Shears");
 
 	protected override bool OnInitialHit(Player.Player user, Node2D[] hits)
 	{
@@ -28,9 +23,14 @@ public class Shears : Tool
 			return false;
 		}
 
-		closestPlant.Harvest();
-		_logger.Debug("...pipiab");
-		// TODO: move result to player inventory
+		var harvestedItem = closestPlant.Harvest();
+		if(harvestedItem == null)
+		{
+			_logger.Debug("No items were harvested from the plant");
+			return false;
+		}
+		
+		user.Inventory.AddItem(harvestedItem);
 		return true;
 	}
 
@@ -38,6 +38,7 @@ public class Shears : Tool
 	{
 		// pass
 	}
+
 
 	protected override void OnStart(Player.Player user)
 	{

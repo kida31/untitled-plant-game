@@ -3,9 +3,7 @@
 [ext_resource type="Script" path="res://Features/Cycle/Weather/WeatherCycleUi.cs" id="1_sgs1a"]
 [ext_resource type="Material" uid="uid://2rf0jb5b024f" path="res://Features/Cycle/Weather/WeatherResources/rain_particle_setting.tres" id="2_m1v60"]
 
-[node name="Weather" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="Weather" type="Node2D"]
 script = ExtResource("1_sgs1a")
 
 [node name="RainParticles" type="GPUParticles2D" parent="."]

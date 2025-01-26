@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using untitledplantgame.Audio;
 using untitledplantgame.Crafting;
 using untitledplantgame.Dialogue;
 using untitledplantgame.Dialogue.Models;
@@ -104,8 +105,14 @@ public partial class EventBus : Node
 	}
 
 	//Plants
+	public event Action<Plant> PlantHarvested;
 
 	public event Action<Plant> OnSeedPlanted;
+	
+	public void OnPlantHarvested(Plant obj)
+	{
+		PlantHarvested?.Invoke(obj);
+	}
 
 	public void SeedPlanted(Plant plant)
 	{
@@ -184,4 +191,9 @@ public partial class EventBus : Node
 		OnResponseButtonPress?.Invoke(message);
 	}
 
+	public event Action<IBgmArea> BgmAreaChanged;
+	public void InvokeBgmAreaChanged(IBgmArea area)
+	{
+		BgmAreaChanged?.Invoke(area);
+	}
 }

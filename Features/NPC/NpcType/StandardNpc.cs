@@ -14,6 +14,7 @@ public partial class StandardNpc : Npc
 	[Export] private string _name;
 	[Export] private NpcPlayerInteraction _npcPlayerInteraction;
 	[Export] private NpcRoutinePlanner _routinePlanner;
+	[Export] private AnimatedSprite2D _portraitSprite2D;
 
 	private Npc _npcExecutingTheseTasks;
 	private Logger _logger;
@@ -21,6 +22,7 @@ public partial class StandardNpc : Npc
 	public override void _Ready()
 	{
 		base._Ready();
+		_portraitSprite2D?.Play();
 		_logger = new Logger(this);
 	}
 	

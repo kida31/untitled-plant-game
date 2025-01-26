@@ -1,37 +1,39 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://yg4mwgstm60u"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://yg4mwgstm60u"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_8g2n2"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_86yub"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_lx0ib"]
+[ext_resource type="Texture2D" uid="uid://cxyxi6hnf81nr" path="res://Assets/Characters/PanDan/pandanPortraitRef.png" id="3_7so52"]
 
 [sub_resource type="Resource" id="Resource_sr1yf"]
 script = ExtResource("1_8g2n2")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_lx0ib")
 dialogueText = "I hope you don’t mind, but little Pan Dan likes to come by this place. "
 
 [sub_resource type="Resource" id="Resource_g71vq"]
 script = ExtResource("1_8g2n2")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("3_7so52")
 dialogueText = "He’s a little rascal so he’s always running around the island. "
 
 [sub_resource type="Resource" id="Resource_sqv14"]
 script = ExtResource("1_8g2n2")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_lx0ib")
 dialogueText = "But he made it a habit to collect all kinds of seeds because the previous herbalist bought them from him."
 
 [sub_resource type="Resource" id="Resource_n5nrh"]
 script = ExtResource("1_8g2n2")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
+DialogueExpression = ExtResource("1_lx0ib")
 dialogueText = "If you would like some new seeds then don’t hesitate to ask him, I think it would make him really happy. "
 
 [sub_resource type="Resource" id="Resource_t4mgt"]
 script = ExtResource("1_8g2n2")
 speakerName = "Gottfried the first Priest"
-DialogueExpression = 0
-dialogueText = "Just press A and he’ll talk to you."
+DialogueExpression = ExtResource("1_lx0ib")
+dialogueText = "Just press A when you're standing in front of him and he’ll talk to you."
 
 [resource]
 script = ExtResource("1_86yub")

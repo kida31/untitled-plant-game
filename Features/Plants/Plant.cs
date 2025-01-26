@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Database;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
+using untitledplantgame.Item.Components;
 
 namespace untitledplantgame.Plants;
 
@@ -19,16 +20,20 @@ public enum GrowthStage
 	Dead,
 }
 
-public partial class Plant : StaticBody2D
+public partial class Plant : Area2D
 {
 	private const string PlantPath = "res://Features/Plants/PlantPrefab.tscn";
 	private static readonly PackedScene PlantScene = GD.Load<PackedScene>(PlantPath);
-	[Export(PropertyHint.Enum, "Chuberry,Licary,Drupoleaum")] public string PlantName { get; private set; }
-	[Export] public GrowthStage Stage { get; private set; } = GrowthStage.Seed;
-	[Export] public SoilTile Tile { get; set; }
 
+	[Export(PropertyHint.Enum, "Chuberry,Licary,Drupoleaum")]
+	public string PlantName { get; private set; }
+
+	[Export] public GrowthStage Stage { get; private set; }
+	[Export] public SoilTile Tile { get; set; }
 	public event Action<Plant> BeforePlantRemoved;
 	public event Action<Plant> PlantGrown;
+
+	public event Action<Plant> PlantDied; 
 
 	private Dictionary<string, Requirement> _currentRequirements;
 	private readonly Logger _logger;
@@ -36,9 +41,6 @@ public partial class Plant : StaticBody2D
 	private bool _isHarvestable;
 	private float _absorptionRate;
 	private float _consumptionRate;
-
-	private int _cyclesToGrow;
-	private int _currentCycle;
 
 	public Plant()
 	{
@@ -76,7 +78,6 @@ public partial class Plant : StaticBody2D
 
 		if (CheckRequirements())
 		{
-			_currentCycle++;
 			AdvanceStage();
 		}
 	}
@@ -86,20 +87,17 @@ public partial class Plant : StaticBody2D
 	/// </summary>
 	public IItemStack Harvest()
 	{
-		if (_isHarvestable)
-		{
-			_logger.Debug($"Plant {PlantName} has been harvested.");
-			Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
-			SetRequirements();
-			_logger.Debug("plant has reached stage " + Stage);
-		}
-		else
-		{
-			_logger.Debug($"Plant {PlantName} is not ready to be harvested.");
-			return null;
-		}
+		if (!_isHarvestable) return null;
 
-		return GetHarvestItem();
+		_logger.Debug($"Plant {PlantName} has been harvested.");
+		var harvestedItems = GetHarvestItem();
+
+		Stage = Stage == GrowthStage.Ripening ? GrowthStage.Budding : --Stage;
+		SetRequirements();
+		_logger.Debug("plant has reached stage " + Stage);
+		EventBus.Instance.OnPlantHarvested(this);
+
+		return harvestedItems;
 	}
 
 	/// <summary>
@@ -118,17 +116,19 @@ public partial class Plant : StaticBody2D
 	/// </summary>
 	private void SetRequirements()
 	{
-		_logger.Debug($"Setting requirements for plant {PlantName}.");
+		_logger.Debug($"Setting requirements for plant {PlantName} with stage {Stage}.");
 
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
 		var plantRequirements = new Dictionary<string, Requirement>();
+		_absorptionRate = plantData.AbsorptionRate;
+		_consumptionRate = plantData.ConsumptionRate;
 
 		if (plantData.DataForGrowthStages.Length <= (int)Stage)
 		{
 			_logger.Error("Plant data does not contain data for the current stage.");
 			return;
 		}
-		
+
 		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
 
 		foreach (var data in plantDataRequirementsForStage)
@@ -136,12 +136,8 @@ public partial class Plant : StaticBody2D
 			plantRequirements[data.Name.ToString()] = new Requirement(data.MaxLevel, data.MinLevel);
 		}
 
-		_cyclesToGrow = plantData.DataForGrowthStages[(int)Stage].DaysToGrow;
 		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
-		_absorptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].AbsorptionRate;
-		_consumptionRate = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements[0].ConsumptionRate;
 
-		_currentCycle = 0;
 		_currentRequirements = plantRequirements;
 		PlantName = plantData.PlantName;
 	}
@@ -151,6 +147,8 @@ public partial class Plant : StaticBody2D
 	/// </summary>
 	private bool CheckRequirements()
 	{
+		if (Stage is GrowthStage.Dead or GrowthStage.Ripening) return false;
+		
 		var fulfilled = false;
 		foreach (var requirement in _currentRequirements)
 		{
@@ -159,9 +157,9 @@ public partial class Plant : StaticBody2D
 				break;
 		}
 
-		_logger.Debug($"Requirement {fulfilled} for stage {Stage}, current day count at {_currentCycle} of {_cyclesToGrow}.");
+		_logger.Debug($"Requirement {fulfilled} for stage {Stage} on plant {PlantName}.");
 
-		return fulfilled && Stage != GrowthStage.Ripening && Stage != GrowthStage.Dead;
+		return fulfilled;
 	}
 
 	/// <summary>
@@ -181,9 +179,6 @@ public partial class Plant : StaticBody2D
 	/// </summary>
 	private void AdvanceStage()
 	{
-		if (_currentCycle < _cyclesToGrow)
-			return;
-
 		Stage++;
 		_logger.Info($"Plant {PlantName} advanced to {Stage}.");
 		PlantGrown?.Invoke(this);
@@ -234,14 +229,24 @@ public partial class Plant : StaticBody2D
 	{
 		Stage = GrowthStage.Dead;
 		_isHarvestable = false;
+		PlantDied?.Invoke(this);
 		_logger.Debug($"Plant {PlantName} has died due to lack of water.");
 	}
 
 	private IItemStack GetHarvestItem()
 	{
-		if(!_isHarvestable) return null;
-		
-		var itemStack = ItemDatabase.Instance.CreateItemStack($"{PlantName}_{Stage}_harvested");
-		return itemStack;
+		if (!_isHarvestable) return null;
+		_logger.Debug($"Looking for harvested items for {PlantName} with stage {Stage}.");
+		var comparable = new HarvestedComponent(PlantName, Stage);
+		var itemStacks = ItemDatabase.Instance.GetAllItems()
+			.Find(i =>
+			{
+				var component = i.GetComponent<HarvestedComponent>();
+				return component != null && component.Equals(comparable);
+			});
+
+		_logger.Debug("Harvested items: " + itemStacks);
+
+		return itemStacks;
 	}
 }

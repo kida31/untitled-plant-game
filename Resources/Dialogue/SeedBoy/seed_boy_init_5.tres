@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_m4ye3"]
 script = ExtResource("1_pvqkr")
 speakerName = "Pan Dan"
-DialogueExpression = 0
 dialogueText = "When a bird stole my homework, and I followed it, I found these seeds instead. Do you wanna see them?"
 
 [sub_resource type="Resource" id="Resource_sige0"]

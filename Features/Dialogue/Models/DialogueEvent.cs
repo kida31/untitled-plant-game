@@ -7,7 +7,7 @@ namespace untitledplantgame.Dialogue.Models;
 /// Base class for all Dialogue Events.
 /// </summary>
 [GlobalClass]
-public abstract partial class DialogueEvent : DialogueResourceObject
+public abstract partial class DialogueEvent : DialogueLine
 //TODO: Remove this inheritance and replace with a common interface for event and reseource objects.
 {
 	/// <summary>

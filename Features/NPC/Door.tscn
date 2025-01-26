@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Features/NPC/Door.cs" id="1_byyrg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3w3h"]
+resource_local_to_scene = true
 
 [node name="Door" type="Area2D"]
 script = ExtResource("1_byyrg")

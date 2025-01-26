@@ -59,7 +59,6 @@ public partial class MovementTask :  Area2D, INpcTask
 		
 		_npcExecutingThisTasks.Velocity = Vector2.Zero;
 		_logger.Debug("MovementTask was interrupted!");
-		GD.Print(_npcExecutingThisTasks.Velocity);
 	}
 
 	public void ResumeCurrentTask()

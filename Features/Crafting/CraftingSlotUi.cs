@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.GUI.Book.Inventories;
@@ -26,9 +27,6 @@ public partial class CraftingSlotUi : InventoryItemView
 		_logger.Debug("Crafting Complete");
 		var item = obj.ItemStack;
 		_craftingCompleteTexture.Visible = true;
-		// TODO: "Crafting Complete"
-		// -> item.ModifyItem
-		// -> thisHere.OnCraftingComplete
 		UpdateItemView(item);
 		_isCraftingComplete = true;
 		_progressBar.Value = 1;
@@ -36,8 +34,6 @@ public partial class CraftingSlotUi : InventoryItemView
 
 	private void UpdateProgressBar(double progress)
 	{
-		var color = new Color(131,90,51, (int)progress);
-		//ItemTexture.Modulate = color;
 		_progressBar.Value = progress;
 	}
 
