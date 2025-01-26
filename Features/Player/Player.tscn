@@ -52,5 +52,3 @@ drag_bottom_margin = 0.05
 script = ExtResource("8_nj75v")
 _player = NodePath("..")
 _speed = 2.0
-_mouseInfluence = null
-_mouseBoundary = null
