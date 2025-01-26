@@ -3,39 +3,35 @@ using Godot;
 
 namespace untitledplantgame.Player;
 
-[Obsolete("Disabling smoothing in built-in camera seems to be enough")]
 public partial class PixelCamera2D : Camera2D
 {
-	[Export] private bool _smoothingEnabled = true;
-	[Export] private int _smoothingFactor = 8;
-	[Export] private int _stepsPx = 1;
+	private static readonly Vector2 GameSize = new(640, 360);
 
-	private Vector2 _initialOffset;
-	private Node2D _parent;
+	[Export] private Player _player;
+	[Export(PropertyHint.Range, "0.0,5.0")] private float _speed;
+	[Export(PropertyHint.Range, "0.0,1.0")] private float _mouseInfluence;
+	[Export] private Vector2 _mouseBoundary = Vector2.Zero;
+
+	private Vector2 _actualPosition;
 
 	public override void _Ready()
 	{
-		TopLevel = true;
-		_parent = GetParent<Node2D>();
-		_initialOffset = Vector2.Zero;
+		_actualPosition = _player.GlobalPosition;
 	}
 
-	public override void _PhysicsProcess(double delta)
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
 	{
-		if (!_smoothingEnabled)
-		{
-			GlobalPosition = _parent.GlobalPosition + _initialOffset;
-			return;
-		}
+		var targetPosition = _player.GlobalPosition.Lerp(GetGlobalMousePosition(), _mouseInfluence);
+		targetPosition = targetPosition.Clamp(
+			_player.GlobalPosition - GameSize * _mouseBoundary,
+			_player.GlobalPosition + GameSize * _mouseBoundary);
 
-		var weight = (11f - _smoothingFactor) / 100f;
-		GlobalPosition = GlobalPosition.Lerp(_parent.GlobalPosition + _initialOffset, weight);
+		_actualPosition = _actualPosition.Lerp(targetPosition, (float) Math.Clamp(_speed * delta, 0.0f, 1.0f));
+		GlobalPosition = _actualPosition.Round();
 
-		GlobalPosition = new Vector2(
-			Mathf.Floor(GlobalPosition.X / _stepsPx) * _stepsPx,
-			Mathf.Floor(GlobalPosition.Y / _stepsPx) * _stepsPx
-		);
-		var other = (GlobalPosition / _stepsPx).Floor() * _stepsPx;
-		GD.Print(_parent.Name, " ", GlobalPosition, " samesame ", other, " :: ", other == GlobalPosition );
+		// Forward the error to the PixelViewport
+		var error = GlobalPosition - _actualPosition;
+		PixelViewport.Instance.SetOffset(error);
 	}
 }
