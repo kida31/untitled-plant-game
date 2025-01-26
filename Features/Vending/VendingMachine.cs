@@ -151,6 +151,7 @@ public class VendingMachine
 
 		// Alternatively: Invoke some WithdrawCurrency event in EventBus
 		CurrencyFaithOfficer.TheOneAndOnly.ChangeAny(new Currency(), deducedGold);
+		ContentChanged?.Invoke(_inventory);
 		return deducedGold;
 	}
 
