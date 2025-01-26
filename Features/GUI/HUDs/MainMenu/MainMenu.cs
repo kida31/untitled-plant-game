@@ -1,6 +1,8 @@
 using System;
 using Godot;
 using untitledplantgame.Audio;
+using untitledplantgame.Common;
+
 
 public partial class MainMenu : Control
 {
@@ -8,32 +10,19 @@ public partial class MainMenu : Control
 	[Export] private Button _settingsButton;
 	[Export] private Button _exitButton;
 
-	private SfxUI _sfx;
+	// Changed Aspect Ratio to: Keep
+	// The player shouldn't be able to change that (unless we want our game to look weird)
+
 
 	public override void _Ready()
 	{
-		_sfx = new SfxUI();
-		_sfx._Ready();
-		GetTree().Root.AddChild(_sfx); // Add SfxUI to the root node
-		_sfx.Name = "SfxUI"; // Optional: Name the node for easier debugging
-
-		_startButton.Pressed += OnStartButtonPressed;
+		_startButton.Pressed += () => GetTree().ChangeSceneToFile("res://Main.tscn");
 		_settingsButton.Pressed += OpenSettings;
-		_exitButton.Pressed += OnExitButtonPressed;
-	}
-
-	private void OnStartButtonPressed()
-	{
-		GetTree().ChangeSceneToFile("res://Main.tscn");
+		_exitButton.Pressed += () => GetTree().Quit();
 	}
 
 	private void OpenSettings()
 	{
 		GetTree().ChangeSceneToFile("res://Features/GUI/HUDs/SettingsMenu/Settings.tscn");
-	}
-
-	private void OnExitButtonPressed()
-	{
-		GetTree().Quit();
 	}
 }

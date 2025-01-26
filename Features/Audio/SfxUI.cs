@@ -1,13 +1,13 @@
 using Godot;
-using System;
 using System.Collections.Generic;
+using System.Linq;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Audio
 {
 	public partial class SfxUI : Node
 	{
 		[Export] private float _volume = 100; // Default volume
-		private List<AudioStreamPlayer> _audioPlayers = new List<AudioStreamPlayer>();
 		private Dictionary<string, AudioStreamPlayer> _sounds = new Dictionary<string, AudioStreamPlayer>()
 		{
 			{"menu-ui_Play_Game", new AudioStreamPlayer()},
@@ -16,42 +16,62 @@ namespace untitledplantgame.Audio
 			{"menu-ui_Click_Button", new AudioStreamPlayer()}
 		};
 
+		private Logger _logger = new Logger("SfxUI");
 
 		public override void _Ready()
-		{
+		{	
 			// Create and add audio players to the scene
-			for (int i = 0; i < 10; i++)
-			{
-				AudioStreamPlayer player = new AudioStreamPlayer();
-				player.SetVolumeDb(_volume); // Set the volume from the exported variable
-				AddChild(player); // Add the player to the scene tree
-				_audioPlayers.Add(player); // Add the player to the list
+			foreach (var key in _sounds.Keys) {
+				_sounds[key].Stream = (AudioStream)GD.Load("res://Assets/SFX/" + key);
+				_sounds[key].Bus = "UI";
+				AddChild(_sounds[key]);
 			}
-			GD.Print($"Initialized {_audioPlayers.Count} audio players.");
+			_logger.Debug("Initialized Audiostreams");
+
+			InstallSounds();
 		}
 
-		public void PlaySound(string resourcePath)
-		{
-			AudioStream audioStream = GD.Load<AudioStream>(resourcePath);
-			if (audioStream == null)
-			{
-				GD.PrintErr($"Failed to load audio stream from path: {resourcePath}");
-				return;
-			}
-			GD.Print($"AudioStream initialized: {audioStream != null}");
+		private void PlayClickSound() {
+			PlayUiSfx("menu-ui_Click_Button");
+		}
 
-			foreach (var player in _audioPlayers)
+		private void PlayHoveredSound() {
+			PlayUiSfx("menu-ui_Hover_Sound");
+		}
+
+		public void InstallSounds() {
+			List<Node> allNodes = CollectAllNodes(GetTree().Root);
+
+			foreach (var node in allNodes)
 			{
-				GD.Print($"Player {player.Name} Playing: {player.Playing}"); // Debugging output
-				if (!player.Playing)
-				{
-					player.Stream = audioStream;
-					player.Play();
-					GD.Print("Sound Played Successfully");
-					return;
+				if (node is Button button) {
+					button.Pressed += PlayClickSound;
+					button.Connect("Pressed", Callable.From(PlayClickSound));
+
+					button.FocusEntered += PlayHoveredSound;
+					button.Connect("Hovered", Callable.From(PlayHoveredSound));
 				}
 			}
-			GD.Print("No available audio players to play sound.");
+		}
+
+		public List<Node> CollectAllNodes(Node root) { 
+			List<Node> nodes = new List<Node>();
+			CollectNodesRecursively(root, nodes);
+			_logger.Debug("Collected all Nodes");
+			return nodes;
+		}
+
+		public void CollectNodesRecursively(Node current, List<Node> nodes) { 
+			nodes.Add(current);
+			foreach (var child in current.GetChildren()) {
+				CollectNodesRecursively(child, nodes);
+			}
+		}
+
+
+		private void PlayUiSfx(string sfx) {
+			_sounds[sfx].Play();
+			_logger.Debug($"played {sfx}");
 		}
 	}
 }

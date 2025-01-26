@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://drxncrntinnvq" path="res://Assets/UI/Buttons/settings_button_pressed.png" id="7_jbut7"]
 [ext_resource type="Texture2D" uid="uid://b64mimqgiq3jj" path="res://Assets/UI/Buttons/exit_button_pressed.png" id="10_0sl0g"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("_startButton", "_settingsButton", "_exitButton")]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,9 +19,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nnu1v")
-_startButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer/Button")
-_settingsButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer2/Button")
-_exitButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer3/Button")
 
 [node name="PanelContainer" type="Control" parent="."]
 layout_mode = 1
