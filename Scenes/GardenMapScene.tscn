@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cv6hjqm0nnrau" path="res://Assets/Tilesets/soiltiles_tileset_better_rgb.png" id="16_mugcb"]
 [ext_resource type="Texture2D" uid="uid://oon4v18kv3jk" path="res://Assets/Overworld/Garden/pier_ladder.png" id="16_v0da8"]
 [ext_resource type="Script" path="res://Features/Plants/PlantMap.cs" id="17_qgpau"]
-[ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Prefabs/Door.tscn" id="18_eh65c"]
+[ext_resource type="PackedScene" path="res://Features/NPC/Prefabs/Door.tscn" id="18_eh65c"]
 [ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="27_sla4y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3qw3d"]
