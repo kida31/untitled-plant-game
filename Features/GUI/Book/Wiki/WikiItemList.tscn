@@ -164,42 +164,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="WikiItemView" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
-custom_minimum_size = Vector2(0, 32.7162)
-layout_mode = 2
-
-[node name="WikiItemView2" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
-custom_minimum_size = Vector2(0, 32.7162)
-layout_mode = 2
-
-[node name="WikiItemView3" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
-custom_minimum_size = Vector2(0, 32.7162)
-layout_mode = 2
-
-[node name="WikiItemView4" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
-custom_minimum_size = Vector2(0, 32.7162)
-layout_mode = 2
-
-[node name="WikiItemView5" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
-custom_minimum_size = Vector2(0, 32.7162)
-layout_mode = 2
-
-[node name="WikiItemView6" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
-custom_minimum_size = Vector2(0, 32.7162)
-layout_mode = 2
-
-[node name="WikiItemView7" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
-custom_minimum_size = Vector2(0, 32.7162)
-layout_mode = 2
-
-[node name="WikiItemView8" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
-custom_minimum_size = Vector2(0, 32.7162)
-layout_mode = 2
-
-[node name="WikiItemView9" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
-custom_minimum_size = Vector2(0, 32.7162)
-layout_mode = 2
-
 [node name="WikiItemView10" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 custom_minimum_size = Vector2(0, 32.7162)
 layout_mode = 2

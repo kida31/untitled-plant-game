@@ -205,4 +205,4 @@ textures/vram_compression/import_etc2_astc=true
 
 [untitled_plant_game]
 
-logging/log_level="Info"
+logging/log_level="Debug"
