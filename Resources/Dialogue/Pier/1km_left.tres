@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=4 format=3 uid="uid://cx6vhoyjiqhwc"]
+
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_4gxqx"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_ibveo"]
+
+[sub_resource type="Resource" id="Resource_lpqko"]
+script = ExtResource("1_ibveo")
+speakerName = "Sign"
+dialogueText = "Tawas in 1km."
+
+[resource]
+script = ExtResource("1_4gxqx")
+_dialogueId = "1km_left"
+_dialogueText = Array[Object]([SubResource("Resource_lpqko")])
+_responses = null

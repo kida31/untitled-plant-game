@@ -6,19 +6,25 @@ using Godot.Collections;
 using untitledplantgame.Common;
 using untitledplantgame.Crafting;
 using untitledplantgame.Inventory;
-using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
+using untitledplantgame.Medicine;
+using untitledplantgame.Plants;
 
-namespace untitledplantgame.Database;
+namespace untitledplantgame.Item;
 
 [Singleton]
 public class ItemDatabase
 {
 	public List<Recipe> Recipes { get; private set; }
-	public List<IItemStack> ItemStacks { get; private set; }
-	private static ItemDatabase _instance;
 
+	public List<IItemStack> GetAllItems()
+	{
+		return _itemStacks.Select(it => it?.Clone()).ToList();
+	}
+
+	private static ItemDatabase _instance;
 	private readonly Logger _logger = new("ItemDatabase");
+	private readonly List<IItemStack> _itemStacks;
 
 	public static ItemDatabase Instance
 	{
@@ -28,7 +34,7 @@ public class ItemDatabase
 
 	private ItemDatabase()
 	{
-		ItemStacks = FillDataBaseItemStackList();
+		_itemStacks = FillDataBaseItemStackList();
 		Recipes = FillDataBaseRecipeList();
 	}
 
@@ -37,10 +43,11 @@ public class ItemDatabase
 	/// Looks for an ItemStack with the specified ID. Returns a clone of the ItemStack.
 	/// </summary>
 	/// <param name="itemId"></param>
+	/// <param name="amount"></param>
 	/// <returns></returns>
 	public IItemStack CreateItemStack(string itemId, int amount = 1)
 	{
-		var item = ItemStacks.FirstOrDefault(itemStack => itemStack.Id == itemId)?.Clone();
+		var item = _itemStacks.FirstOrDefault(itemStack => itemStack.Id == itemId)?.Clone();
 		if (item == null)
 		{
 			_logger.Error("Item with ID: " + itemId + " does not exist in the Database.");
@@ -65,7 +72,7 @@ public class ItemDatabase
 		var specificItemStack = new List<IItemStack>();
 		var group1 = components.GroupBy(item => item.GetType()).ToDictionary(g => g.Key, g => g.Count());
 
-		foreach (var itemStack in ItemStacks)
+		foreach (var itemStack in _itemStacks)
 		{
 			var group2 = itemStack.Components.GroupBy(item => item.GetType()).ToDictionary(g => g.Key, g => g.Count());
 
@@ -172,29 +179,40 @@ public class ItemDatabase
 			{
 				Id = "chuberrySeed",
 				Name = "Chuberry Seed",
-				ToolTipDescription = "The seeds of a chubery plant.",
+				ToolTipDescription = "The seeds of a chuberry plant.",
 				WikiDescription =
-					"The seeds of a chubery plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"), //TODO: add seed icon
+					"The seeds of a chuberry plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_seed.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "chuberryFruit" },
-				Components = new Array<AComponent> { new SeedComponent("Chuberry") },
+				RelatedItemIds = new Array<string> {"chuberryFruit"},
+				Components = new Array<AComponent> {new SeedComponent("Chuberry")}
 			},
 			new ItemStack()
 			{
 				Id = "chuberryFruit",
 				Name = "Chuberry Fruit",
-				ToolTipDescription = "The fruits of a chubery plant.",
+				ToolTipDescription = "The fruits of a chuberry plant.",
 				WikiDescription =
-					"The berries of a chubery plant. While the plant itself looks quite gnarly, the berries are surprisingly juicy. It can be pressed into juice, though most people just dry them and eat them as a snack or ingredient in cooking and baking. It helps boost the immune system, so it’s a widely used plant by many in Tawas. Use it preventive or as an acute immune booster. ",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/chubery_harvested.png"),
+					"The berries of a chuberry plant. While the plant itself looks quite gnarly, the berries are surprisingly juicy. It can be pressed into juice, though most people just dry them and eat them as a snack or ingredient in cooking and baking. " +
+					"It helps boost the immune system, so it’s a widely used plant by many in Tawas. Use it preventive or as an acute immune booster. ",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "chuberrySeed" },
+				RelatedItemIds = new Array<string> {"chuberrySeed"},
 				Components = new()
 				{
-					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
+					new HarvestedComponent("Chuberry", GrowthStage.Ripening),
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+					{
+						{MedicinalEffect.Warming, 1},
+						{MedicinalEffect.WoundHealing, 2},
+					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
+					{
+						{IllnessEffect.Heartburn, 2},
+						{IllnessEffect.Diarrhea, 1}
+					})
 				}
 			},
 			new ItemStack
@@ -204,10 +222,10 @@ public class ItemDatabase
 				ToolTipDescription = "The seeds of a Drupoleaum plant.",
 				WikiDescription =
 					"The seeds of a Drupoleaum plant. They have to be planted in soil and watered regularly. It will grow up a stalk.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Flowers.png"), //TODO: add seed icon
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_seeds.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumFruits" },
+				RelatedItemIds = new Array<string> {"drupoleaumFlower", "drupoleaumFruits"},
 				Components = new Array<AComponent>
 				{
 					new SeedComponent("Drupoleaum")
@@ -219,14 +237,25 @@ public class ItemDatabase
 				Name = "Drupoleaum Flower",
 				ToolTipDescription = "The flowers of a Drupoleaum plant.",
 				WikiDescription =
-					"The flowers of a drupoleaum plant. Traditionally the people of Liyor held a flower festival to celebrate the blooming of the first Drupolearum flower. As the wild variations of drupoleaum vined up trees, a popular game was to find the highest growing flower and offer it to the goddess’s shrine. Nowadays, the flowers are a popular tea variant and help with finding sleep.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Flowers.png"),
+					"The flowers of a drupoleaum plant. Traditionally the people of Liyor held a flower festival to celebrate the blooming of the first Drupoleaum flower." +
+					" As the wild variations of drupoleaum vined up trees, a popular game was to find the highest growing flower and offer it to the goddess’s shrine. Nowadays, the flowers are a popular tea variant and help with finding sleep.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "drupoleaumSeed", "drupoleaumFruits" },
+				RelatedItemIds = new Array<string> {"drupoleaumSeed", "drupoleaumFruits"},
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower)
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower),
+					new HarvestedComponent("Drupoleaum", GrowthStage.Flowering),
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+					{
+						{MedicinalEffect.Cooling, 2},
+						{MedicinalEffect.Calming, 1},
+					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
+					{
+						{IllnessEffect.Heartburn, 2},
+						{IllnessEffect.Nausea, 1}
+					})
 				}
 			},
 			new ItemStack
@@ -235,14 +264,26 @@ public class ItemDatabase
 				Name = "Drupoleaum Fruit",
 				ToolTipDescription = "The fruits of a Drupoleaum plant.",
 				WikiDescription =
-					"The berries of a drupoleaum plant. For a long time, the use of drupoleaum berries wasn’t common, as the majority of flowers got picked before ever developing into fruits. Just recently their anti-inflammatory effects have become known which led to a high demand for berries after the Big Flooding.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/Drupoleaum_Fruits.png"),
+					"The berries of a drupoleaum plant. For a long time, the use of drupoleaum berries was not common, as the majority of flowers got picked before ever developing into fruits." +
+					" Just recently their anti-inflammatory effects have become known which led to a high demand for berries after the Big Flooding.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Fruits.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumSeed" },
+				RelatedItemIds = new Array<string> {"drupoleaumFlower", "drupoleaumSeed"},
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
+					new HarvestedComponent("Drupoleaum", GrowthStage.Ripening),
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+					{
+						{MedicinalEffect.Cooling, 2},
+						{MedicinalEffect.Calming, 3},
+						{MedicinalEffect.AntiInflammatory, 1}
+					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
+					{
+						{IllnessEffect.Heartburn, 2},
+						{IllnessEffect.Nausea, 1}
+					})
 				}
 			},
 			new ItemStack
@@ -252,10 +293,10 @@ public class ItemDatabase
 				ToolTipDescription = "The seeds of a Licary plant.",
 				WikiDescription =
 					"The seeds of a Licary plant. They have to be planted in soil and watered regularly to reward you with multiple harvestable Items.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"), //TODO add icon
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_seed.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit" },
+				RelatedItemIds = new Array<string> {"licaryFlowers", "licaryFlowers", "licaryFruit"},
 				Components = new Array<AComponent>
 				{
 					new SeedComponent("Licary")
@@ -267,14 +308,25 @@ public class ItemDatabase
 				Name = "Licary Flowers",
 				ToolTipDescription = "The flowers of a Licary plant.",
 				WikiDescription =
-					"The flowers of a licary plant. Their four bright yellow leaves often get associated with the power of the sun so a tea made out of these flowers is a popular morning drink. Whenever the colder days arrive, people stock up on these flowers to always have the sun around.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_flowers.png"),
+					"The flowers of a licary plant. Their four bright yellow leaves often get associated with the power of the sun so a tea made out of these flowers is a popular morning drink. " +
+					"Whenever the colder days arrive, people stock up on these flowers to always have the sun around.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit" },
+				RelatedItemIds = new Array<string> {"licarySeed", "licaryFruit"},
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower)
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower),
+					new HarvestedComponent("Licary", GrowthStage.Flowering),
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+					{
+						{MedicinalEffect.Warming, 1},
+						{MedicinalEffect.PainRelief, 2},
+					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
+					{
+						{IllnessEffect.Migraine, 2},
+						{IllnessEffect.HeartAttack, 1}
+					})
 				}
 			},
 			new ItemStack
@@ -283,21 +335,34 @@ public class ItemDatabase
 				Name = "Licary Fruit",
 				ToolTipDescription = "The fruits of a Licary plant.",
 				WikiDescription =
-					"The fruits of a licary plant. The small but bright orange fruit has a hard outer skin that makes it uncomfortable to eat. It’s anti-oxidant effect makes it a popular juice though. Parents usually pack small bottles of Licary juice as lunch drinks for their kids at school.",
-				Icon = GD.Load<Texture2D>("res://Assets/Items/licary_harvested.png"),
+					"The fruits of a licary plant. The small but bright orange fruit has a hard outer skin that makes it uncomfortable to eat." +
+					" It’s anti-oxidant effect makes it a popular juice though. Parents usually pack small bottles of Licary juice as lunch drinks for their kids at school.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers" },
+				RelatedItemIds = new Array<string> {"licarySeed", "licaryFlowers"},
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit)
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
+					new HarvestedComponent("Licary", GrowthStage.Ripening),
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+					{
+						{MedicinalEffect.Warming, 3},
+						{MedicinalEffect.PainRelief, 1},
+						{MedicinalEffect.AntiOxidant, 3}
+					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
+					{
+						{IllnessEffect.Indigestion, 2},
+						{IllnessEffect.HeartAttack, 1}
+					})
 				}
 			},
 			new ItemStack
 			{
 				Id = "dried_fruit",
-				Name = "Dried ",
-				WikiDescription = "It was dried.",
+				Name = "Dried Fruit",
+				ToolTipDescription = "A dried fruit. I wonder what it tastes like.",
+				WikiDescription = "A dried fruit. Drying fruits in the dehydrator will make them last longer and amplify their properties.",
 				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
@@ -309,8 +374,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "dried_flower",
-				Name = "Dried ",
-				ToolTipDescription = "It was dried.",
+				Name = "Dried Flower",
+				ToolTipDescription = "A dried flower. Still looks very pretty.",
+				WikiDescription = "A dried flower. Drying flowers in the dehydrator will make them last longer and amplify their properties.",
 				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
@@ -319,13 +385,14 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFlower),
 				},
 				Amount = 1,
-				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryFruit" },
+				RelatedItemIds = new Array<string> {"chuberrySeed", "chuberryFruit"}
 			},
 			new ItemStack
 			{
 				Id = "dried_leaves",
-				Name = "Dried ",
-				WikiDescription = "It was dried.",
+				Name = "Dried Leaf",
+				ToolTipDescription = "Dried leaves. They seem very delicate.",
+				WikiDescription = "Dried leaves. Drying leaves in the dehydrator will make them last longer and amplify their properties.",
 				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
@@ -334,7 +401,7 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsLeaf)
 				},
 				Amount = 1,
-				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryFruit" },
+				RelatedItemIds = new Array<string> {"chuberrySeed", "chuberryFruit"}
 			},
 		};
 	}

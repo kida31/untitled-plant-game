@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsjx5iswuvktp"
-path="res://.godot/imported/Drupoleaum_Fruits.png-1d8d51c3485882624bac1a327cd01455.ctex"
+uid="uid://cvf2qbnugufmd"
+path="res://.godot/imported/Drupoleaum_seeds.png-ee7cd346458861e62b5694e4acaafc68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/Drupoleaum_Fruits.png"
-dest_files=["res://.godot/imported/Drupoleaum_Fruits.png-1d8d51c3485882624bac1a327cd01455.ctex"]
+source_file="res://Assets/Items/Plants/Drupoleaum_seeds.png"
+dest_files=["res://.godot/imported/Drupoleaum_seeds.png-ee7cd346458861e62b5694e4acaafc68.ctex"]
 
 [params]
 

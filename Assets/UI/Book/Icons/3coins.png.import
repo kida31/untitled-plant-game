@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caasjky7s7if7"
-path="res://.godot/imported/licary_flowers.png-aca1c2e40c986fdda51769abd8860e74.ctex"
+uid="uid://bxdx84o8n40rg"
+path="res://.godot/imported/3coins.png-2246bc5054fb829e9cfd0479a2be39c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/licary_flowers.png"
-dest_files=["res://.godot/imported/licary_flowers.png-aca1c2e40c986fdda51769abd8860e74.ctex"]
+source_file="res://Assets/UI/Book/Icons/3coins.png"
+dest_files=["res://.godot/imported/3coins.png-2246bc5054fb829e9cfd0479a2be39c7.ctex"]
 
 [params]
 

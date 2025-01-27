@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxatacnmmrgwf"
-path="res://.godot/imported/Drupoleaum_Flowers.png-6c861d6a0ea689c4c47dfc12664d49b7.ctex"
+uid="uid://dl3ytowjsie7x"
+path="res://.godot/imported/pier_tileset.png-b0ae04bf2d64d97a985b38456d649638.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Items/Drupoleaum_Flowers.png"
-dest_files=["res://.godot/imported/Drupoleaum_Flowers.png-6c861d6a0ea689c4c47dfc12664d49b7.ctex"]
+source_file="res://Assets/Overworld/Garden/pier_tileset.png"
+dest_files=["res://.godot/imported/pier_tileset.png-b0ae04bf2d64d97a985b38456d649638.ctex"]
 
 [params]
 

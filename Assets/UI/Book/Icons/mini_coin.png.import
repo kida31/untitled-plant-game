@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xc4kgq08uta1"
-path="res://.godot/imported/Sign.png-705f3f25709b4825efe8133dc7ba1f67.ctex"
+uid="uid://cqv7ajgtv443c"
+path="res://.godot/imported/mini_coin.png-c5351275cfde044eca6b83ead8795142.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Overworld/Garden/Sign.png"
-dest_files=["res://.godot/imported/Sign.png-705f3f25709b4825efe8133dc7ba1f67.ctex"]
+source_file="res://Assets/UI/Book/Icons/mini_coin.png"
+dest_files=["res://.godot/imported/mini_coin.png-c5351275cfde044eca6b83ead8795142.ctex"]
 
 [params]
 

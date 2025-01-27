@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b055ddfxb6hkf"
-path="res://.godot/imported/tree_smaller.png-eb5ebe0b12e94cf3d0da3f9d3a82a46d.ctex"
+uid="uid://53b0o5exsw7p"
+path="res://.godot/imported/retrieve_all_rotated.png-398cc1da614d7998086b8b15db9bffd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Overworld/Garden/tree_smaller.png"
-dest_files=["res://.godot/imported/tree_smaller.png-eb5ebe0b12e94cf3d0da3f9d3a82a46d.ctex"]
+source_file="res://Assets/UI/Crafting/retrieve_all_rotated.png"
+dest_files=["res://.godot/imported/retrieve_all_rotated.png-398cc1da614d7998086b8b15db9bffd0.ctex"]
 
 [params]
 
