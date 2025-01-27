@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv7b4urhn1amc"]
+
+[ext_resource type="PackedScene" uid="uid://cf0a25hnj0de7" path="res://Features/GUI/ButtonLine.tscn" id="1_b2w5e"]
+
+[node name="ButtonLineDehydrator" instance=ExtResource("1_b2w5e")]
+
+[node name="Description" parent="MarginTopBottom/HBoxContainer/South" index="1"]
+text = "Move 1"
+
+[node name="Description" parent="MarginTopBottom/HBoxContainer/East" index="1"]
+text = "Back"
+
+[node name="North" parent="MarginTopBottom/HBoxContainer" index="2"]
+visible = false
+
+[node name="West" parent="MarginTopBottom/HBoxContainer" index="3"]
+visible = false
+
+[node name="LR1" parent="MarginTopBottom/HBoxContainer" index="4"]
+visible = false
+
+[node name="LR2" parent="MarginTopBottom/HBoxContainer" index="5"]
+visible = false
