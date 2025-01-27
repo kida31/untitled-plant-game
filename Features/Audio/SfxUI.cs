@@ -45,19 +45,20 @@ namespace untitledplantgame.Audio
 				// Check if the node is still valid and if it is a control
 				if (!IsInstanceValid(node) || node is not Control control) return;
 
+				// Unlike c# events, godot signals cannot be unsubscribed if they are not connected.
 				if (control is Button button && button.IsConnected(BaseButton.SignalName.Pressed, Callable.From(PlayClickSound)))
 				{
 					button.Pressed -= PlayClickSound;
 				}
 
-				if (control is Clickable clickable)
-				{
-					clickable.Pressed -= PlayClickSound;
-				}
-
 				if (control is TextureButton btn && btn.IsConnected(BaseButton.SignalName.Pressed, Callable.From(PlayClickSound)))
 				{
 					btn.Pressed -= PlayClickSound;
+				}
+
+				if (control is Clickable clickable)
+				{
+					clickable.Pressed -= PlayClickSound;
 				}
 			});
 		}
