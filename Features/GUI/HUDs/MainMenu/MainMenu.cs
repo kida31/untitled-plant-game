@@ -4,9 +4,9 @@ using untitledplantgame.Common;
 
 public partial class MainMenu : Control
 {
-	[Export] private Button _startButton;
-	[Export] private Button _settingsButton;
-	[Export] private Button _exitButton;
+	[Export] private TextureButton _startButton;
+	[Export] private TextureButton _settingsButton;
+	[Export] private TextureButton _exitButton;
 	
 	// Changed Aspect Ratio to: Keep
 	// The player shouldn't be able to change that (unless we want our game to look weird)
@@ -15,6 +15,8 @@ public partial class MainMenu : Control
 		_startButton.Pressed += () => GetTree().ChangeSceneToFile("res://Main.tscn");
 		_settingsButton.Pressed += OpenSettings;
 		_exitButton.Pressed += () => GetTree().Quit();
+		
+		_startButton.GrabFocus();
 	}
 	
 	private void OpenSettings()

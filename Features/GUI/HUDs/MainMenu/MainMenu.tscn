@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://rryay1lejcli"]
+[gd_scene load_steps=13 format=3 uid="uid://rryay1lejcli"]
 
 [ext_resource type="Script" path="res://Features/GUI/HUDs/MainMenu/MainMenu.cs" id="1_nnu1v"]
 [ext_resource type="Texture2D" uid="uid://cj4gppdvblh0q" path="res://Assets/UI/Tawas_Logo.png" id="2_70i77"]
@@ -6,10 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://s2fupbntng85" path="res://Assets/UI/Buttons/play_button_default.png" id="4_r4pi3"]
 [ext_resource type="Texture2D" uid="uid://dakp8dhmdf6ob" path="res://Assets/UI/Buttons/settings_button_default.png" id="5_4gtp0"]
 [ext_resource type="Texture2D" uid="uid://lp30512rujjy" path="res://Assets/UI/Buttons/exit_button_onHover.png" id="6_aogb4"]
+[ext_resource type="Texture2D" uid="uid://mdgn6kpo2624" path="res://Assets/UI/Buttons/play_button_on_hover.png" id="6_k503f"]
 [ext_resource type="Texture2D" uid="uid://7w85lb31kqgy" path="res://Assets/UI/Buttons/play_button_pressed.png" id="6_lyeqp"]
-[ext_resource type="Script" path="res://Features/GUI/HUDs/MainMenu/MainMenuButton.cs" id="6_uq387"]
 [ext_resource type="Texture2D" uid="uid://drxncrntinnvq" path="res://Assets/UI/Buttons/settings_button_pressed.png" id="7_jbut7"]
+[ext_resource type="Texture2D" uid="uid://3u5s05beqo5i" path="res://Assets/UI/Buttons/settings_button_on_hover.png" id="9_pfjee"]
 [ext_resource type="Texture2D" uid="uid://b64mimqgiq3jj" path="res://Assets/UI/Buttons/exit_button_pressed.png" id="10_0sl0g"]
+[ext_resource type="Texture2D" uid="uid://dx23vp7xttl6k" path="res://Assets/UI/Buttons/exit_button_default.png" id="10_dyquh"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("_startButton", "_settingsButton", "_exitButton")]
 layout_mode = 3
@@ -19,9 +21,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nnu1v")
-_startButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer/Button")
-_settingsButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer2/Button")
-_exitButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer3/Button")
+_startButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer/Start")
+_settingsButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer2/Settings")
+_exitButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer3/Exit")
 
 [node name="PanelContainer" type="Control" parent="."]
 layout_mode = 1
@@ -72,46 +74,37 @@ layout_mode = 2
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer"]
+[node name="Start" type="TextureButton" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
-texture = ExtResource("4_r4pi3")
-
-[node name="Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer" node_paths=PackedStringArray("_textureRectToChange")]
-layout_mode = 2
-flat = true
-script = ExtResource("6_uq387")
-_textureRectToChange = NodePath("../TextureRect")
-_defaultTexture2D = ExtResource("4_r4pi3")
-_pressedTexture2D = ExtResource("6_lyeqp")
+toggle_mode = true
+keep_pressed_outside = true
+texture_normal = ExtResource("4_r4pi3")
+texture_pressed = ExtResource("6_lyeqp")
+texture_hover = ExtResource("6_k503f")
+texture_focused = ExtResource("6_k503f")
 
 [node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer2"]
+[node name="Settings" type="TextureButton" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
-texture = ExtResource("5_4gtp0")
-
-[node name="Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer2" node_paths=PackedStringArray("_textureRectToChange")]
-layout_mode = 2
-flat = true
-script = ExtResource("6_uq387")
-_textureRectToChange = NodePath("../TextureRect")
-_defaultTexture2D = ExtResource("5_4gtp0")
-_pressedTexture2D = ExtResource("7_jbut7")
+toggle_mode = true
+keep_pressed_outside = true
+texture_normal = ExtResource("5_4gtp0")
+texture_pressed = ExtResource("7_jbut7")
+texture_hover = ExtResource("9_pfjee")
+texture_focused = ExtResource("9_pfjee")
 
 [node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer3"]
+[node name="Exit" type="TextureButton" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer3"]
 layout_mode = 2
-texture = ExtResource("6_aogb4")
-
-[node name="Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer3" node_paths=PackedStringArray("_textureRectToChange")]
-layout_mode = 2
-flat = true
-script = ExtResource("6_uq387")
-_textureRectToChange = NodePath("../TextureRect")
-_defaultTexture2D = ExtResource("6_aogb4")
-_pressedTexture2D = ExtResource("10_0sl0g")
+toggle_mode = true
+keep_pressed_outside = true
+texture_normal = ExtResource("10_dyquh")
+texture_pressed = ExtResource("10_0sl0g")
+texture_hover = ExtResource("6_aogb4")
+texture_focused = ExtResource("6_aogb4")
