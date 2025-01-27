@@ -11,12 +11,18 @@ public partial class DebugOverlay : Control
 	[Export] private Key _toggleKey = Key.F3;
 	[Export] private Key _toggleModifier = Key.Shift;
 
+	private Logger _logger;
+
 	private readonly Control _container;
-	private readonly Logger _logger = new(nameof(DebugOverlay));
 
 	public DebugOverlay()
 	{
 		_container = this; // Replace this if node tree structure changes
+	}
+
+	public override void _Ready()
+	{
+		_logger = new Logger(this);
 		Visible = ProjectSettings.GetSetting(DebugSettingKey, false).AsBool();
 	}
 
