@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bxdx84o8n40rg" path="res://Assets/UI/Book/Icons/3coins.png" id="8_pvodt"]
 [ext_resource type="PackedScene" uid="uid://qruua750qmw4" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
-[ext_resource type="PackedScene" uid="uid://4ix03kxh3x2h" path="res://Features/GUI/Vending/ButtonLineVending.tscn" id="10_7e1e4"]
+[ext_resource type="PackedScene" uid="uid://onc7r0twgms2" path="res://Features/GUI/Vending/ButtonLineVending.tscn" id="10_7e1e4"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
 [ext_resource type="PackedScene" uid="uid://cusi423j6fnh2" path="res://Features/GUI/Vending/EmoteBubble.tscn" id="12_5lmun"]
 
@@ -189,9 +189,8 @@ icon = ExtResource("8_fnty8")
 flat = true
 icon_alignment = 1
 
-[node name="ButtonLine" parent="." instance=ExtResource("10_7e1e4")]
-layout_mode = 0
-anchors_preset = 0
+[node name="ButtonLineVending" parent="." instance=ExtResource("10_7e1e4")]
+layout_mode = 1
 
 [node name="CursorHand" parent="." instance=ExtResource("9_28tje")]
 layout_mode = 1
