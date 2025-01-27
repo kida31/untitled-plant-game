@@ -1,9 +1,7 @@
 using Godot;
 using System.Collections.Generic;
-using System.Linq;
 using untitledplantgame.Common;
 using untitledplantgame.GUI.Components;
-using untitledplantgame.Statistics.StatTypes;
 
 namespace untitledplantgame.Audio
 {
@@ -31,15 +29,35 @@ namespace untitledplantgame.Audio
 			_logger.Debug("Initialized Audiostreams");
 
 			InstallSounds();
-			GetViewport().GuiFocusChanged += (_) => PlayHoveredSound();
-			
+			GetViewport().GuiFocusChanged += PlayHoveredSound;
+		}
+
+		public override void _ExitTree()
+		{
+			// Clean up events, unsubscribe from all.
+			GetViewport().GuiFocusChanged -= PlayHoveredSound;
+			var nodes = CollectAllNodes(GetTree().Root, new List<Node>());
+			nodes.ForEach(node =>
+			{
+				// Check if the node is still valid and if it is a control
+				if (!IsInstanceValid(node) || node is not Control control) return;
+				
+				if (control is Button button)
+				{
+					button.Pressed -= PlayClickSound;
+				}
+				if (control is Clickable clickable)
+				{
+					clickable.Pressed -= PlayClickSound;
+				}
+			});
 		}
 
 		private void PlayClickSound() {
 			PlayUiSfx("MenuUiClickButton.wav");
 		}
 
-		private void PlayHoveredSound() {
+		private void PlayHoveredSound(object _) {
 			PlayUiSfx("MenuUiHoverSound.wav");
 		}
 
@@ -54,7 +72,7 @@ namespace untitledplantgame.Audio
 				}
 				if (node is Clickable clickable)
 				{
-					clickable.Pressed += PlayHoveredSound;
+					clickable.Pressed += PlayClickSound;
 				}
 
 			}
