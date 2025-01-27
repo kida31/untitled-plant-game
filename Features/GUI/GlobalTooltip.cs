@@ -48,8 +48,8 @@ public partial class GlobalTooltip : TooltipView
 	public override void _Process(double delta)
 	{
 		var targetIsValid = _target != null &&
-							_target.HasFocus() &&
-							_target.IsVisibleInTree();
+		                    _target.HasFocus() &&
+		                    _target.IsVisibleInTree();
 		var noOtherGuiActive = CursorInventory.Instance?.Content == null;
 		if (
 			targetIsValid &&
