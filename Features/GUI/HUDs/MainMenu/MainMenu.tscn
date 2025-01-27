@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://rryay1lejcli"]
+[gd_scene load_steps=12 format=3 uid="uid://rryay1lejcli"]
 
 [ext_resource type="Script" path="res://Features/GUI/HUDs/MainMenu/MainMenu.cs" id="1_nnu1v"]
 [ext_resource type="Texture2D" uid="uid://cj4gppdvblh0q" path="res://Assets/UI/Tawas_Logo.png" id="2_70i77"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Features/GUI/HUDs/MainMenu/MainMenuButton.cs" id="6_uq387"]
 [ext_resource type="Texture2D" uid="uid://drxncrntinnvq" path="res://Assets/UI/Buttons/settings_button_pressed.png" id="7_jbut7"]
 [ext_resource type="Texture2D" uid="uid://b64mimqgiq3jj" path="res://Assets/UI/Buttons/exit_button_pressed.png" id="10_0sl0g"]
+[ext_resource type="Script" path="res://Features/Audio/SfxUI.cs" id="11_k64g3"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("_startButton", "_settingsButton", "_exitButton")]
 layout_mode = 3
@@ -19,9 +20,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nnu1v")
-_startButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer/Button")
-_settingsButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer2/Button")
-_exitButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer3/Button")
+_startButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer/Start")
+_settingsButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer2/Settings")
+_exitButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer3/Quit")
 
 [node name="PanelContainer" type="Control" parent="."]
 layout_mode = 1
@@ -76,7 +77,7 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("4_r4pi3")
 
-[node name="Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer" node_paths=PackedStringArray("_textureRectToChange")]
+[node name="Start" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer" node_paths=PackedStringArray("_textureRectToChange")]
 layout_mode = 2
 flat = true
 script = ExtResource("6_uq387")
@@ -92,7 +93,7 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("5_4gtp0")
 
-[node name="Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer2" node_paths=PackedStringArray("_textureRectToChange")]
+[node name="Settings" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer2" node_paths=PackedStringArray("_textureRectToChange")]
 layout_mode = 2
 flat = true
 script = ExtResource("6_uq387")
@@ -108,10 +109,17 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("6_aogb4")
 
-[node name="Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer3" node_paths=PackedStringArray("_textureRectToChange")]
+[node name="Quit" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer3" node_paths=PackedStringArray("_textureRectToChange")]
 layout_mode = 2
 flat = true
 script = ExtResource("6_uq387")
 _textureRectToChange = NodePath("../TextureRect")
 _defaultTexture2D = ExtResource("6_aogb4")
 _pressedTexture2D = ExtResource("10_0sl0g")
+
+[node name="UISFX" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_k64g3")
