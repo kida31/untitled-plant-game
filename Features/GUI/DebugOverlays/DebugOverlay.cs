@@ -23,7 +23,7 @@ public partial class DebugOverlay : Control
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
-		Visible = ProjectSettings.GetSetting(DebugSettingKey, false).AsBool();
+		Visible = ProjectSettings.GetSetting(DebugSettingKey, false).AsBool(); // default is false
 	}
 
 	public override void _Input(InputEvent @event)

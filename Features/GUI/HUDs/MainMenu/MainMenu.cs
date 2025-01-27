@@ -16,7 +16,7 @@ public partial class MainMenu : Control
 		_settingsButton.Pressed += OpenSettings;
 		_exitButton.Pressed += () => GetTree().Quit();
 		
-		_startButton.GrabFocus();
+		_startButton.GrabFocus(); // Any button would be fine.
 	}
 	
 	private void OpenSettings()

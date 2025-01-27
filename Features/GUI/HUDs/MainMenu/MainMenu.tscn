@@ -76,7 +76,6 @@ layout_mode = 2
 
 [node name="Start" type="TextureButton" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
-toggle_mode = true
 keep_pressed_outside = true
 texture_normal = ExtResource("4_r4pi3")
 texture_pressed = ExtResource("6_lyeqp")
@@ -89,7 +88,6 @@ layout_mode = 2
 
 [node name="Settings" type="TextureButton" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
-toggle_mode = true
 keep_pressed_outside = true
 texture_normal = ExtResource("5_4gtp0")
 texture_pressed = ExtResource("7_jbut7")
@@ -102,7 +100,6 @@ layout_mode = 2
 
 [node name="Exit" type="TextureButton" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer3"]
 layout_mode = 2
-toggle_mode = true
 keep_pressed_outside = true
 texture_normal = ExtResource("10_dyquh")
 texture_pressed = ExtResource("10_0sl0g")
