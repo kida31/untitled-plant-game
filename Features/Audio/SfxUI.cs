@@ -42,7 +42,7 @@ namespace untitledplantgame.Audio
 			PlayUiSfx("MenuUiHoverSound.wav");
 		}
 
-		public void InstallSounds() {
+		private void InstallSounds() {
 			List<Node> allNodes = CollectAllNodes(GetTree().Root);
 
 			foreach (var node in allNodes)
@@ -58,14 +58,14 @@ namespace untitledplantgame.Audio
 			}
 		}
 
-		public List<Node> CollectAllNodes(Node root) { 
+		private List<Node> CollectAllNodes(Node root) { 
 			List<Node> nodes = new List<Node>();
 			CollectNodesRecursively(root, nodes);
 			_logger.Debug($"Collected all Nodes {nodes.Count}");
 			return nodes;
 		}
 
-		public void CollectNodesRecursively(Node current, List<Node> nodes) { 
+		private void CollectNodesRecursively(Node current, List<Node> nodes) { 
 			nodes.Add(current);
 			foreach (var child in current.GetChildren()) {
 				CollectNodesRecursively(child, nodes);
