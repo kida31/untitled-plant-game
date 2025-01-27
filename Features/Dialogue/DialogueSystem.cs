@@ -68,6 +68,10 @@ public partial class DialogueSystem : Node, IDialogueSystem
 				EndDialogue();
 				return;
 			default:
+				foreach (var line in nextDialogue._dialogueText)
+				{
+					GD.Print(line.GetType());
+				}
 				SetAndResetDialogueBlock(nextDialogue);
 				break;
 		}

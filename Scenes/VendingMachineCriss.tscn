@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://darsx73t4n6d3"]
+[gd_scene load_steps=9 format=3 uid="uid://darsx73t4n6d3"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_b0v61"]
 [ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="2_gjf2v"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_d4jk1"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_a0n3g"]
 [ext_resource type="Resource" uid="uid://djkgxlqpnhr00" path="res://Resources/Dialogue/VendingMachine/VM_init_1.tres" id="6_ki0ac"]
-[ext_resource type="Script" path="res://Features/NPC/NpcTask/TriggerVendingMachineResponse.cs" id="7_veciv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqkbf"]
 radius = 62.0322
@@ -46,6 +45,3 @@ RoutineTrigger = 1
 [node name="Dialogue" type="Node" parent="RoutinePlanner/TalkAndOpenVendingMachineRoutine" index="0"]
 script = ExtResource("5_a0n3g")
 _dialogueResourceObject = ExtResource("6_ki0ac")
-
-[node name="Yes_Response1" type="Node" parent="RoutinePlanner/TalkAndOpenVendingMachineRoutine/Dialogue" index="0"]
-script = ExtResource("7_veciv")
