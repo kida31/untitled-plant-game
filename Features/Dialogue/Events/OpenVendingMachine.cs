@@ -17,13 +17,12 @@ public partial class OpenVendingMachine : DialogueEvent
 
 	public OpenVendingMachine()
 	{
+		_vendingMachine = new VendingMachine();
 		_logger = new Logger("OpenVendingMachine");
 	}
 	
 	public override void Execute()
 	{
-		_vendingMachine = new VendingMachine();
-
 		_logger.Debug("VendingMachine opened.");
 		EventBus.Instance.BeforeVendingMachineOpen(_vendingMachine);
 	}
