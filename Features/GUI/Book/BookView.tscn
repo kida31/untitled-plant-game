@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cca7okqb2j4c7"]
+[gd_scene load_steps=10 format=3 uid="uid://cca7okqb2j4c7"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/BookView.cs" id="1_rrual"]
 [ext_resource type="PackedScene" uid="uid://bly2kw8wtilop" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.tscn" id="2_tyesk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://e3t5fwq4qne3" path="res://Features/GUI/Book/Pages/WikiPage.tscn" id="4_t387j"]
 [ext_resource type="PackedScene" uid="uid://bpkoqced6ctrd" path="res://Features/GUI/Book/ButtonLineBook.tscn" id="4_ugu1q"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="5_hs6c8"]
+[ext_resource type="PackedScene" uid="uid://cclh1a0f4gi6k" path="res://Features/GUI/Book/ButtonLineBookWiki.tscn" id="5_o16am"]
 [ext_resource type="PackedScene" uid="uid://qruua750qmw4" path="res://Features/GUI/CursorHandView.tscn" id="7_vpmxr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkcs2"]
@@ -45,16 +46,32 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 mouse_filter = 1
 
+[node name="ButtonLineBook" parent="TabContainer/PlayerInventoryPage" instance=ExtResource("4_ugu1q")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.214286
+anchor_top = 1.00658
+anchor_right = 1.21429
+anchor_bottom = 1.09211
+offset_top = 0.0
+offset_bottom = 3.05176e-05
+
 [node name="WikiPage" parent="TabContainer" instance=ExtResource("4_t387j")]
 visible = false
 layout_mode = 2
 mouse_filter = 1
 
-[node name="ButtonLineBook" parent="." instance=ExtResource("4_ugu1q")]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.927778
+[node name="ButtonLineBookWiki" parent="TabContainer/WikiPage" instance=ExtResource("5_o16am")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = -0.214286
+anchor_top = 1.00658
+anchor_right = 1.21429
+anchor_bottom = 1.09211
 offset_top = 0.0
+offset_bottom = 3.05176e-05
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="UIFocus" parent="." instance=ExtResource("4_pgjhc")]
 layout_mode = 0
