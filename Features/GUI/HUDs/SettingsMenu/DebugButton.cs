@@ -21,7 +21,7 @@ public partial class DebugButton : OptionButton
 		// Set initial value
 		if (ProjectSettings.GetSetting(DebugOverlay.DebugSettingKey, false).AsBool())
 		{
-			Selected = Array.IndexOf(_logLevels, Settings.Logging.GetLogLevel()) + 1; // offset because "Off" is first option
+			Selected = Array.IndexOf(_logLevels, Settings.Logging.GetLogLevel()) + 1; // offset because "None" is first option
 		}
 		else
 		{
@@ -36,7 +36,7 @@ public partial class DebugButton : OptionButton
 	{
 		var index = 0;
 
-		AddItem("Off", index);
+		AddItem("None", index);
 		Selected = 0;
 
 		foreach (var logLevel in _logLevels)
@@ -48,7 +48,7 @@ public partial class DebugButton : OptionButton
 
 	private void OnItemSelected(long option)
 	{
-		if (option == 0) // The LogLevel Enum starts with "Debug" (Debug ⇒ 0), but here, zero represents "Off"
+		if (option == 0) // The LogLevel Enum starts with "Debug" (Debug ⇒ 0), but here, zero represents "None"
 		{
 			Settings.Logging.SetLogLevel(_logLevels[^1]);
 
