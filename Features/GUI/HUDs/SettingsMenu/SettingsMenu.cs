@@ -6,7 +6,7 @@ namespace untitledplantgame.GUI.HUDs.SettingsMenu;
 public partial class SettingsMenu : Node
 {
 	[Export] private Button _backButton;
-	[Export] private CheckBox _checkBox;
+	[Export] private CheckBox _checkboxFullscreen;
 	[Export] private LabelForCheckButton _debugMode;
 	[Export] private ResolutionButton _resolutionButton;
 	[Export] private DebugButton _debugButton;
@@ -18,10 +18,11 @@ public partial class SettingsMenu : Node
 	{
 		_backButton.Pressed += () => GetTree().ChangeSceneToFile("res://Features/GUI/HUDs/MainMenu/MainMenu.tscn");
 		_resolutionButton.ItemSelected += GetSelectedItem;
-		_checkBox.Toggled += FullScreenToggled;
+		_checkboxFullscreen.Toggled += FullScreenToggled;
 		_debugMode.SetDescriptiveLabelForCheckButton("ON", "OFF");
 		
 		SetResolutionBasedOnInitialWindowSize();
+		_checkboxFullscreen.GrabFocus();
 	}
 
 	private void SetResolutionBasedOnInitialWindowSize()
