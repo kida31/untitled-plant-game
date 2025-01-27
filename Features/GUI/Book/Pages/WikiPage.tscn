@@ -29,9 +29,6 @@ offset_right = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" parent="WikiItemList/SectionsButtons/Div3" index="1"]
-focus_neighbor_right = NodePath("../../../../WikiArticleView/RelatedStuff/RelatedItem")
-
 [node name="WikiArticleView" parent="." instance=ExtResource("3_q0eou")]
 layout_mode = 1
 anchor_left = 0.5
@@ -107,7 +104,7 @@ stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="BookmarkButton" parent="." instance=ExtResource("5_m1wd8")]
-z_index = -1
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.413772
@@ -143,5 +140,3 @@ metadata/_edit_use_anchors_ = true
 [editable path="WikiItemList"]
 [editable path="WikiArticleView"]
 [editable path="WikiArticleView/Name"]
-[editable path="WikiArticleView/Description"]
-[editable path="WikiArticleView/Stats"]
