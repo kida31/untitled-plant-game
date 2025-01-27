@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://rryay1lejcli"]
+[gd_scene load_steps=14 format=3 uid="uid://rryay1lejcli"]
 
 [ext_resource type="Script" path="res://Features/GUI/HUDs/MainMenu/MainMenu.cs" id="1_nnu1v"]
 [ext_resource type="Texture2D" uid="uid://cj4gppdvblh0q" path="res://Assets/UI/Tawas_Logo.png" id="2_70i77"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://3u5s05beqo5i" path="res://Assets/UI/Buttons/settings_button_on_hover.png" id="9_pfjee"]
 [ext_resource type="Texture2D" uid="uid://b64mimqgiq3jj" path="res://Assets/UI/Buttons/exit_button_pressed.png" id="10_0sl0g"]
 [ext_resource type="Texture2D" uid="uid://dx23vp7xttl6k" path="res://Assets/UI/Buttons/exit_button_default.png" id="10_dyquh"]
+[ext_resource type="Script" path="res://Features/Audio/SfxUI.cs" id="13_s5nm2"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("_startButton", "_settingsButton", "_exitButton")]
 layout_mode = 3
@@ -105,3 +106,6 @@ texture_normal = ExtResource("10_dyquh")
 texture_pressed = ExtResource("10_0sl0g")
 texture_hover = ExtResource("6_aogb4")
 texture_focused = ExtResource("6_aogb4")
+
+[node name="SFX UI" type="Node" parent="."]
+script = ExtResource("13_s5nm2")
