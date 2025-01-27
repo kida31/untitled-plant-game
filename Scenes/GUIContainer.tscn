@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=12 format=3 uid="uid://3ndp3em1fi7h"]
 
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/GUI/Vending/VendingGUI.tscn" id="1_iuaq5"]
 [ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="2_qr6u8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Features/GUI/Effects/TriggerOnNonGameplay.cs" id="6_wbn0r"]
 [ext_resource type="PackedScene" uid="uid://cwe0di17r2yd" path="res://Features/TeleportPlayer/SceneTransition.tscn" id="8_jtjsl"]
 [ext_resource type="PackedScene" uid="uid://df0cg0vcow1n2" path="res://Features/GUI/DebugOverlays/DebugOverlays.tscn" id="9_m21er"]
+[ext_resource type="Script" path="res://Features/Audio/SfxUI.cs" id="11_1oqto"]
 
 [node name="GUIContainer" type="CanvasLayer"]
 
@@ -51,3 +52,6 @@ z_index = -1
 [node name="TriggerOnNonGameplay" type="Node" parent="NonGameplayEffect"]
 script = ExtResource("6_wbn0r")
 _fadeOutDuration = 0.1
+
+[node name="SFX UI" type="Node" parent="."]
+script = ExtResource("11_1oqto")
