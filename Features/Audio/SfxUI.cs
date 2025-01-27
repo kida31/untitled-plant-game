@@ -9,7 +9,6 @@ namespace untitledplantgame.Audio
 {
 	public partial class SfxUI : Node
 	{
-		[Export] private float _volume = -10; // Default volume
 		private Dictionary<string, AudioStreamPlayer> _sounds = new Dictionary<string, AudioStreamPlayer>()
 		{
 			{"MenuUiPlayGame.wav", new AudioStreamPlayer()},
