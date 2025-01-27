@@ -22,7 +22,7 @@ grow_vertical = 2
 script = ExtResource("1_nnu1v")
 _startButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer/Start")
 _settingsButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer2/Settings")
-_exitButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer3/Beenden")
+_exitButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/PanelContainer3/Quit")
 
 [node name="PanelContainer" type="Control" parent="."]
 layout_mode = 1
@@ -109,7 +109,7 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("6_aogb4")
 
-[node name="Beenden" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer3" node_paths=PackedStringArray("_textureRectToChange")]
+[node name="Quit" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/PanelContainer3" node_paths=PackedStringArray("_textureRectToChange")]
 layout_mode = 2
 flat = true
 script = ExtResource("6_uq387")
