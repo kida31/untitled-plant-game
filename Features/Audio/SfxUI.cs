@@ -8,13 +8,13 @@ namespace untitledplantgame.Audio
 {
 	public partial class SfxUI : Node
 	{
-		[Export] private float _volume = 100; // Default volume
+		[Export] private float _volume = -10; // Default volume
 		private Dictionary<string, AudioStreamPlayer> _sounds = new Dictionary<string, AudioStreamPlayer>()
 		{
-			{"menu-ui_Play_Game.wav", new AudioStreamPlayer()},
-			{"menu-ui_Hover_Sound.wav", new AudioStreamPlayer()},
-			{"menu-ui_Exit_Game.wav", new AudioStreamPlayer()},
-			{"menu-ui_Click_Button.wav", new AudioStreamPlayer()}
+			{"MenuUiPlayGame.wav", new AudioStreamPlayer()},
+			{"MenuUiHoverSound.wav", new AudioStreamPlayer()},
+			{"MenuUiExitGame.wav", new AudioStreamPlayer()},
+			{"MenuUiClickButton.wav", new AudioStreamPlayer()}
 		};
 
 		private Logger _logger = new Logger("SfxUI");
@@ -22,7 +22,8 @@ namespace untitledplantgame.Audio
 		public override void _Ready()
 		{	
 			// Create and add audio players to the scene
-			foreach (var key in _sounds.Keys) {
+			foreach (var key in _sounds.Keys) 
+			{
 				_sounds[key].Stream = (AudioStream)GD.Load("res://Assets/SFX/" + key);
 				_sounds[key].Bus = "UI";
 				AddChild(_sounds[key]);
@@ -34,11 +35,11 @@ namespace untitledplantgame.Audio
 		}
 
 		private void PlayClickSound() {
-			PlayUiSfx("menu-ui_Click_Button.wav");
+			PlayUiSfx("MenuUiClickButton.wav");
 		}
 
 		private void PlayHoveredSound() {
-			PlayUiSfx("menu-ui_Hover_Sound.wav");
+			PlayUiSfx("MenuUiHoverSound.wav");
 		}
 
 		public void InstallSounds() {
@@ -70,7 +71,7 @@ namespace untitledplantgame.Audio
 				CollectNodesRecursively(child, nodes);
 			}
 		}
-
+		
 
 		private void PlayUiSfx(string sfx) {
 			_sounds[sfx].Play();
