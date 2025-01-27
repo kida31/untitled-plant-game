@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://4my5710iq0yd"]
+
+[ext_resource type="Texture2D" uid="uid://s2fupbntng85" path="res://Assets/UI/Buttons/play_button_default.png" id="1_v8rf0"]
+[ext_resource type="Script" path="res://Features/GUI/HUDs/MainMenu/TextureClickable.cs" id="1_vcj4f"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MY BUTTON" type="MarginContainer" parent="HBoxContainer" node_paths=PackedStringArray("_icon")]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+script = ExtResource("1_vcj4f")
+_icon = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MY BUTTON"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("1_v8rf0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MY BUTTON2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+script = ExtResource("1_vcj4f")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MY BUTTON2"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("1_v8rf0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MY BUTTON3" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+script = ExtResource("1_vcj4f")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MY BUTTON3"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("1_v8rf0")
+expand_mode = 1
+stretch_mode = 5

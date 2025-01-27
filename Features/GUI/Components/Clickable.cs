@@ -16,6 +16,13 @@ public partial class Clickable : Control, IPressable, IFocusable, ISeconaryPress
 	[Export] public bool Disabled = false;
 	public event Action Pressed;
 	public event Action SecondaryPressed;
+	public event Action Released;
+	public event Action SecondaryReleased;
+	
+	
+	private bool _isPressedReadOnly;
+	
+	public bool IsPressed() => _isPressedReadOnly;
 
 	public Clickable()
 	{
@@ -56,30 +63,45 @@ public partial class Clickable : Control, IPressable, IFocusable, ISeconaryPress
 	{
 		if (Disabled) return;
 
-		if (@event is InputEventMouseButton button)
+		if (@event is InputEventMouseButton mb)
 		{
-			if (button.ButtonIndex == MouseButton.Left && button.Pressed)
+			switch (mb.ButtonIndex)
 			{
-				Pressed?.Invoke();
+				case MouseButton.Left when mb.Pressed:
+					_isPressedReadOnly = true;
+					Pressed?.Invoke();
+					break;
+				case MouseButton.Left:
+					_isPressedReadOnly = false;
+					Released?.Invoke();
+					break;
+				case MouseButton.Right when mb.Pressed:
+					SecondaryPressed?.Invoke();
+					break;
+				case MouseButton.Right:
+					SecondaryReleased?.Invoke();
+					break;
 			}
 		}
 
 		if (@event.IsActionPressed(UINavigation.Accept))
 		{
+			_isPressedReadOnly = true;
 			Pressed?.Invoke();
 		}
-
-		if (@event is InputEventMouseButton rmb)
+		else if (@event.IsActionReleased(UINavigation.Accept))
 		{
-			if (rmb.ButtonIndex == MouseButton.Right && rmb.Pressed)
-			{
-				SecondaryPressed?.Invoke();
-			}
+			_isPressedReadOnly = false;
+			Released?.Invoke();
 		}
-		
+
 		if (@event.IsActionPressed(UINavigation.SecondaryAccept))
 		{
 			SecondaryPressed?.Invoke();
+		}
+		else if (@event.IsActionReleased(UINavigation.SecondaryAccept))
+		{
+			SecondaryReleased?.Invoke();
 		}
 	}
 }
