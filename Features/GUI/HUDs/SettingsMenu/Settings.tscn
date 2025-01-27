@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Features/GUI/HUDs/SettingsMenu/LabelForCheckButton.cs" id="4_nvt3e"]
 [ext_resource type="Script" path="res://Features/GUI/HUDs/SettingsMenu/DebugButton.cs" id="5_mke2j"]
 
-[node name="Settings" type="Control" node_paths=PackedStringArray("_backButton", "_checkBox", "_debugMode", "_resolutionButton", "_debugButton")]
+[node name="Settings" type="Control" node_paths=PackedStringArray("_backButton", "_checkboxFullscreen", "_debugMode", "_resolutionButton", "_debugButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1el8a")
 _backButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/Button")
-_checkBox = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/CheckBox")
+_checkboxFullscreen = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer/CheckBox")
 _debugMode = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer3/HBoxContainer/HBoxContainer/Label")
 _resolutionButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer/OptionButton")
 _debugButton = NodePath("PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4/HBoxContainer/OptionButton")

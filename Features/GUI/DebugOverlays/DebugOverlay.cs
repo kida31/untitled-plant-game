@@ -4,18 +4,26 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.GUI.DebugOverlays;
 
-public partial class DebugOverlays : Control
+public partial class DebugOverlay : Control
 {
+	public const string DebugSettingKey = "untitled_plant_game/show_debug_overlays";
+
 	[Export] private Key _toggleKey = Key.F3;
 	[Export] private Key _toggleModifier = Key.Shift;
 
-	private readonly Control _container;
-	private readonly Logger _logger = new(nameof(DebugOverlays));
+	private Logger _logger;
 
-	public DebugOverlays()
+	private readonly Control _container;
+
+	public DebugOverlay()
 	{
 		_container = this; // Replace this if node tree structure changes
-		Visible = EventBus.DisplayLog;
+	}
+
+	public override void _Ready()
+	{
+		_logger = new Logger(this);
+		Visible = ProjectSettings.GetSetting(DebugSettingKey, false).AsBool(); // default is false
 	}
 
 	public override void _Input(InputEvent @event)
