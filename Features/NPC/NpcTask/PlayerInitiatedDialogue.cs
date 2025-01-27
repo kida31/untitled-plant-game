@@ -15,7 +15,7 @@ namespace untitledplantgame.NPC.NpcTask;
 // TODO: Cleanup
 public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 {
-	[Export] private Array<DialogueResourceObject> _dialogueResourceObject;
+	[Export] private Array<DialogueResourceObject> _dialogueResourceObjects;
 	[Export] private bool _randomOrderOfDialogueLines;
 
 	private int _amountOfDialogueLinesUsed;
@@ -49,14 +49,14 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 
 		if (_randomOrderOfDialogueLines)
 		{
-			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject[new Random().Next(_dialogueResourceObject.Count)]);
+			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObjects[new Random().Next(_dialogueResourceObjects.Count)]);
 		}
 		else
 		{
-			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject[_amountOfDialogueLinesUsed]);
+			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObjects[_amountOfDialogueLinesUsed]);
 			_amountOfDialogueLinesUsed++;
 			
-			if (_amountOfDialogueLinesUsed == _dialogueResourceObject.Count)
+			if (_amountOfDialogueLinesUsed == _dialogueResourceObjects.Count)
 			{
 				_amountOfDialogueLinesUsed = 0;
 			}

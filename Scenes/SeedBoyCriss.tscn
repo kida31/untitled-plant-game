@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crm2bb3s72gi8"]
+[gd_scene load_steps=13 format=3 uid="uid://crm2bb3s72gi8"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_qjsqv"]
 [ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="2_e08ef"]
@@ -6,6 +6,12 @@
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="3_a24bk"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="4_p27pq"]
 [ext_resource type="Resource" uid="uid://rue2vg1j66lx" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_1.tres" id="5_hojrx"]
+[ext_resource type="Resource" uid="uid://c2iqy0wa6mgf4" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_2.tres" id="7_sumlp"]
+[ext_resource type="Resource" uid="uid://btkhqlkfx44g2" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_3.tres" id="8_dvvuy"]
+[ext_resource type="Resource" uid="uid://e6nbcypajiaw" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_4.tres" id="9_ci5lp"]
+[ext_resource type="Resource" uid="uid://4dy5tvlh4wgj" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_5.tres" id="10_hifoa"]
+[ext_resource type="Resource" uid="uid://xf5xb3s6ksp4" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_6.tres" id="11_6clld"]
+[ext_resource type="Resource" uid="uid://bo66u5m63r7f1" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_7.tres" id="12_13pfm"]
 
 [node name="PanDan" node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("1_qjsqv")]
 _name = "Pan Dan"
@@ -31,3 +37,4 @@ RoutineTrigger = 1
 [node name="Dialogue" type="Node" parent="RoutinePlanner/OnPlayerInteraction" index="0"]
 script = ExtResource("4_p27pq")
 _dialogueResourceObject = ExtResource("5_hojrx")
+_dialogueResourceObjects = Array[Object]([ExtResource("5_hojrx"), ExtResource("7_sumlp"), ExtResource("8_dvvuy"), ExtResource("9_ci5lp"), ExtResource("10_hifoa"), ExtResource("11_6clld"), ExtResource("12_13pfm")])

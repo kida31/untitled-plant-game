@@ -267,4 +267,4 @@ position = Vector2(593, 429)
 
 [node name="PlayerInitiatedDialogue" type="Node" parent="GodfreyRandomWalk" index="3"]
 script = ExtResource("6_8afnb")
-_dialogueResourceObject = Array[Object]([ExtResource("7_v4eb2"), ExtResource("8_duca2"), ExtResource("9_5eoqm"), ExtResource("10_l6vhi"), ExtResource("11_owjbx"), ExtResource("12_tpypq")])
+_dialogueResourceObjects = Array[Object]([ExtResource("7_v4eb2"), ExtResource("8_duca2"), ExtResource("9_5eoqm"), ExtResource("10_l6vhi"), ExtResource("11_owjbx"), ExtResource("12_tpypq")])

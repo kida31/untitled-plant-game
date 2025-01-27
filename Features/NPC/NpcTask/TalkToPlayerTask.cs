@@ -22,9 +22,12 @@ namespace untitledplantgame.NPC.NpcTask;
 public partial class TalkToPlayerTask :  Node, INpcTask
 {
 	[Export] private DialogueResourceObject _dialogueResourceObject;
+	[Export] private Array<DialogueResourceObject> _dialogueResourceObjects;
+	[Export] private bool _randomOrderOfDialogueLines;
 	
 	private bool DialogueFinished { get; set; }
 	private int _dialogueIndex;
+	private int _amountOfDialogueLinesUsed;
 	private event EventHandler TaskStarted;
 	private event EventHandler TaskFinished;
 	private Npc _npcExecutingThisTasks;
@@ -51,7 +54,22 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 	public void StartTask()
 	{
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
-		EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObject);
+			
+		if (_randomOrderOfDialogueLines)
+		{
+			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObjects[new Random().Next(_dialogueResourceObjects.Count)]);
+		}
+		else
+		{
+			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObjects[_amountOfDialogueLinesUsed]);
+			_amountOfDialogueLinesUsed++;
+			
+			if (_amountOfDialogueLinesUsed == _dialogueResourceObjects.Count)
+			{
+				_amountOfDialogueLinesUsed = 0;
+			}
+		}
+		GD.Print("HERE");
 		TaskStarted?.Invoke(this, EventArgs.Empty);
 		_logger.Info("TalkToPlayerTask started.");
 	}
