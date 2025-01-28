@@ -69,9 +69,6 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 		
 		
 		// ------- //
-		
-		
-		_routinePlanner.ActiveRoutine.StopRoutineWithInteraction();
 	}
 	
 	private void FinishDialogue()
