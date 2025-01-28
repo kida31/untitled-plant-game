@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bs7jmvcej2bhc"]
+[gd_scene load_steps=46 format=4 uid="uid://bs7jmvcej2bhc"]
 
 [ext_resource type="Texture2D" uid="uid://dvjxp03o22y3l" path="res://Assets/Tilesets/atlas_32x.png" id="1_njfkm"]
 [ext_resource type="Texture2D" uid="uid://h83g282s043x" path="res://Assets/Overworld/Garden/ladder_tileset_improved.png" id="2_4uw5u"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dsnhxqc3s81hr" path="res://Features/NPC/WalkableAreaDialogue.tscn" id="5_t1uyc"]
 [ext_resource type="Texture2D" uid="uid://btrjefeco6yc6" path="res://Assets/Overworld/House/Pillow_long.png" id="5_xxfd4"]
 [ext_resource type="Texture2D" uid="uid://bg6sungsm67xq" path="res://Assets/Overworld/House/PlantFence.png" id="6_ixvoq"]
+[ext_resource type="Texture2D" uid="uid://ik5booquxewf" path="res://Assets/Overworld/House/ladderToHouse.png" id="6_qjde6"]
 [ext_resource type="Texture2D" uid="uid://dvhnxweerw26d" path="res://Assets/Overworld/House/long_plants.png" id="6_uljed"]
 [ext_resource type="PackedScene" uid="uid://dihi7nwwsgeqb" path="res://Features/Crafting/Dehydrator/Dehydrator.tscn" id="7_85s0o"]
 [ext_resource type="Texture2D" uid="uid://b3vil7ewxk6hl" path="res://Assets/Overworld/House/tall_plant.png" id="7_reln1"]
@@ -848,6 +849,12 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/y_sort_origin = 26
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29, 4, 30, 4, 30, 25, -29, 25)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fnef1"]
+texture = ExtResource("6_qjde6")
+texture_region_size = Vector2i(32, 32)
+0:1/0 = 0
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2h1an"]
 texture = ExtResource("1_njfkm")
@@ -1717,6 +1724,7 @@ sources/7 = SubResource("TileSetAtlasSource_x5ijk")
 sources/9 = SubResource("TileSetAtlasSource_4k0h8")
 sources/10 = SubResource("TileSetAtlasSource_2h1an")
 sources/11 = SubResource("TileSetAtlasSource_nwy5y")
+sources/1 = SubResource("TileSetAtlasSource_fnef1")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uri3r"]
 resource_local_to_scene = true
@@ -1748,7 +1756,7 @@ tile_set = SubResource("TileSet_00qgg")
 
 [node name="HouseObjects" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAANAA0AAAAAAAAAAAAMABIAAgABAAAAAAAMABEAAgACAAAAAAAWAAsABgAAAAAAAAAZAAwABgAGAAAAAAAYAAwABgAFAAAAAAAXAAwABgAEAAAAAAAWAAwABgADAAAAAAAOAA0ACQAAAAAAAAAVAAwABgACAAAAAAAUAAwABgABAAAAAAATAAwABgAAAAAAAAAXAA0ABwAAAAAAAAANAAsAAwAAAAAAAAALAAsABAAAAAAAAAAVAA8ACgAQAAMAAAAVABAACgAQAAQAAAAVABEACgAQAAQAAAAVABIACgAQAAQAAAAVABMACgAQAAUAAAAWAA8ACgARAAMAAAAWABAACgARAAQAAAAWABEACgARAAQAAAAWABIACgARAAQAAAAWABMACgARAAUAAAAXAA8ACgARAAMAAAAXABAACgARAAQAAAAXABEACgARAAQAAAAXABIACgARAAQAAAAXABMACgARAAUAAAAYAA8ACgARAAMAAAAYABAACgARAAQAAAAZAA8ACgASAAMAAAAZABAACgASAAQAAAAZABEACgASAAQAAAAZABIACgASAAQAAAAZABMACgASAAUAAAAYABEACgARAAQAAAAYABQABQAAAAAAAAAYABMACgARAAUAAAAYABIACgARAAQAAAAPAA4ACAAAAAAAAAATAA0ACwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAANAA0AAAAAAAAAAAAMABEAAQAAAAAAAAAWAAsABgAAAAAAAAAZAAwABgAGAAAAAAAYAAwABgAFAAAAAAAXAAwABgAEAAAAAAAWAAwABgADAAAAAAAOAA0ACQAAAAAAAAAVAAwABgACAAAAAAAUAAwABgABAAAAAAATAAwABgAAAAAAAAAXAA0ABwAAAAAAAAANAAsAAwAAAAAAAAALAAsABAAAAAAAAAAVAA8ACgAQAAMAAAAVABAACgAQAAQAAAAVABEACgAQAAQAAAAVABIACgAQAAQAAAAVABMACgAQAAUAAAAWAA8ACgARAAMAAAAWABAACgARAAQAAAAWABEACgARAAQAAAAWABIACgARAAQAAAAWABMACgARAAUAAAAXAA8ACgARAAMAAAAXABAACgARAAQAAAAXABEACgARAAQAAAAXABIACgARAAQAAAAXABMACgARAAUAAAAYAA8ACgARAAMAAAAYABAACgARAAQAAAAZAA8ACgASAAMAAAAZABAACgASAAQAAAAZABEACgASAAQAAAAZABIACgASAAQAAAAZABMACgASAAUAAAAYABEACgARAAQAAAAYABQABQAAAAAAAAAYABMACgARAAUAAAAYABIACgARAAQAAAAPAA4ACAAAAAAAAAATAA0ACwAAAAAAAAAMABIAAQAAAAEAAAA=")
 tile_set = SubResource("TileSet_ory3n")
 
 [node name="Dehydrator" parent="HouseObjects" instance=ExtResource("7_85s0o")]
@@ -1764,7 +1772,7 @@ position = Vector2(0, -32)
 [node name="Mortar" parent="HouseObjects" instance=ExtResource("16_sfgy1")]
 
 [node name="Door" parent="." instance=ExtResource("4_0j18u")]
-position = Vector2(400, 567)
+position = Vector2(400, 604)
 entryDoorName = "RoofHouse"
 
 [node name="Bed" parent="." instance=ExtResource("5_t1uyc")]
