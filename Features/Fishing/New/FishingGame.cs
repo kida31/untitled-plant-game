@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace untitledplantgame.Fishing.New;
@@ -19,16 +20,20 @@ public partial class FishingGame : Node
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (_fish != null && _fishingRod != null)
+		if (_fish != null && _fishingRod != null && _fishingRod.ActiveDirection.X * _fish.ActiveDirection.X < 0)
 		{
-			if (_fishingRod.ActiveDirection.X * _fish.ActiveDirection.X < 0)
-			{
-				_progress += (float)delta * _gameConfig.ProgressPullingPerSecond;
-				return;
-			}
+			_progress += (float)delta * _gameConfig.ProgressPullingPerSecond;
 		}
+		else
+		{
+			_progress -= (float)delta * _gameConfig.ProgressDecayPerSecond;
+		}
+	
+		_progress = Math.Clamp(_progress, 0, 100);
 
-		_progress += (float)delta * _gameConfig.ProgressDecayPerSecond;
+
+		// Update UI
+		_progressBar.Value = _progress;
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

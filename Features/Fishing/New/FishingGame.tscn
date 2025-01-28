@@ -7,10 +7,10 @@
 
 [sub_resource type="Resource" id="Resource_fxypx"]
 script = ExtResource("2_wlxbk")
-FishSpeed = 100.0
-PullSpeed = 30.0
+FishSpeed = 30.0
+PullSpeed = 5.0
 HookWidth = 50.0
-HookSpeed = 200.0
+HookSpeed = 300.0
 HookSpeedAgainstFish = 50.0
 ProgressDecayPerSecond = 10.0
 ProgressPullingPerSecond = 30.0

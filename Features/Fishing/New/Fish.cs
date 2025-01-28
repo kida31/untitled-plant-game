@@ -13,6 +13,7 @@ public partial class Fish : Area2D
 
 	public Vector2 ActiveDirection { get; private set; }
 
+	[Export]
 	public Vector2 Velocity { get; private set; }
 
 	public override void _Ready()
@@ -25,7 +26,7 @@ public partial class Fish : Area2D
 	{
 		Speed = speed;
 		SpeedOppositeHook = speedOpposite;
-		ActiveDirection = direction;
+		ActiveDirection = direction.Normalized();
 	}
 
 	private void OnAreaEntered(Area2D area)
@@ -45,7 +46,6 @@ public partial class Fish : Area2D
 
 	public override void _Process(double delta)
 	{
-		
 		_sprite.FlipH = ActiveDirection.X > 0;
 
 		if (_rod == null || _rod.Velocity == Vector2.Zero)
