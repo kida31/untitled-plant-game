@@ -9,19 +9,7 @@ using untitledplantgame.NPC.RoutinePlanner;
 
 namespace untitledplantgame.NPC.Routine;
 
-/*
- * Frick it. We ballin'.
- *
- * Listen, instead of telling every routine "you are supposed to go off at: ...", we just link them.
- *
- * "Oh, you want this routine to go off when the previous one finishes? Well, then specify it!"
- *
- * You see, we have an event telling us the right time of day, but why not just change that with another routine coupling it with a
- * method that tells us the previous one was finished? And even then, we could still use the timed event, as in "if you finished the previous one
- * AAAAANNDDDDD we already hat that time....!" (check if condition weirdness)
- *
- * But with this approach, we can suddenly let our npc go free roam, since we would be no longer obligated to keep track of time!
- */
+
 public partial class NpcRoutine : Node
 {
 	public enum Options { TimeOfDay, PlayerInteraction }
