@@ -18,6 +18,7 @@ namespace untitledplantgame.Interaction;
 /// </summary>
 public partial class InteractionManager : Node2D
 {
+	private const float InteractionCooldown = 2.5f;
 	public static InteractionManager Instance { get; private set; }
 
 	[Export] private InteractHint _label;
@@ -28,6 +29,8 @@ public partial class InteractionManager : Node2D
 	private Node2D _player;
 	private readonly List<IInteractable> _activeAreas = new();
 	private readonly Logger _logger = new("InteractionManager");
+
+	private Timer _cooldownTimer;
 
 	public override void _Ready()
 	{
@@ -40,6 +43,21 @@ public partial class InteractionManager : Node2D
 			_logger.Error("No Instance found");
 			QueueFree();
 		}
+
+		// Add cooldown timer
+		_cooldownTimer = new Timer()
+		{
+			OneShot = true,
+			WaitTime = InteractionCooldown,
+		};
+		_cooldownTimer.Timeout += () =>
+		{
+			_logger.Debug("Enabling interaction.");
+			_canInteract = GameStateMachine.Instance.CurrentState == GameState.FreeRoam;
+		};
+		AddChild(_cooldownTimer);
+		
+		GameStateMachine.Instance.StateChanged += OnStateChanged;
 	}
 
 	/// <summary>
@@ -64,6 +82,19 @@ public partial class InteractionManager : Node2D
 		}
 	}
 
+	private void OnStateChanged(GameState prev, GameState next)
+	{
+		if (next != GameState.FreeRoam)
+		{
+			_canInteract = false;
+		}
+		else
+		{
+			// If the player is in FreeRoam, they can interact again, but not instantly
+			_cooldownTimer.Start();
+		}
+	}
+
 	public void RegisterArea(IInteractable area)
 	{
 		_activeAreas.Add(area);
@@ -81,9 +112,11 @@ public partial class InteractionManager : Node2D
 			return;
 		}
 
+		_logger.Debug("Disabling interaction.");
 		_canInteract = false;
 		_activeAreas[0].Interact();
-		_canInteract = true;
+		
+		_cooldownTimer.Start();
 	}
 
 	private int SortByDistanceToPlayer(IInteractable area1, IInteractable area2)
@@ -102,7 +135,6 @@ public partial class InteractionManager : Node2D
 
 		var distance1 = _player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
 		var distance2 = _player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
-		GD.PrintRich(distance2);
 		return distance1.CompareTo(distance2);
 	}
 }
