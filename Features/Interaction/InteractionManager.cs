@@ -24,7 +24,6 @@ public partial class InteractionManager : Node2D
 	[Export] private Vector2 _hintOffset = Vector2.Zero;
 
 	private int AreaCount => _activeAreas.Count;
-	private string BaseText => $"[{InputRemapper.GetButton(FreeRoam.Interact).ToString()}] ";
 	private bool _canInteract = true;
 	private Node2D _player;
 	private readonly List<IInteractable> _activeAreas = new();
@@ -55,7 +54,7 @@ public partial class InteractionManager : Node2D
 		{
 			_activeAreas.Sort(SortByDistanceToPlayer);
 
-			_label.Text = BaseText + _activeAreas[0].ActionName;
+			_label.Text = _activeAreas[0].ActionName;
 			_label.GlobalPosition = _activeAreas[0].GetGlobalInteractablePosition() + _hintOffset;
 			_label.FadeIn(0.1f);
 		}

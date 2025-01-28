@@ -7,7 +7,7 @@ namespace untitledplantgame.NPC.NpcInteraction;
 public partial class NpcPlayerInteraction : AInteractable
 {
 	public Action InteractionEvent;
-	public override string ActionName => "talk to";
+	public override string ActionName => "Talk";
 	
 	public override void Interact()
 	{
