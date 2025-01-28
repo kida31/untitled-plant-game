@@ -104,7 +104,7 @@ stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="BookmarkButton" parent="." instance=ExtResource("5_m1wd8")]
-z_index = -1
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.413772
