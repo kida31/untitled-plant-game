@@ -26,8 +26,7 @@ shape = SubResource("CircleShape2D_bkgeg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("_player")]
 position = Vector2(0, -31)
 sprite_frames = ExtResource("2_3hfoe")
-animation = &"walk_left"
-frame_progress = 0.575281
+animation = &"idle_down"
 script = ExtResource("3_utdyr")
 _player = NodePath("..")
 
