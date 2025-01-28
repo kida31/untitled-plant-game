@@ -1,10 +1,13 @@
-﻿using Godot;
+using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Dialogue.Models;
 using untitledplantgame.Vending;
 
 namespace untitledplantgame.Dialogue.Events;
 
+/// <summary>
+///		This DialogueEvent should be used for when the player tries to open the VendingMachine via an interaction with the SeedBoy.
+/// </summary>
 [GlobalClass]
 public partial class OpenVendingMachine : DialogueEvent
 {
