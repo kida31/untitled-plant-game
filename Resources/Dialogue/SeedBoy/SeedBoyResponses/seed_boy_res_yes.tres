@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=6 format=3 uid="uid://cuvp2yskrub5t"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_6k8wc"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_mdwp1"]
+[ext_resource type="Script" path="res://Features/Dialogue/Events/OpenSeedShop.cs" id="2_n2lpp"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_xtjj4"]
 
 [sub_resource type="Resource" id="Resource_pq7tm"]
@@ -10,12 +10,13 @@ speakerName = "Pan Dan"
 DialogueExpression = 1
 dialogueText = "Cooooool!"
 
-[sub_resource type="Resource" id="Resource_2noxm"]
-script = ExtResource("2_mdwp1")
-_responseButton = "Additional Response to show off"
+[sub_resource type="Resource" id="Resource_nf7fs"]
+script = ExtResource("2_n2lpp")
+speakerName = ""
+dialogueText = ""
 
 [resource]
 script = ExtResource("2_xtjj4")
 _dialogueId = "seed_boy_res_yes"
-_dialogueText = Array[Object]([SubResource("Resource_pq7tm")])
-_responses = Array[Object]([SubResource("Resource_2noxm")])
+_dialogueText = Array[Object]([SubResource("Resource_pq7tm"), SubResource("Resource_nf7fs")])
+_responses = null

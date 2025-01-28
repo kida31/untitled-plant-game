@@ -60,7 +60,7 @@ public partial class ItemStack : Resource, IItemStack
 		Id = id;
 	}
 	
-	public ItemStack(IItemStack item)
+	public ItemStack(IItemStack item) : this()
 	{
 		Id = item.Id;
 		Name = item.Name;
@@ -72,6 +72,7 @@ public partial class ItemStack : Resource, IItemStack
 		BaseValue = item.BaseValue;
 		Amount = item.Amount;
 		Components = item.Components.Duplicate(true); // I doubt this actually deep copies
+		RelatedItemIds = item.RelatedItemIds.Duplicate(true);
 	}
 
 	public T GetComponent<T>()
@@ -147,19 +148,7 @@ public partial class ItemStack : Resource, IItemStack
 
 	public IItemStack Clone()
 	{
-		return new ItemStack(Id)
-		{
-			Name = Name,
-			Icon = Icon,
-			ToolTipDescription = ToolTipDescription,
-			WikiDescription = WikiDescription,
-			Category = Category,
-			BaseValue = BaseValue,
-			MaxStackSize = MaxStackSize,
-			Amount = Amount,
-			// TODO: After the JSON fiasco I absolutely do NOT trust Godot to handle deep copies well (especially looking at the Stats)
-			Components = Components.Duplicate(true)
-		};
+		return new ItemStack(this);
 	}
 
 	public override string ToString()

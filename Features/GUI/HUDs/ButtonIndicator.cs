@@ -77,6 +77,7 @@ public partial class ButtonIndicator : Control
 	{
 		_logger = new Logger(this);
 		_action = ButtonAsAction(_button); // bind button
+		AssignButtonImage(_button, Gamepad);
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

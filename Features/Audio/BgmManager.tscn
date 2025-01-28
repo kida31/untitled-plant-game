@@ -12,6 +12,8 @@ _audioStreamPlayerB = NodePath("AudioStreamPlayer2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
+bus = &"Music"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 autoplay = true
+bus = &"Music"
