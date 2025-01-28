@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxp6idnmnja8b"]
+
+[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/ItemStats.cs" id="1_bl5bo"]
+
+[node name="ItemStats" type="Control" node_paths=PackedStringArray("_name", "_tags", "_price", "_harvestResult", "_medicineEffectsPositives", "_medicineEffectsNegatives")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bl5bo")
+_name = NodePath("VBoxContainer/Name")
+_tags = NodePath("VBoxContainer/Tags")
+_price = NodePath("VBoxContainer/Price")
+_harvestResult = NodePath("VBoxContainer/HarvestResult")
+_medicineEffectsPositives = NodePath("VBoxContainer/Positives")
+_medicineEffectsNegatives = NodePath("VBoxContainer/Negatives")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[center]ItemName - ItemCategory"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Tags" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[center]#IsDried #IsComponent"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Price" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "5 gold"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HarvestResult" type="RichTextLabel" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Harvestable: "
+autowrap_mode = 0
+
+[node name="Positives" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "+1 kawai
++2 baka
++3 onko"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Negatives" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "+1 kawai
++2 baka
++3 onko"
+fit_content = true
+autowrap_mode = 0

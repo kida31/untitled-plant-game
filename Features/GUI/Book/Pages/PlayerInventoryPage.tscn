@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dnjm2aotqw827" path="res://Features/GUI/Book/PlayerStuff/PlayerDetails.tscn" id="3_pmlsj"]
 [ext_resource type="Texture2D" uid="uid://cf1pnxii18btx" path="res://Assets/UI/Book/Decoration/BookRing.png" id="4_tcyfu"]
 [ext_resource type="Texture2D" uid="uid://ydf8deuohr84" path="res://Assets/UI/Book/Icons/bookmark_green.png" id="5_jq252"]
-[ext_resource type="PackedScene" path="res://Features/GUI/Book/BookmarkButton.tscn" id="5_wt5sy"]
+[ext_resource type="PackedScene" uid="uid://blty0r6y6jxn3" path="res://Features/GUI/Book/BookmarkButton.tscn" id="5_wt5sy"]
 [ext_resource type="Texture2D" uid="uid://hcpqqw3gvvii" path="res://Assets/UI/Book/Icons/bookmark_dark_green.png" id="6_h1lo0"]
 [ext_resource type="Texture2D" uid="uid://bgyw30yltk4py" path="res://Assets/UI/Book/Icons/bookmark_orange.png" id="7_r7h2c"]
 [ext_resource type="Texture2D" uid="uid://bu34q0380jo67" path="res://Assets/UI/Book/Icons/bookmark_dark_orange.png" id="8_v6f2d"]
