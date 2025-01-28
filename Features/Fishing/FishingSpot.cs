@@ -1,6 +1,18 @@
 using Godot;
-using System;
+using untitledplantgame.NPC;
 
-public partial class FishingSpot : Area2D
+namespace untitledplantgame.Fishing;
+
+public partial class FishingSpot : AInteractable
 {
+	// This is a node. Arbitrary
+	[Export] private FishingWaitingGame _fishingWaitingGame;
+	[Export] private untitledplantgame.Fishing.FishingGame _fishingGame;
+	
+	public override string ActionName => "Throw rod";
+
+	public override void Interact()
+	{
+		
+	}
 }
