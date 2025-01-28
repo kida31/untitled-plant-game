@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://68an8ryr548m"]
+[gd_scene load_steps=24 format=4 uid="uid://68an8ryr548m"]
 
 [ext_resource type="Script" path="res://Features/Audio/BgmArea2D.cs" id="1_7wq8b"]
 [ext_resource type="Texture2D" uid="uid://b0jfimskhcnql" path="res://Assets/Tilesets/Pier.png" id="1_q7rwy"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://ctomw1ove5828" path="res://Assets/Tilesets/TX Tileset Wall.png" id="4_l28mx"]
 [ext_resource type="Texture2D" uid="uid://bg6sungsm67xq" path="res://Assets/Overworld/House/PlantFence.png" id="8_gtgwc"]
 [ext_resource type="Texture2D" uid="uid://dl3ytowjsie7x" path="res://Assets/Overworld/Garden/pier_tileset.png" id="9_sqtp6"]
+[ext_resource type="PackedScene" uid="uid://bbel30xbfmcyj" path="res://Scenes/1km_sign.tscn" id="10_4m4nn"]
 [ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="10_x262s"]
+[ext_resource type="PackedScene" uid="uid://c1nilobllr1kv" path="res://Scenes/500m_sign.tscn" id="11_a0mj6"]
 [ext_resource type="PackedScene" uid="uid://dsnhxqc3s81hr" path="res://Features/NPC/WalkableAreaDialogue.tscn" id="11_f1uju"]
 [ext_resource type="Resource" uid="uid://d33fmj25m3jt5" path="res://Resources/Dialogue/Pier/enteringTawas.tres" id="12_u20bu"]
 
@@ -452,6 +454,11 @@ y_sort_enabled = true
 position = Vector2(0, -1)
 tile_map_data = PackedByteArray("AAACAOz/AwAGAAQAAAAIAOz/AwAHAAQAAAAIAPD/AwAHAAQAAAACAPD/AwAGAAQAAAACAPT/AwAGAAQAAAAIAPT/AwAHAAQAAAACAPj/AwAGAAQAAAACAPz/AwAGAAQAAAAIAPj/AwAHAAQAAAAIAPz/AwAHAAQAAAACAAAAAwAGAAQAAAACAAQAAwAGAAQAAAACAAgAAwAGAAQAAAACAAwAAwAGAAQAAAAIAAAAAwAHAAQAAAAIAAQAAwAHAAQAAAAIAAgAAwAHAAQAAAAIAAwAAwAHAAQAAAADAPP/AwAFAAIAAAADAAMAAwAGAAIAAAD8/yIAAwABAAAAAAAEABgAAwAAAAQAAAADACEAAwAEAAUAAAD+/xwAAwADAAQAAAADAAUAAwAFAAUAAAADAAgAAwAFAAQAAAADAAYAAwACAAYAAAD6/yAAAwAAAAAAAAD6/x4AAwAAAAAAAAD7/x4AAwAHAAAAAAABABUAAwADAAAAAAD7/xYAAwABAAAAAAAHACIAAwABAAAAAAAAABwAAwADAAAAAAAHAPD/AwAFAAAAAAA=")
 tile_set = SubResource("TileSet_brcih")
+
+[node name="1kmSign" parent="." instance=ExtResource("10_4m4nn")]
+
+[node name="500mSign" parent="." instance=ExtResource("11_a0mj6")]
+position = Vector2(112, 109)
 
 [node name="Door" parent="." instance=ExtResource("10_x262s")]
 position = Vector2(250, -470)

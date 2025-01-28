@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Godot.Collections;
 
 namespace untitledplantgame.Item.Components;
 
@@ -22,6 +22,10 @@ public partial class TagsComponent : AComponent, ICollection<TagsComponent.Tags>
 	{
 		_tags = new HashSet<Tags>(items);
 	}
+
+	public TagsComponent()
+	{
+	}
 	
 	public override TagsComponent Clone()
 	{
@@ -35,7 +39,7 @@ public partial class TagsComponent : AComponent, ICollection<TagsComponent.Tags>
 
 	public IEnumerator<Tags> GetEnumerator()
 	{
-		throw new System.NotImplementedException();
+		throw new NotImplementedException();
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()

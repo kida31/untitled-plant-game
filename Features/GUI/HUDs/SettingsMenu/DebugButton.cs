@@ -4,18 +4,32 @@ using System.Linq;
 using Godot;
 using untitledplantgame.addons.upg_utils;
 using untitledplantgame.Common;
+using untitledplantgame.GUI.DebugOverlays;
 
 namespace untitledplantgame.GUI.HUDs.SettingsMenu;
+
 public partial class DebugButton : OptionButton
 {
-	private List<LogLevel> _logLevels;
-	
+	private LogLevel[] _logLevels;
+
 	public override void _Ready()
 	{
-		ItemSelected += ChangeLogLevel;
-		
-		_logLevels = Enum.GetValues<LogLevel>().ToList();
+		// Create options
+		_logLevels = Enum.GetValues<LogLevel>();
 		CreateLogLevelOptions();
+
+		// Set initial value
+		if (ProjectSettings.GetSetting(DebugOverlay.DebugSettingKey, false).AsBool())
+		{
+			Selected = Array.IndexOf(_logLevels, Settings.Logging.GetLogLevel()) + 1; // offset because "None" is first option
+		}
+		else
+		{
+			Selected = 0;
+		}
+
+		// Events
+		ItemSelected += OnItemSelected;
 	}
 
 	private void CreateLogLevelOptions()
@@ -23,6 +37,7 @@ public partial class DebugButton : OptionButton
 		var index = 0;
 
 		AddItem("None", index);
+		Selected = 0;
 
 		foreach (var logLevel in _logLevels)
 		{
@@ -31,16 +46,21 @@ public partial class DebugButton : OptionButton
 		}
 	}
 
-	private void ChangeLogLevel(long selectedLogLevel)
+	private void OnItemSelected(long option)
 	{
-		if (selectedLogLevel - 1 == -1) // The LogLevel Enum starts with "Debug" (Debug ⇒ 0), but here, zero represents "None"
+		if (option == 0) // The LogLevel Enum starts with "Debug" (Debug ⇒ 0), but here, zero represents "None"
 		{
-			EventBus.DisplayLog = false;
+			Settings.Logging.SetLogLevel(_logLevels[^1]);
+
+			ProjectSettings.SetSetting(DebugOverlay.DebugSettingKey, false);
+			GD.Print("Disabled debug overlays.");
 			return;
 		}
-		
-		Settings.Logging.SetLogLevel(Enum.GetValues<LogLevel>()[selectedLogLevel-1]);
-		EventBus.DisplayLog = true;
-		GD.PrintRich(Settings.Logging.GetLogLevel());
+
+		var level = _logLevels[option - 1];
+		Settings.Logging.SetLogLevel(level);
+
+		ProjectSettings.SetSetting(DebugOverlay.DebugSettingKey, true);
+		GD.Print($"Enabled debug overlays for LogLevel: {level}");
 	}
 }

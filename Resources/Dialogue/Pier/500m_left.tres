@@ -5,8 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_rpoce"]
 script = ExtResource("1_e2m4e")
-speakerName = ""
-DialogueExpression = 0
+speakerName = "Sign"
 dialogueText = "Tawas in 500m."
 
 [resource]

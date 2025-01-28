@@ -60,6 +60,8 @@ public interface IItemStack
 	// /// </summary>
 	// ReadOnlyCollection<IComponent> Components { get; }
 
+	Array<string> RelatedItemIds { get; }
+
 	/// <summary>
 	///     Gets the component of the specified type
 	/// </summary>
@@ -120,11 +122,11 @@ public interface IItemStack
 	{
 		if (!HasSameIdAndProps(that))
 		{
-			throw new System.ArgumentException("Cannot subtract different items");
+			throw new ArgumentException("Cannot subtract different items");
 		}
 		if (Amount < that.Amount)
 		{
-			throw new System.ArgumentException("Cannot subtract more than available");
+			throw new ArgumentException("Cannot subtract more than available");
 		}
 		var selfClone = Clone();
 		selfClone.Amount -= that.Amount;

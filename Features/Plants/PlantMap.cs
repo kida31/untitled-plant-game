@@ -52,6 +52,7 @@ public partial class PlantMap : TileMapLayer
 			if (plant is not Plant p) return;
 			p.BeforePlantRemoved += OnBeforePlantRemoved;
 			p.PlantGrown += OnPlantSpriteChange;
+			p.PlantDied += OnPlantSpriteChange;
 			OnPlantSpriteChange(p);
 		}
 	}
