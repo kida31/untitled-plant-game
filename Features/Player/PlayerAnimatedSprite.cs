@@ -45,9 +45,7 @@ public partial class PlayerAnimatedSprite : AnimatedSprite2D
 			return "down";
 		if (FaceDirection == Vector2.Up)
 			return "up";
-		if (FaceDirection == Vector2.Left)
-			return "left";
-		if (FaceDirection == Vector2.Right)
+		if (FaceDirection == Vector2.Left ||FaceDirection == Vector2.Right)
 			return "right";
 
 		throw new InvalidOperationException("Invalid direction; Unreachable Code");

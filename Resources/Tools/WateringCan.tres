@@ -11,6 +11,6 @@ _isBottomless = true
 Name = "Basic Watering Can"
 Description = "This watering can is a can with water to water waterable plants via splashing water on said plants."
 Icon = ExtResource("1_urvbc")
-ChannelingTime = 0.5
+ChannelingTime = 1.0
 Radius = 12.0
 Range = 24.0

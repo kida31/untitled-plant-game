@@ -114,7 +114,9 @@ public abstract partial class Tool : Resource, IDisplayData, IToolUseData
 
 		if (hits.Length > 0) OnInitialHit(user, hits);
 
+		//Channeling bar as timer for the tool use
 		_channelingBar = new ChannelingBar(user, ChannelingTime);
+		_channelingBar.Visible = false;
 		// Consider scanning again after StartChanneling
 		_channelingBar.Completed += () => _OnHit(user, hits);
 		user.AddChild(_channelingBar);
