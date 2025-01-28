@@ -40,7 +40,7 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 	private void ConnectDialogue(IDialogueSystem sys)
 	{
 		_dialogueSystem = sys;
-		_dialogueSystem.OnDialogueEnd += o => { FinishDialogue(); };
+		_dialogueSystem.OnDialogueEnd += FinishDialogue;
 	}
 	
 	private void StartDialogue()
@@ -64,17 +64,35 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 	
 		TaskStarted?.Invoke(this, EventArgs.Empty);
 		
-		_routinePlanner.ActiveTask?.InterruptCurrentTask();
+		
+		if (_routinePlanner.ActiveTask != null)
+		{
+			_routinePlanner.ActiveTask?.InterruptCurrentTask();
+		}
+		else
+		{
+			if (_routinePlanner.LastRoutine != null)
+			{
+				_routinePlanner.LastRoutine?.NextRoutine.InterruptRoutine();
+			}
+			else
+			{
+				_routinePlanner.StartingRoutine.InterruptRoutine(); // The first routine gets instantly set as the last routine
+			}
+		}
+		
 		_logger.Info("Player stopped the current routine by starting a Dialogue with an Npc.");
 	}
 	
-	private void FinishDialogue()
+	private void FinishDialogue(DialogueResourceObject _)
 	{
 		EventBus.Instance.InitialiseDialogue -= ConnectDialogue;
+		_dialogueSystem.OnDialogueEnd -= FinishDialogue;
 		
 		DialogueFinished = true;
 		TaskFinished?.Invoke(this, EventArgs.Empty);
 		
+		_routinePlanner.LastRoutine?.ContinueRoutine();
 		_routinePlanner.ActiveTask?.ResumeCurrentTask();
 		_logger.Info("The Npc is now resuming it's original task.");
 	}

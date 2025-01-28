@@ -14,7 +14,9 @@ public partial class NpcRoutinePlanner : Node
 	[Export] private Npc _npcExecutingRoutines;
 	[Export] private Array<NpcRoutine> _routines;
 	public INpcTask ActiveTask;
-
+	public NpcRoutine LastRoutine; // Also saves the currently active Routine
+	public NpcRoutine StartingRoutine;
+	
 	private bool _startingRoutineSet;
 	private const int ScriptExecutionOrderDelay = 16;
 	private Logger _logger;
@@ -53,7 +55,7 @@ public partial class NpcRoutinePlanner : Node
 			{
 				npcRoutine.InitializeRoutine(this);
 				npcRoutine.MakeThisRoutineTheStartingPoint();
-
+				StartingRoutine = npcRoutine;
 				_startingRoutineSet = true;
 			}
 			else
@@ -61,7 +63,6 @@ public partial class NpcRoutinePlanner : Node
 				npcRoutine.InitializeRoutine(this);
 			}
 			
-			//await npcRoutine.ExecuteAllTasks();
 			tasks.Add(npcRoutine.ExecuteAllTasks());
 		}
 

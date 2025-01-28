@@ -55,15 +55,22 @@ public partial class MovementTask :  Area2D, INpcTask
 
 	public void InterruptCurrentTask()
 	{
-		_lastValidVelocity = _npcExecutingThisTasks.Velocity;
-		
+		GD.Print("Interrupt: " + _npcExecutingThisTasks.Velocity);
+		if (_npcExecutingThisTasks.Velocity != Vector2.Zero)
+		{
+			_lastValidVelocity = _npcExecutingThisTasks.Velocity;
+		}
 		_npcExecutingThisTasks.Velocity = Vector2.Zero;
 		_logger.Debug("MovementTask was interrupted!");
 	}
 
 	public void ResumeCurrentTask()
 	{
-		_npcExecutingThisTasks.Velocity = _lastValidVelocity;
+		if (_lastValidVelocity != Vector2.Zero)
+		{
+			_npcExecutingThisTasks.Velocity = _lastValidVelocity;
+		}
+		
 		_lastValidVelocity = new Vector2();
 		_logger.Debug("MovementTask was resumed");
 	}
@@ -86,7 +93,6 @@ public partial class MovementTask :  Area2D, INpcTask
 		
 		var newVelocity = GlobalPosition - _npcExecutingThisTasks.GlobalPosition;
 		_npcExecutingThisTasks.Velocity = newVelocity.Normalized() * 100;
-		
 		
 		await WaitForConditionAsync();
 		_npcExecutingThisTasks.Velocity = Vector2.Zero;

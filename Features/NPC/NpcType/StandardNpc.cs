@@ -12,6 +12,7 @@ namespace untitledplantgame.NPC.NpcType;
 public partial class StandardNpc : Npc
 {
 	[Export] private string _name;
+	[Export] private bool _disableMovement;
 	[Export] private NpcPlayerInteraction _npcPlayerInteraction;
 	[Export] private NpcRoutinePlanner _routinePlanner;
 	[Export] private AnimatedSprite2D _portraitSprite2D;
@@ -28,7 +29,10 @@ public partial class StandardNpc : Npc
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		MoveAndSlide();
+		if (!_disableMovement)
+		{
+			MoveAndSlide();
+		}
 	}
 
 	public override string GetNpcName()
