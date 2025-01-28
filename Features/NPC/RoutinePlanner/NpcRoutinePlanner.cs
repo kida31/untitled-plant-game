@@ -30,7 +30,7 @@ public partial class NpcRoutinePlanner : Node
 	/*
 	 * Rider doesn't know this, but routines are called routines precisely because they are done in an endless loop.
 	 *
-	 * Npc are programmed to start over once every routine is checked!
+	 * Npc are programmed to start over once every routine is finished!
 	 */
 	private async void ExecuteAllRoutines()
 	{

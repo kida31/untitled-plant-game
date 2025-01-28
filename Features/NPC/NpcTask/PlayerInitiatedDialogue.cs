@@ -63,10 +63,15 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 		}
 	
 		TaskStarted?.Invoke(this, EventArgs.Empty);
-		// TODO; Need variable to block the starting process of new tasks/routines.
+		
 		_routinePlanner.ActiveTask?.InterruptCurrentTask();
 		_logger.Info("Player stopped the current routine by starting a Dialogue with an Npc.");
-		//ResumeRoutineIfFinished();
+		
+		
+		// ------- //
+		
+		
+		_routinePlanner.ActiveRoutine.StopRoutineWithInteraction();
 	}
 	
 	private void FinishDialogue()

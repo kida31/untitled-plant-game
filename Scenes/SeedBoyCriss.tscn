@@ -36,5 +36,4 @@ RoutineTrigger = 1
 
 [node name="Dialogue" type="Node" parent="RoutinePlanner/OnPlayerInteraction" index="0"]
 script = ExtResource("4_p27pq")
-_dialogueResourceObject = ExtResource("5_hojrx")
 _dialogueResourceObjects = Array[Object]([ExtResource("5_hojrx"), ExtResource("7_sumlp"), ExtResource("8_dvvuy"), ExtResource("9_ci5lp"), ExtResource("10_hifoa"), ExtResource("11_6clld"), ExtResource("12_13pfm")])

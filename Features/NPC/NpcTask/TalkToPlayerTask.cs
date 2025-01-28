@@ -21,12 +21,10 @@ namespace untitledplantgame.NPC.NpcTask;
  */
 public partial class TalkToPlayerTask :  Node, INpcTask
 {
-	[Export] private DialogueResourceObject _dialogueResourceObject;
 	[Export] private Array<DialogueResourceObject> _dialogueResourceObjects;
 	[Export] private bool _randomOrderOfDialogueLines;
 	
 	private bool DialogueFinished { get; set; }
-	private int _dialogueIndex;
 	private int _amountOfDialogueLinesUsed;
 	private event EventHandler TaskStarted;
 	private event EventHandler TaskFinished;

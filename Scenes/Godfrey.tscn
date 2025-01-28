@@ -246,21 +246,21 @@ _routines = [NodePath("MovementRoutine1"), NodePath("MovementRoutine2"), NodePat
 
 [node name="MovementRoutine1" type="Node" parent="GodfreyRandomWalk" index="0"]
 script = ExtResource("4_ryo3x")
-RoutineStartMinutes = 45
+RoutineStartMinutes = 15
 
 [node name="MovementTaskTarget" parent="GodfreyRandomWalk/MovementRoutine1" index="0" instance=ExtResource("5_wrpdt")]
-position = Vector2(773, 360)
+position = Vector2(734, 277)
 
 [node name="MovementRoutine2" type="Node" parent="GodfreyRandomWalk" index="1"]
 script = ExtResource("4_ryo3x")
-RoutineStartMinutes = 50
+RoutineStartMinutes = 20
 
 [node name="MovementTaskTarget" parent="GodfreyRandomWalk/MovementRoutine2" index="0" instance=ExtResource("5_wrpdt")]
-position = Vector2(776, 496)
+position = Vector2(714, 505)
 
 [node name="MovementRoutine3" type="Node" parent="GodfreyRandomWalk" index="2"]
 script = ExtResource("4_ryo3x")
-RoutineStartMinutes = 55
+RoutineStartMinutes = 25
 
 [node name="MovementTaskTarget" parent="GodfreyRandomWalk/MovementRoutine3" index="0" instance=ExtResource("5_wrpdt")]
 position = Vector2(593, 429)
