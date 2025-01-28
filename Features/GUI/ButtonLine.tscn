@@ -1,0 +1,154 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf0a25hnj0de7"]
+
+[ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="1_0ac5h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmyqh"]
+bg_color = Color(0, 0, 0, 0.607843)
+
+[node name="ButtonLine" type="PanelContainer"]
+anchors_preset = -1
+anchor_top = 0.927778
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vmyqh")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginTopBottom" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginTopBottom"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="South" type="HBoxContainer" parent="MarginTopBottom/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ButtonHint" parent="MarginTopBottom/HBoxContainer/South" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Description" type="Label" parent="MarginTopBottom/HBoxContainer/South"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
+text = "Never Gonna"
+
+[node name="East" type="HBoxContainer" parent="MarginTopBottom/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ButtonHint" parent="MarginTopBottom/HBoxContainer/East" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+Button = 1
+
+[node name="Description" type="Label" parent="MarginTopBottom/HBoxContainer/East"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
+text = "Give"
+
+[node name="North" type="HBoxContainer" parent="MarginTopBottom/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ButtonHint" parent="MarginTopBottom/HBoxContainer/North" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+Button = 3
+
+[node name="Description" type="Label" parent="MarginTopBottom/HBoxContainer/North"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
+text = "You"
+
+[node name="West" type="HBoxContainer" parent="MarginTopBottom/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ButtonHint" parent="MarginTopBottom/HBoxContainer/West" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+Button = 2
+
+[node name="Description" type="Label" parent="MarginTopBottom/HBoxContainer/West"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
+text = "Up"
+
+[node name="LR1" type="HBoxContainer" parent="MarginTopBottom/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LeftBumper" parent="MarginTopBottom/HBoxContainer/LR1" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+Button = 4
+
+[node name="slash_right" type="Label" parent="MarginTopBottom/HBoxContainer/LR1"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
+text = "/"
+
+[node name="RightBumper" parent="MarginTopBottom/HBoxContainer/LR1" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+Button = 5
+
+[node name="switch_categories" type="Label" parent="MarginTopBottom/HBoxContainer/LR1"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
+text = "Never gonna"
+
+[node name="LR2" type="HBoxContainer" parent="MarginTopBottom/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LeftTrigger" parent="MarginTopBottom/HBoxContainer/LR2" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+Button = 6
+
+[node name="slash_left" type="Label" parent="MarginTopBottom/HBoxContainer/LR2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
+text = "/"
+
+[node name="RightTrigger" parent="MarginTopBottom/HBoxContainer/LR2" instance=ExtResource("1_0ac5h")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+Button = 7
+
+[node name="switch_pages" type="Label" parent="MarginTopBottom/HBoxContainer/LR2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 0.941176, 1)
+text = "Let you down"
