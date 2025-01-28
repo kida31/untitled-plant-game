@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crm2bb3s72gi8"]
+[gd_scene load_steps=7 format=3 uid="uid://osnne5a45tou"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_qjsqv"]
 [ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="2_e08ef"]
