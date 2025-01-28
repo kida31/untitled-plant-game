@@ -242,34 +242,80 @@ animation = &"godfrey_shook"
 [node name="GodfreyRandomWalk" type="Node" parent="." index="4" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
 script = ExtResource("3_c2lkg")
 _npcExecutingRoutines = NodePath("..")
-_routines = [NodePath("MovementRoutine1"), NodePath("MovementRoutine2"), NodePath("MovementRoutine3")]
+_routines = [NodePath("MovementRoutine1"), NodePath("MovementRoutine2"), NodePath("MovementRoutine3"), NodePath("MovementRoutine4"), NodePath("MovementRoutine5"), NodePath("MovementRoutine6"), NodePath("MovementRoutine7")]
 
-[node name="MovementRoutine1" type="Node" parent="GodfreyRandomWalk" index="0" node_paths=PackedStringArray("_nextRoutine")]
+[node name="MovementRoutine1" type="Node" parent="GodfreyRandomWalk" index="0" node_paths=PackedStringArray("NextRoutine")]
 script = ExtResource("4_ryo3x")
-RoutineStartHours = 12
 RoutineStartMinutes = 10
-_nextRoutine = NodePath("../MovementRoutine2")
+NextRoutine = NodePath("../MovementRoutine2")
 
 [node name="MovementTaskTarget" parent="GodfreyRandomWalk/MovementRoutine1" index="0" instance=ExtResource("5_wrpdt")]
-position = Vector2(734, 277)
+position = Vector2(733, 196)
+collision_layer = 4
+collision_mask = 4
 
-[node name="MovementRoutine2" type="Node" parent="GodfreyRandomWalk" index="1" node_paths=PackedStringArray("_nextRoutine")]
+[node name="MovementRoutine2" type="Node" parent="GodfreyRandomWalk" index="1" node_paths=PackedStringArray("NextRoutine")]
 script = ExtResource("4_ryo3x")
-RoutineStartHours = 12
-RoutineStartMinutes = 15
-_nextRoutine = NodePath("../MovementRoutine3")
+NextRoutine = NodePath("../MovementRoutine3")
 
 [node name="MovementTaskTarget" parent="GodfreyRandomWalk/MovementRoutine2" index="0" instance=ExtResource("5_wrpdt")]
-position = Vector2(714, 505)
+position = Vector2(868, 247)
+collision_layer = 4
+collision_mask = 4
 
-[node name="MovementRoutine3" type="Node" parent="GodfreyRandomWalk" index="2"]
+[node name="MovementRoutine3" type="Node" parent="GodfreyRandomWalk" index="2" node_paths=PackedStringArray("NextRoutine")]
 script = ExtResource("4_ryo3x")
-RoutineStartHours = 12
-RoutineStartMinutes = 16
+RoutineStartMinutes = 45
+NextRoutine = NodePath("../MovementRoutine4")
 
 [node name="MovementTaskTarget" parent="GodfreyRandomWalk/MovementRoutine3" index="0" instance=ExtResource("5_wrpdt")]
-position = Vector2(593, 429)
+position = Vector2(890, 475)
+collision_layer = 4
+collision_mask = 4
 
-[node name="PlayerInitiatedDialogue" type="Node" parent="GodfreyRandomWalk" index="3"]
+[node name="MovementRoutine4" type="Node" parent="GodfreyRandomWalk" index="3" node_paths=PackedStringArray("NextRoutine")]
+script = ExtResource("4_ryo3x")
+RoutineStartHours = 8
+RoutineStartMinutes = 0
+NextRoutine = NodePath("../MovementRoutine5")
+
+[node name="MovementTaskTarget" parent="GodfreyRandomWalk/MovementRoutine4" index="0" instance=ExtResource("5_wrpdt")]
+position = Vector2(789, 599)
+collision_layer = 4
+collision_mask = 4
+
+[node name="MovementRoutine5" type="Node" parent="GodfreyRandomWalk" index="4" node_paths=PackedStringArray("NextRoutine")]
+script = ExtResource("4_ryo3x")
+RoutineStartHours = 8
+RoutineStartMinutes = 15
+NextRoutine = NodePath("../MovementRoutine6")
+
+[node name="MovementTaskTarget" parent="GodfreyRandomWalk/MovementRoutine5" index="0" instance=ExtResource("5_wrpdt")]
+position = Vector2(511, 548)
+collision_layer = 4
+collision_mask = 4
+
+[node name="MovementRoutine6" type="Node" parent="GodfreyRandomWalk" index="5" node_paths=PackedStringArray("NextRoutine")]
+script = ExtResource("4_ryo3x")
+RoutineStartHours = 8
+NextRoutine = NodePath("../MovementRoutine7")
+
+[node name="MovementTaskTarget" parent="GodfreyRandomWalk/MovementRoutine6" index="0" instance=ExtResource("5_wrpdt")]
+position = Vector2(491, 262)
+collision_layer = 4
+collision_mask = 4
+
+[node name="MovementRoutine7" type="Node" parent="GodfreyRandomWalk" index="6" node_paths=PackedStringArray("NextRoutine")]
+script = ExtResource("4_ryo3x")
+RoutineStartHours = 8
+RoutineStartMinutes = 45
+NextRoutine = NodePath("../MovementRoutine1")
+
+[node name="MovementTaskTarget" parent="GodfreyRandomWalk/MovementRoutine7" index="0" instance=ExtResource("5_wrpdt")]
+position = Vector2(696, 371)
+collision_layer = 4
+collision_mask = 4
+
+[node name="PlayerInitiatedDialogue" type="Node" parent="GodfreyRandomWalk" index="7"]
 script = ExtResource("6_8afnb")
 _dialogueResourceObjects = Array[Object]([ExtResource("7_v4eb2"), ExtResource("8_duca2"), ExtResource("9_5eoqm"), ExtResource("10_l6vhi"), ExtResource("11_owjbx"), ExtResource("12_tpypq")])
