@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://biigphr1tnji3"]
+
+[ext_resource type="Script" path="res://Features/Fishing/FishingSpot.cs" id="1_824ea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya61f"]
+size = Vector2(123, 75.75)
+
+[node name="FishingSpot" type="Area2D"]
+script = ExtResource("1_824ea")
+
+[node name="Area2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ya61f")

@@ -1,0 +1,143 @@
+[gd_scene load_steps=15 format=3 uid="uid://5ywvg4kkxcbp"]
+
+[ext_resource type="Texture2D" uid="uid://cybfjnbld1w7n" path="res://Assets/Emotes/Angry-Sheet.png" id="1_tr5ov"]
+[ext_resource type="Texture2D" uid="uid://cjqcdj3vldfpd" path="res://Assets/Emotes/Exclamation-Sheet.png" id="2_grbou"]
+[ext_resource type="Texture2D" uid="uid://bsytxjetn2peb" path="res://Assets/Emotes/SweatDrop-Sheet.png" id="3_mrrht"]
+[ext_resource type="Script" path="res://Features/Player/EmotionPopup.cs" id="4_6kdn5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trbf2"]
+atlas = ExtResource("1_tr5ov")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewlps"]
+atlas = ExtResource("1_tr5ov")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ey8t"]
+atlas = ExtResource("2_grbou")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km7mp"]
+atlas = ExtResource("2_grbou")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4rat"]
+atlas = ExtResource("3_mrrht")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3884"]
+atlas = ExtResource("3_mrrht")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vwit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trbf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewlps")
+}],
+"loop": true,
+"name": &"Angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ey8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km7mp")
+}],
+"loop": true,
+"name": &"Excited",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4rat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3884")
+}],
+"loop": true,
+"name": &"Sweat",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_18rpi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EmotionPopup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EmotionPopup:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vfxpe"]
+resource_name = "FadeOut"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EmotionPopup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EmotionPopup:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xmion"]
+_data = {
+"FadeOut": SubResource("Animation_vfxpe"),
+"RESET": SubResource("Animation_18rpi")
+}
+
+[node name="EmotionPopup" type="AnimatedSprite2D"]
+position = Vector2(-12, -56)
+sprite_frames = SubResource("SpriteFrames_1vwit")
+animation = &"Sweat"
+frame = 1
+frame_progress = 0.96662
+speed_scale = 0.5
+script = ExtResource("4_6kdn5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_xmion")
+}
