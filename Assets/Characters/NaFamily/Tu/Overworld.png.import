@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdcnpdve7pcec"
-path="res://.godot/imported/fish lady overworld sprite.png-b849c039c5cdbf26ef0e08708831ff68.ctex"
+path="res://.godot/imported/Overworld.png-7b42973d916c512a6eb246c64e34ee99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/NaFamily/fish lady overworld sprite.png"
-dest_files=["res://.godot/imported/fish lady overworld sprite.png-b849c039c5cdbf26ef0e08708831ff68.ctex"]
+source_file="res://Assets/Characters/NaFamily/Tu/Overworld.png"
+dest_files=["res://.godot/imported/Overworld.png-7b42973d916c512a6eb246c64e34ee99.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sss2mabl6kxk"
-path="res://.godot/imported/fisherman.png-09ff4b75c3c757feff3eb276407e78b0.ctex"
+uid="uid://dgode5fji4jaf"
+path="res://.godot/imported/Portrait.png-b0cb2fc624ba92899f42fac80b7ce07f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/NaFamily/fisherman.png"
-dest_files=["res://.godot/imported/fisherman.png-09ff4b75c3c757feff3eb276407e78b0.ctex"]
+source_file="res://Assets/Characters/NaFamily/Tu/Portrait.png"
+dest_files=["res://.godot/imported/Portrait.png-b0cb2fc624ba92899f42fac80b7ce07f.ctex"]
 
 [params]
 

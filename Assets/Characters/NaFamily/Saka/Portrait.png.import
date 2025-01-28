@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgode5fji4jaf"
-path="res://.godot/imported/fish lady.png-fa8603c1011501bd770a55261d8795dd.ctex"
+uid="uid://sss2mabl6kxk"
+path="res://.godot/imported/Portrait.png-636121821af7513bc9b18f0a1d7faff5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/NaFamily/fish lady.png"
-dest_files=["res://.godot/imported/fish lady.png-fa8603c1011501bd770a55261d8795dd.ctex"]
+source_file="res://Assets/Characters/NaFamily/Saka/Portrait.png"
+dest_files=["res://.godot/imported/Portrait.png-636121821af7513bc9b18f0a1d7faff5.ctex"]
 
 [params]
 

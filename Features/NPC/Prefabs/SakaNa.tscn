@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dlh6j0ry4yfo0"]
 
-[ext_resource type="Texture2D" uid="uid://be44svg1tcea" path="res://Assets/Characters/NaFamily/fisherman overworld sprite.png" id="1_q35ku"]
+[ext_resource type="Texture2D" uid="uid://be44svg1tcea" path="res://Assets/Characters/NaFamily/Saka/Overworld.png" id="1_q35ku"]
 
 [node name="SakaNa" type="Node2D"]
 
