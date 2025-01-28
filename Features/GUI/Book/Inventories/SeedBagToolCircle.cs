@@ -54,6 +54,7 @@ public partial class SeedBagToolCircle : ToolCircle
 		
 		// Unsubscribe from the old event, if any
 		Game.Player.Inventory.InventoryChanged -= _onInventoryChangedHandler;
+		_onInventoryChangedHandler = OnInventoryChanged;
 		Game.Player.Inventory.InventoryChanged += _onInventoryChangedHandler;
 		OnInventoryChanged();
 	}
