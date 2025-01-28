@@ -13,7 +13,7 @@ texture = ExtResource("3_3jvto")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8us2i"]
 texture = ExtResource("4_xr746")
 
-[node name="DehydratorUi" type="Control" node_paths=PackedStringArray("_retrieveAllItemsButton", "_slotContainer")]
+[node name="DehydratorUi" type="Control" node_paths=PackedStringArray("_retrieveAllItemsButton", "_greyButton", "_slotContainer")]
 custom_minimum_size = Vector2(234, 200)
 layout_mode = 3
 anchor_right = 0.365625
@@ -21,6 +21,7 @@ anchor_bottom = 0.65
 offset_bottom = 1.52588e-05
 script = ExtResource("1_p40jb")
 _retrieveAllItemsButton = NodePath("WithdrawButton")
+_greyButton = NodePath("WithdrawButtonGrey")
 _slotContainer = NodePath("Grid")
 metadata/_edit_use_anchors_ = true
 
@@ -35,17 +36,7 @@ grow_vertical = 2
 texture = ExtResource("2_vppst")
 expand_mode = 1
 
-[node name="WithdrawButtonGrey" type="Button" parent="."]
-layout_mode = 0
-offset_left = 235.0
-offset_top = 108.0
-offset_right = 275.0
-offset_bottom = 148.0
-theme_type_variation = &"FlatButton"
-icon = ExtResource("3_3jvto")
-
 [node name="WithdrawButton" type="Button" parent="."]
-visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 offset_left = 235.0
@@ -57,6 +48,15 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_jscte")
 icon = ExtResource("3_udhhc")
 flat = true
 icon_alignment = 1
+
+[node name="WithdrawButtonGrey" type="Button" parent="."]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 108.0
+offset_right = 275.0
+offset_bottom = 148.0
+theme_type_variation = &"FlatButton"
+icon = ExtResource("3_3jvto")
 
 [node name="Grid" type="GridContainer" parent="."]
 layout_mode = 1

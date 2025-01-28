@@ -11,6 +11,7 @@ namespace untitledplantgame.Crafting;
 public partial class DehydratorUi : Control
 {
 	[Export] private Button _retrieveAllItemsButton;
+	[Export] private Button _greyButton;
 	[Export] private GridContainer _slotContainer;
 	[Export] private CraftingInventory _playerInventory;
 
@@ -20,6 +21,7 @@ public partial class DehydratorUi : Control
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
+		_greyButton.FocusMode = FocusModeEnum.None;
 		_retrieveAllItemsButton.Pressed += () =>
 		{
 			Assert.AssertNotNull(_craftingStation);
@@ -50,7 +52,7 @@ public partial class DehydratorUi : Control
 
 	private void UpdateWithdrawButton(bool hasFinishedItems)
 	{
-		_retrieveAllItemsButton.Visible = hasFinishedItems;
+		_greyButton.Visible = !hasFinishedItems;
 		_logger.Debug($"Button is visible: {_retrieveAllItemsButton.Visible}");
 	}
 

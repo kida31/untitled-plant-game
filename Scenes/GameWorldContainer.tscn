@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
 [ext_resource type="PackedScene" uid="uid://darsx73t4n6d3" path="res://Scenes/VendingMachineCriss.tscn" id="3_5hcym"]
 [ext_resource type="PackedScene" uid="uid://68an8ryr548m" path="res://Scenes/Pier.tscn" id="3_d7fyg"]
-[ext_resource type="PackedScene" uid="uid://osnne5a45tou" path="res://Scenes/SeedBoyCriss.tscn" id="3_ffnpq"]
+[ext_resource type="PackedScene" uid="uid://crm2bb3s72gi8" path="res://Scenes/SeedBoyCriss.tscn" id="3_ffnpq"]
 [ext_resource type="PackedScene" uid="uid://cr2712p8tviur" path="res://Scenes/Godfrey.tscn" id="4_r6pis"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
 [ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
@@ -18,7 +18,6 @@ y_sort_enabled = true
 [node name="GardenMapScene" parent="." instance=ExtResource("1_ouy3g")]
 
 [node name="Pier" parent="." instance=ExtResource("3_d7fyg")]
-y_sort_enabled = true
 position = Vector2(-1052, 2316)
 
 [node name="VendingMachine" parent="." instance=ExtResource("3_5hcym")]
