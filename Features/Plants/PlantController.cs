@@ -6,11 +6,18 @@ namespace untitledplantgame.Plants;
 
 public partial class PlantController : Node
 {
+	private PlantController Instance => this;
 	private Logger _logger;
 	private TimeController _timeController;
 
 	public override void _Ready()
 	{
+		if(Instance != this)
+		{
+			_logger.Error("There can only be one PlantController.");
+			QueueFree();
+		}
+		
 		_timeController = TimeController.Instance;
 		_timeController.DayChanged += DayPassed;
 		_timeController.NoonOccured += NoonOccured;
