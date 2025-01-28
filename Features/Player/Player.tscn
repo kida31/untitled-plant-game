@@ -7,12 +7,10 @@
 [ext_resource type="Script" path="res://Features/Player/StateIdle.cs" id="5_k3tas"]
 [ext_resource type="Script" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
 [ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
+[ext_resource type="Script" path="res://Features/Player/PixelCamera2D.cs" id="8_nj75v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
 radius = 8.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ryxll"]
-radius = 34.0147
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerAnimatedSprite") groups=["player"]]
 script = ExtResource("1_ypuiu")
@@ -43,14 +41,14 @@ script = ExtResource("6_6k3md")
 [node name="UseTool" type="Node" parent="StateMachine"]
 script = ExtResource("7_lrvm3")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_ryxll")
-
-[node name="InteractablesManager" type="Node" parent="Area2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -31)
-position_smoothing_enabled = true
+[node name="PixelCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("_player")]
+top_level = true
+offset = Vector2(0, -32)
 position_smoothing_speed = 2.0
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
+script = ExtResource("8_nj75v")
+_player = NodePath("..")
+_speed = 2.0
