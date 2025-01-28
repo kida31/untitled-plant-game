@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bd54v5orqpb6t"]
+[gd_scene load_steps=12 format=3 uid="uid://bd54v5orqpb6t"]
 
 [ext_resource type="Script" path="res://Features/Shops/GUI/SeedShopView.cs" id="1_rs6dp"]
 [ext_resource type="Texture2D" uid="uid://uej5qcp5lxwk" path="res://Assets/UI/SeedShop/seed_shop_cloth_flat.png" id="2_oarm3"]
@@ -9,25 +9,32 @@
 [ext_resource type="PackedScene" uid="uid://ct1oinq00jcp6" path="res://Features/GUI/Items/NewInventoryItemView.tscn" id="7_apaor"]
 [ext_resource type="Texture2D" uid="uid://bxc00meevdgul" path="res://Assets/UI/Book/Pages/mini_inventory.png" id="8_x724y"]
 [ext_resource type="Texture2D" uid="uid://ddbxhrxrxirqa" path="res://Assets/UI/Book/Pages/Demo/LeftInventory_filled.png" id="9_cwr7a"]
+[ext_resource type="PackedScene" uid="uid://4ix03kxh3x2h" path="res://Features/GUI/Shops/ButtonLineShop.tscn" id="9_ukqri"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="10_gb0hb"]
 
 [node name="SeedShopGUI" type="Control" node_paths=PackedStringArray("_itemContainer", "_seedInventory")]
 custom_minimum_size = Vector2(218, 269)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 218.0
-offset_bottom = 269.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
+mouse_filter = 1
 script = ExtResource("1_rs6dp")
 _itemContainer = NodePath("SeedShopCarpet/GridContainer")
 _seedInventory = NodePath("SeedInventory")
 
 [node name="SeedShopCarpet" type="Control" parent="."]
+custom_minimum_size = Vector2(218, 269)
 layout_mode = 1
-anchor_left = 0.307339
-anchor_top = 0.144981
-anchor_right = 1.30734
-anchor_bottom = 1.14498
+anchor_left = 0.0984375
+anchor_top = 0.105556
+anchor_right = 0.779688
+anchor_bottom = 1.6
+offset_right = -218.0
+offset_bottom = -269.0
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="SeedShopCarpet"]
@@ -96,11 +103,17 @@ layout_mode = 2
 [node name="SeedInventory" type="Control" parent="." node_paths=PackedStringArray("_itemViewContainer", "_itemNameLabel")]
 custom_minimum_size = Vector2(223, 235)
 layout_mode = 1
-anchor_left = 1.58716
-anchor_top = 0.204461
-anchor_right = 2.61009
-anchor_bottom = 1.07807
-offset_right = 1.52588e-05
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -116.0
+offset_right = 255.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("6_vtnd1")
@@ -108,7 +121,6 @@ _itemViewPrefab = ExtResource("7_apaor")
 _itemViewContainer = NodePath("ItemGrid")
 _itemNameLabel = NodePath("TextBox")
 metadata/_tab_index = 3
-metadata/_edit_use_anchors_ = true
 
 [node name="BG" type="TextureRect" parent="SeedInventory"]
 layout_mode = 1
@@ -219,18 +231,18 @@ layout_mode = 2
 [node name="ItemView20" parent="SeedInventory/ItemGrid" instance=ExtResource("7_apaor")]
 layout_mode = 2
 
+[node name="ButtonLine" parent="." instance=ExtResource("9_ukqri")]
+layout_mode = 1
+grow_horizontal = 1
+grow_vertical = 1
+
 [node name="FocusIndicator" parent="." instance=ExtResource("4_gya2w")]
-offset_left = 316.0
-offset_top = 95.0
-offset_right = 316.0
-offset_bottom = 95.0
+layout_mode = 0
 
 [node name="GlobalTooltip" parent="." instance=ExtResource("5_0lc50")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -153.0
-offset_top = 39.0
-offset_right = -25.0
-offset_bottom = 71.0
+offset_right = 128.0
+offset_bottom = 32.0

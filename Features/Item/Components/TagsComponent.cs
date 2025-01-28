@@ -1,13 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Godot.Collections;
 
 namespace untitledplantgame.Item.Components;
 
 public partial class TagsComponent : AComponent, ICollection<TagsComponent.Tags>
 {
 	private HashSet<Tags> _tags;
+
 	public enum Tags
 	{
 		IsDrieable,
@@ -17,12 +18,16 @@ public partial class TagsComponent : AComponent, ICollection<TagsComponent.Tags>
 		IsFlower,
 		IsUnknown,
 	}
-	
+
 	public TagsComponent(params Tags[] items)
 	{
 		_tags = new HashSet<Tags>(items);
 	}
-	
+
+	public TagsComponent()
+	{
+	}
+
 	public override TagsComponent Clone()
 	{
 		return new TagsComponent(_tags.ToArray());
@@ -35,7 +40,7 @@ public partial class TagsComponent : AComponent, ICollection<TagsComponent.Tags>
 
 	public IEnumerator<Tags> GetEnumerator()
 	{
-		throw new System.NotImplementedException();
+		return _tags.GetEnumerator();
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()

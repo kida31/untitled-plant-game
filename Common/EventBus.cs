@@ -23,8 +23,6 @@ public partial class EventBus : Node
 {
 	public static EventBus Instance { get; private set; }
 	
-	public static bool DisplayLog; // TODO: This may or may not be a good place to store this variable...
-	
 	private readonly Logger _logger = new("EventBus");
 
 	public override void _Ready()
