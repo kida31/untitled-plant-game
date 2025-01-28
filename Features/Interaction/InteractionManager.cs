@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Common.ExtensionMethods;
+using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs;
 using untitledplantgame.Common.Inputs.GameActions;
+using untitledplantgame.GUI.Interactions;
 
 namespace untitledplantgame.Interaction;
 
@@ -17,12 +20,12 @@ public partial class InteractionManager : Node2D
 {
 	public static InteractionManager Instance { get; private set; }
 
-	[Export] private Label _label;
+	[Export] private InteractHint _label;
+	[Export] private Vector2 _hintOffset = Vector2.Zero;
 
 	private int AreaCount => _activeAreas.Count;
 	private string BaseText => $"[{InputRemapper.GetButton(FreeRoam.Interact).ToString()}] ";
 	private bool _canInteract = true;
-	private const int BaseTextYTransform = 50;
 	private Node2D _player;
 	private readonly List<IInteractable> _activeAreas = new();
 	private readonly Logger _logger = new("InteractionManager");
@@ -48,17 +51,17 @@ public partial class InteractionManager : Node2D
 	{
 		_player ??= Game.Instance.GetPlayer();
 
-		if (AreaCount > 0 && _canInteract & _player != null)
+		if (AreaCount > 0 && _canInteract && _player != null && GameStateMachine.Instance.CurrentState == GameState.FreeRoam)
 		{
 			_activeAreas.Sort(SortByDistanceToPlayer);
+
 			_label.Text = BaseText + _activeAreas[0].ActionName;
-			_label.GlobalPosition = _activeAreas[0].GetGlobalInteractablePosition();
-			_label.GlobalPosition -= new Vector2(_label.Size.X / 2, BaseTextYTransform);
-			_label.Show();
+			_label.GlobalPosition = _activeAreas[0].GetGlobalInteractablePosition() + _hintOffset;
+			_label.FadeIn(0.1f);
 		}
 		else
 		{
-			_label.Hide();
+			_label.FadeOut(0.5f);
 		}
 	}
 
@@ -80,7 +83,6 @@ public partial class InteractionManager : Node2D
 		}
 
 		_canInteract = false;
-		_label.Hide();
 		_activeAreas[0].Interact();
 		_canInteract = true;
 	}
@@ -99,8 +101,8 @@ public partial class InteractionManager : Node2D
 			return int.MaxValue;
 		}
 
-		float distance1 = _player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
-		float distance2 = _player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
+		var distance1 = _player.GlobalPosition.DistanceSquaredTo(area1.GetGlobalInteractablePosition());
+		var distance2 = _player.GlobalPosition.DistanceSquaredTo(area2.GetGlobalInteractablePosition());
 		GD.PrintRich(distance2);
 		return distance1.CompareTo(distance2);
 	}
