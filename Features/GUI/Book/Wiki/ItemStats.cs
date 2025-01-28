@@ -10,9 +10,11 @@ namespace untitledplantgame.GUI.Book.Wiki;
 public partial class ItemStats : Control
 {
 	[ExportGroup("Node Setup")] [Export] private RichTextLabel _name;
+	[Export] private RichTextLabel _category;
 	[Export] private RichTextLabel _tags;
 	[Export] private RichTextLabel _price;
 	[Export] private RichTextLabel _harvestResult;
+	[Export] private Control _effectsHeader;
 	[Export] private RichTextLabel _medicineEffectsPositives;
 	[Export] private RichTextLabel _medicineEffectsNegatives;
 
@@ -26,59 +28,67 @@ public partial class ItemStats : Control
 		if (item == null) return;
 
 		// Name
-		_name.PushParagraph(HorizontalAlignment.Center);
+		_name.PushParagraph(HorizontalAlignment.Left);
 		_name.AppendText(item.Name);
-		
+		_name.Pop();
+
 		// Category
-		// _name.AppendText(" - ");
-		_name.PushColor(Colors.Brown);
-		_name.AppendText($" [{item.Category.Name}]");
-		_name.Pop();
-		_name.Pop();
+		_category.PushParagraph(HorizontalAlignment.Right);
+		_category.PushColor(Colors.Brown);
+		_category.AppendText(item.Category.Name);
+		_category.Pop();
+		_category.Pop();
 
 		// Tags
 		var tags = item.GetComponent<TagsComponent>();
 		if (tags != null)
 		{
-			_tags.PushParagraph(HorizontalAlignment.Center);
+			_tags.PushParagraph(HorizontalAlignment.Left);
 			_tags.PushColor(Colors.DarkGray);
 			var tagNames = tags
 				.Select(t => Regex.Replace(t.ToString(), "^Is", "")) // Remove "Is" prefix from tags.
 				.Select(t => t.ToLower()) // Lowercase tags.
 				.Select(t => $"#{t}"); // Add hashtag to tags.
 			_tags.AppendText(string.Join("  ", tagNames));
+			_tags.AppendText(_tags.Text);
 			_tags.Pop();
 			_tags.Pop();
 		}
 
 		// Price
-		_price.PushParagraph(HorizontalAlignment.Center);
+		_price.PushParagraph(HorizontalAlignment.Right);
 		_price.AppendText(item.BaseValue.ToString());
 		_price.AddImage(CoinIcon);
 		_price.Pop();
 
 		// Harvestable - nothing to show here yet
 
-		// Medicine Effects
+		// Medicine effects
 		var medicineEffects = item.GetComponent<MedicineComponent>();
 		if (medicineEffects != null)
 		{
-			_medicineEffectsPositives.PushParagraph(HorizontalAlignment.Center);
+			_effectsHeader.Show();
+
+			// Positives
+			_medicineEffectsPositives.PushIndent(1);
 			foreach (var (effect, value) in medicineEffects.TheGoodStuff)
 			{
-				_medicineEffectsPositives.PushColor(Colors.MediumSpringGreen);
+				_medicineEffectsPositives.PushColor(Colors.ForestGreen);
 				_medicineEffectsPositives.AppendText($"+{value} {effect}\n");
 				_medicineEffectsPositives.Pop();
 			}
+
 			_medicineEffectsPositives.Pop();
 
-			_medicineEffectsNegatives.PushParagraph(HorizontalAlignment.Center);
+			// Negatives
+			_medicineEffectsNegatives.PushIndent(1);
 			foreach (var (effect, value) in medicineEffects.TheBadStuff)
 			{
 				_medicineEffectsNegatives.PushColor(Colors.IndianRed);
 				_medicineEffectsNegatives.AppendText($"+{value} {effect}\n");
 				_medicineEffectsNegatives.Pop();
 			}
+
 			_medicineEffectsNegatives.Pop();
 		}
 	}
@@ -87,9 +97,11 @@ public partial class ItemStats : Control
 	{
 		// Clear all fields
 		_name.Text = "";
+		_category.Text = "";
 		_tags.Text = "";
 		_price.Text = "";
 		_harvestResult.Text = "";
+		_effectsHeader.Hide();
 		_medicineEffectsPositives.Text = "";
 		_medicineEffectsNegatives.Text = "";
 	}

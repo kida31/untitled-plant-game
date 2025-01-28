@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/ItemStats.cs" id="1_bl5bo"]
 
-[node name="ItemStats" type="Control" node_paths=PackedStringArray("_name", "_tags", "_price", "_harvestResult", "_medicineEffectsPositives", "_medicineEffectsNegatives")]
+[node name="ItemStats" type="Control" node_paths=PackedStringArray("_name", "_category", "_tags", "_price", "_harvestResult", "_effectsHeader", "_medicineEffectsPositives", "_medicineEffectsNegatives")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 3
 anchors_preset = 15
@@ -11,10 +11,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bl5bo")
-_name = NodePath("VBoxContainer/Name")
-_tags = NodePath("VBoxContainer/Tags")
-_price = NodePath("VBoxContainer/Price")
+_name = NodePath("VBoxContainer/HBoxContainer2/Name")
+_category = NodePath("VBoxContainer/HBoxContainer2/Category")
+_tags = NodePath("VBoxContainer/HBoxContainer/Tags")
+_price = NodePath("VBoxContainer/HBoxContainer/Price")
 _harvestResult = NodePath("VBoxContainer/HarvestResult")
+_effectsHeader = NodePath("VBoxContainer/EffectsHeader")
 _medicineEffectsPositives = NodePath("VBoxContainer/Positives")
 _medicineEffectsNegatives = NodePath("VBoxContainer/Negatives")
 
@@ -27,54 +29,84 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Name" type="RichTextLabel" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "[center]ItemName - ItemCategory"
+text = "ItemName"
 fit_content = true
+scroll_active = false
 autowrap_mode = 0
 
-[node name="Tags" type="RichTextLabel" parent="VBoxContainer"]
+[node name="Category" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "[center]#IsDried #IsComponent"
+text = "ItemCategory"
 fit_content = true
+scroll_active = false
 autowrap_mode = 0
 
-[node name="Price" type="RichTextLabel" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Tags" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "5 gold"
+text = "#tag1 #tag2"
 fit_content = true
+scroll_active = false
+autowrap_mode = 1
+
+[node name="Price" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+bbcode_enabled = true
+text = "5G"
+fit_content = true
+scroll_active = false
 autowrap_mode = 0
 
 [node name="HarvestResult" type="RichTextLabel" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "Harvestable: "
+fit_content = true
+scroll_active = false
 autowrap_mode = 0
+
+[node name="EffectsHeader" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+text = "Effects"
 
 [node name="Positives" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 bbcode_enabled = true
 text = "+1 kawai
 +2 baka
-+3 onko"
++3 onko no kami"
 fit_content = true
+scroll_active = false
 autowrap_mode = 0
 
 [node name="Negatives" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 bbcode_enabled = true
 text = "+1 kawai
 +2 baka
-+3 onko"
++3 no kami"
 fit_content = true
+scroll_active = false
 autowrap_mode = 0
