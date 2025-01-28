@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnhhklikoddge"]
+
+[ext_resource type="Script" path="res://Features/GUI/Interactions/InteractHint.cs" id="1_h77r2"]
+[ext_resource type="Texture2D" uid="uid://be34y66w0usqf" path="res://Assets/UI/chatbox_rounded.png" id="2_fmpi7"]
+[ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="3_o2six"]
+
+[sub_resource type="Gradient" id="Gradient_pyyg8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_81x3y"]
+gradient = SubResource("Gradient_pyyg8")
+
+[node name="InteractHint" type="Control" node_paths=PackedStringArray("_label")]
+custom_minimum_size = Vector2(80, 24)
+layout_mode = 3
+anchor_right = 0.125
+anchor_bottom = 0.0666667
+script = ExtResource("1_h77r2")
+Text = "Sudoku"
+_label = NodePath("MarginContainer/Layout/Label")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = 0.5
+grow_vertical = 2
+
+[node name="GradientMask" type="TextureRect" parent="MarginContainer"]
+clip_children = 1
+layout_mode = 2
+texture = SubResource("GradientTexture1D_81x3y")
+expand_mode = 1
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/GradientMask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fmpi7")
+patch_margin_left = 10
+patch_margin_top = 8
+patch_margin_right = 9
+patch_margin_bottom = 8
+
+[node name="Layout" type="BoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="ImageMargin" type="MarginContainer" parent="MarginContainer/Layout"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="InputHint" parent="MarginContainer/Layout/ImageMargin" instance=ExtResource("3_o2six")]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer/Layout"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "Sudoku"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Padding" type="Control" parent="MarginContainer/Layout"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2

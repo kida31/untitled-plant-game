@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmc1oq8o2if8d"]
+[gd_scene load_steps=11 format=3 uid="uid://bmc1oq8o2if8d"]
 
 [ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiArticleView.cs" id="1_6vmcs"]
 [ext_resource type="Texture2D" uid="uid://cau3g6e5xdjb1" path="res://Assets/UI/Book/Pages/RightWiki_empty.png" id="2_mb5lo"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_wi3q8"]
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="6_w5uny"]
 [ext_resource type="Script" path="res://Features/GUI/Components/Scrollable/AutoScrollRichTextLabel.cs" id="7_nfp50"]
+[ext_resource type="PackedScene" uid="uid://bxp6idnmnja8b" path="res://Features/GUI/Book/Wiki/ItemStats.tscn" id="8_4wixn"]
 [ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="8_ejye3"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("_iconTextureRect", "_itemDescription", "_itemNameAndCategory", "_itemStats", "_relatedItemViews")]
@@ -18,9 +19,9 @@ anchor_bottom = 0.562963
 offset_right = 1.52588e-05
 script = ExtResource("1_6vmcs")
 _iconTextureRect = NodePath("AspectRatioContainer/ItemIcon")
-_itemDescription = NodePath("DescriptionLabel")
+_itemDescription = NodePath("NinePatchRect/Margin/DescriptionLabel")
 _itemNameAndCategory = NodePath("Name/TextMargin/Label")
-_itemStats = NodePath("StatsLabel")
+_itemStats = NodePath("NinePatchRect/Margin/ItemStats")
 _relatedItemViews = [NodePath("RelatedStuff/RelatedItem"), NodePath("RelatedStuff/RelatedItem2"), NodePath("RelatedStuff/RelatedItem3"), NodePath("RelatedStuff/RelatedItem4")]
 metadata/_edit_use_anchors_ = true
 
@@ -90,43 +91,33 @@ patch_margin_top = 11
 patch_margin_right = 11
 patch_margin_bottom = 11
 
-[node name="DescriptionLabel" type="RichTextLabel" parent="."]
+[node name="Margin" type="Control" parent="NinePatchRect"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0616385
-anchor_top = 0.0542449
-anchor_right = 0.784853
-anchor_bottom = 0.508192
-offset_left = 24.193
-offset_top = 65.5096
-offset_right = 24.193
-offset_bottom = 65.5096
-bbcode_enabled = true
-text = "Watashi senpai green tea hai oneesan desu ecchi loli moe japanophile ghost in the shell godzilla josei doujinshi grave of the fireflies. Chibi grave of the fireflies sakura ultra man totoro sushi dub ultra man green tea dandere inuyasha. Konichiwa josei cherry blossom ecchi watashi iie japan oneesan yuki okonomiyaki chibi japan totoro. Japanophile seme erogi mangaka seme hikikomori cherry blossom cowboy bebop konichiwa otaku fanservice chibi. Doujinshi anime grave of the fireflies cherry blossom anime onigiri fanservice japanese yuki green tea nekomimi cosplay ultra man hikikomori desu. "
-scroll_active = false
-script = ExtResource("7_nfp50")
-_scrollDelay = 1.0
-_scrollSpeedPps = 30.0
+anchor_left = 0.05
+anchor_top = 0.0576923
+anchor_right = 0.95
+anchor_bottom = 0.942307
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="StatsLabel" type="RichTextLabel" parent="."]
+[node name="ItemStats" parent="NinePatchRect/Margin" instance=ExtResource("8_4wixn")]
+visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0616385
-anchor_top = 0.0542449
-anchor_right = 0.784853
-anchor_bottom = 0.508192
-offset_left = 24.193
-offset_top = 65.5096
-offset_right = 24.193
-offset_bottom = 65.5096
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="NinePatchRect/Margin"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 bbcode_enabled = true
 text = "Watashi senpai green tea hai oneesan desu ecchi loli moe japanophile ghost in the shell godzilla josei doujinshi grave of the fireflies. Chibi grave of the fireflies sakura ultra man totoro sushi dub ultra man green tea dandere inuyasha. Konichiwa josei cherry blossom ecchi watashi iie japan oneesan yuki okonomiyaki chibi japan totoro. Japanophile seme erogi mangaka seme hikikomori cherry blossom cowboy bebop konichiwa otaku fanservice chibi. Doujinshi anime grave of the fireflies cherry blossom anime onigiri fanservice japanese yuki green tea nekomimi cosplay ultra man hikikomori desu. "
 scroll_active = false
 script = ExtResource("7_nfp50")
 _scrollDelay = 1.0
 _scrollSpeedPps = 30.0
-metadata/_edit_use_anchors_ = true
 
 [node name="InputIndicator" parent="." instance=ExtResource("8_ejye3")]
 layout_mode = 1
