@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Common.ExtensionMethods;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
@@ -16,16 +17,24 @@ public partial class WikiArticleView : Control
 	[Export] private TextureRect _iconTextureRect;
 	[Export] private RichTextLabel _itemDescription; // RichTextLabel or Label, anything that has .Text
 	[Export] private Label _itemNameAndCategory;
-	[Export] private RichTextLabel _itemStats;
+	[Export] private ItemStats _itemStats;
 	[Export] private WikiRelatedItemView[] _relatedItemViews = Array.Empty<WikiRelatedItemView>();
 	public event Action<IItemStack> RelatedItemClicked;
 
 	private IItemStack _itemStack;
 	private bool _isShowingDescription;
 	private Tween _tween;
+	private Logger _logger;
 
 	public override void _Ready()
 	{
+		_logger = new(this);
+		if (_iconTextureRect == null || _itemDescription == null || _itemNameAndCategory == null ||
+		    _itemStats == null || _relatedItemViews.Length == 0)
+		{
+			_logger.Error("One or more required nodes are not assigned.");
+		}
+
 		for (var i = 0; i < _relatedItemViews.Length; i++)
 		{
 			var clickable = _relatedItemViews[i];
@@ -102,7 +111,7 @@ public partial class WikiArticleView : Control
 		_iconTextureRect.Texture = _itemStack?.Icon ?? null;
 		_itemNameAndCategory.Text = _itemStack != null ? $"{_itemStack.Name} - {_itemStack.Category.Name}" : "";
 		_itemDescription.Text = _itemStack?.WikiDescription ?? "";
-		_itemStats.Text = "Stats!... \nStats!... \nStats!..."; // TODO:
+		_itemStats.SetItem(_itemStack);
 
 		List<IItemStack> relatedItems = new();
 		if (_itemStack is ItemStack itemStack)

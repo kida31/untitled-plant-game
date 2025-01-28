@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dbk4arsk2qmin" path="res://Assets/DebugTheme.tres" id="1_1ftpd"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugKeybindings.cs" id="1_2qjov"]
-[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugOverlays.cs" id="1_cr3m0"]
+[ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugOverlay.cs" id="1_cr3m0"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugCurrentFocus.cs" id="1_spicd"]
 [ext_resource type="Script" path="res://Features/GUI/DebugOverlays/DebugLastClicked.cs" id="2_4xlmf"]
 [ext_resource type="Script" path="res://InGameLogOverlay.cs" id="2_lomx1"]
