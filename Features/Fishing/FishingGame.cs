@@ -7,8 +7,8 @@ public partial class FishingGame : Node2D
 	private static int _progressPerPull = 5;
 	private static int _progressDecayPerSecond = 5;
 	[Export] private ProgressBar _progressBar;
-	[Export] private untitledplantgame.Fishing.Hookbar _hookbar;
-	[Export] private untitledplantgame.Fishing.Fish _fish;
+	[Export] private Hookbar _hookbar;
+	[Export] private Fish _fish;
 	[Export] private Label _textLabel;
 	[Export] private Button _restartButton;
 
