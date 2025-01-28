@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b0eexept4cqtd"
+path="res://.godot/imported/Walking_on_Wood_8.wav-2eaf45dac2fb278f786fbe71628fc0dd.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Walking Sounds/Wood/Walking_on_Wood_8.wav"
+dest_files=["res://.godot/imported/Walking_on_Wood_8.wav-2eaf45dac2fb278f786fbe71628fc0dd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://du3kmexad1tgt"
-path="res://.godot/imported/MenuUiExitGame.wav-96bec16a9c70a9a07df22a87c2e87735.sample"
+path="res://.godot/imported/MenuUiExitGame.wav-c6c05f8596af640c1ddcd28a6292ea5f.sample"
 
 [deps]
 
-source_file="res://Assets/SFX/MenuUiExitGame.wav"
-dest_files=["res://.godot/imported/MenuUiExitGame.wav-96bec16a9c70a9a07df22a87c2e87735.sample"]
+source_file="res://Assets/SFX/UISFX/MenuUiExitGame.wav"
+dest_files=["res://.godot/imported/MenuUiExitGame.wav-c6c05f8596af640c1ddcd28a6292ea5f.sample"]
 
 [params]
 

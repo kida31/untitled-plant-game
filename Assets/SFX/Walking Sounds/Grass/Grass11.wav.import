@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dg30m2st8npil"
+path="res://.godot/imported/Grass11.wav-1fc03e064b0a60d2cdfed81c386f0acb.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Walking Sounds/Grass/Grass11.wav"
+dest_files=["res://.godot/imported/Grass11.wav-1fc03e064b0a60d2cdfed81c386f0acb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
