@@ -62,6 +62,15 @@ public partial class ItemStats : Control
 		_price.Pop();
 
 		// Harvestable - nothing to show here yet
+		var seedComponent = item.GetComponent<SeedComponent>();
+		if (seedComponent != null)
+		{
+			_harvestResult.PushParagraph(HorizontalAlignment.Left);
+			_harvestResult.PushColor(Colors.DarkGreen);
+			_harvestResult.AppendText($"Will grow a {seedComponent.PlantName} plant.");
+			_harvestResult.Pop();
+			_harvestResult.Pop();
+		}
 
 		// Medicine effects
 		var medicineEffects = item.GetComponent<MedicineComponent>();
