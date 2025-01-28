@@ -63,19 +63,23 @@ public partial class ItemStats : Control
 		var medicineEffects = item.GetComponent<MedicineComponent>();
 		if (medicineEffects != null)
 		{
+			_medicineEffectsPositives.PushParagraph(HorizontalAlignment.Center);
 			foreach (var (effect, value) in medicineEffects.TheGoodStuff)
 			{
-				_medicineEffectsPositives.PushColor(Colors.LawnGreen);
+				_medicineEffectsPositives.PushColor(Colors.MediumSpringGreen);
 				_medicineEffectsPositives.AppendText($"+{value} {effect}\n");
 				_medicineEffectsPositives.Pop();
 			}
+			_medicineEffectsPositives.Pop();
 
+			_medicineEffectsNegatives.PushParagraph(HorizontalAlignment.Center);
 			foreach (var (effect, value) in medicineEffects.TheBadStuff)
 			{
 				_medicineEffectsNegatives.PushColor(Colors.IndianRed);
 				_medicineEffectsNegatives.AppendText($"+{value} {effect}\n");
 				_medicineEffectsNegatives.Pop();
 			}
+			_medicineEffectsNegatives.Pop();
 		}
 	}
 
