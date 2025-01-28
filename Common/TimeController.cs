@@ -9,7 +9,7 @@ public partial class TimeController : Node
 	/// Constants for time calculations
 	private const double SecondsPerDay = 24 * 60 * 60;
 
-	private const double InGameToRealTimeMultiplier = 60.0; // 1 second = 1min
+	private const double InGameToRealTimeMultiplier = 6000.0; // 1 second = 1min
 	private const double InGameToRealTimeFastForwardMultiplier = SecondsPerDay; // 24h in 1s
 	private const double StartOfDaySeconds = 7 * 60 * 60;
 
@@ -102,7 +102,7 @@ public partial class TimeController : Node
 			CurrentSeconds = 0;
 			_wasNoon = false;
 		}
-
+		
 		if (_currentMinute != minute)
 		{
 			_currentMinute = minute;

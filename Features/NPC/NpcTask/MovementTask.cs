@@ -105,6 +105,7 @@ public partial class MovementTask :  Area2D, INpcTask
 			}
 			_logger.Debug("The Npc reached the task's destination.");
 			tcs.TrySetResult(true);
+			
 			TaskFinished -= onConditionMet;
 		};
 

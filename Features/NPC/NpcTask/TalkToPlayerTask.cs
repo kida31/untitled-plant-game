@@ -67,7 +67,6 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 				_amountOfDialogueLinesUsed = 0;
 			}
 		}
-		GD.Print("HERE");
 		TaskStarted?.Invoke(this, EventArgs.Empty);
 		_logger.Info("TalkToPlayerTask started.");
 	}

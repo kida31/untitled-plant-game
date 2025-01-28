@@ -66,9 +66,6 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 		
 		_routinePlanner.ActiveTask?.InterruptCurrentTask();
 		_logger.Info("Player stopped the current routine by starting a Dialogue with an Npc.");
-		
-		
-		// ------- //
 	}
 	
 	private void FinishDialogue()
