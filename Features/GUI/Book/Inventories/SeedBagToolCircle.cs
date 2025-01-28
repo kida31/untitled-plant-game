@@ -12,7 +12,7 @@ public partial class SeedBagToolCircle : ToolCircle
 	[Export] private TextureRect _seedImage;
 
 	private Action _onInventoryChangedHandler;
-	
+
 	public override Tool Tool
 	{
 		get => base.Tool;
@@ -39,6 +39,7 @@ public partial class SeedBagToolCircle : ToolCircle
 			{
 				return $"{base.Title} ({seed.Name})";
 			}
+
 			return base.Title;
 		}
 	}
@@ -51,16 +52,17 @@ public partial class SeedBagToolCircle : ToolCircle
 	private void OnVisibilityChanged()
 	{
 		if (!IsVisibleInTree() || !IsNodeReady()) return;
-		
+
 		// Unsubscribe from the old event, if any
 		Game.Player.Inventory.InventoryChanged -= _onInventoryChangedHandler;
-		Game.Player.Inventory.InventoryChanged += _onInventoryChangedHandler;
+		// Subscribe to the new event
+		Game.Player.Inventory.InventoryChanged += OnInventoryChanged;
+		_onInventoryChangedHandler = OnInventoryChanged;
 		OnInventoryChanged();
 	}
 
 	private void OnInventoryChanged()
 	{
-
 		_seedImage.Texture = GetFirstSeed()?.Icon;
 	}
 
