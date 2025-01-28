@@ -23,7 +23,7 @@ namespace untitledplantgame.Audio
 			// Create and add audio players to the scene
 			foreach (var key in _sounds.Keys)
 			{
-				_sounds[key].Stream = GD.Load<AudioStream>("res://Assets/SFX/" + key);
+				_sounds[key].Stream = GD.Load<AudioStream>("res://Assets/SFX/UISFX/" + key);
 				_sounds[key].Bus = busName;
 				AddChild(_sounds[key]);
 			}

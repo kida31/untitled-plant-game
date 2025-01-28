@@ -18,7 +18,6 @@ y_sort_enabled = true
 [node name="GardenMapScene" parent="." instance=ExtResource("1_ouy3g")]
 
 [node name="Pier" parent="." instance=ExtResource("3_d7fyg")]
-y_sort_enabled = true
 position = Vector2(-1052, 2316)
 
 [node name="VendingMachine" parent="." instance=ExtResource("3_5hcym")]

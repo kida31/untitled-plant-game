@@ -3,7 +3,7 @@ using untitledplantgame.Common;
 using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
+
 
 namespace untitledplantgame.Audio;
 public partial class WalkingSFX : Node
@@ -16,12 +16,14 @@ public partial class WalkingSFX : Node
 	private TileMapLayer _layer;
 	private Random _random = new();
 	private List<List<string>> _filePaths = new();
+	private Logger _logger;
 	
 	
 	
 	public override void _Ready()
 	{
 		LoadWalkingSFXPathsIntoArray("res://Assets/SFX/WalkingSFX");
+		AddChild(_audioStreamPlayer);
 	}
 
 
@@ -45,6 +47,7 @@ public partial class WalkingSFX : Node
 
 
 	private void LoadWalkingSFXPathsIntoArray(string rootPath) {
+		_logger.Debug("LoadingPathsIntoArray");
 		if (Directory.Exists(rootPath))
 		{
 			foreach (string directory in Directory.GetDirectories(rootPath))

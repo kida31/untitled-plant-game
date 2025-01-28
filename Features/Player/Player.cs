@@ -7,6 +7,7 @@ using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Inventory;
 using untitledplantgame.Shops;
 using untitledplantgame.Tools;
+using untitledplantgame.Audio;
 
 namespace untitledplantgame.Player;
 
@@ -19,6 +20,7 @@ public partial class Player : CharacterBody2D
 	private Vector2 _faceDirection = Vector2.Down;
 	private Vector2 _inputDirection = Vector2.Zero;
 	private PlayerStateMachine _stateMachine;
+	private WalkingSFX _walkingSFX = new WalkingSFX();
 
 	/// <summary>
 	///     The direction the player should be moving. Currently always equal to input direction.
@@ -90,8 +92,9 @@ public partial class Player : CharacterBody2D
 	}
 
 	public override void _PhysicsProcess(double delta)
-	{
+	{	
 		MoveAndSlide();
+		
 	}
 
 	public void GetSetDirection()
@@ -128,7 +131,7 @@ public partial class Player : CharacterBody2D
 	}
 
 	public void UpdateAnimation(string animationName)
-	{
+	{   _walkingSFX.PlayTileSoundAtPlayerPosition();
 		_playerAnimatedSprite?.UpdateAnimation(animationName);
 	}
 }

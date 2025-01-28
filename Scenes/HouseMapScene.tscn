@@ -784,20 +784,30 @@ texture_region_size = Vector2i(32, 32)
 texture = ExtResource("2_jg411")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/custom_data_0 = 2
 1:0/0 = 0
+1:0/0/custom_data_0 = 2
 0:1/0 = 0
+0:1/0/custom_data_0 = 2
 1:1/0 = 0
+1:1/0/custom_data_0 = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ifxq"]
 texture = ExtResource("3_6tqlb")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/custom_data_0 = 2
 1:0/0 = 0
+1:0/0/custom_data_0 = 2
 0:1/0 = 0
+0:1/0/custom_data_0 = 2
 1:1/0 = 0
+1:1/0/custom_data_0 = 2
 
 [sub_resource type="TileSet" id="TileSet_uxdhx"]
 tile_size = Vector2i(32, 32)
+custom_data_layer_0/name = "Type"
+custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_o1url")
 sources/1 = SubResource("TileSetAtlasSource_v56v2")
 sources/2 = SubResource("TileSetAtlasSource_8ifxq")
