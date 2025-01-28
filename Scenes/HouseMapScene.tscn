@@ -25,7 +25,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5uefl"]
 gradient = SubResource("Gradient_rg704")
-width = 1200
+width = 1240
 height = 800
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v56v2"]
@@ -759,6 +759,7 @@ texture_region_size = Vector2i(32, 32)
 0:15/0 = 0
 1:15/0 = 0
 2:15/0 = 0
+2:15/0/y_sort_origin = 8
 2:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:15/0 = 0
 4:15/0 = 0
@@ -1009,8 +1010,11 @@ texture_region_size = Vector2i(32, 32)
 14:3/0 = 0
 15:3/0 = 0
 16:3/0 = 0
+16:3/0/y_sort_origin = -64
 17:3/0 = 0
+17:3/0/y_sort_origin = -64
 18:3/0 = 0
+18:3/0/y_sort_origin = -64
 19:3/0 = 0
 20:3/0 = 0
 21:3/0 = 0
@@ -1055,8 +1059,11 @@ texture_region_size = Vector2i(32, 32)
 14:4/0 = 0
 15:4/0 = 0
 16:4/0 = 0
+16:4/0/y_sort_origin = -64
 17:4/0 = 0
+17:4/0/y_sort_origin = -64
 18:4/0 = 0
+18:4/0/y_sort_origin = -64
 19:4/0 = 0
 20:4/0 = 0
 21:4/0 = 0
@@ -1103,8 +1110,11 @@ texture_region_size = Vector2i(32, 32)
 14:5/0 = 0
 15:5/0 = 0
 16:5/0 = 0
+16:5/0/y_sort_origin = -64
 17:5/0 = 0
+17:5/0/y_sort_origin = -64
 18:5/0 = 0
+18:5/0/y_sort_origin = -64
 19:5/0 = 0
 20:5/0 = 0
 21:5/0 = 0
@@ -1624,6 +1634,7 @@ texture = ExtResource("7_reln1")
 texture_region_size = Vector2i(32, 32)
 0:0/size_in_atlas = Vector2i(2, 3)
 0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 48)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, 36, 10, 36, 10, 43, -9, 43)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rm8qh"]
@@ -1726,7 +1737,7 @@ tile_set = SubResource("TileSet_00qgg")
 
 [node name="HouseObjects" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAANAA0AAAAAAAAAAAAMABIAAgABAAAAAAAMABEAAgACAAAAAAAPAA0ACAAAAAAAAAAWAAsABgAAAAAAAAAZAAwABgAGAAAAAAAYAAwABgAFAAAAAAAXAAwABgAEAAAAAAAWAAwABgADAAAAAAAOAA0ACQAAAAAAAAAYABIABQAAAAAAAAAVAAwABgACAAAAAAAUAAwABgABAAAAAAATAAwABgAAAAAAAAAXAA0ABwAAAAAAAAANAAsAAwAAAAAAAAALAAsABAAAAAAAAAAQAA8ACgAQAAMAAAARAA8ACgARAAMAAAASAA8ACgARAAMAAAATAA8ACgARAAMAAAATABAACgARAAQAAAATABEACgARAAQAAAAQABAACgAQAAQAAAAQABEACgAQAAQAAAAQABIACgAQAAQAAAARABIACgARAAQAAAASABIACgARAAQAAAATABIACgARAAQAAAARABEACgARAAQAAAASABAACgARAAQAAAASABEACgARAAQAAAARABAACgARAAQAAAAUAA8ACgASAAMAAAAUABAACgASAAQAAAAUABIACgASAAQAAAAUABEACgASAAQAAAAQABMACgAQAAUAAAARABMACgARAAUAAAASABMACgARAAUAAAATABMACgARAAUAAAAUABMACgASAAUAAAA=")
+tile_map_data = PackedByteArray("AAANAA0AAAAAAAAAAAAMABIAAgABAAAAAAAMABEAAgACAAAAAAAPAA0ACAAAAAAAAAAWAAsABgAAAAAAAAAZAAwABgAGAAAAAAAYAAwABgAFAAAAAAAXAAwABgAEAAAAAAAWAAwABgADAAAAAAAOAA0ACQAAAAAAAAAVAAwABgACAAAAAAAUAAwABgABAAAAAAATAAwABgAAAAAAAAAXAA0ABwAAAAAAAAANAAsAAwAAAAAAAAALAAsABAAAAAAAAAAVAA8ACgAQAAMAAAAVABAACgAQAAQAAAAVABEACgAQAAQAAAAVABIACgAQAAQAAAAVABMACgAQAAUAAAAWAA8ACgARAAMAAAAWABAACgARAAQAAAAWABEACgARAAQAAAAWABIACgARAAQAAAAWABMACgARAAUAAAAXAA8ACgARAAMAAAAXABAACgARAAQAAAAXABEACgARAAQAAAAXABIACgARAAQAAAAXABMACgARAAUAAAAYAA8ACgARAAMAAAAYABAACgARAAQAAAAZAA8ACgASAAMAAAAZABAACgASAAQAAAAZABEACgASAAQAAAAZABIACgASAAQAAAAZABMACgASAAUAAAAYABEACgARAAQAAAAYABQABQAAAAAAAAAYABMACgARAAUAAAAYABIACgARAAQAAAA=")
 tile_set = SubResource("TileSet_ory3n")
 
 [node name="Dehydrator" parent="HouseObjects" instance=ExtResource("7_85s0o")]
@@ -1746,7 +1757,7 @@ position = Vector2(400, 567)
 entryDoorName = "RoofHouse"
 
 [node name="Bed" parent="." instance=ExtResource("5_t1uyc")]
-position = Vector2(721, 557)
+position = Vector2(778, 561)
 
 [node name="BgmTriggerArea" type="Area2D" parent="."]
 visible = false
