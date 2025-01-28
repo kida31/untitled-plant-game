@@ -9,7 +9,19 @@ using untitledplantgame.NPC.RoutinePlanner;
 
 namespace untitledplantgame.NPC.Routine;
 
-// TODO: Cleanup
+/*
+ * Frick it. We ballin'.
+ *
+ * Listen, instead of telling every routine "you are supposed to go off at: ...", we just link them.
+ *
+ * "Oh, you want this routine to go off when the previous one finishes? Well, then specify it!"
+ *
+ * You see, we have an event telling us the right time of day, but why not just change that with another routine coupling it with a
+ * method that tells us the previous one was finished? And even then, we could still use the timed event, as in "if you finished the previous one
+ * AAAAANNDDDDD we already hat that time....!" (check if condition weirdness)
+ *
+ * But with this approach, we can suddenly let our npc go free roam, since we would be no longer obligated to keep track of time!
+ */
 public partial class NpcRoutine : Node
 {
 	public enum Options { TimeOfDay, PlayerInteraction }
@@ -21,10 +33,16 @@ public partial class NpcRoutine : Node
 	[Export(PropertyHint.Range, "0,59")]
 	public byte RoutineStartMinutes { get; set; } = 30;
 
+	[Export] private NpcRoutine _nextRoutine;
+	
 	private bool _correctTimeOfDay;
 	private bool _playerInteracted;
+	private bool _previousRoutineFinished;
+	private bool _isStartingRoutine;
+	
 	private NpcRoutinePlanner _owningRoutinePlanner;
 	private List<INpcTask> _npcTasks;
+	private event EventHandler PreviousRoutineFinishedTask;
 	private event EventHandler RightTimeOfDayReached;
 	private event EventHandler PlayerInteracted;
 	private Logger _logger;
@@ -86,29 +104,80 @@ public partial class NpcRoutine : Node
 		{
 			await WaitUntilPlayerInteracted();
 		}
-		
-		
-		
+	
 		foreach (var npcTask in _npcTasks)
 		{
 			_owningRoutinePlanner.ActiveTask = npcTask;
-			
 			npcTask.InitializeTask(_owningRoutinePlanner.GetNpcExecutingRoutines());
 			await npcTask.ExecuteNpcTask();
 		}
-
+		
 		// After we started the routine, we can be sure we don't start it again immediately!
 		_correctTimeOfDay = false;
 		_playerInteracted = false;
 		_owningRoutinePlanner.ActiveTask = null;
+		
+		_nextRoutine?.PreviousRoutineFinishTask(); // The next Routine can be null. Godot won't catch the exception ⇒ NPC is stuck
+	}
+
+	public void MakeThisRoutineTheStartingPoint()
+	{
+		_isStartingRoutine = true;
+	}
+
+	private void PreviousRoutineFinishTask()
+	{
+		GD.Print("3: PreviousRoutine finished.");
+		_previousRoutineFinished = true;
+		PreviousRoutineFinishedTask?.Invoke(this, EventArgs.Empty);
+	}
+
+	private Task WaitUntilPreviousRoutineFinished()
+	{
+		var tcs = new TaskCompletionSource<bool>();
+		GD.Print("2: I expect _previousRoutine to be true, I get: " + _previousRoutineFinished);
+		EventHandler onConditionMet = null;
+		onConditionMet = (sender, args) =>
+		{
+			if (!_previousRoutineFinished)
+			{
+				return;
+			}
+			tcs.TrySetResult(true);
+			PreviousRoutineFinishedTask -= onConditionMet;
+		};
+		
+		PreviousRoutineFinishedTask += onConditionMet;
+		
+		if (_previousRoutineFinished)
+		{
+			PreviousRoutineFinishedTask?.Invoke(this, EventArgs.Empty);
+		}
+		
+		return tcs.Task;
 	}
 
 	private async void TimeToTriggerRoutine()
 	{
 		await Task.Yield();
-		
 		await Task.Delay(1);
+
+		if (!_isStartingRoutine)
+		{
+			GD.Print("1: We wait until the previous Routine finishes");
+			await WaitUntilPreviousRoutineFinished();
+			GD.Print("4. Wait for previous routine is over!");
+			
+			// Have fun doing this for a player interaction right here xD
+			// God damn it... I Really, really, really, hate this.
+			// Jokes aside, I just need to get the current active routine and set the variable here to something blocking it.
+			// Exactly like with the waiting for task finished, but this time coupled to the dialogue being finished.
+		}
+		
 		_correctTimeOfDay = true;
+		_previousRoutineFinished = false;
+		//PreviousRoutineFinishTask(); // if this is null, nothing happens
+		GD.Print("5: Finally, routine gets started!");
 		RightTimeOfDayReached?.Invoke(this, EventArgs.Empty);
 	}
 

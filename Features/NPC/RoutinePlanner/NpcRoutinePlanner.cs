@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
@@ -13,6 +14,8 @@ public partial class NpcRoutinePlanner : Node
 	[Export] private Npc _npcExecutingRoutines;
 	[Export] private Array<NpcRoutine> _routines;
 	public INpcTask ActiveTask;
+
+	private bool _startingRoutineSet;
 	private const int ScriptExecutionOrderDelay = 16;
 	private Logger _logger;
 	
@@ -36,16 +39,33 @@ public partial class NpcRoutinePlanner : Node
 	{
 		await Task.Delay(ScriptExecutionOrderDelay);
 		_logger.Debug("Starting to execute the Npc's routines.");
-		EventBus.Instance.NpcDialogueWithPlayerStarted(
-			(AnimatedSprite2D) _npcExecutingRoutines.GetNode("PortraitSprite2D"),
-			_npcExecutingRoutines.GetNpcName()
-			);
+		
+		//EventBus.Instance.NpcDialogueWithPlayerStarted(
+		//	(AnimatedSprite2D) _npcExecutingRoutines.GetNode("PortraitSprite2D"),
+		//	_npcExecutingRoutines.GetNpcName()
+		//);
+
+		var tasks = new List<Task>();
 		
 		foreach (var npcRoutine in _routines)
 		{
-			npcRoutine.InitializeRoutine(this);
-			await npcRoutine.ExecuteAllTasks();
+			if (!_startingRoutineSet)
+			{
+				npcRoutine.InitializeRoutine(this);
+				npcRoutine.MakeThisRoutineTheStartingPoint();
+
+				_startingRoutineSet = true;
+			}
+			else
+			{
+				npcRoutine.InitializeRoutine(this);
+			}
+			
+			//await npcRoutine.ExecuteAllTasks();
+			tasks.Add(npcRoutine.ExecuteAllTasks());
 		}
+
+		await Task.WhenAll(tasks);
 		
 		ExecuteAllRoutines();
 	}

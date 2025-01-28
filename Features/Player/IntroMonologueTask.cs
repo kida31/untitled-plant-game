@@ -8,10 +8,16 @@ namespace untitledplantgame.Player;
 public partial class IntroMonologueTask : Node
 {
 	[Export] private DialogueResourceObject _monologueResourceObject;
+	[Export] private bool _skipDialogue;
+	
 	private const int DelayAmount = 100;
 	
 	public override void _Ready()
 	{
+		if (_skipDialogue)
+		{
+			return;
+		}
 		//WaitForSmoothness();
 		EventBus.Instance.InvokeStartingDialogue(_monologueResourceObject);
 	}

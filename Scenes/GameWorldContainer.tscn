@@ -28,7 +28,7 @@ z_index = 1
 position = Vector2(464, 200)
 
 [node name="Godfrey" parent="." instance=ExtResource("4_r6pis")]
-position = Vector2(704, 356)
+position = Vector2(666, 434)
 
 [node name="Plants" parent="." instance=ExtResource("7_36aju")]
 z_index = 0
