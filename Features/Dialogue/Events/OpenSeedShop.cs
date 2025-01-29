@@ -16,7 +16,6 @@ public partial class OpenSeedShop : DialogueEvent
 
 	public OpenSeedShop()
 	{
-		GD.Print("How often are you called?");
 		SeedShop = new SeedShop();
 		_logger = new Logger("OpenSeedShop");
 		SeedShop.GenerateRandomShopStock();

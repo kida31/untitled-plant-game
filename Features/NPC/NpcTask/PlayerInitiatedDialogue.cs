@@ -56,7 +56,7 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 			EventBus.Instance.InvokeStartingDialogue(_dialogueResourceObjects[_amountOfDialogueLinesUsed]);
 			_amountOfDialogueLinesUsed++;
 			
-			if (_amountOfDialogueLinesUsed == _dialogueResourceObjects.Count)
+			if (_amountOfDialogueLinesUsed >= _dialogueResourceObjects.Count)
 			{
 				_amountOfDialogueLinesUsed = 0;
 			}

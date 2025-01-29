@@ -55,7 +55,6 @@ public partial class MovementTask :  Area2D, INpcTask
 
 	public void InterruptCurrentTask()
 	{
-		GD.Print("Interrupt: " + _npcExecutingThisTasks.Velocity);
 		if (_npcExecutingThisTasks.Velocity != Vector2.Zero)
 		{
 			_lastValidVelocity = _npcExecutingThisTasks.Velocity;
