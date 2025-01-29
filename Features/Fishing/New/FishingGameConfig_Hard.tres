@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GameConfig" load_steps=2 format=3 uid="uid://13h6j7ov146l"]
+
+[ext_resource type="Script" path="res://Features/Fishing/New/GameConfig.cs" id="1_n0ty2"]
+
+[resource]
+script = ExtResource("1_n0ty2")
+FishSpeed = 100.0
+PullSpeed = 30.0
+HookWidth = 50.0
+HookSpeed = 300.0
+HookSpeedAgainstFish = 100.0
+ProgressDecayPerSecond = 40.0
+ProgressPullingPerSecond = 30.0

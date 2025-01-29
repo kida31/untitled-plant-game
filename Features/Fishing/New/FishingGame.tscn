@@ -1,26 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://xct3vega3gwo"]
+[gd_scene load_steps=6 format=3 uid="uid://xct3vega3gwo"]
 
 [ext_resource type="Script" path="res://Features/Fishing/New/FishingGame.cs" id="1_j7t86"]
 [ext_resource type="PackedScene" uid="uid://dt1qh1fqa5tl7" path="res://Features/Fishing/New/FishingPond.tscn" id="1_ldtln"]
+[ext_resource type="Resource" uid="uid://13h6j7ov146l" path="res://Features/Fishing/New/FishingGameConfig_Hard.tres" id="2_01o3a"]
 [ext_resource type="Script" path="res://Features/Fishing/New/FishingRod.cs" id="2_er4ks"]
-[ext_resource type="Script" path="res://Features/Fishing/New/GameConfig.cs" id="2_wlxbk"]
 
-[sub_resource type="Resource" id="Resource_fxypx"]
-script = ExtResource("2_wlxbk")
-FishSpeed = 30.0
-PullSpeed = 5.0
-HookWidth = 50.0
-HookSpeed = 300.0
-HookSpeedAgainstFish = 50.0
-ProgressDecayPerSecond = 10.0
-ProgressPullingPerSecond = 30.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgl32"]
-size = Vector2(80, 30)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqfo8"]
+radius = 40.0
 
 [node name="FishingGame" type="Node2D" node_paths=PackedStringArray("_fishingPond", "_progressBar", "_fishingRod")]
 script = ExtResource("1_j7t86")
-_gameConfig = SubResource("Resource_fxypx")
+_gameConfig = ExtResource("2_01o3a")
 _fishingPond = NodePath("FishingPond")
 _progressBar = NodePath("FishingPond/ProgressBar")
 _fishingRod = NodePath("FishingRod")
@@ -41,10 +31,11 @@ offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FishingRod" type="Area2D" parent="." node_paths=PackedStringArray("_debugLabel")]
+[node name="FishingRod" type="Area2D" parent="." node_paths=PackedStringArray("_debugLabel", "_collisionShape")]
 position = Vector2(166, 97)
 script = ExtResource("2_er4ks")
 _debugLabel = NodePath("Label")
+_collisionShape = NodePath("CollisionShape2D")
 
 [node name="ColorRect" type="ColorRect" parent="FishingRod"]
 anchors_preset = 8
@@ -61,7 +52,7 @@ grow_vertical = 2
 color = Color(1, 0, 0, 0.784314)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishingRod"]
-shape = SubResource("RectangleShape2D_hgl32")
+shape = SubResource("CircleShape2D_gqfo8")
 
 [node name="Label" type="Label" parent="FishingRod"]
 anchors_preset = 8

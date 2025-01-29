@@ -20,7 +20,7 @@ public partial class FishingGame : Node
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (_fish != null && _fishingRod != null && _fishingRod.ActiveDirection.X * _fish.ActiveDirection.X < 0)
+		if (_fishingRod?.Fish != null && _fishingRod.ActiveDirection.X * _fish.ActiveDirection.X < 0)
 		{
 			_progress += (float)delta * _gameConfig.ProgressPullingPerSecond;
 		}

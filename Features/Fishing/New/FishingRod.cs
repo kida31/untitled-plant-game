@@ -7,13 +7,15 @@ namespace untitledplantgame.Fishing.New;
 public partial class FishingRod : Area2D
 {
     [Export] private Label _debugLabel;
+	[Export] private CollisionShape2D _collisionShape;
 
-    public float Width;
     public float Speed;
     public float SpeedAgainstFish;
 
     private Fish _attachedFish;
+	private CircleShape2D _circleShape;
 
+	public Fish Fish => _attachedFish;
     public Vector2 ActiveDirection { get; private set; } = Vector2.Zero;
     public Vector2 Velocity { get; private set; } = Vector2.Zero;
 
@@ -21,11 +23,16 @@ public partial class FishingRod : Area2D
     {
         AreaEntered += (area) => OnAreaEntered(area);
         AreaExited += (area) => OnAreaExited(area);
+		var _circleShape = _collisionShape.Shape as CircleShape2D;
+		if (_circleShape == null) {
+			GD.PushError("Shape should be a circle");
+			QueueFree();
+		}
     }
 
 	public void Initialize(float width, float speed, float speedOpposite)
 	{
-		Width = width;
+		_circleShape.Radius = width / 2f;
 		Speed = speed;
 		SpeedAgainstFish = speedOpposite;
 	}

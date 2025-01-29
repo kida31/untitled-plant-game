@@ -7,11 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xl4je"]
 size = Vector2(252, 32)
 
-[node name="FishingPond" type="Area2D" node_paths=PackedStringArray("_spawnAreaA", "_spawnAreaB")]
+[node name="FishingPond" type="Area2D" node_paths=PackedStringArray("_spawnPoint")]
 script = ExtResource("1_s88dj")
 _fishPrefab = ExtResource("2_5o2mq")
-_spawnAreaA = NodePath("Marker2D")
-_spawnAreaB = NodePath("Marker2D2")
+_spawnPoint = NodePath("SpawnPoint")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 offset_left = -130.0
@@ -27,8 +26,5 @@ patch_margin_bottom = 12
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xl4je")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-60, 0)
-
-[node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(60, 0)
