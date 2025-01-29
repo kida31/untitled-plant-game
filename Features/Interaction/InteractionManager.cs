@@ -3,8 +3,6 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.ExtensionMethods;
 using untitledplantgame.Common.GameStates;
-using untitledplantgame.Common.Inputs;
-using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.GUI.Interactions;
 
 namespace untitledplantgame.Interaction;
@@ -18,7 +16,7 @@ namespace untitledplantgame.Interaction;
 /// </summary>
 public partial class InteractionManager : Node2D
 {
-	private const float InteractionCooldown = 2.5f;
+	private const float InteractionCooldown = 1.0f;
 	public static InteractionManager Instance { get; private set; }
 
 	[Export] private InteractHint _label;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cr2712p8tviur"]
+[gd_scene load_steps=39 format=3 uid="uid://cr2712p8tviur"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_ljkvf"]
 [ext_resource type="Texture2D" uid="uid://6vwbt72gbl2k" path="res://Assets/Characters/Godfrey/Godfrey_idle-Sheet.png" id="2_ujoa5"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://lufeqnjeabjx" path="res://Features/NPC/NpcTask/MovementTaskTarget.tscn" id="5_wrpdt"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="6_8afnb"]
 [ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/TutorialDialogue.tres" id="7_v4eb2"]
-[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/Tutorial/TutorialDialogue2ndPart.tres" id="8_duca2"]
 [ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/Tutorial/HarvestingTutorialDialogue.tres" id="9_5eoqm"]
 [ext_resource type="Resource" uid="uid://dopykccwoa5os" path="res://Resources/Dialogue/Tutorial/VendingMachineTutorialDialogue.tres" id="10_l6vhi"]
 [ext_resource type="Resource" uid="uid://yg4mwgstm60u" path="res://Resources/Dialogue/Tutorial/SeedBoyTutorialDialogue.tres" id="11_owjbx"]
@@ -267,4 +266,4 @@ position = Vector2(593, 429)
 
 [node name="PlayerInitiatedDialogue" type="Node" parent="GodfreyRandomWalk" index="3"]
 script = ExtResource("6_8afnb")
-_dialogueResourceObject = Array[Object]([ExtResource("7_v4eb2"), ExtResource("8_duca2"), ExtResource("9_5eoqm"), ExtResource("10_l6vhi"), ExtResource("11_owjbx"), ExtResource("12_tpypq")])
+_dialogueResourceObject = Array[Object]([ExtResource("7_v4eb2"), ExtResource("9_5eoqm"), ExtResource("10_l6vhi"), ExtResource("11_owjbx"), ExtResource("12_tpypq")])
