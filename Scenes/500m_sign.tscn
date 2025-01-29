@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1nilobllr1kv"]
+[gd_scene load_steps=10 format=3 uid="uid://c1nilobllr1kv"]
 
 [ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_qxixi"]
 [ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_kfvnw"]
@@ -7,12 +7,14 @@
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_fqbd8"]
 [ext_resource type="Resource" uid="uid://x6k03jyr10uv" path="res://Resources/Dialogue/Pier/500m_left.tres" id="6_avjds"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ifxfa"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvi7q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlqdi"]
 radius = 34.0147
 
-[node name="500mSign" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction", "_routinePlanner")]
+[node name="500mSign" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction", "_routinePlanner", "_portraitSprite2D")]
 position = Vector2(112, -401)
 collision_layer = 2
 collision_mask = 2
@@ -20,6 +22,10 @@ script = ExtResource("1_qxixi")
 _name = "500m Sign"
 _npcPlayerInteraction = NodePath("InteractionNode")
 _routinePlanner = NodePath("RoutinePlanner")
+_portraitSprite2D = NodePath("PortraitSprite2D")
+
+[node name="PortraitSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ifxfa")
 
 [node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fvi7q")

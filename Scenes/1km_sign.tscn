@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbel30xbfmcyj"]
+[gd_scene load_steps=10 format=3 uid="uid://bbel30xbfmcyj"]
 
 [ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_3jmxx"]
 [ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_0xlsk"]
@@ -7,12 +7,14 @@
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_ov13c"]
 [ext_resource type="Resource" uid="uid://cx6vhoyjiqhwc" path="res://Resources/Dialogue/Pier/1km_left.tres" id="5_xu23k"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbu1b"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvi7q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlqdi"]
 radius = 34.0147
 
-[node name="1kmSign" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction", "_routinePlanner")]
+[node name="1kmSign" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction", "_routinePlanner", "_portraitSprite2D")]
 position = Vector2(112, -401)
 collision_layer = 2
 collision_mask = 2
@@ -20,6 +22,10 @@ script = ExtResource("1_3jmxx")
 _name = "1km Sign"
 _npcPlayerInteraction = NodePath("InteractionNode")
 _routinePlanner = NodePath("RoutinePlanner")
+_portraitSprite2D = NodePath("PortraitSprite2D")
+
+[node name="PortraitSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vbu1b")
 
 [node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fvi7q")
