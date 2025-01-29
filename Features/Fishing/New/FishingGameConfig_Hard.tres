@@ -6,7 +6,7 @@
 script = ExtResource("1_n0ty2")
 FishSpeed = 100.0
 PullSpeed = 30.0
-HookWidth = 50.0
+HookWidth = 80.0
 HookSpeed = 300.0
 HookSpeedAgainstFish = 100.0
 ProgressDecayPerSecond = 40.0

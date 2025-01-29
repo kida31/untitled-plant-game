@@ -23,7 +23,7 @@ public partial class FishingRod : Area2D
     {
         AreaEntered += (area) => OnAreaEntered(area);
         AreaExited += (area) => OnAreaExited(area);
-		var _circleShape = _collisionShape.Shape as CircleShape2D;
+		_circleShape = _collisionShape.Shape as CircleShape2D;
 		if (_circleShape == null) {
 			GD.PushError("Shape should be a circle");
 			QueueFree();
