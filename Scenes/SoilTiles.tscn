@@ -75,20 +75,20 @@ y_sort_enabled = true
 script = ExtResource("2_wxa00")
 
 [node name="ChuSeedSoil" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(465, 337)
+position = Vector2(470, 344)
 
 [node name="Tutorial_Chuberry" parent="ChuSeedSoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
 Tile = NodePath("..")
 
 [node name="ChuGrownSoil" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(432, 337)
+position = Vector2(427, 344)
 
 [node name="PlantPrefab" parent="ChuGrownSoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
 Stage = 6
 Tile = NodePath("..")
 
 [node name="LicarySoil" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(625, 207)
+position = Vector2(630, 214)
 
 [node name="PlantPrefab" parent="LicarySoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
 PlantName = "Licary"
@@ -96,7 +96,7 @@ Stage = 3
 Tile = NodePath("..")
 
 [node name="DrupoSoil" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(780, 303)
+position = Vector2(776, 310)
 
 [node name="PlantPrefab" parent="DrupoSoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
 PlantName = "Drupoleaum"
@@ -104,34 +104,34 @@ Stage = 4
 Tile = NodePath("..")
 
 [node name="Soil10" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(752, 528)
+position = Vector2(753, 535)
 
 [node name="Soil11" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(752, 496)
+position = Vector2(753, 503)
 
 [node name="Soil12" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(817, 401)
+position = Vector2(822, 406)
 
 [node name="Soil13" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(779, 400)
+position = Vector2(776, 406)
 
 [node name="Soil14" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(815, 305)
+position = Vector2(821, 310)
 
 [node name="Soil9" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(592, 207)
+position = Vector2(583, 214)
 
 [node name="Soil3" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(560, 400)
+position = Vector2(561, 407)
 
 [node name="Soil5" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(464, 526)
+position = Vector2(465, 533)
 
 [node name="Soil6" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(464, 562)
+position = Vector2(465, 569)
 
 [node name="Soil4" parent="." instance=ExtResource("3_y13yj")]
-position = Vector2(560, 435)
+position = Vector2(561, 442)
 
 [node name="Planters" type="TileMapLayer" parent="."]
 y_sort_enabled = true
