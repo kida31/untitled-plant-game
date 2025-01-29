@@ -3,7 +3,8 @@ using Godot;
 using System;
 using untitledplantgame.Common.Inputs.GameActions;
 
-namespace untitledplantgame.Fishing.New;
+namespace untitledplantgame.Fishing.Classic;
+
 public partial class FishingRod : Area2D
 {
 	[Export] private Label _debugLabel;

@@ -1,6 +1,7 @@
 ﻿using Godot;
 
-namespace untitledplantgame.Fishing.New;
+namespace untitledplantgame.Fishing.Physics;
+
 
 [GlobalClass]
 public partial class GameConfig : Resource

@@ -2,7 +2,7 @@ using System;
 using Godot;
 using untitledplantgame.Common;
 
-namespace untitledplantgame.Fishing.New;
+namespace untitledplantgame.Fishing.Physics;
 
 public partial class FishingGame : Node
 {

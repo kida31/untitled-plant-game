@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GameConfig" load_steps=2 format=3 uid="uid://cjmq3ytxqm0fx"]
 
-[ext_resource type="Script" path="res://Features/Fishing/New/GameConfig.cs" id="1_hp1s1"]
+[ext_resource type="Script" path="res://Features/Fishing/Classic/GameConfig.cs" id="1_hp1s1"]
 
 [resource]
 script = ExtResource("1_hp1s1")

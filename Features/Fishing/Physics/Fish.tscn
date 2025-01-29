@@ -1,14 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbslx44gdrp6b"]
+[gd_scene load_steps=4 format=3 uid="uid://b2mmtdkswvfxk"]
 
-[ext_resource type="Script" path="res://Features/Fishing/New/Fish.cs" id="1_ybo7r"]
+[ext_resource type="Script" path="res://Features/Fishing/Physics/Fish.cs" id="1_cbbac"]
 [ext_resource type="Texture2D" uid="uid://cw4kud6jqxsdq" path="res://Assets/Items/FishingMyFishies/Fish1.png" id="2_0ka78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spfu4"]
 size = Vector2(26, 12)
 
-[node name="Fish" type="Area2D" node_paths=PackedStringArray("_sprite")]
-script = ExtResource("1_ybo7r")
-_sprite = NodePath("Sprite2D")
+[node name="Fish" type="Area2D"]
+script = ExtResource("1_cbbac")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0ka78")

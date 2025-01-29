@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace untitledplantgame.Fishing.New;
+namespace untitledplantgame.Fishing.Classic;
 
 public partial class Fish : Area2D
 {

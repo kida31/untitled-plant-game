@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://xct3vega3gwo"]
 
-[ext_resource type="Script" path="res://Features/Fishing/New/FishingGame.cs" id="1_j7t86"]
-[ext_resource type="PackedScene" uid="uid://dt1qh1fqa5tl7" path="res://Features/Fishing/New/FishingPond.tscn" id="1_ldtln"]
-[ext_resource type="Script" path="res://Features/Fishing/New/FishingRod.cs" id="2_er4ks"]
-[ext_resource type="Resource" uid="uid://cjmq3ytxqm0fx" path="res://Features/Fishing/New/FishingGameConfig_Easy.tres" id="2_vc5a8"]
-[ext_resource type="PackedScene" uid="uid://bbslx44gdrp6b" path="res://Features/Fishing/New/Fish.tscn" id="3_iydf7"]
+[ext_resource type="Script" path="res://Features/Fishing/Classic/FishingGame.cs" id="1_j7t86"]
+[ext_resource type="PackedScene" uid="uid://dt1qh1fqa5tl7" path="res://Features/Fishing/Classic/FishingPond.tscn" id="1_ldtln"]
+[ext_resource type="Script" path="res://Features/Fishing/Classic/FishingRod.cs" id="2_er4ks"]
+[ext_resource type="Resource" uid="uid://cjmq3ytxqm0fx" path="res://Features/Fishing/Classic/FishingGameConfig_Easy.tres" id="2_vc5a8"]
+[ext_resource type="PackedScene" uid="uid://bbslx44gdrp6b" path="res://Features/Fishing/Classic/Fish.tscn" id="3_iydf7"]
 [ext_resource type="Texture2D" uid="uid://ub55y2eyhgq5" path="res://Assets/Items/Duck.png" id="5_7rsmt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ugot"]
