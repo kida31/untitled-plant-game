@@ -1,16 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt1qh1fqa5tl7"]
+[gd_scene load_steps=4 format=3 uid="uid://dt1qh1fqa5tl7"]
 
 [ext_resource type="Script" path="res://Features/Fishing/New/FishingPond.cs" id="1_s88dj"]
 [ext_resource type="Texture2D" uid="uid://bn4fpfuaq40v7" path="res://Assets/UI/HUD/round_container_currency_hud.png" id="2_1a74j"]
-[ext_resource type="PackedScene" uid="uid://bbslx44gdrp6b" path="res://Features/Fishing/New/Fish.tscn" id="2_5o2mq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xl4je"]
 size = Vector2(252, 32)
 
-[node name="FishingPond" type="Area2D" node_paths=PackedStringArray("_spawnPoint")]
+[node name="FishingPond" type="Area2D"]
 script = ExtResource("1_s88dj")
-_fishPrefab = ExtResource("2_5o2mq")
-_spawnPoint = NodePath("SpawnPoint")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 offset_left = -130.0
@@ -25,6 +22,3 @@ patch_margin_bottom = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xl4je")
-
-[node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(-60, 0)

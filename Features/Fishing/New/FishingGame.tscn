@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://xct3vega3gwo"]
+[gd_scene load_steps=9 format=3 uid="uid://xct3vega3gwo"]
 
 [ext_resource type="Script" path="res://Features/Fishing/New/FishingGame.cs" id="1_j7t86"]
 [ext_resource type="PackedScene" uid="uid://dt1qh1fqa5tl7" path="res://Features/Fishing/New/FishingPond.tscn" id="1_ldtln"]
 [ext_resource type="Resource" uid="uid://13h6j7ov146l" path="res://Features/Fishing/New/FishingGameConfig_Hard.tres" id="2_01o3a"]
 [ext_resource type="Script" path="res://Features/Fishing/New/FishingRod.cs" id="2_er4ks"]
+[ext_resource type="PackedScene" uid="uid://bbslx44gdrp6b" path="res://Features/Fishing/New/Fish.tscn" id="3_iydf7"]
 [ext_resource type="Texture2D" uid="uid://ub55y2eyhgq5" path="res://Assets/Items/Duck.png" id="5_7rsmt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqfo8"]
@@ -16,31 +17,32 @@ corner_radius_top_right = 256
 corner_radius_bottom_right = 256
 corner_radius_bottom_left = 256
 
-[node name="FishingGame" type="Node2D" node_paths=PackedStringArray("_fishingPond", "_progressBar", "_fishingRod")]
+[node name="FishingGame" type="Node2D" node_paths=PackedStringArray("_fishingPond", "_progressBar", "_fishingRod", "_spawnPoint")]
+position = Vector2(262, 168)
 script = ExtResource("1_j7t86")
 _gameConfig = ExtResource("2_01o3a")
 _fishingPond = NodePath("FishingPond")
-_progressBar = NodePath("FishingPond/ProgressBar")
+_progressBar = NodePath("ProgressBar")
 _fishingRod = NodePath("FishingRod")
+_fishPrefab = ExtResource("3_iydf7")
+_spawnPoint = NodePath("SpawnPoint")
 
-[node name="FishingPond" parent="." instance=ExtResource("1_ldtln")]
-position = Vector2(166, 97)
-
-[node name="ProgressBar" type="ProgressBar" parent="FishingPond"]
+[node name="ProgressBar" type="ProgressBar" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -50.0
+offset_top = -48.0
 offset_right = 100.0
-offset_bottom = -23.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="FishingPond" parent="." instance=ExtResource("1_ldtln")]
+
 [node name="FishingRod" type="Area2D" parent="." node_paths=PackedStringArray("_debugLabel", "_collisionShape", "_areaSprite")]
-position = Vector2(166, 97)
 script = ExtResource("2_er4ks")
 _debugLabel = NodePath("Label")
 _collisionShape = NodePath("CollisionShape2D")
@@ -82,3 +84,5 @@ grow_vertical = 2
 text = "Abc"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
