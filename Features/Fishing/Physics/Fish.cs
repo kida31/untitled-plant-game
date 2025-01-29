@@ -1,78 +1,29 @@
-﻿using System;
-using Godot;
+﻿using Godot;
 
 namespace untitledplantgame.Fishing.Physics;
 
-public partial class Fish : Area2D
+public partial class Fish : CharacterBody2D
 {
-	[Export] private Sprite2D _sprite;
-	private FishingRod _rod;
+	private const float VelocityThreshold = 0.5f;
+	// [Export] private Sprite2D _sprite;
+
 
 	public float Speed { get; private set; }
-	public float SpeedOppositeHook { get; private set; }
-
 	public Vector2 ActiveDirection { get; private set; }
 
-	[Export]
-	public Vector2 Velocity { get; private set; }
 
-	public override void _Ready()
-	{
-		AreaEntered += OnAreaEntered;
-		AreaExited += OnAreaExited;
-	}
-
-	public void Initialize(float speed, float speedOpposite, Vector2 direction)
+	public void Initialize(float speed, Vector2 direction)
 	{
 		Speed = speed;
-		SpeedOppositeHook = speedOpposite;
 		ActiveDirection = direction.Normalized();
-	}
-
-	private void OnAreaEntered(Area2D area)
-	{
-		if (area is FishingRod rod)
-		{
-			_rod ??= rod;
-		}
-	}
-	private void OnAreaExited(Area2D area)
-	{
-		if (area is FishingRod rod && _rod == rod)
-		{
-			_rod = null;
-		}
 	}
 
 	public override void _Process(double delta)
 	{
-		_sprite.FlipH = ActiveDirection.X > 0;
-
-		if (_rod == null || _rod.Velocity == Vector2.Zero)
+		if (Velocity.Length() < VelocityThreshold)
 		{
-			Velocity = ActiveDirection * Speed;
-			return;
+			ActiveDirection *= -1;
+			Velocity += ActiveDirection * Speed;
 		}
-		else
-		{
-			// _rod.Velocity > 0
-			if (_rod.ActiveDirection.X * ActiveDirection.X >= 0)
-			{
-				// Same direction
-				Velocity = ActiveDirection * Speed;
-				return;
-			}
-			else
-			{
-				// Opposite direction
-				Velocity = _rod.ActiveDirection.Normalized() * SpeedOppositeHook;
-				return;
-			}
-		}
-	}
-
-	public override void _PhysicsProcess(double delta)
-	{
-		Position += (float)delta * Velocity;
 	}
 }

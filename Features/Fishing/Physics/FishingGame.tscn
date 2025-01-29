@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Features/Fishing/Physics/FishingGame.cs" id="1_1sump"]
 [ext_resource type="PackedScene" uid="uid://dt1qh1fqa5tl7" path="res://Features/Fishing/Classic/FishingPond.tscn" id="1_ldtln"]
-[ext_resource type="Script" path="res://Features/Fishing/Physics/FishingRod.cs" id="3_puv81"]
+[ext_resource type="Script" path="res://Features/Fishing/Physics/Bobber.cs" id="3_ajcwg"]
 [ext_resource type="Texture2D" uid="uid://ub55y2eyhgq5" path="res://Assets/Items/Duck.png" id="5_7rsmt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ugot"]
@@ -58,17 +58,22 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3ugot")
 
 [node name="World" type="Node2D" parent="FishingPond/ClippingMask"]
 
-[node name="FishingRod" type="Area2D" parent="FishingPond/ClippingMask/World"]
+[node name="Bobber" type="Area2D" parent="FishingPond/ClippingMask/World" node_paths=PackedStringArray("_debugLabel", "_collisionShape", "_areaSprite")]
 position = Vector2(128, 20)
-script = ExtResource("3_puv81")
+gravity_space_override = 3
+gravity_point = true
+script = ExtResource("3_ajcwg")
+_debugLabel = NodePath("Label")
+_collisionShape = NodePath("CollisionShape2D")
+_areaSprite = NodePath("Bobber/EffectArea")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingPond/ClippingMask/World/FishingRod"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingPond/ClippingMask/World/Bobber"]
 shape = SubResource("CircleShape2D_gqfo8")
 
-[node name="Bobber" type="Sprite2D" parent="FishingPond/ClippingMask/World/FishingRod"]
+[node name="Bobber" type="Sprite2D" parent="FishingPond/ClippingMask/World/Bobber"]
 texture = ExtResource("5_7rsmt")
 
-[node name="EffectArea" type="Panel" parent="FishingPond/ClippingMask/World/FishingRod/Bobber"]
+[node name="EffectArea" type="Panel" parent="FishingPond/ClippingMask/World/Bobber/Bobber"]
 show_behind_parent = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -83,7 +88,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_be3dv")
 
-[node name="Label" type="Label" parent="FishingPond/ClippingMask/World/FishingRod"]
+[node name="Label" type="Label" parent="FishingPond/ClippingMask/World/Bobber"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

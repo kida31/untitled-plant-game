@@ -5,7 +5,7 @@ using untitledplantgame.Common.Inputs.GameActions;
 
 namespace untitledplantgame.Fishing.Physics;
 
-public partial class FishingBobber : Area2D
+public partial class Bobber : Area2D
 {
 	[Export] private Label _debugLabel;
 	[Export] private CollisionShape2D _collisionShape;
@@ -23,8 +23,8 @@ public partial class FishingBobber : Area2D
 
 	public override void _Ready()
 	{
-		AreaEntered += (area) => OnAreaEntered(area);
-		AreaExited += (area) => OnAreaExited(area);
+		// AreaEntered += (area) => OnAreaEntered(area);
+		// AreaExited += (area) => OnAreaExited(area);
 		_circleShape = _collisionShape.Shape as CircleShape2D;
 		if (_circleShape == null)
 		{
@@ -40,24 +40,6 @@ public partial class FishingBobber : Area2D
 		_areaSprite.Position = -_areaSprite.Size / 2f;
 		Speed = speed;
 		SpeedAgainstFish = speedOpposite;
-	}
-
-	private void OnAreaExited(Area2D area)
-	{
-		// Detach fish
-		if (area is Fish fish && _attachedFish == fish)
-		{
-			_attachedFish = null;
-		}
-	}
-
-	private void OnAreaEntered(Area2D area)
-	{
-		// Attach fish
-		if (area is Fish fish)
-		{
-			_attachedFish ??= fish;
-		}
 	}
 
 	public override void _Process(double delta)

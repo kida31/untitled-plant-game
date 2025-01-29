@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spfu4"]
 size = Vector2(26, 12)
 
-[node name="Fish" type="Area2D"]
+[node name="Fish" type="RigidBody2D" node_paths=PackedStringArray("_sprite")]
 script = ExtResource("1_cbbac")
+_sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0ka78")

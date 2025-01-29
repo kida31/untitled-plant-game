@@ -11,7 +11,7 @@ public partial class FishingGame : Node
 	[Export] private GameConfig _gameConfig;
 	[Export] private Area2D _fishingPond;
 	[Export] private ProgressBar _progressBar;
-	[Export] private FishingRod _fishingRod;
+	[Export] private Bobber _fishingRod;
 	[Export] private PackedScene _fishPrefab;
 	[Export] private Marker2D _spawnPoint;
 	[Export] private Node2D _gameWorld;
@@ -24,7 +24,7 @@ public partial class FishingGame : Node
 	{
 		_logger = new(this);
 		_fishingRod.Initialize(_gameConfig.HookWidth, _gameConfig.HookSpeed, _gameConfig.HookSpeedAgainstFish);
-		_fishingPond.AreaExited += OnFishingPondExited;
+		// _fishingPond.AreaExited += OnFishingPondExited;
 	}
 
 	public override void _Process(double delta)
@@ -73,7 +73,7 @@ public partial class FishingGame : Node
 		_logger.Info($"Spawning a fish speed={_gameConfig.FishSpeed} pull={_gameConfig.PullSpeed} direction={direction}");
 
 		var fish = _fishPrefab.Instantiate<Fish>();
-		fish.Initialize(_gameConfig.FishSpeed, _gameConfig.PullSpeed, direction);
+		// fish.Initialize(_gameConfig.FishSpeed, _gameConfig.PullSpeed, direction);
 
 		_gameWorld.AddChild(fish);
 		fish.GlobalPosition = _spawnPoint.GlobalPosition;
@@ -82,7 +82,7 @@ public partial class FishingGame : Node
 
 	private void OnFishingPondExited(Area2D area)
 	{
-		if (area != _fish) return;
+		// if (area != _fish) return;
 
 		_fish.QueueFree();
 		_fish = null;
