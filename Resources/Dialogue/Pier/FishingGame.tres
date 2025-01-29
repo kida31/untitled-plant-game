@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=11 format=3 uid="uid://b050jb4x4v7cf"]
+
+[ext_resource type="Texture2D" uid="uid://cw4kud6jqxsdq" path="res://Assets/Items/FishingMyFishies/Fish1.png" id="1_4kipg"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_0jkdn"]
+[ext_resource type="Script" path="res://Features/Dialogue/Events/OpenFishingGame.cs" id="3_vsx1a"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_ug5y2"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="5_nnvm5"]
+
+[sub_resource type="Resource" id="Resource_3aodr"]
+script = ExtResource("2_0jkdn")
+speakerName = "Fishing Spot"
+DialogueExpression = ExtResource("1_4kipg")
+dialogueText = "Would you like to fish?"
+
+[sub_resource type="Resource" id="Resource_47cri"]
+script = ExtResource("3_vsx1a")
+speakerName = ""
+dialogueText = ""
+
+[sub_resource type="Resource" id="Resource_i8c4g"]
+script = ExtResource("4_ug5y2")
+_dialogueId = ""
+_dialogueText = Array[Object]([SubResource("Resource_47cri")])
+_responses = null
+
+[sub_resource type="Resource" id="Resource_4w232"]
+script = ExtResource("5_nnvm5")
+_responseButton = "Yes"
+_responseDialogue = SubResource("Resource_i8c4g")
+
+[sub_resource type="Resource" id="Resource_4p4m2"]
+script = ExtResource("5_nnvm5")
+_responseButton = "No"
+
+[resource]
+script = ExtResource("4_ug5y2")
+_dialogueId = "fish"
+_dialogueText = Array[Object]([SubResource("Resource_3aodr")])
+_responses = Array[Object]([SubResource("Resource_4w232"), SubResource("Resource_4p4m2")])

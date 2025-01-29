@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://c1nilobllr1kv" path="res://Scenes/500m_sign.tscn" id="11_a0mj6"]
 [ext_resource type="PackedScene" uid="uid://dsnhxqc3s81hr" path="res://Features/NPC/WalkableAreaDialogue.tscn" id="11_f1uju"]
 [ext_resource type="Resource" uid="uid://d33fmj25m3jt5" path="res://Resources/Dialogue/Pier/enteringTawas.tres" id="12_u20bu"]
-[ext_resource type="PackedScene" uid="uid://biigphr1tnji3" path="res://Features/Fishing/fishing_spot.tscn" id="15_j4fut"]
-[ext_resource type="PackedScene" uid="uid://dlh6j0ry4yfo0" path="res://Features/NPC/Prefabs/SakaNa.tscn" id="16_4kk2y"]
-[ext_resource type="PackedScene" uid="uid://de18gftjwro86" path="res://Features/NPC/Prefabs/tuNa.tscn" id="17_w4bow"]
+[ext_resource type="PackedScene" uid="uid://dyb8oovbu1kjq" path="res://Scenes/fishing_spot.tscn" id="15_y8o50"]
+[ext_resource type="PackedScene" uid="uid://dxdqygleiofht" path="res://Scenes/SakaNa.tscn" id="16_4cksn"]
+[ext_resource type="PackedScene" uid="uid://pwe2l5301kmv" path="res://Scenes/TuNa.tscn" id="17_bf1kf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f71b1"]
 resource_local_to_scene = true
@@ -478,13 +478,13 @@ position = Vector2(-222, 576)
 scale = Vector2(12.0625, 2.6875)
 polygon = PackedVector2Array(-0.192228, 0.183731, -0.192228, 237.951, 44.8233, 237.579, 44.9062, 0.183731, 40.9534, 0, 40.9534, 5.95349, 43.3575, 5.95349, 43.4404, 229.954, 1.49223, 229.954, 1.49223, 5.95349, 25.0363, 6.32559, 25.0363, 0)
 
-[node name="FishingSpot" parent="." instance=ExtResource("15_j4fut")]
-position = Vector2(82, 314)
+[node name="FishingSpot" parent="." instance=ExtResource("15_y8o50")]
+position = Vector2(74, 324)
 
-[node name="SakaNa" parent="." instance=ExtResource("16_4kk2y")]
-position = Vector2(106, 216)
+[node name="SakaNa" parent="." instance=ExtResource("16_4cksn")]
+position = Vector2(108, 222)
 
-[node name="TuNa" parent="." instance=ExtResource("17_w4bow")]
-position = Vector2(101, 413)
+[node name="TuNa" parent="." instance=ExtResource("17_bf1kf")]
+position = Vector2(100, 381)
 
 [editable path="WaterScene"]
