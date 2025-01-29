@@ -803,7 +803,7 @@ script = ExtResource("1_uo15o")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAANAAoAAgAEAAAAAAAOAAoAAwAGAAAAAAA=")
 tile_set = SubResource("TileSet_sor4m")
-y_sort_origin = 32
+y_sort_origin = 33
 script = ExtResource("17_qgpau")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlantSprites"]
