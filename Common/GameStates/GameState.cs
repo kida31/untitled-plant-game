@@ -18,6 +18,7 @@ public sealed class GameState
 	public static readonly GameState Shop = new("shop");
 	public static readonly GameState VendingMachine = new("VendingMachine");
 	public static readonly GameState Crafting = new("crafting");
+	public static readonly GameState Fishing = new("fishing");
 
 	public readonly string Name;
 
