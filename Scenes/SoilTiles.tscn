@@ -124,7 +124,6 @@ position = Vector2(464, 562)
 position = Vector2(560, 435)
 
 [node name="Planters" type="TileMapLayer" parent="."]
-z_index = -1
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAARAA4ABwAAAAAAAAANAAsABwAEAAMAAAAOABIABwAAAAQAAAAZAAoABwAEAAAAAAATAAcABwAEAAAAAAAZAA0ABwAEAAAAAAAXABEABwAAAAQAAAA=")
 tile_set = SubResource("TileSet_yrab1")
