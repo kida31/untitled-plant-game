@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://ciy3cfmtd600v"]
+[gd_scene load_steps=52 format=4 uid="uid://ciy3cfmtd600v"]
 
 [ext_resource type="Script" path="res://Features/Plants/Soil/SoilMap.cs" id="1_uo15o"]
 [ext_resource type="Script" path="res://Features/Audio/BgmArea2D.cs" id="1_wrnkw"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://d1i5xtiv6s2iw" path="res://Assets/Overworld/Garden/Kante.png" id="11_4i7wi"]
 [ext_resource type="Texture2D" uid="uid://cc08shc1btj02" path="res://Assets/Tilesets/Plant/chubery_sheet.png" id="11_r31rj"]
 [ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/Tilesets/Plant/DeadPlant.png" id="12_h45qb"]
+[ext_resource type="Texture2D" uid="uid://ik5booquxewf" path="res://Assets/Overworld/House/ladderToHouse.png" id="13_7b7fc"]
 [ext_resource type="Texture2D" uid="uid://dgr1wagj37jdb" path="res://Assets/Tilesets/Plant/drupoleaum_sheet.png" id="13_agfdp"]
 [ext_resource type="Texture2D" uid="uid://sn1nsmppmr7p" path="res://Assets/Overworld/Garden/Fence.png" id="13_hgn1h"]
 [ext_resource type="Texture2D" uid="uid://dxjrcllnnc3s2" path="res://Assets/Tilesets/Plant/Licary_SpriteSheet.png" id="14_eauha"]
@@ -452,6 +453,13 @@ physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_pxxg0")
 sources/1 = SubResource("TileSetAtlasSource_tqwi8")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_63x71"]
+texture = ExtResource("13_7b7fc")
+texture_region_size = Vector2i(32, 32)
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 5)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3lrnb"]
 texture = ExtResource("8_khsoa")
 texture_region_size = Vector2i(32, 32)
@@ -556,6 +564,7 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_3lrnb")
 sources/3 = SubResource("TileSetAtlasSource_tf5gg")
+sources/0 = SubResource("TileSetAtlasSource_63x71")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw5e7"]
 texture = ExtResource("16_mugcb")
@@ -683,6 +692,7 @@ sources/1 = SubResource("TileSetAtlasSource_qplcf")
 y_sort_enabled = true
 
 [node name="BgmTriggerArea" type="Area2D" parent="."]
+visible = false
 position = Vector2(455, 530)
 script = ExtResource("1_wrnkw")
 _bgm = ExtResource("2_g0xi1")
@@ -719,7 +729,7 @@ tile_set = SubResource("TileSet_wyfdb")
 
 [node name="WorldDecorationPhysics" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAWAAQAAgAAAAAAAQAaAAQAAgAAAAAAAAAMAAYAAwAAAAYAAAANAAYAAwABAAYAAAAOAAYAAwACAAYAAAAPAAYAAwADAAYAAAALAAYAAwAAAAUAAAATAAQAAwAEAAUAAAAOAA4AAwAEAAQAAAAVABAAAwADAAQAAAAMAA8AAwABAAQAAAAXAAcAAwAAAAQAAAAbAAYAAwACAAUAAAALAA0AAwAAAAUAAAALABIAAwACAAQAAAAcABIAAwABAAQAAAA=")
+tile_map_data = PackedByteArray("AAAWAAQAAgAAAAAAAQAaAAQAAgAAAAAAAAAMAAYAAwAAAAYAAAANAAYAAwABAAYAAAAOAAYAAwACAAYAAAAPAAYAAwADAAYAAAALAAYAAwAAAAUAAAATAAQAAwAEAAUAAAAOAA4AAwAEAAQAAAAVABAAAwADAAQAAAAMAA8AAwABAAQAAAAXAAcAAwAAAAQAAAAbAAYAAwACAAUAAAALAA0AAwAAAAUAAAALABIAAwACAAQAAAAcABIAAwABAAQAAAAMABAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_33ov5")
 
 [node name="Soil" type="TileMapLayer" parent="."]
@@ -738,6 +748,7 @@ script = ExtResource("17_qgpau")
 position = Vector2(458, 346)
 
 [node name="Door" parent="." instance=ExtResource("18_eh65c")]
+visible = false
 position = Vector2(400, 562)
 entryDoorName = "RoofHouse"
 
@@ -747,4 +758,3 @@ entryDoorName = "PierLadder"
 
 [node name="SoilTiles" parent="." instance=ExtResource("27_sla4y")]
 z_index = 0
-y_sort_enabled = false
