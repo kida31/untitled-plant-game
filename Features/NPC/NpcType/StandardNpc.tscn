@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://1wnuc03ll3y"]
+[gd_scene load_steps=13 format=3 uid="uid://1wnuc03ll3y"]
 
 [ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_6ipep"]
 [ext_resource type="Texture2D" uid="uid://bklcso0wn7iqr" path="res://Assets/Sprites/idle.png" id="2_4g0uj"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="3_mu2uu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvi7q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ebq23"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmcfc"]
 atlas = ExtResource("3_64ptj")
@@ -72,9 +74,10 @@ _npcPlayerInteraction = NodePath("InteractionNode")
 shape = SubResource("CapsuleShape2D_fvi7q")
 
 [node name="CharacterSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &""
+sprite_frames = SubResource("SpriteFrames_ebq23")
 
 [node name="PortraitSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_s0wvy")
 animation = &"angry"
 

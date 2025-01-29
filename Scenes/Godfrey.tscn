@@ -235,7 +235,6 @@ frame = 15
 frame_progress = 0.347857
 
 [node name="PortraitSprite2D" parent="." index="2"]
-visible = false
 sprite_frames = SubResource("SpriteFrames_838gj")
 animation = &"godfrey_shook"
 
