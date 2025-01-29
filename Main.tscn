@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckpxuei42sa5c"]
+[gd_scene load_steps=5 format=3 uid="uid://ckpxuei42sa5c"]
 
 [ext_resource type="PackedScene" uid="uid://3ndp3em1fi7h" path="res://Scenes/GUIContainer.tscn" id="1_c43ed"]
+[ext_resource type="Script" path="res://Features/Player/IntroMonologueTask.cs" id="3_3obcm"]
 [ext_resource type="PackedScene" uid="uid://cv1fhyjs170lk" path="res://Scenes/GameWorldContainer.tscn" id="3_m582q"]
+[ext_resource type="Resource" uid="uid://fde6fy6jals2" path="res://Resources/Dialogue/monologue.tres" id="4_3ynuj"]
 
 [node name="Main" type="Node"]
 
 [node name="GUIContainer" parent="." instance=ExtResource("1_c43ed")]
 
 [node name="GameWorldContainer" parent="." instance=ExtResource("3_m582q")]
+
+[node name="Monologue" type="Node" parent="."]
+script = ExtResource("3_3obcm")
+_monologueResourceObject = ExtResource("4_3ynuj")

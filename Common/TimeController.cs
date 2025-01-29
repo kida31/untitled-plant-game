@@ -102,7 +102,7 @@ public partial class TimeController : Node
 			CurrentSeconds = 0;
 			_wasNoon = false;
 		}
-
+		
 		if (_currentMinute != minute)
 		{
 			_currentMinute = minute;
