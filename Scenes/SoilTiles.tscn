@@ -56,7 +56,6 @@ pattern_4 = SubResource("TileMapPattern_8slol")
 pattern_5 = SubResource("TileMapPattern_j2vwc")
 
 [node name="Plants" type="Node2D"]
-z_index = 1
 y_sort_enabled = true
 
 [node name="PlantController" type="Node" parent="."]

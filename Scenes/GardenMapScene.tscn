@@ -746,5 +746,3 @@ position = Vector2(335, 242)
 entryDoorName = "PierLadder"
 
 [node name="SoilTiles" parent="." instance=ExtResource("27_sla4y")]
-z_index = 0
-y_sort_enabled = false
