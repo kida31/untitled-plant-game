@@ -46,7 +46,6 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 		_npcInteraction = (NpcPlayerInteraction) _npcExecutingThisTasks.FindChild("InteractionNode");
 		_npcInteraction.InteractionEvent += StartTask;
 		_logger.Debug("Task assigned " + _npcExecutingThisTasks.GetNpcName() + " as it's owner.");
-		
 	}
 
 	public void StartTask()
@@ -81,13 +80,7 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 		TaskFinished?.Invoke(this, EventArgs.Empty);
 		_logger.Info("TalkToPlayerTask finished.");
 	}
-
-	/*
-	 * I lost the plot somewhere along the lines of "PlayerInteraction" and the fifth event...
-	 *
-	 * The method gets unsubscribed first, then the event gets invoked, which doesn't make sense for obvious reasons.
-	 * Waiting just a single 1/1000 of a second forces the game to execute this code at a later point, resulting in desired behavior
-	 */
+	
 	private async void DelayUnsubscribe()
 	{
 		await Task.Yield();
