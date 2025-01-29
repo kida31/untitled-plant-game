@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=14 format=3 uid="uid://3ndp3em1fi7h"]
 
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/GUI/Vending/VendingGUI.tscn" id="1_iuaq5"]
 [ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="2_qr6u8"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://fpjia0r4x37g" path="res://Features/Crafting/Dehydrator/DehydratorInventoryView.tscn" id="5_yxd3d"]
 [ext_resource type="Script" path="res://Features/GUI/Effects/TriggerOnNonGameplay.cs" id="6_wbn0r"]
 [ext_resource type="PackedScene" uid="uid://cwe0di17r2yd" path="res://Features/TeleportPlayer/SceneTransition.tscn" id="8_jtjsl"]
+[ext_resource type="PackedScene" uid="uid://blb7r5rg3h055" path="res://Features/GUI/HUDs/ControllerLayout.tscn" id="8_l2bmx"]
+[ext_resource type="Script" path="res://Features/GUI/HUDs/ControllerLayout.cs" id="9_em7sj"]
 [ext_resource type="PackedScene" uid="uid://df0cg0vcow1n2" path="res://Features/GUI/DebugOverlays/DebugOverlays.tscn" id="9_m21er"]
 [ext_resource type="Script" path="res://Features/Audio/SfxUI.cs" id="11_1oqto"]
 
@@ -35,6 +37,10 @@ visible = false
 
 [node name="SceneTransition" parent="." instance=ExtResource("8_jtjsl")]
 scale = Vector2(0.9969, 1)
+
+[node name="ControllerLayout" parent="." instance=ExtResource("8_l2bmx")]
+visible = false
+script = ExtResource("9_em7sj")
 
 [node name="DebugOverlays" parent="." instance=ExtResource("9_m21er")]
 

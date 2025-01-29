@@ -11,19 +11,31 @@ namespace untitledplantgame.Dialogue.Events;
 [GlobalClass]
 public partial class OpenSeedShop : DialogueEvent
 {
-	public readonly SeedShop SeedShop;
+	public SeedShop SeedShop;
 	private readonly Logger _logger;
 
 	public OpenSeedShop()
 	{
-		SeedShop = new SeedShop();
 		_logger = new Logger("OpenSeedShop");
+		SeedShop = new SeedShop();
 		SeedShop.GenerateRandomShopStock();
+		TimeController.Instance.DayChanged += UpdateShop;
 	}
 	
 	public override void Execute()
 	{
 		_logger.Debug("SeedShop opened.");
+	
+		if (SeedShop == null)
+		{
+			SeedShop = new SeedShop();
+			SeedShop.GenerateRandomShopStock();
+		}
 		EventBus.Instance.SeedShopOpening(SeedShop);
+	}
+	
+	private void UpdateShop(int day)
+	{
+		SeedShop.GenerateRandomShopStock();
 	}
 }

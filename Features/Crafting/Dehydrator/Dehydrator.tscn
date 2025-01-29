@@ -12,6 +12,7 @@ script = ExtResource("1_4qnck")
 
 [node name="TextureRect" type="Sprite2D" parent="."]
 texture = ExtResource("2_2ormt")
+offset = Vector2(0, -14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_orpjp")
