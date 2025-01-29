@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=9 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="SpriteFrames" uid="uid://upqodpbedg8s" path="res://Features/Player/PlayerSpriteFrames.tres" id="2_3hfoe"]
@@ -10,9 +10,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
 radius = 8.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ryxll"]
-radius = 34.0147
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerAnimatedSprite") groups=["player"]]
 script = ExtResource("1_ypuiu")
@@ -42,13 +39,6 @@ script = ExtResource("6_6k3md")
 
 [node name="UseTool" type="Node" parent="StateMachine"]
 script = ExtResource("7_lrvm3")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_ryxll")
-
-[node name="InteractablesManager" type="Node" parent="Area2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -31)
