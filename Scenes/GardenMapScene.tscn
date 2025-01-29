@@ -570,69 +570,37 @@ sources/0 = SubResource("TileSetAtlasSource_63x71")
 texture = ExtResource("16_mugcb")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
-1:0/0/y_sort_origin = 16
 2:0/0 = 0
-2:0/0/y_sort_origin = 16
 3:0/0 = 0
-3:0/0/y_sort_origin = 16
 1:1/0 = 0
-1:1/0/y_sort_origin = 16
 2:1/0 = 0
-2:1/0/y_sort_origin = 16
 3:1/0 = 0
-3:1/0/y_sort_origin = 16
 1:2/0 = 0
-1:2/0/y_sort_origin = 16
 2:2/0 = 0
-2:2/0/y_sort_origin = 16
 3:2/0 = 0
-3:2/0/y_sort_origin = 16
 1:3/0 = 0
-1:3/0/y_sort_origin = 16
 2:3/0 = 0
-2:3/0/y_sort_origin = 16
 3:3/0 = 0
-3:3/0/y_sort_origin = 16
 1:4/0 = 0
-1:4/0/y_sort_origin = 16
 2:4/0 = 0
-2:4/0/y_sort_origin = 16
 3:4/0 = 0
-3:4/0/y_sort_origin = 16
 1:5/0 = 0
-1:5/0/y_sort_origin = 16
 2:5/0 = 0
-2:5/0/y_sort_origin = 16
 3:5/0 = 0
-3:5/0/y_sort_origin = 16
 1:6/0 = 0
-1:6/0/y_sort_origin = 16
 2:6/0 = 0
-2:6/0/y_sort_origin = 16
 3:6/0 = 0
-3:6/0/y_sort_origin = 16
 1:7/0 = 0
-1:7/0/y_sort_origin = 16
 2:7/0 = 0
-2:7/0/y_sort_origin = 16
 3:7/0 = 0
-3:7/0/y_sort_origin = 16
 0:0/0 = 0
-0:0/0/y_sort_origin = 16
 0:1/0 = 0
-0:1/0/y_sort_origin = 16
 0:2/0 = 0
-0:2/0/y_sort_origin = 16
 0:3/0 = 0
-0:3/0/y_sort_origin = 16
 0:4/0 = 0
-0:4/0/y_sort_origin = 16
 0:5/0 = 0
-0:5/0/y_sort_origin = 16
 0:6/0 = 0
-0:6/0/y_sort_origin = 16
 0:7/0 = 0
-0:7/0/y_sort_origin = 16
 
 [sub_resource type="TileSet" id="TileSet_jveog"]
 tile_size = Vector2i(32, 32)
@@ -643,8 +611,7 @@ resource_name = "dead"
 texture = ExtResource("12_h45qb")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 16)
-0:0/0/y_sort_origin = 48
+0:0/0/texture_origin = Vector2i(0, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qplcf"]
 resource_name = "chuberry"
@@ -652,28 +619,20 @@ texture = ExtResource("11_r31rj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 3)
-0:0/0/y_sort_origin = 48
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(0, 6)
-1:0/0/y_sort_origin = 48
 2:0/0 = 0
 2:0/0/texture_origin = Vector2i(0, 6)
-2:0/0/y_sort_origin = 48
 3:0/0 = 0
 3:0/0/texture_origin = Vector2i(0, 6)
-3:0/0/y_sort_origin = 48
 4:0/0 = 0
 4:0/0/texture_origin = Vector2i(0, 6)
-4:0/0/y_sort_origin = 48
 5:0/0 = 0
 5:0/0/texture_origin = Vector2i(0, 6)
-5:0/0/y_sort_origin = 48
 6:0/0 = 0
 6:0/0/texture_origin = Vector2i(0, 6)
-6:0/0/y_sort_origin = 48
 7:0/0 = 0
 7:0/0/texture_origin = Vector2i(1, 6)
-7:0/0/y_sort_origin = 48
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6dd4g"]
 resource_name = "drupoleaum"
@@ -682,61 +641,45 @@ texture_region_size = Vector2i(32, 32)
 1:0/size_in_atlas = Vector2i(1, 2)
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(0, 24)
-1:0/0/y_sort_origin = 48
 2:0/size_in_atlas = Vector2i(1, 2)
 2:0/0 = 0
 2:0/0/texture_origin = Vector2i(0, 24)
-2:0/0/y_sort_origin = 48
 3:0/size_in_atlas = Vector2i(1, 2)
 3:0/0 = 0
 3:0/0/texture_origin = Vector2i(0, 24)
-3:0/0/y_sort_origin = 48
 4:0/size_in_atlas = Vector2i(1, 2)
 4:0/0 = 0
 4:0/0/texture_origin = Vector2i(0, 24)
-4:0/0/y_sort_origin = 48
 5:0/size_in_atlas = Vector2i(1, 2)
 5:0/0 = 0
 5:0/0/texture_origin = Vector2i(0, 24)
-5:0/0/y_sort_origin = 48
 6:0/size_in_atlas = Vector2i(1, 2)
 6:0/0 = 0
 6:0/0/texture_origin = Vector2i(0, 24)
-6:0/0/y_sort_origin = 48
 0:0/size_in_atlas = Vector2i(1, 2)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 24)
-0:0/0/y_sort_origin = 48
 7:0/size_in_atlas = Vector2i(1, 2)
 7:0/0 = 0
-7:0/0/y_sort_origin = 48
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipxae"]
 resource_name = "licary"
 texture = ExtResource("14_eauha")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/y_sort_origin = 48
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(0, 12)
-1:0/0/y_sort_origin = 48
 2:0/0 = 0
 2:0/0/texture_origin = Vector2i(0, 12)
-2:0/0/y_sort_origin = 48
 3:0/0 = 0
 3:0/0/texture_origin = Vector2i(0, 12)
-3:0/0/y_sort_origin = 48
 4:0/0 = 0
 4:0/0/texture_origin = Vector2i(0, 12)
-4:0/0/y_sort_origin = 48
 5:0/0 = 0
 5:0/0/texture_origin = Vector2i(0, 12)
-5:0/0/y_sort_origin = 48
 6:0/0 = 0
 6:0/0/texture_origin = Vector2i(0, 12)
-6:0/0/y_sort_origin = 48
 7:0/0 = 0
-7:0/0/y_sort_origin = 48
 
 [sub_resource type="TileSet" id="TileSet_sor4m"]
 tile_size = Vector2i(32, 32)
@@ -789,6 +732,18 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAWAAQAAgAAAAAAAQAaAAQAAgAAAAAAAAAMAAYAAwAAAAYAAAANAAYAAwABAAYAAAAOAAYAAwACAAYAAAAPAAYAAwADAAYAAAALAAYAAwAAAAUAAAATAAQAAwAEAAUAAAAOAA4AAwAEAAQAAAAVABAAAwADAAQAAAAMAA8AAwABAAQAAAAXAAcAAwAAAAQAAAAbAAYAAwACAAUAAAALAA0AAwAAAAUAAAALABIAAwACAAQAAAAcABIAAwABAAQAAAAMABAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_33ov5")
 
+[node name="Soil" type="TileMapLayer" parent="."]
+z_index = 1
+y_sort_enabled = true
+tile_set = SubResource("TileSet_jveog")
+script = ExtResource("1_uo15o")
+
+[node name="Plants" type="TileMapLayer" parent="."]
+z_index = 1
+y_sort_enabled = true
+tile_set = SubResource("TileSet_sor4m")
+script = ExtResource("17_qgpau")
+
 [node name="MarkerNode" type="Node2D" parent="."]
 position = Vector2(458, 346)
 
@@ -802,13 +757,4 @@ position = Vector2(335, 242)
 entryDoorName = "PierLadder"
 
 [node name="SoilTiles" parent="." instance=ExtResource("27_sla4y")]
-
-[node name="SoilSprites" type="TileMapLayer" parent="SoilTiles"]
-y_sort_enabled = true
-tile_set = SubResource("TileSet_jveog")
-script = ExtResource("1_uo15o")
-
-[node name="PlantSprites" type="TileMapLayer" parent="SoilTiles"]
-y_sort_enabled = true
-tile_set = SubResource("TileSet_sor4m")
-script = ExtResource("17_qgpau")
+z_index = 0
