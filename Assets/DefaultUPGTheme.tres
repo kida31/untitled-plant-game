@@ -29,3 +29,5 @@ RichTextLabel/fonts/bold_font = SubResource("FontVariation_2cw87")
 Secondary/base_type = &"RichTextLabel"
 Secondary/colors/default_color = Color(0.40162, 0.3784, 0.43, 0.882353)
 Secondary/colors/font_shadow_color = Color(0.398323, 0.3741, 0.43, 0.145098)
+whiteText/base_type = &"Label"
+whiteText/colors/font_color = Color(1, 1, 0.941176, 1)
