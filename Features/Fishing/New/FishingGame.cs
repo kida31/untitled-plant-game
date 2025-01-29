@@ -14,6 +14,7 @@ public partial class FishingGame : Node
 	[Export] private FishingRod _fishingRod;
 	[Export] private PackedScene _fishPrefab;
 	[Export] private Marker2D _spawnPoint;
+	[Export] private Node2D _gameWorld;
 
 	private float _progress;
 	private Fish _fish;
@@ -40,7 +41,7 @@ public partial class FishingGame : Node
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		if (_fishingRod?.Fish != null && _fishingRod.ActiveDirection.X * _fish.ActiveDirection.X < 0)
+		if (_fish != null && _fishingRod?.Fish != null && _fishingRod.ActiveDirection.X * _fish.ActiveDirection.X < 0)
 		{
 			_progress += (float)delta * _gameConfig.ProgressPullingPerSecond;
 		}
@@ -74,7 +75,7 @@ public partial class FishingGame : Node
 		var fish = _fishPrefab.Instantiate<Fish>();
 		fish.Initialize(_gameConfig.FishSpeed, _gameConfig.PullSpeed, direction);
 
-		AddChild(fish);
+		_gameWorld.AddChild(fish);
 		fish.GlobalPosition = _spawnPoint.GlobalPosition;
 		return fish;
 	}
