@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4bjufpux3ysv"
-path="res://.godot/imported/Laya_Shears.png-9d259e57ce67aa5f086246aa1e9a33cb.ctex"
+uid="uid://dicqi0531hikr"
+path="res://.godot/imported/Laya_Idle_down.png-c4958e89945cf50d33d234a233636490.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Laya/Laya_Shears.png"
-dest_files=["res://.godot/imported/Laya_Shears.png-9d259e57ce67aa5f086246aa1e9a33cb.ctex"]
+source_file="res://Assets/Characters/Laya/Laya_Idle_down.png"
+dest_files=["res://.godot/imported/Laya_Idle_down.png-c4958e89945cf50d33d234a233636490.ctex"]
 
 [params]
 

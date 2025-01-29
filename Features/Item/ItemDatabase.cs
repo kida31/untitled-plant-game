@@ -363,7 +363,7 @@ public class ItemDatabase
 				Name = "Dried Fruit",
 				ToolTipDescription = "A dried fruit. I wonder what it tastes like.",
 				WikiDescription = "A dried fruit. Drying fruits in the dehydrator will make them last longer and amplify their properties.",
-				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/dried_chubery.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				Components = new Array<AComponent>
@@ -377,7 +377,7 @@ public class ItemDatabase
 				Name = "Dried Flower",
 				ToolTipDescription = "A dried flower. Still looks very pretty.",
 				WikiDescription = "A dried flower. Drying flowers in the dehydrator will make them last longer and amplify their properties.",
-				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/dried_drupoleaum.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
 				Components = new Array<AComponent>

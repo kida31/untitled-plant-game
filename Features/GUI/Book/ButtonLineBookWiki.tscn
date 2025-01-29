@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cclh1a0f4gi6k"]
+
+[ext_resource type="PackedScene" uid="uid://cf0a25hnj0de7" path="res://Features/GUI/ButtonLine.tscn" id="1_5eme7"]
+
+[node name="ButtonLineBookWiki" instance=ExtResource("1_5eme7")]
+anchors_preset = 12
+anchor_top = 1.0
+offset_top = -26.0
+
+[node name="Description" parent="MarginTopBottom/HBoxContainer/South" index="1"]
+text = "Go To"
+
+[node name="Description" parent="MarginTopBottom/HBoxContainer/East" index="1"]
+text = "Back"
+
+[node name="North" parent="MarginTopBottom/HBoxContainer" index="2"]
+visible = false
+
+[node name="Description" parent="MarginTopBottom/HBoxContainer/West" index="1"]
+text = "Toggle Info"
+
+[node name="LR1" parent="MarginTopBottom/HBoxContainer" index="4"]
+visible = false
+
+[node name="switch_categories" parent="MarginTopBottom/HBoxContainer/LR1" index="3"]
+text = "Switch Category"
+
+[node name="switch_pages" parent="MarginTopBottom/HBoxContainer/LR2" index="3"]
+text = "Flip Page"

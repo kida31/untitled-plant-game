@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://ciy3cfmtd600v"]
+[gd_scene load_steps=53 format=4 uid="uid://ciy3cfmtd600v"]
 
 [ext_resource type="Script" path="res://Features/Plants/Soil/SoilMap.cs" id="1_uo15o"]
 [ext_resource type="Script" path="res://Features/Audio/BgmArea2D.cs" id="1_wrnkw"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://d1i5xtiv6s2iw" path="res://Assets/Overworld/Garden/Kante.png" id="11_4i7wi"]
 [ext_resource type="Texture2D" uid="uid://cc08shc1btj02" path="res://Assets/Tilesets/Plant/chubery_sheet.png" id="11_r31rj"]
 [ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/Tilesets/Plant/DeadPlant.png" id="12_h45qb"]
+[ext_resource type="Texture2D" uid="uid://ik5booquxewf" path="res://Assets/Overworld/House/ladderToHouse.png" id="13_7b7fc"]
 [ext_resource type="Texture2D" uid="uid://dgr1wagj37jdb" path="res://Assets/Tilesets/Plant/drupoleaum_sheet.png" id="13_agfdp"]
 [ext_resource type="Texture2D" uid="uid://sn1nsmppmr7p" path="res://Assets/Overworld/Garden/Fence.png" id="13_hgn1h"]
 [ext_resource type="Texture2D" uid="uid://dxjrcllnnc3s2" path="res://Assets/Tilesets/Plant/Licary_SpriteSheet.png" id="14_eauha"]
@@ -21,7 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://cv6hjqm0nnrau" path="res://Assets/Tilesets/soiltiles_tileset_better_rgb.png" id="16_mugcb"]
 [ext_resource type="Texture2D" uid="uid://oon4v18kv3jk" path="res://Assets/Overworld/Garden/pier_ladder.png" id="16_v0da8"]
 [ext_resource type="Script" path="res://Features/Plants/PlantMap.cs" id="17_qgpau"]
-[ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="18_eh65c"]
+[ext_resource type="PackedScene" path="res://Features/NPC/Door.tscn" id="18_eh65c"]
+[ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="23_8b8d6"]
 [ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="27_sla4y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3qw3d"]
@@ -452,6 +454,13 @@ physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_pxxg0")
 sources/1 = SubResource("TileSetAtlasSource_tqwi8")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_63x71"]
+texture = ExtResource("13_7b7fc")
+texture_region_size = Vector2i(32, 32)
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 5)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3lrnb"]
 texture = ExtResource("8_khsoa")
 texture_region_size = Vector2i(32, 32)
@@ -556,42 +565,75 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_3lrnb")
 sources/3 = SubResource("TileSetAtlasSource_tf5gg")
+sources/0 = SubResource("TileSetAtlasSource_63x71")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw5e7"]
 texture = ExtResource("16_mugcb")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
+1:0/0/y_sort_origin = 16
 2:0/0 = 0
+2:0/0/y_sort_origin = 16
 3:0/0 = 0
+3:0/0/y_sort_origin = 16
 1:1/0 = 0
+1:1/0/y_sort_origin = 16
 2:1/0 = 0
+2:1/0/y_sort_origin = 16
 3:1/0 = 0
+3:1/0/y_sort_origin = 16
 1:2/0 = 0
+1:2/0/y_sort_origin = 16
 2:2/0 = 0
+2:2/0/y_sort_origin = 16
 3:2/0 = 0
+3:2/0/y_sort_origin = 16
 1:3/0 = 0
+1:3/0/y_sort_origin = 16
 2:3/0 = 0
+2:3/0/y_sort_origin = 16
 3:3/0 = 0
+3:3/0/y_sort_origin = 16
 1:4/0 = 0
+1:4/0/y_sort_origin = 16
 2:4/0 = 0
+2:4/0/y_sort_origin = 16
 3:4/0 = 0
+3:4/0/y_sort_origin = 16
 1:5/0 = 0
+1:5/0/y_sort_origin = 16
 2:5/0 = 0
+2:5/0/y_sort_origin = 16
 3:5/0 = 0
+3:5/0/y_sort_origin = 16
 1:6/0 = 0
+1:6/0/y_sort_origin = 16
 2:6/0 = 0
+2:6/0/y_sort_origin = 16
 3:6/0 = 0
+3:6/0/y_sort_origin = 16
 1:7/0 = 0
+1:7/0/y_sort_origin = 16
 2:7/0 = 0
+2:7/0/y_sort_origin = 16
 3:7/0 = 0
+3:7/0/y_sort_origin = 16
 0:0/0 = 0
+0:0/0/y_sort_origin = 16
 0:1/0 = 0
+0:1/0/y_sort_origin = 16
 0:2/0 = 0
+0:2/0/y_sort_origin = 16
 0:3/0 = 0
+0:3/0/y_sort_origin = 16
 0:4/0 = 0
+0:4/0/y_sort_origin = 16
 0:5/0 = 0
+0:5/0/y_sort_origin = 16
 0:6/0 = 0
+0:6/0/y_sort_origin = 16
 0:7/0 = 0
+0:7/0/y_sort_origin = 16
 
 [sub_resource type="TileSet" id="TileSet_jveog"]
 tile_size = Vector2i(32, 32)
@@ -602,28 +644,36 @@ resource_name = "dead"
 texture = ExtResource("12_h45qb")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 8)
+0:0/0/texture_origin = Vector2i(0, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qplcf"]
 resource_name = "chuberry"
 texture = ExtResource("11_r31rj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 3)
+0:0/0/texture_origin = Vector2i(0, 5)
+0:0/0/y_sort_origin = 16
 1:0/0 = 0
-1:0/0/texture_origin = Vector2i(0, 6)
+1:0/0/texture_origin = Vector2i(0, 16)
+1:0/0/y_sort_origin = 16
 2:0/0 = 0
-2:0/0/texture_origin = Vector2i(0, 6)
+2:0/0/texture_origin = Vector2i(0, 16)
+2:0/0/y_sort_origin = 16
 3:0/0 = 0
-3:0/0/texture_origin = Vector2i(0, 6)
+3:0/0/texture_origin = Vector2i(0, 16)
+3:0/0/y_sort_origin = 16
 4:0/0 = 0
-4:0/0/texture_origin = Vector2i(0, 6)
+4:0/0/texture_origin = Vector2i(0, 16)
+4:0/0/y_sort_origin = 16
 5:0/0 = 0
-5:0/0/texture_origin = Vector2i(0, 6)
+5:0/0/texture_origin = Vector2i(0, 16)
+5:0/0/y_sort_origin = 16
 6:0/0 = 0
-6:0/0/texture_origin = Vector2i(0, 6)
+6:0/0/texture_origin = Vector2i(0, 16)
+6:0/0/y_sort_origin = 16
 7:0/0 = 0
-7:0/0/texture_origin = Vector2i(1, 6)
+7:0/0/texture_origin = Vector2i(0, 16)
+7:0/0/y_sort_origin = 16
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6dd4g"]
 resource_name = "drupoleaum"
@@ -631,46 +681,65 @@ texture = ExtResource("13_agfdp")
 texture_region_size = Vector2i(32, 32)
 1:0/size_in_atlas = Vector2i(1, 2)
 1:0/0 = 0
-1:0/0/texture_origin = Vector2i(0, 24)
+1:0/0/texture_origin = Vector2i(0, 32)
+1:0/0/y_sort_origin = 16
 2:0/size_in_atlas = Vector2i(1, 2)
 2:0/0 = 0
-2:0/0/texture_origin = Vector2i(0, 24)
+2:0/0/texture_origin = Vector2i(0, 32)
+2:0/0/y_sort_origin = 16
 3:0/size_in_atlas = Vector2i(1, 2)
 3:0/0 = 0
-3:0/0/texture_origin = Vector2i(0, 24)
+3:0/0/texture_origin = Vector2i(0, 32)
+3:0/0/y_sort_origin = 16
 4:0/size_in_atlas = Vector2i(1, 2)
 4:0/0 = 0
-4:0/0/texture_origin = Vector2i(0, 24)
+4:0/0/texture_origin = Vector2i(0, 32)
+4:0/0/y_sort_origin = 16
 5:0/size_in_atlas = Vector2i(1, 2)
 5:0/0 = 0
-5:0/0/texture_origin = Vector2i(0, 24)
+5:0/0/texture_origin = Vector2i(0, 32)
+5:0/0/y_sort_origin = 16
 6:0/size_in_atlas = Vector2i(1, 2)
 6:0/0 = 0
-6:0/0/texture_origin = Vector2i(0, 24)
+6:0/0/texture_origin = Vector2i(0, 32)
+6:0/0/y_sort_origin = 16
 0:0/size_in_atlas = Vector2i(1, 2)
 0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 24)
+0:0/0/texture_origin = Vector2i(0, 16)
+0:0/0/y_sort_origin = 16
 7:0/size_in_atlas = Vector2i(1, 2)
 7:0/0 = 0
+7:0/0/texture_origin = Vector2i(0, 16)
+7:0/0/y_sort_origin = 16
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipxae"]
 resource_name = "licary"
 texture = ExtResource("14_eauha")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+0:0/0/y_sort_origin = 16
 1:0/0 = 0
-1:0/0/texture_origin = Vector2i(0, 12)
+1:0/0/texture_origin = Vector2i(0, 16)
+1:0/0/y_sort_origin = 16
 2:0/0 = 0
-2:0/0/texture_origin = Vector2i(0, 12)
+2:0/0/texture_origin = Vector2i(0, 16)
+2:0/0/y_sort_origin = 16
 3:0/0 = 0
-3:0/0/texture_origin = Vector2i(0, 12)
+3:0/0/texture_origin = Vector2i(0, 16)
+3:0/0/y_sort_origin = 16
 4:0/0 = 0
-4:0/0/texture_origin = Vector2i(0, 12)
+4:0/0/texture_origin = Vector2i(0, 16)
+4:0/0/y_sort_origin = 16
 5:0/0 = 0
-5:0/0/texture_origin = Vector2i(0, 12)
+5:0/0/texture_origin = Vector2i(0, 16)
+5:0/0/y_sort_origin = 16
 6:0/0 = 0
-6:0/0/texture_origin = Vector2i(0, 12)
+6:0/0/texture_origin = Vector2i(0, 16)
+6:0/0/y_sort_origin = 16
 7:0/0 = 0
+7:0/0/texture_origin = Vector2i(0, 5)
+7:0/0/y_sort_origin = 16
 
 [sub_resource type="TileSet" id="TileSet_sor4m"]
 tile_size = Vector2i(32, 32)
@@ -683,6 +752,7 @@ sources/1 = SubResource("TileSetAtlasSource_qplcf")
 y_sort_enabled = true
 
 [node name="BgmTriggerArea" type="Area2D" parent="."]
+visible = false
 position = Vector2(455, 530)
 script = ExtResource("1_wrnkw")
 _bgm = ExtResource("2_g0xi1")
@@ -719,25 +789,33 @@ tile_set = SubResource("TileSet_wyfdb")
 
 [node name="WorldDecorationPhysics" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAWAAQAAgAAAAAAAQAaAAQAAgAAAAAAAAAMAAYAAwAAAAYAAAANAAYAAwABAAYAAAAOAAYAAwACAAYAAAAPAAYAAwADAAYAAAALAAYAAwAAAAUAAAATAAQAAwAEAAUAAAAOAA4AAwAEAAQAAAAVABAAAwADAAQAAAAMAA8AAwABAAQAAAAXAAcAAwAAAAQAAAAbAAYAAwACAAUAAAALAA0AAwAAAAUAAAALABIAAwACAAQAAAAcABIAAwABAAQAAAA=")
+tile_map_data = PackedByteArray("AAAWAAQAAgAAAAAAAQAaAAQAAgAAAAAAAAAMAAYAAwAAAAYAAAANAAYAAwABAAYAAAAOAAYAAwACAAYAAAAPAAYAAwADAAYAAAALAAYAAwAAAAUAAAATAAQAAwAEAAUAAAAOAA4AAwAEAAQAAAAVABAAAwADAAQAAAAMAA8AAwABAAQAAAAXAAcAAwAAAAQAAAAbAAYAAwACAAUAAAALAA0AAwAAAAUAAAALABIAAwACAAQAAAAcABIAAwABAAQAAAAMABAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_33ov5")
 
-[node name="Soil" type="TileMapLayer" parent="."]
-z_index = 1
+[node name="SoilSprites" type="TileMapLayer" parent="."]
 y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAYAAwAAAADAAQAAAAZAAkAAAADAAQAAAAYAAkAAAADAAQAAAANAAoAAAADAAAAAAAOAAoAAAADAAIAAAA=")
 tile_set = SubResource("TileSet_jveog")
+y_sort_origin = 32
 script = ExtResource("1_uo15o")
 
-[node name="Plants" type="TileMapLayer" parent="."]
-z_index = 1
+[node name="PlantSprites" type="TileMapLayer" parent="."]
 y_sort_enabled = true
+tile_map_data = PackedByteArray("AAANAAoAAgAEAAAAAAAOAAoAAwAGAAAAAAA=")
 tile_set = SubResource("TileSet_sor4m")
+y_sort_origin = 33
 script = ExtResource("17_qgpau")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlantSprites"]
+visible = false
+position = Vector2(432, 363)
+texture = ExtResource("23_8b8d6")
 
 [node name="MarkerNode" type="Node2D" parent="."]
 position = Vector2(458, 346)
 
 [node name="Door" parent="." instance=ExtResource("18_eh65c")]
+visible = false
 position = Vector2(400, 562)
 entryDoorName = "RoofHouse"
 
@@ -746,5 +824,3 @@ position = Vector2(335, 242)
 entryDoorName = "PierLadder"
 
 [node name="SoilTiles" parent="." instance=ExtResource("27_sla4y")]
-z_index = 0
-y_sort_enabled = false

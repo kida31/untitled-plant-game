@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System.Collections.Generic;
+using Godot;
 using untitledplantgame.Common;
 
 namespace untitledplantgame.GUI.Hooks;
@@ -25,24 +26,29 @@ public partial class FollowControlHook : Node
 	/// <para>The node positioning behavior. Whether the origin or center position of target should be moved.</para>
 	/// </summary>
 	[Export] public PositionMode PositionModeSelf = PositionMode.Center;
+
 	/// <summary>
 	/// <para>The node positioning behavior. Whether the origin or center position of focused object should be used.</para>
 	/// </summary>
 	[Export] public PositionMode PositionModeTarget = PositionMode.Center;
+
 	/// <summary>
 	/// <para>The smoothing factor for the position change. Values small or equal to 0 make changes instant</para>
 	/// </summary>
 	[Export] public float SmoothingFactor = 10.0f;
+
 	[Export]
 	public Control Target
 	{
 		get => _target;
 		set => SetTarget(value);
 	}
-	
+
 	private Control _target;
 	private Control _self;
 	private Logger _logger;
+
+	private LinkedList<Control> _targetHistory = new();
 
 	public override void _Ready()
 	{
@@ -50,13 +56,18 @@ public partial class FollowControlHook : Node
 		_target = null;
 		_logger = new Logger(this);
 	}
-	
+
 	private void SetTarget(Control node)
 	{
 		if (_target != null)
 		{
 			// Update focus
 			_target = node;
+			_targetHistory.AddLast(_target);
+			if (_targetHistory.Count > 5)
+			{
+				_targetHistory.RemoveFirst();
+			}
 		}
 		else
 		{
@@ -68,19 +79,41 @@ public partial class FollowControlHook : Node
 
 	public override void _Process(double delta)
 	{
-		if (!IsInstanceValid(_target)) return;
-		
-		if (!_target.HasFocus())
+		if (_target is null) return;
+
+		if (!IsInstanceValid(_target) || !_target.HasFocus())
 		{
-			_target = null;
-			_logger.Debug("Focus lost. Stop tracking.");
-			return;
+			_target = TryGetFallback();
+			if (_target == null)
+			{
+				_logger.Debug("Focus lost. Stop tracking.");
+				return;
+			}
 		}
 
 		var position = CalcFocusedElementPosition(_target);
 		position = AddOriginOffset(position);
 		position = SmoothenPosition(position, delta);
 		_self.GlobalPosition = position;
+	}
+
+	private Control TryGetFallback()
+	{
+		while (_targetHistory.Count > 0)
+		{
+			var control = _targetHistory.Last!.Value;
+			_targetHistory.RemoveLast();
+			if (!IsInstanceValid(control) || !control.IsVisibleInTree())
+			{
+				continue;
+			}
+
+			_logger.Debug("Fallback to last focused element." + control.Name);
+			control.GrabFocus();
+			return control;
+		}
+
+		return null;
 	}
 
 	private void ForcePositionUpdate()
@@ -114,6 +147,6 @@ public partial class FollowControlHook : Node
 	private Vector2 SmoothenPosition(Vector2 pos, double delta)
 	{
 		if (SmoothingFactor <= 0) return pos;
-		return _self.GlobalPosition.Lerp(pos, SmoothingFactor * (float) delta);
+		return _self.GlobalPosition.Lerp(pos, SmoothingFactor * (float)delta);
 	}
 }

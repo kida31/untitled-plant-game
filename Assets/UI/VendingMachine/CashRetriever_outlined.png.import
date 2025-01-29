@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk37cj58xwb8i"
-path="res://.godot/imported/Laya_Idle.png-45ce9c127fb6b33ab1b79f71336f7903.ctex"
+uid="uid://csba1gh3owpk6"
+path="res://.godot/imported/CashRetriever_outlined.png-ae125c27330cc47becb837e297ab7bb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Laya/Laya_Idle.png"
-dest_files=["res://.godot/imported/Laya_Idle.png-45ce9c127fb6b33ab1b79f71336f7903.ctex"]
+source_file="res://Assets/UI/VendingMachine/CashRetriever_outlined.png"
+dest_files=["res://.godot/imported/CashRetriever_outlined.png-ae125c27330cc47becb837e297ab7bb6.ctex"]
 
 [params]
 

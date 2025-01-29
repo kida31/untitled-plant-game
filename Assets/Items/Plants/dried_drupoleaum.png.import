@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://divvtcory7414"
-path="res://.godot/imported/Laya_Shovel.png-b1550d6dda05d907ee73825febd10461.ctex"
+uid="uid://ce8pb6e5vfkd5"
+path="res://.godot/imported/dried_drupoleaum.png-c86feb8b7eaad71809e653f326f0dd9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Laya/Laya_Shovel.png"
-dest_files=["res://.godot/imported/Laya_Shovel.png-b1550d6dda05d907ee73825febd10461.ctex"]
+source_file="res://Assets/Items/Plants/dried_drupoleaum.png"
+dest_files=["res://.godot/imported/dried_drupoleaum.png-c86feb8b7eaad71809e653f326f0dd9b.ctex"]
 
 [params]
 
