@@ -308,14 +308,14 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.1818, -7.27273, 7.27273, -7.27273, 7.27273, 1.45455, -7.27273, 1.45455)
 1:0/size_in_atlas = Vector2i(2, 4)
 1:0/0 = 0
-1:0/0/texture_origin = Vector2i(0, 49)
-1:0/0/y_sort_origin = 41
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-18.9091, 1.45455, -7.27273, -7.27273, 7.27273, -7.27273, 16, 1.45455)
+1:0/0/texture_origin = Vector2i(0, 48)
+1:0/0/y_sort_origin = 5
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, 4, -7.27273, -7.27273, 6, -8, 20, 4)
 3:0/size_in_atlas = Vector2i(2, 4)
 3:0/0 = 0
-3:0/0/texture_origin = Vector2i(0, 58)
-3:0/0/y_sort_origin = 45
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.45455, 1.45455, -18.9091, -4.36364, -10.1818, -13.0909, 10.1818, -13.0909, 16, -4.36364)
+3:0/0/texture_origin = Vector2i(0, 48)
+3:0/0/y_sort_origin = 12
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 12, -22, 6, -8, -4, 8, -4, 20, 6)
 5:0/size_in_atlas = Vector2i(1, 2)
 5:0/0 = 0
 5:0/0/texture_origin = Vector2i(0, 30)
@@ -542,6 +542,32 @@ offset = Vector2(0, -32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrueTawasSignLol/StaticBody2D"]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_qcj7u")
+
+[node name="InspectTree" type="Area2D" parent="."]
+position = Vector2(16, 922)
+script = ExtResource("10_x0jq1")
+_name = "Tree"
+_dialog = "A tree.
+It looks majestic.
+Some day I should grow one like this in the garden.."
+
+[node name="InteractionArea" type="CollisionShape2D" parent="InspectTree"]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_8ocpc")
+
+[node name="InspectTree2" type="Area2D" parent="."]
+position = Vector2(-143, 728)
+script = ExtResource("10_x0jq1")
+_name = "Tree"
+_dialog = "This tree seems to have fruits.
+I will try shaking it.
+...
+...
+Nothing."
+
+[node name="InteractionArea" type="CollisionShape2D" parent="InspectTree2"]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_8ocpc")
 
 [node name="Door" parent="." instance=ExtResource("10_x262s")]
 position = Vector2(250, -470)
