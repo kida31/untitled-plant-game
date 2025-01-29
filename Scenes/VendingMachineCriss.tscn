@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://darsx73t4n6d3"]
+[gd_scene load_steps=17 format=3 uid="uid://darsx73t4n6d3"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_b0v61"]
 [ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="2_gjf2v"]
@@ -6,7 +6,14 @@
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_d4jk1"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_a0n3g"]
 [ext_resource type="Resource" uid="uid://djkgxlqpnhr00" path="res://Resources/Dialogue/VendingMachine/VM_init_1.tres" id="6_ki0ac"]
-[ext_resource type="Script" path="res://Features/NPC/NpcTask/TriggerVendingMachineResponse.cs" id="7_veciv"]
+[ext_resource type="Resource" uid="uid://cb3vhfet3maf0" path="res://Resources/Dialogue/VendingMachine/VM_init_2.tres" id="7_4qfl7"]
+[ext_resource type="Resource" uid="uid://u6yu2am3tt1k" path="res://Resources/Dialogue/VendingMachine/VM_init_3.tres" id="8_xftjp"]
+[ext_resource type="Resource" uid="uid://c714ii64jw17x" path="res://Resources/Dialogue/VendingMachine/VM_init_4.tres" id="9_i62r7"]
+[ext_resource type="Resource" uid="uid://bc52bpnicwkvs" path="res://Resources/Dialogue/VendingMachine/VM_init_5.tres" id="10_mwtd7"]
+[ext_resource type="Resource" uid="uid://ce1uy8nqlg03w" path="res://Resources/Dialogue/VendingMachine/VM_init_6.tres" id="11_35lgs"]
+[ext_resource type="Resource" uid="uid://d3jy31245b6n7" path="res://Resources/Dialogue/VendingMachine/VM_init_7.tres" id="12_5d0jb"]
+[ext_resource type="Resource" uid="uid://xlolghbobiln" path="res://Resources/Dialogue/VendingMachine/VM_init_8.tres" id="13_ngwwb"]
+[ext_resource type="Resource" uid="uid://b66bsn0f7b7ai" path="res://Resources/Dialogue/VendingMachine/VM_init_9.tres" id="14_7w0ye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqkbf"]
 radius = 62.0322
@@ -18,23 +25,20 @@ size = Vector2(62, 12)
 _name = "Vending Machine"
 _routinePlanner = NodePath("RoutinePlanner")
 
-[node name="PortraitSprite2D" parent="." index="2"]
-visible = false
-
-[node name="VendingMachineSprite" type="Sprite2D" parent="." index="4"]
+[node name="VendingMachineSprite" type="Sprite2D" parent="." index="3"]
 position = Vector2(0, -53)
 texture = ExtResource("2_gjf2v")
 
-[node name="InteractionRange" type="CollisionShape2D" parent="." index="5"]
+[node name="InteractionRange" type="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CircleShape2D_rqkbf")
 
-[node name="CollisionShape" type="StaticBody2D" parent="." index="6"]
+[node name="CollisionShape" type="StaticBody2D" parent="." index="5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape" index="0"]
 y_sort_enabled = true
 shape = SubResource("RectangleShape2D_tqgu1")
 
-[node name="RoutinePlanner" type="Node" parent="." index="7" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+[node name="RoutinePlanner" type="Node" parent="." index="6" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
 script = ExtResource("3_rkpsh")
 _npcExecutingRoutines = NodePath("..")
 _routines = [NodePath("TalkAndOpenVendingMachineRoutine")]
@@ -45,7 +49,4 @@ RoutineTrigger = 1
 
 [node name="Dialogue" type="Node" parent="RoutinePlanner/TalkAndOpenVendingMachineRoutine" index="0"]
 script = ExtResource("5_a0n3g")
-_dialogueResourceObject = ExtResource("6_ki0ac")
-
-[node name="Yes_Response1" type="Node" parent="RoutinePlanner/TalkAndOpenVendingMachineRoutine/Dialogue" index="0"]
-script = ExtResource("7_veciv")
+_dialogueResourceObjects = Array[Object]([ExtResource("6_ki0ac"), ExtResource("7_4qfl7"), ExtResource("8_xftjp"), ExtResource("9_i62r7"), ExtResource("10_mwtd7"), ExtResource("11_35lgs"), ExtResource("12_5d0jb"), ExtResource("13_ngwwb"), ExtResource("14_7w0ye")])

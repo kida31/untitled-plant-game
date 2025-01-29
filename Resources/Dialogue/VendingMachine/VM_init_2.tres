@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://cb3vhfet3maf0"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://cb3vhfet3maf0"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_b32bd"]
 [ext_resource type="Texture2D" uid="uid://bicv1fu7r5w4n" path="res://Assets/Characters/VMsan/vendingMachinePortrait.png" id="1_hcgia"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_d7v6a"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_lxlil"]
+[ext_resource type="Resource" uid="uid://clipa6tlu6er2" path="res://Resources/Dialogue/VendingMachine/VendingMachineResponses/vending_machine_res_yes.tres" id="3_js0kw"]
 
 [sub_resource type="Resource" id="Resource_i0uay"]
 script = ExtResource("1_b32bd")
@@ -20,6 +21,7 @@ dialogueText = "Do you want to make some money?"
 [sub_resource type="Resource" id="Resource_g0300"]
 script = ExtResource("2_lxlil")
 _responseButton = "Yes"
+_responseDialogue = ExtResource("3_js0kw")
 
 [sub_resource type="Resource" id="Resource_yjfxv"]
 script = ExtResource("2_lxlil")
