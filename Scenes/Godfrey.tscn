@@ -1,12 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://cr2712p8tviur"]
+[gd_scene load_steps=35 format=3 uid="uid://cr2712p8tviur"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_ljkvf"]
 [ext_resource type="Texture2D" uid="uid://6vwbt72gbl2k" path="res://Assets/Characters/Godfrey/Godfrey_idle-Sheet.png" id="2_ujoa5"]
 [ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_c2lkg"]
-[ext_resource type="Texture2D" uid="uid://o1rnpbgpuum" path="res://Assets/Characters/Godfrey/Godfrey_angry.png" id="3_ntnv6"]
-[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="4_oqor7"]
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_ryo3x"]
-[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="5_d4tnh"]
 [ext_resource type="PackedScene" uid="uid://lufeqnjeabjx" path="res://Features/NPC/NpcTask/MovementTaskTarget.tscn" id="5_wrpdt"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="6_8afnb"]
 [ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/TutorialDialogue.tres" id="7_v4eb2"]
@@ -195,37 +192,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_838gj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_ntnv6")
-}],
-"loop": true,
-"name": &"godfrey_angry",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_oqor7")
-}],
-"loop": true,
-"name": &"godfrey_happy",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_d4tnh")
-}],
-"loop": true,
-"name": &"godfrey_shook",
-"speed": 5.0
-}]
-
-[node name="Godfrey" node_paths=PackedStringArray("_routinePlanner", "_portraitSprite2D") instance=ExtResource("1_ljkvf")]
+[node name="Godfrey" node_paths=PackedStringArray("_routinePlanner", "_overWorldSprite") instance=ExtResource("1_ljkvf")]
 _name = "Godfrey the first Priest"
 _routinePlanner = NodePath("GodfreyRandomWalk")
-_portraitSprite2D = NodePath("CharacterSprite2D")
+_overWorldSprite = NodePath("CharacterSprite2D")
 
 [node name="CharacterSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_ts0yk")
@@ -233,11 +203,7 @@ animation = &"idle"
 frame = 15
 frame_progress = 0.347857
 
-[node name="PortraitSprite2D" parent="." index="2"]
-sprite_frames = SubResource("SpriteFrames_838gj")
-animation = &"godfrey_shook"
-
-[node name="GodfreyRandomWalk" type="Node" parent="." index="4" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+[node name="GodfreyRandomWalk" type="Node" parent="." index="3" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
 script = ExtResource("3_c2lkg")
 _npcExecutingRoutines = NodePath("..")
 _routines = [NodePath("MovementRoutine1"), NodePath("MovementRoutine2"), NodePath("MovementRoutine3"), NodePath("MovementRoutine4"), NodePath("MovementRoutine5"), NodePath("MovementRoutine6"), NodePath("MovementRoutine7")]
@@ -316,4 +282,4 @@ collision_mask = 4
 
 [node name="PlayerInitiatedDialogue" type="Node" parent="GodfreyRandomWalk" index="7"]
 script = ExtResource("6_8afnb")
-_dialogueResourceObject = Array[Object]([ExtResource("7_v4eb2"), ExtResource("9_5eoqm"), ExtResource("10_l6vhi"), ExtResource("11_owjbx"), ExtResource("12_tpypq")])
+_dialogueResourceObjects = Array[Object]([ExtResource("7_v4eb2"), ExtResource("9_5eoqm"), ExtResource("10_l6vhi"), ExtResource("11_owjbx"), ExtResource("12_tpypq")])

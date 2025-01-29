@@ -47,12 +47,12 @@ _routinePlanner = NodePath("RoutinePlanner")
 sprite_frames = SubResource("SpriteFrames_12fo5")
 animation = &"sad"
 
-[node name="SeedShopSprite" type="Sprite2D" parent="." index="4"]
+[node name="SeedShopSprite" type="Sprite2D" parent="." index="3"]
 position = Vector2(0, -26)
 texture = ExtResource("2_j4u8e")
 hframes = 11
 
-[node name="RoutinePlanner" type="Node" parent="." index="5" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+[node name="RoutinePlanner" type="Node" parent="." index="4" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
 script = ExtResource("2_e08ef")
 _npcExecutingRoutines = NodePath("..")
 _routines = [NodePath("OnPlayerInteraction")]
@@ -66,7 +66,7 @@ script = ExtResource("4_p27pq")
 _dialogueResourceObjects = Array[Object]([ExtResource("5_hojrx"), ExtResource("7_sumlp"), ExtResource("8_dvvuy"), ExtResource("9_ci5lp"), ExtResource("10_hifoa"), ExtResource("11_6clld"), ExtResource("12_13pfm")])
 _randomOrderOfDialogueLines = true
 
-[node name="OutOfStockNode" type="Node" parent="." index="6" node_paths=PackedStringArray("_seedBoy")]
+[node name="OutOfStockNode" type="Node" parent="." index="5" node_paths=PackedStringArray("_seedBoy")]
 script = ExtResource("13_83ao0")
 _outOfStock = ExtResource("13_wxxgb")
 _yesResponse = ExtResource("15_4jya7")

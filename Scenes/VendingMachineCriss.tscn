@@ -25,23 +25,20 @@ size = Vector2(62, 12)
 _name = "Vending Machine"
 _routinePlanner = NodePath("RoutinePlanner")
 
-[node name="PortraitSprite2D" parent="." index="2"]
-sprite_frames = null
-
-[node name="VendingMachineSprite" type="Sprite2D" parent="." index="4"]
+[node name="VendingMachineSprite" type="Sprite2D" parent="." index="3"]
 position = Vector2(0, -53)
 texture = ExtResource("2_gjf2v")
 
-[node name="InteractionRange" type="CollisionShape2D" parent="." index="5"]
+[node name="InteractionRange" type="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CircleShape2D_rqkbf")
 
-[node name="CollisionShape" type="StaticBody2D" parent="." index="6"]
+[node name="CollisionShape" type="StaticBody2D" parent="." index="5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape" index="0"]
 y_sort_enabled = true
 shape = SubResource("RectangleShape2D_tqgu1")
 
-[node name="RoutinePlanner" type="Node" parent="." index="7" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+[node name="RoutinePlanner" type="Node" parent="." index="6" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
 script = ExtResource("3_rkpsh")
 _npcExecutingRoutines = NodePath("..")
 _routines = [NodePath("TalkAndOpenVendingMachineRoutine")]
