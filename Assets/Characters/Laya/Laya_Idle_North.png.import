@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://333na5rc2e5d"
-path="res://.godot/imported/Laya_Seed.png-b1a2cf0b40cf3ea4eee7d36c536cf90a.ctex"
+uid="uid://6e01e35aikg8"
+path="res://.godot/imported/Laya_Idle_North.png-298de005d0600c835a20db64578d79ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Laya/Laya_Seed.png"
-dest_files=["res://.godot/imported/Laya_Seed.png-b1a2cf0b40cf3ea4eee7d36c536cf90a.ctex"]
+source_file="res://Assets/Characters/Laya/Laya_Idle_North.png"
+dest_files=["res://.godot/imported/Laya_Idle_North.png-298de005d0600c835a20db64578d79ec.ctex"]
 
 [params]
 
