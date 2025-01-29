@@ -39,6 +39,7 @@ visible = false
 scale = Vector2(0.9969, 1)
 
 [node name="ControllerLayout" parent="." instance=ExtResource("8_l2bmx")]
+visible = false
 script = ExtResource("9_em7sj")
 
 [node name="DebugOverlays" parent="." instance=ExtResource("9_m21er")]

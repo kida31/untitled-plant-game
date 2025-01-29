@@ -11,14 +11,14 @@ public partial class ControllerLayout : Control
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _Input(InputEvent @event)
 	{
-		if (Input.IsKeyPressed(Key.F1))
+		if (@event is InputEventKey key && key.Pressed && key.Keycode == Key.F1)
 		{
 			Visible = !Visible;
 		}
-
-		if (Input.IsActionPressed(Base.East))
+		
+		if (@event.IsActionPressed(Base.East))
 		{
 			Hide();
 		}
