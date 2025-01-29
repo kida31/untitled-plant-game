@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://s5ddvfj7hgkj"]
 
 [ext_resource type="Script" path="res://Features/GUI/HUDs/ButtonIndicator.cs" id="1_wwa2o"]
-[ext_resource type="Texture2D" uid="uid://bm6ihno65ky3a" path="res://Assets/UI/Buttons/XBOX/A_default.png" id="2_emypu"]
-[ext_resource type="Texture2D" uid="uid://lf1yft7ifymy" path="res://Assets/UI/Buttons/XBOX/A_pressed.png" id="3_bs1oq"]
+[ext_resource type="Texture2D" uid="uid://xdde7ubloywe" path="res://Assets/UI/Buttons/Playstation/X_default.png" id="2_gt57w"]
+[ext_resource type="Texture2D" uid="uid://du2sm7h1472j4" path="res://Assets/UI/Buttons/Playstation/X_pressed.png" id="3_62xu2"]
 
 [sub_resource type="Animation" id="Animation_irdbn"]
 resource_name = "FadeOut"
@@ -82,7 +82,7 @@ layout_mode = 2
 focus_mode = 0
 mouse_filter = 2
 toggle_mode = true
-texture_normal = ExtResource("2_emypu")
-texture_pressed = ExtResource("3_bs1oq")
+texture_normal = ExtResource("2_gt57w")
+texture_pressed = ExtResource("3_62xu2")
 ignore_texture_size = true
 stretch_mode = 4
