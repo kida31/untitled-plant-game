@@ -1,12 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://xct3vega3gwo"]
+[gd_scene load_steps=8 format=3 uid="uid://xct3vega3gwo"]
 
 [ext_resource type="Script" path="res://Features/Fishing/New/FishingGame.cs" id="1_j7t86"]
 [ext_resource type="PackedScene" uid="uid://dt1qh1fqa5tl7" path="res://Features/Fishing/New/FishingPond.tscn" id="1_ldtln"]
 [ext_resource type="Resource" uid="uid://13h6j7ov146l" path="res://Features/Fishing/New/FishingGameConfig_Hard.tres" id="2_01o3a"]
 [ext_resource type="Script" path="res://Features/Fishing/New/FishingRod.cs" id="2_er4ks"]
+[ext_resource type="Texture2D" uid="uid://ub55y2eyhgq5" path="res://Assets/Items/Duck.png" id="5_7rsmt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqfo8"]
 radius = 40.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_be3dv"]
+bg_color = Color(1, 0.66, 0.15, 0.392157)
+corner_radius_top_left = 256
+corner_radius_top_right = 256
+corner_radius_bottom_right = 256
+corner_radius_bottom_left = 256
 
 [node name="FishingGame" type="Node2D" node_paths=PackedStringArray("_fishingPond", "_progressBar", "_fishingRod")]
 script = ExtResource("1_j7t86")
@@ -31,28 +39,33 @@ offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FishingRod" type="Area2D" parent="." node_paths=PackedStringArray("_debugLabel", "_collisionShape")]
+[node name="FishingRod" type="Area2D" parent="." node_paths=PackedStringArray("_debugLabel", "_collisionShape", "_areaSprite")]
 position = Vector2(166, 97)
 script = ExtResource("2_er4ks")
 _debugLabel = NodePath("Label")
 _collisionShape = NodePath("CollisionShape2D")
+_areaSprite = NodePath("Bobber/EffectArea")
 
-[node name="ColorRect" type="ColorRect" parent="FishingRod"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingRod"]
+shape = SubResource("CircleShape2D_gqfo8")
+
+[node name="Bobber" type="Sprite2D" parent="FishingRod"]
+texture = ExtResource("5_7rsmt")
+
+[node name="EffectArea" type="Panel" parent="FishingRod/Bobber"]
+show_behind_parent = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = 17.0
-offset_right = 40.0
-offset_bottom = 47.0
+offset_left = -56.0
+offset_top = -56.0
+offset_right = 24.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 0, 0.784314)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingRod"]
-shape = SubResource("CircleShape2D_gqfo8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_be3dv")
 
 [node name="Label" type="Label" parent="FishingRod"]
 anchors_preset = 8
