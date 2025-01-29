@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fukc7sc61bsg"
-path="res://.godot/imported/Laya_Walking.png-cc4f93e71c19f807fe83bcab941f9fdd.ctex"
+uid="uid://boorxnecgw8o3"
+path="res://.godot/imported/Laya_Tool_Side.png-453349bd752597458b6561cc0dbb51c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Laya/Laya_Walking.png"
-dest_files=["res://.godot/imported/Laya_Walking.png-cc4f93e71c19f807fe83bcab941f9fdd.ctex"]
+source_file="res://Assets/Characters/Laya/Laya_Tool_Side.png"
+dest_files=["res://.godot/imported/Laya_Tool_Side.png-453349bd752597458b6561cc0dbb51c3.ctex"]
 
 [params]
 

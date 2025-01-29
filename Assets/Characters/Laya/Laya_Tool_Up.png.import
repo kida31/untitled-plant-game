@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://divvtcory7414"
-path="res://.godot/imported/Laya_Shovel.png-b1550d6dda05d907ee73825febd10461.ctex"
+uid="uid://c57qus5lrs544"
+path="res://.godot/imported/Laya_Tool_Up.png-8041d010568c0fcdf29aaea782c17170.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Laya/Laya_Shovel.png"
-dest_files=["res://.godot/imported/Laya_Shovel.png-b1550d6dda05d907ee73825febd10461.ctex"]
+source_file="res://Assets/Characters/Laya/Laya_Tool_Up.png"
+dest_files=["res://.godot/imported/Laya_Tool_Up.png-8041d010568c0fcdf29aaea782c17170.ctex"]
 
 [params]
 
