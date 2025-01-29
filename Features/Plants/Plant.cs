@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
+using untitledplantgame.Cycle.Weather;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
@@ -33,9 +34,9 @@ public partial class Plant : Area2D
 	public event Action<Plant> BeforePlantRemoved;
 	public event Action<Plant> PlantGrown;
 
-	public event Action<Plant> PlantDied; 
+	public event Action<Plant> PlantDied;
 
-	private Dictionary<string, Requirement> _currentRequirements;
+	private Dictionary<RequirementType, Requirement> _currentRequirements;
 	private readonly Logger _logger;
 
 	private bool _isHarvestable;
@@ -119,7 +120,7 @@ public partial class Plant : Area2D
 		_logger.Debug($"Setting requirements for plant {PlantName} with stage {Stage}.");
 
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
-		var plantRequirements = new Dictionary<string, Requirement>();
+		var plantRequirements = new Dictionary<RequirementType, Requirement>();
 		_absorptionRate = plantData.AbsorptionRate;
 		_consumptionRate = plantData.ConsumptionRate;
 
@@ -133,7 +134,7 @@ public partial class Plant : Area2D
 
 		foreach (var data in plantDataRequirementsForStage)
 		{
-			plantRequirements[data.Name.ToString()] = new Requirement(data.MaxLevel, data.MinLevel);
+			plantRequirements[data.Name] = new Requirement(data.MaxLevel, data.MinLevel);
 		}
 
 		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
@@ -148,7 +149,7 @@ public partial class Plant : Area2D
 	private bool CheckRequirements()
 	{
 		if (Stage is GrowthStage.Dead or GrowthStage.Ripening) return false;
-		
+
 		var fulfilled = false;
 		foreach (var requirement in _currentRequirements)
 		{
@@ -167,7 +168,7 @@ public partial class Plant : Area2D
 	/// </summary>
 	/// <param name="key"></param>
 	/// <returns></returns>
-	private bool CheckRequirement(string key)
+	private bool CheckRequirement(RequirementType key)
 	{
 		var isFulfilled = _currentRequirements[key].IsFulfilled();
 		_logger.Debug($"Checking requirement {key}. Requirement is {isFulfilled}.");
@@ -190,13 +191,14 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void AbsorbWaterFromTile()
 	{
-		var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water.ToString());
+		var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water);
 		var waterAbsorbed = Tile.WithdrawHydration(_absorptionRate) + waterReq.CurrentLevel;
 
 		waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
 		ConsumeWater();
 
-		_logger.Debug(RequirementType.water.ToString() + _currentRequirements.GetValueOrDefault(RequirementType.water.ToString()));
+		_logger.Debug(
+			$"The requirement for {RequirementType.water.ToString()} is currently at level {_currentRequirements.GetValueOrDefault(RequirementType.water)}");
 	}
 
 	/// <summary>
@@ -204,12 +206,13 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void ConsumeWater()
 	{
-		var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water.ToString());
+		var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water);
 		waterReq.CurrentLevel -= _consumptionRate;
 
 		if (waterReq.CurrentLevel < 0)
 		{
 			SetUnalive();
+			_logger.Debug($"Plant {PlantName} has died due to lack of water.");
 		}
 	}
 
@@ -218,11 +221,16 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void AbsorbSun()
 	{
-		var sunReq = _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString());
+		var sunReq = _currentRequirements.GetValueOrDefault(RequirementType.sun);
 
-		sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + _absorptionRate, sunReq.MaxLevel);
+		sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + GetSunAbsorptionRateBasedOnWeather(), sunReq.MaxLevel);
+		sunReq.CurrentLevel -= _consumptionRate;
 
-		_logger.Debug(RequirementType.sun.ToString() + _currentRequirements.GetValueOrDefault(RequirementType.sun.ToString()));
+		if (sunReq.CurrentLevel < 0)
+		{
+			SetUnalive();
+			_logger.Debug($"Plant {PlantName} has died due to lack of sun.");
+		}
 	}
 
 	private void SetUnalive()
@@ -230,7 +238,6 @@ public partial class Plant : Area2D
 		Stage = GrowthStage.Dead;
 		_isHarvestable = false;
 		PlantDied?.Invoke(this);
-		_logger.Debug($"Plant {PlantName} has died due to lack of water.");
 	}
 
 	private IItemStack GetHarvestItem()
@@ -248,5 +255,16 @@ public partial class Plant : Area2D
 		_logger.Debug("Harvested items: " + itemStacks);
 
 		return itemStacks;
+	}
+
+	private float GetSunAbsorptionRateBasedOnWeather()
+	{
+		return WeatherCycle.Instance.CurrentWeather switch
+		{
+			Weather.Sunny => _absorptionRate * 1.5f,
+			Weather.Cloudy => _absorptionRate * 1.0f,
+			Weather.Rainy or Weather.Snowy => _absorptionRate * 0.5f,
+			_ => _absorptionRate
+		};
 	}
 }

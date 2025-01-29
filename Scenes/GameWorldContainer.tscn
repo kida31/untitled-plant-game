@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=11 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://crm2bb3s72gi8" path="res://Scenes/SeedBoyCriss.tscn" id="3_ffnpq"]
 [ext_resource type="PackedScene" uid="uid://cr2712p8tviur" path="res://Scenes/Godfrey.tscn" id="4_r6pis"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
-[ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
 [ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="7_nwxdh"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
 [ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
@@ -29,10 +28,6 @@ position = Vector2(464, 200)
 
 [node name="Godfrey" parent="." instance=ExtResource("4_r6pis")]
 position = Vector2(704, 356)
-
-[node name="Plants" parent="." instance=ExtResource("7_36aju")]
-z_index = 0
-y_sort_enabled = false
 
 [node name="Weather" parent="." instance=ExtResource("7_nwxdh")]
 z_index = -1

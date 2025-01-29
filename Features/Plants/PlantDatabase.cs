@@ -36,7 +36,9 @@ public partial class PlantDatabase : Node, IDatabase<PlantData>
 	{
 		var plantName = name.Replace(" ", "_");
 		var resourceName = $"{plantName}.tres";
-		var data = GD.Load<PlantData>(Path.Join(_dirPath, resourceName));
+		var path = Path.Join(_dirPath, resourceName);
+		var data = GD.Load<PlantData>(path);
+		_logger.Debug($"Loaded PlantData resource from path {path}");;
 		if (data == null)
 		{
 			_logger.Error("There is no PlantData resource with the name " + name);
