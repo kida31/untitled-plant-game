@@ -45,19 +45,19 @@ public partial class FishingBobber : Area2D
 	private void OnAreaExited(Area2D area)
 	{
 		// Detach fish
-		if (area is Fish fish && _attachedFish == fish)
+		/*if (area is Fish fish && _attachedFish == fish)
 		{
 			_attachedFish = null;
-		}
+		}*/
 	}
 
 	private void OnAreaEntered(Area2D area)
 	{
 		// Attach fish
-		if (area is Fish fish)
+		/*if (area is Fish fish)
 		{
 			_attachedFish ??= fish;
-		}
+		}*/
 	}
 
 	public override void _Process(double delta)
