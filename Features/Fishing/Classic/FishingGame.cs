@@ -4,9 +4,10 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.Fishing.Classic;
 
-public partial class FishingGame : Node
+public partial class FishingGame : Node, IGame
 {
 	public event Action GameWon;
+	public event Action GameLost;
 
 	[Export] private GameConfig _gameConfig;
 	[Export] private Area2D _fishingPond;
@@ -39,15 +40,16 @@ public partial class FishingGame : Node
 			GameWon?.Invoke();
 		}
 	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		if (_fish != null && _fishingRod?.Fish != null && _fishingRod.ActiveDirection.X * _fish.ActiveDirection.X < 0)
 		{
-			_progress += (float)delta * _gameConfig.ProgressPullingPerSecond;
+			_progress += (float) delta * _gameConfig.ProgressPullingPerSecond;
 		}
 		else
 		{
-			_progress -= (float)delta * _gameConfig.ProgressDecayPerSecond;
+			_progress -= (float) delta * _gameConfig.ProgressDecayPerSecond;
 		}
 
 		_progress = Math.Max(_progress, 0);
@@ -80,6 +82,17 @@ public partial class FishingGame : Node
 		return fish;
 	}
 
+	public void Start(Resource config)
+	{
+		_fishingRod.GlobalPosition = _spawnPoint.GlobalPosition;
+		_fish = SpawnFish();
+	}
+
+	public void Stop()
+	{
+		throw new NotImplementedException();
+	}
+
 	private void OnFishingPondExited(Area2D area)
 	{
 		if (area != _fish) return;
@@ -87,5 +100,6 @@ public partial class FishingGame : Node
 		_fish.QueueFree();
 		_fish = null;
 		_logger.Info("Fish escaped!");
+		GameLost?.Invoke();
 	}
 }

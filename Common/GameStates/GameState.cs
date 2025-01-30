@@ -29,7 +29,14 @@ public sealed class GameState
 
 	public static IEnumerable<GameState> GetValues()
 	{
-		return new[] { FreeRoam, Book, Config, Dialogue, Shop, Crafting, VendingMachine };
+		yield return FreeRoam;
+		yield return Book;
+		yield return Config;
+		yield return Dialogue;
+		yield return Shop;
+		yield return VendingMachine;
+		yield return Crafting;
+		yield return Fishing;
 	}
 
 	public override string ToString()
