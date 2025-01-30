@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Godot;
 using Godot.Collections;
 using untitledplantgame.Common;
@@ -16,6 +17,7 @@ namespace untitledplantgame.Dialogue.Events;
 public partial class OpenFishingGame : DialogueEvent
 {
 	[Export] private Array<GameConfig> _randomGameConfigsPool;
+	[Export] private GameConfig _config;
 
 	private FishingMiniGameSingleton _fishingGame;
 	private Logger _logger;
@@ -32,8 +34,8 @@ public partial class OpenFishingGame : DialogueEvent
 
 		_logger.Info("Starting fishing game");
 		GameStateMachine.Instance.ChangeState(GameState.Fishing);
-		var config = _randomGameConfigsPool.PickRandom();
-		_fishingGame.Start(config);
+		_logger.Debug(_config.GetPath());
+		_fishingGame.Start(_config);
 		_fishingGame.Show();
 	}
 
@@ -44,11 +46,11 @@ public partial class OpenFishingGame : DialogueEvent
 		_logger.Info("Fishing game won");
 
 		// Give some random fish
-		var item = ItemDatabase.Instance.GetAllItems()[0].Clone();
-		item.Name = "Some Fish" + new Random().Next();
-		item.Category = ItemCategory.Material;
-		item.AddComponent(new TagsComponent(TagsComponent.Tags.IsFish));
-		EventBus.Instance.ItemPickedUp(item);
+		var items = ItemDatabase.Instance.GetAllItems();
+		var fish = items.Where(i => i.GetComponent<TagsComponent>()?.Contains(TagsComponent.Tags.IsFish) ?? false).ToList();
+		var random = new Random();
+		var fishItem = fish.ElementAt(random.Next(fish.Count));
+		EventBus.Instance.ItemPickedUp(fishItem);
 	}
 
 	private void OnGameLost()
