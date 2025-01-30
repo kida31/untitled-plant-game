@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://nvr30ur1b8ia"]
+
+[ext_resource type="Texture2D" uid="uid://bn4fpfuaq40v7" path="res://Assets/UI/HUD/round_container_currency_hud.png" id="2_6rkc1"]
+[ext_resource type="Texture2D" uid="uid://dc1g8ag84a43x" path="res://Assets/Items/Fish1.png" id="3_bx7lq"]
+
+[node name="Fishing" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="div" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 80.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="div"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="div"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture = ExtResource("2_6rkc1")
+patch_margin_left = 13
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="div/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0192308
+anchor_top = -0.125
+anchor_right = 0.173077
+anchor_bottom = 1.125
+texture = ExtResource("3_bx7lq")
+metadata/_edit_use_anchors_ = true
