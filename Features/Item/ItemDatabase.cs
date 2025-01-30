@@ -184,7 +184,7 @@ public class ItemDatabase
 					"The seeds of a chuberry plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_seed.png"),
 				Category = ItemCategory.Seed,
-				BaseValue = 5,
+				BaseValue = 10,
 				RelatedItemIds = new Array<string> {"chuberryFruit"},
 				Components = new Array<AComponent> {new SeedComponent("Chuberry")}
 			},
@@ -198,7 +198,7 @@ public class ItemDatabase
 					"It helps boost the immune system, so it’s a widely used plant by many in Tawas. Use it preventive or as an acute immune booster. ",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_harvested.png"),
 				Category = ItemCategory.Medicine,
-				BaseValue = 5,
+				BaseValue = 10,
 				RelatedItemIds = new Array<string> {"chuberrySeed"},
 				Components = new()
 				{
@@ -224,7 +224,7 @@ public class ItemDatabase
 					"The seeds of a Drupoleaum plant. They have to be planted in soil and watered regularly. It will grow up a stalk.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_seeds.png"),
 				Category = ItemCategory.Seed,
-				BaseValue = 5,
+				BaseValue = 100,
 				RelatedItemIds = new Array<string> {"drupoleaumFlower", "drupoleaumFruits"},
 				Components = new Array<AComponent>
 				{
@@ -241,7 +241,7 @@ public class ItemDatabase
 					" As the wild variations of drupoleaum vined up trees, a popular game was to find the highest growing flower and offer it to the goddess’s shrine. Nowadays, the flowers are a popular tea variant and help with finding sleep.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Flowers.png"),
 				Category = ItemCategory.Medicine,
-				BaseValue = 5,
+				BaseValue = 50,
 				RelatedItemIds = new Array<string> {"drupoleaumSeed", "drupoleaumFruits"},
 				Components = new Array<AComponent>
 				{
@@ -268,7 +268,7 @@ public class ItemDatabase
 					" Just recently their anti-inflammatory effects have become known which led to a high demand for berries after the Big Flooding.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Fruits.png"),
 				Category = ItemCategory.Medicine,
-				BaseValue = 5,
+				BaseValue = 100,
 				RelatedItemIds = new Array<string> {"drupoleaumFlower", "drupoleaumSeed"},
 				Components = new Array<AComponent>
 				{
@@ -295,11 +295,38 @@ public class ItemDatabase
 					"The seeds of a Licary plant. They have to be planted in soil and watered regularly to reward you with multiple harvestable Items.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_seed.png"),
 				Category = ItemCategory.Seed,
-				BaseValue = 5,
+				BaseValue = 350,
 				RelatedItemIds = new Array<string> {"licaryFlowers", "licaryFlowers", "licaryFruit"},
 				Components = new Array<AComponent>
 				{
 					new SeedComponent("Licary")
+				}
+			},
+			new ItemStack
+			{
+				Id = "licaryLeaves",
+				Name = "Licary Leaves",
+				ToolTipDescription = "The leaves of a Licary plant.",
+				WikiDescription =
+					"The leaves of a licary plant. The leaves are pretty bitter and cannot be eaten. People cannot eat it without first processing it. " +
+					"Usually it is dried and then brewed into a tea. The tea is said to help with colds and flu.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_leaves.png"),
+				Category = ItemCategory.Medicine,
+				BaseValue = 12,
+				RelatedItemIds = new Array<string> {"licarySeed", "licaryFruit"},
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower),
+					new HarvestedComponent("Licary", GrowthStage.Flowering),
+					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
+					{
+						{MedicinalEffect.Warming, 3},
+						{MedicinalEffect.PainRelief, 1},
+					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
+					{
+						{IllnessEffect.Indigestion, 3},
+						{IllnessEffect.HeartAttack, 1}
+					})
 				}
 			},
 			new ItemStack
@@ -312,7 +339,7 @@ public class ItemDatabase
 					"Whenever the colder days arrive, people stock up on these flowers to always have the sun around.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_flowers.png"),
 				Category = ItemCategory.Medicine,
-				BaseValue = 5,
+				BaseValue = 69,
 				RelatedItemIds = new Array<string> {"licarySeed", "licaryFruit"},
 				Components = new Array<AComponent>
 				{
@@ -339,7 +366,7 @@ public class ItemDatabase
 					" It’s anti-oxidant effect makes it a popular juice though. Parents usually pack small bottles of Licary juice as lunch drinks for their kids at school.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_harvested.png"),
 				Category = ItemCategory.Medicine,
-				BaseValue = 5,
+				BaseValue = 420,
 				RelatedItemIds = new Array<string> {"licarySeed", "licaryFlowers"},
 				Components = new Array<AComponent>
 				{
@@ -365,7 +392,7 @@ public class ItemDatabase
 				WikiDescription = "A dried fruit. Drying fruits in the dehydrator will make them last longer and amplify their properties.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/dried_chubery.png"),
 				Category = ItemCategory.Medicine,
-				BaseValue = 5,
+				BaseValue = 0,
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFruit)
@@ -379,13 +406,11 @@ public class ItemDatabase
 				WikiDescription = "A dried flower. Drying flowers in the dehydrator will make them last longer and amplify their properties.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/dried_drupoleaum.png"),
 				Category = ItemCategory.Medicine,
-				BaseValue = 5,
+				BaseValue = 0,
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFlower),
 				},
-				Amount = 1,
-				RelatedItemIds = new Array<string> {"chuberrySeed", "chuberryFruit"}
 			},
 			new ItemStack
 			{
@@ -395,13 +420,11 @@ public class ItemDatabase
 				WikiDescription = "Dried leaves. Drying leaves in the dehydrator will make them last longer and amplify their properties.",
 				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
 				Category = ItemCategory.Medicine,
-				BaseValue = 5,
+				BaseValue = 0,
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsLeaf)
 				},
-				Amount = 1,
-				RelatedItemIds = new Array<string> {"chuberrySeed", "chuberryFruit"}
 			},
 		};
 	}
