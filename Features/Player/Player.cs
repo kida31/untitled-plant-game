@@ -5,6 +5,7 @@ using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
 using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Inventory;
+using untitledplantgame.Item;
 using untitledplantgame.Shops;
 using untitledplantgame.Tools;
 
@@ -58,7 +59,7 @@ public partial class Player : CharacterBody2D
 		var rand = new RandomStockGenerator();
 		Inventory = new(20);
 		Inventory.InventoryChanged += () => { EventBus.Instance.PlayerInventoryChanged(this, Inventory); };
-		//Inventory.AddItem(rand.GetRandomItems(12).Where(it => it.Category == ItemCategory.Medicine).ToArray()); // For testing purposes
+		Inventory.AddItem(ItemDatabase.Instance.CreateItemStack("rubber_duck")); // VERY IMPORTANT
 	}
 
 	private void OnItemPickUp(IItemStack obj)
