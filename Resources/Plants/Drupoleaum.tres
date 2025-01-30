@@ -8,7 +8,7 @@
 script = ExtResource("1_yucea")
 Name = 1
 MinLevel = 10.0
-MaxLevel = 60.0
+MaxLevel = 120.0
 
 [sub_resource type="Resource" id="Resource_2jqe6"]
 script = ExtResource("1_yucea")
@@ -25,7 +25,7 @@ IsHarvestable = false
 script = ExtResource("1_yucea")
 Name = 1
 MinLevel = 50.0
-MaxLevel = 100.0
+MaxLevel = 120.0
 
 [sub_resource type="Resource" id="Resource_wahim"]
 script = ExtResource("1_yucea")
@@ -42,7 +42,7 @@ IsHarvestable = false
 script = ExtResource("1_yucea")
 Name = 1
 MinLevel = 40.0
-MaxLevel = 100.0
+MaxLevel = 120.0
 
 [sub_resource type="Resource" id="Resource_no7n7"]
 script = ExtResource("1_yucea")
@@ -93,7 +93,7 @@ IsHarvestable = false
 script = ExtResource("1_yucea")
 Name = 1
 MinLevel = 50.0
-MaxLevel = 110.0
+MaxLevel = 120.0
 
 [sub_resource type="Resource" id="Resource_83m2e"]
 script = ExtResource("1_yucea")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://fpjia0r4x37g"]
+[gd_scene load_steps=11 format=3 uid="uid://fpjia0r4x37g"]
 
 [ext_resource type="PackedScene" uid="uid://y78tki415ik5" path="res://Features/Crafting/Dehydrator/DehydratorUi.tscn" id="1_xtr3v"]
 [ext_resource type="PackedScene" uid="uid://dv7b4urhn1amc" path="res://Features/GUI/ButtonLineDehydrator.tscn" id="2_ovfsv"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="6_8b1nu"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="9_q65ah"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="10_p7lvf"]
+[ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="10_q8xsm"]
 
 [node name="DehydratorInventoryView" type="Control"]
 layout_mode = 3
@@ -37,6 +38,29 @@ anchor_right = 2.54701
 anchor_bottom = 1.28632
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="DehydratorUi"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = -43.0
+offset_right = 133.0
+offset_bottom = -8.00004
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DehydratorUi/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("10_q8xsm")
+region_rect = Rect2(0.000766754, -0.31827, 64.3167, 32.7169)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="CenterContainer" type="CenterContainer" parent="DehydratorUi/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DehydratorUi/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Dehydrator"
 
 [node name="MiniInventory" type="Control" parent="." node_paths=PackedStringArray("_itemViewContainer", "_itemNameLabel")]
 visible = false
@@ -164,6 +188,29 @@ layout_mode = 2
 
 [node name="ItemView20" parent="MiniInventory/ItemGrid" instance=ExtResource("3_gqumj")]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MiniInventory"]
+layout_mode = 0
+offset_left = 80.0003
+offset_top = -42.0
+offset_right = 148.0
+offset_bottom = -7.00004
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MiniInventory/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("10_q8xsm")
+region_rect = Rect2(0.000766754, -0.31827, 64.3167, 32.7169)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="CenterContainer" type="CenterContainer" parent="MiniInventory/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MiniInventory/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Inventory"
 
 [node name="FocusIndicator" parent="." instance=ExtResource("9_q65ah")]
 visible = false

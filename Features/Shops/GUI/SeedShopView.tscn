@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bd54v5orqpb6t"]
+[gd_scene load_steps=13 format=3 uid="uid://bd54v5orqpb6t"]
 
 [ext_resource type="Script" path="res://Features/Shops/GUI/SeedShopView.cs" id="1_rs6dp"]
 [ext_resource type="Texture2D" uid="uid://uej5qcp5lxwk" path="res://Assets/UI/SeedShop/seed_shop_cloth_flat.png" id="2_oarm3"]
 [ext_resource type="PackedScene" uid="uid://dvyfrigggpkfj" path="res://Features/GUI/Shops/ShopItemView.tscn" id="3_s3uu1"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="4_gya2w"]
+[ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="4_nmr13"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="5_0lc50"]
 [ext_resource type="Script" path="res://Features/GUI/Items/StorageView.cs" id="6_vtnd1"]
 [ext_resource type="PackedScene" uid="uid://ct1oinq00jcp6" path="res://Features/GUI/Items/NewInventoryItemView.tscn" id="7_apaor"]
@@ -99,6 +100,29 @@ layout_mode = 2
 
 [node name="ShopItem12" parent="SeedShopCarpet/GridContainer" instance=ExtResource("3_s3uu1")]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SeedShopCarpet"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = -36.0002
+offset_right = 139.0
+offset_bottom = -1.00016
+
+[node name="NinePatchRect" type="NinePatchRect" parent="SeedShopCarpet/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_nmr13")
+region_rect = Rect2(0.000766754, -0.31827, 64.3167, 32.7169)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="CenterContainer" type="CenterContainer" parent="SeedShopCarpet/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SeedShopCarpet/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Seed Shop"
 
 [node name="SeedInventory" type="Control" parent="." node_paths=PackedStringArray("_itemViewContainer", "_itemNameLabel")]
 custom_minimum_size = Vector2(223, 235)
@@ -230,6 +254,29 @@ layout_mode = 2
 
 [node name="ItemView20" parent="SeedInventory/ItemGrid" instance=ExtResource("7_apaor")]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SeedInventory"]
+layout_mode = 0
+offset_left = 80.0003
+offset_top = -42.0
+offset_right = 148.0
+offset_bottom = -7.00004
+
+[node name="NinePatchRect" type="NinePatchRect" parent="SeedInventory/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_nmr13")
+region_rect = Rect2(0.000766754, -0.31827, 64.3167, 32.7169)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="CenterContainer" type="CenterContainer" parent="SeedInventory/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SeedInventory/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Inventory"
 
 [node name="ButtonLine" parent="." instance=ExtResource("9_ukqri")]
 layout_mode = 1
