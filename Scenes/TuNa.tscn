@@ -1,15 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://pwe2l5301kmv"]
+[gd_scene load_steps=12 format=3 uid="uid://brwhrhwctncjc"]
 
 [ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_6hi0j"]
 [ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_25s78"]
 [ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_bage1"]
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_uhsu8"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_kpke6"]
-[ext_resource type="Texture2D" uid="uid://dgode5fji4jaf" path="res://Assets/Characters/NaFamily/Tu/Portrait.png" id="6_15rnw"]
 [ext_resource type="Texture2D" uid="uid://cdcnpdve7pcec" path="res://Assets/Characters/NaFamily/Tu/Overworld.png" id="7_1lbg0"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="7_ghkx8"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="8_b1jl2"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="9_0ugnc"]
+[ext_resource type="Resource" uid="uid://l2dttblak82u" path="res://Resources/Dialogue/TuNa.tres" id="7_q80df"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5dfj"]
 atlas = ExtResource("7_1lbg0")
@@ -31,66 +28,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlqdi"]
 radius = 34.0147
 
-[sub_resource type="Resource" id="Resource_c41l0"]
-script = ExtResource("7_ghkx8")
-speakerName = "Tu"
-DialogueExpression = ExtResource("6_15rnw")
-dialogueText = "Are you having fun fishing?"
-
-[sub_resource type="Resource" id="Resource_7y4xn"]
-script = ExtResource("7_ghkx8")
-speakerName = "Tu"
-DialogueExpression = ExtResource("6_15rnw")
-dialogueText = "That's great!"
-
-[sub_resource type="Resource" id="Resource_gvt4l"]
-script = ExtResource("8_b1jl2")
-_dialogueId = "e"
-_dialogueText = Array[Object]([SubResource("Resource_7y4xn")])
-_responses = Array[Object]([])
-
-[sub_resource type="Resource" id="Resource_qtx6n"]
-script = ExtResource("9_0ugnc")
-_responseButton = "Yea, i love it!"
-_responseDialogue = SubResource("Resource_gvt4l")
-
-[sub_resource type="Resource" id="Resource_t76li"]
-script = ExtResource("7_ghkx8")
-speakerName = "Tu"
-DialogueExpression = ExtResource("6_15rnw")
-dialogueText = "Oh, that's unfortunate..."
-
-[sub_resource type="Resource" id="Resource_h47xx"]
-script = ExtResource("7_ghkx8")
-speakerName = "Tu"
-DialogueExpression = ExtResource("6_15rnw")
-dialogueText = "I guess maybe planting is more fun to you."
-
-[sub_resource type="Resource" id="Resource_las07"]
-script = ExtResource("8_b1jl2")
-_dialogueId = "n"
-_dialogueText = Array[Object]([SubResource("Resource_t76li"), SubResource("Resource_h47xx")])
-_responses = null
-
-[sub_resource type="Resource" id="Resource_tc5vl"]
-script = ExtResource("9_0ugnc")
-_responseButton = "Not really..."
-_responseDialogue = SubResource("Resource_las07")
-
-[sub_resource type="Resource" id="Resource_3e4bi"]
-script = ExtResource("8_b1jl2")
-_dialogueId = "tu"
-_dialogueText = Array[Object]([SubResource("Resource_c41l0")])
-_responses = Array[Object]([SubResource("Resource_qtx6n"), SubResource("Resource_tc5vl")])
-
-[node name="TuNa" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction", "_routinePlanner", "_portraitSprite2D")]
+[node name="TuNa" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction", "_routinePlanner")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_6hi0j")
 _name = "Tu Na"
 _npcPlayerInteraction = NodePath("InteractionNode")
 _routinePlanner = NodePath("RoutinePlanner")
-_portraitSprite2D = NodePath("PortraitSprite2D")
 
 [node name="PortraitSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
@@ -116,4 +60,4 @@ RoutineTrigger = 1
 
 [node name="TalkToSign" type="Node" parent="RoutinePlanner/OnPlayerInteraction"]
 script = ExtResource("5_kpke6")
-_dialogueResourceObject = SubResource("Resource_3e4bi")
+_dialogueResourceObjects = Array[Object]([ExtResource("7_q80df")])

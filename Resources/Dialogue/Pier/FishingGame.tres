@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=15 format=3 uid="uid://bd04qcecsmeim"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=15 format=3 uid="uid://j8aek7qap3ma"]
 
 [ext_resource type="Texture2D" uid="uid://cw4kud6jqxsdq" path="res://Assets/Items/FishingMyFishies/Fish1.png" id="1_4kipg"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_0jkdn"]
-[ext_resource type="PackedScene" path="res://Features/Fishing/MiniGameWindow.tscn" id="3_3mwke"]
+[ext_resource type="PackedScene" uid="uid://m3bi63eavsuv" path="res://Features/Fishing/MiniGameWindow.tscn" id="3_3mwke"]
 [ext_resource type="Script" path="res://Features/Dialogue/Events/OpenFishingGame.cs" id="3_vsx1a"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_ug5y2"]
 [ext_resource type="Resource" uid="uid://cjmq3ytxqm0fx" path="res://Features/Fishing/Classic/FishingGameConfig_Easy.tres" id="4_vnt24"]

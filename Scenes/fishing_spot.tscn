@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyb8oovbu1kjq"]
+[gd_scene load_steps=21 format=3 uid="uid://552u0k7nvjfm"]
 
 [ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_l4ubq"]
 [ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_xtua0"]
 [ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_6wmsp"]
 [ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_7knl4"]
 [ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_0xiss"]
-[ext_resource type="Resource" uid="uid://b050jb4x4v7cf" path="res://Resources/Dialogue/Pier/FishingGame.tres" id="6_sf1jh"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="7_5qs64"]
 [ext_resource type="Texture2D" uid="uid://dcuof8xjg3ele" path="res://Assets/Tools/fishingRod.png" id="7_nmuuj"]
+[ext_resource type="Script" path="res://Features/Dialogue/Events/OpenFishingGame.cs" id="8_syjf7"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="9_gnbwk"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="10_jvjwi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dk4m0"]
 atlas = ExtResource("7_nmuuj")
@@ -28,14 +31,46 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlqdi"]
 radius = 34.0147
 
-[node name="FishingSpot" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction", "_routinePlanner", "_portraitSprite2D")]
+[sub_resource type="Resource" id="Resource_ft32o"]
+script = ExtResource("7_5qs64")
+speakerName = "Fishing Rod"
+DialogueExpression = ExtResource("7_nmuuj")
+dialogueText = "Would you like to fish?"
+
+[sub_resource type="Resource" id="Resource_q6cks"]
+script = ExtResource("8_syjf7")
+_randomGameConfigsPool = null
+speakerName = ""
+dialogueText = ""
+
+[sub_resource type="Resource" id="Resource_7wcpk"]
+script = ExtResource("9_gnbwk")
+_dialogueId = ""
+_dialogueText = Array[Object]([SubResource("Resource_q6cks")])
+_responses = null
+
+[sub_resource type="Resource" id="Resource_egnnx"]
+script = ExtResource("10_jvjwi")
+_responseButton = "Yes"
+_responseDialogue = SubResource("Resource_7wcpk")
+
+[sub_resource type="Resource" id="Resource_llle6"]
+script = ExtResource("10_jvjwi")
+_responseButton = "No"
+
+[sub_resource type="Resource" id="Resource_058e7"]
+script = ExtResource("9_gnbwk")
+_dialogueId = "Fishing Rod"
+_dialogueText = Array[Object]([SubResource("Resource_ft32o")])
+_responses = Array[Object]([SubResource("Resource_egnnx"), SubResource("Resource_llle6")])
+
+[node name="FishingSpot" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction", "_routinePlanner")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_l4ubq")
 _name = "Fish"
 _npcPlayerInteraction = NodePath("InteractionNode")
 _routinePlanner = NodePath("RoutinePlanner")
-_portraitSprite2D = NodePath("PortraitSprite2D")
 
 [node name="PortraitSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
@@ -61,4 +96,4 @@ RoutineTrigger = 1
 
 [node name="TalkToSign" type="Node" parent="RoutinePlanner/OnPlayerInteraction"]
 script = ExtResource("5_0xiss")
-_dialogueResourceObject = ExtResource("6_sf1jh")
+_dialogueResourceObjects = Array[Object]([SubResource("Resource_058e7")])
