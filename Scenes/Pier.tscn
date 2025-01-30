@@ -13,9 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="10_x262s"]
 [ext_resource type="Script" path="res://Features/NPC/WalkableAreaDialogue.cs" id="12_857cn"]
 [ext_resource type="Resource" uid="uid://d33fmj25m3jt5" path="res://Resources/Dialogue/Pier/enteringTawas.tres" id="12_u20bu"]
-[ext_resource type="PackedScene" path="res://Scenes/fishing_spot.tscn" id="15_y8o50"]
-[ext_resource type="PackedScene" path="res://Scenes/SakaNa.tscn" id="16_4cksn"]
-[ext_resource type="PackedScene" path="res://Scenes/TuNa.tscn" id="17_bf1kf"]
+[ext_resource type="PackedScene" uid="uid://552u0k7nvjfm" path="res://Scenes/fishing_spot.tscn" id="15_y8o50"]
+[ext_resource type="PackedScene" uid="uid://cp5q8jt2epwsy" path="res://Scenes/SakaNa.tscn" id="16_4cksn"]
+[ext_resource type="PackedScene" uid="uid://brwhrhwctncjc" path="res://Scenes/TuNa.tscn" id="17_bf1kf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f71b1"]
 resource_local_to_scene = true
