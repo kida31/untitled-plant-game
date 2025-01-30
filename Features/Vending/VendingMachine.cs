@@ -126,8 +126,9 @@ public class VendingMachine
 			_inventory.RemoveItem(soldItem);
 
 			_logger.Info($"Sold {stack.Name} x{itemSellCount} for {goldEarned}g");
-			ContentChanged?.Invoke(_inventory);
 		}
+		ContentChanged?.Invoke(_inventory);
+
 	}
 
 	public void SetPriceSlider(float f)
