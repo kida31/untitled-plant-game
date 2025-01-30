@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://m3bi63eavsuv"]
+
+[ext_resource type="Script" path="res://Features/Fishing/FishingMiniGameSingleton.cs" id="1_kuf6f"]
+[ext_resource type="PackedScene" uid="uid://xct3vega3gwo" path="res://Features/Fishing/Classic/FishingGame.tscn" id="2_a7618"]
+
+[node name="FishingMiniGame" type="SubViewportContainer" node_paths=PackedStringArray("_fishingGameNode")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kuf6f")
+_fishingGameNode = NodePath("SubViewport/FishingGame")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="FishingGame" parent="SubViewport" instance=ExtResource("2_a7618")]

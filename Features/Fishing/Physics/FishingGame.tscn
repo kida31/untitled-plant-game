@@ -1,0 +1,107 @@
+[gd_scene load_steps=8 format=3 uid="uid://coa1ocs8fvxi8"]
+
+[ext_resource type="Script" path="res://Features/Fishing/Physics/FishingGame.cs" id="1_1sump"]
+[ext_resource type="PackedScene" uid="uid://dt1qh1fqa5tl7" path="res://Features/Fishing/Classic/FishingPond.tscn" id="1_ldtln"]
+[ext_resource type="Script" path="res://Features/Fishing/Physics/Bobber.cs" id="3_ajcwg"]
+[ext_resource type="Texture2D" uid="uid://ub55y2eyhgq5" path="res://Assets/Items/Duck.png" id="5_7rsmt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ugot"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqfo8"]
+radius = 40.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_be3dv"]
+bg_color = Color(1, 0.66, 0.15, 0.392157)
+corner_radius_top_left = 256
+corner_radius_top_right = 256
+corner_radius_bottom_right = 256
+corner_radius_bottom_left = 256
+
+[node name="FishingGame" type="Node2D"]
+position = Vector2(262, 168)
+script = ExtResource("1_1sump")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -48.0
+offset_right = 100.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FishingPond" parent="." instance=ExtResource("1_ldtln")]
+
+[node name="ClippingMask" type="Panel" parent="FishingPond"]
+clip_children = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -16.0
+offset_right = 128.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ugot")
+
+[node name="World" type="Node2D" parent="FishingPond/ClippingMask"]
+
+[node name="Bobber" type="Area2D" parent="FishingPond/ClippingMask/World" node_paths=PackedStringArray("_debugLabel", "_collisionShape", "_areaSprite")]
+position = Vector2(128, 20)
+gravity_space_override = 3
+gravity_point = true
+script = ExtResource("3_ajcwg")
+_debugLabel = NodePath("Label")
+_collisionShape = NodePath("CollisionShape2D")
+_areaSprite = NodePath("Bobber/EffectArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingPond/ClippingMask/World/Bobber"]
+shape = SubResource("CircleShape2D_gqfo8")
+
+[node name="Bobber" type="Sprite2D" parent="FishingPond/ClippingMask/World/Bobber"]
+texture = ExtResource("5_7rsmt")
+
+[node name="EffectArea" type="Panel" parent="FishingPond/ClippingMask/World/Bobber/Bobber"]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -56.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_be3dv")
+
+[node name="Label" type="Label" parent="FishingPond/ClippingMask/World/Bobber"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 20.5
+offset_right = 20.0
+offset_bottom = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Abc"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpawnPoint" type="Marker2D" parent="."]

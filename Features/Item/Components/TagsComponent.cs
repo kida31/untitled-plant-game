@@ -23,6 +23,7 @@ public partial class TagsComponent : AComponent, ICollection<TagsComponent.Tags>
 		IsInedible,
 		IsEdible,
 		IsWorthless,
+		IsFish,
 	}
 
 	public TagsComponent(params Tags[] items)

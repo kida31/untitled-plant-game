@@ -453,7 +453,7 @@ public class ItemDatabase
 				BaseValue = 0,
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsEdible)
+					new TagsComponent(TagsComponent.Tags.IsEdible,TagsComponent.Tags.IsFish)
 				},
 			},
 			new ItemStack
@@ -468,7 +468,7 @@ public class ItemDatabase
 				BaseValue = 0,
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsEdible)
+					new TagsComponent(TagsComponent.Tags.IsEdible,TagsComponent.Tags.IsFish)
 				},
 			},
 			new ItemStack
@@ -483,7 +483,7 @@ public class ItemDatabase
 				BaseValue = 0,
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsEdible)
+					new TagsComponent(TagsComponent.Tags.IsEdible,TagsComponent.Tags.IsFish)
 				},
 			},
 			new ItemStack
@@ -498,7 +498,7 @@ public class ItemDatabase
 				BaseValue = 0,
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsEdible)
+					new TagsComponent(TagsComponent.Tags.IsEdible, TagsComponent.Tags.IsFish)
 				},
 			},
 			new ItemStack
@@ -513,7 +513,7 @@ public class ItemDatabase
 				BaseValue = 0,
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsEdible)
+					new TagsComponent(TagsComponent.Tags.IsEdible, TagsComponent.Tags.IsFish)
 				},
 			},
 			new ItemStack
@@ -528,7 +528,7 @@ public class ItemDatabase
 				BaseValue = 0,
 				Components = new Array<AComponent>
 				{
-					new TagsComponent(TagsComponent.Tags.IsEdible)
+					new TagsComponent(TagsComponent.Tags.IsEdible,TagsComponent.Tags.IsFish)
 				},
 			}
 		};

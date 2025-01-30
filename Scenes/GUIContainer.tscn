@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3ndp3em1fi7h"]
+[gd_scene load_steps=15 format=3 uid="uid://3ndp3em1fi7h"]
 
 [ext_resource type="PackedScene" uid="uid://c108xawc8eseh" path="res://Features/GUI/Vending/VendingGUI.tscn" id="1_iuaq5"]
 [ext_resource type="PackedScene" uid="uid://cc8tr4q35n0q8" path="res://Features/Dialogue/Dialogue_Scene.tscn" id="2_qr6u8"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Features/GUI/HUDs/ControllerLayout.cs" id="9_em7sj"]
 [ext_resource type="PackedScene" uid="uid://df0cg0vcow1n2" path="res://Features/GUI/DebugOverlays/DebugOverlays.tscn" id="9_m21er"]
 [ext_resource type="Script" path="res://Features/Audio/SfxUI.cs" id="11_1oqto"]
+[ext_resource type="PackedScene" uid="uid://m3bi63eavsuv" path="res://Features/Fishing/MiniGameWindow.tscn" id="13_0bqq3"]
 
 [node name="GUIContainer" type="CanvasLayer"]
 
@@ -51,6 +52,9 @@ z_index = -1
 [node name="TriggerOnNonGameplay" type="Node" parent="NonGameplayEffect"]
 script = ExtResource("6_wbn0r")
 _fadeOutDuration = 0.1
+
+[node name="FishingMiniGame" parent="." instance=ExtResource("13_0bqq3")]
+visible = false
 
 [node name="SFX UI" type="Node" parent="."]
 script = ExtResource("11_1oqto")

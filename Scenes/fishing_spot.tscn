@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://dyb8oovbu1kjq"]
+
+[ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_l4ubq"]
+[ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_xtua0"]
+[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_6wmsp"]
+[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_7knl4"]
+[ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_0xiss"]
+[ext_resource type="Resource" uid="uid://b050jb4x4v7cf" path="res://Resources/Dialogue/Pier/FishingGame.tres" id="6_sf1jh"]
+[ext_resource type="Texture2D" uid="uid://dcuof8xjg3ele" path="res://Assets/Tools/fishingRod.png" id="7_nmuuj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk4m0"]
+atlas = ExtResource("7_nmuuj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6p8o8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk4m0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvi7q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlqdi"]
+radius = 34.0147
+
+[node name="FishingSpot" type="CharacterBody2D" node_paths=PackedStringArray("_npcPlayerInteraction", "_routinePlanner", "_portraitSprite2D")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_l4ubq")
+_name = "Fish"
+_npcPlayerInteraction = NodePath("InteractionNode")
+_routinePlanner = NodePath("RoutinePlanner")
+_portraitSprite2D = NodePath("PortraitSprite2D")
+
+[node name="PortraitSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_6p8o8")
+
+[node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_fvi7q")
+
+[node name="InteractionNode" type="Area2D" parent="."]
+script = ExtResource("2_xtua0")
+
+[node name="InteractionCollisionShape2D" type="CollisionShape2D" parent="InteractionNode"]
+shape = SubResource("CircleShape2D_jlqdi")
+
+[node name="RoutinePlanner" type="Node" parent="." node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+script = ExtResource("3_6wmsp")
+_npcExecutingRoutines = NodePath("..")
+_routines = [NodePath("OnPlayerInteraction")]
+
+[node name="OnPlayerInteraction" type="Node" parent="RoutinePlanner"]
+script = ExtResource("4_7knl4")
+RoutineTrigger = 1
+
+[node name="TalkToSign" type="Node" parent="RoutinePlanner/OnPlayerInteraction"]
+script = ExtResource("5_0xiss")
+_dialogueResourceObject = ExtResource("6_sf1jh")
