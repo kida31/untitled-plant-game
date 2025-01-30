@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crm2bb3s72gi8"]
+[gd_scene load_steps=18 format=3 uid="uid://crm2bb3s72gi8"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_qjsqv"]
 [ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="2_e08ef"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Features/NPC/OutOfStock.cs" id="13_83ao0"]
 [ext_resource type="Resource" uid="uid://cuvp2yskrub5t" path="res://Resources/Dialogue/SeedBoy/OutOfStock/seed_boy_no_stock.tres" id="13_wxxgb"]
 [ext_resource type="Resource" uid="uid://deudtr6qo8ekp" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes.tres" id="15_4jya7"]
+[ext_resource type="Texture2D" uid="uid://60scb681f532" path="res://Assets/SpeechBubbles/Speechbubble_PanPan.png" id="16_5frxx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_12fo5"]
 animations = [{
@@ -71,3 +72,8 @@ script = ExtResource("13_83ao0")
 _outOfStock = ExtResource("13_wxxgb")
 _yesResponse = ExtResource("15_4jya7")
 _seedBoy = NodePath("..")
+
+[node name="SpeechBubble" type="Sprite2D" parent="." index="6"]
+visible = false
+position = Vector2(41, -56)
+texture = ExtResource("16_5frxx")

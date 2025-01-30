@@ -1,39 +1,71 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Godot;
+using untitledplantgame.Common;
+using untitledplantgame.NPC;
 
 namespace untitledplantgame.Player;
 
-[Obsolete("Handle collisions directly in NPC or other")]
 public partial class CollisionManager : Node
 {
-	private Dictionary<string, Action> _npcDialogueActions;
+	public static CollisionManager Instance { get; private set; }
+	
+	private Dictionary<string, Action<Npc>> _npcDialogueActions;
+	private Logger _logger;
 
 	public override void _Ready()
 	{
-		_npcDialogueActions = new Dictionary<string, Action>
+		_logger = new Logger(this);
+		if (Instance != null)
 		{
-			{ "Mother", () => ShowDialogue("Mother says: Hello Kid!") },
-			{ "Brother", () => ShowDialogue("Brother says: Sup sis!") },
-			// Add more NPCs and dialogues here
+			_logger.Warn("Multiple instances of TimeController found, deleting the new one");
+			QueueFree();
+			return;
+		}
+
+		Instance = this;
+		
+		_npcDialogueActions = new Dictionary<string, Action<Npc>>
+		{
+			{ "Pan Dan", ShowSpeechBubble},
+			{ "Vending Machine", ShowSpeechBubble}
 		};
 	}
 
-	public void HandleNpcCollision(string npcName)
+	// replace the string with npc
+	public void HandleNpcCollision(Npc npc)
 	{
-		if (_npcDialogueActions.TryGetValue(npcName, out var action))
+		if (_npcDialogueActions.TryGetValue(npc.GetNpcName(), out var action))
 		{
-			action.Invoke(); //ok
+			action.Invoke(npc);
 		}
 		else
 		{
-			GD.Print("Unknown NPC collided.");
+			_logger.Debug("Collision with a none Npc detected.");
 		}
 	}
 
-	private void ShowDialogue(string dialogue)
+	private async void ShowSpeechBubble(Npc npc)
 	{
-		GD.Print(dialogue);
-		// You can replace this with a UI update logic to show the dialogue on screen.
+		var totalMinutes = (int)(TimeController.Instance.CurrentSeconds / 60);
+		var currentDayMinutes = totalMinutes % (24 * 60);
+
+		if (currentDayMinutes is <= 1380 and >= 300)
+		{
+			return;
+		}
+
+		foreach (var node in npc.GetChildren())
+		{
+			if (node.Name != "SpeechBubble" || node is not Node2D speechBubble)
+			{
+				continue;
+			}
+
+			speechBubble.Visible = true;
+			await Task.Delay(2000);
+			speechBubble.Visible = false;
+		}
 	}
 }
