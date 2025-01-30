@@ -17,6 +17,12 @@ public partial class TagsComponent : AComponent, ICollection<TagsComponent.Tags>
 		IsFruit,
 		IsFlower,
 		IsUnknown,
+		IsPriceless,
+		IsLegendary,
+		IsMagical,
+		IsInedible,
+		IsEdible,
+		IsWorthless,
 	}
 
 	public TagsComponent(params Tags[] items)

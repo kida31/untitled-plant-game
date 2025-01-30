@@ -185,8 +185,8 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_seed.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> {"chuberryFruit"},
-				Components = new Array<AComponent> {new SeedComponent("Chuberry")}
+				RelatedItemIds = new Array<string> { "chuberryFruit" },
+				Components = new Array<AComponent> { new SeedComponent("Chuberry") }
 			},
 			new ItemStack()
 			{
@@ -199,19 +199,19 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> {"chuberrySeed"},
+				RelatedItemIds = new Array<string> { "chuberrySeed" },
 				Components = new()
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
 					new HarvestedComponent("Chuberry", GrowthStage.Ripening),
 					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
 					{
-						{MedicinalEffect.Warming, 1},
-						{MedicinalEffect.WoundHealing, 2},
+						{ MedicinalEffect.Warming, 1 },
+						{ MedicinalEffect.WoundHealing, 2 },
 					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
 					{
-						{IllnessEffect.Heartburn, 2},
-						{IllnessEffect.Diarrhea, 1}
+						{ IllnessEffect.Heartburn, 2 },
+						{ IllnessEffect.Diarrhea, 1 }
 					})
 				}
 			},
@@ -225,7 +225,7 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_seeds.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> {"drupoleaumFlower", "drupoleaumFruits"},
+				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumFruits" },
 				Components = new Array<AComponent>
 				{
 					new SeedComponent("Drupoleaum")
@@ -242,19 +242,19 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> {"drupoleaumSeed", "drupoleaumFruits"},
+				RelatedItemIds = new Array<string> { "drupoleaumSeed", "drupoleaumFruits" },
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower),
 					new HarvestedComponent("Drupoleaum", GrowthStage.Flowering),
 					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
 					{
-						{MedicinalEffect.Cooling, 2},
-						{MedicinalEffect.Calming, 1},
+						{ MedicinalEffect.Cooling, 2 },
+						{ MedicinalEffect.Calming, 1 },
 					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
 					{
-						{IllnessEffect.Heartburn, 2},
-						{IllnessEffect.Nausea, 1}
+						{ IllnessEffect.Heartburn, 2 },
+						{ IllnessEffect.Nausea, 1 }
 					})
 				}
 			},
@@ -269,20 +269,20 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Fruits.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> {"drupoleaumFlower", "drupoleaumSeed"},
+				RelatedItemIds = new Array<string> { "drupoleaumFlower", "drupoleaumSeed" },
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
 					new HarvestedComponent("Drupoleaum", GrowthStage.Ripening),
 					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
 					{
-						{MedicinalEffect.Cooling, 2},
-						{MedicinalEffect.Calming, 3},
-						{MedicinalEffect.AntiInflammatory, 1}
+						{ MedicinalEffect.Cooling, 2 },
+						{ MedicinalEffect.Calming, 3 },
+						{ MedicinalEffect.AntiInflammatory, 1 }
 					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
 					{
-						{IllnessEffect.Heartburn, 2},
-						{IllnessEffect.Nausea, 1}
+						{ IllnessEffect.Heartburn, 2 },
+						{ IllnessEffect.Nausea, 1 }
 					})
 				}
 			},
@@ -296,7 +296,7 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_seed.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> {"licaryFlowers", "licaryFlowers", "licaryFruit"},
+				RelatedItemIds = new Array<string> { "licaryFlowers", "licaryFlowers", "licaryFruit" },
 				Components = new Array<AComponent>
 				{
 					new SeedComponent("Licary")
@@ -313,19 +313,19 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> {"licarySeed", "licaryFruit"},
+				RelatedItemIds = new Array<string> { "licarySeed", "licaryFruit" },
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFlower),
 					new HarvestedComponent("Licary", GrowthStage.Flowering),
 					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
 					{
-						{MedicinalEffect.Warming, 1},
-						{MedicinalEffect.PainRelief, 2},
+						{ MedicinalEffect.Warming, 1 },
+						{ MedicinalEffect.PainRelief, 2 },
 					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
 					{
-						{IllnessEffect.Migraine, 2},
-						{IllnessEffect.HeartAttack, 1}
+						{ IllnessEffect.Migraine, 2 },
+						{ IllnessEffect.HeartAttack, 1 }
 					})
 				}
 			},
@@ -340,20 +340,20 @@ public class ItemDatabase
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
-				RelatedItemIds = new Array<string> {"licarySeed", "licaryFlowers"},
+				RelatedItemIds = new Array<string> { "licarySeed", "licaryFlowers" },
 				Components = new Array<AComponent>
 				{
 					new TagsComponent(TagsComponent.Tags.IsDrieable, TagsComponent.Tags.IsFruit),
 					new HarvestedComponent("Licary", GrowthStage.Ripening),
 					new MedicineComponent(new System.Collections.Generic.Dictionary<MedicinalEffect, int>
 					{
-						{MedicinalEffect.Warming, 3},
-						{MedicinalEffect.PainRelief, 1},
-						{MedicinalEffect.AntiOxidant, 3}
+						{ MedicinalEffect.Warming, 3 },
+						{ MedicinalEffect.PainRelief, 1 },
+						{ MedicinalEffect.AntiOxidant, 3 }
 					}, new System.Collections.Generic.Dictionary<IllnessEffect, int>
 					{
-						{IllnessEffect.Indigestion, 2},
-						{IllnessEffect.HeartAttack, 1}
+						{ IllnessEffect.Indigestion, 2 },
+						{ IllnessEffect.HeartAttack, 1 }
 					})
 				}
 			},
@@ -376,7 +376,8 @@ public class ItemDatabase
 				Id = "dried_flower",
 				Name = "Dried Flower",
 				ToolTipDescription = "A dried flower. Still looks very pretty.",
-				WikiDescription = "A dried flower. Drying flowers in the dehydrator will make them last longer and amplify their properties.",
+				WikiDescription =
+					"A dried flower. Drying flowers in the dehydrator will make them last longer and amplify their properties.",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/dried_drupoleaum.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 5,
@@ -385,7 +386,7 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsFlower),
 				},
 				Amount = 1,
-				RelatedItemIds = new Array<string> {"chuberrySeed", "chuberryFruit"}
+				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryFruit" }
 			},
 			new ItemStack
 			{
@@ -401,8 +402,113 @@ public class ItemDatabase
 					new TagsComponent(TagsComponent.Tags.IsDried, TagsComponent.Tags.IsLeaf)
 				},
 				Amount = 1,
-				RelatedItemIds = new Array<string> {"chuberrySeed", "chuberryFruit"}
+				RelatedItemIds = new Array<string> { "chuberrySeed", "chuberryFruit" }
 			},
+			new ItemStack
+			{
+				Id = "rubber_duck",
+				Name = "Rubber Duck",
+				ToolTipDescription = "A rubber duck. It squeaks when you squeeze it.",
+				WikiDescription =
+					"A random rubber duck, found in the wild. It’s a mystery how it got here. You can squeeze it and it will make a squeaky sound. Maybe it's a relic of the past?",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/Duck.png"),
+				Category = ItemCategory.Material,
+				BaseValue = 420,
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsPriceless, TagsComponent.Tags.IsWorthless, TagsComponent.Tags.IsMagical, TagsComponent.Tags.IsInedible)
+				},
+			},
+			new ItemStack
+			{
+				Id = "blue_fish",
+				Name = "Blue Fish",
+				ToolTipDescription = "A blue fish. It smells like the ocean.",
+				WikiDescription =
+					"A fish with pretty blue scales. It smells like the ocean. It’s a popular ingredient in many dishes, but unfortunately, I can’t cook.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish1.png"),
+				Category = ItemCategory.Material,
+				BaseValue = 0,
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsEdible)
+				},
+			},
+			new ItemStack
+			{
+				Id = "purple_fish",
+				Name = "Purple Fish",
+				ToolTipDescription = "A purple fish. It smells like the ocean.",
+				WikiDescription =
+					"A fish with pretty purple scales. It smells like the ocean. It’s a popular ingredient in many dishes, but unfortunately, I can’t cook.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish2.png"),
+				Category = ItemCategory.Material,
+				BaseValue = 0,
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsEdible)
+				},
+			},
+			new ItemStack
+			{
+				Id = "lightblue_fish",
+				Name = "Light Blue Fish",
+				ToolTipDescription = "A light blue fish. It smells like the ocean.",
+				WikiDescription =
+					"A fish with scales like ice. It smells like the ocean. It’s a popular ingredient in many dishes, but unfortunately, I can’t cook.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish3.png"),
+				Category = ItemCategory.Material,
+				BaseValue = 0,
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsEdible)
+				},
+			},
+			new ItemStack
+			{
+				Id = "pink_fish",
+				Name = "Pink Fish",
+				ToolTipDescription = "A pink fish. It smells like the ocean.",
+				WikiDescription =
+					"A fish with pinkish scales. It smells like the ocean. It’s a popular ingredient in many dishes, but unfortunately, I can’t cook.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish4.png"),
+				Category = ItemCategory.Material,
+				BaseValue = 0,
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsEdible)
+				},
+			},
+			new ItemStack
+			{
+				Id = "green_fish",
+				Name = "Green Fish",
+				ToolTipDescription = "A green fish. It smells like the ocean.",
+				WikiDescription =
+					"A fish with light green scales. It smells like the ocean. It’s a popular ingredient in many dishes, but unfortunately, I can’t cook.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish6.png"),
+				Category = ItemCategory.Material,
+				BaseValue = 0,
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsEdible)
+				},
+			},
+			new ItemStack
+			{
+				Id = "redspot_fish",
+				Name = "Red Fish with Spots",
+				ToolTipDescription = "A red fish. It has dark spots.",
+				WikiDescription =
+					"A red fish with spots. It looks a little curious. It must be a rarity! I want to keep it as a pet, I wonder where I could find an aquarium.",
+				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish10.png"),
+				Category = ItemCategory.Material,
+				BaseValue = 0,
+				Components = new Array<AComponent>
+				{
+					new TagsComponent(TagsComponent.Tags.IsEdible)
+				},
+			}
 		};
 	}
 }
