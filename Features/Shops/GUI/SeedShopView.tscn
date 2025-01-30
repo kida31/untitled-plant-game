@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bd54v5orqpb6t"]
+[gd_scene load_steps=15 format=3 uid="uid://bd54v5orqpb6t"]
 
 [ext_resource type="Script" path="res://Features/Shops/GUI/SeedShopView.cs" id="1_rs6dp"]
 [ext_resource type="Texture2D" uid="uid://uej5qcp5lxwk" path="res://Assets/UI/SeedShop/seed_shop_cloth_flat.png" id="2_oarm3"]
@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="4_gya2w"]
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="4_nmr13"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="5_0lc50"]
+[ext_resource type="Texture2D" uid="uid://vfe1oe30gphi" path="res://Assets/UI/Book/Icons/tab_inactive.png" id="5_8heil"]
+[ext_resource type="Texture2D" uid="uid://ovau2703fwu" path="res://Assets/UI/Book/Icons/tab_active.png" id="6_flav7"]
 [ext_resource type="Script" path="res://Features/GUI/Items/StorageView.cs" id="6_vtnd1"]
 [ext_resource type="PackedScene" uid="uid://ct1oinq00jcp6" path="res://Features/GUI/Items/NewInventoryItemView.tscn" id="7_apaor"]
 [ext_resource type="Texture2D" uid="uid://bxc00meevdgul" path="res://Assets/UI/Book/Pages/mini_inventory.png" id="8_x724y"]
 [ext_resource type="Texture2D" uid="uid://ddbxhrxrxirqa" path="res://Assets/UI/Book/Pages/Demo/LeftInventory_filled.png" id="9_cwr7a"]
-[ext_resource type="PackedScene" uid="uid://4ix03kxh3x2h" path="res://Features/GUI/Shops/ButtonLineShop.tscn" id="9_ukqri"]
+[ext_resource type="PackedScene" path="res://Features/GUI/Shops/ButtonLineShop.tscn" id="9_ukqri"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="10_gb0hb"]
 
 [node name="SeedShopGUI" type="Control" node_paths=PackedStringArray("_itemContainer", "_seedInventory")]
@@ -123,6 +125,70 @@ layout_mode = 2
 [node name="Label" type="Label" parent="SeedShopCarpet/MarginContainer/CenterContainer"]
 layout_mode = 2
 text = "Seed Shop"
+
+[node name="CategoryTabs" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 422.0
+offset_top = 30.0
+offset_right = 462.0
+offset_bottom = 70.0
+
+[node name="purpleLeft" type="Control" parent="CategoryTabs"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CategoryTabs/purpleLeft"]
+layout_mode = 0
+offset_left = -52.0
+offset_top = 16.0
+offset_right = 23.0
+offset_bottom = 56.0
+texture = ExtResource("5_8heil")
+
+[node name="purpleRight" type="Control" parent="CategoryTabs"]
+anchors_preset = 0
+offset_left = 116.0
+offset_right = 156.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CategoryTabs/purpleRight"]
+layout_mode = 0
+offset_left = -52.0
+offset_top = 16.0
+offset_right = 23.0
+offset_bottom = 56.0
+texture = ExtResource("5_8heil")
+
+[node name="red" type="Control" parent="CategoryTabs"]
+layout_mode = 1
+anchor_left = 0.00446565
+anchor_top = 0.0340424
+anchor_right = 0.183037
+anchor_bottom = 0.204255
+offset_left = -68.1786
+offset_top = 37.6383
+offset_right = -68.1786
+offset_bottom = 37.6383
+pivot_offset = Vector2(104, -19)
+metadata/_edit_use_anchors_ = true
+
+[node name="red" type="TextureRect" parent="CategoryTabs/red"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = -31.0
+offset_right = 143.0
+offset_bottom = -1.0
+texture = ExtResource("6_flav7")
+
+[node name="Label" type="Label" parent="CategoryTabs/red"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = -26.0
+offset_right = 132.0
+offset_bottom = -8.0
+text = "Medicine"
 
 [node name="SeedInventory" type="Control" parent="." node_paths=PackedStringArray("_itemViewContainer", "_itemNameLabel")]
 custom_minimum_size = Vector2(223, 235)
@@ -254,29 +320,6 @@ layout_mode = 2
 
 [node name="ItemView20" parent="SeedInventory/ItemGrid" instance=ExtResource("7_apaor")]
 layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="SeedInventory"]
-layout_mode = 0
-offset_left = 80.0003
-offset_top = -42.0
-offset_right = 148.0
-offset_bottom = -7.00004
-
-[node name="NinePatchRect" type="NinePatchRect" parent="SeedInventory/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("4_nmr13")
-region_rect = Rect2(0.000766754, -0.31827, 64.3167, 32.7169)
-patch_margin_left = 12
-patch_margin_top = 12
-patch_margin_right = 12
-patch_margin_bottom = 12
-
-[node name="CenterContainer" type="CenterContainer" parent="SeedInventory/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="SeedInventory/MarginContainer/CenterContainer"]
-layout_mode = 2
-text = "Inventory"
 
 [node name="ButtonLine" parent="." instance=ExtResource("9_ukqri")]
 layout_mode = 1
