@@ -41,11 +41,12 @@ public partial class TeleportPlayer : Node
 		{
 			await trans.FadeIn();
 
+			var wasSmoothing = camera.PositionSmoothingEnabled;
 			camera.PositionSmoothingEnabled = false;
 			player.GlobalPosition = targetPosition;
 			camera.GlobalPosition = targetPosition;
 			camera.ForceUpdateScroll();
-			camera.PositionSmoothingEnabled = true;
+			camera.PositionSmoothingEnabled = wasSmoothing;
 
 			await trans.FadeOut();
 
