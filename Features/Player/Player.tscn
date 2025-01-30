@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=11 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="SpriteFrames" uid="uid://upqodpbedg8s" path="res://Features/Player/PlayerSpriteFrames.tres" id="2_3hfoe"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Features/Player/StateIdle.cs" id="5_k3tas"]
 [ext_resource type="Script" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
 [ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
+[ext_resource type="Script" path="res://EasterEgg/CollisionEasterEgg.cs" id="8_yc63u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
 radius = 8.0
@@ -44,11 +45,12 @@ script = ExtResource("6_6k3md")
 script = ExtResource("7_lrvm3")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("8_yc63u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ryxll")
-
-[node name="InteractablesManager" type="Node" parent="Area2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -31)

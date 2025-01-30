@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://cg8jyg5313ecg"]
+
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_3giou"]
+[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_v205h"]
+
+[sub_resource type="Resource" id="Resource_tlar2"]
+script = ExtResource("1_3giou")
+speakerName = "Magical Note"
+dialogueText = "Why are you still awake?"
+
+[sub_resource type="Resource" id="Resource_jx3y2"]
+script = ExtResource("1_3giou")
+speakerName = "Magical Note"
+dialogueText = "Have you been working the entire night again?"
+
+[sub_resource type="Resource" id="Resource_4hqtw"]
+script = ExtResource("1_3giou")
+speakerName = "Magical Note"
+dialogueText = "You don't have to do that! I am sure everyone here already told you to go to sleep!"
+
+[sub_resource type="Resource" id="Resource_xk1q5"]
+script = ExtResource("1_3giou")
+speakerName = "Magical Note"
+dialogueText = "You are doing more than enough! I think everyone here appreciates what you are doing..."
+
+[sub_resource type="Resource" id="Resource_unmit"]
+script = ExtResource("1_3giou")
+speakerName = "Magical Note"
+dialogueText = "You know, you don't have to work yourself 'till you get sick. You also deserve some well-earned rest!"
+
+[sub_resource type="Resource" id="Resource_scaof"]
+script = ExtResource("1_3giou")
+speakerName = "Magical Note"
+dialogueText = "Good Night!"
+
+[resource]
+script = ExtResource("2_v205h")
+_dialogueId = "NightNote"
+_dialogueText = Array[Object]([SubResource("Resource_tlar2"), SubResource("Resource_jx3y2"), SubResource("Resource_4hqtw"), SubResource("Resource_xk1q5"), SubResource("Resource_unmit"), SubResource("Resource_scaof")])
+_responses = null
