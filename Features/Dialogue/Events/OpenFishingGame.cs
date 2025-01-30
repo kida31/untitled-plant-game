@@ -47,7 +47,7 @@ public partial class OpenFishingGame : DialogueEvent
 		var item = ItemDatabase.Instance.GetAllItems()[0].Clone();
 		item.Name = "Some Fish" + new Random().Next();
 		item.Category = ItemCategory.Material;
-		item.AddComponent(new TagsComponent(TagsComponent.Tags.IsUnknown));
+		item.AddComponent(new TagsComponent(TagsComponent.Tags.IsFish));
 		EventBus.Instance.ItemPickedUp(item);
 	}
 
