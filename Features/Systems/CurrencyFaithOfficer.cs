@@ -8,7 +8,7 @@ namespace untitledplantgame.Systems;
 [Singleton]
 public partial class CurrencyFaithOfficer : Node
 {
-	private const int StartingCurrency = 40;
+	private const int StartingCurrency = 5;
 	public static CurrencyFaithOfficer TheOneAndOnly { get; private set; }
 	public static CurrencyFaithOfficer Instance => TheOneAndOnly; // Alias for TheOneAndOnly
 	private Stat _faith;

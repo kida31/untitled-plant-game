@@ -58,7 +58,7 @@ public partial class Player : CharacterBody2D
 		var rand = new RandomStockGenerator();
 		Inventory = new(20);
 		Inventory.InventoryChanged += () => { EventBus.Instance.PlayerInventoryChanged(this, Inventory); };
-		Inventory.AddItem(rand.GetRandomItems(12).Where(it => it.Category == ItemCategory.Medicine).ToArray()); // For testing purposes
+		//Inventory.AddItem(rand.GetRandomItems(12).Where(it => it.Category == ItemCategory.Medicine).ToArray()); // For testing purposes
 	}
 
 	private void OnItemPickUp(IItemStack obj)
