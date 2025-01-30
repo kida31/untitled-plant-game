@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://68an8ryr548m"]
+[gd_scene load_steps=31 format=4 uid="uid://68an8ryr548m"]
 
 [ext_resource type="Script" path="res://Features/Audio/BgmArea2D.cs" id="1_7wq8b"]
 [ext_resource type="Texture2D" uid="uid://b0jfimskhcnql" path="res://Assets/Tilesets/Pier.png" id="1_q7rwy"]
@@ -10,9 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bg6sungsm67xq" path="res://Assets/Overworld/House/PlantFence.png" id="8_gtgwc"]
 [ext_resource type="Texture2D" uid="uid://dl3ytowjsie7x" path="res://Assets/Overworld/Garden/pier_tileset.png" id="9_sqtp6"]
 [ext_resource type="Script" path="res://Features/NPC/NpcType/SimpleTalkingObject.cs" id="10_x0jq1"]
-[ext_resource type="PackedScene" path="res://Features/NPC/Door.tscn" id="10_x262s"]
+[ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="10_x262s"]
 [ext_resource type="Script" path="res://Features/NPC/WalkableAreaDialogue.cs" id="12_857cn"]
 [ext_resource type="Resource" uid="uid://d33fmj25m3jt5" path="res://Resources/Dialogue/Pier/enteringTawas.tres" id="12_u20bu"]
+[ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="14_7j5n6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f71b1"]
 resource_local_to_scene = true
@@ -318,33 +319,32 @@ texture_region_size = Vector2i(32, 32)
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 12, -22, 6, -8, -4, 8, -4, 20, 6)
 5:0/size_in_atlas = Vector2i(1, 2)
 5:0/0 = 0
-5:0/0/texture_origin = Vector2i(0, 30)
-5:0/0/y_sort_origin = 25
+5:0/0/texture_origin = Vector2i(0, 32)
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4.36364, 16, -4.36364, 16, 1.45455, -16, 1.45455)
 6:0/size_in_atlas = Vector2i(1, 2)
 6:0/0 = 0
-6:0/0/texture_origin = Vector2i(0, 30)
-6:0/0/y_sort_origin = 25
+6:0/0/texture_origin = Vector2i(0, 16)
+6:0/0/y_sort_origin = 16
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4.36364, 16, -4.36364, 16, 1.45455, -16, 1.45455)
 7:0/size_in_atlas = Vector2i(1, 2)
 7:0/0 = 0
-7:0/0/texture_origin = Vector2i(0, 30)
-7:0/0/y_sort_origin = 25
+7:0/0/texture_origin = Vector2i(0, 32)
+7:0/0/y_sort_origin = -8
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4.36364, 16, -4.36364, 16, 1.45455, -16, 1.45455)
 5:2/size_in_atlas = Vector2i(1, 2)
 5:2/0 = 0
-5:2/0/texture_origin = Vector2i(0, 30)
-5:2/0/y_sort_origin = 25
+5:2/0/texture_origin = Vector2i(0, 16)
+5:2/0/y_sort_origin = 16
 5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4.36364, 16, -4.36364, 16, 1.45455, -16, 1.45455)
 6:2/size_in_atlas = Vector2i(1, 2)
 6:2/0 = 0
-6:2/0/texture_origin = Vector2i(0, 30)
-6:2/0/y_sort_origin = 25
+6:2/0/texture_origin = Vector2i(0, 16)
+6:2/0/y_sort_origin = 16
 6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4.36364, 16, -4.36364, 16, 1.45455, -16, 1.45455)
 7:2/size_in_atlas = Vector2i(1, 2)
 7:2/0 = 0
-7:2/0/texture_origin = Vector2i(0, 30)
-7:2/0/y_sort_origin = 25
+7:2/0/texture_origin = Vector2i(0, 16)
+7:2/0/y_sort_origin = 16
 7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4.36364, 16, -4.36364, 16, 1.45455, -16, 1.45455)
 7:4/0 = 0
 7:4/0/texture_origin = Vector2i(0, 14)
@@ -589,5 +589,8 @@ shape = SubResource("RectangleShape2D_p5sl4")
 position = Vector2(-222, 576)
 scale = Vector2(12.0625, 2.6875)
 polygon = PackedVector2Array(-0.192228, 0.183731, -0.192228, 237.951, 44.8233, 237.579, 44.9062, 0.183731, 40.9534, 0, 40.9534, 5.95349, 43.3575, 5.95349, 43.4404, 229.954, 1.49223, 229.954, 1.49223, 5.95349, 25.0363, 6.32559, 25.0363, 0)
+
+[node name="Player" parent="." instance=ExtResource("14_7j5n6")]
+position = Vector2(205, -430)
 
 [editable path="WaterScene"]
