@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://68an8ryr548m"]
+[gd_scene load_steps=30 format=4 uid="uid://68an8ryr548m"]
 
 [ext_resource type="Script" path="res://Features/Audio/BgmArea2D.cs" id="1_7wq8b"]
 [ext_resource type="Texture2D" uid="uid://b0jfimskhcnql" path="res://Assets/Tilesets/Pier.png" id="1_q7rwy"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="10_x262s"]
 [ext_resource type="Script" path="res://Features/NPC/WalkableAreaDialogue.cs" id="12_857cn"]
 [ext_resource type="Resource" uid="uid://d33fmj25m3jt5" path="res://Resources/Dialogue/Pier/enteringTawas.tres" id="12_u20bu"]
-[ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="14_7j5n6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f71b1"]
 resource_local_to_scene = true
@@ -589,8 +588,5 @@ shape = SubResource("RectangleShape2D_p5sl4")
 position = Vector2(-222, 576)
 scale = Vector2(12.0625, 2.6875)
 polygon = PackedVector2Array(-0.192228, 0.183731, -0.192228, 237.951, 44.8233, 237.579, 44.9062, 0.183731, 40.9534, 0, 40.9534, 5.95349, 43.3575, 5.95349, 43.4404, 229.954, 1.49223, 229.954, 1.49223, 5.95349, 25.0363, 6.32559, 25.0363, 0)
-
-[node name="Player" parent="." instance=ExtResource("14_7j5n6")]
-position = Vector2(205, -430)
 
 [editable path="WaterScene"]
