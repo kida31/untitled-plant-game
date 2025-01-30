@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=16 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
@@ -7,10 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://crm2bb3s72gi8" path="res://Scenes/SeedBoyCriss.tscn" id="3_ffnpq"]
 [ext_resource type="PackedScene" uid="uid://cr2712p8tviur" path="res://Scenes/Godfrey.tscn" id="4_r6pis"]
 [ext_resource type="Script" path="res://Features/Cycle/DayNight/NightTint.cs" id="6_4ec11"]
-[ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="7_36aju"]
 [ext_resource type="PackedScene" uid="uid://60hnhuunu31o" path="res://Features/Cycle/UI/Weather.tscn" id="7_nwxdh"]
 [ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://Features/Cycle/DayNight/daynightcycle-gradient-texture.tres" id="7_xmbsw"]
 [ext_resource type="PackedScene" uid="uid://bs7jmvcej2bhc" path="res://Scenes/HouseMapScene.tscn" id="10_t60bx"]
+[ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="12_nu71t"]
+[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="12_yquqr"]
+[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="13_lpu3a"]
+[ext_resource type="PackedScene" uid="uid://bwxru3xolfihy" path="res://Features/NPC/NpcTask/TalkToPlayerTask.tscn" id="14_scq62"]
+[ext_resource type="Resource" uid="uid://cmroxypcej5ox" path="res://Resources/Dialogue/tiredness.tres" id="15_xw2tk"]
 
 [node name="GameWorldContainer" type="Node2D"]
 y_sort_enabled = true
@@ -22,17 +26,17 @@ position = Vector2(-1052, 2316)
 
 [node name="VendingMachine" parent="." instance=ExtResource("3_5hcym")]
 position = Vector2(728, 184)
+_disableMovement = true
 
 [node name="PanDan" parent="." instance=ExtResource("3_ffnpq")]
 z_index = 1
 position = Vector2(464, 200)
 
 [node name="Godfrey" parent="." instance=ExtResource("4_r6pis")]
-position = Vector2(704, 356)
-
-[node name="Plants" parent="." instance=ExtResource("7_36aju")]
-z_index = 0
-y_sort_enabled = false
+position = Vector2(666, 434)
+disable_mode = 1
+collision_layer = 4
+collision_mask = 4
 
 [node name="Weather" parent="." instance=ExtResource("7_nwxdh")]
 z_index = -1
@@ -49,3 +53,20 @@ position = Vector2(577.5, 328.625)
 scale = Vector2(1.19896, 1.19896)
 script = ExtResource("6_4ec11")
 _gradientTexture = ExtResource("7_xmbsw")
+
+[node name="EventNpc" parent="." node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("12_nu71t")]
+_name = "EventNpc"
+_routinePlanner = NodePath("TiredRoutinePlanner")
+
+[node name="TiredRoutinePlanner" type="Node" parent="EventNpc" node_paths=PackedStringArray("_npcExecutingRoutines", "_routines")]
+script = ExtResource("12_yquqr")
+_npcExecutingRoutines = NodePath("..")
+_routines = [NodePath("TiredRoutine")]
+
+[node name="TiredRoutine" type="Node" parent="EventNpc/TiredRoutinePlanner"]
+script = ExtResource("13_lpu3a")
+RoutineStartHours = 23
+RoutineStartMinutes = 0
+
+[node name="TalkToPlayerTask" parent="EventNpc/TiredRoutinePlanner/TiredRoutine" instance=ExtResource("14_scq62")]
+_dialogueResourceObjects = Array[Object]([ExtResource("15_xw2tk")])

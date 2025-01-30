@@ -7,7 +7,7 @@ namespace untitledplantgame.Plants;
 
 public partial class SoilTile : Area2D, IWaterable
 {
-	private const float MaxHydration = 300;
+	private const float MaxHydration = 350;
 	private const float SunnyEvaporationRate = 50;
 	private const float CloudyEvaporationRate = 50;
 	private const float RainyHydrationRate = 100;
@@ -74,7 +74,11 @@ public partial class SoilTile : Area2D, IWaterable
 
 	public void AddWater(float addedWater)
 	{
-		Hydration = Math.Min(Hydration + addedWater, MaxHydration);
+		var currentWater = Hydration;
+		var newWater = Math.Min(Hydration + addedWater, MaxHydration);
+		if(Math.Abs(currentWater - newWater) < 1f) return;
+		
+		Hydration = newWater;
 		HydrationChanged?.Invoke(Hydration, this);
 	}
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmqyck8qs1hsj"
-path="res://.godot/imported/Laya_Watering.png-42a07405afc34d677f6726cdebaeec60.ctex"
+uid="uid://4cnst348eh1"
+path="res://.godot/imported/Laya_West_Idle.png-fa63d36052273cbed7431e9f85aed8df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Laya/Laya_Watering.png"
-dest_files=["res://.godot/imported/Laya_Watering.png-42a07405afc34d677f6726cdebaeec60.ctex"]
+source_file="res://Assets/Characters/Laya/Laya_West_Idle.png"
+dest_files=["res://.godot/imported/Laya_West_Idle.png-fa63d36052273cbed7431e9f85aed8df.ctex"]
 
 [params]
 

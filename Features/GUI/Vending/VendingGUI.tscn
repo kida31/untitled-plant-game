@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bxdx84o8n40rg" path="res://Assets/UI/Book/Icons/3coins.png" id="8_pvodt"]
 [ext_resource type="PackedScene" uid="uid://qruua750qmw4" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
-[ext_resource type="PackedScene" uid="uid://onc7r0twgms2" path="res://Features/GUI/Vending/ButtonLineVending.tscn" id="10_7e1e4"]
+[ext_resource type="PackedScene" path="res://Features/GUI/Vending/ButtonLineVending.tscn" id="10_7e1e4"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
 [ext_resource type="PackedScene" uid="uid://cusi423j6fnh2" path="res://Features/GUI/Vending/EmoteBubble.tscn" id="12_5lmun"]
 
@@ -39,7 +39,7 @@ _emoteBubbleDuration = 1.0
 _fadeInDuration = 0.2
 _fadeOutDuration = 0.5
 _slider = NodePath("VendingMachine/MoneySlider")
-_moneyLabel = NodePath("VendingMachine/MoneyLabel")
+_moneyLabel = NodePath("VendingMachine/WithdrawButton/MoneyLabel")
 _withdrawButton = NodePath("VendingMachine/WithdrawButton")
 _inventoryView = NodePath("MinInventory")
 
@@ -167,17 +167,6 @@ offset_bottom = 30.0
 texture = ExtResource("8_pvodt")
 stretch_mode = 2
 
-[node name="MoneyLabel" type="RichTextLabel" parent="VendingMachine"]
-layout_mode = 2
-offset_left = 198.791
-offset_top = 267.143
-offset_right = 233.791
-offset_bottom = 280.143
-size_flags_horizontal = 4
-bbcode_enabled = true
-text = "[center]0[img=center,center,8x8]res://Assets/UI/Book/Icons/mini_coin.png[/img][/center]"
-fit_content = true
-
 [node name="WithdrawButton" type="Button" parent="VendingMachine"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
@@ -188,6 +177,21 @@ offset_bottom = 271.0
 icon = ExtResource("8_fnty8")
 flat = true
 icon_alignment = 1
+
+[node name="MoneyLabel" type="RichTextLabel" parent="VendingMachine/WithdrawButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1875
+anchor_top = 0.290698
+anchor_right = 0.8125
+anchor_bottom = 0.709302
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+bbcode_enabled = true
+text = "[center]0[img=center,center,8x8]res://Assets/UI/Book/Icons/mini_coin.png[/img][/center]"
+fit_content = true
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonLineVending" parent="." instance=ExtResource("10_7e1e4")]
 layout_mode = 1
@@ -204,6 +208,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 
 [node name="EmoteBubble" parent="." instance=ExtResource("12_5lmun")]
+visible = false
 layout_mode = 1
 anchor_left = 0.31875
 anchor_top = 0.688889

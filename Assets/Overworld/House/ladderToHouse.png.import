@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://333na5rc2e5d"
-path="res://.godot/imported/Laya_Seed.png-b1a2cf0b40cf3ea4eee7d36c536cf90a.ctex"
+uid="uid://ik5booquxewf"
+path="res://.godot/imported/ladderToHouse.png-bd2e0a685d4b3906ab6cf160264b4e0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Laya/Laya_Seed.png"
-dest_files=["res://.godot/imported/Laya_Seed.png-b1a2cf0b40cf3ea4eee7d36c536cf90a.ctex"]
+source_file="res://Assets/Overworld/House/ladderToHouse.png"
+dest_files=["res://.godot/imported/ladderToHouse.png-bd2e0a685d4b3906ab6cf160264b4e0b.ctex"]
 
 [params]
 

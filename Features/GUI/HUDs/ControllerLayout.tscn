@@ -1,0 +1,272 @@
+[gd_scene load_steps=5 format=3 uid="uid://blb7r5rg3h055"]
+
+[ext_resource type="Texture2D" uid="uid://dcjqmphl8v6fw" path="res://Assets/UI/controller_layout.png" id="1_b80i8"]
+[ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="2_apx0r"]
+
+[sub_resource type="Gradient" id="Gradient_7kp4y"]
+offsets = PackedFloat32Array(0.00420168, 1)
+colors = PackedColorArray(0.905882, 0.831373, 0.972549, 0.388235, 0.894118, 0.529412, 0.486275, 0.286275)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8fdau"]
+gradient = SubResource("Gradient_7kp4y")
+fill_from = Vector2(0.517094, 0)
+fill_to = Vector2(0.514957, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_8fdau")
+
+[node name="Controller" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.255556
+anchor_right = 0.75
+anchor_bottom = 0.966667
+offset_left = -48.0
+offset_top = -13.0
+offset_right = -48.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_b80i8")
+
+[node name="Bumpers" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 72.0
+offset_right = 341.0
+offset_bottom = 90.0
+
+[node name="Left" parent="Bumpers" instance=ExtResource("2_apx0r")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+Button = 4
+
+[node name="Slash" type="Label" parent="Bumpers"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_type_variation = &"whiteText"
+text = "/"
+
+[node name="Right" parent="Bumpers" instance=ExtResource("2_apx0r")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+Button = 5
+
+[node name="Description" type="Label" parent="Bumpers"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_type_variation = &"whiteText"
+text = "switch tabs/tools"
+
+[node name="Trigger" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 21.0
+offset_right = 342.0
+offset_bottom = 39.0
+
+[node name="Left" parent="Trigger" instance=ExtResource("2_apx0r")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+Button = 6
+
+[node name="Slash" type="Label" parent="Trigger"]
+layout_mode = 2
+theme_type_variation = &"whiteText"
+text = "/"
+
+[node name="Right" parent="Trigger" instance=ExtResource("2_apx0r")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+Button = 7
+
+[node name="Description" type="Label" parent="Trigger"]
+layout_mode = 2
+theme_type_variation = &"whiteText"
+text = "switch categories"
+
+[node name="BumperLines" type="Node2D" parent="."]
+position = Vector2(-48, -13)
+
+[node name="Line2D" type="Line2D" parent="BumperLines"]
+position = Vector2(218, 304)
+points = PackedVector2Array(21, -169, 21, -211, 30, -211)
+width = 2.0
+default_color = Color(1, 1, 0.941176, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="BumperLines"]
+position = Vector2(424, 304)
+rotation = 3.14159
+scale = Vector2(1, -1)
+points = PackedVector2Array(21, -169, 21, -211, 30, -211)
+width = 2.0
+default_color = Color(1, 1, 0.941176, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TriggerLines" type="Node2D" parent="."]
+position = Vector2(-48, -13)
+
+[node name="Line2D" type="Line2D" parent="TriggerLines"]
+position = Vector2(221, 129)
+points = PackedVector2Array(-1, 1, -1, -90, 27, -90)
+width = 2.0
+default_color = Color(1, 1, 0.941176, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="TriggerLines"]
+position = Vector2(419, 129)
+scale = Vector2(-1, 1)
+points = PackedVector2Array(-1, 1, -1, -90, 27, -90)
+width = 2.0
+default_color = Color(1, 1, 0.941176, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Buttons" type="Node2D" parent="."]
+position = Vector2(-15, -7)
+
+[node name="Line2D" type="Line2D" parent="Buttons"]
+position = Vector2(501, 229)
+points = PackedVector2Array(0, 0, -17, 0, -17, -99, -1, -99)
+width = 2.0
+default_color = Color(1, 1, 0.941176, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="Buttons"]
+position = Vector2(435, 179)
+points = PackedVector2Array(0, 1, 49, 1)
+width = 2.0
+default_color = Color(1, 1, 0.941176, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Buttons"]
+offset_left = 493.0
+offset_top = 139.0
+offset_right = 635.0
+offset_bottom = 223.0
+
+[node name="North" type="HBoxContainer" parent="Buttons/Buttons"]
+layout_mode = 2
+
+[node name="InputIndicator" parent="Buttons/Buttons/North" instance=ExtResource("2_apx0r")]
+layout_mode = 2
+size_flags_horizontal = 0
+Button = 3
+
+[node name="Label" type="Label" parent="Buttons/Buttons/North"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"whiteText"
+text = "Open Book"
+
+[node name="West" type="HBoxContainer" parent="Buttons/Buttons"]
+layout_mode = 2
+
+[node name="InputIndicator" parent="Buttons/Buttons/West" instance=ExtResource("2_apx0r")]
+layout_mode = 2
+size_flags_horizontal = 0
+Button = 2
+
+[node name="Label" type="Label" parent="Buttons/Buttons/West"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"whiteText"
+text = "Take Single Item"
+
+[node name="East" type="HBoxContainer" parent="Buttons/Buttons"]
+layout_mode = 2
+
+[node name="InputIndicator" parent="Buttons/Buttons/East" instance=ExtResource("2_apx0r")]
+layout_mode = 2
+size_flags_horizontal = 0
+Button = 1
+
+[node name="Label" type="Label" parent="Buttons/Buttons/East"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"whiteText"
+text = "Back"
+
+[node name="South" type="HBoxContainer" parent="Buttons/Buttons"]
+layout_mode = 2
+
+[node name="InputIndicator" parent="Buttons/Buttons/South" instance=ExtResource("2_apx0r")]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="Buttons/Buttons/South"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"whiteText"
+text = "Interact/Talk/Move Item"
+
+[node name="Walk" type="Node2D" parent="."]
+position = Vector2(-48, -13)
+
+[node name="Line2D" type="Line2D" parent="Walk"]
+position = Vector2(113, 184)
+points = PackedVector2Array(2, 146, 2, 4, 81, 4)
+width = 2.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Walk"]
+offset_left = 103.0
+offset_top = 331.0
+offset_right = 147.0
+offset_bottom = 349.0
+metadata/_edit_use_anchors_ = true
+
+[node name="InputIndicator" parent="Walk/HBoxContainer" instance=ExtResource("2_apx0r")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="Label" type="Label" parent="Walk/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_type_variation = &"whiteText"
+text = "Walk"
+
+[node name="Line2D2" type="Line2D" parent="Walk"]
+position = Vector2(112, 193)
+points = PackedVector2Array(21, 148, 160, 148, 160, 58)
+width = 2.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2

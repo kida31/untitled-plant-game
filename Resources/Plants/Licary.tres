@@ -59,7 +59,7 @@ IsHarvestable = false
 script = ExtResource("1_oaorh")
 Name = 1
 MinLevel = 20.0
-MaxLevel = 40.0
+MaxLevel = 80.0
 
 [sub_resource type="Resource" id="Resource_uqct0"]
 script = ExtResource("1_oaorh")
@@ -76,7 +76,7 @@ IsHarvestable = true
 script = ExtResource("1_oaorh")
 Name = 1
 MinLevel = 25.0
-MaxLevel = 45.0
+MaxLevel = 60.0
 
 [sub_resource type="Resource" id="Resource_cnibk"]
 script = ExtResource("1_oaorh")
@@ -93,7 +93,7 @@ IsHarvestable = true
 script = ExtResource("1_oaorh")
 Name = 1
 MinLevel = 30.0
-MaxLevel = 50.0
+MaxLevel = 55.0
 
 [sub_resource type="Resource" id="Resource_4c8n4"]
 script = ExtResource("1_oaorh")
@@ -127,5 +127,5 @@ IsHarvestable = true
 script = ExtResource("1_77ck6")
 PlantName = "Licary"
 ConsumptionRate = 30
-AbsorptionRate = 45
+AbsorptionRate = 50
 DataForGrowthStages = Array[Object]([SubResource("Resource_wqbh2"), SubResource("Resource_ecvvi"), SubResource("Resource_prixi"), SubResource("Resource_egv7k"), SubResource("Resource_7q8v8"), SubResource("Resource_o7pu8"), SubResource("Resource_aqcqa")])

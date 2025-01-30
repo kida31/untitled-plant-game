@@ -48,3 +48,4 @@ RoutineTrigger = 1
 [node name="TalkToSign" type="Node" parent="RoutinePlanner/OnPlayerInteraction"]
 script = ExtResource("4_cepvx")
 _dialogueResourceObject = ExtResource("5_xu23k")
+_dialogueResourceObjects = Array[Object]([ExtResource("5_xu23k")])

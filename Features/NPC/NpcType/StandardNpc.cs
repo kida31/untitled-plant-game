@@ -12,9 +12,10 @@ namespace untitledplantgame.NPC.NpcType;
 public partial class StandardNpc : Npc
 {
 	[Export] private string _name;
+	[Export] private bool _disableMovement;
 	[Export] private NpcPlayerInteraction _npcPlayerInteraction;
 	[Export] private NpcRoutinePlanner _routinePlanner;
-	[Export] private AnimatedSprite2D _portraitSprite2D;
+	[Export] private AnimatedSprite2D _overWorldSprite;
 
 	private Npc _npcExecutingTheseTasks;
 	private Logger _logger;
@@ -22,13 +23,16 @@ public partial class StandardNpc : Npc
 	public override void _Ready()
 	{
 		base._Ready();
-		_portraitSprite2D?.Play();
+		_overWorldSprite?.Play();
 		_logger = new Logger(this);
 	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		MoveAndSlide();
+		if (!_disableMovement)
+		{
+			MoveAndSlide();
+		}
 	}
 
 	public override string GetNpcName()
