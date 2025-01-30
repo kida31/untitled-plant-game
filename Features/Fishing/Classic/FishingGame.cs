@@ -24,7 +24,6 @@ public partial class FishingGame : Node, IGame
 	public override void _Ready()
 	{
 		_logger = new(this);
-		_fishingRod.Initialize(_gameConfig.HookWidth, _gameConfig.HookSpeed, _gameConfig.HookSpeedAgainstFish);
 		_fishingPond.AreaExited += OnFishingPondExited;
 	}
 
@@ -84,6 +83,9 @@ public partial class FishingGame : Node, IGame
 
 	public void Start(Resource config)
 	{
+		_gameConfig = (GameConfig) config;
+		
+		_fishingRod.Initialize(_gameConfig.HookWidth, _gameConfig.HookSpeed, _gameConfig.HookSpeedAgainstFish);
 		_fishingRod.GlobalPosition = _spawnPoint.GlobalPosition;
 		_fish = SpawnFish();
 	}

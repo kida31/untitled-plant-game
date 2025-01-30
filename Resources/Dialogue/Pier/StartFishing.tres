@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_20m8g")
-_randomGameConfigsPool = Array[Object]([ExtResource("1_7wo3a"), ExtResource("1_7wo3a"), ExtResource("2_c4aco"), ExtResource("3_jyy7e"), ExtResource("3_jyy7e"), ExtResource("3_jyy7e"), ExtResource("3_jyy7e"), ExtResource("1_7wo3a"), ExtResource("1_7wo3a")])
-_config = ExtResource("3_jyy7e")
+_randomGameConfigsPool = Array[Object]([ExtResource("2_c4aco"), ExtResource("3_jyy7e"), ExtResource("3_jyy7e")])
+_tutorialConfig = ExtResource("1_7wo3a")
 speakerName = ""
 dialogueText = ""

@@ -17,11 +17,14 @@ namespace untitledplantgame.Dialogue.Events;
 public partial class OpenFishingGame : DialogueEvent
 {
 	[Export] private Array<GameConfig> _randomGameConfigsPool;
-	[Export] private GameConfig _config;
+	[Export] private GameConfig _tutorialConfig; // default
 
 	private FishingMiniGameSingleton _fishingGame;
 	private Logger _logger;
 
+	// bandaid solution
+	private int _gameWonCount = 0;
+	
 	public override void Execute()
 	{
 		_logger = new Logger("OpenFishingGame");
@@ -34,8 +37,20 @@ public partial class OpenFishingGame : DialogueEvent
 
 		_logger.Info("Starting fishing game");
 		GameStateMachine.Instance.ChangeState(GameState.Fishing);
-		_logger.Debug(_config.GetPath());
-		_fishingGame.Start(_config);
+
+		GameConfig config;
+		if (_gameWonCount < 2)
+		{
+			_logger.Info("Using tutorial config for first 2 games");
+			config = _tutorialConfig;
+		}
+		else
+		{
+			config = _randomGameConfigsPool.PickRandom();
+		}
+
+		_logger.Info("Using config: " + config.GetPath());
+		_fishingGame.Start(config);
 		_fishingGame.Show();
 	}
 
@@ -51,6 +66,7 @@ public partial class OpenFishingGame : DialogueEvent
 		var random = new Random();
 		var fishItem = fish.ElementAt(random.Next(fish.Count));
 		EventBus.Instance.ItemPickedUp(fishItem);
+		_gameWonCount++;
 	}
 
 	private void OnGameLost()
