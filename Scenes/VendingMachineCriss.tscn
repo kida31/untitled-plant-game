@@ -50,3 +50,4 @@ RoutineTrigger = 1
 [node name="Dialogue" type="Node" parent="RoutinePlanner/TalkAndOpenVendingMachineRoutine" index="0"]
 script = ExtResource("5_a0n3g")
 _dialogueResourceObjects = Array[Object]([ExtResource("6_ki0ac"), ExtResource("7_4qfl7"), ExtResource("8_xftjp"), ExtResource("9_i62r7"), ExtResource("10_mwtd7"), ExtResource("11_35lgs"), ExtResource("12_5d0jb"), ExtResource("13_ngwwb"), ExtResource("14_7w0ye")])
+_randomOrderOfDialogueLines = true

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://fpjia0r4x37g" path="res://Features/Crafting/Dehydrator/DehydratorInventoryView.tscn" id="5_yxd3d"]
 [ext_resource type="Script" path="res://Features/GUI/Effects/TriggerOnNonGameplay.cs" id="6_wbn0r"]
 [ext_resource type="PackedScene" uid="uid://cwe0di17r2yd" path="res://Features/TeleportPlayer/SceneTransition.tscn" id="8_jtjsl"]
-[ext_resource type="PackedScene" uid="uid://blb7r5rg3h055" path="res://Features/GUI/HUDs/ControllerLayout.tscn" id="8_l2bmx"]
+[ext_resource type="PackedScene" path="res://Features/GUI/HUDs/ControllerLayout.tscn" id="8_l2bmx"]
 [ext_resource type="Script" path="res://Features/GUI/HUDs/ControllerLayout.cs" id="9_em7sj"]
 [ext_resource type="PackedScene" uid="uid://df0cg0vcow1n2" path="res://Features/GUI/DebugOverlays/DebugOverlays.tscn" id="9_m21er"]
 [ext_resource type="Script" path="res://Features/Audio/SfxUI.cs" id="11_1oqto"]

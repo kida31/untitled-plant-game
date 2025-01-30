@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c108xawc8eseh"]
+[gd_scene load_steps=19 format=3 uid="uid://c108xawc8eseh"]
 
 [ext_resource type="Script" path="res://Features/GUI/Vending/VendingMachineUI.cs" id="1_mtkr8"]
 [ext_resource type="PackedScene" uid="uid://dy2bsx4d7l35p" path="res://Features/GUI/Vending/MiniInventory.tscn" id="2_vteot"]
+[ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="3_eg5cw"]
 [ext_resource type="Texture2D" uid="uid://yvo33yjscsag" path="res://Assets/UI/VendingMachine/Base_right.png" id="3_t32op"]
 [ext_resource type="PackedScene" uid="uid://dttp7hktpjqdx" path="res://Features/GUI/Vending/VendingItemView.tscn" id="4_v03kc"]
 [ext_resource type="Texture2D" uid="uid://bopd7g6vsty7t" path="res://Assets/UI/VendingMachine/Hebel.png" id="5_v8xxq"]
@@ -11,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bxdx84o8n40rg" path="res://Assets/UI/Book/Icons/3coins.png" id="8_pvodt"]
 [ext_resource type="PackedScene" uid="uid://qruua750qmw4" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
-[ext_resource type="PackedScene" path="res://Features/GUI/Vending/ButtonLineVending.tscn" id="10_7e1e4"]
+[ext_resource type="PackedScene" uid="uid://onc7r0twgms2" path="res://Features/GUI/Vending/ButtonLineVending.tscn" id="10_7e1e4"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
 [ext_resource type="PackedScene" uid="uid://cusi423j6fnh2" path="res://Features/GUI/Vending/EmoteBubble.tscn" id="12_5lmun"]
 
@@ -45,6 +46,28 @@ _inventoryView = NodePath("MinInventory")
 
 [node name="MinInventory" parent="." instance=ExtResource("2_vteot")]
 layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MinInventory"]
+offset_left = 68.0
+offset_top = -26.0
+offset_right = 136.0
+offset_bottom = -2.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MinInventory/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_eg5cw")
+region_rect = Rect2(0.000766754, -0.31827, 64.3167, 32.7169)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="CenterContainer" type="CenterContainer" parent="MinInventory/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MinInventory/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Inventory"
 
 [node name="VendingMachine" type="Control" parent="."]
 custom_minimum_size = Vector2(256, 320)
@@ -192,6 +215,28 @@ bbcode_enabled = true
 text = "[center]0[img=center,center,8x8]res://Assets/UI/Book/Icons/mini_coin.png[/img][/center]"
 fit_content = true
 metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="VendingMachine"]
+offset_left = 84.0
+offset_top = -21.0
+offset_right = 182.0
+offset_bottom = 3.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VendingMachine/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_eg5cw")
+region_rect = Rect2(0.000766754, -0.31827, 64.3167, 32.7169)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="CenterContainer" type="CenterContainer" parent="VendingMachine/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VendingMachine/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Vending Machine"
 
 [node name="ButtonLineVending" parent="." instance=ExtResource("10_7e1e4")]
 layout_mode = 1
