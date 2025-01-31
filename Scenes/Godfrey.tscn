@@ -194,6 +194,7 @@ animations = [{
 
 [node name="Godfrey" node_paths=PackedStringArray("_routinePlanner", "_overWorldSprite") instance=ExtResource("1_ljkvf")]
 _name = "Godfrey the first Priest"
+_disableMovement = true
 _routinePlanner = NodePath("GodfreyRandomWalk")
 _overWorldSprite = NodePath("CharacterSprite2D")
 
