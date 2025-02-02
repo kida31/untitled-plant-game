@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Features/Player/StateIdle.cs" id="5_k3tas"]
 [ext_resource type="Script" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
 [ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
-[ext_resource type="Script" path="res://EasterEgg/CollisionEasterEgg.cs" id="8_yc63u"]
+[ext_resource type="Script" path="res://Features/ProximityCollision/NpcProximityTrigger.cs" id="8_pu3c2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
 radius = 8.0
@@ -44,12 +44,12 @@ script = ExtResource("6_6k3md")
 [node name="UseTool" type="Node" parent="StateMachine"]
 script = ExtResource("7_lrvm3")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="NpcProximityTrigger" type="Area2D" parent="."]
 collision_layer = 7
 collision_mask = 7
-script = ExtResource("8_yc63u")
+script = ExtResource("8_pu3c2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NpcProximityTrigger"]
 shape = SubResource("CircleShape2D_ryxll")
 
 [node name="Camera2D" type="Camera2D" parent="."]

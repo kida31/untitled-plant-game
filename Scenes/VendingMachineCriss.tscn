@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://darsx73t4n6d3"]
+[gd_scene load_steps=17 format=3 uid="uid://darsx73t4n6d3"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_b0v61"]
 [ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="2_gjf2v"]
@@ -14,7 +14,6 @@
 [ext_resource type="Resource" uid="uid://d3jy31245b6n7" path="res://Resources/Dialogue/VendingMachine/VM_init_7.tres" id="12_5d0jb"]
 [ext_resource type="Resource" uid="uid://xlolghbobiln" path="res://Resources/Dialogue/VendingMachine/VM_init_8.tres" id="13_ngwwb"]
 [ext_resource type="Resource" uid="uid://b66bsn0f7b7ai" path="res://Resources/Dialogue/VendingMachine/VM_init_9.tres" id="14_7w0ye"]
-[ext_resource type="Texture2D" uid="uid://wgdrgbhg43yi" path="res://Assets/SpeechBubbles/Speechbubble_VendingMachine.png" id="15_lqtto"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqkbf"]
 radius = 62.0322
@@ -52,7 +51,3 @@ RoutineTrigger = 1
 script = ExtResource("5_a0n3g")
 _dialogueResourceObjects = Array[Object]([ExtResource("6_ki0ac"), ExtResource("7_4qfl7"), ExtResource("8_xftjp"), ExtResource("9_i62r7"), ExtResource("10_mwtd7"), ExtResource("11_35lgs"), ExtResource("12_5d0jb"), ExtResource("13_ngwwb"), ExtResource("14_7w0ye")])
 _randomOrderOfDialogueLines = true
-
-[node name="SpeechBubble" type="Sprite2D" parent="." index="7"]
-position = Vector2(54, -131)
-texture = ExtResource("15_lqtto")
