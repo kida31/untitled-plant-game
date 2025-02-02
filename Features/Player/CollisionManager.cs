@@ -1,39 +1,43 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Godot;
+using untitledplantgame.Common;
+using untitledplantgame.NPC;
+using untitledplantgame.ProximityCollision;
 
 namespace untitledplantgame.Player;
 
-[Obsolete("Handle collisions directly in NPC or other")]
 public partial class CollisionManager : Node
 {
-	private Dictionary<string, Action> _npcDialogueActions;
+	public static CollisionManager Instance { get; private set; }
+	
+	private Logger _logger;
 
 	public override void _Ready()
 	{
-		_npcDialogueActions = new Dictionary<string, Action>
+		_logger = new Logger(this);
+		if (Instance != null)
 		{
-			{ "Mother", () => ShowDialogue("Mother says: Hello Kid!") },
-			{ "Brother", () => ShowDialogue("Brother says: Sup sis!") },
-			// Add more NPCs and dialogues here
-		};
+			_logger.Warn("Multiple instances of TimeController found, deleting the new one");
+			QueueFree();
+			return;
+		}
+
+		Instance = this;
 	}
 
-	public void HandleNpcCollision(string npcName)
+	// replace the string with npc
+	public void HandleNpcCollision(Npc npc)
 	{
-		if (_npcDialogueActions.TryGetValue(npcName, out var action))
+		// ...
+		
+		foreach (var node in npc.GetChildren())
 		{
-			action.Invoke(); //ok
+			if (node is SpeechBubble speechBubble)
+			{
+				speechBubble.OnProximityEntered();
+			}
 		}
-		else
-		{
-			GD.Print("Unknown NPC collided.");
-		}
-	}
-
-	private void ShowDialogue(string dialogue)
-	{
-		GD.Print(dialogue);
-		// You can replace this with a UI update logic to show the dialogue on screen.
 	}
 }
