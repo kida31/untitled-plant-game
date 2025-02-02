@@ -12,7 +12,7 @@ public partial class ButtonIndicator : Control
 	private const string XboxButtonAssetsRoot = ButtonAssetsRoot + "XBOX/";
 	private const string PlaystationButtonAssetsRoot = ButtonAssetsRoot + "Playstation/";
 
-	private const GamepadType DefaultGamepad = GamepadType.Playstation;
+	private const GamepadType DefaultGamepad = GamepadType.Xbox;
 
 	enum GamepadType
 	{

@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=12 format=3 uid="uid://ce1uy8nqlg03w"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://ce1uy8nqlg03w"]
 
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_koqu6"]
 [ext_resource type="Texture2D" uid="uid://bicv1fu7r5w4n" path="res://Assets/Characters/VMsan/vendingMachinePortrait.png" id="1_qby7n"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_dq6qr"]
 [ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_gdcgn"]
-[ext_resource type="Script" path="res://Features/Dialogue/Events/OpenVendingMachine.cs" id="3_fyvvw"]
+[ext_resource type="Resource" uid="uid://clipa6tlu6er2" path="res://Resources/Dialogue/VendingMachine/VendingMachineResponses/vending_machine_res_yes.tres" id="3_1klkq"]
 
 [sub_resource type="Resource" id="Resource_i0uay"]
 script = ExtResource("1_koqu6")
@@ -18,21 +18,10 @@ speakerName = "Vending Machine"
 DialogueExpression = ExtResource("1_qby7n")
 dialogueText = "Do you want to sell some more?"
 
-[sub_resource type="Resource" id="Resource_0mb2c"]
-script = ExtResource("3_fyvvw")
-speakerName = ""
-dialogueText = ""
-
-[sub_resource type="Resource" id="Resource_dm3ng"]
-script = ExtResource("2_dq6qr")
-_dialogueId = ""
-_dialogueText = Array[Object]([SubResource("Resource_0mb2c")])
-_responses = null
-
 [sub_resource type="Resource" id="Resource_g0300"]
 script = ExtResource("2_gdcgn")
 _responseButton = "Yes"
-_responseDialogue = SubResource("Resource_dm3ng")
+_responseDialogue = ExtResource("3_1klkq")
 
 [sub_resource type="Resource" id="Resource_yjfxv"]
 script = ExtResource("2_gdcgn")

@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cv6hjqm0nnrau" path="res://Assets/Tilesets/soiltiles_tileset_better_rgb.png" id="16_mugcb"]
 [ext_resource type="Texture2D" uid="uid://oon4v18kv3jk" path="res://Assets/Overworld/Garden/pier_ladder.png" id="16_v0da8"]
 [ext_resource type="Script" path="res://Features/Plants/PlantMap.cs" id="17_qgpau"]
-[ext_resource type="PackedScene" path="res://Features/NPC/Door.tscn" id="18_eh65c"]
+[ext_resource type="PackedScene" uid="uid://bkwpjyk3ubcc7" path="res://Features/NPC/Door.tscn" id="18_eh65c"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="23_8b8d6"]
 [ext_resource type="PackedScene" uid="uid://js6xll5oktc4" path="res://Scenes/SoilTiles.tscn" id="27_sla4y"]
 
@@ -646,6 +646,7 @@ texture = ExtResource("12_h45qb")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 16)
+0:0/0/y_sort_origin = 16
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qplcf"]
 resource_name = "chuberry"

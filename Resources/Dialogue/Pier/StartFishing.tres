@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="OpenFishingGame" load_steps=5 format=3 uid="uid://cf4k02itsaxt6"]
+
+[ext_resource type="Resource" uid="uid://cjmq3ytxqm0fx" path="res://Features/Fishing/Classic/FishingGameConfig_Easy.tres" id="1_7wo3a"]
+[ext_resource type="Script" path="res://Features/Dialogue/Events/OpenFishingGame.cs" id="1_20m8g"]
+[ext_resource type="Resource" uid="uid://13h6j7ov146l" path="res://Features/Fishing/Classic/FishingGameConfig_Hard.tres" id="2_c4aco"]
+[ext_resource type="Resource" uid="uid://c0yi13vcria8f" path="res://Features/Fishing/Classic/FishingGameConfig_Normal.tres" id="3_jyy7e"]
+
+[resource]
+script = ExtResource("1_20m8g")
+_randomGameConfigsPool = Array[Object]([ExtResource("2_c4aco"), ExtResource("3_jyy7e"), ExtResource("3_jyy7e")])
+_tutorialConfig = ExtResource("1_7wo3a")
+speakerName = ""
+dialogueText = ""
