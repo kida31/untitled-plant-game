@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cv1fhyjs170lk"]
+[gd_scene load_steps=16 format=3 uid="uid://cv1fhyjs170lk"]
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_mh621"]
 [ext_resource type="PackedScene" uid="uid://ciy3cfmtd600v" path="res://Scenes/GardenMapScene.tscn" id="1_ouy3g"]
 [ext_resource type="PackedScene" uid="uid://darsx73t4n6d3" path="res://Scenes/VendingMachineCriss.tscn" id="3_5hcym"]
-[ext_resource type="PackedScene" uid="uid://dccnotts4vikg" path="res://Features/NPC/NpcType/NoteNpc.tscn" id="3_6mksu"]
 [ext_resource type="PackedScene" uid="uid://68an8ryr548m" path="res://Scenes/Pier.tscn" id="3_d7fyg"]
 [ext_resource type="PackedScene" uid="uid://crm2bb3s72gi8" path="res://Scenes/SeedBoyCriss.tscn" id="3_ffnpq"]
 [ext_resource type="PackedScene" uid="uid://cr2712p8tviur" path="res://Scenes/Godfrey.tscn" id="4_r6pis"]
@@ -24,9 +23,6 @@ y_sort_enabled = true
 
 [node name="Pier" parent="." instance=ExtResource("3_d7fyg")]
 position = Vector2(-1052, 2316)
-
-[node name="NoteNpc" parent="Pier" instance=ExtResource("3_6mksu")]
-position = Vector2(202, 1106)
 
 [node name="VendingMachine" parent="." instance=ExtResource("3_5hcym")]
 position = Vector2(728, 184)
