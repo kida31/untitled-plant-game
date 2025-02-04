@@ -9,7 +9,14 @@ using untitledplantgame.NPC.RoutinePlanner;
 
 namespace untitledplantgame.NPC.Routine;
 
-
+/// <summary>
+///		An Npc Routine is supposed to be a collection of one or more NpcTasks.
+///		A Routine will always execute all Tasks it has been given, but will only execute one Task at a time.
+///		However, there are two rules that need to be strictly followed to make a Routine and RoutinePlanner work.
+///
+///		Rule 1: A RoutinePlanner has to be the child of a Npc
+///		Rule 2: All Routines are children of RoutinePlanners
+/// </summary>
 public partial class NpcRoutine : Node
 {
 	public enum Options { TimeOfDay, PlayerInteraction }
@@ -93,7 +100,6 @@ public partial class NpcRoutine : Node
 		
 		if (RoutineTrigger == Options.TimeOfDay)
 		{
-			//GD.Print("1. I start the routine once, but I expect this to happen 3 time!");
 			await WaitUntilCorrectTimeOfDay();
 		}
 		else 
@@ -101,7 +107,6 @@ public partial class NpcRoutine : Node
 			await WaitUntilPlayerInteracted();
 		}
 		
-		//GD.Print("9. Letting us execute the task");
 		foreach (var npcTask in _npcTasks)
 		{
 			_owningRoutinePlanner.ActiveTask = npcTask;
@@ -120,7 +125,6 @@ public partial class NpcRoutine : Node
 	//------------------------------------------------------------------------------------------------------------------------------------//
 	private async void TimeToTriggerRoutine()
 	{
-		//GD.Print("3. When the time is right, the actual Routine begins");
 		await Task.Yield();
 		await Task.Delay(1);
 		
@@ -128,13 +132,15 @@ public partial class NpcRoutine : Node
 		{
 			await WaitUntilPreviousRoutineFinished();
 			_owningRoutinePlanner.LastRoutine = this;
-			//GD.Print("4. I am waiting for the player to finish the Dialogue!");
+			
+			_logger.Debug(Name + " is waiting for the Player to finish the Dialogue.");
 			await WaitUntilPlayerFinishedInterruption(); // No need to account for interruption WITHIN tasks, is handled elsewhere
 		}
 		else
 		{
 			_owningRoutinePlanner.LastRoutine = this;
-			//GD.Print("4. I am waiting for the player to finish the Dialogue!");
+			
+			_logger.Debug(Name + " is waiting for the Player to finish the Dialogue.");
 			await WaitUntilPlayerFinishedInterruption(); // No need to account for interruption WITHIN tasks, is handled elsewhere
 		}
 
@@ -148,7 +154,7 @@ public partial class NpcRoutine : Node
 	
 	/// <summary>
 	///		Scenario 1:
-	///		Handles the scenario when a the routine is based on a specific time of day
+	///		Handles the scenario when a Routine is based on a specific time of day
 	/// </summary>
 	private Task WaitUntilCorrectTimeOfDay()
 	{
@@ -161,11 +167,11 @@ public partial class NpcRoutine : Node
 			{
 				return;
 			}
-			//GD.Print("8. We can give the go to the correct timing.");
+			
 			tcs.TrySetResult(true);
 			RightTimeOfDayReached -= onConditionMet;
 		};
-		//GD.Print("2. The Task is executed and waits on it's event.");
+		
 		RightTimeOfDayReached += onConditionMet;
 		
 		return tcs.Task;
@@ -237,6 +243,7 @@ public partial class NpcRoutine : Node
 	
 	private void PreviousRoutineFinishTask()
 	{
+		_logger.Debug("The previous Routine has been finished.");
 		_previousRoutineFinished = true;
 		PreviousRoutineFinishedTask?.Invoke(this, EventArgs.Empty);
 	}
@@ -257,7 +264,7 @@ public partial class NpcRoutine : Node
 			{
 				return;
 			}
-			//GD.Print("7. And when the task is fulfilled!...");
+			
 			tcs.TrySetResult(true);
 			PlayerInterruptedRoutine -= onConditionMet;
 		};
@@ -269,18 +276,23 @@ public partial class NpcRoutine : Node
 			PlayerInterruptedRoutine?.Invoke(this, EventArgs.Empty);
 		}
 		
-		//GD.Print("5. I wait for the dialogue, cause the player intervened.");
 		return tcs.Task;
 	}
 
+	/// <summary>
+	///		This method will interrupt the currently active Routine.
+	///
+	///		Important Note: Interrupting a Routine WON'T interrupt the current Task, but rather stop the next one from starting.
+	/// </summary>
 	public void InterruptRoutine()
 	{
+		_logger.Debug("Interrupting Routine.");
 		_playerInterruption = true;
 	}
 
 	public void ContinueRoutine()
 	{
-		//GD.Print("6. The player resumes the Routine when he is finished.");
+		_logger.Debug("Resume Routine.");
 		_playerInterruption = false;
 		PlayerInterruptedRoutine?.Invoke(this, EventArgs.Empty);
 	}

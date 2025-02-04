@@ -1,13 +1,13 @@
 using Godot;
-using System;
 using untitledplantgame.Common;
 using untitledplantgame.Dialogue.Models;
-using untitledplantgame.NPC;
 using untitledplantgame.NPC.NpcInteraction;
-using untitledplantgame.NPC.RoutinePlanner;
 
 namespace untitledplantgame.NPC.NpcType;
 
+/// <summary>
+///		The NoteNpc is supposed to be an insider easter-egg.
+/// </summary>
 public partial class NoteNpc : Npc
 {
 	[Export] private string _name;
@@ -26,13 +26,15 @@ public partial class NoteNpc : Npc
 		_npcPlayerInteraction.InteractionEvent += SecretNoteToPlayer;
 	}
 	
-	
 	public override string GetNpcName()
 	{
 		_logger.Info("Npc name was requested.");
 		return _name;
 	}
 
+	/// <summary>
+	///		The player can only read the note at night!
+	/// </summary>
 	private void SecretNoteToPlayer()
 	{
 		var totalMinutes = (int)(TimeController.Instance.CurrentSeconds / 60);
