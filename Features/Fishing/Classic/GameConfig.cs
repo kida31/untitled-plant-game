@@ -3,6 +3,9 @@
 namespace untitledplantgame.Fishing.Classic;
 
 
+/// <summary>
+///		This data class holds the configuration for the fishing minigame.
+/// </summary>
 [GlobalClass]
 public partial class GameConfig : Resource
 {
