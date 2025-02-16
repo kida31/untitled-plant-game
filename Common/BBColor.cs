@@ -1,3 +1,5 @@
+using System;
+
 namespace untitledplantgame.Common;
 
 // Clipboard
@@ -7,6 +9,7 @@ namespace untitledplantgame.Common;
 /// <summary>
 /// Precompiled list of BBColor Hexcodes and Apply method
 /// </summary>
+[Obsolete("Godot RichTextLabel has in-built option to manage BB tags, including colors")]
 public class BBColor
 {
 	public static BBColor Pink => new("#FFC0CB");

@@ -6,6 +6,9 @@ using untitledplantgame.Dialogue.Models;
 
 namespace untitledplantgame.Dialogue.Events;
 
+/// <summary>
+///		 Event that transitions to the start of the next day.
+/// </summary>
 [GlobalClass]
 public partial class GoToBed : DialogueEvent
 {

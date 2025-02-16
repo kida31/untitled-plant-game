@@ -7,6 +7,7 @@ namespace untitledplantgame.Common.Inputs;
 /// <summary>
 /// Class to to get the key or button for a given action name.
 /// </summary>
+[Unstable("Not tested for in-game usage")]
 internal abstract class ControlScheme
 {
 	private static readonly Dictionary<string, Key> _keys = new();

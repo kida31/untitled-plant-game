@@ -1,6 +1,6 @@
 ﻿namespace untitledplantgame.Common.Inputs.GameActions;
 
-public abstract class FreeRoam
+public static class FreeRoam
 {
 	public const string Left = "freeroam_left";
 	public const string Right = "freeroam_right";

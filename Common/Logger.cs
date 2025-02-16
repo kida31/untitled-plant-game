@@ -14,7 +14,7 @@ public enum LogLevel
 public class Logger
 {
 	// Config Stuff
-	public const string LogLevelSetting = "untitled_plant_game/logging/log_level"; // TODO: Make private
+	internal const string LogLevelSetting = "untitled_plant_game/logging/log_level";
 	private const LogLevel DefaultConsoleLogLevel = LogLevel.Info;
 
 	public static Action<string> MessageLogged;

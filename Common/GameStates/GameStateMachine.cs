@@ -79,7 +79,8 @@ public partial class GameStateMachine : Node
 	/// <param name="newState"></param>
 	public void ChangeState(GameState newState) => SetState(newState);
 
-	public void RevertState()
+	[Unstable("Seems to cause errors sometimes for unknown reason.")]
+	private void RevertState()
 	{
 		if (_previousState is null)
 		{

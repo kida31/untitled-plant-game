@@ -1,6 +1,9 @@
 ﻿namespace untitledplantgame.Common.Inputs.GameActions;
 
-public class Book
+/// <summary>
+///		List of book game actions. Only active when the book is open.
+/// </summary>
+public static class Book
 {
 	public const string Left = "book_left";
 	public const string Right = "book_right";
