@@ -2,6 +2,9 @@ using Godot;
 
 namespace untitledplantgame.GUI.Effects;
 
+/// <summary>
+///		Class wrapper for Shader parameters. This is a blurry overlay object.
+/// </summary>
 [Tool]
 public partial class BlurEffect : ColorRect
 {

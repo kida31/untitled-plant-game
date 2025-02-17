@@ -3,6 +3,9 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.GUI.HUDs;
 
+/// <summary>
+///		GUI Element to display current tool and next/previous tools.
+/// </summary>
 public partial class ToolbeltView : Control
 {
 	private const string RotateRightAnimationName = "RotateRight";

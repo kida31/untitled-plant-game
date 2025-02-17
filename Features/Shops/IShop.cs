@@ -4,6 +4,9 @@ using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Shops;
 
+/// <summary>
+///		Blueprint. Basic shop interface.
+/// </summary>
 public interface IShop
 {
 	event Action<List<IItemStack>> ShopStockChanged;

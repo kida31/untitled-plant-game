@@ -4,6 +4,9 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.GUI.DebugOverlays;
 
+/// <summary>
+///		Parent node for debug overlay objects. Contains logic for toggling self and child visibility.
+/// </summary>
 public partial class DebugOverlay : Control
 {
 	public const string DebugSettingKey = "untitled_plant_game/show_debug_overlays";

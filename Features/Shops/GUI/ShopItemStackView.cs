@@ -4,6 +4,8 @@ using untitledplantgame.Common;
 using untitledplantgame.Inventory;
 using untitledplantgame.Vending.UI;
 
+// TODO: move this file to GUI.Shops
+// TODO: This seems to be unused. Delete?
 public partial class ShopItemStackView : Control, IItemSlotUI
 {
 	public event Action Pressed;

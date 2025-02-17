@@ -6,6 +6,9 @@ using untitledplantgame.Plants;
 
 namespace untitledplantgame.Tools;
 
+/// <summary>
+///		A watering can. Waters plants.
+/// </summary>
 public partial class WateringCan : Tool
 {
 	[Export] private float _wateringAmount;

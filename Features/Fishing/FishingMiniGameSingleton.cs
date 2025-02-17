@@ -4,6 +4,9 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.Fishing;
 
+/// <summary>
+///		Global single point of access to start the fishing game. (Make-do solution)
+/// </summary>
 public partial class FishingMiniGameSingleton : Control, IGame
 {
 	public static FishingMiniGameSingleton Instance { get; private set; }

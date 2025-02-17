@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using untitledplantgame.Common.GameStates;
 
+/// <summary>
+///		Displays the current game state and the last N states.
+/// </summary>
 public partial class DebugGameState : Label
 {
 	private Queue<GameState> _stateHistory = new();

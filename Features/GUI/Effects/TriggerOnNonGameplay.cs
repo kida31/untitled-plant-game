@@ -2,6 +2,9 @@ using Godot;
 using untitledplantgame.Common.ExtensionMethods;
 using untitledplantgame.Common.GameStates;
 
+/// <summary>
+///		A functional node. Makes parent (of any Control type) fade in during non-gameplay states and fade out during gameplay states.
+/// </summary>
 public partial class TriggerOnNonGameplay : Node
 {
 	[Export(PropertyHint.Range, "0.0,1.0")] private float _fadeInDuration = 0.2f;

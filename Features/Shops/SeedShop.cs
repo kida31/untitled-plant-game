@@ -9,6 +9,9 @@ using untitledplantgame.Systems;
 
 namespace untitledplantgame.Shops;
 
+/// <summary>
+///		A seed shop. Can generate a random set of seeds to sell.
+/// </summary>
 public class SeedShop : IShop
 {
 	private static readonly Random Random = new(42);

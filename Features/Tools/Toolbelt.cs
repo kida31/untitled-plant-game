@@ -4,6 +4,9 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.Tools;
 
+/// <summary>
+///		A container for a set of tools. Manages switching between tools and keeping track of the current tool.
+/// </summary>
 public class Toolbelt
 {
 	public event Action WentToNextTool;

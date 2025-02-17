@@ -5,6 +5,9 @@ using untitledplantgame.Common.Inputs.GameActions;
 
 namespace untitledplantgame.GUI.HUDs;
 
+/// <summary>
+///		 A button indicator that displays a gamepad button. Helpful for input hints.
+/// </summary>
 [Tool]
 public partial class ButtonIndicator : Control
 {

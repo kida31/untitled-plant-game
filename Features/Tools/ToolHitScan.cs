@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using Godot;
 
-// Tool HITSCAN
+/// <summary>
+///		The hit-scan area spawned by the tool. On hit will trigger various method in tool.
+/// </summary>
 public partial class ToolHitScan : Area2D
 {
 	private const float ScanTimeSeconds = 100 / 1000f;
