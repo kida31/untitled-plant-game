@@ -34,6 +34,9 @@ public class Toolbelt
 		_logger = new Logger("Toolbelt");
 	}
 
+	/// <summary>
+	///		Switch to the next tool in the toolbelt.
+	/// </summary>
 	public void GoToNext()
 	{
 		// I feel like theres some smarter math to do here
@@ -50,6 +53,9 @@ public class Toolbelt
 		}
 	}
 
+	/// <summary>
+	///		Switch to the previous tool in the toolbelt.
+	/// </summary>
 	public void GoToPrevious()
 	{
 		// I feel like there's some smarter math to do here
