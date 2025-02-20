@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
@@ -8,17 +6,15 @@ using untitledplantgame.Common;
 using untitledplantgame.Dialogue;
 using untitledplantgame.Dialogue.Models;
 using untitledplantgame.NPC.NpcInteraction;
-using Array = Godot.Collections.Array;
 
 namespace untitledplantgame.NPC.NpcTask;
 
-// TODO: Cleanup
-/**
- * This task is used to force the NPC to chat with the Player.
- * The NPC waits until the Player approaches him and initiates a conversation. The Player then has to finish the conversation.
- *
- * The task is finished when the Player has finished the conversation and Dialogue System invokes "OnDialogueEnd"
- */
+/// <summary>
+///		This task is used to force the NPC to chat with the Player.
+///		The NPC waits until the Player approaches him and initiates a conversation. The Player then has to finish the conversation.
+///
+///		The task is finished when the Player has finished the conversation and Dialogue System invokes "OnDialogueEnd".
+/// </summary>
 public partial class TalkToPlayerTask :  Node, INpcTask
 {
 	[Export] private Array<DialogueResourceObject> _dialogueResourceObjects;
@@ -86,12 +82,7 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 		await Task.Yield();
 		await Task.Delay(1);
 	}
-
-	public bool IsTaskActive()
-	{
-		return DialogueFinished;
-	}
-
+	
 	public void InterruptCurrentTask()
 	{
 		_logger.Error("TalkToPlayerTask can't be interrupted! The player has to finish the dialogue first! Something went wrong.");
@@ -99,7 +90,7 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 
 	public void ResumeCurrentTask()
 	{
-		_logger.Error("TalkToPlayerTask can't be resumed, since it can't be interrupted!");
+		_logger.Error("TalkToPlayerTask can't be resumed, since there isn't supposed to be an active Task in the first place!");
 	}
 	
 	public async Task ExecuteNpcTask()
@@ -117,6 +108,10 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 		_dialogueSystem.OnDialogueEnd += o => { FinishTask(); };
 	}
 	
+	/// <summary>
+	///		Uses an EventHandler to check if a Npc has finished the Dialogue.
+	/// </summary>
+	/// <returns></returns>
 	private Task WaitForConditionAsync()
 	{
 		var tcs = new TaskCompletionSource<bool>();

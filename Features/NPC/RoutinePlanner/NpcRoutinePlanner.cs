@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
@@ -9,12 +8,15 @@ using untitledplantgame.NPC.Routine;
 
 namespace untitledplantgame.NPC.RoutinePlanner;
 
+/// <summary>
+///		The RoutinePlanner manages all Routines given to it.
+/// </summary>
 public partial class NpcRoutinePlanner : Node
 {
 	[Export] private Npc _npcExecutingRoutines;
 	[Export] private Array<NpcRoutine> _routines;
 	public INpcTask ActiveTask;
-	public NpcRoutine LastRoutine; // Also saves the currently active Routine
+	public NpcRoutine LastRoutine; // Also saves the currently active Routine if there was no previous Routine.
 	public NpcRoutine StartingRoutine;
 	
 	private bool _startingRoutineSet;
@@ -27,25 +29,24 @@ public partial class NpcRoutinePlanner : Node
 		_logger = new Logger(this);
 	}
 
+	/// <summary>
+	///		Used to get the Npc that has this specific RoutinePlanner.
+	/// </summary>
+	/// <returns></returns>
 	public Npc GetNpcExecutingRoutines()
 	{
 		return _npcExecutingRoutines;
 	}
 	
 	/*
-	 * Rider doesn't know this, but routines are called routines precisely because they are done in an endless loop.
+	 * Rider doesn't know this, but Routines are called precisely because they should be executed in a never ending loop.
 	 *
-	 * Npc are programmed to start over once every routine is finished!
+	 * Npcs are programmed to start over once every routine is finished!
 	 */
 	private async void ExecuteAllRoutines()
 	{
 		await Task.Delay(ScriptExecutionOrderDelay);
 		_logger.Debug("Starting to execute the Npc's routines.");
-		
-		//EventBus.Instance.NpcDialogueWithPlayerStarted(
-		//	(AnimatedSprite2D) _npcExecutingRoutines.GetNode("PortraitSprite2D"),
-		//	_npcExecutingRoutines.GetNpcName()
-		//);
 
 		var tasks = new List<Task>();
 		
