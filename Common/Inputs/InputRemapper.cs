@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common.GameStates;
@@ -23,6 +24,7 @@ public partial class InputRemapper : Node
 	/// </summary>
 	/// <param name="actionName"></param>
 	/// <returns></returns>
+	[Unstable("Debugging only")]
 	public static Key GetKey(string actionName) => ControlScheme.GetKey(actionName);
 
 	/// <summary>
@@ -30,6 +32,7 @@ public partial class InputRemapper : Node
 	/// </summary>
 	/// <param name="actionName"></param>
 	/// <returns></returns>
+	[Unstable("Debugging only")]
 	public static JoyButton GetButton(string actionName) => ControlScheme.GetButton(actionName);
 
 	private const string BaseActionPrefix = "base_";

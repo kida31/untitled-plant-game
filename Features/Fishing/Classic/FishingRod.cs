@@ -5,6 +5,10 @@ using untitledplantgame.Common.Inputs.GameActions;
 
 namespace untitledplantgame.Fishing.Classic;
 
+/// <summary>
+///		 This class represents the fishing rod that the player uses to catch fish.
+///		 It moves in the direction of the input, and can also drag fish around.
+/// </summary>
 public partial class FishingRod : Area2D
 {
 	[Export] private Label _debugLabel;

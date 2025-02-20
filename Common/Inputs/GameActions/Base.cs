@@ -1,6 +1,9 @@
 ﻿namespace untitledplantgame.Common.Inputs.GameActions;
 
-public class Base
+/// <summary>
+///		List of base game actions. Always active.
+/// </summary>
+public static class Base
 {
 	public const string Left = "base_left";
 	public const string Right = "base_right";

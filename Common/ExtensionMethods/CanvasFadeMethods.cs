@@ -41,6 +41,6 @@ public static class CanvasFadeMethods
 		var modulate = self.Modulate;
 		modulate.A = alpha;
 		tween.TweenProperty(self, "modulate", modulate, duration);
-		return tween;
+		return tween; // Returning the handler allows the user finer control (combining, stopping, signals, etc.)
 	}
 }

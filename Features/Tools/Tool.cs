@@ -7,6 +7,13 @@ namespace untitledplantgame.Tools;
 
 // Problem, cast time logic needs to be in/by a Node
 // Part of the logic (Use()) is in Tool. Logic should be in one place only.
+
+// This has above average priority for reworking
+
+/// <summary>
+///		A base class for tools. Tools are items that can be used by the player.
+///		Tool implementations implement the logic for the tool by overriding the virtual methods.
+/// </summary>
 public abstract partial class Tool : Resource, IDisplayData, IToolUseData
 {
 	public event Action FinishedCasting;
@@ -23,6 +30,11 @@ public abstract partial class Tool : Resource, IDisplayData, IToolUseData
 	private readonly Logger _logger = new("Tool");
 
 	// Having every tool be channeling smells bad
+	
+	/// <summary>
+	///		 Start channeling the tool.
+	/// </summary>
+	/// <param name="user"></param>
 	public void StartChanneling(Player.Player user)
 	{
 		_logger.Debug("Start channeling");
@@ -36,6 +48,10 @@ public abstract partial class Tool : Resource, IDisplayData, IToolUseData
 		_hitScanArea.GlobalPosition = user.GlobalPosition + user.FaceDirection * Range;
 	}
 
+	/// <summary>
+	///		Cancel the channeling of the tool.
+	/// </summary>
+	/// <param name="user"></param>
 	public void Cancel(Player.Player user)
 	{
 		_logger.Debug("Cancel channeling");

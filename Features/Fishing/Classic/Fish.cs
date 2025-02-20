@@ -3,6 +3,10 @@ using Godot;
 
 namespace untitledplantgame.Fishing.Classic;
 
+/// <summary>
+///		This class represents a fish that can be caught by the player.
+///		It simply moves forward towards its ActiveDirection.
+/// </summary>
 public partial class Fish : Area2D
 {
 	[Export] private Sprite2D _sprite;

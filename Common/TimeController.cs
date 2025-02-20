@@ -19,16 +19,26 @@ public partial class TimeController : Node
 
 	public delegate void DayChangedHandler(int day);
 
+	/// <summary>
+	///		Invoked when the day changes. Passes the new day as an argument.
+	/// </summary>
 	public event DayChangedHandler DayChanged;
+
+	/// <summary>
+	///		 Invoked when the time is noon.
+	/// </summary>
 	public event Action NoonOccured;
 
 	public delegate void MinuteTickedHandler(int day, int hour, int minute);
 
+	/// <summary>
+	///		 Invoked every minute. Passes the day, hour, and minute as arguments.
+	/// </summary>
 	public event MinuteTickedHandler MinuteTicked;
 
 
 	/// <summary>
-	/// Current time in seconds
+	///		Current time in seconds
 	/// </summary>
 	public double CurrentSeconds { get; private set; }
 
@@ -54,11 +64,7 @@ public partial class TimeController : Node
 		_logger = new Logger(this);
 		_logger.Debug($"Time initialized with {CurrentSeconds}");
 	}
-
-	/**
-	 * Called every frame. 'delta' is the elapsed time since the previous frame.
-	 * _time gets updated every other frame depending on in-game time
-	 */
+	
 	public override void _Process(double delta)
 	{
 		double dt;
@@ -88,11 +94,11 @@ public partial class TimeController : Node
 		const double minutesPerDay = 24 * 60;
 		const double minutesPerHour = 60;
 
-		var totalMinutes = (int)(CurrentSeconds / 60);
+		var totalMinutes = (int) (CurrentSeconds / 60);
 
-		var currentDayMinutes = (int)(totalMinutes % minutesPerDay);
-		var hour = (int)(currentDayMinutes / minutesPerHour);
-		var minute = (int)(currentDayMinutes % minutesPerHour);
+		var currentDayMinutes = (int) (totalMinutes % minutesPerDay);
+		var hour = (int) (currentDayMinutes / minutesPerHour);
+		var minute = (int) (currentDayMinutes % minutesPerHour);
 
 		if (CurrentSeconds >= SecondsPerDay)
 		{
@@ -102,7 +108,7 @@ public partial class TimeController : Node
 			CurrentSeconds = 0;
 			_wasNoon = false;
 		}
-		
+
 		if (_currentMinute != minute)
 		{
 			_currentMinute = minute;
@@ -116,19 +122,29 @@ public partial class TimeController : Node
 		}
 	}
 
+	/// <summary>
+	///		Skips to the next day.
+	/// </summary>
 	public void GoToNextDay()
 	{
 		FastForwardTo(StartOfDaySeconds);
 		_currentTimeMultiplier = InGameToRealTimeFastForwardMultiplier;
 	}
 
-	//Please remove this later
+	/// <summary>
+	///		 Fast forwards the time by the given duration.
+	/// </summary>
+	/// <param name="duration"></param>
 	public void FastForwardFor(double duration)
 	{
 		Assert.AssertTrue(duration > 0);
 		_fastForwardDuration = duration;
 	}
 
+	/// <summary>
+	///		 Fast forwards the time to the given target time.
+	/// </summary>
+	/// <param name="targetTime"></param>
 	public void FastForwardTo(double targetTime)
 	{
 		Assert.AssertTrue(targetTime < SecondsPerDay, "Target time is greater than a day");

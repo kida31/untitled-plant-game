@@ -2,6 +2,9 @@ using Godot;
 
 namespace untitledplantgame.GUI.Interactions;
 
+/// <summary>
+///		A hint to show the player how to interact with a nearby object.
+/// </summary>
 [Tool]
 public partial class InteractHint : Control
 {

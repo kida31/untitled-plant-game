@@ -8,6 +8,8 @@ namespace untitledplantgame.Common;
 /// This singleton provides access to commonly used references.
 /// E.g. Player object
 /// The relevant objects usually register themselves
+///
+/// This prevents commonly used objects from being searched globally or passed around.
 /// </summary>
 public class Game
 {
@@ -35,15 +37,5 @@ public class Game
 	public Player.Player GetPlayer()
 	{
 		return Instance._player;
-	}
-
-	public T? Get<T>() where T : class
-	{
-		return _services.GetValueOrDefault(typeof(T), null) as T;
-	}
-
-	public void Provide<T>(T service)
-	{
-		_services[typeof(T)] = service;
 	}
 }

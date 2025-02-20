@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using untitledplantgame.Common;
 
@@ -66,6 +67,7 @@ public partial class BgmManager : Node
 		Play(area?.GetBgm());
 	}
 
+	[Obsolete("There is a new Godot Feature called AudioStreamInteractive. Use that instead.")]
 	private void CrossFade(AudioStream nextTrack)
 	{
 		_logger.Debug($"Cross-fading from \"{_audioStreamPlayerA.Stream?.ResourcePath}\" to \"{nextTrack.ResourcePath}\"");

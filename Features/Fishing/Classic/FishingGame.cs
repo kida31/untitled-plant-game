@@ -4,6 +4,11 @@ using untitledplantgame.Common;
 
 namespace untitledplantgame.Fishing.Classic;
 
+/// <summary>
+///		 This class represents the Fishing Game. Main entry point.
+///		 It is responsible for spawning fish and managing the game state.
+///		 It also handles the win and lose conditions.
+/// </summary>
 public partial class FishingGame : Node, IGame
 {
 	public event Action GameWon;

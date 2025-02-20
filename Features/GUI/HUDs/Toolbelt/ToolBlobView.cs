@@ -3,6 +3,9 @@ using untitledplantgame.Tools;
 
 namespace untitledplantgame.GUI.HUDs;
 
+/// <summary>
+///		A circle-shaped GUI element to display a single tool.
+/// </summary>
 public partial class ToolBlobView : Control
 {
 	private const string ToPrimaryAnimationName = "TransitionToPrimary";

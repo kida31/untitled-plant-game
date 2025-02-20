@@ -13,6 +13,9 @@ using untitledplantgame.Item.Components;
 
 namespace untitledplantgame.Dialogue.Events;
 
+/// <summary>
+///		This DialogueEvent should be used for when the player tries to open the FishingGame via an interaction with the FishingSpot. 
+/// </summary>
 [GlobalClass]
 public partial class OpenFishingGame : DialogueEvent
 {

@@ -12,6 +12,8 @@ using untitledplantgame.Systems;
 
 namespace untitledplantgame.Shops.GUI;
 
+// TODO: move this file to GUI.Shops
+
 // TODO: Disallow buying items if player does not have enough space
 public partial class SeedShopView : Control
 {
