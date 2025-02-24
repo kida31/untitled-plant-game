@@ -1,4 +1,6 @@
+using System.Linq;
 using Godot;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Player;
 
@@ -52,6 +54,22 @@ public partial class FootstepSounds : AudioStreamPlayer2D
 
 	private GroundType GetGroundType()
 	{
-		return GroundType.Grass;
+		var floors = GetTree().GetNodesInGroup(GameGroup.Floor).OfType<TileMapLayer>().ToList();
+		var activeTile = floors.Select(tml =>
+		{
+			var localPos = tml.ToLocal(_player.GlobalPosition);
+			var tilePos = tml.LocalToMap(localPos);
+			var tile = tml.GetCellTileData(tilePos);
+			return tile;
+		}).FirstOrDefault(tile => tile != null);
+		
+		if (activeTile == null)
+		{
+			GD.Print("No tile found");
+			return GroundType.Grass;
+		}
+
+		var groundType = activeTile.GetCustomData("GroundType").AsInt32();
+		return groundType == 0 ? GroundType.Wood : GroundType.Grass;
 	}
 }

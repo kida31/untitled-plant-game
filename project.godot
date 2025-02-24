@@ -65,6 +65,7 @@ enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg", 
 
 player=""
 Interactables=""
+Floor="This is a floor layer"
 
 [gui]
 
