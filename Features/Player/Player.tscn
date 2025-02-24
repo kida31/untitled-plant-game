@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=17 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="SpriteFrames" uid="uid://upqodpbedg8s" path="res://Features/Player/PlayerSpriteFrames.tres" id="2_3hfoe"]
@@ -8,12 +8,28 @@
 [ext_resource type="Script" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
 [ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
 [ext_resource type="Script" path="res://Features/ProximityCollision/NpcProximityTrigger.cs" id="8_pu3c2"]
+[ext_resource type="AudioStream" uid="uid://dtgk6d84ss3ub" path="res://Assets/Audio/PlayerSfx/FootstepsOnGras.wav" id="9_5jw4k"]
+[ext_resource type="AudioStream" uid="uid://d3v3fnkgvimq3" path="res://Assets/Audio/PlayerSfx/Footsteps wood.wav" id="10_0rdgx"]
+[ext_resource type="Script" path="res://Features/Player/FootstepSounds.cs" id="11_unbv6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ryxll"]
 radius = 34.0147
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ilwxt"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("10_0rdgx")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5xn14"]
+streams_count = 1
+stream_0/stream = ExtResource("9_5jw4k")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e3i57"]
+streams_count = 1
+stream_0/stream = ExtResource("10_0rdgx")
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerAnimatedSprite") groups=["player"]]
 script = ExtResource("1_ypuiu")
@@ -57,3 +73,12 @@ position = Vector2(0, -31)
 position_smoothing_speed = 2.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="FootstepSounds" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ilwxt")
+autoplay = true
+max_polyphony = 32
+script = ExtResource("11_unbv6")
+PlaybackCooldown = 0.7
+_grassSound = SubResource("AudioStreamRandomizer_5xn14")
+_woodSound = SubResource("AudioStreamRandomizer_e3i57")
