@@ -9,6 +9,7 @@ namespace untitledplantgame.Audio;
 public partial class BgmArea2D : Area2D, IBgmArea
 {
 	[Export] private AudioStream _bgm;
+	[Export] private Location _location; // TODO: _bgm and _location overlap in responsibility
 
 	public override void _Ready()
 	{
@@ -32,5 +33,10 @@ public partial class BgmArea2D : Area2D, IBgmArea
 		{
 			EventBus.Instance.InvokeBgmAreaChanged(this);
 		}
+	}
+
+	public Location GetLocation()
+	{
+		return _location;
 	}
 }

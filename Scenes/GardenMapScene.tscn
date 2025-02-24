@@ -758,6 +758,7 @@ visible = false
 position = Vector2(455, 530)
 script = ExtResource("1_wrnkw")
 _bgm = ExtResource("2_g0xi1")
+_location = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BgmTriggerArea"]
 position = Vector2(212, -101)

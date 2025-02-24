@@ -42,6 +42,7 @@ CurrencyFaithOfficer="*res://Features/Systems/CurrencyFaithOfficer.cs"
 TeleportPlayer="*res://Features/TeleportPlayer/TeleportPlayer.cs"
 ClockBasedEventController="*res://Common/ClockBasedEventController.cs"
 BgmManager="*res://Features/Audio/BgmManager.tscn"
+AmbientSound="*res://Features/Audio/AmbientSound.tscn"
 
 [display]
 

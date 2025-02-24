@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://cl6rxi2s7p4ns"]
+
+[ext_resource type="Script" path="res://Features/Audio/AmbientSound.cs" id="1_325m7"]
+[ext_resource type="AudioStream" uid="uid://wrxaffa1nbhq" path="res://Assets/Audio/Ambient/atmo_ocean_seagulls.wav" id="1_ohxjx"]
+[ext_resource type="AudioStream" uid="uid://bb0cqecperly8" path="res://Assets/Audio/Ambient/atmo_rain.wav" id="2_ckg1v"]
+[ext_resource type="AudioStream" uid="uid://cr7umui6clsbi" path="res://Assets/Audio/Ambient/atmo_rain_thunder.wav" id="3_dxw61"]
+[ext_resource type="AudioStream" uid="uid://2lln7vfo4bcn" path="res://Assets/Audio/Ambient/atmo_wind.wav" id="4_4sswd"]
+[ext_resource type="AudioStream" uid="uid://cf30cj11gyh0o" path="res://Assets/Audio/Ambient/atmo_wind_birds.wav" id="5_ovxtd"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_vygn6"]
+clip_count = 5
+clip_0/name = &"Ocean"
+clip_0/stream = ExtResource("1_ohxjx")
+clip_0/auto_advance = 0
+clip_1/name = &"Rain"
+clip_1/stream = ExtResource("2_ckg1v")
+clip_1/auto_advance = 0
+clip_2/name = &"RainThunder"
+clip_2/stream = ExtResource("3_dxw61")
+clip_2/auto_advance = 0
+clip_3/name = &"Wind"
+clip_3/stream = ExtResource("4_4sswd")
+clip_3/auto_advance = 0
+clip_4/name = &"WindBirds"
+clip_4/stream = ExtResource("5_ovxtd")
+clip_4/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 0
+}
+}
+
+[node name="AmbientSound" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamInteractive_vygn6")
+autoplay = true
+bus = &"SFX"
+script = ExtResource("1_325m7")
