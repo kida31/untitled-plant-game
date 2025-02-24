@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b48o50ukwtc4v" path="res://Scenes/water.tscn" id="1_xlm3o"]
 [ext_resource type="Texture2D" uid="uid://capj2kjiyfndo" path="res://Assets/Tilesets/TX Tileset Grass.png" id="1_y6de5"]
 [ext_resource type="Texture2D" uid="uid://b0jfimskhcnql" path="res://Assets/Tilesets/Pier.png" id="2_8reyx"]
-[ext_resource type="AudioStream" uid="uid://kp5gdrb8dau7" path="res://Assets/BGM/gardenTheme_withGardenAtmo.mp3" id="2_g0xi1"]
+[ext_resource type="AudioStream" uid="uid://buxr53higme27" path="res://Assets/BGM/plantGame_gardenTheme.wav" id="2_rallm"]
 [ext_resource type="Texture2D" uid="uid://csfwrdc81ybx0" path="res://Assets/Tilesets/TX Tileset Stone Ground.png" id="3_2cek8"]
 [ext_resource type="Texture2D" uid="uid://h83g282s043x" path="res://Assets/Overworld/Garden/ladder_tileset_improved.png" id="3_rcpjb"]
 [ext_resource type="Texture2D" uid="uid://ctomw1ove5828" path="res://Assets/Tilesets/TX Tileset Wall.png" id="4_5u7nl"]
@@ -757,7 +757,7 @@ y_sort_enabled = true
 visible = false
 position = Vector2(455, 530)
 script = ExtResource("1_wrnkw")
-_bgm = ExtResource("2_g0xi1")
+_bgm = ExtResource("2_rallm")
 _location = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BgmTriggerArea"]

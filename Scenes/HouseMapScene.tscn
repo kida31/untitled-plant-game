@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cc1awsayc4q4p" path="res://Assets/Overworld/House/mortar.png" id="14_pkrwm"]
 [ext_resource type="PackedScene" uid="uid://dfcu5fotbxud1" path="res://Features/NPC/Mortar.tscn" id="16_sfgy1"]
 [ext_resource type="Script" path="res://Features/Audio/BgmArea2D.cs" id="19_hnme2"]
-[ext_resource type="AudioStream" uid="uid://dyr8ewg8q3p2" path="res://Assets/BGM/plantGame_homeTheme.mp3" id="20_k4xp4"]
+[ext_resource type="AudioStream" uid="uid://dcwsfbbm5v272" path="res://Assets/BGM/plantGame_homeTheme.wav" id="21_jocbf"]
 
 [sub_resource type="Gradient" id="Gradient_rg704"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -1782,7 +1782,7 @@ position = Vector2(778, 561)
 visible = false
 position = Vector2(455, 530)
 script = ExtResource("19_hnme2")
-_bgm = ExtResource("20_k4xp4")
+_bgm = ExtResource("21_jocbf")
 _location = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BgmTriggerArea"]

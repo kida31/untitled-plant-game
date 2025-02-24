@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Features/Audio/BgmArea2D.cs" id="1_7wq8b"]
 [ext_resource type="Texture2D" uid="uid://b0jfimskhcnql" path="res://Assets/Tilesets/Pier.png" id="1_q7rwy"]
 [ext_resource type="PackedScene" uid="uid://b48o50ukwtc4v" path="res://Scenes/water.tscn" id="1_r3s8w"]
-[ext_resource type="AudioStream" uid="uid://10t5wqaekjoj" path="res://Assets/BGM/pierTheme_withOceanAtmo.mp3" id="2_a3qxc"]
 [ext_resource type="Texture2D" uid="uid://csfwrdc81ybx0" path="res://Assets/Tilesets/TX Tileset Stone Ground.png" id="2_squ6a"]
 [ext_resource type="Texture2D" uid="uid://capj2kjiyfndo" path="res://Assets/Tilesets/TX Tileset Grass.png" id="3_20sw1"]
+[ext_resource type="AudioStream" uid="uid://dfe6lmxauxl1t" path="res://Assets/BGM/plantGame_pierTheme.wav" id="3_he8ii"]
 [ext_resource type="Texture2D" uid="uid://ctomw1ove5828" path="res://Assets/Tilesets/TX Tileset Wall.png" id="4_l28mx"]
 [ext_resource type="Texture2D" uid="uid://bg6sungsm67xq" path="res://Assets/Overworld/House/PlantFence.png" id="8_gtgwc"]
 [ext_resource type="Texture2D" uid="uid://dl3ytowjsie7x" path="res://Assets/Overworld/Garden/pier_tileset.png" id="9_sqtp6"]
@@ -462,7 +462,7 @@ tile_map_data = PackedByteArray("AAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAA
 visible = false
 position = Vector2(-3, 485)
 script = ExtResource("1_7wq8b")
-_bgm = ExtResource("2_a3qxc")
+_bgm = ExtResource("3_he8ii")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BgmTriggerArea"]
 position = Vector2(212, -101)

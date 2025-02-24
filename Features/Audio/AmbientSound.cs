@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Cycle.Weather;
@@ -52,6 +53,14 @@ public partial class AmbientSound : AudioStreamPlayer
 	private void SetAmbient(Weather weather, Location location, int hour)
 	{
 		if (!IsNodeReady()) return;
+
+		// Muted music when in-doors
+		var db = Mathf.LinearToDb(location == Location.House ? 0.3f : 1.0f);
+		if (Math.Abs(VolumeDb - db) > double.Epsilon)
+		{
+			var tween = CreateTween();
+			tween.TweenProperty(this, "volume_db", db, 0.2f);
+		}
 
 		if (weather == Weather.Rainy)
 		{
