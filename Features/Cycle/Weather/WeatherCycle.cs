@@ -49,10 +49,15 @@ public partial class WeatherCycle : Node
 		return random.Next(min, max); // The upper bound is exclusive, so use 11 to include 10
 	}
 
-	/**
-	 * Changes weather when every 3-10 days
-	 */
-	private void ChangeWeatherRandomly(int day)
+	public override void _Process(double delta)
+	{
+		if (Input.IsKeyPressed(Key.F6))
+		{
+			ChangeWeatherRandomly(1);
+		}
+	}
+
+	private void OnDayChanged(int day)
 	{
 		// Check if we need to change the weather
 		if (day < _nextChangeAtDay)
@@ -61,6 +66,14 @@ public partial class WeatherCycle : Node
 			return;
 		}
 
+		ChangeWeatherRandomly(day);
+	}
+
+	/**
+	 * Changes weather when every 3-10 days
+	 */
+	private void ChangeWeatherRandomly(int day)
+	{
 		_logger.Debug("Changing weather...");
 
 		// Perform the weather (e.g., change effects, visuals, etc.)
