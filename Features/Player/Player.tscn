@@ -76,6 +76,7 @@ drag_vertical_enabled = true
 
 [node name="FootstepSounds" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ilwxt")
+volume_db = 4.952
 autoplay = true
 max_polyphony = 32
 script = ExtResource("11_unbv6")
