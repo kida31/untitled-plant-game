@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cgnox3kn0n8xm" path="res://Assets/UI/Book/Icons/CoinIcon.png" id="7_nnt8r"]
 [ext_resource type="Texture2D" uid="uid://csba1gh3owpk6" path="res://Assets/UI/VendingMachine/CashRetriever_outlined.png" id="8_fnty8"]
 [ext_resource type="Texture2D" uid="uid://bxdx84o8n40rg" path="res://Assets/UI/Book/Icons/3coins.png" id="8_pvodt"]
-[ext_resource type="PackedScene" uid="uid://c081aytpm7hwb" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
+[ext_resource type="PackedScene" uid="uid://qruua750qmw4" path="res://Features/GUI/CursorHandView.tscn" id="9_28tje"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="10_2nqj0"]
 [ext_resource type="PackedScene" uid="uid://onc7r0twgms2" path="res://Features/GUI/Vending/ButtonLineVending.tscn" id="10_7e1e4"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
@@ -308,7 +308,6 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 
 [node name="EmoteBubble" parent="." instance=ExtResource("12_5lmun")]
-visible = false
 layout_mode = 1
 anchor_left = 0.31875
 anchor_top = 0.688889
