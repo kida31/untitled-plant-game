@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://brwhrhwctncjc"]
 
-[ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_6hi0j"]
-[ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_25s78"]
-[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_bage1"]
-[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_uhsu8"]
-[ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_kpke6"]
+[ext_resource type="Script" uid="uid://btexpbbi2cfek" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_6hi0j"]
+[ext_resource type="Script" uid="uid://bmk3hbw7v7imj" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_25s78"]
+[ext_resource type="Script" uid="uid://b3fhofujtjc6t" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_bage1"]
+[ext_resource type="Script" uid="uid://kbkbhi8c3dfo" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_uhsu8"]
+[ext_resource type="Script" uid="uid://bmw8ewhyr3j52" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_kpke6"]
 [ext_resource type="Texture2D" uid="uid://cdcnpdve7pcec" path="res://Assets/Characters/NaFamily/Tu/Overworld.png" id="7_1lbg0"]
 [ext_resource type="Resource" uid="uid://l2dttblak82u" path="res://Resources/Dialogue/TuNa.tres" id="7_q80df"]
 

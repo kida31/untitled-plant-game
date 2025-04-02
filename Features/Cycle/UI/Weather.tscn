@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://60hnhuunu31o"]
 
-[ext_resource type="Script" path="res://Features/Cycle/Weather/WeatherCycleUi.cs" id="1_sgs1a"]
+[ext_resource type="Script" uid="uid://ci16ldqc72cik" path="res://Features/Cycle/Weather/WeatherCycleUi.cs" id="1_sgs1a"]
 [ext_resource type="Material" uid="uid://2rf0jb5b024f" path="res://Features/Cycle/Weather/WeatherResources/rain_particle_setting.tres" id="2_m1v60"]
 
 [node name="Weather" type="Node2D"]

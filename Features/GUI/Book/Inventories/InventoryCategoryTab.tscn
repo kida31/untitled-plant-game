@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://fhfmty750v8m"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryCategoryTab.cs" id="1_o154g"]
+[ext_resource type="Script" uid="uid://cq232fwvkm00v" path="res://Features/GUI/Book/Inventories/InventoryCategoryTab.cs" id="1_o154g"]
 [ext_resource type="Texture2D" uid="uid://ovau2703fwu" path="res://Assets/UI/Book/Icons/tab_active.png" id="2_k56mi"]
 [ext_resource type="Texture2D" uid="uid://vfe1oe30gphi" path="res://Assets/UI/Book/Icons/tab_inactive.png" id="3_jpn00"]
 
@@ -133,8 +133,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1jvvp"]
 _data = {
-"Activate": SubResource("Animation_sdava"),
-"RESET": SubResource("Animation_5yn7d")
+&"Activate": SubResource("Animation_sdava"),
+&"RESET": SubResource("Animation_5yn7d")
 }
 
 [node name="Div" type="MarginContainer" node_paths=PackedStringArray("_activeIcon", "_animationPlayer", "_inactiveIcon", "_textLabel")]

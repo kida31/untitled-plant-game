@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://xlolghbobiln"]
+[gd_resource type="Resource" load_steps=10 format=3 uid="uid://xlolghbobiln"]
 
 [ext_resource type="Texture2D" uid="uid://bicv1fu7r5w4n" path="res://Assets/Characters/VMsan/vendingMachinePortrait.png" id="1_pbk71"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_y57xb"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_0h6f5"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_v0kgq"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_y57xb"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="2_0h6f5"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_v0kgq"]
 [ext_resource type="Resource" uid="uid://clipa6tlu6er2" path="res://Resources/Dialogue/VendingMachine/VendingMachineResponses/vending_machine_res_yes.tres" id="3_mijmx"]
 
 [sub_resource type="Resource" id="Resource_i0uay"]

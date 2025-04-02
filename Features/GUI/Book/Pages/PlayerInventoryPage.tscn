@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bly2kw8wtilop"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.cs" id="1_qlgnr"]
+[ext_resource type="Script" uid="uid://ii4tbf7w0qb0" path="res://Features/GUI/Book/Pages/PlayerInventoryPage.cs" id="1_qlgnr"]
 [ext_resource type="PackedScene" uid="uid://5oay11tne1l4" path="res://Features/GUI/Book/Inventories/InventoryTabsView.tscn" id="2_kjjt2"]
 [ext_resource type="PackedScene" uid="uid://dnjm2aotqw827" path="res://Features/GUI/Book/PlayerStuff/PlayerDetails.tscn" id="3_pmlsj"]
 [ext_resource type="Texture2D" uid="uid://cf1pnxii18btx" path="res://Assets/UI/Book/Decoration/BookRing.png" id="4_tcyfu"]

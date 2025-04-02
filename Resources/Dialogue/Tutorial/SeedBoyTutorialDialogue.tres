@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://yg4mwgstm60u"]
+[gd_resource type="Resource" load_steps=10 format=3 uid="uid://yg4mwgstm60u"]
 
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_8g2n2"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_86yub"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_8g2n2"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_86yub"]
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_lx0ib"]
 [ext_resource type="Texture2D" uid="uid://cxyxi6hnf81nr" path="res://Assets/Characters/PanDan/pandanPortraitRef.png" id="3_7so52"]
 

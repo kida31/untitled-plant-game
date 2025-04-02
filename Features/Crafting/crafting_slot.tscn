@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dafhmyiy5jrym"]
 
-[ext_resource type="Script" path="res://Features/Crafting/CraftingSlotUi.cs" id="2_3k3fw"]
+[ext_resource type="Script" uid="uid://b4p45gaoxmfjk" path="res://Features/Crafting/CraftingSlotUi.cs" id="2_3k3fw"]
 [ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="2_is5on"]
 [ext_resource type="Texture2D" uid="uid://cbwcajw24ox4e" path="res://Assets/UI/Book/Icons/NewItemIndicator.png" id="3_8b24n"]
 

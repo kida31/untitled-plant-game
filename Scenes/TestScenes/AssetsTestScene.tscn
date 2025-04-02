@@ -1,21 +1,15 @@
-[gd_scene load_steps=30 format=4 uid="uid://b2cai6jwqxm1d"]
+[gd_scene load_steps=25 format=4 uid="uid://b2cai6jwqxm1d"]
 
 [ext_resource type="Texture2D" uid="uid://cc08shc1btj02" path="res://Assets/Tilesets/Plant/chubery_sheet.png" id="1_5k87i"]
-[ext_resource type="Texture2D" uid="uid://chw64e1a3c7py" path="res://Assets/Overworld/Garden/bathtub_basic.png" id="1_jmo3q"]
 [ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/Tilesets/Plant/DeadPlant.png" id="2_21i41"]
-[ext_resource type="Texture2D" uid="uid://d4ea26g4gx1mn" path="res://Assets/Overworld/Garden/bathtub_var2.png" id="2_88hpp"]
-[ext_resource type="Texture2D" uid="uid://dpeeq8nasp15n" path="res://Assets/Overworld/Garden/planter_generic.png" id="3_h0ka8"]
 [ext_resource type="Texture2D" uid="uid://dgr1wagj37jdb" path="res://Assets/Tilesets/Plant/drupoleaum_sheet.png" id="3_ojcxv"]
 [ext_resource type="Texture2D" uid="uid://dxjrcllnnc3s2" path="res://Assets/Tilesets/Plant/Licary_SpriteSheet.png" id="4_fkkxu"]
-[ext_resource type="Texture2D" uid="uid://b0sow3m0sih2h" path="res://Assets/Overworld/Garden/planter_small_rect.png" id="4_sjr27"]
 [ext_resource type="Texture2D" uid="uid://dempy0e7dsgb7" path="res://Assets/Overworld/Garden/small_planter_round.png" id="5_w7iy0"]
-[ext_resource type="Texture2D" path="res://Assets/Tilesets/Sprite sheet for Basic Pack.png" id="6_0qseg"]
 [ext_resource type="Texture2D" uid="uid://capj2kjiyfndo" path="res://Assets/Tilesets/TX Tileset Grass.png" id="7_ma6bd"]
 [ext_resource type="Texture2D" uid="uid://csfwrdc81ybx0" path="res://Assets/Tilesets/TX Tileset Stone Ground.png" id="8_6phoy"]
 [ext_resource type="Texture2D" uid="uid://ctomw1ove5828" path="res://Assets/Tilesets/TX Tileset Wall.png" id="9_y8tgs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6uxj1"]
-texture = ExtResource("6_0qseg")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -409,7 +403,6 @@ sources/6 = SubResource("TileSetAtlasSource_r53uu")
 sources/7 = SubResource("TileSetAtlasSource_dvtra")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_houam"]
-texture = ExtResource("1_jmo3q")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -421,7 +414,6 @@ texture_region_size = Vector2i(32, 32)
 3:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mmw4h"]
-texture = ExtResource("2_88hpp")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -433,7 +425,6 @@ texture_region_size = Vector2i(32, 32)
 3:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ts2ym"]
-texture = ExtResource("3_h0ka8")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -445,7 +436,6 @@ texture_region_size = Vector2i(32, 32)
 1:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_midtg"]
-texture = ExtResource("4_sjr27")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0

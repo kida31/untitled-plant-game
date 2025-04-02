@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxmwxvq7gyf8h"]
 
-[ext_resource type="Script" path="res://Features/Interaction/InteractionManager.cs" id="1_6egvs"]
+[ext_resource type="Script" uid="uid://dlw5myjhlxay5" path="res://Features/Interaction/InteractionManager.cs" id="1_6egvs"]
 [ext_resource type="PackedScene" uid="uid://cnhhklikoddge" path="res://Features/GUI/Interactions/InteractHint.tscn" id="2_3echg"]
 
 [node name="InteractionManager" type="Node2D" node_paths=PackedStringArray("_label")]

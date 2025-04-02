@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnxbc1h883l37"]
 
-[ext_resource type="Script" path="res://Features/Tools/ChannelingBar.cs" id="1_ks2ts"]
+[ext_resource type="Script" uid="uid://bo5u503dinv3v" path="res://Features/Tools/ChannelingBar.cs" id="1_ks2ts"]
 
 [node name="ChannelingBar" type="ProgressBar"]
 custom_minimum_size = Vector2(128, 16)

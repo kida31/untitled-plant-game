@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bw4u0qwatk03m"]
 
-[ext_resource type="Script" path="res://Features/GUI/Hooks/FollowFocusedHook.cs" id="1_eqclp"]
+[ext_resource type="Script" uid="uid://d5mn41iw5ius" path="res://Features/GUI/Hooks/FollowFocusedHook.cs" id="1_eqclp"]
 
 [node name="FollowFocusedHook" type="Node"]
 script = ExtResource("1_eqclp")

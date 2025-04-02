@@ -1,7 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://dpl5hjydrlj8y"]
 
-[ext_resource type="Script" path="res://Features/NPC/GeneralNPC.cs" id="1_rpv87"]
 [ext_resource type="Texture2D" uid="uid://bnbpxhugl2h0n" path="res://Assets/Sprites/charlieTheCapybaraAnimationSheet.png" id="2_xpm0l"]
+
+[sub_resource type="Resource" id="Resource_1bxay"]
+metadata/__load_path__ = "res://Features/NPC/GeneralNPC.cs"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr3m6"]
 radius = 39.0512
@@ -122,7 +124,7 @@ animations = [{
 }]
 
 [node name="capy" type="Area2D" node_paths=PackedStringArray("_characterPortrait", "_spriteSheet")]
-script = ExtResource("1_rpv87")
+script = SubResource("Resource_1bxay")
 Name = "Capy"
 NPCDescription = "a chill capybara"
 _characterPortrait = NodePath("characterPortrait")

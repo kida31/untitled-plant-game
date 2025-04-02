@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c77ama5r0mirv"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/ScrollViewController.cs" id="1_2ipb1"]
-[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiItemList.cs" id="1_lt328"]
+[ext_resource type="Script" uid="uid://bswa7sqriitdv" path="res://Features/GUI/Book/Wiki/ScrollViewController.cs" id="1_2ipb1"]
+[ext_resource type="Script" uid="uid://rg0btnw2bdah" path="res://Features/GUI/Book/Wiki/WikiItemList.cs" id="1_lt328"]
 [ext_resource type="PackedScene" uid="uid://b2i7oxcdj4025" path="res://Features/GUI/Book/Wiki/WikiItemView.tscn" id="2_kax1w"]
 [ext_resource type="Texture2D" uid="uid://bucuvgskvuhrl" path="res://Assets/UI/Book/Pages/LeftWiki_empty.png" id="3_yllv7"]
 [ext_resource type="Texture2D" uid="uid://b3076kp3u3e03" path="res://Assets/UI/Book/Pages/Demo/LeftWiki_filled.png" id="4_8trht"]

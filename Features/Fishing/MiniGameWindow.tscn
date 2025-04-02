@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://m3bi63eavsuv"]
 
-[ext_resource type="Script" path="res://Features/Fishing/FishingMiniGameSingleton.cs" id="1_kuf6f"]
+[ext_resource type="Script" uid="uid://dcomvo4uq5pug" path="res://Features/Fishing/FishingMiniGameSingleton.cs" id="1_kuf6f"]
 [ext_resource type="PackedScene" uid="uid://xct3vega3gwo" path="res://Features/Fishing/Classic/FishingGame.tscn" id="2_a7618"]
 
 [node name="FishingMiniGame" type="SubViewportContainer" node_paths=PackedStringArray("_fishingGameNode")]

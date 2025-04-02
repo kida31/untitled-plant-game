@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://byldrvainuqxu"]
 
 [ext_resource type="PackedScene" uid="uid://dxbuerk0f7x6" path="res://Features/GUI/Book/Inventories/ToolCircle.tscn" id="1_whxdp"]
-[ext_resource type="Script" path="res://Features/GUI/Book/Inventories/SeedBagToolCircle.cs" id="2_g8yg8"]
+[ext_resource type="Script" uid="uid://24fmirlu48lp" path="res://Features/GUI/Book/Inventories/SeedBagToolCircle.cs" id="2_g8yg8"]
 
 [node name="SeeedBagToolCircle" node_paths=PackedStringArray("_seedImage", "_toolImage") instance=ExtResource("1_whxdp")]
 script = ExtResource("2_g8yg8")

@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://552u0k7nvjfm"]
 
-[ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_l4ubq"]
-[ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_xtua0"]
-[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_6wmsp"]
-[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_7knl4"]
-[ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_0xiss"]
+[ext_resource type="Script" uid="uid://btexpbbi2cfek" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_l4ubq"]
+[ext_resource type="Script" uid="uid://bmk3hbw7v7imj" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_xtua0"]
+[ext_resource type="Script" uid="uid://b3fhofujtjc6t" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_6wmsp"]
+[ext_resource type="Script" uid="uid://kbkbhi8c3dfo" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_7knl4"]
+[ext_resource type="Script" uid="uid://bmw8ewhyr3j52" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_0xiss"]
 [ext_resource type="Resource" uid="uid://bjt3gr4bginaw" path="res://Resources/Dialogue/fishing_spot.tres" id="7_lpqtb"]
 [ext_resource type="Texture2D" uid="uid://dcuof8xjg3ele" path="res://Assets/Tools/fishingRod.png" id="7_nmuuj"]
 

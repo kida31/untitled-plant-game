@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cusi423j6fnh2"]
 
-[ext_resource type="Script" path="res://Features/GUI/Vending/EmoteBubble.cs" id="1_3i77b"]
+[ext_resource type="Script" uid="uid://ps4wbv3p73v5" path="res://Features/GUI/Vending/EmoteBubble.cs" id="1_3i77b"]
 [ext_resource type="Texture2D" uid="uid://cygl3yyb0e3ho" path="res://Assets/UI/VendingMachine/Emoji_extatic.png" id="2_djwf5"]
 [ext_resource type="Texture2D" uid="uid://bpmmqaxhkw5id" path="res://Features/GUI/Vending/speech_bubble.png" id="2_e4a62"]
 [ext_resource type="Texture2D" uid="uid://47rrojthnb0m" path="res://Assets/UI/VendingMachine/Emoji_happy.png" id="3_4a6qe"]

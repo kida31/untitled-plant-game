@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="1_7ytro"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="3_8ai8h"]
-[ext_resource type="Script" path="res://Features/NPC/SeedBoy.cs" id="3_fr07i"]
+[ext_resource type="Script" uid="uid://bpyew5eb6tge8" path="res://Features/NPC/SeedBoy.cs" id="3_fr07i"]
 [ext_resource type="PackedScene" uid="uid://bd54v5orqpb6t" path="res://Features/Shops/GUI/SeedShopView.tscn" id="4_7vuxy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qxak0"]

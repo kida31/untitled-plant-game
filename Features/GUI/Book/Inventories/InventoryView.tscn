@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8qlvfu5vslvx"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryView.cs" id="1_p2s7o"]
-[ext_resource type="PackedScene" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="2_6vgaw"]
+[ext_resource type="Script" uid="uid://ddtvr8fkf7vab" path="res://Features/GUI/Book/Inventories/InventoryView.cs" id="1_p2s7o"]
+[ext_resource type="PackedScene" uid="uid://dwbays1hac0a0" path="res://Features/GUI/Book/Inventories/InventoryItemView.tscn" id="2_6vgaw"]
 [ext_resource type="Texture2D" uid="uid://3q24yxii22y2" path="res://Assets/UI/Book/Pages/LeftInventory_empty.png" id="3_1de0y"]
 [ext_resource type="Texture2D" uid="uid://ddbxhrxrxirqa" path="res://Assets/UI/Book/Pages/Demo/LeftInventory_filled.png" id="3_d563x"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="4_ukuta"]
-[ext_resource type="PackedScene" path="res://Features/GUI/Book/Inventories/ToolsSection.tscn" id="6_k1n6h"]
+[ext_resource type="PackedScene" uid="uid://dle63yl5kosem" path="res://Features/GUI/Book/Inventories/ToolsSection.tscn" id="6_k1n6h"]
 
 [node name="InventoryView" type="Control" node_paths=PackedStringArray("_inventoryItemViewContainer", "_itemNameLabel")]
 custom_minimum_size = Vector2(224, 304)

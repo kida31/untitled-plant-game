@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0v5k0l8ds6w6"]
 
-[ext_resource type="Script" path="res://Features/GUI/Effects/BlurEffect.cs" id="1_3ile7"]
+[ext_resource type="Script" uid="uid://bp0pmxqg6bckt" path="res://Features/GUI/Effects/BlurEffect.cs" id="1_3ile7"]
 [ext_resource type="Material" uid="uid://b0s6okqcwubks" path="res://Features/GUI/Effects/BlurEffectShaderMaterial.tres" id="1_qg4jy"]
 
 [node name="BlurEffect" type="ColorRect"]

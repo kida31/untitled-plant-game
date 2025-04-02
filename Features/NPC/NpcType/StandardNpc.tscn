@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://1wnuc03ll3y"]
 
-[ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_6ipep"]
-[ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="3_mu2uu"]
+[ext_resource type="Script" uid="uid://btexpbbi2cfek" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_6ipep"]
+[ext_resource type="Script" uid="uid://bmk3hbw7v7imj" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="3_mu2uu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvi7q"]
 

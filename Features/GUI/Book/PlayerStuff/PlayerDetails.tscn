@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dnjm2aotqw827"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/PlayerDetailsView.cs" id="1_88tm0"]
+[ext_resource type="Script" uid="uid://c4q2awqa7acba" path="res://Features/GUI/Book/PlayerStuff/PlayerDetailsView.cs" id="1_88tm0"]
 [ext_resource type="Texture2D" uid="uid://ijkype7hlovv" path="res://Assets/UI/Book/Pages/RightInventory_empty.png" id="2_srt7k"]
 [ext_resource type="Texture2D" uid="uid://cj2g8kcrdsod8" path="res://Assets/UI/Book/Pages/Demo/RightInventory_filled.png" id="3_nof0m"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="4_n8hnm"]
-[ext_resource type="Script" path="res://Features/GUI/Book/PlayerStuff/FaithProgressBar.cs" id="4_tixgw"]
+[ext_resource type="Script" uid="uid://1b7i0e014spf" path="res://Features/GUI/Book/PlayerStuff/FaithProgressBar.cs" id="4_tixgw"]
 [ext_resource type="Texture2D" uid="uid://dprdoudpd6aaf" path="res://Assets/UI/Book/FaithFlower/FaithFlowerPetal_empty.png" id="5_158xj"]
 [ext_resource type="Texture2D" uid="uid://bdpoln30dwxu5" path="res://Assets/UI/Book/FaithFlower/FaithFlowerPetal_filled.png" id="5_khkp4"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4m27xxkrab00"]
 
-[ext_resource type="Script" path="res://addons/upg_utils/Components/LogLevelOptionButton.cs" id="1_uhtje"]
+[ext_resource type="Script" uid="uid://b3rcwnbdgjyvd" path="res://addons/upg_utils/Components/LogLevelOptionButton.cs" id="1_uhtje"]
 
 [node name="LogLevelDropdown" type="OptionButton"]
 offset_right = 32.0

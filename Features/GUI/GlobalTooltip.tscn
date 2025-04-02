@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd68fctjqslys"]
 
 [ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="1_ng0ue"]
-[ext_resource type="Script" path="res://Features/GUI/GlobalTooltip.cs" id="2_ipapd"]
+[ext_resource type="Script" uid="uid://bn0clhr0cv6qt" path="res://Features/GUI/GlobalTooltip.cs" id="2_ipapd"]
 
 [node name="GlobalTooltip" instance=ExtResource("1_ng0ue")]
 script = ExtResource("2_ipapd")

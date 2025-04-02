@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvyfrigggpkfj"]
 
-[ext_resource type="Script" path="res://Features/GUI/Shops/ShopItemView.cs" id="1_7jwiy"]
+[ext_resource type="Script" uid="uid://co7or6s4r70nf" path="res://Features/GUI/Shops/ShopItemView.cs" id="1_7jwiy"]
 [ext_resource type="PackedScene" uid="uid://ct1oinq00jcp6" path="res://Features/GUI/Items/NewInventoryItemView.tscn" id="1_ksm3a"]
 [ext_resource type="Texture2D" uid="uid://cqr1dphey5nmx" path="res://Assets/UI/SeedShop/ItemContainer_Seed_Shop.png" id="2_duaqj"]
 

@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://duxkc2whc5lx3"]
 
-[ext_resource type="Script" path="res://Features/Player/Player.cs" id="1_ypuiu"]
+[ext_resource type="Script" uid="uid://b2fd4sqkbflvo" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="SpriteFrames" uid="uid://upqodpbedg8s" path="res://Features/Player/PlayerSpriteFrames.tres" id="2_3hfoe"]
-[ext_resource type="Script" path="res://Features/Player/PlayerAnimatedSprite.cs" id="3_utdyr"]
-[ext_resource type="Script" path="res://Features/Player/PlayerStateMachine.cs" id="4_oih3d"]
-[ext_resource type="Script" path="res://Features/Player/StateIdle.cs" id="5_k3tas"]
-[ext_resource type="Script" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
-[ext_resource type="Script" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
-[ext_resource type="Script" path="res://Features/ProximityCollision/NpcProximityTrigger.cs" id="8_pu3c2"]
+[ext_resource type="Script" uid="uid://c4ftp6peyjj44" path="res://Features/Player/PlayerAnimatedSprite.cs" id="3_utdyr"]
+[ext_resource type="Script" uid="uid://bwilg3ax43c4d" path="res://Features/Player/PlayerStateMachine.cs" id="4_oih3d"]
+[ext_resource type="Script" uid="uid://db0soguwcor22" path="res://Features/Player/StateIdle.cs" id="5_k3tas"]
+[ext_resource type="Script" uid="uid://cfd8146wdhmao" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
+[ext_resource type="Script" uid="uid://shyb717ekee2" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
+[ext_resource type="Script" uid="uid://bmestbmfn35at" path="res://Features/ProximityCollision/NpcProximityTrigger.cs" id="8_pu3c2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
 radius = 8.0

@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dccnotts4vikg"]
 
-[ext_resource type="Script" path="res://Features/NPC/NpcType/NoteNpc.cs" id="1_i6vqh"]
+[ext_resource type="Script" uid="uid://doon6dlqfavsv" path="res://Features/NPC/NpcType/NoteNpc.cs" id="1_i6vqh"]
 [ext_resource type="Texture2D" uid="uid://c1ygdg8m4meay" path="res://Assets/SpeechBubbles/Note.png" id="1_w1ixl"]
 [ext_resource type="Resource" uid="uid://v5sknljen3q3" path="res://Resources/Dialogue/Note/NormalNote.tres" id="2_yv1v2"]
 [ext_resource type="Resource" uid="uid://cg8jyg5313ecg" path="res://Resources/Dialogue/Note/NightNote.tres" id="3_jc1ko"]
-[ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="4_5jcqf"]
+[ext_resource type="Script" uid="uid://bmk3hbw7v7imj" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="4_5jcqf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_48yng"]
 

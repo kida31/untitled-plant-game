@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfcu5fotbxud1"]
 
-[ext_resource type="Script" path="res://Features/NPC/NpcType/SimpleTalkingObject.cs" id="1_2klv4"]
+[ext_resource type="Script" uid="uid://b3vxnlc2kjsxd" path="res://Features/NPC/NpcType/SimpleTalkingObject.cs" id="1_2klv4"]
 [ext_resource type="Texture2D" uid="uid://dejlugtlaeuj6" path="res://Assets/Overworld/House/mortar_selected.png" id="2_g4t1q"]
 [ext_resource type="Texture2D" uid="uid://cc1awsayc4q4p" path="res://Assets/Overworld/House/mortar.png" id="3_sjhm3"]
 

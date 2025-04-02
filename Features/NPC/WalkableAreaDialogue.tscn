@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsnhxqc3s81hr"]
 
-[ext_resource type="Script" path="res://Features/NPC/WalkableAreaDialogue.cs" id="1_bbpvy"]
+[ext_resource type="Script" uid="uid://ca0c7es1l4oqo" path="res://Features/NPC/WalkableAreaDialogue.cs" id="1_bbpvy"]
 [ext_resource type="Resource" uid="uid://byh3dsgfr7x57" path="res://Resources/Dialogue/Bed/GoToSleep.tres" id="2_iprjn"]
 [ext_resource type="Texture2D" uid="uid://4cfy612ib68k" path="res://Assets/Overworld/House/bed.png" id="3_y0ka7"]
 

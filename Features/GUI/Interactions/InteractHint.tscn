@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnhhklikoddge"]
 
-[ext_resource type="Script" path="res://Features/GUI/Interactions/InteractHint.cs" id="1_h77r2"]
+[ext_resource type="Script" uid="uid://dpov3q2ggxb0d" path="res://Features/GUI/Interactions/InteractHint.cs" id="1_h77r2"]
 [ext_resource type="Texture2D" uid="uid://be34y66w0usqf" path="res://Assets/UI/chatbox_rounded.png" id="2_fmpi7"]
 [ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="3_o2six"]
 

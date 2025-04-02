@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=25 format=3 uid="uid://b5djcvgnblad2"]
+[gd_resource type="Resource" load_steps=25 format=3 uid="uid://b5djcvgnblad2"]
 
-[ext_resource type="Script" path="res://Features/Plants/Models/PlantData.cs" id="1_1enty"]
-[ext_resource type="Script" path="res://Features/Plants/Models/RequirementData.cs" id="1_bpma1"]
-[ext_resource type="Script" path="res://Features/Plants/Models/RequirementDataForGrowthStage.cs" id="2_0wugi"]
+[ext_resource type="Script" uid="uid://6wnc7h7hdx2j" path="res://Features/Plants/Models/PlantData.cs" id="1_1enty"]
+[ext_resource type="Script" uid="uid://bxpl8lti5sre" path="res://Features/Plants/Models/RequirementData.cs" id="1_bpma1"]
+[ext_resource type="Script" uid="uid://ccdrb187l8mra" path="res://Features/Plants/Models/RequirementDataForGrowthStage.cs" id="2_0wugi"]
 
 [sub_resource type="Resource" id="Resource_g2gpf"]
 script = ExtResource("1_bpma1")

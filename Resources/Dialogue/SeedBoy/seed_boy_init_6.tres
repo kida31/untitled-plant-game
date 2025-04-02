@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://xf5xb3s6ksp4"]
+[gd_resource type="Resource" load_steps=9 format=3 uid="uid://xf5xb3s6ksp4"]
 
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_uf7ff"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_uf7ff"]
 [ext_resource type="Resource" uid="uid://deudtr6qo8ekp" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes.tres" id="2_w4xjl"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_v1cxd"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_v1cxd"]
 [ext_resource type="Resource" uid="uid://cvpas48y18q5h" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_no.tres" id="4_if3sw"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_1oqyu"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_1oqyu"]
 
 [sub_resource type="Resource" id="Resource_m4ye3"]
 script = ExtResource("1_uf7ff")

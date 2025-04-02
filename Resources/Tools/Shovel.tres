@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://cylhqbpmmho6g"]
 
 [ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="1_qjl0s"]
-[ext_resource type="Script" path="res://Features/Tools/Shovel.cs" id="2_mu8yv"]
+[ext_resource type="Script" uid="uid://dldayxxy4w1ms" path="res://Features/Tools/Shovel.cs" id="2_mu8yv"]
 
 [resource]
 script = ExtResource("2_mu8yv")

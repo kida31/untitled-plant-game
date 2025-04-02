@@ -18,8 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://dihi7nwwsgeqb" path="res://Features/Crafting/Dehydrator/Dehydrator.tscn" id="7_85s0o"]
 [ext_resource type="Texture2D" uid="uid://b3vil7ewxk6hl" path="res://Assets/Overworld/House/tall_plant.png" id="7_reln1"]
 [ext_resource type="Texture2D" uid="uid://cc1awsayc4q4p" path="res://Assets/Overworld/House/mortar.png" id="14_pkrwm"]
-[ext_resource type="PackedScene" path="res://Features/NPC/Mortar.tscn" id="16_sfgy1"]
-[ext_resource type="Script" path="res://Features/Audio/BgmArea2D.cs" id="19_hnme2"]
+[ext_resource type="PackedScene" uid="uid://dfcu5fotbxud1" path="res://Features/NPC/Mortar.tscn" id="16_sfgy1"]
+[ext_resource type="Script" uid="uid://0s1qewhvqqac" path="res://Features/Audio/BgmArea2D.cs" id="19_hnme2"]
 [ext_resource type="AudioStream" uid="uid://dyr8ewg8q3p2" path="res://Assets/BGM/plantGame_homeTheme.mp3" id="20_k4xp4"]
 
 [sub_resource type="Gradient" id="Gradient_rg704"]

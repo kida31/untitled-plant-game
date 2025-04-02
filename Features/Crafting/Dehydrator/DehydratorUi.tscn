@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://y78tki415ik5"]
 
-[ext_resource type="Script" path="res://Features/Crafting/Dehydrator/DehydratorUi.cs" id="1_p40jb"]
+[ext_resource type="Script" uid="uid://chnw6hcyvu6lo" path="res://Features/Crafting/Dehydrator/DehydratorUi.cs" id="1_p40jb"]
 [ext_resource type="Texture2D" uid="uid://bsff074nxvmgu" path="res://Assets/UI/Crafting/dehydrator_UI.png" id="2_vppst"]
 [ext_resource type="Texture2D" uid="uid://1wy6xl7bslg2" path="res://Assets/UI/Crafting/retrieve_all_rotated_grey.png" id="3_3jvto"]
 [ext_resource type="PackedScene" uid="uid://dafhmyiy5jrym" path="res://Features/Crafting/crafting_slot.tscn" id="3_licfq"]

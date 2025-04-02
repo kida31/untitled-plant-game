@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dle63yl5kosem"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/Inventories/ToolsSection.cs" id="1_13k5k"]
+[ext_resource type="Script" uid="uid://b7tppy0awx3g7" path="res://Features/GUI/Book/Inventories/ToolsSection.cs" id="1_13k5k"]
 [ext_resource type="PackedScene" uid="uid://dxbuerk0f7x6" path="res://Features/GUI/Book/Inventories/ToolCircle.tscn" id="2_nbinc"]
 [ext_resource type="PackedScene" uid="uid://byldrvainuqxu" path="res://Features/GUI/Book/Inventories/SeedBagToolCircle.tscn" id="3_f5sco"]
 

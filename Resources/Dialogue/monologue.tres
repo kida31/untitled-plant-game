@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://fde6fy6jals2"]
+[gd_resource type="Resource" load_steps=9 format=3 uid="uid://fde6fy6jals2"]
 
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_fjvkf"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_y7onw"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_fjvkf"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_y7onw"]
 
 [sub_resource type="Resource" id="Resource_yfdhw"]
 script = ExtResource("1_y7onw")
