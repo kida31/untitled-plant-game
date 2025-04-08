@@ -58,7 +58,7 @@ project/assembly_name="untitled-plant-game"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/upg_utils/plugin.cfg")
+enabled=PackedStringArray("res://addons/upg_utils/plugin.cfg")
 
 [global_group]
 
