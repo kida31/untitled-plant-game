@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://deudtr6qo8ekp"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=6 format=3 uid="uid://deudtr6qo8ekp"]
 
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_6k8wc"]
 [ext_resource type="Script" uid="uid://42q6g5j7jk5y" path="res://Features/Dialogue/Events/OpenSeedShop.cs" id="2_n2lpp"]

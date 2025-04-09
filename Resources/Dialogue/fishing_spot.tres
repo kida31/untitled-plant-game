@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=10 format=3 uid="uid://bjt3gr4bginaw"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://bjt3gr4bginaw"]
 
 [ext_resource type="Texture2D" uid="uid://dcuof8xjg3ele" path="res://Assets/Tools/fishingRod.png" id="1_w3hpq"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_6y610"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://clipa6tlu6er2"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=4 format=3 uid="uid://clipa6tlu6er2"]
 
 [ext_resource type="Script" uid="uid://dtwj3shlqke0d" path="res://Features/Dialogue/Events/OpenVendingMachine.cs" id="1_dyp52"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_n46un"]

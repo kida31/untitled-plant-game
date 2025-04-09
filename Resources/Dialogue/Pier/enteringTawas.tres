@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://d33fmj25m3jt5"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=6 format=3 uid="uid://d33fmj25m3jt5"]
 
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_33sh8"]
 [ext_resource type="Texture2D" uid="uid://dutej8e00ofqq" path="res://Assets/Overworld/Garden/Sign_Tawas.png" id="1_e8n0a"]

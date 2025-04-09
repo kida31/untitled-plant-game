@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=9 format=3 uid="uid://bo66u5m63r7f1"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://bo66u5m63r7f1"]
 
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_jf3wj"]
 [ext_resource type="Resource" uid="uid://deudtr6qo8ekp" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes.tres" id="2_tdbub"]
