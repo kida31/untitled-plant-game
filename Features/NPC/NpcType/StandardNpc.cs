@@ -6,9 +6,9 @@ using untitledplantgame.NPC.RoutinePlanner;
 
 namespace untitledplantgame.NPC.NpcType;
 
-/**
- * A classic implementation of an NPC. Has a name, a portrait and a bunch of routines and dialogue options.
- */
+/// <summary>
+///		A classic implementation of an NPC. Has a name, a portrait and a bunch of routines and dialogue options.
+/// </summary>
 public partial class StandardNpc : Npc
 {
 	[Export] private string _name;
@@ -41,6 +41,10 @@ public partial class StandardNpc : Npc
 		return _name;
 	}
 
+	/// <summary>
+	///		Assigns a method to the Player Interaction Event.
+	/// </summary>
+	/// <param name="action"></param>
 	public void AssignMethodToInteractionEvent(Action action)
 	{
 		_npcPlayerInteraction.InteractionEvent += action;

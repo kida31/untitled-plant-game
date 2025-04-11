@@ -1,8 +1,5 @@
 using Godot;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Godot.Collections;
 using untitledplantgame.Common;
 using untitledplantgame.Dialogue;
@@ -12,7 +9,11 @@ using untitledplantgame.NPC.RoutinePlanner;
 
 namespace untitledplantgame.NPC.NpcTask;
 
-// TODO: Cleanup
+/// <summary>
+///		The PlayerInitiatedDialogue class is similar to the "TalkToPlayerTask", but is supposed to be used as a TaskInterruption.
+///		The key difference between the two is the Npc will wait for the player to initiate the "TalkToPlayerTask", meaning it will wait
+///		until the Player approaches the Npc before continuing with the rest of the Tasks in the given Routine. 
+/// </summary>
 public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 {
 	[Export] private Array<DialogueResourceObject> _dialogueResourceObjects;
@@ -20,8 +21,6 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 
 	private int _amountOfDialogueLinesUsed;
 	private bool DialogueFinished { get; set; }
-	private event EventHandler TaskStarted;
-	private event EventHandler TaskFinished;
 	private NpcRoutinePlanner _routinePlanner;
 	private IDialogueSystem _dialogueSystem;
 	private NpcPlayerInteraction _npcInteraction;
@@ -31,10 +30,15 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
-		_routinePlanner = (NpcRoutinePlanner) GetParent(); // We will enforce this as a soft rule ⇒ RoutinePlanner MUST be the parent!
+		_routinePlanner = GetRoutinePlanner(); // We will enforce this as a soft rule ⇒ RoutinePlanner MUST be the parent!
 		
 		_npcInteraction = (NpcPlayerInteraction) _routinePlanner.GetParent().FindChild("InteractionNode");
 		_npcInteraction.InteractionEvent += StartDialogue;
+	}
+
+	public NpcRoutinePlanner GetRoutinePlanner()
+	{
+		return (NpcRoutinePlanner) GetParent();
 	}
 	
 	private void ConnectDialogue(IDialogueSystem sys)
@@ -43,6 +47,7 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 		_dialogueSystem.OnDialogueEnd += FinishDialogue;
 	}
 	
+	// Essentially only differentiates between "a Task is active" and "no Task is active".
 	private void StartDialogue()
 	{
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
@@ -61,8 +66,6 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 				_amountOfDialogueLinesUsed = 0;
 			}
 		}
-	
-		TaskStarted?.Invoke(this, EventArgs.Empty);
 		
 		
 		if (_routinePlanner.ActiveTask != null)
@@ -90,38 +93,9 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 		_dialogueSystem.OnDialogueEnd -= FinishDialogue;
 		
 		DialogueFinished = true;
-		TaskFinished?.Invoke(this, EventArgs.Empty);
 		
 		_routinePlanner.LastRoutine?.ContinueRoutine();
 		_routinePlanner.ActiveTask?.ResumeCurrentTask();
 		_logger.Info("The Npc is now resuming it's original task.");
-	}
-
-	public async void ResumeRoutineIfFinished()
-	{
-		await Task.Yield();
-		
-		await WaitForConditionAsync();
-	}
-	
-	
-	private Task WaitForConditionAsync()
-	{
-		var tcs = new TaskCompletionSource<bool>();
-		
-		EventHandler onConditionMet = null;
-		onConditionMet = (_, _) =>
-		{
-			if (!DialogueFinished)
-			{
-				return;
-			}
-			
-			tcs.TrySetResult(true);
-			TaskFinished -= onConditionMet;
-		};
-		TaskFinished += onConditionMet;
-		
-		return tcs.Task;
 	}
 }
