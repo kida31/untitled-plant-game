@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://bk8u0ylofbi6w"]
 
 [ext_resource type="Texture2D" uid="uid://sss2mabl6kxk" path="res://Assets/Characters/NaFamily/Saka/Portrait.png" id="1_rjtor"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_lkobn"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_lkobn"]
 [ext_resource type="Texture2D" uid="uid://dgode5fji4jaf" path="res://Assets/Characters/NaFamily/Tu/Portrait.png" id="3_tr27f"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_4gcao"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_4gcao"]
 
 [sub_resource type="Resource" id="Resource_0dv8x"]
 script = ExtResource("2_lkobn")

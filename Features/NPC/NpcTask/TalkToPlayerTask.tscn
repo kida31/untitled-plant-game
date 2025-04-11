@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwxru3xolfihy"]
 
-[ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="1_0iptd"]
+[ext_resource type="Script" uid="uid://bmw8ewhyr3j52" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="1_0iptd"]
 
 [node name="TalkToPlayerTask" type="Node"]
 script = ExtResource("1_0iptd")

@@ -1,10 +1,10 @@
 [gd_scene load_steps=19 format=3 uid="uid://crm2bb3s72gi8"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_qjsqv"]
-[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="2_e08ef"]
+[ext_resource type="Script" uid="uid://b3fhofujtjc6t" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="2_e08ef"]
 [ext_resource type="Texture2D" uid="uid://n8ek3re8se52" path="res://Assets/Characters/PanDan/seedboi.png" id="2_j4u8e"]
-[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="3_a24bk"]
-[ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="4_p27pq"]
+[ext_resource type="Script" uid="uid://kbkbhi8c3dfo" path="res://Features/NPC/Routine/NpcRoutine.cs" id="3_a24bk"]
+[ext_resource type="Script" uid="uid://bmw8ewhyr3j52" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="4_p27pq"]
 [ext_resource type="Resource" uid="uid://rue2vg1j66lx" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_1.tres" id="5_hojrx"]
 [ext_resource type="Resource" uid="uid://c2iqy0wa6mgf4" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_2.tres" id="7_sumlp"]
 [ext_resource type="Resource" uid="uid://btkhqlkfx44g2" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_3.tres" id="8_dvvuy"]
@@ -12,11 +12,11 @@
 [ext_resource type="Resource" uid="uid://4dy5tvlh4wgj" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_5.tres" id="10_hifoa"]
 [ext_resource type="Resource" uid="uid://xf5xb3s6ksp4" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_6.tres" id="11_6clld"]
 [ext_resource type="Resource" uid="uid://bo66u5m63r7f1" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_7.tres" id="12_13pfm"]
-[ext_resource type="Script" path="res://Features/NPC/OutOfStock.cs" id="13_83ao0"]
+[ext_resource type="Script" uid="uid://hbxc2embfa2s" path="res://Features/NPC/OutOfStock.cs" id="13_83ao0"]
 [ext_resource type="Resource" uid="uid://cuvp2yskrub5t" path="res://Resources/Dialogue/SeedBoy/OutOfStock/seed_boy_no_stock.tres" id="13_wxxgb"]
 [ext_resource type="Resource" uid="uid://deudtr6qo8ekp" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes.tres" id="15_4jya7"]
 [ext_resource type="Texture2D" uid="uid://60scb681f532" path="res://Assets/SpeechBubbles/Speechbubble_PanPan.png" id="16_5frxx"]
-[ext_resource type="Script" path="res://Features/ProximityCollision/SpeechBubble.cs" id="17_vxuvv"]
+[ext_resource type="Script" uid="uid://ctvwp85ad5ufx" path="res://Features/ProximityCollision/SpeechBubble.cs" id="17_vxuvv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_12fo5"]
 animations = [{

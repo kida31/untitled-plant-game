@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_b0v61"]
 [ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="2_gjf2v"]
-[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_rkpsh"]
-[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_d4jk1"]
-[ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_a0n3g"]
+[ext_resource type="Script" uid="uid://b3fhofujtjc6t" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_rkpsh"]
+[ext_resource type="Script" uid="uid://kbkbhi8c3dfo" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_d4jk1"]
+[ext_resource type="Script" uid="uid://bmw8ewhyr3j52" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_a0n3g"]
 [ext_resource type="Resource" uid="uid://djkgxlqpnhr00" path="res://Resources/Dialogue/VendingMachine/VM_init_1.tres" id="6_ki0ac"]
 [ext_resource type="Resource" uid="uid://cb3vhfet3maf0" path="res://Resources/Dialogue/VendingMachine/VM_init_2.tres" id="7_4qfl7"]
 [ext_resource type="Resource" uid="uid://u6yu2am3tt1k" path="res://Resources/Dialogue/VendingMachine/VM_init_3.tres" id="8_xftjp"]
@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://xlolghbobiln" path="res://Resources/Dialogue/VendingMachine/VM_init_8.tres" id="13_ngwwb"]
 [ext_resource type="Resource" uid="uid://b66bsn0f7b7ai" path="res://Resources/Dialogue/VendingMachine/VM_init_9.tres" id="14_7w0ye"]
 [ext_resource type="Texture2D" uid="uid://wgdrgbhg43yi" path="res://Assets/SpeechBubbles/Speechbubble_VendingMachine.png" id="15_lqtto"]
-[ext_resource type="Script" path="res://Features/ProximityCollision/SpeechBubble.cs" id="16_tewov"]
+[ext_resource type="Script" uid="uid://ctvwp85ad5ufx" path="res://Features/ProximityCollision/SpeechBubble.cs" id="16_tewov"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rqkbf"]
 radius = 62.0322

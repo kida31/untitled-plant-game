@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://biigphr1tnji3"]
 
-[ext_resource type="Script" path="res://Features/Fishing/FishingSpot.cs" id="1_824ea"]
+[ext_resource type="Script" uid="uid://buduhmbet7kt" path="res://Features/Fishing/FishingSpot.cs" id="1_824ea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ya61f"]
 size = Vector2(123, 75.75)

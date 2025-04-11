@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2i7oxcdj4025"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiItemView.cs" id="1_2gnwr"]
+[ext_resource type="Script" uid="uid://dlubj6xnfemhl" path="res://Features/GUI/Book/Wiki/WikiItemView.cs" id="1_2gnwr"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="2_48ijb"]
 [ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="4_q3o43"]
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_d341g"]

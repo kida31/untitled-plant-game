@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dy2bsx4d7l35p"]
 
-[ext_resource type="Script" path="res://Features/GUI/Items/StorageView.cs" id="1_g0giq"]
+[ext_resource type="Script" uid="uid://cu7tyjgbdfu6o" path="res://Features/GUI/Items/StorageView.cs" id="1_g0giq"]
 [ext_resource type="Texture2D" uid="uid://bxc00meevdgul" path="res://Assets/UI/Book/Pages/mini_inventory.png" id="3_lxhd0"]
 [ext_resource type="Texture2D" uid="uid://ddbxhrxrxirqa" path="res://Assets/UI/Book/Pages/Demo/LeftInventory_filled.png" id="4_0sw75"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="5_lewg4"]

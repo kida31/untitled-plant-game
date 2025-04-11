@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://8yqa0e8vi8gj"]
 
-[ext_resource type="Script" path="res://addons/upg_utils/Components/LogLevelOptionButton.cs" id="1_aq1fw"]
+[ext_resource type="Script" uid="uid://b3rcwnbdgjyvd" path="res://addons/upg_utils/Components/LogLevelOptionButton.cs" id="1_aq1fw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jgwy2"]
 font_size = 24
@@ -38,6 +38,7 @@ selected = 1
 allow_reselect = true
 item_count = 4
 popup/item_0/text = "Debug"
+popup/item_0/id = 0
 popup/item_1/text = "Info"
 popup/item_1/id = 1
 popup/item_2/text = "Warn"

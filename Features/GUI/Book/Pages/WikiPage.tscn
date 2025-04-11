@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://e3t5fwq4qne3"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/Pages/WikiPage.cs" id="1_hckop"]
+[ext_resource type="Script" uid="uid://7i6el1vptuot" path="res://Features/GUI/Book/Pages/WikiPage.cs" id="1_hckop"]
 [ext_resource type="PackedScene" uid="uid://c77ama5r0mirv" path="res://Features/GUI/Book/Wiki/WikiItemList.tscn" id="1_lyx1a"]
 [ext_resource type="PackedScene" uid="uid://bmc1oq8o2if8d" path="res://Features/GUI/Book/Wiki/WikiArticleView.tscn" id="3_q0eou"]
 [ext_resource type="Texture2D" uid="uid://cf1pnxii18btx" path="res://Assets/UI/Book/Decoration/BookRing.png" id="4_8y4ml"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://cp5q8jt2epwsy"]
 
-[ext_resource type="Script" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_3dqnp"]
-[ext_resource type="Script" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_abauu"]
-[ext_resource type="Script" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_a1vns"]
-[ext_resource type="Script" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_15577"]
-[ext_resource type="Script" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_ha3ur"]
+[ext_resource type="Script" uid="uid://btexpbbi2cfek" path="res://Features/NPC/NpcType/StandardNpc.cs" id="1_3dqnp"]
+[ext_resource type="Script" uid="uid://bmk3hbw7v7imj" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="2_abauu"]
+[ext_resource type="Script" uid="uid://b3fhofujtjc6t" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_a1vns"]
+[ext_resource type="Script" uid="uid://kbkbhi8c3dfo" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_15577"]
+[ext_resource type="Script" uid="uid://bmw8ewhyr3j52" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_ha3ur"]
 [ext_resource type="Resource" uid="uid://bk8u0ylofbi6w" path="res://Resources/Dialogue/saka.tres" id="7_lvt0p"]
 [ext_resource type="Texture2D" uid="uid://be44svg1tcea" path="res://Assets/Characters/NaFamily/Saka/Overworld.png" id="10_qn5cw"]
 

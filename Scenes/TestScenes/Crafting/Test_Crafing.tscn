@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfexqs7ryr05k"]
 
 [ext_resource type="PackedScene" uid="uid://y78tki415ik5" path="res://Features/Crafting/Dehydrator/DehydratorUi.tscn" id="1_5x2mp"]
-[ext_resource type="Script" path="res://Scenes/TestScenes/Crafting/TestCrafing.cs" id="1_w2l7d"]
+[ext_resource type="Script" uid="uid://dop6cna7kh0d" path="res://Scenes/TestScenes/Crafting/TestCrafing.cs" id="1_w2l7d"]
 
 [node name="TestCrafing" type="Node2D" node_paths=PackedStringArray("_dehydratorUi", "_openDehydratorButton", "_addItemButton", "_removeItemButton")]
 script = ExtResource("1_w2l7d")

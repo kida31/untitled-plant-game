@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8w5v0k8jnu41"]
 
-[ext_resource type="Script" path="res://Features/NPC/VendingMachine/VendingMachineInteractable.cs" id="1_34pgk"]
+[ext_resource type="Script" uid="uid://b5kruy0ve7scc" path="res://Features/NPC/VendingMachine/VendingMachineInteractable.cs" id="1_34pgk"]
 [ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="2_s5npr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_alu6d"]

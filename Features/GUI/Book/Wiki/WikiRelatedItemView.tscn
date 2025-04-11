@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://rkiq7gr8ft71"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiRelatedItemView.cs" id="1_in5b8"]
+[ext_resource type="Script" uid="uid://br67s16la13jg" path="res://Features/GUI/Book/Wiki/WikiRelatedItemView.cs" id="1_in5b8"]
 [ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="2_rwejx"]
 
 [node name="ItemView" type="MarginContainer" node_paths=PackedStringArray("_iconRect")]

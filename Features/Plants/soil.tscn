@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8bgqaiuddybx"]
 
-[ext_resource type="Script" path="res://Features/Plants/Soil/SoilTile.cs" id="1_0lhsy"]
+[ext_resource type="Script" uid="uid://r3pfjo7qumyv" path="res://Features/Plants/Soil/SoilTile.cs" id="1_0lhsy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpd0h"]
 size = Vector2(48, 48)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxp6idnmnja8b"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/ItemStats.cs" id="1_bl5bo"]
+[ext_resource type="Script" uid="uid://bu0tmecy7yn8e" path="res://Features/GUI/Book/Wiki/ItemStats.cs" id="1_bl5bo"]
 
 [node name="ItemStats" type="Control" node_paths=PackedStringArray("_name", "_category", "_tags", "_price", "_harvestResult", "_effectsHeader", "_medicineEffectsPositives", "_medicineEffectsNegatives")]
 custom_minimum_size = Vector2(128, 128)

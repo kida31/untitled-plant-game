@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://ikmkfkp11t0t"]
 
-[ext_resource type="Script" path="res://Features/GUI/Selector/UIFocusIcon.cs" id="1_7c43y"]
-[ext_resource type="Script" path="res://Features/GUI/Hooks/CopySizeHook.cs" id="3_hntjl"]
-[ext_resource type="Script" path="res://Features/GUI/Hooks/FollowControlHook.cs" id="3_n0srx"]
+[ext_resource type="Script" uid="uid://k0ul7n22wvpm" path="res://Features/GUI/Selector/UIFocusIcon.cs" id="1_7c43y"]
+[ext_resource type="Script" uid="uid://dsvjhj5vu4pa1" path="res://Features/GUI/Hooks/CopySizeHook.cs" id="3_hntjl"]
+[ext_resource type="Script" uid="uid://cyea7y5pgd4sj" path="res://Features/GUI/Hooks/FollowControlHook.cs" id="3_n0srx"]
 [ext_resource type="Texture2D" uid="uid://dro7ag82k0lgb" path="res://Assets/UI/Book/Icons/ItemSelectorLeft.png" id="4_rj1ek"]
 [ext_resource type="Texture2D" uid="uid://1kh2uoaq4d68" path="res://Assets/UI/Book/Icons/ItemSelectorRight.png" id="5_iw1x1"]
-[ext_resource type="Script" path="res://Features/GUI/Selector/DebugUIFocusIcon.cs" id="6_wrko2"]
+[ext_resource type="Script" uid="uid://dwpa1wt8uo50y" path="res://Features/GUI/Selector/DebugUIFocusIcon.cs" id="6_wrko2"]
 
 [node name="FocusIndicator" type="Control" node_paths=PackedStringArray("_sizeHook", "_followHook")]
 layout_mode = 3

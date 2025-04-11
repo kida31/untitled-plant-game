@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://rryay1lejcli"]
 
-[ext_resource type="Script" path="res://Features/GUI/HUDs/MainMenu/MainMenu.cs" id="1_nnu1v"]
+[ext_resource type="Script" uid="uid://cmelgh14d23ba" path="res://Features/GUI/HUDs/MainMenu/MainMenu.cs" id="1_nnu1v"]
 [ext_resource type="Texture2D" uid="uid://cj4gppdvblh0q" path="res://Assets/UI/Tawas_Logo.png" id="2_70i77"]
 [ext_resource type="Texture2D" uid="uid://jitwrv3dmfn4" path="res://DefaultItemBackground_White.png" id="2_y5xl3"]
 [ext_resource type="Texture2D" uid="uid://s2fupbntng85" path="res://Assets/UI/Buttons/play_button_default.png" id="4_r4pi3"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://3u5s05beqo5i" path="res://Assets/UI/Buttons/settings_button_on_hover.png" id="9_pfjee"]
 [ext_resource type="Texture2D" uid="uid://b64mimqgiq3jj" path="res://Assets/UI/Buttons/exit_button_pressed.png" id="10_0sl0g"]
 [ext_resource type="Texture2D" uid="uid://dx23vp7xttl6k" path="res://Assets/UI/Buttons/exit_button_default.png" id="10_dyquh"]
-[ext_resource type="Script" path="res://Features/Audio/SfxUI.cs" id="13_s5nm2"]
+[ext_resource type="Script" uid="uid://dg7jghsaajnjh" path="res://Features/Audio/SfxUI.cs" id="13_s5nm2"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("_startButton", "_settingsButton", "_exitButton")]
 layout_mode = 3

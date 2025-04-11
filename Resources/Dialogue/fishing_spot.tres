@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://bjt3gr4bginaw"]
 
 [ext_resource type="Texture2D" uid="uid://dcuof8xjg3ele" path="res://Assets/Tools/fishingRod.png" id="1_w3hpq"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_6y610"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_6y610"]
 [ext_resource type="Resource" uid="uid://cf4k02itsaxt6" path="res://Resources/Dialogue/Pier/StartFishing.tres" id="3_tth57"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_7jmm5"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="5_b3jrg"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_7jmm5"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="5_b3jrg"]
 
 [sub_resource type="Resource" id="Resource_ft32o"]
 script = ExtResource("2_6y610")

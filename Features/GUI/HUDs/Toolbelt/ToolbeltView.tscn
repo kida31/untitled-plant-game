@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dblh2fmdokupl"]
 
-[ext_resource type="Script" path="res://Features/GUI/HUDs/Toolbelt/ToolbeltView.cs" id="1_qssme"]
+[ext_resource type="Script" uid="uid://b54xj6cd60d4y" path="res://Features/GUI/HUDs/Toolbelt/ToolbeltView.cs" id="1_qssme"]
 [ext_resource type="PackedScene" uid="uid://cf2xfvp0b25y0" path="res://Features/GUI/HUDs/Toolbelt/ToolBlobView.tscn" id="1_x7d1f"]
 [ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="3_sqscx"]
 
@@ -451,9 +451,9 @@ tracks/11/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pp6wx"]
 _data = {
-"RESET": SubResource("Animation_gagnq"),
-"RotateLeft": SubResource("Animation_7lbkx"),
-"RotateRight": SubResource("Animation_01l8o")
+&"RESET": SubResource("Animation_gagnq"),
+&"RotateLeft": SubResource("Animation_7lbkx"),
+&"RotateRight": SubResource("Animation_01l8o")
 }
 
 [node name="ToolbeltView" type="Control" node_paths=PackedStringArray("_animationPlayer", "_leftBlob", "_centerBlob", "_rightBlob")]

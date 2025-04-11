@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bd54v5orqpb6t"]
 
-[ext_resource type="Script" path="res://Features/Shops/GUI/SeedShopView.cs" id="1_rs6dp"]
+[ext_resource type="Script" uid="uid://cv1jt1svo8otq" path="res://Features/Shops/GUI/SeedShopView.cs" id="1_rs6dp"]
 [ext_resource type="Texture2D" uid="uid://uej5qcp5lxwk" path="res://Assets/UI/SeedShop/seed_shop_cloth_flat.png" id="2_oarm3"]
 [ext_resource type="PackedScene" uid="uid://dvyfrigggpkfj" path="res://Features/GUI/Shops/ShopItemView.tscn" id="3_s3uu1"]
 [ext_resource type="PackedScene" uid="uid://ikmkfkp11t0t" path="res://Features/GUI/Selector/UIFocusIcon.tscn" id="4_gya2w"]
@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="5_0lc50"]
 [ext_resource type="Texture2D" uid="uid://vfe1oe30gphi" path="res://Assets/UI/Book/Icons/tab_inactive.png" id="5_8heil"]
 [ext_resource type="Texture2D" uid="uid://ovau2703fwu" path="res://Assets/UI/Book/Icons/tab_active.png" id="6_flav7"]
-[ext_resource type="Script" path="res://Features/GUI/Items/StorageView.cs" id="6_vtnd1"]
+[ext_resource type="Script" uid="uid://cu7tyjgbdfu6o" path="res://Features/GUI/Items/StorageView.cs" id="6_vtnd1"]
 [ext_resource type="PackedScene" uid="uid://ct1oinq00jcp6" path="res://Features/GUI/Items/NewInventoryItemView.tscn" id="7_apaor"]
 [ext_resource type="Texture2D" uid="uid://bxc00meevdgul" path="res://Assets/UI/Book/Pages/mini_inventory.png" id="8_x724y"]
 [ext_resource type="Texture2D" uid="uid://ddbxhrxrxirqa" path="res://Assets/UI/Book/Pages/Demo/LeftInventory_filled.png" id="9_cwr7a"]
-[ext_resource type="PackedScene" path="res://Features/GUI/Shops/ButtonLineShop.tscn" id="9_ukqri"]
+[ext_resource type="PackedScene" uid="uid://4ix03kxh3x2h" path="res://Features/GUI/Shops/ButtonLineShop.tscn" id="9_ukqri"]
 [ext_resource type="PackedScene" uid="uid://ru6miowo20bv" path="res://Features/GUI/Components/TextBoxFlat.tscn" id="10_gb0hb"]
 
 [node name="SeedShopGUI" type="Control" node_paths=PackedStringArray("_itemContainer", "_seedInventory")]

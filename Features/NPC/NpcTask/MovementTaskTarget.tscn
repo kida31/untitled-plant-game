@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://lufeqnjeabjx"]
 
-[ext_resource type="Script" path="res://Features/NPC/NpcTask/MovementTask.cs" id="1_wysxy"]
+[ext_resource type="Script" uid="uid://dgl6evvdvtgnd" path="res://Features/NPC/NpcTask/MovementTask.cs" id="1_wysxy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fqmfv"]
 

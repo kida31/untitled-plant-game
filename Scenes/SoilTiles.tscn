@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://js6xll5oktc4"]
 
-[ext_resource type="Script" path="res://Features/Plants/PlantController.cs" id="2_wxa00"]
+[ext_resource type="Script" uid="uid://djwk8jom6hmvw" path="res://Features/Plants/PlantController.cs" id="2_wxa00"]
 [ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="3_y13yj"]
 [ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/PlantPrefab.tscn" id="4_kxbuo"]
 [ext_resource type="Texture2D" uid="uid://5d8yf6rhn855" path="res://Assets/Overworld/Garden/planters_tileset_rgb.png" id="5_jgccg"]

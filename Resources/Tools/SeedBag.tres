@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="SeedBag" load_steps=3 format=3 uid="uid://bpaygf61q330d"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bpaygf61q330d"]
 
 [ext_resource type="Texture2D" uid="uid://cddp1h65h56vi" path="res://Assets/Tools/SeedBag.png" id="1_c36ed"]
-[ext_resource type="Script" path="res://Features/Tools/SeedBag.cs" id="2_awtmu"]
+[ext_resource type="Script" uid="uid://bdol1ffser1mn" path="res://Features/Tools/SeedBag.cs" id="2_awtmu"]
 
 [resource]
 script = ExtResource("2_awtmu")

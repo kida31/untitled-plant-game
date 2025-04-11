@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://1atpgaaw3khe"]
 
-[ext_resource type="Script" path="res://Scenes/TestScenes/GUI/TooltipAutoResizeTest.cs" id="1_ikybr"]
+[ext_resource type="Script" uid="uid://crgokimbi7do3" path="res://Scenes/TestScenes/GUI/TooltipAutoResizeTest.cs" id="1_ikybr"]
 [ext_resource type="PackedScene" uid="uid://bvvxi812gtpbr" path="res://Features/GUI/TooltipView.tscn" id="2_hx04w"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("_textEdit", "_tooltip")]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://cc5mcucmbfc65"]
 
-[ext_resource type="Script" path="res://Scenes/TestScenes/APlant/TestAPlant.cs" id="1_5umc6"]
+[ext_resource type="Script" uid="uid://b5oyoowumawrl" path="res://Scenes/TestScenes/APlant/TestAPlant.cs" id="1_5umc6"]
 [ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/PlantPrefab.tscn" id="2_64co2"]
-[ext_resource type="Script" path="res://Features/Plants/Soil/SoilTile.cs" id="3_pgupv"]
+[ext_resource type="Script" uid="uid://r3pfjo7qumyv" path="res://Features/Plants/Soil/SoilTile.cs" id="3_pgupv"]
 [ext_resource type="Texture2D" uid="uid://cc08shc1btj02" path="res://Assets/Tilesets/Plant/chubery_sheet.png" id="3_vskut"]
 [ext_resource type="Texture2D" uid="uid://bq3ict6tudlsf" path="res://Assets/Tilesets/Plant/DeadPlant.png" id="4_7fwi4"]
 [ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="5_t5w8u"]

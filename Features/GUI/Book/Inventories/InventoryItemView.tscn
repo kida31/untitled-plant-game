@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwbays1hac0a0"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/Inventories/InventoryItemView.cs" id="1_753u5"]
+[ext_resource type="Script" uid="uid://qtel50kby35n" path="res://Features/GUI/Book/Inventories/InventoryItemView.cs" id="1_753u5"]
 [ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="2_ey3cn"]
 [ext_resource type="Texture2D" uid="uid://dsrjntfr6kb41" path="res://Assets/Items/Plants/chubery_harvested.png" id="3_p0h3l"]
 

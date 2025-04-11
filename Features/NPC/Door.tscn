@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bkwpjyk3ubcc7"]
 
-[ext_resource type="Script" path="res://Features/NPC/Door.cs" id="1_byyrg"]
+[ext_resource type="Script" uid="uid://c3q5lm1s00hu" path="res://Features/NPC/Door.cs" id="1_byyrg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3w3h"]
 resource_local_to_scene = true

@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://fpjia0r4x37g"]
 
 [ext_resource type="PackedScene" uid="uid://y78tki415ik5" path="res://Features/Crafting/Dehydrator/DehydratorUi.tscn" id="1_xtr3v"]
-[ext_resource type="PackedScene" path="res://Features/GUI/ButtonLineDehydrator.tscn" id="2_ovfsv"]
-[ext_resource type="Script" path="res://Features/Crafting/Dehydrator/CraftingInventory.cs" id="3_5uei1"]
+[ext_resource type="PackedScene" uid="uid://dv7b4urhn1amc" path="res://Features/GUI/ButtonLineDehydrator.tscn" id="2_ovfsv"]
+[ext_resource type="Script" uid="uid://csuxw5vvbtfne" path="res://Features/Crafting/Dehydrator/CraftingInventory.cs" id="3_5uei1"]
 [ext_resource type="PackedScene" uid="uid://ct1oinq00jcp6" path="res://Features/GUI/Items/NewInventoryItemView.tscn" id="3_gqumj"]
 [ext_resource type="Texture2D" uid="uid://bxc00meevdgul" path="res://Assets/UI/Book/Pages/mini_inventory.png" id="4_0wx03"]
 [ext_resource type="Texture2D" uid="uid://ddbxhrxrxirqa" path="res://Assets/UI/Book/Pages/Demo/LeftInventory_filled.png" id="5_oy5tk"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cc8tr4q35n0q8"]
 
-[ext_resource type="Script" path="res://Features/Dialogue/DialogueUI.cs" id="1_hawac"]
+[ext_resource type="Script" uid="uid://cytsgbt8x1d1s" path="res://Features/Dialogue/DialogueUI.cs" id="1_hawac"]
 [ext_resource type="Texture2D" uid="uid://o1rnpbgpuum" path="res://Assets/Characters/Godfrey/Godfrey_angry.png" id="2_jfpax"]
 [ext_resource type="Texture2D" uid="uid://dyaetbwehoiqp" path="res://Assets/UI/Book/Containers&Labels/TextLabel.png" id="3_jda2l"]
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]

@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://bmc1oq8o2if8d"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/Wiki/WikiArticleView.cs" id="1_6vmcs"]
+[ext_resource type="Script" uid="uid://c2dpdf4vgelrs" path="res://Features/GUI/Book/Wiki/WikiArticleView.cs" id="1_6vmcs"]
 [ext_resource type="Texture2D" uid="uid://cau3g6e5xdjb1" path="res://Assets/UI/Book/Pages/RightWiki_empty.png" id="2_mb5lo"]
 [ext_resource type="Texture2D" uid="uid://cugt7nfjitoxf" path="res://Assets/UI/Book/Containers&Labels/ItemContainer1.png" id="3_jwpvw"]
 [ext_resource type="Texture2D" uid="uid://dgkb2riflkmgf" path="res://Assets/UI/Book/Pages/Demo/RightWiki_filled.png" id="3_n81vm"]
 [ext_resource type="PackedScene" uid="uid://rkiq7gr8ft71" path="res://Features/GUI/Book/Wiki/WikiRelatedItemView.tscn" id="5_ptoeu"]
 [ext_resource type="PackedScene" uid="uid://duvfpm1poaajg" path="res://Features/GUI/Components/TextBox.tscn" id="5_wi3q8"]
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="6_w5uny"]
-[ext_resource type="Script" path="res://Features/GUI/Components/Scrollable/AutoScrollRichTextLabel.cs" id="7_nfp50"]
+[ext_resource type="Script" uid="uid://cg5kv4sfmt8fm" path="res://Features/GUI/Components/Scrollable/AutoScrollRichTextLabel.cs" id="7_nfp50"]
 [ext_resource type="PackedScene" uid="uid://bxp6idnmnja8b" path="res://Features/GUI/Book/Wiki/ItemStats.tscn" id="8_4wixn"]
 [ext_resource type="PackedScene" uid="uid://s5ddvfj7hgkj" path="res://Features/GUI/HUDs/ButtonIndicator.tscn" id="8_ejye3"]
 

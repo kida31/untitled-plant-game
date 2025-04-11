@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://v4q4n4opsed6"]
 
-[ext_resource type="Script" path="res://Features/GUI/Vending/ItemSlotUI.cs" id="1_5dpbk"]
+[ext_resource type="Script" uid="uid://broo3o5cu2moy" path="res://Features/GUI/Vending/ItemSlotUI.cs" id="1_5dpbk"]
 [ext_resource type="Texture2D" uid="uid://dsje2yrpefe4h" path="res://icon.svg" id="1_onwbe"]
 
 [node name="ItemSlot" type="PanelContainer" node_paths=PackedStringArray("ItemTexture", "_quantityLabel", "_highlight")]

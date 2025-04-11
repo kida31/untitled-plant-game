@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://s5ddvfj7hgkj"]
 
-[ext_resource type="Script" path="res://Features/GUI/HUDs/ButtonIndicator.cs" id="1_wwa2o"]
+[ext_resource type="Script" uid="uid://deep8066ngvtd" path="res://Features/GUI/HUDs/ButtonIndicator.cs" id="1_wwa2o"]
 [ext_resource type="Texture2D" uid="uid://bm6ihno65ky3a" path="res://Assets/UI/Buttons/XBOX/A_default.png" id="2_emypu"]
 [ext_resource type="Texture2D" uid="uid://lf1yft7ifymy" path="res://Assets/UI/Buttons/XBOX/A_pressed.png" id="3_bs1oq"]
 
@@ -53,9 +53,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_57xv3"]
 _data = {
-"Pressed": SubResource("Animation_irdbn"),
-"RESET": SubResource("Animation_mdva6"),
-"Released": SubResource("Animation_0ipg7")
+&"Pressed": SubResource("Animation_irdbn"),
+&"RESET": SubResource("Animation_mdva6"),
+&"Released": SubResource("Animation_0ipg7")
 }
 
 [node name="InputIndicator" type="MarginContainer" node_paths=PackedStringArray("_animationPlayer", "_textureButton")]

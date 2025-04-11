@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://coy3axj2k0vdn"]
 
-[ext_resource type="Script" path="res://Features/GUI/HUDs/SettingsMenu/SettingsMenu.cs" id="1_1el8a"]
+[ext_resource type="Script" uid="uid://itr60trn0p5p" path="res://Features/GUI/HUDs/SettingsMenu/SettingsMenu.cs" id="1_1el8a"]
 [ext_resource type="Texture2D" uid="uid://jitwrv3dmfn4" path="res://DefaultItemBackground_White.png" id="1_dfpnd"]
 [ext_resource type="Texture2D" uid="uid://dw2vrxeho0fas" path="res://DefaultItemBackground_Black.png" id="3_4hutb"]
-[ext_resource type="Script" path="res://Features/GUI/HUDs/SettingsMenu/ResolutionButton.cs" id="3_c8ql2"]
-[ext_resource type="Script" path="res://Features/GUI/HUDs/SettingsMenu/LabelForCheckButton.cs" id="4_nvt3e"]
-[ext_resource type="Script" path="res://Features/GUI/HUDs/SettingsMenu/DebugButton.cs" id="5_mke2j"]
+[ext_resource type="Script" uid="uid://bpbp4aegeu3tb" path="res://Features/GUI/HUDs/SettingsMenu/ResolutionButton.cs" id="3_c8ql2"]
+[ext_resource type="Script" uid="uid://b5pow44kfvhn3" path="res://Features/GUI/HUDs/SettingsMenu/LabelForCheckButton.cs" id="4_nvt3e"]
+[ext_resource type="Script" uid="uid://c6eouhagluvlc" path="res://Features/GUI/HUDs/SettingsMenu/DebugButton.cs" id="5_mke2j"]
 
 [node name="Settings" type="Control" node_paths=PackedStringArray("_backButton", "_checkboxFullscreen", "_debugMode", "_resolutionButton", "_debugButton")]
 layout_mode = 3

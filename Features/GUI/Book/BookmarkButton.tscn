@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://blty0r6y6jxn3"]
 
-[ext_resource type="Script" path="res://Features/GUI/Book/BookmarkButton.cs" id="1_82iwr"]
+[ext_resource type="Script" uid="uid://uxdamppqaaoy" path="res://Features/GUI/Book/BookmarkButton.cs" id="1_82iwr"]
 
 [node name="BookmarkButton" type="MarginContainer" node_paths=PackedStringArray("_rectActive", "_rectInactive")]
 custom_minimum_size = Vector2(17, 25)

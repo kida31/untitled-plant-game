@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://doio1ea88264e"]
 
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_4jhs2"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_df32s"]
-[ext_resource type="Script" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_xavc0"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_df32s"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_xavc0"]
 [ext_resource type="Texture2D" uid="uid://c76emfoxjb16l" path="res://Assets/Tools/GardenScissors.png" id="3_r22tv"]
 [ext_resource type="Texture2D" uid="uid://dkt14ugsh0y5v" path="res://Assets/Items/Plants/chubery_wholePlant.png" id="4_dirmi"]
 
