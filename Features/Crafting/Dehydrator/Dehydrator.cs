@@ -125,8 +125,8 @@ public class Dehydrator : ICraftingStation
 	{
 		var item = CraftingSlots[slotIndex].ItemStack;
 		_logger.Debug($"Removing item {item} from slot {slotIndex}");
-		CraftingSlots[slotIndex].RemoveItem();
 		CraftingSlots[slotIndex].CraftTimeOut -= OnCraftTimeOut;
+		CraftingSlots[slotIndex].RemoveItem();
 		CraftingSlotUpdated?.Invoke(CheckHasFinishedItems());
 		return item;
 	}
