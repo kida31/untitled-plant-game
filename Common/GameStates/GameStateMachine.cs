@@ -70,6 +70,16 @@ public partial class GameStateMachine : Node
 		_logger.Info($"Change game state {_currentState} -> {newState}");
 		_previousState = _currentState;
 		_currentState = newState;
+		
+		if(_currentState != GameState.FreeRoam)
+		{
+			TimeController.Instance.Pause();
+		}
+		else
+		{
+			TimeController.Instance.Resume();
+		}
+		
 		StateChanged?.Invoke(_previousState, _currentState);
 	}
 
