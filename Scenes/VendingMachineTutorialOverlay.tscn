@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6wmak3a1jfq6"]
+
+[ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="1_sv4yf"]
+[ext_resource type="Texture2D" uid="uid://bxfrrswv0508n" path="res://Assets/UI/Crafting/arrow_down.png" id="2_yoeej"]
+
+[node name="TutorialOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -2.0
+offset_right = 640.0
+offset_bottom = 356.0
+
+[node name="TextureRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 246.0
+offset_right = 98.0
+offset_bottom = 280.0
+texture = ExtResource("1_sv4yf")
+patch_margin_left = 11
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "I can set the cost slider here!"
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 58.0
+offset_right = 45.0
+offset_bottom = 90.0
+rotation = -1.5708
+texture = ExtResource("2_yoeej")
+
+[node name="TextureRect2" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 220.0
+offset_right = 377.0
+offset_bottom = 266.0
+texture = ExtResource("1_sv4yf")
+patch_margin_left = 11
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "This is where I collect my hard earned money"
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect2"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 40.0
+offset_right = 76.0
+offset_bottom = 72.0
+rotation = 1.5708
+texture = ExtResource("2_yoeej")

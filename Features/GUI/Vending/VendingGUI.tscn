@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c108xawc8eseh"]
+[gd_scene load_steps=22 format=3 uid="uid://c108xawc8eseh"]
 
 [ext_resource type="Script" uid="uid://crghqeer3iuiu" path="res://Features/GUI/Vending/VendingMachineUI.cs" id="1_mtkr8"]
 [ext_resource type="Texture2D" uid="uid://vfe1oe30gphi" path="res://Assets/UI/Book/Icons/tab_inactive.png" id="2_4otmu"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://onc7r0twgms2" path="res://Features/GUI/Vending/ButtonLineVending.tscn" id="10_7e1e4"]
 [ext_resource type="PackedScene" uid="uid://dd68fctjqslys" path="res://Features/GUI/GlobalTooltip.tscn" id="11_qfslm"]
 [ext_resource type="PackedScene" uid="uid://cusi423j6fnh2" path="res://Features/GUI/Vending/EmoteBubble.tscn" id="12_5lmun"]
+[ext_resource type="PackedScene" uid="uid://b6wmak3a1jfq6" path="res://Scenes/VendingMachineTutorialOverlay.tscn" id="18_we52k"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uti0s"]
 content_margin_top = 8.0
@@ -308,7 +309,6 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 
 [node name="EmoteBubble" parent="." instance=ExtResource("12_5lmun")]
-visible = false
 layout_mode = 1
 anchor_left = 0.31875
 anchor_top = 0.688889
@@ -316,3 +316,5 @@ anchor_right = 0.31875
 anchor_bottom = 0.688889
 offset_right = 68.0
 offset_bottom = 46.0
+
+[node name="TutorialOverlay" parent="." instance=ExtResource("18_we52k")]
