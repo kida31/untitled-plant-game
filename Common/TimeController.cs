@@ -68,7 +68,6 @@ public partial class TimeController : Node
 	
 	public override void _Process(double delta)
 	{
-		if (!_isRunning) return;
 		
 		double dt;
 		if (_fastForwardDuration < 0)
@@ -121,12 +120,14 @@ public partial class TimeController : Node
 	{
 		_logger.Debug("Pausing time");
 		_isRunning = false;
+		SetProcess(_isRunning);
 	}
 	
 	public void Resume()
 	{
 		_logger.Debug("Resuming time");
 		_isRunning = true;
+		SetProcess(_isRunning);
 	}
 
 	/**
