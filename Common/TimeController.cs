@@ -48,7 +48,7 @@ public partial class TimeController : Node
 	private double _fastForwardDuration = -1; // Gotta go fast juice. -1 means not fast forwarding. Consumed while fast forwarding
 	private double _currentTimeMultiplier = InGameToRealTimeMultiplier; // Multiplier for time speed
 	private bool _wasNoon;
-	private bool _isRunning;
+	private bool _isRunning = true;
 
 	public override void _Ready()
 	{

@@ -59,10 +59,12 @@ public partial class GameStateMachine : Node
 			_logger.Error("Instance already exists. Deleting this instance.");
 			QueueFree();
 		}
+		
+		StateChanged += HandleTransition;
 	}
 
 	/// <summary>
-	/// Changes the game state and pauses the game if the new state is not FreeRoam.
+	/// Changes the game state.
 	/// </summary>
 	/// <param name="newState"></param>
 	public void SetState(GameState newState)
@@ -70,8 +72,18 @@ public partial class GameStateMachine : Node
 		_logger.Info($"Change game state {_currentState} -> {newState}");
 		_previousState = _currentState;
 		_currentState = newState;
-		
-		if(_currentState != GameState.FreeRoam)
+		StateChanged?.Invoke(_previousState, _currentState);
+	}
+	
+	/// <summary>
+	/// Handles transition between game states.
+	/// TODO: This is a temporary solution. Refactor if this gets more complex.
+	/// </summary>
+	/// <param name="prev"></param>
+	/// <param name="next"></param>
+	private static void HandleTransition(GameState prev, GameState next)
+	{
+		if(next != GameState.FreeRoam)
 		{
 			TimeController.Instance.Pause();
 		}
@@ -79,8 +91,6 @@ public partial class GameStateMachine : Node
 		{
 			TimeController.Instance.Resume();
 		}
-		
-		StateChanged?.Invoke(_previousState, _currentState);
 	}
 
 	/// <summary>
