@@ -48,6 +48,7 @@ public partial class TimeController : Node
 	private double _fastForwardDuration = -1; // Gotta go fast juice. -1 means not fast forwarding. Consumed while fast forwarding
 	private double _currentTimeMultiplier = InGameToRealTimeMultiplier; // Multiplier for time speed
 	private bool _wasNoon;
+	private bool _isRunning;
 
 	public override void _Ready()
 	{
@@ -67,6 +68,8 @@ public partial class TimeController : Node
 	
 	public override void _Process(double delta)
 	{
+		if (!_isRunning) return;
+		
 		double dt;
 		if (_fastForwardDuration < 0)
 		{
@@ -83,6 +86,47 @@ public partial class TimeController : Node
 		_fastForwardDuration -= dt;
 
 		RecalculateTimeEvents();
+	}
+	
+	/// <summary>
+	///		Skips to the next day.
+	/// </summary>
+	public void GoToNextDay()
+	{
+		FastForwardTo(StartOfDaySeconds);
+		_currentTimeMultiplier = InGameToRealTimeFastForwardMultiplier;
+	}
+
+	/// <summary>
+	///		 Fast forwards the time by the given duration.
+	/// </summary>
+	/// <param name="duration"></param>
+	public void FastForwardFor(double duration)
+	{
+		Assert.AssertTrue(duration > 0);
+		_fastForwardDuration = duration;
+	}
+
+	/// <summary>
+	///		 Fast forwards the time to the given target time.
+	/// </summary>
+	/// <param name="targetTime"></param>
+	public void FastForwardTo(double targetTime)
+	{
+		Assert.AssertTrue(targetTime < SecondsPerDay, "Target time is greater than a day");
+		FastForwardFor((SecondsPerDay + targetTime - CurrentSeconds) % SecondsPerDay);
+	}
+	
+	public void Pause()
+	{
+		_logger.Debug("Pausing time");
+		_isRunning = false;
+	}
+	
+	public void Resume()
+	{
+		_logger.Debug("Resuming time");
+		_isRunning = true;
 	}
 
 	/**
@@ -120,34 +164,5 @@ public partial class TimeController : Node
 			_wasNoon = true;
 			NoonOccured?.Invoke();
 		}
-	}
-
-	/// <summary>
-	///		Skips to the next day.
-	/// </summary>
-	public void GoToNextDay()
-	{
-		FastForwardTo(StartOfDaySeconds);
-		_currentTimeMultiplier = InGameToRealTimeFastForwardMultiplier;
-	}
-
-	/// <summary>
-	///		 Fast forwards the time by the given duration.
-	/// </summary>
-	/// <param name="duration"></param>
-	public void FastForwardFor(double duration)
-	{
-		Assert.AssertTrue(duration > 0);
-		_fastForwardDuration = duration;
-	}
-
-	/// <summary>
-	///		 Fast forwards the time to the given target time.
-	/// </summary>
-	/// <param name="targetTime"></param>
-	public void FastForwardTo(double targetTime)
-	{
-		Assert.AssertTrue(targetTime < SecondsPerDay, "Target time is greater than a day");
-		FastForwardFor((SecondsPerDay + targetTime - CurrentSeconds) % SecondsPerDay);
 	}
 }
