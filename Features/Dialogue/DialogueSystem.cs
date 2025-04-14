@@ -89,7 +89,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	{
 		_logger.Debug("Ending dialogue.");
 		_currentDialogue = null;
-		GameStateMachine.Instance.SetState(GameState.FreeRoam);
+		GameStateMachine.Instance.SetState(GameStateMachine.Instance.PreviousState);
 		OnDialogueEnd?.Invoke(_currentDialogue);
 	}
 
