@@ -14,13 +14,12 @@ public partial class OpenVendingMachine : DialogueEvent
 	private readonly Logger _logger = new(nameof(OpenVendingMachine));
 	private VendingMachine _vendingMachine;
 	private bool _firstTime = true;
-	private DialogueResourceObject _tutorialDialogue;
+	private DialogueResourceObject _tutorialDialogue = GD.Load<DialogueResourceObject>("res://Resources/Dialogue/VendingMachine/VM_firsttime_tutorial.tres");
 
 	public OpenVendingMachine()
 	{
 		_logger.Info("VendingMachine is null. Creating new instance.");
 		_vendingMachine = new VendingMachine();
-		InitialiseTutorialDialogue();
 	}
 
 	public override void Execute()
@@ -33,24 +32,5 @@ public partial class OpenVendingMachine : DialogueEvent
 			_firstTime = false;
 			EventBus.Instance.InvokeStartingDialogue(_tutorialDialogue);
 		}
-	}
-	
-	private void InitialiseTutorialDialogue()
-	{
-		_tutorialDialogue = new DialogueResourceObject();
-		_tutorialDialogue._dialogueId = "VendingMachineTutorial";
-		_tutorialDialogue._dialogueText =
-		[
-			new DialogueLine
-			{
-				dialogueText = "Let's see what we have here...",
-				speakerName = "Laya",
-			},
-			new DialogueLine
-			{
-				dialogueText = "There's a slider here. I wonder what it does?",
-				speakerName = "Laya",
-			},
-		];
 	}
 }

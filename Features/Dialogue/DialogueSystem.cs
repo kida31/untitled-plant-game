@@ -89,6 +89,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	{
 		_logger.Debug("Ending dialogue.");
 		_currentDialogue = null;
+		Assert.AssertTrue(GameStateMachine.Instance.CurrentState == GameState.Dialogue, "GameState is not Dialogue");
 		GameStateMachine.Instance.SetState(GameStateMachine.Instance.PreviousState);
 		OnDialogueEnd?.Invoke(_currentDialogue);
 	}

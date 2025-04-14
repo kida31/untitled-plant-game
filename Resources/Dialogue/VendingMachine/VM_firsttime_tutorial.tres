@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=5 format=3 uid="uid://b28tqgsjf7yu6"]
+
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_a2pxp"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_asv5q"]
+
+[sub_resource type="Resource" id="Resource_me4hu"]
+script = ExtResource("1_asv5q")
+speakerName = "Laya"
+dialogueText = "Let's see what we have here..."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_qv4wb"]
+script = ExtResource("1_asv5q")
+speakerName = "Laya"
+dialogueText = "It seems I have to put the medicine that I want to sell into this machine"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[resource]
+script = ExtResource("1_a2pxp")
+_dialogueId = ""
+_dialogueText = Array[Object]([SubResource("Resource_me4hu"), SubResource("Resource_qv4wb")])
+_responses = Array[Object]([])
+metadata/_custom_type_script = "uid://c5x800n31tvgq"
