@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=12 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" uid="uid://b2fd4sqkbflvo" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="SpriteFrames" uid="uid://upqodpbedg8s" path="res://Features/Player/PlayerSpriteFrames.tres" id="2_3hfoe"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cfd8146wdhmao" path="res://Features/Player/StateWalk.cs" id="6_6k3md"]
 [ext_resource type="Script" uid="uid://shyb717ekee2" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
 [ext_resource type="Script" uid="uid://bmestbmfn35at" path="res://Features/ProximityCollision/NpcProximityTrigger.cs" id="8_pu3c2"]
+[ext_resource type="Script" uid="uid://casy8txnj6tho" path="res://Features/Player/PlayerCamera.cs" id="9_o4yob"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
 radius = 8.0
@@ -57,3 +58,4 @@ position = Vector2(0, -31)
 position_smoothing_speed = 2.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+script = ExtResource("9_o4yob")
