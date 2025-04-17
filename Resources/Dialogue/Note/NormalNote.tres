@@ -1,20 +1,35 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=5 format=3 uid="uid://v5sknljen3q3"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://v5sknljen3q3"]
 
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_dh76n"]
+[ext_resource type="Script" uid="uid://xoytkfvripv6" path="res://Features/Dialogue/Events/AddItemToInventory.cs" id="2_3068o"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="3_uekhg"]
 
 [sub_resource type="Resource" id="Resource_tlar2"]
 script = ExtResource("1_dh76n")
-speakerName = "???"
-dialogueText = "That's strange..."
+speakerName = "Laya"
+dialogueText = "There's a paper plane!"
 
 [sub_resource type="Resource" id="Resource_jx3y2"]
 script = ExtResource("1_dh76n")
-speakerName = "???"
-dialogueText = "It seems like this note is only readable after 11 pm."
+speakerName = "Laya"
+dialogueText = "*tries to take the plane*"
+
+[sub_resource type="Resource" id="Resource_ul17e"]
+script = ExtResource("1_dh76n")
+speakerName = "Laya"
+dialogueText = "Oh there are seeds inside!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_jcxpi"]
+script = ExtResource("2_3068o")
+_itemId = "chuberrySeed"
+_amount = 3
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://xoytkfvripv6"
 
 [resource]
 script = ExtResource("3_uekhg")
 _dialogueId = "NormalNote"
-_dialogueText = Array[Object]([SubResource("Resource_tlar2"), SubResource("Resource_jx3y2")])
+_dialogueText = Array[Object]([SubResource("Resource_tlar2"), SubResource("Resource_jx3y2"), SubResource("Resource_ul17e"), SubResource("Resource_jcxpi")])
 _responses = null
