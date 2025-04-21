@@ -2,7 +2,7 @@
 
 namespace untitledplantgame.Quests;
 
-public partial class GatherItemQuest : QuestCategory
+public partial class GatherItemQuest : QuestTask
 {
 	[Export] private string _itemId;
 	[Export] private int _amount;

@@ -3,7 +3,8 @@ using Godot;
 
 namespace untitledplantgame.Quests;
 
-public abstract partial class QuestCategory : Resource
+[GlobalClass]
+public abstract partial class QuestTask : Resource
 {
 	public abstract void CompleteQuest();
 }

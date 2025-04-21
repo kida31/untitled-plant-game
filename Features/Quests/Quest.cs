@@ -9,17 +9,17 @@ public partial class Quest : Resource
 	[Export] public string QuestId { get; set; }
 	[Export] public string Description { get; set; }
 	[Export] public QuestProgression Progression { get; set; }
-	[Export] public QuestCategory Category { get; set; }
+	[Export] public QuestTask Task { get; set; }
 
 	public event Action<QuestProgression> QuestProgressionChanged;
 	public event Action<string> QuestCompleted;
 
-	public Quest(string questId, string description, QuestProgression progression, QuestCategory category)
+	public Quest(string questId, string description, QuestProgression progression, QuestTask task)
 	{
 		QuestId = questId;
 		Description = description;
 		Progression = progression;
-		Category = category;
+		Task = task;
 		
 		
 	}

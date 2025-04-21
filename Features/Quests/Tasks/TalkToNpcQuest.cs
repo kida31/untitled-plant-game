@@ -1,6 +1,6 @@
 ﻿namespace untitledplantgame.Quests;
 
-public partial class TalkToNpcQuest : QuestCategory
+public partial class TalkToNpcQuest : QuestTask
 {
 	private string _dialogueId;
 	public override void CompleteQuest()
