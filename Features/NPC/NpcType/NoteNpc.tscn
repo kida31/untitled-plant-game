@@ -1,10 +1,42 @@
-[gd_scene load_steps=8 format=3 uid="uid://dccnotts4vikg"]
+[gd_scene load_steps=15 format=3 uid="uid://dccnotts4vikg"]
 
 [ext_resource type="Script" uid="uid://doon6dlqfavsv" path="res://Features/NPC/NpcType/NoteNpc.cs" id="1_i6vqh"]
 [ext_resource type="Texture2D" uid="uid://c1ygdg8m4meay" path="res://Assets/SpeechBubbles/Note.png" id="1_w1ixl"]
-[ext_resource type="Resource" uid="uid://v5sknljen3q3" path="res://Resources/Dialogue/Note/NormalNote.tres" id="2_yv1v2"]
-[ext_resource type="Resource" uid="uid://cg8jyg5313ecg" path="res://Resources/Dialogue/Note/NightNote.tres" id="3_jc1ko"]
+[ext_resource type="Resource" uid="uid://1ik2r0n5kwyc" path="res://Resources/Dialogue/Note/NoteTextNoSeeds.tres" id="2_tihcy"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="3_07usp"]
 [ext_resource type="Script" uid="uid://bmk3hbw7v7imj" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="4_5jcqf"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="4_unr87"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_pttyf"]
+
+[sub_resource type="Resource" id="Resource_qym8i"]
+script = ExtResource("3_07usp")
+speakerName = "There's just the note left."
+dialogueText = ""
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_s8r0o"]
+script = ExtResource("3_07usp")
+speakerName = "Read it again?"
+dialogueText = ""
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_5xx3c"]
+script = ExtResource("4_unr87")
+_responseButton = "Yes"
+_responseDialogue = ExtResource("2_tihcy")
+metadata/_custom_type_script = "uid://crnclevrmchav"
+
+[sub_resource type="Resource" id="Resource_23j5n"]
+script = ExtResource("4_unr87")
+_responseButton = "No"
+metadata/_custom_type_script = "uid://crnclevrmchav"
+
+[sub_resource type="Resource" id="Resource_mqor0"]
+script = ExtResource("5_pttyf")
+_dialogueId = ""
+_dialogueText = Array[Object]([SubResource("Resource_qym8i"), SubResource("Resource_s8r0o")])
+_responses = Array[Object]([SubResource("Resource_5xx3c"), SubResource("Resource_23j5n")])
+metadata/_custom_type_script = "uid://c5x800n31tvgq"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_48yng"]
 
@@ -18,8 +50,8 @@ script = ExtResource("1_i6vqh")
 _name = "Note"
 _disableMovement = true
 _npcPlayerInteraction = NodePath("PlayerInteraction")
-_normalDialogue = ExtResource("2_yv1v2")
-_nightDialogue = ExtResource("3_jc1ko")
+_normalDialogue = ExtResource("2_tihcy")
+_nightDialogue = SubResource("Resource_mqor0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_48yng")

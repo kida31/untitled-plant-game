@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=11 format=3 uid="uid://cp5fto2wa705x"]
+
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_akual"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_fdw44"]
+[ext_resource type="Script" uid="uid://xoytkfvripv6" path="res://Features/Dialogue/Events/AddItemToInventory.cs" id="2_i1gen"]
+
+[sub_resource type="Resource" id="Resource_i1gen"]
+script = ExtResource("1_fdw44")
+speakerName = "Laya"
+dialogueText = "There's a note on the floor."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_ikaoc"]
+script = ExtResource("1_fdw44")
+speakerName = "Laya"
+dialogueText = "\"Dear Laya\""
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_6f3q6"]
+script = ExtResource("1_fdw44")
+speakerName = "Laya"
+dialogueText = "\"Menial jobs like this are harder than they seems at first.\""
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_35ptc"]
+script = ExtResource("1_fdw44")
+speakerName = "Laya"
+dialogueText = "\"How ever do I am sure that you will do well.\""
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_uc2lt"]
+script = ExtResource("1_fdw44")
+speakerName = "Laya"
+dialogueText = "\"Having these additional seeds should make your life easier\""
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_5hcq6"]
+script = ExtResource("1_fdw44")
+speakerName = "Laya"
+dialogueText = "I have a feeling I know who sent this note..."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_vu4qa"]
+script = ExtResource("2_i1gen")
+_itemId = ""
+_amount = 3
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://xoytkfvripv6"
+
+[resource]
+script = ExtResource("1_akual")
+_dialogueId = ""
+_dialogueText = Array[Object]([SubResource("Resource_i1gen"), SubResource("Resource_ikaoc"), SubResource("Resource_6f3q6"), SubResource("Resource_35ptc"), SubResource("Resource_uc2lt"), SubResource("Resource_5hcq6"), SubResource("Resource_vu4qa")])
+_responses = null
+metadata/_custom_type_script = "uid://c5x800n31tvgq"
