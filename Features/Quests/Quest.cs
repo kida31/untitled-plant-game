@@ -1,36 +1,44 @@
 ﻿using System;
 using Godot;
+using untitledplantgame.Common;
 
 namespace untitledplantgame.Quests;
 
 [GlobalClass]
 public partial class Quest : Resource
 {
-	[Export] public string QuestId { get; set; }
 	[Export] public string Description { get; set; }
-	[Export] public QuestProgression Progression { get; set; }
 	[Export] public QuestTask Task { get; set; }
+	
+	public QuestProgression Progression { get; private set; }
 
 	public event Action<QuestProgression> QuestProgressionChanged;
-	public event Action<string> QuestCompleted;
 
-	public Quest(string questId, string description, QuestProgression progression, QuestTask task)
+	private Logger _logger = new ("Quest");
+	
+	public Quest()
 	{
-		QuestId = questId;
-		Description = description;
-		Progression = progression;
-		Task = task;
-		
 		
 	}
 
-	private void OnQuestProgressionChanged(QuestProgression progression)
+	public void InitialiseQuest()
 	{
-		QuestProgressionChanged?.Invoke(progression);
+		Assert.AssertNotNull(Task, "Task is null. This Quest is invalid.");
+		//TODO This should only be called once
+		Task.TaskCompleted += OnTaskCompleted;
 	}
 
-	protected virtual void OnQuestCompleted(string questId)
+	private void OnTaskCompleted(QuestTask obj)
 	{
-		QuestCompleted?.Invoke(questId);
+		Progression = QuestProgression.Completed;
+		_logger.Debug("Quest is completed");
+		
+		OnQuestProgressionChanged(Progression);
+	}
+
+	private void OnQuestProgressionChanged(QuestProgression obj)
+	{
+		_logger.Debug("Quest progression changed: " + obj);
+		QuestProgressionChanged?.Invoke(obj);
 	}
 }
