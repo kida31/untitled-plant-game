@@ -194,4 +194,11 @@ public partial class EventBus : Node
 	{
 		BgmAreaChanged?.Invoke(area);
 	}
+	
+	public event Action<Vector2> OnCameraMoveAndBack;
+
+	public void MoveCameraAndBack(Vector2 cameraPosition)
+	{
+		OnCameraMoveAndBack?.Invoke(cameraPosition);
+	}
 }
