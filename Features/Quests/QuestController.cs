@@ -1,6 +1,10 @@
+using System.Collections.Generic;
 using Godot;
-using System;
+
+namespace untitledplantgame.Quests;
 
 public partial class QuestController : Node
 {
+	private QuestLine _currentQuestLine;
+	private Dictionary<string, Quest> _activeQuests = new Dictionary<string, Quest>();
 }

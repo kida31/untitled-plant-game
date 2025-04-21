@@ -1,6 +1,9 @@
+﻿using System.Xml;
 using Godot;
-using System;
 
-public partial class QuestCategory : Node
+namespace untitledplantgame.Quests;
+
+public abstract partial class QuestCategory : Resource
 {
+	public abstract void CompleteQuest();
 }
