@@ -42,7 +42,7 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_vu4qa"]
 script = ExtResource("2_i1gen")
-_itemId = ""
+_itemId = "chuberrySeed"
 _amount = 3
 speakerName = ""
 dialogueText = ""

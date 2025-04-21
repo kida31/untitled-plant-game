@@ -1,29 +1,30 @@
-[gd_scene load_steps=15 format=3 uid="uid://dccnotts4vikg"]
+[gd_scene load_steps=16 format=3 uid="uid://dccnotts4vikg"]
 
 [ext_resource type="Script" uid="uid://doon6dlqfavsv" path="res://Features/NPC/NpcType/NoteNpc.cs" id="1_i6vqh"]
 [ext_resource type="Texture2D" uid="uid://c1ygdg8m4meay" path="res://Assets/SpeechBubbles/Note.png" id="1_w1ixl"]
-[ext_resource type="Resource" uid="uid://1ik2r0n5kwyc" path="res://Resources/Dialogue/Note/NoteTextNoSeeds.tres" id="2_tihcy"]
+[ext_resource type="Resource" uid="uid://cp5fto2wa705x" path="res://Resources/Dialogue/Note/ReceiveSeeds.tres" id="2_tihcy"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="3_07usp"]
 [ext_resource type="Script" uid="uid://bmk3hbw7v7imj" path="res://Features/NPC/NpcInteraction/NpcPlayerInteraction.cs" id="4_5jcqf"]
+[ext_resource type="Resource" uid="uid://1ik2r0n5kwyc" path="res://Resources/Dialogue/Note/NoteTextNoSeeds.tres" id="4_07usp"]
 [ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="4_unr87"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_pttyf"]
 
 [sub_resource type="Resource" id="Resource_qym8i"]
 script = ExtResource("3_07usp")
-speakerName = "There's just the note left."
-dialogueText = ""
+speakerName = "Laya"
+dialogueText = "There's just the note left."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_s8r0o"]
 script = ExtResource("3_07usp")
-speakerName = "Read it again?"
-dialogueText = ""
+speakerName = "Laya"
+dialogueText = "Read it again?"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_5xx3c"]
 script = ExtResource("4_unr87")
 _responseButton = "Yes"
-_responseDialogue = ExtResource("2_tihcy")
+_responseDialogue = ExtResource("4_07usp")
 metadata/_custom_type_script = "uid://crnclevrmchav"
 
 [sub_resource type="Resource" id="Resource_23j5n"]
