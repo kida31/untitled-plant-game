@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c55xp0xg83mt1"]
+[gd_scene load_steps=6 format=3 uid="uid://c55xp0xg83mt1"]
 
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Features/Cycle/UI/ClockUI.tscn" id="1_313dl"]
 [ext_resource type="PackedScene" uid="uid://cme58rltegywh" path="res://Features/GUI/HUDs/BookButton.tscn" id="1_k0baw"]
 [ext_resource type="PackedScene" uid="uid://dblh2fmdokupl" path="res://Features/GUI/HUDs/Toolbelt/ToolbeltView.tscn" id="2_fhqom"]
+[ext_resource type="PackedScene" uid="uid://b6ilyhkudlstl" path="res://Scenes/QuestOverview.tscn" id="2_fnr3o"]
 [ext_resource type="PackedScene" uid="uid://eadq6f41gik3" path="res://Features/GUI/HUDs/Resources/ResourcesHUD.tscn" id="3_h2wb2"]
 
 [node name="HUD" type="Control"]
@@ -20,6 +21,10 @@ anchor_left = 0.0125
 anchor_top = 0.0222222
 anchor_right = 0.129688
 anchor_bottom = 0.147222
+
+[node name="QuestOverview" parent="." instance=ExtResource("2_fnr3o")]
+offset_top = 60.0
+offset_bottom = 60.0
 
 [node name="BookButton" parent="." instance=ExtResource("1_k0baw")]
 layout_mode = 1
