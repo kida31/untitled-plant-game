@@ -6,6 +6,7 @@ using untitledplantgame.Dialogue;
 using untitledplantgame.Dialogue.Models;
 using untitledplantgame.Inventory;
 using untitledplantgame.Plants;
+using untitledplantgame.Quests;
 using untitledplantgame.Shops;
 using untitledplantgame.Vending;
 
@@ -91,6 +92,8 @@ public partial class EventBus : Node
 	///     Emitted when a dialogue is started, passes the dialogue system
 	/// </summary>
 	public event Action<IDialogueSystem> InitialiseDialogue;
+	
+	public event Action<DialogueResourceObject> EndDialogue;
 
 	public void InvokeStartingDialogue(DialogueResourceObject obj)
 	{
@@ -100,6 +103,11 @@ public partial class EventBus : Node
 	public void InvokeInitialiseDialogue(IDialogueSystem obj)
 	{
 		InitialiseDialogue?.Invoke(obj);
+	}
+	
+	public void OnEndDialogue(DialogueResourceObject obj)
+	{
+		EndDialogue?.Invoke(obj);
 	}
 
 	//Plants
@@ -163,6 +171,12 @@ public partial class EventBus : Node
 	}
 
 	public event Action<Player.Player, IInventory> OnPlayerInventoryChanged;
+	public event Action<IItemStack> OnItemAddedToInventory;
+	
+	public void ItemAddedToInventory(IItemStack item)
+	{
+		OnItemAddedToInventory?.Invoke(item);
+	}
 
 	public void PlayerInventoryChanged(Player.Player player, IInventory inventory)
 	{
@@ -195,7 +209,18 @@ public partial class EventBus : Node
 		BgmAreaChanged?.Invoke(area);
 	}
 	
+	// Tool Events
+	
+	public event Action<SoilTile> WateredSoil;
+
+	public void OnWateredSoil(SoilTile obj)
+	{
+		WateredSoil?.Invoke(obj);
+	}
+
 	public event Action<Vector2> OnCameraMoveAndBack;
+
+	// Camera
 
 	public void MoveCameraAndBack(Vector2 cameraPosition)
 	{
