@@ -9,9 +9,10 @@ public partial class QuestController : Node
 {
 	public event Action<Quest> QuestStarted;
 	public event Action<QuestLine> QuestLineStarted;
+	public event Action<QuestLine> QuestLineCompleted;
 
-	private QuestLine _currentQuestLine;
-	private Quest _currentQuest;
+	public QuestLine CurrentQuestLine { get; private set; }
+	public Quest CurrentQuest { get; private set; }
 	
 	private static QuestController Instance { get; set; }
 	
@@ -43,16 +44,16 @@ public partial class QuestController : Node
 	
 	private void StartQuestLine(QuestLine questLine)
 	{
-		_currentQuestLine = questLine;
-		_currentQuest = _currentQuestLine.Quests[0];
-		_logger.Debug("Quest line started: " + _currentQuestLine.Name);
+		CurrentQuestLine = questLine;
+		CurrentQuest = CurrentQuestLine.Quests[0];
+		_logger.Debug("Quest line started: " + CurrentQuestLine.Name);
 		
-		QuestLineStarted?.Invoke(_currentQuestLine);
+		QuestLineStarted?.Invoke(CurrentQuestLine);
 		
-		StartQuest(_currentQuest);
+		StartQuest(CurrentQuest);
 		
 		// subscribe to quest progression for all quests in the quest line
-		foreach (var quest in _currentQuestLine.Quests)
+		foreach (var quest in CurrentQuestLine.Quests)
 		{
 			quest.QuestProgressionChanged += OnQuestProgressionChanged;
 		}
@@ -65,15 +66,16 @@ public partial class QuestController : Node
 		if (obj == QuestProgression.Completed)
 		{
 			// Check if there are more quests in the quest line
-			var currentQuestIndex = _currentQuestLine.Quests.IndexOf(_currentQuest);
-			if (currentQuestIndex < _currentQuestLine.Quests.Count - 1)
+			var currentQuestIndex = CurrentQuestLine.Quests.IndexOf(CurrentQuest);
+			if (currentQuestIndex < CurrentQuestLine.Quests.Count - 1)
 			{
-				_currentQuest = _currentQuestLine.Quests[currentQuestIndex + 1];
-				StartQuest(_currentQuest);
+				CurrentQuest = CurrentQuestLine.Quests[currentQuestIndex + 1];
+				StartQuest(CurrentQuest);
 			}
 			else
 			{
 				// Quest line completed
+				QuestLineCompleted?.Invoke(CurrentQuestLine);
 				_logger.Debug("Quest line completed.");
 			}
 		}
