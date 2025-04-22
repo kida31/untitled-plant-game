@@ -96,6 +96,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 
 	private void SetAndResetDialogueBlock(DialogueResourceObject dialogue)
 	{
+		EventBus.Instance.OnEndDialogue(_currentDialogue);
 		_currentDialogue = dialogue;
 		OnDialogueBlockStarted?.Invoke(_currentDialogue);
 	}

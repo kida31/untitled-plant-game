@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_ofj7o"]
 script = ExtResource("3_xoehh")
-Description = "Talk to Godfrey"
+Description = "Talk to the old man"
 Task = SubResource("Resource_mcjio")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
