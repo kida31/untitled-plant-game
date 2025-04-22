@@ -1,9 +1,11 @@
 ﻿using System;
+using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Plants;
 
 namespace untitledplantgame.Quests;
 
+[GlobalClass]
 public partial class WateringTask : QuestTask
 {
 	public override bool IsCompleted => _isCompleted;
