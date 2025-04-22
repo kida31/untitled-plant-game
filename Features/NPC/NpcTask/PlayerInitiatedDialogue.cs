@@ -80,7 +80,7 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 			}
 			else
 			{
-				_routinePlanner.StartingRoutine.InterruptRoutine(); // The first routine gets instantly set as the last routine
+				_routinePlanner.StartingRoutine?.InterruptRoutine(); // The first routine gets instantly set as the last routine
 			}
 		}
 		

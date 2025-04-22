@@ -18,14 +18,14 @@ public partial class NpcRoutinePlanner : Node
 	public INpcTask ActiveTask;
 	public NpcRoutine LastRoutine; // Also saves the currently active Routine if there was no previous Routine.
 	public NpcRoutine StartingRoutine;
-	
+
 	private bool _startingRoutineSet;
 	private const int ScriptExecutionOrderDelay = 16;
 	private Logger _logger;
-	
+
 	public override void _Ready()
 	{
-		ExecuteAllRoutines(); 
+		ExecuteAllRoutines();
 		_logger = new Logger(this);
 	}
 
@@ -37,7 +37,7 @@ public partial class NpcRoutinePlanner : Node
 	{
 		return _npcExecutingRoutines;
 	}
-	
+
 	/*
 	 * Rider doesn't know this, but Routines are called precisely because they should be executed in a never ending loop.
 	 *
@@ -46,10 +46,17 @@ public partial class NpcRoutinePlanner : Node
 	private async void ExecuteAllRoutines()
 	{
 		await Task.Delay(ScriptExecutionOrderDelay);
+
+		if (_routines.Count <= 0)
+		{
+			ExecuteAllRoutines(); // Stop early
+			return;
+		}
+
 		_logger.Debug("Starting to execute the Npc's routines.");
 
 		var tasks = new List<Task>();
-		
+
 		foreach (var npcRoutine in _routines)
 		{
 			if (!_startingRoutineSet)
@@ -63,7 +70,7 @@ public partial class NpcRoutinePlanner : Node
 			{
 				npcRoutine.InitializeRoutine(this);
 			}
-			
+
 			tasks.Add(npcRoutine.ExecuteAllTasks());
 		}
 

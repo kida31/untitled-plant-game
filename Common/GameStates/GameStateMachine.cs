@@ -59,6 +59,8 @@ public partial class GameStateMachine : Node
 			_logger.Error("Instance already exists. Deleting this instance.");
 			QueueFree();
 		}
+		
+		StateChanged += HandleTransition;
 	}
 
 	/// <summary>
@@ -71,6 +73,24 @@ public partial class GameStateMachine : Node
 		_previousState = _currentState;
 		_currentState = newState;
 		StateChanged?.Invoke(_previousState, _currentState);
+	}
+	
+	/// <summary>
+	/// Handles transition between game states.
+	/// TODO: This is a temporary solution. Refactor if this gets more complex.
+	/// </summary>
+	/// <param name="prev"></param>
+	/// <param name="next"></param>
+	private static void HandleTransition(GameState prev, GameState next)
+	{
+		if(next != GameState.FreeRoam)
+		{
+			TimeController.Instance.Pause();
+		}
+		else
+		{
+			TimeController.Instance.Resume();
+		}
 	}
 
 	/// <summary>
