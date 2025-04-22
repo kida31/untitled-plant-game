@@ -43,8 +43,6 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="Weather" parent="." instance=ExtResource("7_nwxdh")]
-z_index = -1
-y_sort_enabled = true
 
 [node name="HouseMapScene" parent="." instance=ExtResource("10_t60bx")]
 position = Vector2(958, 1978)
