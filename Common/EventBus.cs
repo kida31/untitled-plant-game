@@ -208,14 +208,4 @@ public partial class EventBus : Node
 	{
 		BgmAreaChanged?.Invoke(area);
 	}
-	
-	// Quest Stuff
-	public event Action<QuestController> InitialiseQuest; 
-	
-	
-	
-	public void OnQuestInitialised(QuestController questController)
-	{
-		InitialiseQuest?.Invoke(questController);
-	}
 }

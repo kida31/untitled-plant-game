@@ -5,16 +5,16 @@ namespace untitledplantgame.Quests;
 
 public partial class QuestOverviewUI : Control
 {
-	[Export] private Label QuestTitleLabel;
-	[Export] private RichTextLabel QuestTaskLabel;
+	[Export] private Label _questTitleLabel;
+	[Export] private RichTextLabel _questTaskLabel;
 	
 	private QuestController _questController;
 	private readonly Logger _logger = new ("QuestOverviewUI");
-	private QuestLine _currentQuestLine;
 
 	public override void _Ready()
 	{
-		EventBus.Instance.InitialiseQuest += ConnectQuestUi;
+		ConnectQuestUi(QuestController.Instance);
+		_logger.Debug("QuestOverviewUI ready");
 	}
 
 	private void ConnectQuestUi(QuestController questController)
@@ -23,8 +23,15 @@ public partial class QuestOverviewUI : Control
 		_questController.QuestStarted += UpdateQuestTaskLabel;
 		_questController.QuestLineStarted += UpdateQuestTitleLabel;
 		_questController.QuestLineCompleted += OnQuestLineCompleted;
-		UpdateQuestTitleLabel(questController.CurrentQuestLine);
-		UpdateQuestTaskLabel(questController.CurrentQuest);
+		if (questController.CurrentQuestLine != null && questController.CurrentQuest != null)
+		{
+			UpdateQuestTitleLabel(questController.CurrentQuestLine);
+			UpdateQuestTaskLabel(questController.CurrentQuest);
+		}
+		else
+		{
+			_logger.Debug("No current quest line or quest");
+		}
 	}
 
 	private void OnQuestLineCompleted(QuestLine obj)
@@ -36,13 +43,13 @@ public partial class QuestOverviewUI : Control
 	private void UpdateQuestTaskLabel(Quest obj)
 	{
 		_logger.Debug("New Quest started: " + obj.Description);
-		QuestTaskLabel.Text = obj.Description;
+		_questTaskLabel.Text = obj.Description;
 	}
 	
 	private void UpdateQuestTitleLabel(QuestLine obj)
 	{
 		_logger.Debug("New Quest line started: " + obj.Name);
 		Visible = true;
-		QuestTitleLabel.Text = obj.Name;
+		_questTitleLabel.Text = obj.Name;
 	}
 }

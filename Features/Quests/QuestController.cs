@@ -14,7 +14,7 @@ public partial class QuestController : Node
 	public QuestLine CurrentQuestLine { get; private set; }
 	public Quest CurrentQuest { get; private set; }
 	
-	private static QuestController Instance { get; set; }
+	public static QuestController Instance { get; set; }
 	
 	private Logger _logger;
 
@@ -36,8 +36,9 @@ public partial class QuestController : Node
 			throw new Exception("There is no instance of EventBus");
 		}
 		
-		EventBus.Instance.OnQuestInitialised(this);
 		_logger.Debug("Initialised.");
+		
+		//TODO make this workaround cleaner
 		var resource = GD.Load<QuestLine>("res://Resources/Quest/TutorialQuest.tres");
 		StartQuestLine(resource);
 	}
