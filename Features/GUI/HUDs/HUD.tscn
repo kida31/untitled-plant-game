@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Features/Cycle/UI/ClockUI.tscn" id="1_313dl"]
 [ext_resource type="PackedScene" uid="uid://cme58rltegywh" path="res://Features/GUI/HUDs/BookButton.tscn" id="1_k0baw"]
 [ext_resource type="PackedScene" uid="uid://dblh2fmdokupl" path="res://Features/GUI/HUDs/Toolbelt/ToolbeltView.tscn" id="2_fhqom"]
-[ext_resource type="PackedScene" uid="uid://b6ilyhkudlstl" path="res://Scenes/QuestOverview.tscn" id="2_fnr3o"]
+[ext_resource type="PackedScene" uid="uid://b6ilyhkudlstl" path="res://Features/Quests/QuestOverview.tscn" id="2_fnr3o"]
 [ext_resource type="PackedScene" uid="uid://eadq6f41gik3" path="res://Features/GUI/HUDs/Resources/ResourcesHUD.tscn" id="3_h2wb2"]
 
 [node name="HUD" type="Control"]

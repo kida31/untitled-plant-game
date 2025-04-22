@@ -3,12 +3,10 @@
 [ext_resource type="Theme" uid="uid://dbk4arsk2qmin" path="res://Assets/DebugTheme.tres" id="1_4hf4m"]
 [ext_resource type="Script" uid="uid://cuviqqj5lt8th" path="res://Features/Quests/QuestOverviewUI.cs" id="1_c484v"]
 
-[node name="QuestOverview" type="Control" node_paths=PackedStringArray("QuestTitleLabel", "QuestTaskLabel")]
+[node name="QuestOverview" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_c484v")
-QuestTitleLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/QuestTitel")
-QuestTaskLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/QuestTask")
 metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
