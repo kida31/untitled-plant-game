@@ -3,6 +3,7 @@ using Godot;
 
 namespace untitledplantgame.Quests;
 
+[GlobalClass]
 public partial class GatherItemTask : QuestTask
 {
 	[Export] private string _itemId;

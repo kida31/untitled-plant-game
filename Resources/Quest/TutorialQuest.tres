@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="QuestLine" load_steps=7 format=3 uid="uid://cf5uvuk50hwl0"]
+[gd_resource type="Resource" script_class="QuestLine" load_steps=10 format=3 uid="uid://cf5uvuk50hwl0"]
 
 [ext_resource type="Script" uid="uid://bf7h6b05r58gu" path="res://Features/Quests/QuestLine.cs" id="1_55fyv"]
 [ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/TutorialDialogue.tres" id="1_rurbj"]
 [ext_resource type="Script" uid="uid://cgb70arkej80e" path="res://Features/Quests/Tasks/HaveDialogueTask.cs" id="2_tp27u"]
 [ext_resource type="Script" uid="uid://d4amaf4u1kl81" path="res://Features/Quests/Quest.cs" id="3_xoehh"]
+[ext_resource type="Script" uid="uid://ch0m0fjoa3bdl" path="res://Features/Quests/Tasks/GatherItemTask.cs" id="4_tp27u"]
 
 [sub_resource type="Resource" id="Resource_mcjio"]
 script = ExtResource("2_tp27u")
@@ -16,8 +17,20 @@ Description = "Talk to Godfrey"
 Task = SubResource("Resource_mcjio")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
+[sub_resource type="Resource" id="Resource_xoehh"]
+script = ExtResource("4_tp27u")
+_itemId = "chuberryFruit"
+_amount = 1
+metadata/_custom_type_script = "uid://ch0m0fjoa3bdl"
+
+[sub_resource type="Resource" id="Resource_jg8fa"]
+script = ExtResource("3_xoehh")
+Description = "Gather one Chuberry"
+Task = SubResource("Resource_xoehh")
+metadata/_custom_type_script = "uid://d4amaf4u1kl81"
+
 [resource]
 script = ExtResource("1_55fyv")
 Name = "New Horizon"
-Quests = Array[Object]([SubResource("Resource_ofj7o")])
+Quests = Array[Object]([SubResource("Resource_ofj7o"), SubResource("Resource_jg8fa")])
 metadata/_custom_type_script = "uid://bf7h6b05r58gu"
