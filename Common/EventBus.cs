@@ -216,5 +216,12 @@ public partial class EventBus : Node
 	public void OnWateredSoil(SoilTile obj)
 	{
 		WateredSoil?.Invoke(obj);
+	public event Action<Vector2> OnCameraMoveAndBack;
+
+	// Camera
+
+	public void MoveCameraAndBack(Vector2 cameraPosition)
+	{
+		OnCameraMoveAndBack?.Invoke(cameraPosition);
 	}
 }

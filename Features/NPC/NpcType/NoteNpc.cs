@@ -18,12 +18,14 @@ public partial class NoteNpc : Npc
 
 	private Npc _npcExecutingTheseTasks;
 	private Logger _logger;
+	private bool _isFirstTimeInteracted = true;
 	
 	public override void _Ready()
 	{
 		base._Ready();
 		_logger = new Logger(this);
-		_npcPlayerInteraction.InteractionEvent += SecretNoteToPlayer;
+		_npcPlayerInteraction.InteractionEvent += OnFirstTimeInteracted;
+		//_npcPlayerInteraction.InteractionEvent += SecretNoteToPlayer;
 	}
 	
 	public override string GetNpcName()
@@ -41,5 +43,11 @@ public partial class NoteNpc : Npc
 		var currentDayMinutes = totalMinutes % (24 * 60);
 
 		EventBus.Instance.InvokeStartingDialogue(currentDayMinutes is <= 1380 and >= 300 ? _normalDialogue : _nightDialogue);
+	}
+
+	private void OnFirstTimeInteracted()
+	{
+		EventBus.Instance.InvokeStartingDialogue(_isFirstTimeInteracted ? _normalDialogue : _nightDialogue);
+		_isFirstTimeInteracted = false;
 	}
 }
