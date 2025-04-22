@@ -27,7 +27,8 @@ public partial class HaveDialogueTask : QuestTask
 		}
 
 		_isCompleted = true;
-			
+		
+		EventBus.Instance.EndDialogue -= DialogueEnded;
 		_logger.Debug("Dialogue ended. Quest is completed");
 		TaskCompleted?.Invoke(this);
 	}

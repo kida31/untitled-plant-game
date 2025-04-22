@@ -35,6 +35,8 @@ public partial class GatherItemTask : QuestTask
 		}
 
 		_isCompleted = true;
+		
+		EventBus.Instance.OnItemAddedToInventory -= OnItemAddedToInventory;
 		TaskCompleted?.Invoke(this);
 
 	}

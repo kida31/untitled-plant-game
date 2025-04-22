@@ -20,6 +20,8 @@ public partial class WateringTask : QuestTask
 	private void OnWateredSoil(SoilTile obj)
 	{
 		_isCompleted = true;
+		
+		EventBus.Instance.WateredSoil -= OnWateredSoil;
 		TaskCompleted?.Invoke(this);
 	}
 }
