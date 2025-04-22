@@ -208,4 +208,13 @@ public partial class EventBus : Node
 	{
 		BgmAreaChanged?.Invoke(area);
 	}
+	
+	// Tool Events
+	
+	public event Action<SoilTile> WateredSoil;
+
+	public void OnWateredSoil(SoilTile obj)
+	{
+		WateredSoil?.Invoke(obj);
+	}
 }

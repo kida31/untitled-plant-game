@@ -1,5 +1,7 @@
 ﻿using System;
 using Godot;
+using untitledplantgame.Common;
+using untitledplantgame.Inventory;
 
 namespace untitledplantgame.Quests;
 
@@ -12,9 +14,25 @@ public partial class GatherItemTask : QuestTask
 	public override bool IsCompleted => _isCompleted;
 	public override event Action<QuestTask> TaskCompleted;
 	private bool _isCompleted = false;
+	private int _gatheredAmount = 0;
 	
 	public GatherItemTask()
 	{
+		EventBus.Instance.OnItemAddedToInventory += OnItemAddedToInventory;
+	}
+
+	private void OnItemAddedToInventory(IItemStack obj)
+	{
+		if (obj.Id != _itemId)
+		{
+			return;
+		}
+		
+		_gatheredAmount += obj.Amount;
+		if (_gatheredAmount >= _amount)
+		{
+			_isCompleted = true;
+		}
 		
 	}
 }

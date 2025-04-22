@@ -23,7 +23,9 @@ anchor_right = 0.129688
 anchor_bottom = 0.147222
 
 [node name="QuestOverview" parent="." instance=ExtResource("2_fnr3o")]
+offset_left = 8.0
 offset_top = 60.0
+offset_right = 8.0
 offset_bottom = 60.0
 
 [node name="BookButton" parent="." instance=ExtResource("1_k0baw")]
