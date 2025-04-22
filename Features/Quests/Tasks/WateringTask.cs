@@ -10,7 +10,6 @@ public partial class WateringTask : QuestTask
 {
 	public override bool IsCompleted => _isCompleted;
 	public override event Action<QuestTask> TaskCompleted;
-	
 	private bool _isCompleted = false;
 	
 	public WateringTask()
@@ -21,5 +20,6 @@ public partial class WateringTask : QuestTask
 	private void OnWateredSoil(SoilTile obj)
 	{
 		_isCompleted = true;
+		TaskCompleted?.Invoke(this);
 	}
 }

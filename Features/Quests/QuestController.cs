@@ -66,6 +66,8 @@ public partial class QuestController : Node
 		//Check if the quest is completed
 		if (obj == QuestProgression.Completed)
 		{
+			// Unsubscribe from the quest progression event
+			CurrentQuest.QuestProgressionChanged -= OnQuestProgressionChanged;
 			// Check if there are more quests in the quest line
 			var currentQuestIndex = CurrentQuestLine.Quests.IndexOf(CurrentQuest);
 			if (currentQuestIndex < CurrentQuestLine.Quests.Count - 1)

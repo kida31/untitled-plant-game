@@ -29,10 +29,13 @@ public partial class GatherItemTask : QuestTask
 		}
 		
 		_gatheredAmount += obj.Amount;
-		if (_gatheredAmount >= _amount)
+		if (_gatheredAmount < _amount)
 		{
-			_isCompleted = true;
+			return;
 		}
-		
+
+		_isCompleted = true;
+		TaskCompleted?.Invoke(this);
+
 	}
 }
