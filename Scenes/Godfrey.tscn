@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://cr2712p8tviur"]
+[gd_scene load_steps=39 format=3 uid="uid://cr2712p8tviur"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_ljkvf"]
+[ext_resource type="Texture2D" uid="uid://cjqcdj3vldfpd" path="res://Assets/Emotes/Exclamation-Sheet.png" id="2_41b8x"]
 [ext_resource type="Texture2D" uid="uid://6vwbt72gbl2k" path="res://Assets/Characters/Godfrey/Godfrey_idle-Sheet.png" id="2_ujoa5"]
 [ext_resource type="Script" uid="uid://b3fhofujtjc6t" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_c2lkg"]
 [ext_resource type="Script" uid="uid://y0sojouaim1y" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="6_8afnb"]
@@ -11,6 +12,28 @@
 [ext_resource type="Texture2D" uid="uid://60scb681f532" path="res://Assets/SpeechBubbles/Speechbubble_PanPan.png" id="12_f2qkf"]
 [ext_resource type="Resource" uid="uid://ds2a5jertu4k4" path="res://Resources/Dialogue/Tutorial/TutorialDialogueEnd.tres" id="12_tpypq"]
 [ext_resource type="Script" uid="uid://ctvwp85ad5ufx" path="res://Features/ProximityCollision/SpeechBubble.cs" id="13_svws1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpbyv"]
+atlas = ExtResource("2_41b8x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g84je"]
+atlas = ExtResource("2_41b8x")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gl5p7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpbyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g84je")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4k6y"]
 atlas = ExtResource("2_ujoa5")
@@ -198,21 +221,29 @@ _disableMovement = true
 _routinePlanner = NodePath("GodfreyRandomWalk")
 _overWorldSprite = NodePath("CharacterSprite2D")
 
-[node name="CharacterSprite2D" parent="." index="1"]
+[node name="Exclamation" type="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(14, -30)
+sprite_frames = SubResource("SpriteFrames_gl5p7")
+frame = 1
+frame_progress = 0.882467
+speed_scale = 0.5
+
+[node name="CharacterSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_ts0yk")
 animation = &"idle"
 frame = 15
 frame_progress = 0.347857
 
-[node name="GodfreyRandomWalk" type="Node" parent="." index="3" node_paths=PackedStringArray("_routines")]
+[node name="GodfreyRandomWalk" type="Node" parent="." index="4" node_paths=PackedStringArray("_routines")]
 script = ExtResource("3_c2lkg")
 _routines = []
 
-[node name="PlayerInitiatedDialogue" type="Node" parent="GodfreyRandomWalk" index="0"]
+[node name="PlayerInitiatedDialogue" type="Node" parent="GodfreyRandomWalk" index="0" node_paths=PackedStringArray("_hasDialogueIndicator")]
 script = ExtResource("6_8afnb")
 _dialogueResourceObjects = Array[Object]([ExtResource("7_v4eb2"), ExtResource("9_5eoqm"), ExtResource("10_l6vhi"), ExtResource("11_owjbx"), ExtResource("12_tpypq")])
+_hasDialogueIndicator = NodePath("../../Exclamation")
 
-[node name="SpeechBubble" type="Sprite2D" parent="." index="4"]
+[node name="SpeechBubble" type="Sprite2D" parent="." index="5"]
 visible = false
 position = Vector2(41, -56)
 texture = ExtResource("12_f2qkf")

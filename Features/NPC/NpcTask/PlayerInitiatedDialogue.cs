@@ -18,6 +18,7 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 {
 	[Export] private Array<DialogueResourceObject> _dialogueResourceObjects;
 	[Export] private bool _randomOrderOfDialogueLines;
+	[Export] private AnimatedSprite2D _hasDialogueIndicator;
 
 	private int _amountOfDialogueLinesUsed;
 	private bool DialogueFinished { get; set; }
@@ -34,6 +35,7 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 		
 		_npcInteraction = (NpcPlayerInteraction) _routinePlanner.GetParent().FindChild("InteractionNode");
 		_npcInteraction.InteractionEvent += StartDialogue;
+		_hasDialogueIndicator?.Play();
 	}
 
 	public NpcRoutinePlanner GetRoutinePlanner()
@@ -50,6 +52,10 @@ public partial class PlayerInitiatedDialogue : Node, ITaskInterruption
 	// Essentially only differentiates between "a Task is active" and "no Task is active".
 	private void StartDialogue()
 	{
+		if (_hasDialogueIndicator != null)
+		{
+			_hasDialogueIndicator.Visible = false;
+		}
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
 
 		if (_randomOrderOfDialogueLines)
