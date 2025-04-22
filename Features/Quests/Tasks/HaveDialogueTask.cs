@@ -12,7 +12,7 @@ public partial class HaveDialogueTask : QuestTask
 	public override bool IsCompleted => _isCompleted;
 	public override event Action<QuestTask> TaskCompleted;
 	private bool _isCompleted = false;
-	private readonly Logger _logger = new ("Quest Task");
+	private readonly Logger _logger = new ("QuestTask");
 
 	public HaveDialogueTask()
 	{
