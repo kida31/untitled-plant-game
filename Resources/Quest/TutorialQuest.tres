@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="QuestLine" load_steps=9 format=3 uid="uid://c2t30hvhvqgx0"]
+[gd_resource type="Resource" script_class="QuestLine" load_steps=16 format=3 uid="uid://c2t30hvhvqgx0"]
 
 [ext_resource type="Script" uid="uid://bf7h6b05r58gu" path="res://Features/Quests/QuestLine.cs" id="1_55fyv"]
 [ext_resource type="Script" uid="uid://cgb70arkej80e" path="res://Features/Quests/Tasks/HaveDialogueTask.cs" id="2_tp27u"]
+[ext_resource type="Resource" uid="uid://cvmvno2vfx4ch" path="res://Resources/Dialogue/Tutorial/HarvestingTutorial.tres" id="3_mcjio"]
 [ext_resource type="Script" uid="uid://d4amaf4u1kl81" path="res://Features/Quests/Quest.cs" id="3_xoehh"]
+[ext_resource type="Script" uid="uid://ch0m0fjoa3bdl" path="res://Features/Quests/Tasks/GatherItemTask.cs" id="4_tp27u"]
 [ext_resource type="Script" uid="uid://dw263eqak4hgo" path="res://Features/Quests/Tasks/WateringTask.cs" id="4_xoehh"]
+[ext_resource type="Resource" uid="uid://dopykccwoa5os" path="res://Resources/Dialogue/Tutorial/VendingMachineTutorialDialogue.tres" id="7_jg8fa"]
 
 [sub_resource type="Resource" id="Resource_au6ku"]
 script = ExtResource("4_xoehh")
@@ -17,6 +20,7 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [sub_resource type="Resource" id="Resource_tp27u"]
 script = ExtResource("2_tp27u")
+_dialogue = ExtResource("3_mcjio")
 metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_xoehh"]
@@ -25,8 +29,31 @@ Description = "Rede mit Gottfried"
 Task = SubResource("Resource_tp27u")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
+[sub_resource type="Resource" id="Resource_ofj7o"]
+script = ExtResource("4_tp27u")
+_itemId = "chuberryFruit"
+_amount = 1
+metadata/_custom_type_script = "uid://ch0m0fjoa3bdl"
+
+[sub_resource type="Resource" id="Resource_jg8fa"]
+script = ExtResource("3_xoehh")
+Description = "Sammle eine Chuberry"
+Task = SubResource("Resource_ofj7o")
+metadata/_custom_type_script = "uid://d4amaf4u1kl81"
+
+[sub_resource type="Resource" id="Resource_brxp5"]
+script = ExtResource("2_tp27u")
+_dialogue = ExtResource("7_jg8fa")
+metadata/_custom_type_script = "uid://cgb70arkej80e"
+
+[sub_resource type="Resource" id="Resource_t841y"]
+script = ExtResource("3_xoehh")
+Description = "Bringe die Frucht zu Gottfried"
+Task = SubResource("Resource_brxp5")
+metadata/_custom_type_script = "uid://d4amaf4u1kl81"
+
 [resource]
 script = ExtResource("1_55fyv")
 Name = "Pflanzen Anfänger"
-Quests = Array[Object]([SubResource("Resource_rurbj"), SubResource("Resource_xoehh")])
+Quests = Array[Object]([SubResource("Resource_rurbj"), SubResource("Resource_xoehh"), SubResource("Resource_jg8fa"), SubResource("Resource_t841y")])
 metadata/_custom_type_script = "uid://bf7h6b05r58gu"
