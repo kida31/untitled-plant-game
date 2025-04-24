@@ -105,6 +105,7 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 		_smashableTexture.Visible = false;
 		if (_lineEnumerator.MoveNext()) //End of Line
 		{
+			_smashableTexture.Visible = true;
 			_logger.Debug("Showing next line.");
 			ShowDialogueLine(_lineEnumerator.Current);
 			return;
