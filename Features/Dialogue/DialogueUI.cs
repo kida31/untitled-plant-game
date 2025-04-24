@@ -14,7 +14,7 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 	[Export] private RichTextLabel _dialogueTextLabel;
 	[Export] private TextureRect _sprite;
 	[Export] private BoxContainer _responseContainer;
-	[Export] private TextureRect _smashableTexture;
+	[Export] private TextureRect _nextLineIcon;
 
 	private DialogueResourceObject _currentDialogue;
 	private IEnumerator<DialogueLine> _lineEnumerator;
@@ -37,11 +37,21 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 		_skipCooldownTimer.OneShot = true;
 		_dialogueAnimation = new DialogueAnimation();
 		AddChild(_dialogueAnimation);
+		_dialogueAnimation.AnimationFinished += (finished) =>
+		{
+			if (finished)
+			{
+				_nextLineIcon.Visible = true;
+			}
+		};
 
 		//Events
 		//EventBus.Instance.OnNpcStartDialogue += ChangeToIdentity;
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
-		_skipCooldownTimer.Timeout += () => _smashable = true;
+		_skipCooldownTimer.Timeout += () =>
+		{
+			_smashable = true;
+		};
 	}
 
 	public override void _Input(InputEvent @event)
@@ -88,7 +98,6 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 
 		if (!_smashable)
 		{
-			_smashableTexture.Visible = true;
 			return;
 		}
 		
@@ -102,10 +111,9 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 		}
 
 		_smashable = true;
-		_smashableTexture.Visible = false;
+		_nextLineIcon.Visible = false;
 		if (_lineEnumerator.MoveNext()) //End of Line
 		{
-			_smashableTexture.Visible = true;
 			_logger.Debug("Showing next line.");
 			ShowDialogueLine(_lineEnumerator.Current);
 			return;
@@ -118,7 +126,6 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 	//Displays dialogue on the screen
 	private void ShowDialogueLine(DialogueLine line)
 	{
-		_smashableTexture.Visible = false;
 		switch (line)
 		{
 			case null:
@@ -204,7 +211,7 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 	{
 		_dialogueAnimation.StopAnimation();
 		_smashable = false;
-		_smashableTexture.Visible = true;
+		_nextLineIcon.Visible = true;
 		_skipCooldownTimer.Start(_waitForSeconds);
 	}
 

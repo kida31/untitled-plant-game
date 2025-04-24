@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]
 [ext_resource type="Texture2D" uid="uid://bac6wscrptqnf" path="res://Assets/UI/chubby_arrow.png" id="5_m81md"]
 
-[node name="DialogueView" type="Control" node_paths=PackedStringArray("_nameLabel", "_dialogueTextLabel", "_sprite", "_responseContainer", "_smashableTexture")]
+[node name="DialogueView" type="Control" node_paths=PackedStringArray("_nameLabel", "_dialogueTextLabel", "_sprite", "_responseContainer", "_nextLineIcon")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ _nameLabel = NodePath("NameDiv/MarginContainer/Name")
 _dialogueTextLabel = NodePath("DialogueField/MarginContainer/DialogueText")
 _sprite = NodePath("Portrait")
 _responseContainer = NodePath("Responses")
-_smashableTexture = NodePath("Smashable")
+_nextLineIcon = NodePath("ChubbyArrow")
 
 [node name="Portrait" type="TextureRect" parent="."]
 texture_filter = 1
@@ -126,7 +126,7 @@ fit_content = true
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Smashable" type="TextureRect" parent="."]
+[node name="ChubbyArrow" type="TextureRect" parent="."]
 visible = false
 offset_left = 553.0
 offset_top = 309.0
