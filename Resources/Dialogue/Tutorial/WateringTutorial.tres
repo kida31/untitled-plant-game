@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=16 format=3 uid="uid://doio1ea88264e"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=17 format=3 uid="uid://doio1ea88264e"]
 
 [ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="1_qldir"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_pnq61"]
@@ -9,11 +9,18 @@
 [ext_resource type="Resource" uid="uid://c2t30hvhvqgx0" path="res://Resources/Quest/TutorialQuest.tres" id="6_5fiqd"]
 [ext_resource type="Script" uid="uid://wieplhq747d3" path="res://Features/Dialogue/Events/StartQuest.cs" id="7_ndrcn"]
 
+[sub_resource type="Resource" id="Resource_5fiqd"]
+script = ExtResource("2_pnq61")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("4_5fiqd")
+dialogueText = "Das wichtigste zuerst."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
 [sub_resource type="Resource" id="Resource_hhqf7"]
 script = ExtResource("2_pnq61")
 speakerName = "Wasserkanne"
 DialogueExpression = ExtResource("1_qldir")
-dialogueText = "Mit dieser Wasserkanne kannst du Pflanzen begießen."
+dialogueText = "Das hier ist eine [color=red]Wasserkanne[/color] . Mit dieser Wasserkanne kannst du Pflanzen begießen."
 
 [sub_resource type="Resource" id="Resource_wfp6x"]
 script = ExtResource("2_pnq61")
@@ -58,5 +65,5 @@ metadata/_custom_type_script = "uid://wieplhq747d3"
 [resource]
 script = ExtResource("5_ndrcn")
 _dialogueId = "Tutorial1"
-_dialogueText = Array[Object]([SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_rmg08"), SubResource("Resource_ebqr8"), SubResource("Resource_4o3rp")])
+_dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_rmg08"), SubResource("Resource_ebqr8"), SubResource("Resource_4o3rp")])
 _responses = null
