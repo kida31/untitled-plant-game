@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://dpwxb4jpi8ra1" path="res://Features/NPC/NpcTask/TriggerVendingMachineResponse.cs" id="6_7g8bw"]
 [ext_resource type="PackedScene" uid="uid://bwxru3xolfihy" path="res://Features/NPC/NpcTask/TalkToPlayerTask.tscn" id="6_fwegf"]
 [ext_resource type="Script" uid="uid://y0sojouaim1y" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="7_bhhsc"]
-[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/Tutorial/Intro2.tres" id="8_2olw0"]
+[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/Tutorial/Intro3.tres" id="8_2olw0"]
 
 [node name="NpcTestingScenes" type="Node2D"]
 

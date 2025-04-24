@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=13 format=3 uid="uid://doio1ea88264e"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=16 format=3 uid="uid://doio1ea88264e"]
 
 [ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="1_qldir"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_pnq61"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="4_5fiqd"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_ndrcn"]
 [ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="5_pnq61"]
+[ext_resource type="Resource" uid="uid://c2t30hvhvqgx0" path="res://Resources/Quest/TutorialQuest.tres" id="6_5fiqd"]
+[ext_resource type="Script" uid="uid://wieplhq747d3" path="res://Features/Dialogue/Events/StartQuest.cs" id="7_ndrcn"]
 
 [sub_resource type="Resource" id="Resource_hhqf7"]
 script = ExtResource("2_pnq61")
@@ -46,8 +48,15 @@ speakerName = ""
 dialogueText = ""
 metadata/_custom_type_script = "uid://bc35ywlebpmy1"
 
+[sub_resource type="Resource" id="Resource_4o3rp"]
+script = ExtResource("7_ndrcn")
+QuestLine = ExtResource("6_5fiqd")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://wieplhq747d3"
+
 [resource]
 script = ExtResource("5_ndrcn")
 _dialogueId = "Tutorial1"
-_dialogueText = Array[Object]([SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_rmg08"), SubResource("Resource_ebqr8")])
+_dialogueText = Array[Object]([SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_rmg08"), SubResource("Resource_ebqr8"), SubResource("Resource_4o3rp")])
 _responses = null

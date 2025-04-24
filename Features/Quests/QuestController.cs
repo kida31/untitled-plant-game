@@ -39,11 +39,11 @@ public partial class QuestController : Node
 		_logger.Debug("Initialised.");
 		
 		//TODO make this workaround cleaner
-		var resource = GD.Load<QuestLine>("res://Resources/Quest/TutorialQuest.tres");
+		var resource = GD.Load<QuestLine>("res://Resources/Quest/IntroQuest.tres");
 		StartQuestLine(resource);
 	}
 	
-	private void StartQuestLine(QuestLine questLine)
+	public void StartQuestLine(QuestLine questLine)
 	{
 		CurrentQuestLine = questLine;
 		CurrentQuest = CurrentQuestLine.Quests[0];

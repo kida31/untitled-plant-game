@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_i1gr5"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_yotbo"]
 [ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_b7jqa"]
-[ext_resource type="Resource" uid="uid://cnfc6mk74nwtr" path="res://Resources/Dialogue/Tutorial/Intro3.tres" id="4_i1gr5"]
+[ext_resource type="Resource" uid="uid://cnfc6mk74nwtr" path="res://Resources/Dialogue/Tutorial/Intro2.tres" id="4_i1gr5"]
 
 [sub_resource type="Resource" id="Resource_82d0x"]
 script = ExtResource("1_yotbo")
