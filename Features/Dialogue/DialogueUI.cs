@@ -118,6 +118,7 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 	//Displays dialogue on the screen
 	private void ShowDialogueLine(DialogueLine line)
 	{
+		_smashableTexture.Visible = false;
 		switch (line)
 		{
 			case null:
