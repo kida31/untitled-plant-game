@@ -59,6 +59,7 @@ public partial class Player : CharacterBody2D
 		var rand = new RandomStockGenerator();
 		Inventory = new(20);
 		Inventory.InventoryChanged += () => { EventBus.Instance.PlayerInventoryChanged(this, Inventory); };
+		Inventory.ItemAdded += EventBus.Instance.ItemAddedToInventory;
 		Inventory.AddItem(ItemDatabase.Instance.CreateItemStack("rubber_duck")); // VERY IMPORTANT
 	}
 
@@ -71,6 +72,7 @@ public partial class Player : CharacterBody2D
 		}
 
 		var leftovers = Inventory.AddItem(obj);
+		
 		if (leftovers.Count > 0)
 		{
 			_logger.Warn("Inventory full, could not pick up all items. This is not handled");

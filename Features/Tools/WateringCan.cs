@@ -39,6 +39,10 @@ public partial class WateringCan : Tool
 		if (_isBottomless)
 		{
 			closestSoil.AddWater(_wateringAmount);
+			if(closestSoil is SoilTile soil)
+			{
+				EventBus.Instance.OnWateredSoil(soil);
+			}
 		}
 		else
 		{

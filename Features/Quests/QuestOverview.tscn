@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6ilyhkudlstl"]
+
+[ext_resource type="Script" uid="uid://cuviqqj5lt8th" path="res://Features/Quests/QuestOverviewUI.cs" id="1_yso0y"]
+[ext_resource type="Theme" uid="uid://dbk4arsk2qmin" path="res://Assets/DebugTheme.tres" id="2_4aa8r"]
+
+[node name="QuestOverview" type="Control" node_paths=PackedStringArray("_questTitleLabel", "_questTaskLabel")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yso0y")
+_questTitleLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/QuestTitel")
+_questTaskLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/QuestTask")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 99.0
+offset_bottom = 60.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="QuestTitel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("2_4aa8r")
+text = "QUEST TITEL"
+
+[node name="QuestTask" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_4aa8r")
+bbcode_enabled = true
+text = "Current Task to be done yada yada bla bla bla"
+fit_content = true
+scroll_active = false
