@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=6 format=3 uid="uid://dmqvc6l7flvmo"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=6 format=3 uid="uid://ccicrs0jbgyl6"]
 
 [ext_resource type="Texture2D" uid="uid://dutej8e00ofqq" path="res://Assets/Overworld/Garden/Sign_Tawas.png" id="1_muwls"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_3uca0"]
@@ -14,7 +14,7 @@ dialogueText = "Du betrittst jetzt Tawas, die Stadt der Fischersleut und der die
 script = ExtResource("2_3uca0")
 speakerName = "Schild"
 DialogueExpression = ExtResource("1_muwls")
-dialogueText = "Aber eigentlich gibt es kein Tawas, denn de Entwickler sind zu überarbeitet um auch noch eine Stadt zu kreieren."
+dialogueText = "Aber eigentlich gibt es kein Tawas, denn die Entwickler sind zu überarbeitet um auch noch eine Stadt zu kreieren."
 
 [resource]
 script = ExtResource("3_d8dpp")

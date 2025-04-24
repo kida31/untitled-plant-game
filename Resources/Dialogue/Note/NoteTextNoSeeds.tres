@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=7 format=3 uid="uid://1ik2r0n5kwyc"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://1ik2r0n5kwyc"]
 
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_6mop4"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_ypeh4"]
@@ -12,13 +12,13 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 [sub_resource type="Resource" id="Resource_6f3q6"]
 script = ExtResource("1_6mop4")
 speakerName = "Laya"
-dialogueText = "\"Menial jobs like this are harder than they seems at first.\""
+dialogueText = "\"Menial jobs like this are harder than they seem at first.\""
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_35ptc"]
 script = ExtResource("1_6mop4")
 speakerName = "Laya"
-dialogueText = "\"How ever do I am sure that you will do well.\""
+dialogueText = "\"How ever  I am sure that you will do well.\""
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_uc2lt"]
@@ -27,9 +27,15 @@ speakerName = "Laya"
 dialogueText = "\"Having these additional seeds should make your life easier\""
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
+[sub_resource type="Resource" id="Resource_6mop4"]
+script = ExtResource("1_6mop4")
+speakerName = "Laya"
+dialogueText = "I have already collected these seeds."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
 [resource]
 script = ExtResource("2_ypeh4")
 _dialogueId = ""
-_dialogueText = Array[Object]([SubResource("Resource_ikaoc"), SubResource("Resource_6f3q6"), SubResource("Resource_35ptc"), SubResource("Resource_uc2lt")])
+_dialogueText = Array[Object]([SubResource("Resource_ikaoc"), SubResource("Resource_6f3q6"), SubResource("Resource_35ptc"), SubResource("Resource_uc2lt"), SubResource("Resource_6mop4")])
 _responses = null
 metadata/_custom_type_script = "uid://c5x800n31tvgq"

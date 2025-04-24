@@ -19,13 +19,13 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 [sub_resource type="Resource" id="Resource_6f3q6"]
 script = ExtResource("1_fdw44")
 speakerName = "Laya"
-dialogueText = "\"Menial jobs like this are harder than they seems at first.\""
+dialogueText = "\"Menial jobs like this are harder than they seem at first.\""
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_35ptc"]
 script = ExtResource("1_fdw44")
 speakerName = "Laya"
-dialogueText = "\"How ever do I am sure that you will do well.\""
+dialogueText = "\"How ever I am sure that you will do well.\""
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_uc2lt"]

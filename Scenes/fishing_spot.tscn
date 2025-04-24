@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b3fhofujtjc6t" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_6wmsp"]
 [ext_resource type="Script" uid="uid://kbkbhi8c3dfo" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_7knl4"]
 [ext_resource type="Script" uid="uid://bmw8ewhyr3j52" path="res://Features/NPC/NpcTask/TalkToPlayerTask.cs" id="5_0xiss"]
-[ext_resource type="Resource" uid="uid://bjt3gr4bginaw" path="res://Resources/Dialogue/fishing_spot.tres" id="7_lpqtb"]
+[ext_resource type="Resource" uid="uid://bjt3gr4bginaw" path="res://Resources/Dialogue/Pier/fishing_spot.tres" id="7_lpqtb"]
 [ext_resource type="Texture2D" uid="uid://dcuof8xjg3ele" path="res://Assets/Tools/fishingRod.png" id="7_nmuuj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dk4m0"]

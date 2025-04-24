@@ -10,6 +10,6 @@ dialogueText = "Sorry! Out of stock!"
 
 [resource]
 script = ExtResource("2_gvsbu")
-_dialogueId = "seed_boy_res_yes"
+_dialogueId = "seed_boy_no_stock"
 _dialogueText = Array[Object]([SubResource("Resource_0mdii")])
 _responses = null

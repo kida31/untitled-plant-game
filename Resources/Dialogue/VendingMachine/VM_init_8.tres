@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://xlolghbobiln"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://bk2yfpied0u88"]
 
 [ext_resource type="Texture2D" uid="uid://bicv1fu7r5w4n" path="res://Assets/Characters/VMsan/vendingMachinePortrait.png" id="1_pbk71"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_y57xb"]
@@ -10,13 +10,13 @@
 script = ExtResource("1_y57xb")
 speakerName = "Vending Machine"
 DialogueExpression = ExtResource("1_pbk71")
-dialogueText = "I think it’s good to have medicine available at all times."
+dialogueText = "Now that you’re here, I’m finally useful again."
 
 [sub_resource type="Resource" id="Resource_bf2ec"]
 script = ExtResource("1_y57xb")
 speakerName = "Vending Machine"
 DialogueExpression = ExtResource("1_pbk71")
-dialogueText = "Do you want to sell some?"
+dialogueText = "Do you want to sell some medicine?"
 
 [sub_resource type="Resource" id="Resource_g0300"]
 script = ExtResource("2_0h6f5")
