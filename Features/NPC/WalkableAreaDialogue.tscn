@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ca0c7es1l4oqo" path="res://Features/NPC/WalkableAreaDialogue.cs" id="1_bbpvy"]
 [ext_resource type="Resource" uid="uid://byh3dsgfr7x57" path="res://Resources/Dialogue/Bed/GoToSleep.tres" id="2_iprjn"]
-[ext_resource type="Texture2D" uid="uid://4cfy612ib68k" path="res://Assets/Overworld/House/bed.png" id="3_y0ka7"]
+[ext_resource type="Texture2D" uid="uid://bq0p5sgqotkro" path="res://Assets/Overworld/House/bed_better.png" id="3_3uoqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5sl4"]
 size = Vector2(21.5, 10.6)
@@ -12,8 +12,8 @@ script = ExtResource("1_bbpvy")
 _dialogueResourceObject = ExtResource("2_iprjn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(31, 6)
-texture = ExtResource("3_y0ka7")
+position = Vector2(8, 18)
+texture = ExtResource("3_3uoqu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, -2.5)
