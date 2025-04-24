@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=14 format=3 uid="uid://bod2ukhcoo74l"]
+
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_8q1e3"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_87vtf"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_i1gr5"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_yotbo"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_b7jqa"]
+[ext_resource type="Resource" uid="uid://cnfc6mk74nwtr" path="res://Resources/Dialogue/Tutorial/Intro3.tres" id="4_i1gr5"]
+
+[sub_resource type="Resource" id="Resource_82d0x"]
+script = ExtResource("1_yotbo")
+speakerName = "???"
+DialogueExpression = ExtResource("1_i1gr5")
+dialogueText = "Oh, Hallo!"
+
+[sub_resource type="Resource" id="Resource_j1jl0"]
+script = ExtResource("1_yotbo")
+speakerName = "???"
+DialogueExpression = ExtResource("1_i1gr5")
+dialogueText = "Du scheinst ein neues Gesicht hier zu sein."
+
+[sub_resource type="Resource" id="Resource_06d51"]
+script = ExtResource("1_yotbo")
+speakerName = "???"
+DialogueExpression = ExtResource("1_i1gr5")
+dialogueText = "Ich habe schon lange keine neuen Personen in dieser Gegend gesehen."
+
+[sub_resource type="Resource" id="Resource_g1ywp"]
+script = ExtResource("1_yotbo")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_8q1e3")
+dialogueText = "Es freut mich natürlich dich kennenzulernen. Ich bin [b]Gottfried[/b]. Der Priester der Stadt."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_dalar"]
+script = ExtResource("1_yotbo")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_i1gr5")
+dialogueText = "Darf ich fragen wer du bist?"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_dkqhy"]
+script = ExtResource("3_b7jqa")
+_responseButton = "Laya."
+_responseDialogue = ExtResource("4_i1gr5")
+
+[sub_resource type="Resource" id="Resource_3h1qg"]
+script = ExtResource("3_b7jqa")
+_responseButton = "Ich bin Laya!"
+_responseDialogue = ExtResource("4_i1gr5")
+
+[resource]
+script = ExtResource("1_87vtf")
+_dialogueId = "Tutorial1"
+_dialogueText = Array[Object]([SubResource("Resource_82d0x"), SubResource("Resource_j1jl0"), SubResource("Resource_06d51"), SubResource("Resource_g1ywp"), SubResource("Resource_dalar")])
+_responses = Array[Object]([SubResource("Resource_dkqhy"), SubResource("Resource_3h1qg")])

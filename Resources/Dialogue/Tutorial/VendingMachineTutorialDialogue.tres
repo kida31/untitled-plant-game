@@ -50,6 +50,6 @@ dialogueText = "Best not to anger them, right? First impressions and all that…
 
 [resource]
 script = ExtResource("1_hsvq2")
-_dialogueId = "gottfriedVending"
+_dialogueId = "Tutorial5"
 _dialogueText = Array[Object]([SubResource("Resource_iey8o"), SubResource("Resource_wieva"), SubResource("Resource_w4rvn"), SubResource("Resource_tapf8"), SubResource("Resource_cyjdd"), SubResource("Resource_p8ncf"), SubResource("Resource_gojdt")])
 _responses = null

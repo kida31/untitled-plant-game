@@ -37,6 +37,6 @@ dialogueText = "Just press A when you're standing in front of him and he’ll ta
 
 [resource]
 script = ExtResource("1_86yub")
-_dialogueId = "gottfriedSeeding"
+_dialogueId = "Tutorial4"
 _dialogueText = Array[Object]([SubResource("Resource_sr1yf"), SubResource("Resource_g71vq"), SubResource("Resource_sqv14"), SubResource("Resource_n5nrh"), SubResource("Resource_t4mgt")])
 _responses = null

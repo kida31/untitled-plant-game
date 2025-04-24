@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=13 format=3 uid="uid://doio1ea88264e"]
+
+[ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="1_qldir"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_pnq61"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="3_ebqr8"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="4_5fiqd"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_ndrcn"]
+[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="5_pnq61"]
+
+[sub_resource type="Resource" id="Resource_hhqf7"]
+script = ExtResource("2_pnq61")
+speakerName = "Wasserkanne"
+DialogueExpression = ExtResource("1_qldir")
+dialogueText = "Mit dieser Wasserkanne kannst du Pflanzen begießen."
+
+[sub_resource type="Resource" id="Resource_wfp6x"]
+script = ExtResource("2_pnq61")
+speakerName = "Wasserkanne"
+DialogueExpression = ExtResource("1_qldir")
+dialogueText = "Die Wasserkanne ist magisch und hat unendlich viel Wasser!"
+
+[sub_resource type="Resource" id="Resource_6v888"]
+script = ExtResource("2_pnq61")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("3_ebqr8")
+dialogueText = "Aber pass auf, dass du deine Pflanzen nicht überwässerst!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_esj0x"]
+script = ExtResource("2_pnq61")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("4_5fiqd")
+dialogueText = "Probier' doch einfach mal die Wasserkanne aus."
+
+[sub_resource type="Resource" id="Resource_rmg08"]
+script = ExtResource("2_pnq61")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("3_ebqr8")
+dialogueText = "In den Wannen sind noch übrig gebliebene Pflanzen. Gerne kannst du diese auch gießen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_ebqr8"]
+script = ExtResource("5_pnq61")
+_cameraPosition = Vector2(477, 344)
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://bc35ywlebpmy1"
+
+[resource]
+script = ExtResource("5_ndrcn")
+_dialogueId = "Tutorial3"
+_dialogueText = Array[Object]([SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_rmg08"), SubResource("Resource_ebqr8")])
+_responses = null

@@ -1,83 +1,32 @@
-[gd_resource type="Resource" script_class="QuestLine" load_steps=22 format=3 uid="uid://cf5uvuk50hwl0"]
+[gd_resource type="Resource" script_class="QuestLine" load_steps=9 format=3 uid="uid://c2t30hvhvqgx0"]
 
 [ext_resource type="Script" uid="uid://bf7h6b05r58gu" path="res://Features/Quests/QuestLine.cs" id="1_55fyv"]
-[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/TutorialDialogue.tres" id="1_rurbj"]
 [ext_resource type="Script" uid="uid://cgb70arkej80e" path="res://Features/Quests/Tasks/HaveDialogueTask.cs" id="2_tp27u"]
 [ext_resource type="Script" uid="uid://d4amaf4u1kl81" path="res://Features/Quests/Quest.cs" id="3_xoehh"]
-[ext_resource type="Script" uid="uid://ch0m0fjoa3bdl" path="res://Features/Quests/Tasks/GatherItemTask.cs" id="4_tp27u"]
 [ext_resource type="Script" uid="uid://dw263eqak4hgo" path="res://Features/Quests/Tasks/WateringTask.cs" id="4_xoehh"]
-[ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/Tutorial/HarvestingTutorialDialogue.tres" id="5_mcjio"]
-[ext_resource type="Resource" uid="uid://dopykccwoa5os" path="res://Resources/Dialogue/Tutorial/VendingMachineTutorialDialogue.tres" id="7_jg8fa"]
-[ext_resource type="Resource" uid="uid://clipa6tlu6er2" path="res://Resources/Dialogue/VendingMachine/VendingMachineResponses/vending_machine_res_yes.tres" id="8_brxp5"]
 
-[sub_resource type="Resource" id="Resource_mcjio"]
-script = ExtResource("2_tp27u")
-_dialogue = ExtResource("1_rurbj")
-metadata/_custom_type_script = "uid://cgb70arkej80e"
-
-[sub_resource type="Resource" id="Resource_ofj7o"]
-script = ExtResource("3_xoehh")
-Description = "Talk to the old man"
-Task = SubResource("Resource_mcjio")
-metadata/_custom_type_script = "uid://d4amaf4u1kl81"
-
-[sub_resource type="Resource" id="Resource_brxp5"]
+[sub_resource type="Resource" id="Resource_au6ku"]
 script = ExtResource("4_xoehh")
 metadata/_custom_type_script = "uid://dw263eqak4hgo"
 
-[sub_resource type="Resource" id="Resource_t841y"]
+[sub_resource type="Resource" id="Resource_rurbj"]
 script = ExtResource("3_xoehh")
-Description = "Use the watering can"
-Task = SubResource("Resource_brxp5")
+Description = "Teste die Wasserkanne aus!"
+Task = SubResource("Resource_au6ku")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
-[sub_resource type="Resource" id="Resource_t5rip"]
+[sub_resource type="Resource" id="Resource_tp27u"]
 script = ExtResource("2_tp27u")
-_dialogue = ExtResource("5_mcjio")
 metadata/_custom_type_script = "uid://cgb70arkej80e"
-
-[sub_resource type="Resource" id="Resource_lsuru"]
-script = ExtResource("3_xoehh")
-Description = "Talk to Godfrey"
-Task = SubResource("Resource_t5rip")
-metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [sub_resource type="Resource" id="Resource_xoehh"]
-script = ExtResource("4_tp27u")
-_itemId = "chuberryFruit"
-_amount = 1
-metadata/_custom_type_script = "uid://ch0m0fjoa3bdl"
-
-[sub_resource type="Resource" id="Resource_jg8fa"]
 script = ExtResource("3_xoehh")
-Description = "Gather one Chuberry"
-Task = SubResource("Resource_xoehh")
-metadata/_custom_type_script = "uid://d4amaf4u1kl81"
-
-[sub_resource type="Resource" id="Resource_lxrtl"]
-script = ExtResource("2_tp27u")
-_dialogue = ExtResource("7_jg8fa")
-metadata/_custom_type_script = "uid://cgb70arkej80e"
-
-[sub_resource type="Resource" id="Resource_k8sdh"]
-script = ExtResource("3_xoehh")
-Description = "Ask Godfrey about the Fruit"
-Task = SubResource("Resource_lxrtl")
-metadata/_custom_type_script = "uid://d4amaf4u1kl81"
-
-[sub_resource type="Resource" id="Resource_utts0"]
-script = ExtResource("2_tp27u")
-_dialogue = ExtResource("8_brxp5")
-metadata/_custom_type_script = "uid://cgb70arkej80e"
-
-[sub_resource type="Resource" id="Resource_2j7df"]
-script = ExtResource("3_xoehh")
-Description = "Check out the Vending Machine"
-Task = SubResource("Resource_utts0")
+Description = "Rede mit Gottfried"
+Task = SubResource("Resource_tp27u")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [resource]
 script = ExtResource("1_55fyv")
-Name = "New Horizon"
-Quests = Array[Object]([SubResource("Resource_ofj7o"), SubResource("Resource_t841y"), SubResource("Resource_lsuru"), SubResource("Resource_jg8fa"), SubResource("Resource_k8sdh"), SubResource("Resource_2j7df")])
+Name = "Pflanzen Anfänger"
+Quests = Array[Object]([SubResource("Resource_rurbj"), SubResource("Resource_xoehh")])
 metadata/_custom_type_script = "uid://bf7h6b05r58gu"
