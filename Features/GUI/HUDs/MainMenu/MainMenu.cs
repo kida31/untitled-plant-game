@@ -4,6 +4,8 @@ using untitledplantgame.Common;
 
 public partial class MainMenu : Control
 {
+	private const string StartScene = "res://Assets/Cutscenes/IntroCutscene.tscn";
+	
 	[Export] private TextureButton _startButton;
 	[Export] private TextureButton _settingsButton;
 	[Export] private TextureButton _exitButton;
@@ -12,7 +14,7 @@ public partial class MainMenu : Control
 	// The player shouldn't be able to change that (unless we want our game to look weird)
 	public override void _Ready()
 	{
-		_startButton.Pressed += () => GetTree().ChangeSceneToFile("res://Main.tscn");
+		_startButton.Pressed += () => GetTree().ChangeSceneToFile(StartScene);
 		_settingsButton.Pressed += OpenSettings;
 		_exitButton.Pressed += () => GetTree().Quit();
 		
