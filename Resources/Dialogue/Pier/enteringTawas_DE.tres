@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=6 format=3 uid="uid://dmqvc6l7flvmo"]
+
+[ext_resource type="Texture2D" uid="uid://dutej8e00ofqq" path="res://Assets/Overworld/Garden/Sign_Tawas.png" id="1_muwls"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_3uca0"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="3_d8dpp"]
+
+[sub_resource type="Resource" id="Resource_orrrw"]
+script = ExtResource("2_3uca0")
+speakerName = "Schild"
+DialogueExpression = ExtResource("1_muwls")
+dialogueText = "Du betrittst jetzt Tawas, die Stadt der Fischersleut und der die an die Natur glauben."
+
+[sub_resource type="Resource" id="Resource_ere51"]
+script = ExtResource("2_3uca0")
+speakerName = "Schild"
+DialogueExpression = ExtResource("1_muwls")
+dialogueText = "Aber eigentlich gibt es kein Tawas, denn de Entwickler sind zu überarbeitet um auch noch eine Stadt zu kreieren."
+
+[resource]
+script = ExtResource("3_d8dpp")
+_dialogueId = "enteringTawas_DE"
+_dialogueText = Array[Object]([SubResource("Resource_orrrw"), SubResource("Resource_ere51")])
+_responses = null
