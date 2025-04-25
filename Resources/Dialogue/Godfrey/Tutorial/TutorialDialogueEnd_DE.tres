@@ -11,25 +11,25 @@
 script = ExtResource("2_kgyml")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_qjog7")
-dialogueText = "Ah, eine Sache, die ich noch vergessen habe."
+dialogueText = "Lass mich dir noch die letzten beiden Werkzeuge erklären."
 
 [sub_resource type="Resource" id="Resource_tmh6s"]
 script = ExtResource("2_kgyml")
 speakerName = "Samentasche"
 DialogueExpression = ExtResource("3_5uwhk")
-dialogueText = "Wenn du neue Samen hast kannst du diese mit der [color=red]Samentasche[/color] einpflanzen."
+dialogueText = "Wenn du neue Samen hast kannst du sie mit der [color=red]Samentasche[/color] einpflanzen."
 
 [sub_resource type="Resource" id="Resource_yg4ah"]
 script = ExtResource("2_kgyml")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("4_wdsss")
-dialogueText = "Die Samentasche hält immer den ersten Samen, der sich in deinem Inventar befindet."
+dialogueText = "Die Samentasche enthält immer den ersten Samen, der sich in deinem Inventar befindet."
 
 [sub_resource type="Resource" id="Resource_66we5"]
 script = ExtResource("2_kgyml")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("5_kb3df")
-dialogueText = "Oh und wenn deine Pflanzen sterben, dann kannst du diese auch ausgraben."
+dialogueText = "Oh und wenn deine Pflanzen sterben, dann kannst du sie auch ausgraben um Platz für neue zu schaffen."
 
 [sub_resource type="Resource" id="Resource_i3e76"]
 script = ExtResource("2_kgyml")
@@ -41,11 +41,11 @@ dialogueText = "Dafür benutzt du die [color=red]Schaufel[/color]. Pass aber auf
 script = ExtResource("2_kgyml")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("4_wdsss")
-dialogueText = "Tja, mehr kann ich dir  auch nicht mehr beibringen. Falls du fragen hast sprich mich gerne wieder an."
+dialogueText = "Tja, jetzt bist du genau so schlau wie ich. Aber komm immer gerne wieder, falls du mal was vergisst!"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]
 script = ExtResource("6_77qnq")
-_dialogueId = "Tutorial5_DE"
+_dialogueId = "TutorialDialogueEnd_DE"
 _dialogueText = Array[Object]([SubResource("Resource_acleb"), SubResource("Resource_tmh6s"), SubResource("Resource_yg4ah"), SubResource("Resource_66we5"), SubResource("Resource_i3e76"), SubResource("Resource_8febt")])
 _responses = null

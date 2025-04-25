@@ -12,39 +12,39 @@
 script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_qlrwf")
-dialogueText = "Wusstest du, dass Chuberrys sehr beliebt sind zur Zeit?"
+dialogueText = "Wusstest du, dass Chuberrys  zur Zeit sehr beliebt sind?"
 
 [sub_resource type="Resource" id="Resource_wieva"]
 script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("3_eu1py")
-dialogueText = "Sie wirken besonders gut gegen Erkältungen und haben eine [color=red]wärmende[/color] Eigenschaft."
+dialogueText = "Sie wirken besonders gut gegen Erkältungen weil sie eine [color=red]wärmende[/color] Eigenschaft."
 
 [sub_resource type="Resource" id="Resource_w4rvn"]
 script = ExtResource("2_ynj4j")
 speakerName = "Automat"
 DialogueExpression = ExtResource("4_ayj4a")
-dialogueText = "In dem [color=red]Automaten[/color] dort kannst du deine [color=green]Medizin[/color] verkaufen."
+dialogueText = "In dem [color=red]Automaten[/color] dort kannst du deine [color=blue]Medizin[/color] verkaufen."
 
 [sub_resource type="Resource" id="Resource_3a3xs"]
 script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("3_eu1py")
-dialogueText = "Die Preise für die Medizin kannst du selber bestimmen. Aber stelle sicher, dass du es mit den Preisen nicht übertreibst, ja?"
+dialogueText = "Die Preise für die Medizin kannst du selber bestimmen. Übertreib es nur nicht, ja?"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_cb3gn"]
 script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("5_h6m2s")
-dialogueText = "Ich erinnere mich noch an Zeiten, als der alte Herbalist wirklich geizig war!"
+dialogueText = "Ich erinnere mich noch an Zeiten, in denen der alte Kräuterkundige wirklich nicht genug bekommen konnte!"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_f3jpg"]
 script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_qlrwf")
-dialogueText = "Stell doch die Chuberry ein, die du eben geerntet hast und warte ab, ob jemand sie kauft."
+dialogueText = "Stell doch die Chuberry ein, die du eben geerntet hast. Du musst nur ein bisschen warten, bis jemand kommt um sie zu kaufen."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_btpbq"]
@@ -56,6 +56,6 @@ metadata/_custom_type_script = "uid://bc35ywlebpmy1"
 
 [resource]
 script = ExtResource("7_kafni")
-_dialogueId = "Tutorial3_DE"
+_dialogueId = "VMTutorialDialogue_DE"
 _dialogueText = Array[Object]([SubResource("Resource_iey8o"), SubResource("Resource_wieva"), SubResource("Resource_w4rvn"), SubResource("Resource_3a3xs"), SubResource("Resource_cb3gn"), SubResource("Resource_f3jpg"), SubResource("Resource_btpbq")])
 _responses = null

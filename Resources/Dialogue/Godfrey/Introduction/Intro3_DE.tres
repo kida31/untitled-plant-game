@@ -16,7 +16,7 @@ dialogueText = "Ja ja, ich verstehe schon. Wir haben es doch alle nicht so einfa
 script = ExtResource("2_0cg4s")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_bkt52")
-dialogueText = "Aber keine Sorge! Hier, wo wir stehen, hat früher ein [color=red]Herbalist[/color] gelebt."
+dialogueText = "Aber keine Sorge! Hier, wo wir stehen, hat früher ein [color=red]Kräuterkundiger[/color] gelebt."
 
 [sub_resource type="Resource" id="Resource_x1toj"]
 script = ExtResource("2_0cg4s")

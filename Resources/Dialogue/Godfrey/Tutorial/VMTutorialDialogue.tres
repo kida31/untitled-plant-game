@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=15 format=3 uid="uid://cxjqfgrjlsiik"]
+
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_nihgd"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_tj2y5"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="3_qk31s"]
+[ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="4_3oikw"]
+[ext_resource type="Texture2D" uid="uid://o1rnpbgpuum" path="res://Assets/Characters/Godfrey/Godfrey_angry.png" id="5_qob0x"]
+[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="6_ss2ya"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="7_qh780"]
+
+[sub_resource type="Resource" id="Resource_iey8o"]
+script = ExtResource("2_tj2y5")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("1_nihgd")
+dialogueText = "Didi you know that Chuberries are really popular lately?"
+
+[sub_resource type="Resource" id="Resource_wieva"]
+script = ExtResource("2_tj2y5")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("3_qk31s")
+dialogueText = "They are especially helpful if you have a cold since they are [color=red]warming[/color]."
+
+[sub_resource type="Resource" id="Resource_w4rvn"]
+script = ExtResource("2_tj2y5")
+speakerName = "Vending Machine"
+DialogueExpression = ExtResource("4_3oikw")
+dialogueText = "You can sell your [color=blue]medicine[/color] in the [color=red]vending machine[/color] over there."
+
+[sub_resource type="Resource" id="Resource_3a3xs"]
+script = ExtResource("2_tj2y5")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("3_qk31s")
+dialogueText = "You can set it's price by yourself. Just don't get to greedy, will you?"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_cb3gn"]
+script = ExtResource("2_tj2y5")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("5_qob0x")
+dialogueText = "I remember the times when the old herbalist was just wanting too much!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_f3jpg"]
+script = ExtResource("2_tj2y5")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("1_nihgd")
+dialogueText = "How about you put the chuberry you just harvested in the vending machine? You will have to wait a little until someone buys it."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_btpbq"]
+script = ExtResource("6_ss2ya")
+_cameraPosition = Vector2(728, 184)
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://bc35ywlebpmy1"
+
+[resource]
+script = ExtResource("7_qh780")
+_dialogueId = "VMTutorialDialogue"
+_dialogueText = Array[Object]([SubResource("Resource_iey8o"), SubResource("Resource_wieva"), SubResource("Resource_w4rvn"), SubResource("Resource_3a3xs"), SubResource("Resource_cb3gn"), SubResource("Resource_f3jpg"), SubResource("Resource_btpbq")])
+_responses = null
