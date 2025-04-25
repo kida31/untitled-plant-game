@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://cvpmf6ua8563t"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=12 format=3 uid="uid://cvpmf6ua8563t"]
 
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_b1nd8"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_gjccp"]
+[ext_resource type="Resource" uid="uid://d0bdfblxyvra5" path="res://Resources/Dialogue/Godfrey/ExplainTools_DE.tres" id="3_pn4bm"]
 [ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_ta1rp"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_pn4bm"]
+[ext_resource type="Resource" uid="uid://1oj4hy0d8cwc" path="res://Resources/Dialogue/Godfrey/ExplainVM_DE.tres" id="5_ufww2"]
+[ext_resource type="Resource" uid="uid://mh3tmg3aiu7w" path="res://Resources/Dialogue/Godfrey/ExplainSeedBoy_DE.tres" id="6_gyyij"]
 
 [sub_resource type="Resource" id="Resource_vjc3q"]
 script = ExtResource("2_gjccp")
@@ -15,16 +18,19 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 [sub_resource type="Resource" id="Resource_ufww2"]
 script = ExtResource("3_ta1rp")
 _responseButton = "Werkzeuge"
+_responseDialogue = ExtResource("3_pn4bm")
 metadata/_custom_type_script = "uid://crnclevrmchav"
 
 [sub_resource type="Resource" id="Resource_gyyij"]
 script = ExtResource("3_ta1rp")
 _responseButton = "Automat"
+_responseDialogue = ExtResource("5_ufww2")
 metadata/_custom_type_script = "uid://crnclevrmchav"
 
 [sub_resource type="Resource" id="Resource_3fot6"]
 script = ExtResource("3_ta1rp")
 _responseButton = "Samen kaufen"
+_responseDialogue = ExtResource("6_gyyij")
 metadata/_custom_type_script = "uid://crnclevrmchav"
 
 [resource]

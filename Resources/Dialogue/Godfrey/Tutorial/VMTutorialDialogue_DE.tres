@@ -1,61 +1,61 @@
 [gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=15 format=3 uid="uid://dopykccwoa5os"]
 
-[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_bbu3w"]
-[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_5o44g"]
-[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="3_5wycx"]
-[ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="4_l5ard"]
-[ext_resource type="Texture2D" uid="uid://o1rnpbgpuum" path="res://Assets/Characters/Godfrey/Godfrey_angry.png" id="5_a6ba3"]
-[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="6_or736"]
-[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="7_vf8t3"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_qlrwf"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_ynj4j"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="3_eu1py"]
+[ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="4_ayj4a"]
+[ext_resource type="Texture2D" uid="uid://o1rnpbgpuum" path="res://Assets/Characters/Godfrey/Godfrey_angry.png" id="5_h6m2s"]
+[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="6_b4d2f"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="7_kafni"]
 
 [sub_resource type="Resource" id="Resource_iey8o"]
-script = ExtResource("2_5o44g")
+script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("1_bbu3w")
+DialogueExpression = ExtResource("1_qlrwf")
 dialogueText = "Wusstest du, dass Chuberrys sehr beliebt sind zur Zeit?"
 
 [sub_resource type="Resource" id="Resource_wieva"]
-script = ExtResource("2_5o44g")
+script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("3_5wycx")
+DialogueExpression = ExtResource("3_eu1py")
 dialogueText = "Sie wirken besonders gut gegen Erkältungen und haben eine [color=red]wärmende[/color] Eigenschaft."
 
 [sub_resource type="Resource" id="Resource_w4rvn"]
-script = ExtResource("2_5o44g")
-speakerName = "Gottfried"
-DialogueExpression = ExtResource("4_l5ard")
+script = ExtResource("2_ynj4j")
+speakerName = "Automat"
+DialogueExpression = ExtResource("4_ayj4a")
 dialogueText = "In dem [color=red]Automaten[/color] dort kannst du deine [color=green]Medizin[/color] verkaufen."
 
 [sub_resource type="Resource" id="Resource_3a3xs"]
-script = ExtResource("2_5o44g")
+script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("3_5wycx")
+DialogueExpression = ExtResource("3_eu1py")
 dialogueText = "Die Preise für die Medizin kannst du selber bestimmen. Aber stelle sicher, dass du es mit den Preisen nicht übertreibst, ja?"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_cb3gn"]
-script = ExtResource("2_5o44g")
+script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("5_a6ba3")
+DialogueExpression = ExtResource("5_h6m2s")
 dialogueText = "Ich erinnere mich noch an Zeiten, als der alte Herbalist wirklich geizig war!"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_f3jpg"]
-script = ExtResource("2_5o44g")
+script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("1_bbu3w")
+DialogueExpression = ExtResource("1_qlrwf")
 dialogueText = "Stell doch die Chuberry ein, die du eben geerntet hast und warte ab, ob jemand sie kauft."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_btpbq"]
-script = ExtResource("6_or736")
+script = ExtResource("6_b4d2f")
 _cameraPosition = Vector2(728, 184)
 speakerName = ""
 dialogueText = ""
 metadata/_custom_type_script = "uid://bc35ywlebpmy1"
 
 [resource]
-script = ExtResource("7_vf8t3")
+script = ExtResource("7_kafni")
 _dialogueId = "Tutorial3_DE"
 _dialogueText = Array[Object]([SubResource("Resource_iey8o"), SubResource("Resource_wieva"), SubResource("Resource_w4rvn"), SubResource("Resource_3a3xs"), SubResource("Resource_cb3gn"), SubResource("Resource_f3jpg"), SubResource("Resource_btpbq")])
 _responses = null
