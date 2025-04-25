@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://df0cg0vcow1n2"]
+[gd_scene load_steps=9 format=3 uid="uid://df0cg0vcow1n2"]
 
 [ext_resource type="Theme" uid="uid://dbk4arsk2qmin" path="res://Assets/DebugTheme.tres" id="1_1ftpd"]
 [ext_resource type="Script" uid="uid://bt2aysybx0kia" path="res://Features/GUI/DebugOverlays/DebugKeybindings.cs" id="1_2qjov"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://3mbv5l1t0q2v" path="res://Features/GUI/DebugOverlays/DebugLastClicked.cs" id="2_4xlmf"]
 [ext_resource type="Script" uid="uid://ck121ognypfld" path="res://InGameLogOverlay.cs" id="2_lomx1"]
 [ext_resource type="Script" uid="uid://dn2vmv2byb8fp" path="res://Features/GUI/DebugOverlays/DebugGameState.cs" id="4_k0vro"]
+[ext_resource type="Script" uid="uid://cib6jddu14b00" path="res://Features/GUI/HUDs/SettingsMenu/LanguageOption.cs" id="8_x51rv"]
 
 [node name="DebugOverlays" type="BoxContainer"]
 anchors_preset = 2
@@ -83,3 +84,8 @@ scroll_following = true
 autowrap_mode = 2
 tab_size = 2
 script = ExtResource("2_lomx1")
+
+[node name="LanguageChoice" type="OptionButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+script = ExtResource("8_x51rv")
