@@ -49,6 +49,6 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]
 script = ExtResource("8_t2tma")
-_dialogueId = "Tutorial2"
+_dialogueId = "Tutorial2_DE"
 _dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_ebqr8"), SubResource("Resource_pamod")])
 _responses = null

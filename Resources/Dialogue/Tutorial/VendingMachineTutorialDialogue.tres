@@ -1,55 +1,61 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=13 format=3 uid="uid://dopykccwoa5os"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=15 format=3 uid="uid://dopykccwoa5os"]
 
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_4tb82"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_454lr"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_hsvq2"]
-[ext_resource type="Texture2D" uid="uid://kihg62biqd01" path="res://Assets/Overworld/Garden/vendingMachine.png" id="3_gdfeg"]
+[ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="4_ulpu2"]
 [ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="4_x6cgm"]
+[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="5_evtrd"]
+[ext_resource type="Texture2D" uid="uid://o1rnpbgpuum" path="res://Assets/Characters/Godfrey/Godfrey_angry.png" id="6_j4fp0"]
 
 [sub_resource type="Resource" id="Resource_iey8o"]
 script = ExtResource("1_454lr")
-speakerName = "Gottfried the first Priest"
+speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_4tb82")
-dialogueText = "Did you know that chubery fruits are really popular? "
+dialogueText = "Wusstest du, dass Chuberrys sehr beliebt sind zur Zeit?"
 
 [sub_resource type="Resource" id="Resource_wieva"]
 script = ExtResource("1_454lr")
-speakerName = "Gottfried the first Priest"
-DialogueExpression = ExtResource("3_gdfeg")
-dialogueText = "I bet if you put it on sale in that vending machine over there, people will come buy it."
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("4_x6cgm")
+dialogueText = "Sie wirken besonders gut gegen Erkältungen und haben eine [color=red]wärmende[/color] Eigenschaft."
 
 [sub_resource type="Resource" id="Resource_w4rvn"]
 script = ExtResource("1_454lr")
-speakerName = "Gottfried the first Priest"
-DialogueExpression = ExtResource("1_4tb82")
-dialogueText = "The previous owner used to fill the machine up every day but these days it’s just empty."
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("4_ulpu2")
+dialogueText = "In dem [color=red]Automaten[/color] dort kannst du deine [color=green]Medizin[/color] verkaufen."
 
-[sub_resource type="Resource" id="Resource_tapf8"]
+[sub_resource type="Resource" id="Resource_btpbq"]
+script = ExtResource("5_evtrd")
+_cameraPosition = Vector2(728, 184)
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://bc35ywlebpmy1"
+
+[sub_resource type="Resource" id="Resource_3a3xs"]
 script = ExtResource("1_454lr")
-speakerName = "Gottfried the first Priest"
+speakerName = "Gottfried"
 DialogueExpression = ExtResource("4_x6cgm")
-dialogueText = "I’ll tell the people that you will take care of the machine again!"
+dialogueText = "Die Preise für die Medizin kannst du selber bestimmen. Aber stelle sicher, dass du es mit den Preisen nicht übertreibst, ja?"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
-[sub_resource type="Resource" id="Resource_cyjdd"]
+[sub_resource type="Resource" id="Resource_cb3gn"]
 script = ExtResource("1_454lr")
-speakerName = "Gottfried the first Priest"
-DialogueExpression = ExtResource("1_4tb82")
-dialogueText = "Oh. When you're standing in front of it, just press A to open it. "
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("6_j4fp0")
+dialogueText = "Ich erinnere mich noch an Zeiten, als der alte Herbalist wirklich geizig war!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
-[sub_resource type="Resource" id="Resource_p8ncf"]
+[sub_resource type="Resource" id="Resource_f3jpg"]
 script = ExtResource("1_454lr")
-speakerName = "Gottfried the first Priest"
+speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_4tb82")
-dialogueText = "You can decide the price yourself but the people will have an opinion about the price…"
-
-[sub_resource type="Resource" id="Resource_gojdt"]
-script = ExtResource("1_454lr")
-speakerName = "Gottfried the first Priest"
-DialogueExpression = ExtResource("1_4tb82")
-dialogueText = "Best not to anger them, right? First impressions and all that…. *chuckles* "
+dialogueText = "Stell doch die Chuberry ein, die du eben geerntet hast und warte ab, ob jemand sie kauft."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]
 script = ExtResource("1_hsvq2")
-_dialogueId = "Tutorial5"
-_dialogueText = Array[Object]([SubResource("Resource_iey8o"), SubResource("Resource_wieva"), SubResource("Resource_w4rvn"), SubResource("Resource_tapf8"), SubResource("Resource_cyjdd"), SubResource("Resource_p8ncf"), SubResource("Resource_gojdt")])
+_dialogueId = "Tutorial3_DE"
+_dialogueText = Array[Object]([SubResource("Resource_iey8o"), SubResource("Resource_wieva"), SubResource("Resource_w4rvn"), SubResource("Resource_btpbq"), SubResource("Resource_3a3xs"), SubResource("Resource_cb3gn"), SubResource("Resource_f3jpg")])
 _responses = null

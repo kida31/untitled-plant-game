@@ -1,42 +1,58 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://yg4mwgstm60u"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=14 format=3 uid="uid://yg4mwgstm60u"]
 
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_8g2n2"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_86yub"]
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_lx0ib"]
-[ext_resource type="Texture2D" uid="uid://cxyxi6hnf81nr" path="res://Assets/Characters/PanDan/pandanPortraitRef.png" id="3_7so52"]
+[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="3_sak3p"]
+[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="4_fgbo0"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="5_bw11t"]
 
 [sub_resource type="Resource" id="Resource_sr1yf"]
 script = ExtResource("1_8g2n2")
-speakerName = "Gottfried the first Priest"
-DialogueExpression = ExtResource("1_lx0ib")
-dialogueText = "I hope you don’t mind, but little Pan Dan likes to come by this place. "
+speakerName = "Laya"
+dialogueText = "Die Frucht wurde verkauft. Was mache ich mit dem Geld?"
 
 [sub_resource type="Resource" id="Resource_g71vq"]
 script = ExtResource("1_8g2n2")
-speakerName = "Gottfried the first Priest"
-DialogueExpression = ExtResource("3_7so52")
-dialogueText = "He’s a little rascal so he’s always running around the island. "
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_lx0ib")
+dialogueText = "Oh, das hört sich doch gut an! Wenn aus dem Automaten etwas verkauft wurde findest du dort auch das Geld."
 
 [sub_resource type="Resource" id="Resource_sqv14"]
 script = ExtResource("1_8g2n2")
-speakerName = "Gottfried the first Priest"
+speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_lx0ib")
-dialogueText = "But he made it a habit to collect all kinds of seeds because the previous herbalist bought them from him."
+dialogueText = "Mit dem Geld kannst du dann auch Samen kaufen."
 
-[sub_resource type="Resource" id="Resource_n5nrh"]
-script = ExtResource("1_8g2n2")
-speakerName = "Gottfried the first Priest"
-DialogueExpression = ExtResource("1_lx0ib")
-dialogueText = "If you would like some new seeds then don’t hesitate to ask him, I think it would make him really happy. "
+[sub_resource type="Resource" id="Resource_wdbcu"]
+script = ExtResource("3_sak3p")
+_cameraPosition = Vector2(264, 200)
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://bc35ywlebpmy1"
 
 [sub_resource type="Resource" id="Resource_t4mgt"]
 script = ExtResource("1_8g2n2")
-speakerName = "Gottfried the first Priest"
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("4_fgbo0")
+dialogueText = "Dort steht Pan Dan. Er ist der Junge vom ehemaligen Supermarkt Besitzer."
+
+[sub_resource type="Resource" id="Resource_il2tp"]
+script = ExtResource("1_8g2n2")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("5_bw11t")
+dialogueText = "Er sammelt immer alles mögliche an Dingen. Sicherlich kann er dir auch ein paar Samen verkaufen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_ed3bb"]
+script = ExtResource("1_8g2n2")
+speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_lx0ib")
-dialogueText = "Just press A when you're standing in front of him and he’ll talk to you."
+dialogueText = "Sprich ihn doch mal an. Vielleicht hat er etwas, was dich interessiert."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]
 script = ExtResource("1_86yub")
-_dialogueId = "Tutorial4"
-_dialogueText = Array[Object]([SubResource("Resource_sr1yf"), SubResource("Resource_g71vq"), SubResource("Resource_sqv14"), SubResource("Resource_n5nrh"), SubResource("Resource_t4mgt")])
-_responses = null
+_dialogueId = "Tutorial4_DE"
+_dialogueText = Array[Object]([SubResource("Resource_sr1yf"), SubResource("Resource_g71vq"), SubResource("Resource_sqv14"), SubResource("Resource_wdbcu"), SubResource("Resource_t4mgt"), SubResource("Resource_il2tp"), SubResource("Resource_ed3bb")])
+_responses = Array[Object]([])

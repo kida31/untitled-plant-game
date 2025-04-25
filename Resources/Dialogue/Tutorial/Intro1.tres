@@ -51,6 +51,6 @@ _responseDialogue = ExtResource("4_cr0xd")
 
 [resource]
 script = ExtResource("6_47km0")
-_dialogueId = "Tutorial1"
+_dialogueId = "Intro1_DE"
 _dialogueText = Array[Object]([SubResource("Resource_82d0x"), SubResource("Resource_j1jl0"), SubResource("Resource_06d51"), SubResource("Resource_g1ywp"), SubResource("Resource_dalar")])
 _responses = Array[Object]([SubResource("Resource_dkqhy"), SubResource("Resource_3h1qg")])
