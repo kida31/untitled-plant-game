@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_mu8yv")
 Name = "Shovel"
-Description = "Shovel bonk plant. Plant goes dead."
+Description = "Dig out dead plants with this. Be careful as it can dig out live plants too."
 Icon = ExtResource("1_qjl0s")
 ChannelingTime = 1.0
 Radius = 12.0
