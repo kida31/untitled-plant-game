@@ -13,20 +13,20 @@
 script = ExtResource("2_kgmiu")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_kw80q")
-dialogueText = "Ok, das wichtigste zuerst."
+dialogueText = "Ok, das Wichtigste zuerst."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_hhqf7"]
 script = ExtResource("2_kgmiu")
-speakerName = "Wasserkanne"
+speakerName = "Gießkanne"
 DialogueExpression = ExtResource("3_nwd43")
-dialogueText = "Das hier ist eine [color=red]Wasserkanne[/color] . Mit dieser Wasserkanne kannst du Pflanzen begießen."
+dialogueText = "Das hier ist eine [color=red]Gießkanne[/color]. Mit ihr kannst du Pflanzen gießen.."
 
 [sub_resource type="Resource" id="Resource_wfp6x"]
 script = ExtResource("2_kgmiu")
-speakerName = "Wasserkanne"
+speakerName = "Gießkanne"
 DialogueExpression = ExtResource("3_nwd43")
-dialogueText = "Die Wasserkanne ist magisch und hat unendlich viel Wasser!"
+dialogueText = "Die Gießkanne ist magisch und muss nie aufgefüllt werden!"
 
 [sub_resource type="Resource" id="Resource_6v888"]
 script = ExtResource("2_kgmiu")
@@ -39,13 +39,13 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 script = ExtResource("2_kgmiu")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_kw80q")
-dialogueText = "Probier' doch einfach mal die Wasserkanne aus."
+dialogueText = "Probier' doch einfach mal die Gießkanne aus."
 
 [sub_resource type="Resource" id="Resource_rmg08"]
 script = ExtResource("2_kgmiu")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("4_e0m40")
-dialogueText = "In den Wannen sind noch übrig gebliebene Pflanzen. Gerne kannst du diese auch gießen."
+dialogueText = "In den Wannen dort stehen noch ein paar Pflanzen. Ich wette sie würden sich über Wasser freuen."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_4o3rp"]
@@ -64,6 +64,6 @@ metadata/_custom_type_script = "uid://bc35ywlebpmy1"
 
 [resource]
 script = ExtResource("8_grir0")
-_dialogueId = "Tutorial1_DE"
+_dialogueId = "WateringTutorial_DE"
 _dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_rmg08"), SubResource("Resource_4o3rp"), SubResource("Resource_ebqr8")])
 _responses = null

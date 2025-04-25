@@ -10,20 +10,20 @@
 script = ExtResource("2_xthbd")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_eoy4s")
-dialogueText = "Perfekt! Es scheint als hättest du es hinbekommen etwas zu gießen."
+dialogueText = "Perfekt! Du scheinst ein Naturtalent im Gießen zu sein."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_hhqf7"]
 script = ExtResource("2_xthbd")
 speakerName = "Gartenschere"
 DialogueExpression = ExtResource("3_y4a7a")
-dialogueText = "Als nächstes gibt es noch die [color=red]Gartenschere[/color] . Die Gartenschere hilft dir sauber Pflanzen zu ernten."
+dialogueText = "In deinem Werkzeuggürtel befindet sich auch eine [color=red]Gartenschere[/color]. Mit ihr kannst du ganz einfach Beeren und Blätter deiner Pflanzenernten."
 
 [sub_resource type="Resource" id="Resource_wfp6x"]
 script = ExtResource("2_xthbd")
 speakerName = "Gartenschere"
 DialogueExpression = ExtResource("3_y4a7a")
-dialogueText = "Nachdem du die Pflanzen geerntet hast, werden sie nach einer Zeit auch wieder neu wachsen, wenn du dich um diese kümmerst."
+dialogueText = "Keine Sorge, es wächst alles nach. Aber natürlich nur wenn du dich gut um deine Pflanzen kümmerst!"
 
 [sub_resource type="Resource" id="Resource_6v888"]
 script = ExtResource("2_xthbd")
@@ -41,6 +41,6 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]
 script = ExtResource("5_kcxt1")
-_dialogueId = "Tutorial2_DE"
+_dialogueId = "HarvestingTutorial_DE"
 _dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_pamod")])
 _responses = null
