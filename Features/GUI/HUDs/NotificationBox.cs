@@ -1,9 +1,12 @@
 using Godot;
-using System;
 using untitledplantgame.Common;
 using untitledplantgame.Common.ExtensionMethods;
-using untitledplantgame.Inventory;
 
+/// <summary>
+///		This class is a container for MiniNotification.
+///		It handles spawning logic as well as animation for each notification.
+///		Band-aid: This class automatically subscribes to the EventBus to show notifications for item pick ups.
+/// </summary>
 public partial class NotificationBox : Control
 {
 	[Export] private PackedScene _notificationScene;

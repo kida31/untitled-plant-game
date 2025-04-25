@@ -3,7 +3,8 @@ using Godot;
 namespace untitledplantgame.GUI.Interactions;
 
 /// <summary>
-///		A hint to show the player how to interact with a nearby object.
+///		A simple wrapper to access a remote RichTextLabel.
+///		May be used to create generic control objects with nested text controls.
 /// </summary>
 [Tool]
 public partial class GenericTextControl : Control

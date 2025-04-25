@@ -3,14 +3,14 @@ using System;
 using untitledplantgame.GUI.Interactions;
 
 /// <summary>
-/// Small horizontal notification. Shrinks and grows vertically while masking child/content.
-/// This may need refactoring to be more generic.
+///		Small horizontal notification. Shrinks and grows vertically while masking child/content.
+///		This may need refactoring to be more generic.
 /// </summary>
 public partial class MiniNotification : GenericTextControl
 {
 	[Export] private Control _content;
 	[Export] private TextureRect _icon;
-	
+
 	public Control Content => _content;
 
 	public float VScale
@@ -25,7 +25,7 @@ public partial class MiniNotification : GenericTextControl
 		}
 	}
 
-	public Texture2D Texture 
+	public Texture2D Texture
 	{
 		get => _icon?.Texture;
 		set => _icon!.Texture = value;
