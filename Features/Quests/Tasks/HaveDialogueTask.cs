@@ -8,7 +8,7 @@ namespace untitledplantgame.Quests;
 [GlobalClass]
 public partial class HaveDialogueTask : QuestTask
 {
-	[Export] private DialogueResourceObject _dialogue;
+	[Export] public DialogueResourceObject Dialogue { get; private set; }
 	public override bool IsCompleted => _isCompleted;
 	public override event Action<QuestTask> TaskCompleted;
 	private bool _isCompleted = false;
@@ -20,7 +20,7 @@ public partial class HaveDialogueTask : QuestTask
 
 	private void DialogueEnded(DialogueResourceObject obj)
 	{
-		if (obj != _dialogue)
+		if (obj != Dialogue)
 		{
 			return;
 		}

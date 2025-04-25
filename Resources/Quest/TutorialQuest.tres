@@ -1,17 +1,12 @@
-[gd_resource type="Resource" load_steps=31 format=3 uid="uid://c2t30hvhvqgx0"]
+[gd_resource type="Resource" script_class="QuestLine" load_steps=26 format=3 uid="uid://c2t30hvhvqgx0"]
 
 [ext_resource type="Script" uid="uid://bf7h6b05r58gu" path="res://Features/Quests/QuestLine.cs" id="1_55fyv"]
 [ext_resource type="Script" uid="uid://cgb70arkej80e" path="res://Features/Quests/Tasks/HaveDialogueTask.cs" id="2_tp27u"]
-[ext_resource type="Resource" uid="uid://cvmvno2vfx4ch" path="res://Resources/Dialogue/Tutorial/HarvestingTutorial_DE.tres" id="3_mcjio"]
 [ext_resource type="Script" uid="uid://d4amaf4u1kl81" path="res://Features/Quests/Quest.cs" id="3_xoehh"]
 [ext_resource type="Script" uid="uid://ch0m0fjoa3bdl" path="res://Features/Quests/Tasks/GatherItemTask.cs" id="4_tp27u"]
 [ext_resource type="Script" uid="uid://dw263eqak4hgo" path="res://Features/Quests/Tasks/WateringTask.cs" id="4_xoehh"]
 [ext_resource type="Script" uid="uid://c0tihaopkf170" path="res://Features/Quests/Tasks/AddItemToVMTask.cs" id="7_brxp5"]
-[ext_resource type="Resource" uid="uid://dopykccwoa5os" path="res://Resources/Dialogue/Tutorial/VMTutorialDialogue_DE.tres" id="7_jg8fa"]
 [ext_resource type="Script" uid="uid://dqutq88nrfgj2" path="res://Features/Quests/Tasks/SellItemTask.cs" id="8_t841y"]
-[ext_resource type="Resource" uid="uid://yg4mwgstm60u" path="res://Resources/Dialogue/Tutorial/SeedBoyTutorialDialogue_DE.tres" id="9_t5rip"]
-[ext_resource type="Resource" uid="uid://deudtr6qo8ekp" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes.tres" id="10_lsuru"]
-[ext_resource type="Resource" uid="uid://ds2a5jertu4k4" path="res://Resources/Dialogue/Tutorial/TutorialDialogueEnd_DE.tres" id="11_lxrtl"]
 
 [sub_resource type="Resource" id="Resource_au6ku"]
 script = ExtResource("4_xoehh")
@@ -25,7 +20,6 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [sub_resource type="Resource" id="Resource_tp27u"]
 script = ExtResource("2_tp27u")
-_dialogue = ExtResource("3_mcjio")
 metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_xoehh"]
@@ -48,7 +42,6 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [sub_resource type="Resource" id="Resource_brxp5"]
 script = ExtResource("2_tp27u")
-_dialogue = ExtResource("7_jg8fa")
 metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_t841y"]
@@ -83,7 +76,6 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [sub_resource type="Resource" id="Resource_utts0"]
 script = ExtResource("2_tp27u")
-_dialogue = ExtResource("9_t5rip")
 metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_2j7df"]
@@ -94,7 +86,6 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [sub_resource type="Resource" id="Resource_3f5kw"]
 script = ExtResource("2_tp27u")
-_dialogue = ExtResource("10_lsuru")
 metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_3lprq"]
@@ -105,7 +96,6 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [sub_resource type="Resource" id="Resource_760qh"]
 script = ExtResource("2_tp27u")
-_dialogue = ExtResource("11_lxrtl")
 metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_v6dy5"]
@@ -116,6 +106,7 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [resource]
 script = ExtResource("1_55fyv")
+Id = "tutorial"
 Name = "Pflanzen Anfänger"
 Quests = Array[Object]([SubResource("Resource_rurbj"), SubResource("Resource_xoehh"), SubResource("Resource_jg8fa"), SubResource("Resource_t841y"), SubResource("Resource_lsuru"), SubResource("Resource_k8sdh"), SubResource("Resource_2j7df"), SubResource("Resource_3lprq"), SubResource("Resource_v6dy5")])
 metadata/_custom_type_script = "uid://bf7h6b05r58gu"

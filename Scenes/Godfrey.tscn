@@ -188,6 +188,8 @@ animations = [{
 
 [node name="Godfrey" instance=ExtResource("1_ljkvf")]
 script = ExtResource("2_bs8m2")
+_introDialogue = null
+_genericDialogue = null
 
 [node name="CharacterSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_ts0yk")

@@ -13,29 +13,43 @@ public partial class Godfrey : CharacterBody2D
 	[Export] private DialogueResourceObject _introDialogue;
 	[Export] private DialogueResourceObject _genericDialogue;
 	
-	[Export] private DialogueResourceObject[] _questDialogues;
+	private const string TutorialQuestLineId = "tutorial";
+	
+	private DialogueResourceObject _currentDialogue;
 
 	private bool _firstTimeSpokenTo = true;
 	private bool _tutorialCompleted = false;
 	
 	public override void _Ready()
 	{
+		_currentDialogue = _introDialogue;
 		QuestController.Instance.QuestStarted += quest =>
 		{
-			
+			if(quest.Task is HaveDialogueTask dialogueTask)
+			{
+				_currentDialogue = dialogueTask.Dialogue;
+			}
+		};
+		QuestController.Instance.QuestLineCompleted += questLine =>
+		{
+			if(questLine.Id == TutorialQuestLineId)
+			{
+				_tutorialCompleted = true;
+			}
 		};
 		_npcPlayerInteraction.InteractionEvent += () =>
 		{
 			if (_firstTimeSpokenTo)
 			{
-				EventBus.Instance.InvokeStartingDialogue(_introDialogue);
 				_firstTimeSpokenTo = false;
 			}
-			else if (_tutorialCompleted)
+			if (!_firstTimeSpokenTo)
 			{
-				EventBus.Instance.InvokeStartingDialogue(_introDialogue);
+				_currentDialogue = _genericDialogue;
 			}
 			
+			
+			EventBus.Instance.InvokeStartingDialogue(_currentDialogue);
 		};
 	}
 }
