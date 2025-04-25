@@ -14,7 +14,7 @@ public partial class QuestController : Node
 	public QuestLine CurrentQuestLine { get; private set; }
 	public Quest CurrentQuest { get; private set; }
 	
-	public static QuestController Instance { get; set; }
+	public static QuestController Instance { get; private set; }
 	
 	private Logger _logger;
 

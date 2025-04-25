@@ -5,7 +5,7 @@ using untitledplantgame.Quests;
 namespace untitledplantgame.Dialogue.Events;
 
 [GlobalClass]
-public partial class StartQuest : DialogueEvent
+public partial class StartQuestLine : DialogueEvent
 {
 	[Export] private QuestLine QuestLine { get; set; }
 	public override void Execute()

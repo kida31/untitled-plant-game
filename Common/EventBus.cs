@@ -66,7 +66,6 @@ public partial class EventBus : Node
 	//VendingMachine
 	
 	public event Action<VendingMachine> BeforeVendingMachineOpened;
-	
 	public event Action<IItemStack> ItemAddedToVendingMachine;
 	public event Action<IItemStack> ItemSoldFromVendingMachine;
 

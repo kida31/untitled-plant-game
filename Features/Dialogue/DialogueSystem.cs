@@ -76,7 +76,7 @@ public partial class DialogueSystem : Node, IDialogueSystem
 	public void GetResponses()
 	{
 		_logger.Debug("Getting responses.");
-		if (_currentDialogue._responses.Length == 0)
+		if (_currentDialogue._responses == null || _currentDialogue._responses.Length == 0)
 		{
 			EndDialogue();
 			return;

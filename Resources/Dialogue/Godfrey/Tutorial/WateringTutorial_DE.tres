@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="3_nwd43"]
 [ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="4_e0m40"]
 [ext_resource type="Resource" uid="uid://c2t30hvhvqgx0" path="res://Resources/Quest/TutorialQuest.tres" id="5_knu8a"]
-[ext_resource type="Script" uid="uid://wieplhq747d3" path="res://Features/Dialogue/Events/StartQuest.cs" id="6_c3gn4"]
+[ext_resource type="Script" uid="uid://wieplhq747d3" path="res://Features/Dialogue/Events/StartQuestLine.cs" id="6_kw80q"]
 [ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="7_1760e"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="8_grir0"]
 
@@ -49,7 +49,7 @@ dialogueText = "In den Wannen sind noch übrig gebliebene Pflanzen. Gerne kannst
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_4o3rp"]
-script = ExtResource("6_c3gn4")
+script = ExtResource("6_kw80q")
 QuestLine = ExtResource("5_knu8a")
 speakerName = ""
 dialogueText = ""

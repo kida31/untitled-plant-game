@@ -17,7 +17,7 @@ public partial class SellItemTask : QuestTask
 	private bool _isCompleted = false;
 	private int _soldCount = 0;
 
-	private void _Ready()
+	public SellItemTask()
 	{
 		EventBus.Instance.ItemSoldFromVendingMachine += OnItemSold;
 	}

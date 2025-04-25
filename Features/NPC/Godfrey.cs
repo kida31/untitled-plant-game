@@ -12,48 +12,82 @@ public partial class Godfrey : CharacterBody2D
 	[Export] private NpcPlayerInteraction _npcPlayerInteraction;
 	[Export] private DialogueResourceObject _introDialogue;
 	[Export] private DialogueResourceObject _genericDialogue;
-	
+
 	private const string TutorialQuestLineId = "tutorial";
-	
+
 	private DialogueResourceObject _currentDialogue;
 
 	private bool _firstTimeSpokenTo = true;
-	private bool _tutorialCompleted = false;
-	
+	private bool _tutorialActive = false;
+
 	public override void _Ready()
 	{
-		_currentDialogue = _introDialogue;
-		QuestController.Instance.QuestStarted += quest =>
-		{
-			if(quest.Task is HaveDialogueTask dialogueTask)
-			{
-				_currentDialogue = dialogueTask.Dialogue;
-			}
-		};
-		QuestController.Instance.QuestLineCompleted += questLine =>
-		{
-			if(questLine.Id == TutorialQuestLineId)
-			{
-				_tutorialCompleted = true;
-			}
-		};
 		_npcPlayerInteraction.InteractionEvent += () =>
 		{
-			if(!_tutorialCompleted)
+			if (_tutorialActive)
 			{
-				EventBus.Instance.InvokeStartingDialogue(_currentDialogue);
+				var quest = QuestController.Instance.CurrentQuest;
+				//if(quest == QuestController.Instance.CurrentQuestLine.Quests[1])
+				if (quest.Task is HaveDialogueTask dialogueTask)
+				{
+					_currentDialogue = dialogueTask.Dialogue;
+				}
+				else
+				{
+					var questIndex = QuestController.Instance.CurrentQuestLine.Quests.IndexOf(quest);
+
+					_currentDialogue = questIndex switch
+					{
+						0 => CreateOneLiner("Go try watering a watering can"),
+						2 => CreateOneLiner("Chuberries are the red ones. Try grabbing me one"),
+						3 => CreateOneLiner("Try putting it in the vending machine"),
+						_ => CreateOneLiner("Go do your thing.")
+					};
+				}
 			}
-			switch (_firstTimeSpokenTo)
+			else if (_firstTimeSpokenTo)
 			{
-				case false:
-					_currentDialogue = _genericDialogue;
-					break;
-				case true:
-					_firstTimeSpokenTo = false;
-					break;
+				_currentDialogue = _introDialogue;
+				_firstTimeSpokenTo = false;
 			}
-			
+			else
+			{
+				_currentDialogue = _genericDialogue;
+			}
+
+			Assert.AssertNotNull(_currentDialogue, "Dialogue is null");
 			EventBus.Instance.InvokeStartingDialogue(_currentDialogue);
 		};
+
+		QuestController.Instance.QuestLineCompleted += questLine =>
+		{
+			if (questLine.Id == TutorialQuestLineId)
+			{
+				_tutorialActive = false;
+			}
+		};
+		QuestController.Instance.QuestLineStarted += questLine =>
+		{
+			if (questLine.Id == TutorialQuestLineId)
+			{
+				_tutorialActive = true;
+			}
+		};
+	}
+
+	private DialogueResourceObject CreateOneLiner(string sentence)
+	{
+		var dialogue = new DialogueResourceObject();
+		dialogue._dialogueText =
+		[
+			new DialogueLine
+			{
+				dialogueText = sentence,
+				DialogueExpression = null,
+				speakerName = "Godfrey",
+			}
+		];
+		dialogue._responses = null;
+		return dialogue;
 	}
 }
