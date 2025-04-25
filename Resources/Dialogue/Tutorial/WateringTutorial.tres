@@ -41,19 +41,19 @@ speakerName = "Gottfried"
 DialogueExpression = ExtResource("4_5fiqd")
 dialogueText = "Probier' doch einfach mal die Wasserkanne aus."
 
-[sub_resource type="Resource" id="Resource_rmg08"]
-script = ExtResource("2_pnq61")
-speakerName = "Gottfried"
-DialogueExpression = ExtResource("3_ebqr8")
-dialogueText = "In den Wannen sind noch übrig gebliebene Pflanzen. Gerne kannst du diese auch gießen."
-metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
-
 [sub_resource type="Resource" id="Resource_ebqr8"]
 script = ExtResource("5_pnq61")
 _cameraPosition = Vector2(477, 344)
 speakerName = ""
 dialogueText = ""
 metadata/_custom_type_script = "uid://bc35ywlebpmy1"
+
+[sub_resource type="Resource" id="Resource_rmg08"]
+script = ExtResource("2_pnq61")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("3_ebqr8")
+dialogueText = "In den Wannen sind noch übrig gebliebene Pflanzen. Gerne kannst du diese auch gießen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_4o3rp"]
 script = ExtResource("7_ndrcn")
@@ -65,5 +65,5 @@ metadata/_custom_type_script = "uid://wieplhq747d3"
 [resource]
 script = ExtResource("5_ndrcn")
 _dialogueId = "Tutorial1_DE"
-_dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_rmg08"), SubResource("Resource_ebqr8"), SubResource("Resource_4o3rp")])
+_dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_ebqr8"), SubResource("Resource_rmg08"), SubResource("Resource_4o3rp")])
 _responses = null

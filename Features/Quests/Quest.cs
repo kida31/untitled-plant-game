@@ -31,7 +31,8 @@ public partial class Quest : Resource
 	private void OnTaskCompleted(QuestTask obj)
 	{
 		Progression = QuestProgression.Completed;
-		_logger.Debug("Quest is completed");
+		_logger.Debug($"Quest {Description} was completed");
+		Task.TaskCompleted -= OnTaskCompleted;
 		
 		OnQuestProgressionChanged(Progression);
 	}
