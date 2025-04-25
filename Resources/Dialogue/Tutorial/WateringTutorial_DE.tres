@@ -1,69 +1,69 @@
 [gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=17 format=3 uid="uid://doio1ea88264e"]
 
-[ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="1_qldir"]
-[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_pnq61"]
-[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="3_ebqr8"]
-[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="4_5fiqd"]
-[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_ndrcn"]
-[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="5_pnq61"]
-[ext_resource type="Resource" uid="uid://c2t30hvhvqgx0" path="res://Resources/Quest/TutorialQuest.tres" id="6_5fiqd"]
-[ext_resource type="Script" uid="uid://wieplhq747d3" path="res://Features/Dialogue/Events/StartQuest.cs" id="7_ndrcn"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_w1bvm"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_0gme2"]
+[ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="3_rdojs"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="4_8nk7y"]
+[ext_resource type="Resource" uid="uid://c2t30hvhvqgx0" path="res://Resources/Quest/TutorialQuest.tres" id="5_5x3dm"]
+[ext_resource type="Script" uid="uid://wieplhq747d3" path="res://Features/Dialogue/Events/StartQuest.cs" id="6_qrc3g"]
+[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="7_ceggd"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="8_q8mxd"]
 
 [sub_resource type="Resource" id="Resource_5fiqd"]
-script = ExtResource("2_pnq61")
+script = ExtResource("2_0gme2")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("4_5fiqd")
+DialogueExpression = ExtResource("1_w1bvm")
 dialogueText = "Das wichtigste zuerst."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_hhqf7"]
-script = ExtResource("2_pnq61")
+script = ExtResource("2_0gme2")
 speakerName = "Wasserkanne"
-DialogueExpression = ExtResource("1_qldir")
+DialogueExpression = ExtResource("3_rdojs")
 dialogueText = "Das hier ist eine [color=red]Wasserkanne[/color] . Mit dieser Wasserkanne kannst du Pflanzen begießen."
 
 [sub_resource type="Resource" id="Resource_wfp6x"]
-script = ExtResource("2_pnq61")
+script = ExtResource("2_0gme2")
 speakerName = "Wasserkanne"
-DialogueExpression = ExtResource("1_qldir")
+DialogueExpression = ExtResource("3_rdojs")
 dialogueText = "Die Wasserkanne ist magisch und hat unendlich viel Wasser!"
 
 [sub_resource type="Resource" id="Resource_6v888"]
-script = ExtResource("2_pnq61")
+script = ExtResource("2_0gme2")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("3_ebqr8")
+DialogueExpression = ExtResource("4_8nk7y")
 dialogueText = "Aber pass auf, dass du deine Pflanzen nicht überwässerst!"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_esj0x"]
-script = ExtResource("2_pnq61")
+script = ExtResource("2_0gme2")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("4_5fiqd")
+DialogueExpression = ExtResource("1_w1bvm")
 dialogueText = "Probier' doch einfach mal die Wasserkanne aus."
 
+[sub_resource type="Resource" id="Resource_rmg08"]
+script = ExtResource("2_0gme2")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("4_8nk7y")
+dialogueText = "In den Wannen sind noch übrig gebliebene Pflanzen. Gerne kannst du diese auch gießen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_4o3rp"]
+script = ExtResource("6_qrc3g")
+QuestLine = ExtResource("5_5x3dm")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://wieplhq747d3"
+
 [sub_resource type="Resource" id="Resource_ebqr8"]
-script = ExtResource("5_pnq61")
+script = ExtResource("7_ceggd")
 _cameraPosition = Vector2(477, 344)
 speakerName = ""
 dialogueText = ""
 metadata/_custom_type_script = "uid://bc35ywlebpmy1"
 
-[sub_resource type="Resource" id="Resource_rmg08"]
-script = ExtResource("2_pnq61")
-speakerName = "Gottfried"
-DialogueExpression = ExtResource("3_ebqr8")
-dialogueText = "In den Wannen sind noch übrig gebliebene Pflanzen. Gerne kannst du diese auch gießen."
-metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
-
-[sub_resource type="Resource" id="Resource_4o3rp"]
-script = ExtResource("7_ndrcn")
-QuestLine = ExtResource("6_5fiqd")
-speakerName = ""
-dialogueText = ""
-metadata/_custom_type_script = "uid://wieplhq747d3"
-
 [resource]
-script = ExtResource("5_ndrcn")
+script = ExtResource("8_q8mxd")
 _dialogueId = "Tutorial1_DE"
-_dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_ebqr8"), SubResource("Resource_rmg08"), SubResource("Resource_4o3rp")])
+_dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_rmg08"), SubResource("Resource_4o3rp"), SubResource("Resource_ebqr8")])
 _responses = null

@@ -1,54 +1,46 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=13 format=3 uid="uid://cvmvno2vfx4ch"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=11 format=3 uid="uid://cvmvno2vfx4ch"]
 
-[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_pamod"]
-[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_o2gwa"]
-[ext_resource type="Texture2D" uid="uid://c044iw7or44e5" path="res://Assets/Tools/shers.png" id="3_dbkai"]
-[ext_resource type="Texture2D" uid="uid://dkt14ugsh0y5v" path="res://Assets/Items/Plants/chubery_wholePlant.png" id="4_tbl04"]
-[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="5_ltgc6"]
-[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="8_t2tma"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_cvsfc"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_njduk"]
+[ext_resource type="Texture2D" uid="uid://c044iw7or44e5" path="res://Assets/Tools/shers.png" id="3_g3cto"]
+[ext_resource type="Texture2D" uid="uid://dkt14ugsh0y5v" path="res://Assets/Items/Plants/chubery_wholePlant.png" id="4_qeyie"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_bke70"]
 
 [sub_resource type="Resource" id="Resource_5fiqd"]
-script = ExtResource("2_o2gwa")
+script = ExtResource("2_njduk")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("1_pamod")
+DialogueExpression = ExtResource("1_cvsfc")
 dialogueText = "Perfekt! Es scheint als hättest du es hinbekommen etwas zu gießen."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_hhqf7"]
-script = ExtResource("2_o2gwa")
+script = ExtResource("2_njduk")
 speakerName = "Schere"
-DialogueExpression = ExtResource("3_dbkai")
+DialogueExpression = ExtResource("3_g3cto")
 dialogueText = "Als nächstes gibt es noch die [color=redGartenschere[/color] . Die Gartenschere hilft dir sauber Pflanzen zu ernten."
 
 [sub_resource type="Resource" id="Resource_wfp6x"]
-script = ExtResource("2_o2gwa")
+script = ExtResource("2_njduk")
 speakerName = "Schere"
-DialogueExpression = ExtResource("3_dbkai")
+DialogueExpression = ExtResource("3_g3cto")
 dialogueText = "Nachdem du die Pflanzen geerntet hast, werden sie nach einer Zeit auch wieder neu wachsen, wenn du dich um diese kümmerst."
 
 [sub_resource type="Resource" id="Resource_6v888"]
-script = ExtResource("2_o2gwa")
+script = ExtResource("2_njduk")
 speakerName = "Chuberry"
-DialogueExpression = ExtResource("4_tbl04")
+DialogueExpression = ExtResource("4_qeyie")
 dialogueText = "In der Wanne links steht eine ausgewachsene Chuberry."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
-[sub_resource type="Resource" id="Resource_ebqr8"]
-script = ExtResource("5_ltgc6")
-_cameraPosition = Vector2(477, 344)
-speakerName = ""
-dialogueText = ""
-metadata/_custom_type_script = "uid://bc35ywlebpmy1"
-
 [sub_resource type="Resource" id="Resource_pamod"]
-script = ExtResource("2_o2gwa")
+script = ExtResource("2_njduk")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("1_pamod")
+DialogueExpression = ExtResource("1_cvsfc")
 dialogueText = "Ernte doch die Pflanze und komm wieder, wenn du fertig bist."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]
-script = ExtResource("8_t2tma")
+script = ExtResource("5_bke70")
 _dialogueId = "Tutorial2_DE"
-_dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_ebqr8"), SubResource("Resource_pamod")])
+_dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_pamod")])
 _responses = null

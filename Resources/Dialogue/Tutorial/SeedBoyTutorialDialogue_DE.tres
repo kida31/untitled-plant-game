@@ -1,58 +1,58 @@
 [gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=14 format=3 uid="uid://yg4mwgstm60u"]
 
-[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_8g2n2"]
-[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_86yub"]
-[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_lx0ib"]
-[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="3_sak3p"]
-[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="4_fgbo0"]
-[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="5_bw11t"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_j4rfv"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="2_fg0ew"]
+[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="3_kbnbo"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="4_vyl80"]
+[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="5_awhb4"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="6_s5uc0"]
 
 [sub_resource type="Resource" id="Resource_sr1yf"]
-script = ExtResource("1_8g2n2")
+script = ExtResource("1_j4rfv")
 speakerName = "Laya"
 dialogueText = "Die Frucht wurde verkauft. Was mache ich mit dem Geld?"
 
 [sub_resource type="Resource" id="Resource_g71vq"]
-script = ExtResource("1_8g2n2")
+script = ExtResource("1_j4rfv")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("1_lx0ib")
+DialogueExpression = ExtResource("2_fg0ew")
 dialogueText = "Oh, das hört sich doch gut an! Wenn aus dem Automaten etwas verkauft wurde findest du dort auch das Geld."
 
 [sub_resource type="Resource" id="Resource_sqv14"]
-script = ExtResource("1_8g2n2")
+script = ExtResource("1_j4rfv")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("1_lx0ib")
+DialogueExpression = ExtResource("2_fg0ew")
 dialogueText = "Mit dem Geld kannst du dann auch Samen kaufen."
 
+[sub_resource type="Resource" id="Resource_t4mgt"]
+script = ExtResource("1_j4rfv")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("3_kbnbo")
+dialogueText = "Dort steht Pan Dan. Er ist der Junge vom ehemaligen Supermarkt Besitzer."
+
+[sub_resource type="Resource" id="Resource_il2tp"]
+script = ExtResource("1_j4rfv")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("4_vyl80")
+dialogueText = "Er sammelt immer alles mögliche an Dingen. Sicherlich kann er dir auch ein paar Samen verkaufen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_ed3bb"]
+script = ExtResource("1_j4rfv")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("2_fg0ew")
+dialogueText = "Sprich ihn doch mal an. Vielleicht hat er etwas, was dich interessiert."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
 [sub_resource type="Resource" id="Resource_wdbcu"]
-script = ExtResource("3_sak3p")
+script = ExtResource("5_awhb4")
 _cameraPosition = Vector2(264, 200)
 speakerName = ""
 dialogueText = ""
 metadata/_custom_type_script = "uid://bc35ywlebpmy1"
 
-[sub_resource type="Resource" id="Resource_t4mgt"]
-script = ExtResource("1_8g2n2")
-speakerName = "Gottfried"
-DialogueExpression = ExtResource("4_fgbo0")
-dialogueText = "Dort steht Pan Dan. Er ist der Junge vom ehemaligen Supermarkt Besitzer."
-
-[sub_resource type="Resource" id="Resource_il2tp"]
-script = ExtResource("1_8g2n2")
-speakerName = "Gottfried"
-DialogueExpression = ExtResource("5_bw11t")
-dialogueText = "Er sammelt immer alles mögliche an Dingen. Sicherlich kann er dir auch ein paar Samen verkaufen."
-metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
-
-[sub_resource type="Resource" id="Resource_ed3bb"]
-script = ExtResource("1_8g2n2")
-speakerName = "Gottfried"
-DialogueExpression = ExtResource("1_lx0ib")
-dialogueText = "Sprich ihn doch mal an. Vielleicht hat er etwas, was dich interessiert."
-metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
-
 [resource]
-script = ExtResource("1_86yub")
+script = ExtResource("6_s5uc0")
 _dialogueId = "Tutorial4_DE"
-_dialogueText = Array[Object]([SubResource("Resource_sr1yf"), SubResource("Resource_g71vq"), SubResource("Resource_sqv14"), SubResource("Resource_wdbcu"), SubResource("Resource_t4mgt"), SubResource("Resource_il2tp"), SubResource("Resource_ed3bb")])
+_dialogueText = Array[Object]([SubResource("Resource_sr1yf"), SubResource("Resource_g71vq"), SubResource("Resource_sqv14"), SubResource("Resource_t4mgt"), SubResource("Resource_il2tp"), SubResource("Resource_ed3bb"), SubResource("Resource_wdbcu")])
 _responses = Array[Object]([])

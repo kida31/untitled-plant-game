@@ -209,7 +209,11 @@ frame_progress = 0.347857
 script = ExtResource("3_c2lkg")
 _routines = []
 
-[node name="PlayerInitiatedDialogue" type="Node" parent="GodfreyRandomWalk" index="0"]
+[node name="PlayerInitiatedDialogue2" type="Node" parent="GodfreyRandomWalk" index="0"]
+script = ExtResource("6_8afnb")
+_dialogueResourceObjects = Array[Object]([ExtResource("7_v4eb2"), ExtResource("9_5eoqm"), ExtResource("7_60e8e"), ExtResource("8_41b8x"), ExtResource("9_qpbyv"), ExtResource("10_g84je")])
+
+[node name="PlayerInitiatedDialogue" type="Node" parent="GodfreyRandomWalk" index="1"]
 script = ExtResource("6_8afnb")
 _dialogueResourceObjects = Array[Object]([ExtResource("7_v4eb2"), ExtResource("9_5eoqm"), ExtResource("7_60e8e"), ExtResource("8_41b8x"), ExtResource("9_qpbyv"), ExtResource("10_g84je")])
 

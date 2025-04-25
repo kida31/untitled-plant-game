@@ -23,6 +23,11 @@ public partial class PlayerCamera : Camera2D
 
 	private void PanToPosition(Vector2 targetPosition)
 	{
+		var vp = GetViewport();
+		vp.SetDisableInput(true);
+		vp.GuiDisableInput = true;
+		vp.SetInputAsHandled(); 
+		
 		_previousPosition = GlobalPosition;
 		var tween = CreateTween();
 		tween.SetTrans(Tween.TransitionType.Sine);
@@ -31,5 +36,12 @@ public partial class PlayerCamera : Camera2D
 		tween.TweenProperty(this, "global_position", targetPosition, 1.0f);
 		tween.TweenProperty(this, "global_position", _player.GlobalPosition, 1.0f)
 			.SetDelay(1.0f); // wait 1 second before returning;
+		
+		ToSignal(tween, Tween.SignalName.Finished).OnCompleted(() =>
+		{
+			vp.SetDisableInput(false);
+			vp.GuiDisableInput = false;
+			vp.SetInputAsHandled();
+		});
 	}
 }
