@@ -12,7 +12,6 @@ public partial class HaveDialogueTask : QuestTask
 	public override bool IsCompleted => _isCompleted;
 	public override event Action<QuestTask> TaskCompleted;
 	private bool _isCompleted = false;
-	private readonly Logger _logger = new ("QuestTask");
 
 	public HaveDialogueTask()
 	{
@@ -29,7 +28,6 @@ public partial class HaveDialogueTask : QuestTask
 		_isCompleted = true;
 		
 		EventBus.Instance.EndDialogue -= DialogueEnded;
-		_logger.Debug("Dialogue ended. Quest is completed");
 		TaskCompleted?.Invoke(this);
 	}
 }

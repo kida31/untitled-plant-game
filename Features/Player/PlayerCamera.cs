@@ -9,6 +9,7 @@ public partial class PlayerCamera : Camera2D
 	private Player _player;
 	private Vector2 _previousPosition;
 	private float _speed = 5f;
+	private Logger _logger = new("PlayerCamera");
 
 	public override void _Ready()
 	{
@@ -23,6 +24,7 @@ public partial class PlayerCamera : Camera2D
 
 	private void PanToPosition(Vector2 targetPosition)
 	{
+		_logger.Debug("Panning to position: " + targetPosition);
 		var vp = GetViewport();
 		vp.SetDisableInput(true);
 		vp.GuiDisableInput = true;
@@ -39,6 +41,7 @@ public partial class PlayerCamera : Camera2D
 		
 		ToSignal(tween, Tween.SignalName.Finished).OnCompleted(() =>
 		{
+			_logger.Debug("Returning to previous position" + _previousPosition);
 			vp.SetDisableInput(false);
 			vp.GuiDisableInput = false;
 			vp.SetInputAsHandled();

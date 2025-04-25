@@ -1,15 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://cr2712p8tviur"]
+[gd_scene load_steps=29 format=3 uid="uid://cr2712p8tviur"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_ljkvf"]
+[ext_resource type="Script" uid="uid://cn231fnnhymqs" path="res://Features/NPC/Godfrey.cs" id="2_bs8m2"]
 [ext_resource type="Texture2D" uid="uid://6vwbt72gbl2k" path="res://Assets/Characters/Godfrey/Godfrey_idle-Sheet.png" id="2_ujoa5"]
-[ext_resource type="Script" uid="uid://b3fhofujtjc6t" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="3_c2lkg"]
-[ext_resource type="Script" uid="uid://y0sojouaim1y" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="6_8afnb"]
-[ext_resource type="Resource" uid="uid://cvmvno2vfx4ch" path="res://Resources/Dialogue/Tutorial/HarvestingTutorial_DE.tres" id="7_60e8e"]
-[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/Intro1_DE.tres" id="7_v4eb2"]
-[ext_resource type="Resource" uid="uid://dopykccwoa5os" path="res://Resources/Dialogue/Tutorial/VMTutorialDialogue_DE.tres" id="8_41b8x"]
-[ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/Tutorial/WateringTutorial_DE.tres" id="9_5eoqm"]
-[ext_resource type="Resource" uid="uid://yg4mwgstm60u" path="res://Resources/Dialogue/Tutorial/SeedBoyTutorialDialogue_DE.tres" id="9_qpbyv"]
-[ext_resource type="Resource" uid="uid://ds2a5jertu4k4" path="res://Resources/Dialogue/Tutorial/TutorialDialogueEnd_DE.tres" id="10_g84je"]
 [ext_resource type="Texture2D" uid="uid://60scb681f532" path="res://Assets/SpeechBubbles/Speechbubble_PanPan.png" id="12_f2qkf"]
 [ext_resource type="Script" uid="uid://ctvwp85ad5ufx" path="res://Features/ProximityCollision/SpeechBubble.cs" id="13_svws1"]
 
@@ -193,11 +186,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Godfrey" node_paths=PackedStringArray("_routinePlanner", "_overWorldSprite") instance=ExtResource("1_ljkvf")]
-_name = "Godfrey the first Priest"
-_disableMovement = true
-_routinePlanner = NodePath("GodfreyRandomWalk")
-_overWorldSprite = NodePath("CharacterSprite2D")
+[node name="Godfrey" instance=ExtResource("1_ljkvf")]
+script = ExtResource("2_bs8m2")
 
 [node name="CharacterSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_ts0yk")
@@ -205,19 +195,7 @@ animation = &"idle"
 frame = 15
 frame_progress = 0.347857
 
-[node name="GodfreyRandomWalk" type="Node" parent="." index="3" node_paths=PackedStringArray("_routines")]
-script = ExtResource("3_c2lkg")
-_routines = []
-
-[node name="PlayerInitiatedDialogue2" type="Node" parent="GodfreyRandomWalk" index="0"]
-script = ExtResource("6_8afnb")
-_dialogueResourceObjects = Array[Object]([ExtResource("7_v4eb2"), ExtResource("9_5eoqm"), ExtResource("7_60e8e"), ExtResource("8_41b8x"), ExtResource("9_qpbyv"), ExtResource("10_g84je")])
-
-[node name="PlayerInitiatedDialogue" type="Node" parent="GodfreyRandomWalk" index="1"]
-script = ExtResource("6_8afnb")
-_dialogueResourceObjects = Array[Object]([ExtResource("7_v4eb2"), ExtResource("9_5eoqm"), ExtResource("7_60e8e"), ExtResource("8_41b8x"), ExtResource("9_qpbyv"), ExtResource("10_g84je")])
-
-[node name="SpeechBubble" type="Sprite2D" parent="." index="4"]
+[node name="SpeechBubble" type="Sprite2D" parent="." index="3"]
 visible = false
 position = Vector2(41, -56)
 texture = ExtResource("12_f2qkf")
