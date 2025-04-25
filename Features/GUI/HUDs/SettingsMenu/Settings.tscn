@@ -129,6 +129,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 
 [node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4"]
@@ -208,4 +209,4 @@ autowrap_mode = 2
 [node name="Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Back"
+text = "MENU_LABEL_BACK"

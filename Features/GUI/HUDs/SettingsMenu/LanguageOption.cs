@@ -18,6 +18,12 @@ public partial class LanguageOption : OptionButton
 
 	public override void _Ready()
 	{
+		if (OS.IsDebugBuild())
+		{
+			// For testing purposes
+			AddMoreLanguages();
+		}
+
 		var currentLocale = TranslationServer.GetLocale();
 		foreach (var (index, (label, locale)) in _languages)
 		{
@@ -37,5 +43,35 @@ public partial class LanguageOption : OptionButton
 		var idx = (int) (index % _languages.Count);
 		var locale = _languages[idx].Item2;
 		TranslationServer.SetLocale(locale);
+	}
+
+	private void AddMoreLanguages()
+	{
+		var otherLanguages = new Dictionary<int, Tuple<string, string>>
+		{
+			{2, new Tuple<string, string>("Français", "fr")},
+			{3, new Tuple<string, string>("Español", "es")},
+			{4, new Tuple<string, string>("Italiano", "it")},
+			{5, new Tuple<string, string>("Português (BR)", "ptbr")},
+			{6, new Tuple<string, string>("Português (PT)", "pt")},
+			{7, new Tuple<string, string>("Русский", "ru")},
+			{8, new Tuple<string, string>("Ελληνικά", "el")},
+			{9, new Tuple<string, string>("Türkçe", "tr")},
+			{10, new Tuple<string, string>("Dansk", "da")},
+			{11, new Tuple<string, string>("Norsk Bokmål", "no")},
+			{12, new Tuple<string, string>("Svenska", "sv")},
+			{13, new Tuple<string, string>("Nederlands", "nl")},
+			{14, new Tuple<string, string>("Polski", "pl")},
+			{15, new Tuple<string, string>("Suomi", "fi")},
+			{16, new Tuple<string, string>("日本語", "ja")},
+			{17, new Tuple<string, string>("简体中文", "zh-cn")},
+			{18, new Tuple<string, string>("繁體中文", "zh-tw")},
+			{19, new Tuple<string, string>("한국어", "ko")},
+		};
+
+		foreach (var (index, (label, locale)) in otherLanguages)
+		{
+			_languages.Add(index, new Tuple<string, string>(label, locale));
+		}
 	}
 }
