@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 script = ExtResource("2_xthbd")
 speakerName = "Gartenschere"
 DialogueExpression = ExtResource("3_y4a7a")
-dialogueText = "Als nächstes gibt es noch die [color=redGartenschere[/color] . Die Gartenschere hilft dir sauber Pflanzen zu ernten."
+dialogueText = "Als nächstes gibt es noch die [color=red]Gartenschere[/color] . Die Gartenschere hilft dir sauber Pflanzen zu ernten."
 
 [sub_resource type="Resource" id="Resource_wfp6x"]
 script = ExtResource("2_xthbd")
