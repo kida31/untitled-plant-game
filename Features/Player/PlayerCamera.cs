@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using untitledplantgame.Common;
+using untitledplantgame.Common.GameStates;
 using untitledplantgame.Player;
 
 public partial class PlayerCamera : Camera2D
@@ -26,8 +27,9 @@ public partial class PlayerCamera : Camera2D
 		var tween = CreateTween();
 		tween.SetTrans(Tween.TransitionType.Sine);
 		tween.SetEase(Tween.EaseType.Out);
+		
 		tween.TweenProperty(this, "global_position", targetPosition, 1.0f);
-		tween.TweenProperty(this, "global_position", _previousPosition, 1.0f)
+		tween.TweenProperty(this, "global_position", _player.GlobalPosition, 1.0f)
 			.SetDelay(1.0f); // wait 1 second before returning;
 	}
 }

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="QuestLine" load_steps=7 format=3 uid="uid://cf5uvuk50hwl0"]
 
-[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/Intro1.tres" id="1_6a3nh"]
+[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/Intro1_DE.tres" id="1_6a3nh"]
 [ext_resource type="Script" uid="uid://cgb70arkej80e" path="res://Features/Quests/Tasks/HaveDialogueTask.cs" id="2_gaift"]
 [ext_resource type="Script" uid="uid://d4amaf4u1kl81" path="res://Features/Quests/Quest.cs" id="3_1g0fw"]
 [ext_resource type="Script" uid="uid://bf7h6b05r58gu" path="res://Features/Quests/QuestLine.cs" id="4_mhplf"]
