@@ -52,7 +52,7 @@ public partial class LanguageOption : OptionButton
 			{2, new Tuple<string, string>("Français", "fr")},
 			{3, new Tuple<string, string>("Español", "es")},
 			{4, new Tuple<string, string>("Italiano", "it")},
-			{5, new Tuple<string, string>("Português (BR)", "ptbr")},
+			{5, new Tuple<string, string>("Português (BR)", "pt_BR")},
 			{6, new Tuple<string, string>("Português (PT)", "pt")},
 			{7, new Tuple<string, string>("Русский", "ru")},
 			{8, new Tuple<string, string>("Ελληνικά", "el")},
@@ -64,8 +64,8 @@ public partial class LanguageOption : OptionButton
 			{14, new Tuple<string, string>("Polski", "pl")},
 			{15, new Tuple<string, string>("Suomi", "fi")},
 			{16, new Tuple<string, string>("日本語", "ja")},
-			{17, new Tuple<string, string>("简体中文", "zh-cn")},
-			{18, new Tuple<string, string>("繁體中文", "zh-tw")},
+			{17, new Tuple<string, string>("简体中文", "zh_CN")},
+			{18, new Tuple<string, string>("繁體中文", "zh_TW")},
 			{19, new Tuple<string, string>("한국어", "ko")},
 		};
 
