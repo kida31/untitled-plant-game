@@ -38,19 +38,8 @@ public partial class EventBus : Node
 			QueueFree();
 		}
 	}
-
-	//---------------------------------------------Legacy Signals---------------------------------------------
-	[Signal]
-	[Obsolete]
-	public delegate void NPCInteractedEventHandler(Node npc); //Replace with C# Action
 	
-	[Obsolete]
-	public void NotifyNPCInteracted(Node npc)
-	{
-		EmitSignal(nameof(NPCInteracted), npc);
-	}
-
-	//---------------------------------------------Legacy Signals---------------------------------------------
+	//SeedShop
 	
 	public event Action OnSeedshopOpened;
 	public event Action OnInventoryOpen;
@@ -74,11 +63,26 @@ public partial class EventBus : Node
 		OnSeedshopClosed?.Invoke();
 	}
 
+	//VendingMachine
+	
 	public event Action<VendingMachine> BeforeVendingMachineOpened;
+	
+	public event Action<IItemStack> ItemAddedToVendingMachine;
+	public event Action<IItemStack> ItemSoldFromVendingMachine;
 
 	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
+	}
+	
+	public void OnItemAddedToVendingMachine(IItemStack obj)
+	{
+		ItemAddedToVendingMachine?.Invoke(obj);
+	}
+	
+	public void OnItemSoldFromVendingMachine(IItemStack obj)
+	{
+		ItemSoldFromVendingMachine?.Invoke(obj);
 	}
 
 	//Dialogue
@@ -188,19 +192,6 @@ public partial class EventBus : Node
 	public void BeforeCraftingStationUiOpen(ICraftingStation craftingStation)
 	{
 		BeforeCraftingStationUiOpened?.Invoke(craftingStation);
-	}
-	
-	
-	
-	// Band-aid code for having actual things happening after selecting an answer.
-	
-	[Obsolete] // Now that's what I call a "WHAT DID I DO, WHERE DID MY STUFF GO?!?!?!?" panic moment
-	public event Action<string> OnResponseButtonPress;
-
-	[Obsolete] // Now that's what I call a "WHAT DID I DO, WHERE DID MY STUFF GO?!?!?!?" panic moment
-	public void ResponseButtonPressed(string message)
-	{
-		OnResponseButtonPress?.Invoke(message);
 	}
 
 	public event Action<IBgmArea> BgmAreaChanged;
