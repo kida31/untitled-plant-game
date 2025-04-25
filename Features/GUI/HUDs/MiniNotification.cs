@@ -6,7 +6,7 @@ using untitledplantgame.GUI.Interactions;
 /// Small horizontal notification. Shrinks and grows vertically while masking child/content.
 /// This may need refactoring to be more generic.
 /// </summary>
-public partial class MiniNotification : AltTextControl
+public partial class MiniNotification : GenericTextControl
 {
 	[Export] private Control _content;
 	[Export] private TextureRect _icon;

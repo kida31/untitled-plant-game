@@ -26,6 +26,16 @@ public partial class NotificationBox : Control
 		EventBus.Instance.OnItemAddedToInventory += (item) => { AddNotification($"+{item.Amount} {item.Name}", item.Icon); };
 	}
 
+	private int Counter = 0;
+
+	public override void _Input(InputEvent @event)
+	{
+		if (Input.IsActionPressed("ui_accept"))
+		{
+			AddNotification($"+{Counter++} Karma");
+		}
+	}
+
 	public void AddNotification(string text, Texture2D texture = null)
 	{
 		// Create a new notification instance

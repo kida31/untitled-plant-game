@@ -6,7 +6,7 @@ namespace untitledplantgame.GUI.Interactions;
 ///		A hint to show the player how to interact with a nearby object.
 /// </summary>
 [Tool]
-public partial class AltTextControl : Control
+public partial class GenericTextControl : Control
 {
 	[Export]
 	public string Text
