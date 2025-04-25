@@ -39,7 +39,10 @@ public partial class Godfrey : CharacterBody2D
 		};
 		_npcPlayerInteraction.InteractionEvent += () =>
 		{
-			
+			if(!_tutorialCompleted)
+			{
+				EventBus.Instance.InvokeStartingDialogue(_currentDialogue);
+			}
 			switch (_firstTimeSpokenTo)
 			{
 				case false:
