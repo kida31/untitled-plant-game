@@ -1,6 +1,7 @@
 using Godot;
-using System;
 using untitledplantgame.GUI.Interactions;
+
+namespace untitledplantgame.GUI.HUDs;
 
 /// <summary>
 ///		Small horizontal notification. Shrinks and grows vertically while masking child/content.
