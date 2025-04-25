@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_bkt52"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_0cg4s"]
-[ext_resource type="Resource" uid="uid://chf3quvp1uk06" path="res://Resources/Dialogue/Tutorial/GiveTutorial_DE.tres" id="3_2n144"]
-[ext_resource type="Resource" uid="uid://cuniduin6082y" path="res://Resources/Dialogue/Tutorial/SkipTutorial_DE.tres" id="4_bkt52"]
+[ext_resource type="Resource" uid="uid://chf3quvp1uk06" path="res://Resources/Dialogue/Godfrey/Tutorial/GiveTutorial_DE.tres" id="3_2n144"]
+[ext_resource type="Resource" uid="uid://cuniduin6082y" path="res://Resources/Dialogue/Godfrey/Tutorial/SkipTutorial_DE.tres" id="4_bkt52"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="6_r3j0f"]
 
 [sub_resource type="Resource" id="Resource_82fqt"]

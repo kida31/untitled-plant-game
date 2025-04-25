@@ -1,8 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://cr2712p8tviur"]
+[gd_scene load_steps=31 format=3 uid="uid://cr2712p8tviur"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_ljkvf"]
 [ext_resource type="Script" uid="uid://cn231fnnhymqs" path="res://Features/NPC/Godfrey.cs" id="2_bs8m2"]
 [ext_resource type="Texture2D" uid="uid://6vwbt72gbl2k" path="res://Assets/Characters/Godfrey/Godfrey_idle-Sheet.png" id="2_ujoa5"]
+[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Godfrey/Introduction/Intro1_DE.tres" id="3_kjdj5"]
+[ext_resource type="Resource" uid="uid://b1uvgbq78p6p3" path="res://Resources/Dialogue/Godfrey/GenericDialogue_DE.tres" id="4_1kqna"]
 [ext_resource type="Texture2D" uid="uid://60scb681f532" path="res://Assets/SpeechBubbles/Speechbubble_PanPan.png" id="12_f2qkf"]
 [ext_resource type="Script" uid="uid://ctvwp85ad5ufx" path="res://Features/ProximityCollision/SpeechBubble.cs" id="13_svws1"]
 
@@ -186,10 +188,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Godfrey" instance=ExtResource("1_ljkvf")]
+[node name="Godfrey" node_paths=PackedStringArray("_overWorldSprite") instance=ExtResource("1_ljkvf")]
 script = ExtResource("2_bs8m2")
-_introDialogue = null
-_genericDialogue = null
+_overWorldSprite = NodePath("CharacterSprite2D")
+_introDialogue = ExtResource("3_kjdj5")
+_genericDialogue = ExtResource("4_1kqna")
 
 [node name="CharacterSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_ts0yk")

@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://lufeqnjeabjx" path="res://Features/NPC/NpcTask/MovementTaskTarget.tscn" id="3_q8nv8"]
 [ext_resource type="PackedScene" uid="uid://duxkc2whc5lx3" path="res://Features/Player/Player.tscn" id="4_ajjof"]
 [ext_resource type="Script" uid="uid://kbkbhi8c3dfo" path="res://Features/NPC/Routine/NpcRoutine.cs" id="4_s323p"]
-[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/Intro1_DE.tres" id="4_tyepw"]
+[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Godfrey/Introduction/Intro1_DE.tres" id="4_tyepw"]
 [ext_resource type="Script" uid="uid://dpwxb4jpi8ra1" path="res://Features/NPC/NpcTask/TriggerVendingMachineResponse.cs" id="6_7g8bw"]
 [ext_resource type="PackedScene" uid="uid://bwxru3xolfihy" path="res://Features/NPC/NpcTask/TalkToPlayerTask.tscn" id="6_fwegf"]
 [ext_resource type="Script" uid="uid://y0sojouaim1y" path="res://Features/NPC/NpcTask/PlayerInitiatedDialogue.cs" id="7_bhhsc"]
-[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/Tutorial/Intro3_DE.tres" id="8_2olw0"]
+[ext_resource type="Resource" uid="uid://c8ao4gjije4hk" path="res://Resources/Dialogue/Godfrey/Introduction/Intro3_DE.tres" id="8_2olw0"]
 
 [node name="NpcTestingScenes" type="Node2D"]
 

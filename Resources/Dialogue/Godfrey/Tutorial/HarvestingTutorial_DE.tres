@@ -1,46 +1,46 @@
 [gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=11 format=3 uid="uid://cvmvno2vfx4ch"]
 
-[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_cvsfc"]
-[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_njduk"]
-[ext_resource type="Texture2D" uid="uid://c044iw7or44e5" path="res://Assets/Tools/shers.png" id="3_g3cto"]
-[ext_resource type="Texture2D" uid="uid://dkt14ugsh0y5v" path="res://Assets/Items/Plants/chubery_wholePlant.png" id="4_qeyie"]
-[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_bke70"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_eoy4s"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_xthbd"]
+[ext_resource type="Texture2D" uid="uid://c044iw7or44e5" path="res://Assets/Tools/shers.png" id="3_y4a7a"]
+[ext_resource type="Texture2D" uid="uid://dkt14ugsh0y5v" path="res://Assets/Items/Plants/chubery_wholePlant.png" id="4_rw7ds"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_kcxt1"]
 
 [sub_resource type="Resource" id="Resource_5fiqd"]
-script = ExtResource("2_njduk")
+script = ExtResource("2_xthbd")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("1_cvsfc")
+DialogueExpression = ExtResource("1_eoy4s")
 dialogueText = "Perfekt! Es scheint als hättest du es hinbekommen etwas zu gießen."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_hhqf7"]
-script = ExtResource("2_njduk")
-speakerName = "Schere"
-DialogueExpression = ExtResource("3_g3cto")
+script = ExtResource("2_xthbd")
+speakerName = "Gartenschere"
+DialogueExpression = ExtResource("3_y4a7a")
 dialogueText = "Als nächstes gibt es noch die [color=redGartenschere[/color] . Die Gartenschere hilft dir sauber Pflanzen zu ernten."
 
 [sub_resource type="Resource" id="Resource_wfp6x"]
-script = ExtResource("2_njduk")
-speakerName = "Schere"
-DialogueExpression = ExtResource("3_g3cto")
+script = ExtResource("2_xthbd")
+speakerName = "Gartenschere"
+DialogueExpression = ExtResource("3_y4a7a")
 dialogueText = "Nachdem du die Pflanzen geerntet hast, werden sie nach einer Zeit auch wieder neu wachsen, wenn du dich um diese kümmerst."
 
 [sub_resource type="Resource" id="Resource_6v888"]
-script = ExtResource("2_njduk")
+script = ExtResource("2_xthbd")
 speakerName = "Chuberry"
-DialogueExpression = ExtResource("4_qeyie")
+DialogueExpression = ExtResource("4_rw7ds")
 dialogueText = "In der Wanne links steht eine ausgewachsene Chuberry."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_pamod"]
-script = ExtResource("2_njduk")
+script = ExtResource("2_xthbd")
 speakerName = "Gottfried"
-DialogueExpression = ExtResource("1_cvsfc")
+DialogueExpression = ExtResource("1_eoy4s")
 dialogueText = "Ernte doch die Pflanze und komm wieder, wenn du fertig bist."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]
-script = ExtResource("5_bke70")
+script = ExtResource("5_kcxt1")
 _dialogueId = "Tutorial2_DE"
 _dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_pamod")])
 _responses = null

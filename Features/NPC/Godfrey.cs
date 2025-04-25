@@ -39,15 +39,16 @@ public partial class Godfrey : CharacterBody2D
 		};
 		_npcPlayerInteraction.InteractionEvent += () =>
 		{
-			if (_firstTimeSpokenTo)
-			{
-				_firstTimeSpokenTo = false;
-			}
-			if (!_firstTimeSpokenTo)
-			{
-				_currentDialogue = _genericDialogue;
-			}
 			
+			switch (_firstTimeSpokenTo)
+			{
+				case false:
+					_currentDialogue = _genericDialogue;
+					break;
+				case true:
+					_firstTimeSpokenTo = false;
+					break;
+			}
 			
 			EventBus.Instance.InvokeStartingDialogue(_currentDialogue);
 		};

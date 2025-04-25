@@ -1,13 +1,11 @@
-[gd_resource type="Resource" script_class="QuestLine" load_steps=7 format=3 uid="uid://cf5uvuk50hwl0"]
+[gd_resource type="Resource" script_class="QuestLine" load_steps=6 format=3 uid="uid://cf5uvuk50hwl0"]
 
-[ext_resource type="Resource" uid="uid://bod2ukhcoo74l" path="res://Resources/Dialogue/Tutorial/Intro1_DE.tres" id="1_6a3nh"]
 [ext_resource type="Script" uid="uid://cgb70arkej80e" path="res://Features/Quests/Tasks/HaveDialogueTask.cs" id="2_gaift"]
 [ext_resource type="Script" uid="uid://d4amaf4u1kl81" path="res://Features/Quests/Quest.cs" id="3_1g0fw"]
 [ext_resource type="Script" uid="uid://bf7h6b05r58gu" path="res://Features/Quests/QuestLine.cs" id="4_mhplf"]
 
 [sub_resource type="Resource" id="Resource_mcjio"]
 script = ExtResource("2_gaift")
-_dialogue = ExtResource("1_6a3nh")
 metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_ofj7o"]
@@ -18,6 +16,7 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [resource]
 script = ExtResource("4_mhplf")
+Id = "intro"
 Name = "Erste Schritte"
 Quests = Array[Object]([SubResource("Resource_ofj7o")])
 metadata/_custom_type_script = "uid://bf7h6b05r58gu"
