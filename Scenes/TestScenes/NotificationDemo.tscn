@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhqsw73sx74u4"]
+[gd_scene load_steps=3 format=3 uid="uid://bd1gl525dsggd"]
 
 [ext_resource type="Script" uid="uid://div7pjmf35w37" path="res://Scenes/TestScenes/NotificationDemo.cs" id="1_5qv7m"]
 [ext_resource type="PackedScene" uid="uid://c55xp0xg83mt1" path="res://Features/GUI/HUDs/HUD.tscn" id="2_dqhad"]

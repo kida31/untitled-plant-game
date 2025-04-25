@@ -2,6 +2,8 @@ using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.ExtensionMethods;
 
+namespace untitledplantgame.GUI.HUDs;
+
 /// <summary>
 ///		This class is a container for MiniNotification.
 ///		It handles spawning logic as well as animation for each notification.
@@ -9,15 +11,19 @@ using untitledplantgame.Common.ExtensionMethods;
 /// </summary>
 public partial class NotificationBox : Control
 {
+	// Please change the values in the inspector, unless these do not make sense at all.
+	private const float DefaultDuration = 2f;
+	private const float DefaultFadeInDuration = 0.5f;
+	private const float DefaultFadeOutDuration = 2f;
+	
+	[Export] public float Duration = DefaultDuration;
+	[Export] public float FadeInDuration = DefaultFadeInDuration;
+	[Export] public float FadeOutDuration = DefaultFadeOutDuration;
+	
+	[ExportGroup("Setup")]
 	[Export] private PackedScene _notificationScene;
-
-	[Export] public float Duration = 5f;
-	[Export] public float FadeInDuration = 0.5f;
-	[Export] public float FadeOutDuration = 1.0f;
-
-
-	// Random numb generator
-	private int index = 0;
+	[Export] private Control _container;
+	
 	private Logger _logger;
 
 	public override void _Ready()
@@ -28,8 +34,8 @@ public partial class NotificationBox : Control
 		// Good luck, next person.
 		EventBus.Instance.OnItemAddedToInventory += (item) => { AddNotification($"+{item.Amount} {item.Name}", item.Icon); };
 	}
-
-	public void AddNotification(string text, Texture2D texture = null)
+	
+	private void AddNotification(string text, Texture2D texture = null)
 	{
 		// Create a new notification instance
 		var notification = _notificationScene.Instantiate<MiniNotification>();
@@ -52,6 +58,6 @@ public partial class NotificationBox : Control
 		});
 
 		// Add the notification to the scene
-		AddChild(notification);
+		_container.AddChild(notification);
 	}
 }

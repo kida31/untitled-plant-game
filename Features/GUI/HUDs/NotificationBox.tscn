@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://be6b81od3xfdh"]
+[gd_scene load_steps=3 format=3 uid="uid://d1v7sl1fitgwf"]
 
 [ext_resource type="Script" uid="uid://chffk7s8yj6rg" path="res://Features/GUI/HUDs/NotificationBox.cs" id="1_4ubv7"]
-[ext_resource type="PackedScene" uid="uid://ls6ec0flahf6" path="res://Features/GUI/HUDs/MiniNotification.tscn" id="2_yrjxt"]
+[ext_resource type="PackedScene" path="res://Features/GUI/HUDs/MiniNotification.tscn" id="2_yrjxt"]
 
-[node name="NotificationBox" type="Control"]
+[node name="NotificationBox" type="Control" node_paths=PackedStringArray("_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
+script = ExtResource("1_4ubv7")
+_notificationScene = ExtResource("2_yrjxt")
+_container = NodePath("BoxContainer")
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1
@@ -24,7 +27,3 @@ size_flags_horizontal = 8
 theme_override_constants/separation = 0
 alignment = 1
 vertical = true
-script = ExtResource("1_4ubv7")
-_notificationScene = ExtResource("2_yrjxt")
-Duration = 2.0
-FadeOutDuration = 2.0
