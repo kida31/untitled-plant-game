@@ -48,7 +48,7 @@ public class VendingMachine
 	{
 		_inventory = new(12, "Vending Machine");
 		_inventory.InventoryChanged += () => ContentChanged?.Invoke(_inventory);
-		_inventory.ItemAdded += EventBus.Instance.OnItemAddedToVendingMachine;
+		_inventory.ItemAdded += item => EventBus.Instance.OnItemAddedToVendingMachine(item);
 
 		TimeController.Instance.MinuteTicked += OnMinuteTicked;
 		TimeController.Instance.DayChanged += OnEndOfDay;
