@@ -291,8 +291,7 @@ public class ItemDatabase
 				Id = "licarySeed",
 				Name = "Licary Seed",
 				ToolTipDescription = "The seeds of a Licary plant.",
-				WikiDescription =
-					"The seeds of a Licary plant. They have to be planted in soil and watered regularly to reward you with multiple harvestable Items.",
+				WikiDescription = "LICARYSEED_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_seed.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 350,
