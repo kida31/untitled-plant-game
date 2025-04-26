@@ -10,51 +10,51 @@
 
 [sub_resource type="Resource" id="Resource_uhux7"]
 script = ExtResource("2_2wq7f")
-speakerName = "Wasserkanne"
+speakerName = "Gießkanne"
 DialogueExpression = ExtResource("1_7h5rd")
-dialogueText = "Das hier ist eine [color=red]Wasserkanne[/color] . Mit dieser Wasserkanne kannst du Pflanzen begießen."
+dialogueText = "Das hier ist eine [color=red]Gießkanne[/color]. Mit ihr kannst du Pflanzen gießen."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_chwyf"]
 script = ExtResource("2_2wq7f")
-speakerName = "Wasserkanne"
+speakerName = "Gießkanne"
 DialogueExpression = ExtResource("1_7h5rd")
-dialogueText = "Die Wasserkanne ist magisch und hat unendlich viel Wasser!"
+dialogueText = "Die Gießkanne ist magisch und muss nie aufgefüllt werden!"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_l81ow"]
 script = ExtResource("2_2wq7f")
 speakerName = "Gartenschere"
 DialogueExpression = ExtResource("3_jdca0")
-dialogueText = "Als nächstes gibt es noch die [color=redGartenschere[/color] . Die Gartenschere hilft dir sauber Pflanzen zu ernten."
+dialogueText = "In deinem Werkzeuggürtel befindet sich auch eine [color=red]Gartenschere[/color]. Mit ihr kannst du ganz einfach Beeren und Blätter deiner Pflanzen ernten."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_e3opx"]
 script = ExtResource("2_2wq7f")
 speakerName = "Gartenschere"
 DialogueExpression = ExtResource("3_jdca0")
-dialogueText = "Nachdem du die Pflanzen geerntet hast, werden sie nach einer Zeit auch wieder neu wachsen, wenn du dich um diese kümmerst."
+dialogueText = "Keine Sorge, es wächst alles nach. Aber natürlich nur, wenn du dich gut um deine Pflanzen kümmerst!"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_pv1xh"]
 script = ExtResource("2_2wq7f")
 speakerName = "Samentasche"
 DialogueExpression = ExtResource("4_4xhvu")
-dialogueText = "Wenn du neue Samen hast kannst du diese mit der [color=red]Samentasche[/color] einpflanzen."
+dialogueText = "Wenn du neue Samen hast, kannst du sie mit der [color=red]Samentasche[/color] einpflanzen."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_1u344"]
 script = ExtResource("2_2wq7f")
 speakerName = "Samentasche"
 DialogueExpression = ExtResource("4_4xhvu")
-dialogueText = "Die Samentasche hält immer den ersten Samen, der sich in deinem Inventar befindet."
+dialogueText = "Die Samentasche enthält immer den ersten Samen, der sich in deinem Inventar befindet."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_crab0"]
 script = ExtResource("2_2wq7f")
 speakerName = "Schaufel"
 DialogueExpression = ExtResource("5_yr0ty")
-dialogueText = "Oh und wenn deine Pflanzen sterben, dann kannst du diese auch ausgraben."
+dialogueText = "Oh und wenn deine Pflanzen sterben, dann kannst du sie auch ausgraben um Platz für neue zu schaffen."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_5cghs"]
@@ -68,12 +68,12 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 script = ExtResource("2_2wq7f")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("6_2pc8f")
-dialogueText = "Das waren die Werkzeuge."
+dialogueText = "Das waren alle Werkzeuge."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]
 script = ExtResource("1_v5mu6")
-_dialogueId = ""
+_dialogueId = "ExplainTools_DE"
 _dialogueText = Array[Object]([SubResource("Resource_uhux7"), SubResource("Resource_chwyf"), SubResource("Resource_l81ow"), SubResource("Resource_e3opx"), SubResource("Resource_pv1xh"), SubResource("Resource_1u344"), SubResource("Resource_crab0"), SubResource("Resource_5cghs"), SubResource("Resource_g6fgr")])
 _responses = null
 metadata/_custom_type_script = "uid://c5x800n31tvgq"

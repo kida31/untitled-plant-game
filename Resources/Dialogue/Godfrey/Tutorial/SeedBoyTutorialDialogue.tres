@@ -34,7 +34,7 @@ dialogueText = "Over there you can see Pan Dan. He's the son of the former marke
 script = ExtResource("1_eor28")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("4_qys54")
-dialogueText = "He collects all kinds of things. I am sure he will sell some seeds to you.."
+dialogueText = "He collects all kinds of things. I am sure he will sell some seeds to you."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_ed3bb"]

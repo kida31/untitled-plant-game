@@ -12,7 +12,7 @@
 script = ExtResource("2_tj2y5")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("1_nihgd")
-dialogueText = "Didi you know that Chuberries are really popular lately?"
+dialogueText = "Did you know that Chuberries are really popular lately?"
 
 [sub_resource type="Resource" id="Resource_wieva"]
 script = ExtResource("2_tj2y5")

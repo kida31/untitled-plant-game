@@ -27,7 +27,7 @@ dialogueText = "It always contains the first seed item of your inventory."
 
 [sub_resource type="Resource" id="Resource_66we5"]
 script = ExtResource("2_uewdi")
-speakerName = "Godfrey"
+speakerName = "Shovel"
 DialogueExpression = ExtResource("5_8ircu")
 dialogueText = "And if your plants die, you can dig them out to make space for new ones."
 

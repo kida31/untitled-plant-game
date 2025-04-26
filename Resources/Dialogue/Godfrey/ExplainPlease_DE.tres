@@ -10,9 +10,9 @@
 
 [sub_resource type="Resource" id="Resource_vjc3q"]
 script = ExtResource("2_gjccp")
-speakerName = "Godfrey"
+speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_b1nd8")
-dialogueText = "Was kann ich dir denn nochmal erklären?"
+dialogueText = "Was kann ich dir nochmal erklären?"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_ufww2"]
@@ -35,7 +35,7 @@ metadata/_custom_type_script = "uid://crnclevrmchav"
 
 [resource]
 script = ExtResource("4_pn4bm")
-_dialogueId = "explain"
+_dialogueId = "ExplainPlease_DE"
 _dialogueText = Array[Object]([SubResource("Resource_vjc3q")])
 _responses = Array[Object]([SubResource("Resource_ufww2"), SubResource("Resource_gyyij"), SubResource("Resource_3fot6")])
 metadata/_custom_type_script = "uid://c5x800n31tvgq"

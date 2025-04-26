@@ -9,26 +9,26 @@
 script = ExtResource("2_u5fdu")
 speakerName = "Pan Dan"
 DialogueExpression = ExtResource("1_w0uxy")
-dialogueText = "Dort steht Pan Dan. Er ist der Junge vom ehemaligen Supermarkt Besitzer."
+dialogueText = "Dort drüben steht Pan Dan. Er ist der Junge vom ehemaligen Marktstandbesitzer."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_jlt76"]
 script = ExtResource("2_u5fdu")
 speakerName = "Pan Dan"
 DialogueExpression = ExtResource("1_w0uxy")
-dialogueText = "Er sammelt immer alles mögliche an Dingen. Sicherlich kann er dir auch ein paar Samen verkaufen."
+dialogueText = "Er sammelt immer alles Mögliche. Sicherlich kann er dir auch ein paar Samen verkaufen."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_i05o8"]
 script = ExtResource("2_u5fdu")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("3_nvfcc")
-dialogueText = "Normalerweise hat er immer jeden Tag etwas neues auf Lager. Es lohnt sich sicher einmal am Tag vorbeizuschauen."
+dialogueText = "Er hat immer wieder etwas neues im Angebot also lohnt es sich jeden Tag vorbeizuschauen."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]
 script = ExtResource("1_watp4")
-_dialogueId = ""
+_dialogueId = "ExplainSeedBoy_DE"
 _dialogueText = Array[Object]([SubResource("Resource_h5h7e"), SubResource("Resource_jlt76"), SubResource("Resource_i05o8")])
-_responses = null
+_responses = Array[Object]([])
 metadata/_custom_type_script = "uid://c5x800n31tvgq"

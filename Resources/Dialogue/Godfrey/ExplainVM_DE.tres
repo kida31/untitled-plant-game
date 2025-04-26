@@ -9,21 +9,21 @@
 script = ExtResource("2_2hi1d")
 speakerName = "Automat"
 DialogueExpression = ExtResource("1_qvwvx")
-dialogueText = "In dem [color=red]Automaten[/color] dort kannst du deine [color=green]Medizin[/color] verkaufen."
+dialogueText = "In dem [color=red]Automaten[/color] dort kannst du deine [color=blue]Medizin[/color] verkaufen."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_vud1m"]
 script = ExtResource("2_2hi1d")
 speakerName = "Automat"
 DialogueExpression = ExtResource("1_qvwvx")
-dialogueText = "Die Preise für die Medizin kannst du selber bestimmen. Aber stelle sicher, dass du es mit den Preisen nicht übertreibst, ja?"
+dialogueText = "Die Preise für die Medizin kannst du selber bestimmen. Übertreib es nur nicht, ja?"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_p0lys"]
 script = ExtResource("2_2hi1d")
 speakerName = "Automat"
 DialogueExpression = ExtResource("1_qvwvx")
-dialogueText = "Je nach Bedarf dauert es immer ein wenig bevor die Sachen verkauft werden."
+dialogueText = "Du musst immer ein bisschen warten, bevor die Sachen verkauft sind."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_afqxg"]
@@ -35,7 +35,7 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]
 script = ExtResource("1_psmfi")
-_dialogueId = ""
+_dialogueId = "ExplainVM_DE"
 _dialogueText = Array[Object]([SubResource("Resource_ajner"), SubResource("Resource_vud1m"), SubResource("Resource_p0lys"), SubResource("Resource_afqxg")])
 _responses = null
 metadata/_custom_type_script = "uid://c5x800n31tvgq"
