@@ -23,7 +23,7 @@ dialogueText = "In deinem Werkzeuggürtel befindet sich auch eine [color=red]Gar
 script = ExtResource("2_xthbd")
 speakerName = "Gartenschere"
 DialogueExpression = ExtResource("3_y4a7a")
-dialogueText = "Keine Sorge, es wächst alles nach. Aber natürlich nur wenn du dich gut um deine Pflanzen kümmerst!"
+dialogueText = "Keine Sorge, es wächst alles nach. Aber natürlich nur, wenn du dich gut um deine Pflanzen kümmerst!"
 
 [sub_resource type="Resource" id="Resource_6v888"]
 script = ExtResource("2_xthbd")

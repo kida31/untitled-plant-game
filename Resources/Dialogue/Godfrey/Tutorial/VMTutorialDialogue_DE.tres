@@ -12,13 +12,13 @@
 script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("1_qlrwf")
-dialogueText = "Wusstest du, dass Chuberrys  zur Zeit sehr beliebt sind?"
+dialogueText = "Wusstest du, dass Chuberrys zur Zeit sehr beliebt sind?"
 
 [sub_resource type="Resource" id="Resource_wieva"]
 script = ExtResource("2_ynj4j")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("3_eu1py")
-dialogueText = "Sie wirken besonders gut gegen Erkältungen weil sie eine [color=red]wärmende[/color] Eigenschaft."
+dialogueText = "Sie wirken besonders gut gegen Erkältungen, weil sie eine [color=red]wärmende[/color] Eigenschaft haben."
 
 [sub_resource type="Resource" id="Resource_w4rvn"]
 script = ExtResource("2_ynj4j")
