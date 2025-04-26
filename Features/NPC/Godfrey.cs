@@ -38,10 +38,11 @@ public partial class Godfrey : CharacterBody2D
 
 					_currentDialogue = questIndex switch
 					{
-						0 => CreateOneLiner("Go try watering a watering can"),
-						2 => CreateOneLiner("Chuberries are the red ones. Try grabbing me one"),
-						3 => CreateOneLiner("Try putting it in the vending machine"),
-						_ => CreateOneLiner("Go do your thing.")
+						0 => LoadDialogue("WateringTaskInProgress", "DE"),
+						2 => LoadDialogue("HarvestingTaskInProgress", "DE"),
+						4 => LoadDialogue("SellingTaskInProgress", "DE"),
+						5 => LoadDialogue("SellingTaskInProgress", "DE"),
+						_ => CreateOneLiner("Go do your thing."),
 					};
 				}
 			}
@@ -88,6 +89,12 @@ public partial class Godfrey : CharacterBody2D
 			}
 		];
 		dialogue._responses = null;
+		return dialogue;
+	}
+
+	private DialogueResourceObject LoadDialogue(string file, string language)
+	{
+		var dialogue = ResourceLoader.Load<DialogueResourceObject>($"res://Resources/Dialogue/Godfrey/{file}_{language}.tres");
 		return dialogue;
 	}
 }

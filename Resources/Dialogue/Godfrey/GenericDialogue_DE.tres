@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=12 format=3 uid="uid://b1uvgbq78p6p3"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=14 format=3 uid="uid://b1uvgbq78p6p3"]
 
 [ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_6y2g8"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_x7u10"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/Godfrey/Tutorial/WateringTutorial_DE.tres" id="3_6y2g8"]
 [ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="4_t5eqc"]
 [ext_resource type="Resource" uid="uid://cvpmf6ua8563t" path="res://Resources/Dialogue/Godfrey/ExplainPlease_DE.tres" id="5_6y2g8"]
+[ext_resource type="Resource" uid="uid://cdy0sb152dalw" path="res://Resources/Dialogue/Godfrey/AskAboutVillage_DE.tres" id="6_tuex2"]
 
 [sub_resource type="Resource" id="Resource_ank2m"]
 script = ExtResource("2_tuex2")
@@ -33,6 +34,12 @@ _responseButton = "Bitte erkläre mir nochmal..."
 _responseDialogue = ExtResource("5_6y2g8")
 metadata/_custom_type_script = "uid://crnclevrmchav"
 
+[sub_resource type="Resource" id="Resource_hdh06"]
+script = ExtResource("4_t5eqc")
+_responseButton = "Über das Dorf..."
+_responseDialogue = ExtResource("6_tuex2")
+metadata/_custom_type_script = "uid://crnclevrmchav"
+
 [sub_resource type="Resource" id="Resource_6y2g8"]
 script = ExtResource("4_t5eqc")
 _responseButton = "Nein, danke."
@@ -42,5 +49,5 @@ metadata/_custom_type_script = "uid://crnclevrmchav"
 script = ExtResource("1_x7u10")
 _dialogueId = "godfrey_generic"
 _dialogueText = Array[Object]([SubResource("Resource_ank2m"), SubResource("Resource_sk0pi")])
-_responses = Array[Object]([SubResource("Resource_70dy7"), SubResource("Resource_4najq"), SubResource("Resource_6y2g8")])
+_responses = Array[Object]([SubResource("Resource_70dy7"), SubResource("Resource_4najq"), SubResource("Resource_hdh06"), SubResource("Resource_6y2g8")])
 metadata/_custom_type_script = "uid://c5x800n31tvgq"
