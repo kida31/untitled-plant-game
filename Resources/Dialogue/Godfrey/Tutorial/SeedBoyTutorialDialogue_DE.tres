@@ -22,7 +22,7 @@ dialogueText = "Oh, das hört sich doch gut an! Wenn aus dem Automaten etwas ver
 script = ExtResource("1_j4rfv")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("2_fg0ew")
-dialogueText = "Mit dem Geld kannst du dann neue  Samen kaufen."
+dialogueText = "Mit dem Geld kannst du dann neue Samen kaufen."
 
 [sub_resource type="Resource" id="Resource_t4mgt"]
 script = ExtResource("1_j4rfv")
@@ -34,7 +34,7 @@ dialogueText = "Dort drüben steht Pan Dan. Er ist der Junge vom ehemaligen Mark
 script = ExtResource("1_j4rfv")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("4_vyl80")
-dialogueText = "Er sammelt immer alles mögliche an Dingen. Sicherlich kann er dir auch ein paar Samen verkaufen."
+dialogueText = "Er sammelt immer alles Mögliche. Sicherlich kann er dir auch ein paar Samen verkaufen."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_ed3bb"]

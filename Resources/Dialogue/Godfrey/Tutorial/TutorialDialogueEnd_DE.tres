@@ -17,7 +17,7 @@ dialogueText = "Lass mich dir noch die letzten beiden Werkzeuge erklären."
 script = ExtResource("2_kgyml")
 speakerName = "Samentasche"
 DialogueExpression = ExtResource("3_5uwhk")
-dialogueText = "Wenn du neue Samen hast kannst du sie mit der [color=red]Samentasche[/color] einpflanzen."
+dialogueText = "Wenn du neue Samen hast, kannst du sie mit der [color=red]Samentasche[/color] einpflanzen."
 
 [sub_resource type="Resource" id="Resource_yg4ah"]
 script = ExtResource("2_kgyml")
