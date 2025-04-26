@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [resource]
 script = ExtResource("4_mhplf")
-Id = "intro"
+Id = "IntroQuest"
 Name = "Erste Schritte"
 Quests = Array[Object]([SubResource("Resource_ofj7o")])
 metadata/_custom_type_script = "uid://bf7h6b05r58gu"

@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://dw263eqak4hgo"
 
 [sub_resource type="Resource" id="Resource_rurbj"]
 script = ExtResource("3_xoehh")
-Description = "Teste die Wasserkanne aus!"
+Description = "Teste die Gießkanne!"
 Task = SubResource("Resource_au6ku")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_xoehh"]
 script = ExtResource("3_xoehh")
-Description = "Rede mit Gottfried"
+Description = "Rede mit Gottfried."
 Task = SubResource("Resource_tp27u")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
@@ -42,7 +42,7 @@ metadata/_custom_type_script = "uid://ch0m0fjoa3bdl"
 
 [sub_resource type="Resource" id="Resource_jg8fa"]
 script = ExtResource("3_xoehh")
-Description = "Sammle eine Chuberry"
+Description = "Sammel eine Chuberry."
 Task = SubResource("Resource_ofj7o")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
@@ -53,7 +53,7 @@ metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_t841y"]
 script = ExtResource("3_xoehh")
-Description = "Bringe die Frucht zu Gottfried"
+Description = "Bring die Frucht zu Gottfried."
 Task = SubResource("Resource_brxp5")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
@@ -65,7 +65,7 @@ metadata/_custom_type_script = "uid://c0tihaopkf170"
 
 [sub_resource type="Resource" id="Resource_lsuru"]
 script = ExtResource("3_xoehh")
-Description = "Stelle die Chuberry zum Verkauf."
+Description = "Stell die Chuberry zum Verkauf ein."
 Task = SubResource("Resource_t5rip")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
@@ -88,7 +88,7 @@ metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_2j7df"]
 script = ExtResource("3_xoehh")
-Description = "Rede mit Gottfried"
+Description = "Rede mit Gottfried."
 Task = SubResource("Resource_utts0")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
@@ -99,7 +99,7 @@ metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_3lprq"]
 script = ExtResource("3_xoehh")
-Description = "Rede mit dem Samenjungen Pan Dan und schaue sein Shop an"
+Description = "Rede mit Pan Dan und schau seinen Shop an."
 Task = SubResource("Resource_3f5kw")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
@@ -110,13 +110,13 @@ metadata/_custom_type_script = "uid://cgb70arkej80e"
 
 [sub_resource type="Resource" id="Resource_v6dy5"]
 script = ExtResource("3_xoehh")
-Description = "Gehe zurück zu Gottfried"
+Description = "Geh zurück zu Gottfried."
 Task = SubResource("Resource_760qh")
 metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [resource]
 script = ExtResource("1_55fyv")
-Id = "tutorial"
-Name = "Pflanzen Anfänger"
+Id = "TutorialQuest"
+Name = "Ein grüner Anfang"
 Quests = Array[Object]([SubResource("Resource_rurbj"), SubResource("Resource_xoehh"), SubResource("Resource_jg8fa"), SubResource("Resource_t841y"), SubResource("Resource_lsuru"), SubResource("Resource_k8sdh"), SubResource("Resource_2j7df"), SubResource("Resource_3lprq"), SubResource("Resource_v6dy5")])
 metadata/_custom_type_script = "uid://bf7h6b05r58gu"
