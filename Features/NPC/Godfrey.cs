@@ -27,7 +27,6 @@ public partial class Godfrey : CharacterBody2D
 			if (_tutorialActive)
 			{
 				var quest = QuestController.Instance.CurrentQuest;
-				//if(quest == QuestController.Instance.CurrentQuestLine.Quests[1])
 				if (quest.Task is HaveDialogueTask dialogueTask)
 				{
 					_currentDialogue = dialogueTask.Dialogue;
@@ -94,11 +93,12 @@ public partial class Godfrey : CharacterBody2D
 
 	private DialogueResourceObject LoadDialogue(string file, string language)
 	{
-		var filePath = $"res://Resources/Dialogue/Godfrey/{file}_{language}.tres";
+		var filePath = $"res://Resources/Dialogue/Godfrey/Tutorial/TaskInProgress/{file}_{language}.tres";
 		if (!FileAccess.FileExists(filePath))
 		{
-			filePath = $"res://Resources/Dialogue/Godfrey/{file}.tres";
+			filePath = $"res://Resources/Dialogue/Godfrey/Tutorial/TaskInProgress/{file}.tres";
 		}
+
 		var dialogue = ResourceLoader.Load<DialogueResourceObject>(filePath);
 		return dialogue;
 	}
