@@ -13,9 +13,10 @@ public partial class Godfrey : CharacterBody2D
 	[Export] private DialogueResourceObject _introDialogue;
 	[Export] private DialogueResourceObject _genericDialogue;
 
-	private const string TutorialQuestLineId = "tutorial";
+	private const string TutorialQuestLineId = "TutorialQuest";
 
 	private DialogueResourceObject _currentDialogue;
+	private Logger _logger = new("Godfrey");
 
 	private bool _firstTimeSpokenTo = true;
 	private bool _tutorialActive = false;
@@ -30,6 +31,7 @@ public partial class Godfrey : CharacterBody2D
 				if (quest.Task is HaveDialogueTask dialogueTask)
 				{
 					_currentDialogue = dialogueTask.Dialogue;
+					_logger.Debug("Dialogue task is active. Setting dialogue to: " + _currentDialogue._dialogueId);
 				}
 				else
 				{
@@ -43,16 +45,19 @@ public partial class Godfrey : CharacterBody2D
 						5 => LoadDialogue("SellingTaskInProgress", "DE"),
 						_ => CreateOneLiner("Go do your thing."),
 					};
+					_logger.Debug($"Quest index is: {questIndex}. Setting dialogue to: {_currentDialogue._dialogueId}");
 				}
 			}
 			else if (_firstTimeSpokenTo)
 			{
 				_currentDialogue = _introDialogue;
 				_firstTimeSpokenTo = false;
+				_logger.Debug("First time spoken to. Setting dialogue to: " + _currentDialogue._dialogueId);
 			}
 			else
 			{
 				_currentDialogue = _genericDialogue;
+				_logger.Debug("Generic dialogue. Setting dialogue to: " + _currentDialogue._dialogueId);
 			}
 
 			Assert.AssertNotNull(_currentDialogue, "Dialogue is null");
