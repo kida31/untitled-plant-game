@@ -9,7 +9,8 @@
 [sub_resource type="Resource" id="Resource_m4ye3"]
 script = ExtResource("1_ivrbi")
 speakerName = "Pan Dan"
-dialogueText = "Hey öhmmm… Ich hab' diese Samen gefunden, falls du interessiert bist...?"
+dialogueText = "Hey öhmmm…
+Ich hab' diese Samen gefunden, falls du interessiert bist...?"
 
 [sub_resource type="Resource" id="Resource_sige0"]
 script = ExtResource("3_4jfk1")
