@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=17 format=3 uid="uid://d0bdfblxyvra5"]
+
+[ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="1_7h5rd"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_v5mu6"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_2wq7f"]
+[ext_resource type="Texture2D" uid="uid://c044iw7or44e5" path="res://Assets/Tools/shers.png" id="3_jdca0"]
+[ext_resource type="Texture2D" uid="uid://cddp1h65h56vi" path="res://Assets/Tools/SeedBag.png" id="4_4xhvu"]
+[ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="5_yr0ty"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="6_2pc8f"]
+
+[sub_resource type="Resource" id="Resource_uhux7"]
+script = ExtResource("2_2wq7f")
+speakerName = "Gießkanne"
+DialogueExpression = ExtResource("1_7h5rd")
+dialogueText = "Das hier ist eine [color=red]Gießkanne[/color]. Mit ihr kannst du Pflanzen gießen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_chwyf"]
+script = ExtResource("2_2wq7f")
+speakerName = "Gießkanne"
+DialogueExpression = ExtResource("1_7h5rd")
+dialogueText = "Die Gießkanne ist magisch und muss nie aufgefüllt werden!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_l81ow"]
+script = ExtResource("2_2wq7f")
+speakerName = "Gartenschere"
+DialogueExpression = ExtResource("3_jdca0")
+dialogueText = "In deinem Werkzeuggürtel befindet sich auch eine [color=red]Gartenschere[/color]. Mit ihr kannst du ganz einfach Beeren und Blätter deiner Pflanzen ernten."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_e3opx"]
+script = ExtResource("2_2wq7f")
+speakerName = "Gartenschere"
+DialogueExpression = ExtResource("3_jdca0")
+dialogueText = "Keine Sorge, es wächst alles nach. Aber natürlich nur, wenn du dich gut um deine Pflanzen kümmerst!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_pv1xh"]
+script = ExtResource("2_2wq7f")
+speakerName = "Samentasche"
+DialogueExpression = ExtResource("4_4xhvu")
+dialogueText = "Wenn du neue Samen hast, kannst du sie mit der [color=red]Samentasche[/color] einpflanzen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_1u344"]
+script = ExtResource("2_2wq7f")
+speakerName = "Samentasche"
+DialogueExpression = ExtResource("4_4xhvu")
+dialogueText = "Die Samentasche enthält immer den ersten Samen, der sich in deinem Inventar befindet."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_crab0"]
+script = ExtResource("2_2wq7f")
+speakerName = "Schaufel"
+DialogueExpression = ExtResource("5_yr0ty")
+dialogueText = "Oh und wenn deine Pflanzen sterben, dann kannst du sie auch ausgraben um Platz für neue zu schaffen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_5cghs"]
+script = ExtResource("2_2wq7f")
+speakerName = "Schaufel"
+DialogueExpression = ExtResource("5_yr0ty")
+dialogueText = "Dafür benutzt du die [color=red]Schaufel[/color]. Pass aber auf, dass du nicht ausversehen deine lebendigen Pflanzen ausgräbst!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_g6fgr"]
+script = ExtResource("2_2wq7f")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("6_2pc8f")
+dialogueText = "Das waren alle Werkzeuge."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[resource]
+script = ExtResource("1_v5mu6")
+_dialogueId = "ExplainTools_DE"
+_dialogueText = Array[Object]([SubResource("Resource_uhux7"), SubResource("Resource_chwyf"), SubResource("Resource_l81ow"), SubResource("Resource_e3opx"), SubResource("Resource_pv1xh"), SubResource("Resource_1u344"), SubResource("Resource_crab0"), SubResource("Resource_5cghs"), SubResource("Resource_g6fgr")])
+_responses = null
+metadata/_custom_type_script = "uid://c5x800n31tvgq"

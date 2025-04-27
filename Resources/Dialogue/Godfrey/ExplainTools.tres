@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=17 format=3 uid="uid://c4t00gtxrm3cb"]
+
+[ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="1_sv3p5"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_suh4f"]
+[ext_resource type="Texture2D" uid="uid://c044iw7or44e5" path="res://Assets/Tools/shers.png" id="3_kwtas"]
+[ext_resource type="Texture2D" uid="uid://cddp1h65h56vi" path="res://Assets/Tools/SeedBag.png" id="4_x5rlo"]
+[ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="5_dyff5"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="6_elnm6"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="7_36su2"]
+
+[sub_resource type="Resource" id="Resource_uhux7"]
+script = ExtResource("2_suh4f")
+speakerName = "Watering Can"
+DialogueExpression = ExtResource("1_sv3p5")
+dialogueText = "This right here is a [color=red]watering can[/color]. You can... well, water plants with it."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_chwyf"]
+script = ExtResource("2_suh4f")
+speakerName = "Watering Can"
+DialogueExpression = ExtResource("1_sv3p5")
+dialogueText = "The can is magical and has unlimited water!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_l81ow"]
+script = ExtResource("2_suh4f")
+speakerName = "Gardening scissors"
+DialogueExpression = ExtResource("3_kwtas")
+dialogueText = "You also have [color=red]gardening scissors[/color] in your toolbelt. It helps you harvest leaves and berries with ease."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_e3opx"]
+script = ExtResource("2_suh4f")
+speakerName = "Gardening scissors"
+DialogueExpression = ExtResource("3_kwtas")
+dialogueText = "No worries, it all grows back. Only if you take good care of your plants though!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_pv1xh"]
+script = ExtResource("2_suh4f")
+speakerName = "Seed bag"
+DialogueExpression = ExtResource("4_x5rlo")
+dialogueText = "If you get more seeds you can plant them with your [color=red]seed bag[/color]."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_1u344"]
+script = ExtResource("2_suh4f")
+speakerName = "Seed bag"
+DialogueExpression = ExtResource("4_x5rlo")
+dialogueText = "It always contains the first seed item of your inventory."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_crab0"]
+script = ExtResource("2_suh4f")
+speakerName = "Shhovel"
+DialogueExpression = ExtResource("5_dyff5")
+dialogueText = "And if your plants die, you can dig them out to make space for new ones."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_5cghs"]
+script = ExtResource("2_suh4f")
+speakerName = "Shovel"
+DialogueExpression = ExtResource("5_dyff5")
+dialogueText = "To do that, use your [color=red]shovel[/color]. Be careful not to dig out alive plants!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_g6fgr"]
+script = ExtResource("2_suh4f")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("6_elnm6")
+dialogueText = "That's all the tools."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[resource]
+script = ExtResource("7_36su2")
+_dialogueId = "ExplainTools"
+_dialogueText = Array[Object]([SubResource("Resource_uhux7"), SubResource("Resource_chwyf"), SubResource("Resource_l81ow"), SubResource("Resource_e3opx"), SubResource("Resource_pv1xh"), SubResource("Resource_1u344"), SubResource("Resource_crab0"), SubResource("Resource_5cghs"), SubResource("Resource_g6fgr")])
+_responses = null
+metadata/_custom_type_script = "uid://c5x800n31tvgq"
