@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=14 format=3 uid="uid://yg4mwgstm60u"]
+
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_j4rfv"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="2_fg0ew"]
+[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="3_kbnbo"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="4_vyl80"]
+[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="5_awhb4"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="6_s5uc0"]
+
+[sub_resource type="Resource" id="Resource_sr1yf"]
+script = ExtResource("1_j4rfv")
+speakerName = "Laya"
+dialogueText = "Die Beeren sind weg. Bekomme ich was dafür?"
+
+[sub_resource type="Resource" id="Resource_g71vq"]
+script = ExtResource("1_j4rfv")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("2_fg0ew")
+dialogueText = "Oh, das hört sich doch gut an! Wenn aus dem Automaten etwas verkauft wurde findest du das Geld im Münzfach."
+
+[sub_resource type="Resource" id="Resource_sqv14"]
+script = ExtResource("1_j4rfv")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("2_fg0ew")
+dialogueText = "Mit dem Geld kannst du dann neue Samen kaufen."
+
+[sub_resource type="Resource" id="Resource_t4mgt"]
+script = ExtResource("1_j4rfv")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("3_kbnbo")
+dialogueText = "Dort drüben steht Pan Dan. Er ist der Junge vom ehemaligen Marktstandbesitzer."
+
+[sub_resource type="Resource" id="Resource_il2tp"]
+script = ExtResource("1_j4rfv")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("4_vyl80")
+dialogueText = "Er sammelt immer alles Mögliche. Sicherlich kann er dir auch ein paar Samen verkaufen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_ed3bb"]
+script = ExtResource("1_j4rfv")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("2_fg0ew")
+dialogueText = "Sprich ihn doch mal an. Vielleicht hat er etwas, das dich interessiert."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_wdbcu"]
+script = ExtResource("5_awhb4")
+_cameraPosition = Vector2(264, 200)
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://bc35ywlebpmy1"
+
+[resource]
+script = ExtResource("6_s5uc0")
+_dialogueId = "SeedBoyTutorialDialogue_DE"
+_dialogueText = Array[Object]([SubResource("Resource_sr1yf"), SubResource("Resource_g71vq"), SubResource("Resource_sqv14"), SubResource("Resource_t4mgt"), SubResource("Resource_il2tp"), SubResource("Resource_ed3bb"), SubResource("Resource_wdbcu")])
+_responses = null

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=6 format=3 uid="uid://u741tyquud0y"]
+
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_x6t1r"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_raee3"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="3_j87xt"]
+
+[sub_resource type="Resource" id="Resource_etq32"]
+script = ExtResource("2_raee3")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_x6t1r")
+dialogueText = "Mit der Gartenschere kannst du reife Pflanzen ernten."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_x6t1r"]
+script = ExtResource("2_raee3")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_x6t1r")
+dialogueText = "Ernte doch die Chuberry dort."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[resource]
+script = ExtResource("3_j87xt")
+_dialogueId = ""
+_dialogueText = Array[Object]([SubResource("Resource_etq32"), SubResource("Resource_x6t1r")])
+_responses = Array[Object]([])
+metadata/_custom_type_script = "uid://c5x800n31tvgq"

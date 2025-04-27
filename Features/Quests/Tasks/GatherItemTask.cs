@@ -28,7 +28,7 @@ public partial class GatherItemTask : QuestTask
 			return;
 		}
 		
-		_gatheredAmount += obj.Amount;
+		_gatheredAmount++;
 		if (_gatheredAmount < _amount)
 		{
 			return;
@@ -38,6 +38,5 @@ public partial class GatherItemTask : QuestTask
 		
 		EventBus.Instance.OnItemAddedToInventory -= OnItemAddedToInventory;
 		TaskCompleted?.Invoke(this);
-
 	}
 }

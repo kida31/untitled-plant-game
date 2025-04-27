@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://ls6ec0flahf6"]
+
+[ext_resource type="Script" uid="uid://chvwyv20qjadv" path="res://Features/GUI/HUDs/MiniNotification.cs" id="1_xr74w"]
+[ext_resource type="Texture2D" uid="uid://be34y66w0usqf" path="res://Assets/UI/chatbox_rounded.png" id="2_673rh"]
+[ext_resource type="Texture2D" uid="uid://5kx22qfxe5uu" path="res://Assets/Items/Plants/chubery_seed.png" id="3_xr74w"]
+
+[sub_resource type="Gradient" id="Gradient_pyyg8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_81x3y"]
+gradient = SubResource("Gradient_pyyg8")
+
+[node name="MiniNotification" type="ScrollContainer" node_paths=PackedStringArray("_content", "_icon", "_label")]
+clip_children = 1
+custom_minimum_size = Vector2(80, 24)
+offset_right = 81.0
+offset_bottom = 24.0
+size_flags_horizontal = 8
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("1_xr74w")
+_content = NodePath("BoxContainer")
+_icon = NodePath("BoxContainer/MarginContainer/Layout/ImageMargin/Icon")
+Text = "Sudoku"
+_label = NodePath("BoxContainer/MarginContainer/Layout/Label")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BoxContainer"]
+custom_minimum_size = Vector2(80, 24)
+layout_mode = 2
+
+[node name="GradientMask" type="TextureRect" parent="BoxContainer/MarginContainer"]
+clip_children = 1
+layout_mode = 2
+texture = SubResource("GradientTexture1D_81x3y")
+expand_mode = 1
+
+[node name="Background" type="NinePatchRect" parent="BoxContainer/MarginContainer/GradientMask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_673rh")
+patch_margin_left = 10
+patch_margin_top = 8
+patch_margin_right = 9
+patch_margin_bottom = 8
+
+[node name="Layout" type="BoxContainer" parent="BoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="ImageMargin" type="MarginContainer" parent="BoxContainer/MarginContainer/Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Icon" type="TextureRect" parent="BoxContainer/MarginContainer/Layout/ImageMargin"]
+layout_mode = 2
+texture = ExtResource("3_xr74w")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="BoxContainer/MarginContainer/Layout"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "Sudoku"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Padding" type="Control" parent="BoxContainer/MarginContainer/Layout"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
