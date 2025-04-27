@@ -28,25 +28,22 @@ public partial class Godfrey : CharacterBody2D
 			if (_tutorialActive)
 			{
 				var quest = QuestController.Instance.CurrentQuest;
-				if (quest.Task is HaveDialogueTask dialogueTask)
+				var questIndex = QuestController.Instance.CurrentQuestLine.Quests.IndexOf(quest);
+				var dialogueTask = quest.Task as HaveDialogueTask;
+				
+				// _logger.Debug("Dialogue task is active. Setting dialogue to: " + _currentDialogue._dialogueId);
+				_currentDialogue = questIndex switch
 				{
-					_currentDialogue = dialogueTask.Dialogue;
-					_logger.Debug("Dialogue task is active. Setting dialogue to: " + _currentDialogue._dialogueId);
-				}
-				else
-				{
-					var questIndex = QuestController.Instance.CurrentQuestLine.Quests.IndexOf(quest);
-
-					_currentDialogue = questIndex switch
-					{
-						0 => LoadDialogue("WateringTaskInProgress", "DE"),
-						2 => LoadDialogue("HarvestingTaskInProgress", "DE"),
-						4 => LoadDialogue("SellingTaskInProgress", "DE"),
-						5 => LoadDialogue("SellingTaskInProgress", "DE"),
-						_ => CreateOneLiner("Go do your thing."),
-					};
-					_logger.Debug($"Quest index is: {questIndex}. Setting dialogue to: {_currentDialogue._dialogueId}");
-				}
+					0 => LoadDialogue("WateringTaskInProgress", "DE"),
+					2 => LoadDialogue("HarvestingTaskInProgress", "DE"),
+					4 => LoadDialogue("SellingTaskInProgress", "DE"),
+					5 => LoadDialogue("SellingTaskInProgress", "DE"),
+					7 => LoadDialogue("TalkToPanDanTaskInProgress", "DE"),
+					// TODO verify correcctness
+					1 or 3 or 6 or 8 => dialogueTask!.Dialogue,
+					_ => CreateOneLiner("Go do your thing."),
+				};
+				_logger.Debug($"Quest index is: {questIndex}. Setting dialogue to: {_currentDialogue._dialogueId}");
 			}
 			else if (_firstTimeSpokenTo)
 			{

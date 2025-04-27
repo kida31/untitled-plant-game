@@ -37,10 +37,10 @@ public partial class Player : CharacterBody2D
 		new Tool[]
 		{
 			// Hardcoded tools for now
-			GD.Load<Tool>("res://Resources/Tools/WateringCan.tres"),
-			GD.Load<Tool>("res://Resources/Tools/SeedBag.tres"),
+			GD.Load<Tool>("res://Resources/Tools/Shears.tres"),
 			GD.Load<Tool>("res://Resources/Tools/Shovel.tres"),
-			GD.Load<Tool>("res://Resources/Tools/Shears.tres")
+			GD.Load<Tool>("res://Resources/Tools/SeedBag.tres"),
+			GD.Load<Tool>("res://Resources/Tools/WateringCan.tres"),
 		}
 	);
 
