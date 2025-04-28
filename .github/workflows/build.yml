@@ -12,6 +12,7 @@ on:
       - main
 
 jobs:
+  if: startsWith(github.ref_name, 'workflow')
   Godot:
     runs-on: ubuntu-latest
 
@@ -35,7 +36,7 @@ jobs:
 
       - name: Release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/') || startsWith(github.ref_name, 'workflow')
+        if: startsWith(github.ref, 'refs/tags/')
         env:
           GITHUB_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
         with:
