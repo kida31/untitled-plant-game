@@ -25,7 +25,7 @@ public partial class WikiItemList : Control
 	[Export] private Button _materialButton;
 
 	public event Action<IItemStack> ItemStackPressed; // TODO: Use local events instead of event bus where possible
-	
+
 	public override void _Ready()
 	{
 		// Initialize list
@@ -42,8 +42,10 @@ public partial class WikiItemList : Control
 
 		// We use most recent
 		var vp = GetViewport();
-		vp.GuiFocusChanged += (ctrl) => {
-			if (ctrl is not WikiItemView iv) {
+		vp.GuiFocusChanged += (ctrl) =>
+		{
+			if (ctrl is not WikiItemView iv)
+			{
 				return;
 			}
 
@@ -137,7 +139,8 @@ public partial class WikiItemList : Control
 		itemView.QueueFree();
 	}
 
-	private void UpdateNavigation() {
+	private void UpdateNavigation()
+	{
 		for (int i = 0; i < _itemViews.Count; i++)
 		{
 			var iv = _itemViews[i];
@@ -145,20 +148,27 @@ public partial class WikiItemList : Control
 			iv.FocusNeighborRight = _plantButton.GetPath();
 			iv.FocusNeighborLeft = _plantButton.GetPath();
 
-			if (i > 0) {
+			if (i > 0)
+			{
 				iv.FocusNeighborTop = _itemViews[i - 1].GetPath();
-			} else {
+			}
+			else
+			{
 				iv.FocusNeighborTop = _plantButton.GetPath();
 			}
 
-			if (i < _itemViews.Count - 1) {
+			if (i < _itemViews.Count - 1)
+			{
 				iv.FocusNeighborBottom = _itemViews[i + 1].GetPath();
 			}
 		}
 
-		_plantButton.FocusNeighborBottom = _itemViews[0].GetPath();
-		_plantButton.FocusNeighborLeft = _itemViews[0].GetPath();
-		_medicineButton.FocusNeighborBottom = _itemViews[0].GetPath();
-		_materialButton.FocusNeighborBottom = _itemViews[0].GetPath();
+		if (_itemViews.Count > 0)
+		{
+			_plantButton.FocusNeighborBottom = _itemViews[0].GetPath();
+			_plantButton.FocusNeighborLeft = _itemViews[0].GetPath();
+			_medicineButton.FocusNeighborBottom = _itemViews[0].GetPath();
+			_materialButton.FocusNeighborBottom = _itemViews[0].GetPath();
+		}
 	}
 }
