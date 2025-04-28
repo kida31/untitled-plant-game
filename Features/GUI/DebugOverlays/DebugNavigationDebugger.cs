@@ -64,7 +64,6 @@ public partial class DebugNavigationDebugger : Control
         }
         else
         {
-
             neighbour = ctrl.GetNode<Control>(predefinedPath);
             color = Colors.BlueViolet;
         }

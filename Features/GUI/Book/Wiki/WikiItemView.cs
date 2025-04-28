@@ -9,6 +9,26 @@ namespace untitledplantgame.GUI.Book.Wiki;
 /// </summary>
 public partial class WikiItemView : Control
 {
+	public new NodePath FocusNeighborBottom {
+		get => _focusAble?.FocusNeighborBottom;
+		set => _focusAble.FocusNeighborBottom = value;
+	}
+
+	public new NodePath FocusNeighborTop {
+		get => _focusAble?.FocusNeighborTop;
+		set => _focusAble.FocusNeighborTop = value;
+	}
+
+	public new NodePath FocusNeighborLeft {
+		get => _focusAble?.FocusNeighborLeft;
+		set => _focusAble.FocusNeighborLeft = value;
+	}
+
+	public new NodePath FocusNeighborRight {
+		get => _focusAble?.FocusNeighborRight;
+		set => _focusAble.FocusNeighborRight = value;
+	}
+
 	/// <summary>
 	///     All focus will be redirected to this element instead
 	/// </summary>
@@ -31,7 +51,6 @@ public partial class WikiItemView : Control
 		}
 	}
 
-	// TODO: Make item view focusable instead of using button. Easier to track focus
 	public event Action Pressed;
 
 	public override void _Ready()
@@ -43,7 +62,7 @@ public partial class WikiItemView : Control
 		_focusAble.GuiInput += OnGuiInput;
 
 		// Redirect focus to control
-		FocusMode = FocusModeEnum.All;
+		FocusMode = FocusModeEnum.Click;
 		MouseFilter = MouseFilterEnum.Pass;
 		FocusEntered += _focusAble.GrabFocus;
 	}
