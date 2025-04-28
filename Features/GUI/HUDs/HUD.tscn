@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c55xp0xg83mt1"]
+[gd_scene load_steps=7 format=3 uid="uid://c55xp0xg83mt1"]
 
 [ext_resource type="PackedScene" uid="uid://cfuw3qet6mhnq" path="res://Features/Cycle/UI/ClockUI.tscn" id="1_313dl"]
 [ext_resource type="PackedScene" uid="uid://cme58rltegywh" path="res://Features/GUI/HUDs/BookButton.tscn" id="1_k0baw"]
 [ext_resource type="PackedScene" uid="uid://dblh2fmdokupl" path="res://Features/GUI/HUDs/Toolbelt/ToolbeltView.tscn" id="2_fhqom"]
 [ext_resource type="PackedScene" uid="uid://b6ilyhkudlstl" path="res://Features/Quests/QuestOverview.tscn" id="2_fnr3o"]
 [ext_resource type="PackedScene" uid="uid://eadq6f41gik3" path="res://Features/GUI/HUDs/Resources/ResourcesHUD.tscn" id="3_h2wb2"]
+[ext_resource type="PackedScene" uid="uid://d1v7sl1fitgwf" path="res://Features/GUI/HUDs/NotificationBox.tscn" id="6_1uvck"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -58,3 +59,12 @@ anchor_top = 0.0222222
 anchor_right = 0.9875
 anchor_bottom = 0.0944444
 grow_horizontal = 0
+
+[node name="NotificationBox" parent="." instance=ExtResource("6_1uvck")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.676562
+anchor_top = 0.127778
+anchor_bottom = 0.730556
+grow_horizontal = 0
+grow_vertical = 0

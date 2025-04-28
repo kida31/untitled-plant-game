@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc8tr4q35n0q8"]
+[gd_scene load_steps=6 format=3 uid="uid://cc8tr4q35n0q8"]
 
 [ext_resource type="Script" uid="uid://cytsgbt8x1d1s" path="res://Features/Dialogue/DialogueUI.cs" id="1_hawac"]
 [ext_resource type="Texture2D" uid="uid://o1rnpbgpuum" path="res://Assets/Characters/Godfrey/Godfrey_angry.png" id="2_jfpax"]
 [ext_resource type="Texture2D" uid="uid://dyaetbwehoiqp" path="res://Assets/UI/Book/Containers&Labels/TextLabel.png" id="3_jda2l"]
 [ext_resource type="Texture2D" uid="uid://cvtdiy8q3a7b3" path="res://Assets/UI/Book/Containers&Labels/Ency_ItemNameLabel.png" id="4_kwwp3"]
+[ext_resource type="Texture2D" uid="uid://bac6wscrptqnf" path="res://Assets/UI/chubby_arrow.png" id="5_m81md"]
 
-[node name="DialogueView" type="Control" node_paths=PackedStringArray("_nameLabel", "_dialogueTextLabel", "_sprite", "_responseContainer")]
+[node name="DialogueView" type="Control" node_paths=PackedStringArray("_nameLabel", "_dialogueTextLabel", "_sprite", "_responseContainer", "_nextLineIcon")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +18,7 @@ _nameLabel = NodePath("NameDiv/MarginContainer/Name")
 _dialogueTextLabel = NodePath("DialogueField/MarginContainer/DialogueText")
 _sprite = NodePath("Portrait")
 _responseContainer = NodePath("Responses")
+_nextLineIcon = NodePath("ChubbyArrow")
 
 [node name="Portrait" type="TextureRect" parent="."]
 texture_filter = 1
@@ -123,3 +125,11 @@ text = "Schwanzus Longus"
 fit_content = true
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
+
+[node name="ChubbyArrow" type="TextureRect" parent="."]
+visible = false
+offset_left = 553.0
+offset_top = 309.0
+offset_right = 569.0
+offset_bottom = 325.0
+texture = ExtResource("5_m81md")

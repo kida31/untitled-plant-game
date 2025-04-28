@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using DialogueLine = untitledplantgame.Dialogue.Models.DialogueLine;
 
@@ -8,6 +9,7 @@ public partial class DialogueAnimation : Node
 	private const float CharacterPerSecond = 40; // range 25 - 40
 
 	[Export] private Timer _timer;
+	public event Action<bool> AnimationFinished;
 	public bool AnimationIsPlaying => _currentLetterIndex != -1;
 
 	private int _currentLetterIndex;
@@ -35,6 +37,7 @@ public partial class DialogueAnimation : Node
 			await ToSignal(_timer, Timer.SignalName.Timeout);
 		}
 
+		OnAnimationFinished(true);
 		_currentLetterIndex = -1;
 
 		dialogueTextLabel.VisibleCharacters = -1;
@@ -46,5 +49,10 @@ public partial class DialogueAnimation : Node
 	public void StopAnimation()
 	{
 		_currentLetterIndex = -1;
+	}
+
+	private void OnAnimationFinished(bool obj)
+	{
+		AnimationFinished?.Invoke(obj);
 	}
 }
