@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Godot;
 using untitledplantgame.Common;
 
@@ -17,7 +16,7 @@ public partial class DebugNavigationDebugger : Control
         var timer = new Timer();
         timer.Autostart = true;
         timer.WaitTime = 0.5f;
-        timer.Timeout += UpdateDebugger;
+        timer.Timeout += QueueRedraw;
         AddChild(timer);
     }
 
@@ -32,32 +31,13 @@ public partial class DebugNavigationDebugger : Control
             return;
         }
 
-        foreach (var neighbour in DrawNeighbourNavigation(ctrl, width:2f, alpha:.0f))
-        {
-            if (neighbour == null) {
-                continue;
-            } 
-            GD.Print($"Neighbour={neighbour.Name}");
-            DrawNeighbourNavigation(neighbour, width:2f, alpha: 1.0f);
-        }
+        DrawNeighbourNavigation(ctrl, Side.Left, width: 2f, alpha: 0.7f);
+        DrawNeighbourNavigation(ctrl, Side.Right, width: 2f, alpha: 0.7f);
+        DrawNeighbourNavigation(ctrl, Side.Top, width: 2f, alpha: 0.7f);
+        DrawNeighbourNavigation(ctrl, Side.Bottom, width: 2f, alpha: 0.7f);
     }
 
-    private void UpdateDebugger() => UpdateDebugger(null);
-    private void UpdateDebugger(Control focusedControl)
-    {
-        _vp ??= GetViewport();
-        QueueRedraw();
-    }
-
-    private IEnumerable<Control> DrawNeighbourNavigation(Control ctrl, float width=-1f, float alpha = 1.0f) {
-        GD.Print("Center="+ctrl.Name);
-        yield return DrawNeighbourNavigation(ctrl, Side.Left, width, alpha);
-        yield return DrawNeighbourNavigation(ctrl, Side.Right, width, alpha);
-        yield return DrawNeighbourNavigation(ctrl, Side.Top, width, alpha);
-        yield return DrawNeighbourNavigation(ctrl, Side.Bottom, width, alpha);
-    }
-
-    private Control DrawNeighbourNavigation(Control ctrl, Side side, float width=-1, float alpha = 1.0f)
+    private Control DrawNeighbourNavigation(Control ctrl, Side side, float width = -1, float alpha = 1.0f)
     {
         var predefinedPath = side switch
         {
@@ -74,31 +54,26 @@ public partial class DebugNavigationDebugger : Control
         {
             neighbour = ctrl.FindValidFocusNeighbor(side);
             color = Colors.OrangeRed;
+            color.A *= alpha;
         }
         else
         {
             neighbour = ctrl.GetNode<Control>(predefinedPath);
             color = Colors.BlueViolet;
+            color.A *= alpha;
         }
-        color.A *= alpha;
 
-        var offset = side switch
-        {
-            Side.Left => Vector2.Left,
-            Side.Right => Vector2.Right,
-            Side.Top => Vector2.Up,
-            Side.Bottom => Vector2.Down,
-            _ => Vector2.Zero,
-        } * width * 2;
-
-        var vp = GetViewport();
-        vp.GuiGetFocusOwner();
-        var focus = vp.GuiGetFocusOwner();
         if (neighbour != null)
         {
-            if (focus != ctrl)            {
-                GD.Print($"{ctrl.Name}->{neighbour.Name}");
-            }
+            var offset = side switch
+            {
+                Side.Left => Vector2.Left,
+                Side.Right => Vector2.Right,
+                Side.Top => Vector2.Up,
+                Side.Bottom => Vector2.Down,
+                _ => throw new ArgumentException("Unexpected enum:" + side),
+            } * width * 2;
+
             DrawLineWithCaps(
               ctrl.GetGlobalRect().GetCenter() + offset,
               neighbour.GetGlobalRect().GetCenter(),
