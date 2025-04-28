@@ -7,9 +7,6 @@ on:
       - "workflow/**"
     tags:
       - "v*.*.*"
-  pull_request:
-    branches:
-      - main
 
 jobs:
   Debug1:
