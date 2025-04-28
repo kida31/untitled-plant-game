@@ -9,16 +9,7 @@ on:
       - "v*.*.*"
 
 jobs:
-  Debug1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Debug log variables
-        run: |
-            echo "::notice::commit message: ${{ github.event.head_commit.message }}"
-            echo "::notice::refs: ${{ github.ref }}"
-            echo "::notice::branch?:${{ github.ref_name }}"
   Godot:
-    if: false
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,6 +17,11 @@ jobs:
         platform: [linux, windows, mac]
 
     steps:
+      - name: Debug variables
+        run: |
+            echo "::notice::commit message: ${{ github.event.head_commit.message }}"
+            echo "::notice::refs: ${{ github.ref }}"
+            echo "::notice::branch?:${{ github.ref_name }}"
       - uses: actions/checkout@v4
         with:
           lfs: true
@@ -41,12 +37,12 @@ jobs:
 
       - name: Release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
+        # if: startsWith(github.ref, 'refs/tags/')
         env:
           GITHUB_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
         with:
-          prerelease: endsWith(github.ref, 'pre')
-          draft: "true"
+          prerelease: true #endsWith(github.ref, 'pre')
+          draft: true
           files: |
             build/untitled-plant-game.app.zip
             build/untitled-plant-game.exe
