@@ -102,7 +102,7 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 
 		if (!_smashable)
 		{
-			return;
+			return false;
 		}
 		
 		_logger.Debug("Player input confirm.");
