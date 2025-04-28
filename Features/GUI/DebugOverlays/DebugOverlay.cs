@@ -18,15 +18,11 @@ public partial class DebugOverlay : Control
 
 	[Export] private Control _container;
 
-	public DebugOverlay()
-	{
-		// _container = this; // Replace this if node tree structure changes
-	}
-
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
 		Visible = ProjectSettings.GetSetting(DebugSettingKey, false).AsBool(); // default is false
+		Assert.AssertNotNull(_container);
 	}
 
 	public override void _Input(InputEvent @event)
