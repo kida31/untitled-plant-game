@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=13 format=3 uid="uid://ds2a5jertu4k4"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=18 format=3 uid="uid://ds2a5jertu4k4"]
 
 [ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_qjog7"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_kgyml"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="4_wdsss"]
 [ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="5_kb3df"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="6_77qnq"]
+[ext_resource type="Resource" uid="uid://cylhqbpmmho6g" path="res://Resources/Tools/Shovel.tres" id="6_wdsss"]
+[ext_resource type="Script" uid="uid://pits4f4cyiww" path="res://Features/Dialogue/Events/AddTool.cs" id="7_kb3df"]
+[ext_resource type="Resource" uid="uid://bpaygf61q330d" path="res://Resources/Tools/SeedBag.tres" id="8_77qnq"]
 
 [sub_resource type="Resource" id="Resource_acleb"]
 script = ExtResource("2_kgyml")
@@ -44,8 +47,22 @@ DialogueExpression = ExtResource("4_wdsss")
 dialogueText = "Tja, jetzt bist du genau so schlau wie ich. Aber komm immer gerne wieder, falls du mal was vergisst!"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
+[sub_resource type="Resource" id="Resource_k4k4s"]
+script = ExtResource("7_kb3df")
+_tool = ExtResource("6_wdsss")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://pits4f4cyiww"
+
+[sub_resource type="Resource" id="Resource_gdnk1"]
+script = ExtResource("7_kb3df")
+_tool = ExtResource("8_77qnq")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://pits4f4cyiww"
+
 [resource]
 script = ExtResource("6_77qnq")
 _dialogueId = "TutorialDialogueEnd_DE"
-_dialogueText = Array[Object]([SubResource("Resource_acleb"), SubResource("Resource_tmh6s"), SubResource("Resource_yg4ah"), SubResource("Resource_66we5"), SubResource("Resource_i3e76"), SubResource("Resource_8febt")])
+_dialogueText = Array[Object]([SubResource("Resource_acleb"), SubResource("Resource_tmh6s"), SubResource("Resource_yg4ah"), SubResource("Resource_66we5"), SubResource("Resource_i3e76"), SubResource("Resource_8febt"), SubResource("Resource_k4k4s"), SubResource("Resource_gdnk1")])
 _responses = null

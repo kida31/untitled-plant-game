@@ -15,10 +15,16 @@ public partial class GatherItemTask : QuestTask
 	public override event Action<QuestTask> TaskCompleted;
 	private bool _isCompleted = false;
 	private int _gatheredAmount = 0;
-	
-	public GatherItemTask()
+
+	public override void StartTask()
 	{
 		EventBus.Instance.OnItemAddedToInventory += OnItemAddedToInventory;
+	}
+
+	protected override void StopTask()
+	{
+		EventBus.Instance.OnItemAddedToInventory -= OnItemAddedToInventory;
+		TaskCompleted?.Invoke(this);
 	}
 
 	private void OnItemAddedToInventory(IItemStack obj)
@@ -36,7 +42,6 @@ public partial class GatherItemTask : QuestTask
 
 		_isCompleted = true;
 		
-		EventBus.Instance.OnItemAddedToInventory -= OnItemAddedToInventory;
-		TaskCompleted?.Invoke(this);
+		StopTask();
 	}
 }
