@@ -13,8 +13,11 @@ on:
 
 jobs:
   Debug1:
+    runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ contains(github.event.head_commit.message, 'workflow_test') }}"
+      - name: Debug log variables
+        run: |
+            echo "::notice::${{ contains(github.event.head_commit.message, 'workflow_test') }}"
   Godot:
     if: false
     runs-on: ubuntu-latest
