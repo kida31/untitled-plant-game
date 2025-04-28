@@ -58,7 +58,10 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 	{
 		if (Input.IsActionJustPressed("ui_accept") && Visible)
 		{
-			OnPlayerInputConfirm();
+			if (OnPlayerInputConfirm())
+			{
+				GetViewport().SetInputAsHandled();
+			}
 		}
 	}
 
@@ -87,12 +90,13 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 		ShowDialogueLine(_lineEnumerator.Current);
 	}
 
-	private void OnPlayerInputConfirm()
+	// Returns whether it has been handled
+	private bool OnPlayerInputConfirm()
 	{
 		if (_currentDialogue == null)
 		{
 			_logger.Warn("There is no dialogue to show."); //happens when player chooses a response TODO: ignore confirm response
-			return;
+			return false;
 		}
 		
 
@@ -107,7 +111,7 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 		{
 			_logger.Debug("Skipping animation.");
 			SkipAnimation();
-			return;
+			return true;
 		}
 
 		_smashable = true;
@@ -116,11 +120,12 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 		{
 			_logger.Debug("Showing next line.");
 			ShowDialogueLine(_lineEnumerator.Current);
-			return;
+			return true;
 		}
 
 		_logger.Debug("End of dialogue block.");
 		OnEndOfDialogueBlock();
+		return true;
 	}
 
 	//Displays dialogue on the screen
