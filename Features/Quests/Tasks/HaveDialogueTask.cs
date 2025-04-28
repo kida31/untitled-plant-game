@@ -13,9 +13,15 @@ public partial class HaveDialogueTask : QuestTask
 	public override event Action<QuestTask> TaskCompleted;
 	private bool _isCompleted = false;
 
-	public HaveDialogueTask()
+	public override void StartTask()
 	{
 		EventBus.Instance.EndDialogue += DialogueEnded;
+	}
+	
+	protected override void StopTask()
+	{
+		EventBus.Instance.EndDialogue -= DialogueEnded;
+		TaskCompleted?.Invoke(this);
 	}
 
 	private void DialogueEnded(DialogueResourceObject obj)
@@ -26,8 +32,7 @@ public partial class HaveDialogueTask : QuestTask
 		}
 
 		_isCompleted = true;
-		
-		EventBus.Instance.EndDialogue -= DialogueEnded;
-		TaskCompleted?.Invoke(this);
+
+		StopTask();
 	}
 }

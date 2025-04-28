@@ -16,14 +16,11 @@ public partial class Quest : Resource
 
 	private Logger _logger = new("Quest");
 
-	public Quest()
-	{
-	}
-
 	public void InitialiseQuest()
 	{
 		Assert.AssertNotNull(Task, "Task is null. This Quest is invalid.");
-		//TODO This should only be called once
+
+		Task.StartTask();
 		Task.TaskCompleted += OnTaskCompleted;
 	}
 

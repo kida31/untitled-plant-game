@@ -15,10 +15,6 @@ public partial class QuestLine : Resource
 
 	private readonly Logger _logger = new("QuestLine");
 
-	public QuestLine()
-	{
-	}
-
 	private bool IsCompleted()
 	{
 		_logger.Debug("Quest " + Name + " is completed");
