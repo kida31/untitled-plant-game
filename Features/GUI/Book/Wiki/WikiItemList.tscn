@@ -67,6 +67,7 @@ stretch_mode = 5
 
 [node name="Button1" type="Button" parent="SectionsButtons/Div"]
 layout_mode = 2
+focus_neighbor_right = NodePath("../../Div2/Button2")
 theme_override_font_sizes/font_size = 16
 flat = true
 clip_text = true
@@ -92,6 +93,8 @@ stretch_mode = 5
 
 [node name="Button2" type="Button" parent="SectionsButtons/Div2"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../Div/Button1")
+focus_neighbor_right = NodePath("../../Div3/Button3")
 theme_override_font_sizes/font_size = 16
 flat = true
 clip_text = true
@@ -117,6 +120,7 @@ stretch_mode = 5
 
 [node name="Button3" type="Button" parent="SectionsButtons/Div3"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../Div2/Button2")
 theme_override_font_sizes/font_size = 16
 flat = true
 clip_text = true

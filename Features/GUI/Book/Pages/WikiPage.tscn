@@ -29,6 +29,9 @@ offset_right = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Button3" parent="WikiItemList/SectionsButtons/Div3" index="1"]
+focus_neighbor_right = NodePath("../../../../WikiArticleView/RelatedStuff/RelatedItem")
+
 [node name="WikiArticleView" parent="." instance=ExtResource("3_q0eou")]
 layout_mode = 1
 anchor_left = 0.5
