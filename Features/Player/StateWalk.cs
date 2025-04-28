@@ -1,4 +1,5 @@
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Interaction;
 
@@ -48,7 +49,7 @@ public partial class StateWalk : State
 			Player.Toolbelt.GoToPrevious();
 		}
 
-		if (inputEvent.IsActionPressed(FreeRoam.UseTool))
+		if (inputEvent.IsActionPressed(FreeRoam.UseTool) && Game.Player.Toolbelt.CurrentTool != null)
 		{
 			return _useToolState;
 		}

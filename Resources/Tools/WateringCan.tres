@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_04miq")
-_wateringAmount = 50.0
+_wateringAmount = 150.0
 _waterCapacity = 1000.0
 _isBottomless = true
 Name = "Basic Watering Can"

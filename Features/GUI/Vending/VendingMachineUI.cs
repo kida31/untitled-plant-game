@@ -74,6 +74,37 @@ public partial class VendingMachineUI : Control
 		}
 	}
 
+	// -- Set focus manually
+	private void SetNavigationNoWithdraw()
+	{
+		// Dear future developer. Sorry.
+
+		var vendingSlots = _itemSlots;
+		var invSlots = _inventoryView.GetItemViews();
+
+		Assert.AssertEquals(vendingSlots.Count, 12, "Vending machine should have 12 slots. Found: " + vendingSlots.Count);
+		Assert.AssertEquals(invSlots.Count, 20, "Inventory should have 20 slots. Found: " + invSlots.Count);
+		
+		vendingSlots[11].FocusNeighborRight = invSlots[12].GetPath();
+		invSlots[12].FocusNeighborLeft = vendingSlots[11].GetPath();
+		
+		_logger.Debug("Set navigation without withdraw");
+	}
+
+	private void SetNavigationWithWithdraw()
+	{
+		var vendingSlots = _itemSlots;
+		var invSlots = _inventoryView.GetItemViews();
+
+		Assert.AssertEquals(vendingSlots.Count, 12, "Vending machine should have 12 slots. Found: " + vendingSlots.Count);
+		Assert.AssertEquals(invSlots.Count, 20, "Inventory should have 20 slots. Found: " + invSlots.Count);
+		
+		vendingSlots[11].FocusNeighborRight = _withdrawButton.GetPath();
+		invSlots[12].FocusNeighborLeft = _withdrawButton.GetPath();
+		
+		_logger.Debug("Set navigation with withdraw");
+	}
+
 	private void OpenThis(VendingMachine vendingMachine)
 	{
 		GameStateMachine.Instance.SetState(GameState.Book);
@@ -153,6 +184,14 @@ public partial class VendingMachineUI : Control
 		}
 
 		_withdrawButton.Visible = _vendingMachine.Gold > 0;
+		if (_withdrawButton.Visible)
+		{
+			SetNavigationWithWithdraw();
+		}
+		else
+		{
+			SetNavigationNoWithdraw();
+		}
 		
 		UpdateItemPriceVisuals();
 	}
