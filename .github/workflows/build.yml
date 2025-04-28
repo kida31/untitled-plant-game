@@ -17,7 +17,9 @@ jobs:
     steps:
       - name: Debug log variables
         run: |
-            echo "::notice::${{ contains(github.event.head_commit.message, 'workflow_test') }}"
+            echo "::notice::commit message: ${{ github.event.head_commit.message }}"
+            echo "::notice::refs: ${{ github.ref }}"
+            echo "::notice::branch?:${{ github.ref_name }}"
   Godot:
     if: false
     runs-on: ubuntu-latest
