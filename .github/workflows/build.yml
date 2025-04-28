@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        platform: [linux, windows, mac]
+        platform: [windows] # [linux, windows, mac]
 
     steps:
       - name: Debug variables
