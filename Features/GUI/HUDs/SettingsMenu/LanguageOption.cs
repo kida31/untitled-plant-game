@@ -25,11 +25,12 @@ public partial class LanguageOption : OptionButton
 		}
 
 		var currentLocale = TranslationServer.GetLocale();
+		GD.Print("My locale=" + currentLocale);
 		foreach (var (index, (label, locale)) in _languages)
 		{
 			AddItem(label, index);
 
-			if (locale == currentLocale)
+			if (TranslationServer.CompareLocales(locale, currentLocale) > 4)
 			{
 				Select(index);
 			}
