@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
@@ -35,6 +36,11 @@ public partial class StorageView : Control
 				OnVisibilityOff();
 			}
 		};
+	}
+
+	public IReadOnlyList<NewInventoryItemView> GetItemViews()
+	{
+		return new ReadOnlyCollection<NewInventoryItemView>(ItemViews);
 	}
 
 	public void ShowInventory(IInventory inventory)
