@@ -14,6 +14,7 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 	[Export] private RichTextLabel _dialogueTextLabel;
 	[Export] private TextureRect _sprite;
 	[Export] private BoxContainer _responseContainer;
+	[Export] private TextureRect _nextLineIcon;
 
 	private DialogueResourceObject _currentDialogue;
 	private IEnumerator<DialogueLine> _lineEnumerator;
@@ -36,11 +37,21 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 		_skipCooldownTimer.OneShot = true;
 		_dialogueAnimation = new DialogueAnimation();
 		AddChild(_dialogueAnimation);
+		_dialogueAnimation.AnimationFinished += (finished) =>
+		{
+			if (finished)
+			{
+				_nextLineIcon.Visible = true;
+			}
+		};
 
 		//Events
 		//EventBus.Instance.OnNpcStartDialogue += ChangeToIdentity;
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
-		_skipCooldownTimer.Timeout += () => _smashable = true;
+		_skipCooldownTimer.Timeout += () =>
+		{
+			_smashable = true;
+		};
 	}
 
 	public override void _Input(InputEvent @event)
@@ -68,14 +79,6 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 		_dialogueSystem.OnResponding += DisplayResponses;
 	}
 
-	private void ChangeToIdentity(AnimatedSprite2D portrait, string npcName)
-	{
-		//_animatedSprite2D.SpriteFrames = portrait.SpriteFrames;
-		//var save = _animatedSprite2D.SpriteFrames;
-
-		//_nameLabel.Text = npcName;
-	}
-
 	private void OnDialogueBlockStarted(DialogueResourceObject dialogue)
 	{
 		_currentDialogue = dialogue;
@@ -91,13 +94,13 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 			_logger.Warn("There is no dialogue to show."); //happens when player chooses a response TODO: ignore confirm response
 			return;
 		}
+		
 
 		if (!_smashable)
 		{
-			_logger.Debug("Stop smashing the button.");
 			return;
 		}
-
+		
 		_logger.Debug("Player input confirm.");
 
 		if (AnimationIsPlaying)
@@ -108,6 +111,7 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 		}
 
 		_smashable = true;
+		_nextLineIcon.Visible = false;
 		if (_lineEnumerator.MoveNext()) //End of Line
 		{
 			_logger.Debug("Showing next line.");
@@ -128,11 +132,18 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 				_logger.Error("Dialogue line is null.");
 				return;
 			case DialogueEvent d:
-				OnEndOfDialogueBlock();
+				if (_lineEnumerator.MoveNext()) //End of Line
+				{
+					_logger.Debug("Showing next line.");
+					ShowDialogueLine(_lineEnumerator.Current);
+				}
+				else
+				{
+					OnEndOfDialogueBlock();
+				}
 				d.Execute();
 				return;
 		}
-
 		
 		if(line.speakerName != null)
 		{
@@ -200,6 +211,7 @@ public partial class DialogueUI : Control //Renaming keeps breaking Godot please
 	{
 		_dialogueAnimation.StopAnimation();
 		_smashable = false;
+		_nextLineIcon.Visible = true;
 		_skipCooldownTimer.Start(_waitForSeconds);
 	}
 

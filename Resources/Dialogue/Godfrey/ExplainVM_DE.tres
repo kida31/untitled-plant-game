@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://1oj4hy0d8cwc"]
+
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_psmfi"]
+[ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="1_qvwvx"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_2hi1d"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="3_k3gny"]
+
+[sub_resource type="Resource" id="Resource_ajner"]
+script = ExtResource("2_2hi1d")
+speakerName = "Automat"
+DialogueExpression = ExtResource("1_qvwvx")
+dialogueText = "In dem [color=red]Automaten[/color] dort kannst du deine [color=blue]Medizin[/color] verkaufen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_vud1m"]
+script = ExtResource("2_2hi1d")
+speakerName = "Automat"
+DialogueExpression = ExtResource("1_qvwvx")
+dialogueText = "Die Preise für die Medizin kannst du selber bestimmen. Übertreib es nur nicht, ja?"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_p0lys"]
+script = ExtResource("2_2hi1d")
+speakerName = "Automat"
+DialogueExpression = ExtResource("1_qvwvx")
+dialogueText = "Du musst immer ein bisschen warten, bevor die Sachen verkauft sind."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_afqxg"]
+script = ExtResource("2_2hi1d")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("3_k3gny")
+dialogueText = "Keine Sorge, ich werde den Leuten im Dorf Bescheid geben, dass hier wieder Medizin verkauft wird."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[resource]
+script = ExtResource("1_psmfi")
+_dialogueId = "ExplainVM_DE"
+_dialogueText = Array[Object]([SubResource("Resource_ajner"), SubResource("Resource_vud1m"), SubResource("Resource_p0lys"), SubResource("Resource_afqxg")])
+_responses = null
+metadata/_custom_type_script = "uid://c5x800n31tvgq"

@@ -19,7 +19,7 @@ public partial class InteractionManager : Node2D
 	private const float InteractionCooldown = 1.0f;
 	public static InteractionManager Instance { get; private set; }
 
-	[Export] private InteractHint _label;
+	[Export] private GenericTextControl _label;
 	[Export] private Vector2 _hintOffset = Vector2.Zero;
 
 	private int AreaCount => _activeAreas.Count;

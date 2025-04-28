@@ -14,3 +14,4 @@
 [node name="Monologue" type="Node" parent="."]
 script = ExtResource("3_3obcm")
 _monologueResourceObject = ExtResource("4_3ynuj")
+_skipDialogue = true

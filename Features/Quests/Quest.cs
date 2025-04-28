@@ -9,16 +9,15 @@ public partial class Quest : Resource
 {
 	[Export] public string Description { get; set; }
 	[Export] public QuestTask Task { get; set; }
-	
+
 	public QuestProgression Progression { get; private set; }
 
 	public event Action<QuestProgression> QuestProgressionChanged;
 
-	private Logger _logger = new ("Quest");
-	
+	private Logger _logger = new("Quest");
+
 	public Quest()
 	{
-		
 	}
 
 	public void InitialiseQuest()
@@ -31,8 +30,9 @@ public partial class Quest : Resource
 	private void OnTaskCompleted(QuestTask obj)
 	{
 		Progression = QuestProgression.Completed;
-		_logger.Debug("Quest is completed");
-		
+		_logger.Debug($"Quest {Description} was completed");
+		Task.TaskCompleted -= OnTaskCompleted;
+
 		OnQuestProgressionChanged(Progression);
 	}
 

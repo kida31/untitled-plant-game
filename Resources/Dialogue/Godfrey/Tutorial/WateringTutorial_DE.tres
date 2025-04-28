@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=17 format=3 uid="uid://doio1ea88264e"]
+
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_kw80q"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_kgmiu"]
+[ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="3_nwd43"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="4_e0m40"]
+[ext_resource type="Resource" uid="uid://c2t30hvhvqgx0" path="res://Resources/Quest/TutorialQuest.tres" id="5_knu8a"]
+[ext_resource type="Script" uid="uid://wieplhq747d3" path="res://Features/Dialogue/Events/StartQuestLine.cs" id="6_kw80q"]
+[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="7_1760e"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="8_grir0"]
+
+[sub_resource type="Resource" id="Resource_5fiqd"]
+script = ExtResource("2_kgmiu")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_kw80q")
+dialogueText = "Ok, das Wichtigste zuerst."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_hhqf7"]
+script = ExtResource("2_kgmiu")
+speakerName = "Gießkanne"
+DialogueExpression = ExtResource("3_nwd43")
+dialogueText = "Das hier ist eine [color=red]Gießkanne[/color]. Mit ihr kannst du Pflanzen gießen.."
+
+[sub_resource type="Resource" id="Resource_wfp6x"]
+script = ExtResource("2_kgmiu")
+speakerName = "Gießkanne"
+DialogueExpression = ExtResource("3_nwd43")
+dialogueText = "Die Gießkanne ist magisch und muss nie aufgefüllt werden!"
+
+[sub_resource type="Resource" id="Resource_6v888"]
+script = ExtResource("2_kgmiu")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("4_e0m40")
+dialogueText = "Aber pass auf, dass du deine Pflanzen nicht überwässerst!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_esj0x"]
+script = ExtResource("2_kgmiu")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_kw80q")
+dialogueText = "Probier' doch einfach mal die Gießkanne aus."
+
+[sub_resource type="Resource" id="Resource_rmg08"]
+script = ExtResource("2_kgmiu")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("4_e0m40")
+dialogueText = "In den Wannen dort stehen noch ein paar Pflanzen. Ich wette sie würden sich über Wasser freuen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_4o3rp"]
+script = ExtResource("6_kw80q")
+QuestLine = ExtResource("5_knu8a")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://wieplhq747d3"
+
+[sub_resource type="Resource" id="Resource_ebqr8"]
+script = ExtResource("7_1760e")
+_cameraPosition = Vector2(477, 344)
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://bc35ywlebpmy1"
+
+[resource]
+script = ExtResource("8_grir0")
+_dialogueId = "WateringTutorial_DE"
+_dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_rmg08"), SubResource("Resource_4o3rp"), SubResource("Resource_ebqr8")])
+_responses = null

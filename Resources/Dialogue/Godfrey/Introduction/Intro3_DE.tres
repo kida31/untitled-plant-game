@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://cu3shydt1lvsc"]
+
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_bkt52"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_0cg4s"]
+[ext_resource type="Resource" uid="uid://chf3quvp1uk06" path="res://Resources/Dialogue/Godfrey/Tutorial/GiveTutorial_DE.tres" id="3_2n144"]
+[ext_resource type="Resource" uid="uid://cuniduin6082y" path="res://Resources/Dialogue/Godfrey/Tutorial/SkipTutorial_DE.tres" id="4_bkt52"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="6_r3j0f"]
+
+[sub_resource type="Resource" id="Resource_82fqt"]
+script = ExtResource("2_0cg4s")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_bkt52")
+dialogueText = "Ja ja, ich verstehe schon. Wir haben es doch alle nicht so einfach."
+
+[sub_resource type="Resource" id="Resource_ldvuu"]
+script = ExtResource("2_0cg4s")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_bkt52")
+dialogueText = "Aber keine Sorge! Hier, wo wir stehen, hat früher ein [color=red]Kräuterkundiger[/color] gelebt."
+
+[sub_resource type="Resource" id="Resource_x1toj"]
+script = ExtResource("2_0cg4s")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_bkt52")
+dialogueText = "Er hat unsere Stadt mit Medizin versorgt und gepflegt!"
+
+[sub_resource type="Resource" id="Resource_wdl46"]
+script = ExtResource("2_0cg4s")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_bkt52")
+dialogueText = "Wenn du seinen Job übernehmen kannst, wäre es sicher kein Problem, dass du dieses Haus bewohnst!"
+
+[resource]
+script = ExtResource("6_r3j0f")
+_dialogueId = "Intro3_DE"
+_dialogueText = Array[Object]([SubResource("Resource_82fqt"), SubResource("Resource_ldvuu"), SubResource("Resource_x1toj"), SubResource("Resource_wdl46")])
+_responses = Array[Object]([ExtResource("3_2n144"), ExtResource("4_bkt52")])
