@@ -5,10 +5,10 @@
 [node name="ButtonLine" instance=ExtResource("1_qc6hw")]
 
 [node name="Description" parent="MarginTopBottom/HBoxContainer/South" index="1"]
-text = "Purchase"
+text = "MENU_LABEL_PURCHASE"
 
 [node name="Description" parent="MarginTopBottom/HBoxContainer/East" index="1"]
-text = "Back"
+text = "MENU_LABEL_BACK"
 
 [node name="North" parent="MarginTopBottom/HBoxContainer" index="2"]
 visible = false

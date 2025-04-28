@@ -36,7 +36,7 @@ metadata/_edit_use_anchors_ = true
 [node name="DayLabel" type="Label" parent="CenterContainerDay"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Day 12"
+text = "DAYTIME_DAY  12"
 horizontal_alignment = 1
 vertical_alignment = 1
 
