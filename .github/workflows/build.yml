@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - "workflow/**"
     tags:
       - "v*.*.*"
   pull_request:
@@ -17,14 +16,9 @@ jobs:
 
     strategy:
       matrix:
-        platform: [windows] # [linux, windows, mac]
+        platform: [linux, windows, mac]
 
     steps:
-      - name: Debug variables
-        run: |
-            echo "::notice::commit message: ${{ github.event.head_commit.message }}"
-            echo "::notice::refs: ${{ github.ref }}"
-            echo "::notice::branch?:${{ github.ref_name }}"
       - uses: actions/checkout@v4
         with:
           lfs: true
@@ -32,11 +26,11 @@ jobs:
       - name: Build
         id: build
         uses: felix-schindler/build-godot-action@v2.0.0
-        if: github.event.pull_request.draft == false
+        # if: github.event.pull_request.draft == false
         with:
           name: untitled-plant-game
           preset: ${{ matrix.platform }}
-          debugMode: "false"
+          debugMode: true
 
       - name: Release
         uses: softprops/action-gh-release@v2
@@ -44,9 +38,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
         with:
-          tag_name: "test-prerelease"
-          prerelease: true #endsWith(github.ref, 'pre')
-          draft: true
+          tag_name: "prerelease-test"
           files: |
             build/untitled-plant-game.app.zip
             build/untitled-plant-game.exe
