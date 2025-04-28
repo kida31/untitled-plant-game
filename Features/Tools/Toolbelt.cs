@@ -104,16 +104,12 @@ public class Toolbelt
 		Array.Resize(ref _tools, _tools.Length + 1);
 		_tools[^1] = tool;
 		_toolIndex = _tools.Length - 1;
-		
-		_logger.Info($"Added tool: {tool}");
-		
-		if (_toolIndex < 0)
+		if(_toolIndex < 0)
 		{
-			_toolIndex = 0;
-			WentToNextTool?.Invoke();
-			ToolChanged?.Invoke(CurrentTool);
+			_logger.Error("Tool index is less than 0, this should not happen.");
 		}
 		
+		_logger.Info($"Added tool: {tool}");
 		WentToNextTool?.Invoke();
 	}
 

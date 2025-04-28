@@ -17,12 +17,16 @@ public partial class WateringTask : QuestTask
 		EventBus.Instance.WateredSoil += OnWateredSoil;
 	}
 
+	protected override void StopTask()
+	{
+		EventBus.Instance.WateredSoil -= OnWateredSoil;
+		TaskCompleted?.Invoke(this);
+	}
 
 	private void OnWateredSoil(SoilTile obj)
 	{
 		_isCompleted = true;
 
-		EventBus.Instance.WateredSoil -= OnWateredSoil;
-		TaskCompleted?.Invoke(this);
+		StopTask();
 	}
 }
