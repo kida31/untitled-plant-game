@@ -12,7 +12,7 @@ on:
       - main
 
 jobs:
-  if: startsWith(github.ref_name, 'workflow')
+  if: startsWith(github.ref, 'refs/heads/workflow')
   Godot:
     runs-on: ubuntu-latest
 
