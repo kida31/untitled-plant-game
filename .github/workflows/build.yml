@@ -38,6 +38,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
         with:
+          prerelease: endsWith(github.ref, 'pre')
           files: |
             build/untitled-plant-game.app.zip
             build/untitled-plant-game.exe
