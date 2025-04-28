@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnxbc1h883l37"]
+[gd_scene load_steps=4 format=3 uid="uid://dnxbc1h883l37"]
 
 [ext_resource type="Script" uid="uid://bo5u503dinv3v" path="res://Features/Tools/ChannelingBar.cs" id="1_ks2ts"]
+[ext_resource type="Texture2D" uid="uid://c6hagepcct3kl" path="res://Assets/UI/progressBar_under.png" id="1_y5t2e"]
+[ext_resource type="Texture2D" uid="uid://cnxhc0h25fqtk" path="res://Assets/UI/progressBar_progress.png" id="2_jx6kw"]
 
-[node name="ChannelingBar" type="ProgressBar"]
+[node name="ChannelingBar" type="TextureProgressBar"]
 custom_minimum_size = Vector2(128, 16)
 offset_left = -64.0
 offset_top = -17.0
 offset_right = 64.0
 offset_bottom = -1.0
-show_percentage = false
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_right = 2
+texture_under = ExtResource("1_y5t2e")
+texture_progress = ExtResource("2_jx6kw")
 script = ExtResource("1_ks2ts")

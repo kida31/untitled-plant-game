@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueResponse" load_steps=3 format=3 uid="uid://chf3quvp1uk06"]
+
+[ext_resource type="Resource" uid="uid://b50a4t4ysa7ax" path="res://Resources/Dialogue/Godfrey/Tutorial/TutorialNoPlan_DE.tres" id="1_0c128"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="5_pe2l3"]
+
+[resource]
+script = ExtResource("5_pe2l3")
+_responseButton = "Ich habe keine Ahnung von Pflanzen..."
+_responseDialogue = ExtResource("1_0c128")
+metadata/_custom_type_script = "uid://crnclevrmchav"

@@ -1,16 +1,27 @@
 using Godot;
 using System;
 
-public partial class ChannelingBar : ProgressBar
+public partial class ChannelingBar : TextureProgressBar
 {
 	public event Action Completed;
 	
 	private Node2D _anchorPoint;
 	private float _channelingTime;
 	private float _currentChannelTime;
+	
+	
+	
 
 	public ChannelingBar(Node2D anchorPoint, float channelingTime)
 	{
+		TextureUnder = GD.Load<Texture2D>("res://Assets/UI/progressBar_under.png");
+		TextureProgress = GD.Load<Texture2D>("res://Assets/UI/progressBar_progress.png");
+		NinePatchStretch = true;
+		StretchMarginLeft = 3;
+		StretchMarginRight = 3;
+
+		ZIndex = 1;
+		
 		_anchorPoint = anchorPoint;
 		_channelingTime = channelingTime;
 		_currentChannelTime = 0;
@@ -21,7 +32,7 @@ public partial class ChannelingBar : ProgressBar
 		MaxValue = 1;
 		Value = 0;
 		Step = 0.01;
-		ShowPercentage = false;
+		//ShowPercentage = false;
 	}
 
 	public override void _Process(double delta)

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="DialogueResponse" load_steps=11 format=3 uid="uid://cuniduin6082y"]
+
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_0dre8"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_mb21g"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_ssqff"]
+[ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/Godfrey/Tutorial/WateringTutorial_DE.tres" id="4_wv8ia"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_i44j5"]
+
+[sub_resource type="Resource" id="Resource_7bruj"]
+script = ExtResource("2_mb21g")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_0dre8")
+dialogueText = "Oh, wirklich? Also kannst du schon alles?"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_ipll5"]
+script = ExtResource("2_mb21g")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_0dre8")
+dialogueText = "Soll ich dir nichts mehr erklären?"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_qc8kp"]
+script = ExtResource("3_ssqff")
+_responseButton = "Nein, ich kann das schon."
+metadata/_custom_type_script = "uid://crnclevrmchav"
+
+[sub_resource type="Resource" id="Resource_vn7iy"]
+script = ExtResource("3_ssqff")
+_responseButton = "Doch, bitte erzähl mehr."
+_responseDialogue = ExtResource("4_wv8ia")
+metadata/_custom_type_script = "uid://crnclevrmchav"
+
+[sub_resource type="Resource" id="Resource_wj1jo"]
+script = ExtResource("5_i44j5")
+_dialogueId = "has_plan"
+_dialogueText = Array[Object]([SubResource("Resource_7bruj"), SubResource("Resource_ipll5")])
+_responses = Array[Object]([SubResource("Resource_qc8kp"), SubResource("Resource_vn7iy")])
+metadata/_custom_type_script = "uid://c5x800n31tvgq"
+
+[resource]
+script = ExtResource("3_ssqff")
+_responseButton = "Ja, klar. Absolut kein Problem!"
+_responseDialogue = SubResource("Resource_wj1jo")
+metadata/_custom_type_script = "uid://crnclevrmchav"

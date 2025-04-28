@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://mh3tmg3aiu7w"]
+
+[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="1_w0uxy"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_watp4"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_u5fdu"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="3_nvfcc"]
+
+[sub_resource type="Resource" id="Resource_h5h7e"]
+script = ExtResource("2_u5fdu")
+speakerName = "Pan Dan"
+DialogueExpression = ExtResource("1_w0uxy")
+dialogueText = "Dort drüben steht Pan Dan. Er ist der Junge vom ehemaligen Marktstandbesitzer."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_jlt76"]
+script = ExtResource("2_u5fdu")
+speakerName = "Pan Dan"
+DialogueExpression = ExtResource("1_w0uxy")
+dialogueText = "Er sammelt immer alles Mögliche. Sicherlich kann er dir auch ein paar Samen verkaufen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_i05o8"]
+script = ExtResource("2_u5fdu")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("3_nvfcc")
+dialogueText = "Er hat immer wieder etwas neues im Angebot also lohnt es sich jeden Tag vorbeizuschauen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[resource]
+script = ExtResource("1_watp4")
+_dialogueId = "ExplainSeedBoy_DE"
+_dialogueText = Array[Object]([SubResource("Resource_h5h7e"), SubResource("Resource_jlt76"), SubResource("Resource_i05o8")])
+_responses = Array[Object]([])
+metadata/_custom_type_script = "uid://c5x800n31tvgq"
