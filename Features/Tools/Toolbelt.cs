@@ -91,4 +91,33 @@ public class Toolbelt
 
 		return _toolIndex + 1 < _tools.Length ? _tools[_toolIndex + 1] : _tools[0];
 	}
+	
+	public void AddTool(Tool tool)
+	{
+		if (tool == null)
+		{
+			_logger.Error("Tool is null, cannot add.");
+			return;
+		}
+		if(HasTool(tool)) return;
+
+		Array.Resize(ref _tools, _tools.Length + 1);
+		_tools[^1] = tool;
+		
+		_logger.Info($"Added tool: {tool}");
+		
+		if (_toolIndex < 0)
+		{
+			_toolIndex = 0;
+			WentToNextTool?.Invoke();
+			ToolChanged?.Invoke(CurrentTool);
+		}
+		
+		WentToNextTool?.Invoke();
+	}
+
+	private bool HasTool(Tool tool)
+	{
+		return Tools.Contains(tool);
+	}
 }

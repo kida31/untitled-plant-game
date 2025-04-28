@@ -33,16 +33,9 @@ public partial class Player : CharacterBody2D
 
 	public BigInventory Inventory { get; private set; }
 
-	public Toolbelt Toolbelt { get; } = new(
-		new Tool[]
-		{
-			// Hardcoded tools for now
-			GD.Load<Tool>("res://Resources/Tools/Shears.tres"),
-			GD.Load<Tool>("res://Resources/Tools/Shovel.tres"),
-			GD.Load<Tool>("res://Resources/Tools/SeedBag.tres"),
-			GD.Load<Tool>("res://Resources/Tools/WateringCan.tres"),
-		}
-	);
+	public Toolbelt Toolbelt { get; } = new([
+		//starting with empty Toolbelt
+	]);
 
 	public override void _Ready()
 	{
@@ -72,7 +65,7 @@ public partial class Player : CharacterBody2D
 		}
 
 		var leftovers = Inventory.AddItem(obj);
-		
+
 		if (leftovers.Count > 0)
 		{
 			_logger.Warn("Inventory full, could not pick up all items. This is not handled");
