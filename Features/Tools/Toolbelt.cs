@@ -103,6 +103,7 @@ public class Toolbelt
 
 		Array.Resize(ref _tools, _tools.Length + 1);
 		_tools[^1] = tool;
+		_toolIndex = _tools.Length - 1;
 		
 		_logger.Info($"Added tool: {tool}");
 		

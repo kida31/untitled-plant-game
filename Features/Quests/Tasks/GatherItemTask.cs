@@ -42,6 +42,6 @@ public partial class GatherItemTask : QuestTask
 
 		_isCompleted = true;
 		
-		StartTask();
+		StopTask();
 	}
 }
