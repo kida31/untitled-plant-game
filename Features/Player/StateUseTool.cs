@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using untitledplantgame.Common;
 using untitledplantgame.Common.Inputs.GameActions;
 using untitledplantgame.Tools;
 
@@ -10,6 +11,8 @@ public partial class StateUseTool : State
 {
 	private State _idleState;
 	private bool _queuingExit;
+	private Logger _logger;
+
 	private Dictionary<Type, string> _toolActions = new()
 	{
 		{ typeof(WateringCan), "water" },
@@ -21,22 +24,26 @@ public partial class StateUseTool : State
 	public override void _Ready()
 	{
 		_idleState = GetNode<State>("../Idle"); // string might be prone to error
+		_logger = new(this);
 	}
 
 	public override void Enter()
 	{
 		_queuingExit = false;
-		
+
 		var tool = Player.Toolbelt.CurrentTool;
+		
+		if (tool == null)
+		{
+			_logger.Error("Tool is null. Should not be in this state");
+			return;
+		}
+
 		var toolName = tool.GetType();
 
 		UpdateToolAnimation(toolName);
-		
-		if (tool != null)
-		{
-			tool.StartChanneling(Player); // Should be a public method in player instead of property access
-			tool.FinishedCasting += OnFinishedCasting;
-		}
+		tool.StartChanneling(Player); // Should be a public method in player instead of property access
+		tool.FinishedCasting += OnFinishedCasting;
 	}
 
 	private void UpdateToolAnimation(Type toolType)

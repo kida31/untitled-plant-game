@@ -10,16 +10,22 @@ public partial class SellItemTask : QuestTask
 {
 	[Export] private string _itemId;
 	[Export] private int _amount;
-	
+
 	public override bool IsCompleted => _isCompleted;
 	public override event Action<QuestTask> TaskCompleted;
-	
+
 	private bool _isCompleted = false;
 	private int _soldCount = 0;
 
-	public SellItemTask()
+	public override void StartTask()
 	{
 		EventBus.Instance.ItemSoldFromVendingMachine += OnItemSold;
+	}
+	
+	protected override void StopTask()
+	{
+		EventBus.Instance.ItemSoldFromVendingMachine -= OnItemSold;
+		TaskCompleted?.Invoke(this);
 	}
 
 	private void OnItemSold(IItemStack obj)
@@ -28,7 +34,7 @@ public partial class SellItemTask : QuestTask
 		{
 			return;
 		}
-		
+
 		_soldCount++;
 		if (_soldCount < _amount)
 		{
@@ -36,8 +42,7 @@ public partial class SellItemTask : QuestTask
 		}
 
 		_isCompleted = true;
-		
-		EventBus.Instance.OnItemAddedToInventory -= OnItemSold;
-		TaskCompleted?.Invoke(this);
+
+		StopTask();
 	}
 }
