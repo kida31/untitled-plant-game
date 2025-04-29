@@ -27,6 +27,10 @@ public partial class WikiItemList : Control
 	public event Action<WikiItemView> ItemViewPressed;
 
 
+	private int _cachedSeedIndex = -1;
+	private int _cachedMedicineIndex = -1;
+	private int _cachedMaterialIndex = -1;
+
 	public override void _Ready()
 	{
 		// Initialize list
@@ -55,6 +59,30 @@ public partial class WikiItemList : Control
 			_medicineButton.FocusNeighborBottom = iv.GetPath();
 			_materialButton.FocusNeighborBottom = iv.GetPath();
 		};
+	}
+
+	public override void _Input(InputEvent @event)
+	{
+		var ctrl = GetViewport().GuiGetFocusOwner() as WikiItemView;
+		var idx =  _itemViews.IndexOf(ctrl);
+
+		if (idx == -1) return;
+		
+		if (@event.IsActionPressed(Common.Inputs.GameActions.Book.BumperRight)) {
+			if (idx < _cachedMedicineIndex) {
+				ScrollToFirstItemOf(ItemCategory.Medicine);
+			} else if (idx < _cachedMaterialIndex) {
+				ScrollToFirstItemOf(ItemCategory.Material);
+			}
+		} else if (@event.IsActionPressed(Common.Inputs.GameActions.Book.BumperLeft) ){
+			if (idx > _cachedMaterialIndex) {
+				ScrollToFirstItemOf(ItemCategory.Material);
+			} else if (idx > _cachedMedicineIndex) {
+				ScrollToFirstItemOf(ItemCategory.Medicine);
+			} else {
+				ScrollToFirstItemOf(ItemCategory.Seed);
+			}
+		}
 	}
 
 	public void SetItems(List<IItemStack> items)
@@ -100,6 +128,11 @@ public partial class WikiItemList : Control
 			var item = items[index];
 			_itemViews[index].ItemStack = item; // keep this in two lines for debugging
 		}
+
+		// Update item indices
+		_cachedSeedIndex = items.FindIndex(it => it.Category == ItemCategory.Seed);
+		_cachedMedicineIndex = items.FindIndex(it => it.Category == ItemCategory.Medicine);
+		_cachedMaterialIndex = items.FindIndex(it => it.Category == ItemCategory.Material);
 
 		UpdateNavigation();
 	}
