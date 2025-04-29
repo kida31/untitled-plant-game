@@ -25,7 +25,6 @@ anchors_preset = -1
 anchor_right = 0.179775
 anchor_bottom = 1.0
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="ItemBorder" type="TextureRect" parent="Div"]
 layout_mode = 2
@@ -39,16 +38,38 @@ stretch_mode = 5
 
 [node name="TextBoxDiv" parent="." instance=ExtResource("5_d341g")]
 layout_mode = 2
-anchor_left = 0.308989
+anchor_left = 0.27933
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 0.0
 offset_bottom = 0.0
 size_flags_horizontal = 3
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" parent="TextBoxDiv/TextMargin" index="0"]
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+modulate = Color(1, 0.661667, 0.3, 0.243137)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.4998
+offset_top = 0.999996
+offset_right = 88.5002
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VSeparator" type="VSeparator" parent="."]
+modulate = Color(1, 0.661667, 0.3, 0.243137)
+layout_mode = 0
+offset_left = 37.0
+offset_top = 8.0
+offset_right = 42.0
+offset_bottom = 24.0
 
 [editable path="TextBoxDiv"]

@@ -140,6 +140,7 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_left = 5.0
 offset_top = -91.0
 offset_bottom = 140.0
 grow_horizontal = 2
@@ -168,6 +169,7 @@ theme_override_constants/margin_right = 4
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 9
 
 [node name="WikiItemView" parent="MarginContainer/ScrollContainer/MarginAll/ItemViewContainer" instance=ExtResource("2_kax1w")]
 custom_minimum_size = Vector2(0, 32.7162)
