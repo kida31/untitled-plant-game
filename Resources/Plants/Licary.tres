@@ -1,131 +1,32 @@
-[gd_resource type="Resource" load_steps=25 format=3 uid="uid://dn244n0kq2shv"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=12 format=3 uid="uid://dn244n0kq2shv"]
 
 [ext_resource type="Script" uid="uid://6wnc7h7hdx2j" path="res://Features/Plants/Models/PlantData.cs" id="1_77ck6"]
-[ext_resource type="Script" uid="uid://bxpl8lti5sre" path="res://Features/Plants/Models/RequirementData.cs" id="1_oaorh"]
-[ext_resource type="Script" uid="uid://ccdrb187l8mra" path="res://Features/Plants/Models/RequirementDataForGrowthStage.cs" id="2_8l48c"]
+[ext_resource type="Resource" uid="uid://buyeqxn4itln3" path="res://Resources/Plants/Licary/Licary_Seed.tres" id="1_o37bq"]
+[ext_resource type="Resource" uid="uid://bpjtms2anxxk0" path="res://Resources/Plants/Licary/Licary_Sprouting.tres" id="2_mwqrm"]
+[ext_resource type="Resource" uid="uid://dlykx774cp785" path="res://Resources/Plants/Licary/Licary_Seedling.tres" id="3_sx2k2"]
+[ext_resource type="Script" uid="uid://j7hsbwklgf2h" path="res://Features/Plants/Models/PlantDemand.cs" id="4_5s4a1"]
+[ext_resource type="Resource" uid="uid://d1sdvh2y0s1j1" path="res://Resources/Plants/Licary/Licary_Vegetating.tres" id="4_eyybk"]
+[ext_resource type="Resource" uid="uid://br4fmwocntge0" path="res://Resources/Plants/Licary/Licary_Budding.tres" id="5_2qkam"]
+[ext_resource type="Resource" uid="uid://dsbc08yj4q7am" path="res://Resources/Plants/Licary/Licary_Flowering.tres" id="6_acq1j"]
+[ext_resource type="Resource" uid="uid://crea87l37yqax" path="res://Resources/Plants/Licary/Licary_Ripening.tres" id="7_qh8dd"]
 
-[sub_resource type="Resource" id="Resource_hktni"]
-script = ExtResource("1_oaorh")
-Name = 1
-MinLevel = 40.0
-MaxLevel = 100.0
+[sub_resource type="Resource" id="Resource_o37bq"]
+script = ExtResource("4_5s4a1")
+Type = 1
+ConsumptionRate = 0.0
+AbsorptionRate = 0.0
+metadata/_custom_type_script = "uid://j7hsbwklgf2h"
 
-[sub_resource type="Resource" id="Resource_ehaa3"]
-script = ExtResource("1_oaorh")
-Name = 0
-MinLevel = 30.0
-MaxLevel = 60.0
-
-[sub_resource type="Resource" id="Resource_wqbh2"]
-script = ExtResource("2_8l48c")
-GrowthRequirements = Array[Object]([SubResource("Resource_hktni"), SubResource("Resource_ehaa3")])
-IsHarvestable = false
-
-[sub_resource type="Resource" id="Resource_082pg"]
-script = ExtResource("1_oaorh")
-Name = 1
-MinLevel = 55.0
-MaxLevel = 100.0
-
-[sub_resource type="Resource" id="Resource_qgfnt"]
-script = ExtResource("1_oaorh")
-Name = 0
-MinLevel = 40.0
-MaxLevel = 70.0
-
-[sub_resource type="Resource" id="Resource_ecvvi"]
-script = ExtResource("2_8l48c")
-GrowthRequirements = Array[Object]([SubResource("Resource_082pg"), SubResource("Resource_qgfnt")])
-IsHarvestable = false
-
-[sub_resource type="Resource" id="Resource_jv4vr"]
-script = ExtResource("1_oaorh")
-Name = 1
-MinLevel = 55.0
-MaxLevel = 100.0
-
-[sub_resource type="Resource" id="Resource_s7gpc"]
-script = ExtResource("1_oaorh")
-Name = 0
-MinLevel = 45.0
-MaxLevel = 80.0
-
-[sub_resource type="Resource" id="Resource_prixi"]
-script = ExtResource("2_8l48c")
-GrowthRequirements = Array[Object]([SubResource("Resource_jv4vr"), SubResource("Resource_s7gpc")])
-IsHarvestable = false
-
-[sub_resource type="Resource" id="Resource_dbd30"]
-script = ExtResource("1_oaorh")
-Name = 1
-MinLevel = 20.0
-MaxLevel = 100.0
-
-[sub_resource type="Resource" id="Resource_uqct0"]
-script = ExtResource("1_oaorh")
-Name = 0
-MinLevel = 45.0
-MaxLevel = 80.0
-
-[sub_resource type="Resource" id="Resource_egv7k"]
-script = ExtResource("2_8l48c")
-GrowthRequirements = Array[Object]([SubResource("Resource_dbd30"), SubResource("Resource_uqct0")])
-IsHarvestable = true
-
-[sub_resource type="Resource" id="Resource_dpomo"]
-script = ExtResource("1_oaorh")
-Name = 1
-MinLevel = 25.0
-MaxLevel = 100.0
-
-[sub_resource type="Resource" id="Resource_cnibk"]
-script = ExtResource("1_oaorh")
-Name = 0
-MinLevel = 45.0
-MaxLevel = 80.0
-
-[sub_resource type="Resource" id="Resource_7q8v8"]
-script = ExtResource("2_8l48c")
-GrowthRequirements = Array[Object]([SubResource("Resource_dpomo"), SubResource("Resource_cnibk")])
-IsHarvestable = true
-
-[sub_resource type="Resource" id="Resource_5jfu3"]
-script = ExtResource("1_oaorh")
-Name = 1
-MinLevel = 30.0
-MaxLevel = 100.0
-
-[sub_resource type="Resource" id="Resource_4c8n4"]
-script = ExtResource("1_oaorh")
-Name = 0
-MinLevel = 60.0
-MaxLevel = 100.0
-
-[sub_resource type="Resource" id="Resource_o7pu8"]
-script = ExtResource("2_8l48c")
-GrowthRequirements = Array[Object]([SubResource("Resource_5jfu3"), SubResource("Resource_4c8n4")])
-IsHarvestable = true
-
-[sub_resource type="Resource" id="Resource_ggfru"]
-script = ExtResource("1_oaorh")
-Name = 0
-MinLevel = 60.0
-MaxLevel = 100.0
-
-[sub_resource type="Resource" id="Resource_iny7j"]
-script = ExtResource("1_oaorh")
-Name = 1
-MinLevel = 30.0
-MaxLevel = 100.0
-
-[sub_resource type="Resource" id="Resource_aqcqa"]
-script = ExtResource("2_8l48c")
-GrowthRequirements = Array[Object]([SubResource("Resource_ggfru"), SubResource("Resource_iny7j")])
-IsHarvestable = true
+[sub_resource type="Resource" id="Resource_mwqrm"]
+script = ExtResource("4_5s4a1")
+Type = 0
+ConsumptionRate = 0.0
+AbsorptionRate = 0.0
+metadata/_custom_type_script = "uid://j7hsbwklgf2h"
 
 [resource]
 script = ExtResource("1_77ck6")
 PlantName = "Licary"
-ConsumptionRate = 30
-AbsorptionRate = 50
-DataForGrowthStages = Array[Object]([SubResource("Resource_wqbh2"), SubResource("Resource_ecvvi"), SubResource("Resource_prixi"), SubResource("Resource_egv7k"), SubResource("Resource_7q8v8"), SubResource("Resource_o7pu8"), SubResource("Resource_aqcqa")])
+PlantDemands = Array[Object]([SubResource("Resource_o37bq"), SubResource("Resource_mwqrm")])
+MaxRootHealth = 0
+DataForGrowthStages = Array[Object]([ExtResource("1_o37bq"), ExtResource("2_mwqrm"), ExtResource("3_sx2k2"), ExtResource("4_eyybk"), ExtResource("5_2qkam"), ExtResource("6_acq1j"), ExtResource("7_qh8dd")])
