@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
@@ -25,6 +24,8 @@ public partial class WikiItemList : Control
 	[Export] private Button _materialButton;
 
 	public event Action<IItemStack> ItemStackPressed; // TODO: Use local events instead of event bus where possible
+	public event Action<WikiItemView> ItemViewPressed;
+
 
 	public override void _Ready()
 	{
@@ -127,8 +128,13 @@ public partial class WikiItemList : Control
 
 	private void ConnectItemView(WikiItemView itemView)
 	{
-		itemView.FocusEntered += () => ItemStackPressed?.Invoke(itemView.ItemStack);
-		itemView.Pressed += () => ItemStackPressed?.Invoke(itemView.ItemStack);
+		itemView.FocusEntered += () => {
+			ItemStackPressed?.Invoke(itemView.ItemStack);
+		};
+		itemView.Pressed += () => {
+			// ItemStackPressed?.Invoke(itemView.ItemStack);
+			ItemViewPressed?.Invoke(itemView);
+		};
 		_itemViewContainer.AddChild(itemView);
 	}
 

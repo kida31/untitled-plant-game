@@ -125,4 +125,8 @@ public partial class WikiArticleView : Control
 			view.SetItem(i < relatedItems.Count ? relatedItems[i] : null);
 		}
 	}
+
+	public new void GrabFocus() {
+		_relatedItemViews[0].GrabFocus();
+	}
 }
