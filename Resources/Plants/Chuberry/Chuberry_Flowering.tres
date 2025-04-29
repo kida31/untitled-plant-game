@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RequirementDataForGrowthStage" load_steps=5 format=3 uid="uid://cvjax7d0m8ved"]
+
+[ext_resource type="Script" uid="uid://b155ro423c8u6" path="res://Features/Plants/Models/Requirement.cs" id="1_tjeei"]
+[ext_resource type="Script" uid="uid://ccdrb187l8mra" path="res://Features/Plants/Models/RequirementDataForGrowthStage.cs" id="2_y7m7c"]
+
+[sub_resource type="Resource" id="Resource_plcbo"]
+script = ExtResource("1_tjeei")
+Type = 1
+MaxLevel = 100.0
+MinimumLevelToGrow = 1.0
+CurrentLevel = 0.0
+metadata/_custom_type_script = "uid://b155ro423c8u6"
+
+[sub_resource type="Resource" id="Resource_as88n"]
+script = ExtResource("1_tjeei")
+Type = 0
+MaxLevel = 150.0
+MinimumLevelToGrow = 50.0
+CurrentLevel = 0.0
+metadata/_custom_type_script = "uid://b155ro423c8u6"
+
+[resource]
+script = ExtResource("2_y7m7c")
+GrowthRequirements = Array[Object]([SubResource("Resource_plcbo"), SubResource("Resource_as88n")])
+IsHarvestable = false

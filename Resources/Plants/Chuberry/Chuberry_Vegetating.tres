@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RequirementDataForGrowthStage" load_steps=5 format=3 uid="uid://cjro0tooov4kt"]
+
+[ext_resource type="Script" uid="uid://b155ro423c8u6" path="res://Features/Plants/Models/Requirement.cs" id="1_dmkfr"]
+[ext_resource type="Script" uid="uid://ccdrb187l8mra" path="res://Features/Plants/Models/RequirementDataForGrowthStage.cs" id="2_gmff1"]
+
+[sub_resource type="Resource" id="Resource_hgucv"]
+script = ExtResource("1_dmkfr")
+Type = 1
+MaxLevel = 100.0
+MinimumLevelToGrow = 1.0
+CurrentLevel = 0.0
+metadata/_custom_type_script = "uid://b155ro423c8u6"
+
+[sub_resource type="Resource" id="Resource_40vmm"]
+script = ExtResource("1_dmkfr")
+Type = 0
+MaxLevel = 120.0
+MinimumLevelToGrow = 50.0
+CurrentLevel = 0.0
+metadata/_custom_type_script = "uid://b155ro423c8u6"
+
+[resource]
+script = ExtResource("2_gmff1")
+GrowthRequirements = Array[Object]([SubResource("Resource_hgucv"), SubResource("Resource_40vmm")])
+IsHarvestable = false
