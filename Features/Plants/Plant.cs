@@ -7,6 +7,7 @@ using untitledplantgame.Cycle.Weather;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
+using Array = System.Array;
 
 namespace untitledplantgame.Plants;
 
@@ -42,8 +43,8 @@ public partial class Plant : Area2D
 	private readonly Logger _logger;
 
 	private bool _isHarvestable;
-	private float _absorptionRate;
-	private float _consumptionRate;
+	private PlantData _plantData;
+	private PlantDemand GetDemand(RequirementType requirementType) => _plantData.GetDemand(requirementType);
 	
 	private int _rootHealth;
 
@@ -126,8 +127,6 @@ public partial class Plant : Area2D
 
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
 		var plantRequirements = new Array<Requirement>();
-		_absorptionRate = plantData.AbsorptionRate;
-		_consumptionRate = plantData.ConsumptionRate;
 		_rootHealth = plantData.MaxRootHealth;
 
 		if (plantData.DataForGrowthStages.Length <= (int)Stage)
@@ -205,7 +204,7 @@ public partial class Plant : Area2D
 			_logger.Error("Water requirement not found.");
 			return;
 		}
-		var waterAbsorbed = Tile.WithdrawHydration(_absorptionRate) + waterReq.CurrentLevel;
+		var waterAbsorbed = Tile.WithdrawHydration(GetDemand(RequirementType.water).AbsorptionRate) + waterReq.CurrentLevel;
 
 		waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
 		ConsumeWater();
@@ -226,7 +225,7 @@ public partial class Plant : Area2D
 			return;
 		}
 
-		waterReq.CurrentLevel -= _consumptionRate;
+		waterReq.CurrentLevel -= GetDemand(RequirementType.water).ConsumptionRate;
 
 		if (waterReq.CurrentLevel < 0)
 		{
@@ -248,7 +247,7 @@ public partial class Plant : Area2D
 		}
 
 		sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + GetSunAbsorptionRateBasedOnWeather(), sunReq.MaxLevel);
-		sunReq.CurrentLevel -= _consumptionRate;
+		sunReq.CurrentLevel -= GetDemand(RequirementType.sun).ConsumptionRate;
 
 		if (sunReq.CurrentLevel < 0)
 		{
@@ -283,12 +282,13 @@ public partial class Plant : Area2D
 
 	private float GetSunAbsorptionRateBasedOnWeather()
 	{
+		var absorptionRate = GetDemand(RequirementType.sun).AbsorptionRate;
 		return WeatherCycle.Instance.CurrentWeather switch
 		{
-			Weather.Sunny => _absorptionRate * 1.5f,
-			Weather.Cloudy => _absorptionRate * 1.0f,
-			Weather.Rainy or Weather.Snowy => _absorptionRate * 0.5f,
-			_ => _absorptionRate
+			Weather.Sunny => absorptionRate * 1.5f,
+			Weather.Cloudy => absorptionRate * 1.0f,
+			Weather.Rainy or Weather.Snowy => absorptionRate * 0.5f,
+			_ => absorptionRate
 		};
 	}
 
