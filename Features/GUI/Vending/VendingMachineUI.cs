@@ -44,6 +44,7 @@ public partial class VendingMachineUI : Control
 		_emoteBubbleTimer.Timeout += OnEmoteBubbleTimeout;
 		AddChild(_emoteBubbleTimer);
 		_emoteBubble.FadeOut(0f);
+		_emoteBubble.Show();
 
 		_itemSlots = _itemStackContainer.GetChildren().Cast<VendingItemView>().ToList();
 		_slider.ValueChanged += OnSliderValueChanged;
