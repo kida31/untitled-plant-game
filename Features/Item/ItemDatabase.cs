@@ -178,10 +178,9 @@ public class ItemDatabase
 			new ItemStack()
 			{
 				Id = "chuberrySeed",
-				Name = "Chuberry Seed",
-				ToolTipDescription = "The seeds of a chuberry plant.",
-				WikiDescription =
-					"The seeds of a chuberry plant. They have to be planted in soil and watered regularly to reward with tasty berries.",
+				Name = "CHUBERRYSEED_NAME",
+				ToolTipDescription = "CHUBERRYSEED_DESCRIPTION_TOOLTIP",
+				WikiDescription = "CHUBERRYSEED_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_seed.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 10,
@@ -191,11 +190,9 @@ public class ItemDatabase
 			new ItemStack()
 			{
 				Id = "chuberryFruit",
-				Name = "Chuberry Fruit",
-				ToolTipDescription = "The fruits of a chuberry plant.",
-				WikiDescription =
-					"The berries of a chuberry plant. While the plant itself looks quite gnarly, the berries are surprisingly juicy. It can be pressed into juice, though most people just dry them and eat them as a snack or ingredient in cooking and baking. " +
-					"It helps boost the immune system, so it’s a widely used plant by many in Tawas. Use it preventive or as an acute immune booster. ",
+				Name = "CHUBERRYFRUIT_NAME",
+				ToolTipDescription = "CHUBERRYFRUIT_DESCRIPTION_TOOLTIP",
+				WikiDescription = "CHUBERRYFRUIT_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/chubery_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 10,
@@ -218,10 +215,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "drupoleaumSeed",
-				Name = "Drupoleaum Seed",
-				ToolTipDescription = "The seeds of a Drupoleaum plant.",
-				WikiDescription =
-					"The seeds of a Drupoleaum plant. They have to be planted in soil and watered regularly. It will grow up a stalk.",
+				Name = "DRUPOLEAUMSEED_NAME",
+				ToolTipDescription = "DRUPOLEAUMSEED_DESCRIPTION_TOOLTIP",
+				WikiDescription = "DRUPOLEAUMSEED_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_seeds.png"),
 				Category = ItemCategory.Seed,
 				BaseValue = 100,
@@ -234,11 +230,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "drupoleaumFlower",
-				Name = "Drupoleaum Flower",
-				ToolTipDescription = "The flowers of a Drupoleaum plant.",
-				WikiDescription =
-					"The flowers of a drupoleaum plant. Traditionally the people of Liyor held a flower festival to celebrate the blooming of the first Drupoleaum flower." +
-					" As the wild variations of drupoleaum vined up trees, a popular game was to find the highest growing flower and offer it to the goddess’s shrine. Nowadays, the flowers are a popular tea variant and help with finding sleep.",
+				Name = "DRUPOLEAUMFLOWER_NAME",
+				ToolTipDescription = "DRUPOLEAUMFLOWER_DESCRIPTION_TOOLTIP",
+				WikiDescription = "DRUPOLEAUMFLOWER_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 50,
@@ -261,11 +255,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "drupoleaumFruits",
-				Name = "Drupoleaum Fruit",
-				ToolTipDescription = "The fruits of a Drupoleaum plant.",
-				WikiDescription =
-					"The berries of a drupoleaum plant. For a long time, the use of drupoleaum berries was not common, as the majority of flowers got picked before ever developing into fruits." +
-					" Just recently their anti-inflammatory effects have become known which led to a high demand for berries after the Big Flooding.",
+				Name = "DRUPOLEAUMFRUIT_NAME",
+				ToolTipDescription = "DRUPOLEAUMFRUIT_DESCRIPTION_TOOLTIP",
+				WikiDescription = "DRUPOLEAUMFRUIT_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/Drupoleaum_Fruits.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 100,
@@ -289,8 +281,8 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "licarySeed",
-				Name = "Licary Seed",
-				ToolTipDescription = "The seeds of a Licary plant.",
+				Name = "LICARYSEED_NAME",
+				ToolTipDescription = "LICARYSEED_DESCRIPTION_TOOLTIP",
 				WikiDescription = "LICARYSEED_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_seed.png"),
 				Category = ItemCategory.Seed,
@@ -304,11 +296,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "licaryLeaves",
-				Name = "Licary Leaves",
-				ToolTipDescription = "The leaves of a Licary plant.",
-				WikiDescription =
-					"The leaves of a licary plant. The leaves are pretty bitter and cannot be eaten. People cannot eat it without first processing it. " +
-					"Usually it is dried and then brewed into a tea. The tea is said to help with colds and flu.",
+				Name = "LICARYLEAVES_NAME",
+				ToolTipDescription = "LICARYLEAVES_DESCRIPTION_TOOLTIP",
+				WikiDescription = "LICARYLEAVES_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_leaves.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 12,
@@ -331,11 +321,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "licaryFlowers",
-				Name = "Licary Flowers",
-				ToolTipDescription = "The flowers of a Licary plant.",
-				WikiDescription =
-					"The flowers of a licary plant. Their four bright yellow leaves often get associated with the power of the sun so a tea made out of these flowers is a popular morning drink. " +
-					"Whenever the colder days arrive, people stock up on these flowers to always have the sun around.",
+				Name = "LICARYFLOWER_NAME",
+				ToolTipDescription = "LICARYFLOWER_DESCRIPTION_TOOLTIP",
+				WikiDescription = "LICARYFLOWER_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_flowers.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 69,
@@ -358,11 +346,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "licaryFruit",
-				Name = "Licary Fruit",
-				ToolTipDescription = "The fruits of a Licary plant.",
-				WikiDescription =
-					"The fruits of a licary plant. The small but bright orange fruit has a hard outer skin that makes it uncomfortable to eat." +
-					" It’s anti-oxidant effect makes it a popular juice though. Parents usually pack small bottles of Licary juice as lunch drinks for their kids at school.",
+				Name = "LICARYFRUIT_NAME",
+				ToolTipDescription = "LICARYFRUIT_DESCRIPTION_TOOLTIP",
+				WikiDescription = "LICARYFRUIT_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/licary_harvested.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 420,
