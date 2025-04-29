@@ -11,6 +11,7 @@ using untitledplantgame.Vending;
 
 namespace untitledplantgame.GUI.Vending;
 
+// EmoteBubble is automatically Show() on value changes. This may be unexpected if someone explicitely hides it in the scene. Oopsie.
 public partial class VendingMachineUI : Control
 {
 	[Export] private Node _itemStackContainer;
