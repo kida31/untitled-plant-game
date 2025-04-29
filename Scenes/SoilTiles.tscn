@@ -1,9 +1,26 @@
-[gd_scene load_steps=13 format=4 uid="uid://js6xll5oktc4"]
+[gd_scene load_steps=16 format=4 uid="uid://js6xll5oktc4"]
 
 [ext_resource type="Script" uid="uid://djwk8jom6hmvw" path="res://Features/Plants/PlantController.cs" id="2_wxa00"]
 [ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="3_y13yj"]
+[ext_resource type="Script" uid="uid://b155ro423c8u6" path="res://Features/Plants/Requirement.cs" id="4_j6ktw"]
 [ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/PlantPrefab.tscn" id="4_kxbuo"]
 [ext_resource type="Texture2D" uid="uid://5d8yf6rhn855" path="res://Assets/Overworld/Garden/planters_tileset_rgb.png" id="5_jgccg"]
+
+[sub_resource type="Resource" id="Resource_bcprr"]
+script = ExtResource("4_j6ktw")
+Type = 1
+MaxLevel = 0.0
+MinimumLevelToGrow = 0.0
+CurrentLevel = 0.0
+metadata/_custom_type_script = "uid://b155ro423c8u6"
+
+[sub_resource type="Resource" id="Resource_ru285"]
+script = ExtResource("4_j6ktw")
+Type = 0
+MaxLevel = 0.0
+MinimumLevelToGrow = 0.0
+CurrentLevel = 0.0
+metadata/_custom_type_script = "uid://b155ro423c8u6"
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_dj6ds"]
 tile_data = PackedInt32Array(0, 2, 0, 65536, 2, 1)
@@ -79,6 +96,7 @@ position = Vector2(470, 344)
 
 [node name="Tutorial_Chuberry" parent="ChuSeedSoil" node_paths=PackedStringArray("Tile") instance=ExtResource("4_kxbuo")]
 Tile = NodePath("..")
+_currentRequirements = Array[Object]([SubResource("Resource_bcprr"), SubResource("Resource_ru285")])
 
 [node name="ChuGrownSoil" parent="." instance=ExtResource("3_y13yj")]
 position = Vector2(427, 344)

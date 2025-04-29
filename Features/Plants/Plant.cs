@@ -1,6 +1,7 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using Godot;
+using Godot.Collections;
 using untitledplantgame.Common;
 using untitledplantgame.Cycle.Weather;
 using untitledplantgame.Inventory;
@@ -31,17 +32,20 @@ public partial class Plant : Area2D
 
 	[Export] public GrowthStage Stage { get; private set; }
 	[Export] public SoilTile Tile { get; set; }
+
+	[Export] private Array<Requirement> _currentRequirements;
+
 	public event Action<Plant> BeforePlantRemoved;
 	public event Action<Plant> PlantGrown;
-
 	public event Action<Plant> PlantDied;
 
-	private Dictionary<RequirementType, Requirement> _currentRequirements;
 	private readonly Logger _logger;
 
 	private bool _isHarvestable;
 	private float _absorptionRate;
 	private float _consumptionRate;
+	private int _rootRotCounter;
+	private int _rootRotThreshold;
 
 	public Plant()
 	{
@@ -61,7 +65,7 @@ public partial class Plant : Area2D
 	public override void _Ready()
 	{
 		_logger.Debug($"Plant {PlantName} is ready.");
-		SetRequirements();
+		if (_currentRequirements == null) SetRequirements();
 	}
 
 
@@ -120,9 +124,10 @@ public partial class Plant : Area2D
 		_logger.Debug($"Setting requirements for plant {PlantName} with stage {Stage}.");
 
 		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
-		var plantRequirements = new Dictionary<RequirementType, Requirement>();
+		var plantRequirements = new Array<Requirement>();
 		_absorptionRate = plantData.AbsorptionRate;
 		_consumptionRate = plantData.ConsumptionRate;
+		_rootRotThreshold = plantData.RootRotThreshold;
 
 		if (plantData.DataForGrowthStages.Length <= (int)Stage)
 		{
@@ -134,7 +139,7 @@ public partial class Plant : Area2D
 
 		foreach (var data in plantDataRequirementsForStage)
 		{
-			plantRequirements[data.Name] = new Requirement(data.MaxLevel, data.MinLevel);
+			plantRequirements.Add(data);
 		}
 
 		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
@@ -153,7 +158,7 @@ public partial class Plant : Area2D
 		var fulfilled = false;
 		foreach (var requirement in _currentRequirements)
 		{
-			fulfilled = CheckRequirement(requirement.Key);
+			fulfilled = CheckRequirement(requirement.Type);
 			if (!fulfilled)
 				break;
 		}
@@ -170,7 +175,9 @@ public partial class Plant : Area2D
 	/// <returns></returns>
 	private bool CheckRequirement(RequirementType key)
 	{
-		var isFulfilled = _currentRequirements[key].IsFulfilled();
+		var requirement = _currentRequirements.FirstOrDefault(r => r.Type == key);
+		if (requirement == null) return false;
+		var isFulfilled = requirement.IsFulfilled();
 		_logger.Debug($"Checking requirement {key}. Requirement is {isFulfilled}.");
 		return isFulfilled;
 	}
@@ -191,14 +198,20 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void AbsorbWaterFromTile()
 	{
-		var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water);
+		var waterReq = _currentRequirements.FirstOrDefault(r => r.Type == RequirementType.water);
+		if (waterReq == null)
+		{
+			_logger.Error("Water requirement not found.");
+			return;
+		}
+
 		var waterAbsorbed = Tile.WithdrawHydration(_absorptionRate) + waterReq.CurrentLevel;
 
 		waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
 		ConsumeWater();
 
 		_logger.Debug(
-			$"The requirement for {RequirementType.water.ToString()} is currently at level {_currentRequirements.GetValueOrDefault(RequirementType.water)}");
+			$"The requirement for {RequirementType.water.ToString()} is currently at level {_currentRequirements.FirstOrDefault(r => r.Type == RequirementType.water)}");
 	}
 
 	/// <summary>
@@ -206,7 +219,13 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void ConsumeWater()
 	{
-		var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water);
+		var waterReq = _currentRequirements.FirstOrDefault(r => r.Type == RequirementType.water);
+		if (waterReq == null)
+		{
+			_logger.Error("Water requirement not found.");
+			return;
+		}
+
 		waterReq.CurrentLevel -= _consumptionRate;
 
 		if (waterReq.CurrentLevel < 0)
@@ -221,7 +240,12 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void AbsorbSun()
 	{
-		var sunReq = _currentRequirements.GetValueOrDefault(RequirementType.sun);
+		var sunReq = _currentRequirements.FirstOrDefault(r => r.Type == RequirementType.sun);
+		if (sunReq == null)
+		{
+			_logger.Error("Sun requirement not found.");
+			return;
+		}
 
 		sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + GetSunAbsorptionRateBasedOnWeather(), sunReq.MaxLevel);
 		sunReq.CurrentLevel -= _consumptionRate;
@@ -266,5 +290,30 @@ public partial class Plant : Area2D
 			Weather.Rainy or Weather.Snowy => _absorptionRate * 0.5f,
 			_ => _absorptionRate
 		};
+	}
+
+	private bool CheckForRootRot()
+	{
+		var waterReq = _currentRequirements.FirstOrDefault(r => r.Type == RequirementType.water);
+		if (waterReq == null)
+		{
+			_logger.Error("Water requirement not found.");
+			return false;
+		}
+
+		if (waterReq.CurrentLevel < waterReq.MaxLevel)
+		{
+			return false;
+		}
+
+		_rootRotCounter++;
+		_logger.Debug("Too much water in the soil, root rot counter: " + _rootRotCounter);
+		if (_rootRotCounter < _rootRotThreshold)
+		{
+			return false;
+		}
+
+		SetUnalive();
+		return true;
 	}
 }

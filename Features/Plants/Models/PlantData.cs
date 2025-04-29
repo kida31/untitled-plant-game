@@ -1,6 +1,6 @@
 using Godot;
 
-namespace untitledplantgame.Plants.Models;
+namespace untitledplantgame.Plants;
 
 [GlobalClass]
 public partial class PlantData : Resource
@@ -10,6 +10,8 @@ public partial class PlantData : Resource
 	[Export] public int ConsumptionRate;
 	
 	[Export] public int AbsorptionRate;
+	
+	[Export] public int RootRotThreshold;
 
 	[Export] public RequirementDataForGrowthStage[] DataForGrowthStages;
 	
