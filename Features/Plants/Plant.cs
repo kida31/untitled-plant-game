@@ -65,10 +65,14 @@ public partial class Plant : Area2D
 	public override void _Ready()
 	{
 		_logger.Debug($"Plant {PlantName} is ready.");
-		if (_currentRequirements == null) SetRequirements();
+		SetPlantData();
+		if (_currentRequirements == null)
+		{
+			_logger.Debug($"Plant {PlantName} has no current requirements. Setting Requirements.");
+			SetRequirements();
+		}
 		else
 		{
-			SetPlantData();
 			_isHarvestable = _currentRequirements.IsHarvestable;
 		}
 	}
