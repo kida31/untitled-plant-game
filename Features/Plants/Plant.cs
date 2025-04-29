@@ -34,7 +34,7 @@ public partial class Plant : Area2D
 	[Export] public GrowthStage Stage { get; private set; }
 	[Export] public SoilTile Tile { get; set; }
 
-	[Export] private Array<Requirement> _currentRequirements;
+	[Export] private Requirement[] _currentRequirements;
 
 	public event Action<Plant> BeforePlantRemoved;
 	public event Action<Plant> PlantGrown;
@@ -124,28 +124,28 @@ public partial class Plant : Area2D
 	private void SetRequirements()
 	{
 		_logger.Debug($"Setting requirements for plant {PlantName} with stage {Stage}.");
-
-		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
-		var plantRequirements = new Array<Requirement>();
-		_rootHealth = plantData.MaxRootHealth;
-
-		if (plantData.DataForGrowthStages.Length <= (int)Stage)
+		if (_plantData == null)
+		{
+			var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
+			if (plantData == null)
+			{
+				_logger.Error($"Plant data for {PlantName} not found.");
+				QueueFree();
+				return;
+			}
+			_plantData = plantData;
+			_rootHealth = plantData.MaxRootHealth;
+		}
+		
+		if (_plantData.DataForGrowthStages.Length <= (int)Stage)
 		{
 			_logger.Error("Plant data does not contain data for the current stage.");
 			return;
 		}
 
-		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
-
-		foreach (var data in plantDataRequirementsForStage)
-		{
-			plantRequirements.Add(data);
-		}
-
-		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
-
-		_currentRequirements = plantRequirements;
-		PlantName = plantData.PlantName;
+		_isHarvestable = _plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
+		_currentRequirements = _plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
+		PlantName = _plantData.PlantName;
 	}
 
 	/// <summary>

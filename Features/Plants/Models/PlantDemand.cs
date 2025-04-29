@@ -2,6 +2,7 @@
 
 namespace untitledplantgame.Plants;
 
+[GlobalClass]
 public partial class PlantDemand : Resource
 {
 	[Export] public RequirementType Type { get; private set; }

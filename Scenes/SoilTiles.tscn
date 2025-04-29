@@ -22,13 +22,12 @@ Type = 0
 Capacity = 0.0
 MaxLevel = 0.0
 MinimumLevelToGrow = 0.0
-CurrentLevel = 0.0
+CurrentLevel = 40.0
 metadata/_custom_type_script = "uid://b155ro423c8u6"
 
 [sub_resource type="Resource" id="Resource_gbdl4"]
 script = ExtResource("5_bcprr")
 Type = 0
-Capacity = 0.0
 MaxLevel = 0.0
 MinimumLevelToGrow = 0.0
 CurrentLevel = 0.0
@@ -37,7 +36,6 @@ metadata/_custom_type_script = "uid://b155ro423c8u6"
 [sub_resource type="Resource" id="Resource_mt2f7"]
 script = ExtResource("5_bcprr")
 Type = 1
-Capacity = 0.0
 MaxLevel = 0.0
 MinimumLevelToGrow = 0.0
 CurrentLevel = 0.0
@@ -46,7 +44,6 @@ metadata/_custom_type_script = "uid://b155ro423c8u6"
 [sub_resource type="Resource" id="Resource_53qmk"]
 script = ExtResource("5_bcprr")
 Type = 0
-Capacity = 0.0
 MaxLevel = 0.0
 MinimumLevelToGrow = 0.0
 CurrentLevel = 0.0
@@ -55,7 +52,6 @@ metadata/_custom_type_script = "uid://b155ro423c8u6"
 [sub_resource type="Resource" id="Resource_c80ri"]
 script = ExtResource("5_bcprr")
 Type = 1
-Capacity = 0.0
 MaxLevel = 0.0
 MinimumLevelToGrow = 0.0
 CurrentLevel = 0.0
@@ -64,7 +60,6 @@ metadata/_custom_type_script = "uid://b155ro423c8u6"
 [sub_resource type="Resource" id="Resource_pc6ei"]
 script = ExtResource("5_bcprr")
 Type = 0
-Capacity = 0.0
 MaxLevel = 0.0
 MinimumLevelToGrow = 0.0
 CurrentLevel = 0.0
@@ -73,7 +68,6 @@ metadata/_custom_type_script = "uid://b155ro423c8u6"
 [sub_resource type="Resource" id="Resource_k6rmg"]
 script = ExtResource("5_bcprr")
 Type = 1
-Capacity = 0.0
 MaxLevel = 0.0
 MinimumLevelToGrow = 0.0
 CurrentLevel = 0.0
