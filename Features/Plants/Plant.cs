@@ -102,7 +102,7 @@ public partial class Plant : Area2D
 	/// </summary>
 	public IItemStack Harvest()
 	{
-		_logger.Debug($"Plant {PlantName} harvest attempt. Currently harvestable is {_isHarvestable}");
+		_logger.Debug($"Plant {PlantName} harvest attempt at Stage {Stage}. Currently harvestable is {_isHarvestable}");
 		if (!_isHarvestable) return null;
 
 		_logger.Debug($"Plant {PlantName} has been harvested.");
