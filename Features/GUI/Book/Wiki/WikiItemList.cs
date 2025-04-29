@@ -152,7 +152,7 @@ public partial class WikiItemList : Control
 			var iv = _itemViews[i];
 
 			iv.FocusNeighborRight = _plantButton.GetPath();
-			iv.FocusNeighborLeft = _plantButton.GetPath();
+			iv.FocusNeighborLeft = null; //_plantButton.GetPath();
 
 			if (i > 0)
 			{
