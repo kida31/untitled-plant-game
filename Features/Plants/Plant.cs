@@ -34,14 +34,14 @@ public partial class Plant : Area2D
 	[Export] public GrowthStage Stage { get; private set; }
 	[Export] public SoilTile Tile { get; set; }
 
-	[Export] private Requirement[] _currentRequirements;
+	[Export] private RequirementDataForGrowthStage _currentRequirements;
 
 	public event Action<Plant> BeforePlantRemoved;
 	public event Action<Plant> PlantGrown;
 	public event Action<Plant> PlantDied;
 
 	private readonly Logger _logger;
-
+	
 	private bool _isHarvestable;
 	private PlantData _plantData;
 	private PlantDemand GetDemand(RequirementType requirementType) => _plantData.GetDemand(requirementType);
@@ -144,7 +144,7 @@ public partial class Plant : Area2D
 		}
 
 		_isHarvestable = _plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
-		_currentRequirements = _plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
+		_currentRequirements = _plantData.DataForGrowthStages[(int)Stage];
 		PlantName = _plantData.PlantName;
 	}
 
@@ -156,7 +156,7 @@ public partial class Plant : Area2D
 		if (Stage is GrowthStage.Dead or GrowthStage.Ripening) return false;
 
 		var fulfilled = false;
-		foreach (var requirement in _currentRequirements)
+		foreach (var requirement in _currentRequirements.GrowthRequirements)
 		{
 			fulfilled = CheckRequirement(requirement.Type);
 			if (!fulfilled)
@@ -175,7 +175,7 @@ public partial class Plant : Area2D
 	/// <returns></returns>
 	private bool CheckRequirement(RequirementType key)
 	{
-		var requirement = _currentRequirements.FirstOrDefault(r => r.Type == key);
+		var requirement = _currentRequirements.GrowthRequirements.FirstOrDefault(r => r.Type == key);
 		if (requirement == null) return false;
 		var isFulfilled = requirement.IsFulfilled();
 		_logger.Debug($"Checking requirement {key}. Requirement is {isFulfilled}.");
@@ -198,7 +198,7 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void AbsorbWaterFromTile()
 	{
-		var waterReq = _currentRequirements.FirstOrDefault(r => r.Type == RequirementType.water);
+		var waterReq = _currentRequirements.GrowthRequirements.FirstOrDefault(r => r.Type == RequirementType.water);
 		if (waterReq == null)
 		{
 			_logger.Error("Water requirement not found.");
@@ -210,7 +210,7 @@ public partial class Plant : Area2D
 		ConsumeWater();
 
 		_logger.Debug(
-			$"The requirement for {RequirementType.water.ToString()} is currently at level {_currentRequirements.FirstOrDefault(r => r.Type == RequirementType.water)}");
+			$"The requirement for {nameof(RequirementType.water)} is currently at level {waterReq.CurrentLevel}");
 	}
 
 	/// <summary>
@@ -218,7 +218,7 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void ConsumeWater()
 	{
-		var waterReq = _currentRequirements.FirstOrDefault(r => r.Type == RequirementType.water);
+		var waterReq = _currentRequirements.GrowthRequirements.FirstOrDefault(r => r.Type == RequirementType.water);
 		if (waterReq == null)
 		{
 			_logger.Error("Water requirement not found.");
@@ -239,7 +239,7 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void AbsorbSun()
 	{
-		var sunReq = _currentRequirements.FirstOrDefault(r => r.Type == RequirementType.sun);
+		var sunReq = _currentRequirements.GrowthRequirements.FirstOrDefault(r => r.Type == RequirementType.sun);
 		if (sunReq == null)
 		{
 			_logger.Error("Sun requirement not found.");
