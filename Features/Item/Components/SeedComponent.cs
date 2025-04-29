@@ -1,6 +1,5 @@
 using Godot;
-using untitledplantgame.Plants.Models;
-using PlantData = untitledplantgame.Plants.PlantData;
+using untitledplantgame.Plants;
 
 namespace untitledplantgame.Item.Components;
 
