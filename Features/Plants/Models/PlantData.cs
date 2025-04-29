@@ -11,7 +11,7 @@ public partial class PlantData : Resource
 	
 	[Export] public int AbsorptionRate;
 	
-	[Export] public int RootRotThreshold;
+	[Export] public int MaxRootHealth;
 
 	[Export] public RequirementDataForGrowthStage[] DataForGrowthStages;
 	

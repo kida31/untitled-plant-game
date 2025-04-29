@@ -6,8 +6,6 @@ namespace untitledplantgame.Plants;
 public partial class Requirement : Resource
 {
 	[Export] public RequirementType Type { get; set; }
-	
-	[Export] public float Capacity { get; set; }
 	[Export] public float MaxLevel { get; set; }
 	[Export] private float MinimumLevelToGrow { get; set; }
 	[Export] public float CurrentLevel { get; set; }

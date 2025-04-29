@@ -44,8 +44,8 @@ public partial class Plant : Area2D
 	private bool _isHarvestable;
 	private float _absorptionRate;
 	private float _consumptionRate;
-	private int _rootRotCounter;
-	private int _rootRotThreshold;
+	
+	private int _rootHealth;
 
 	public Plant()
 	{
@@ -80,6 +80,7 @@ public partial class Plant : Area2D
 
 		AbsorbWaterFromTile();
 		AbsorbSun();
+		CheckForRootRot();
 
 		if (CheckRequirements())
 		{
@@ -127,7 +128,7 @@ public partial class Plant : Area2D
 		var plantRequirements = new Array<Requirement>();
 		_absorptionRate = plantData.AbsorptionRate;
 		_consumptionRate = plantData.ConsumptionRate;
-		_rootRotThreshold = plantData.RootRotThreshold;
+		_rootHealth = plantData.MaxRootHealth;
 
 		if (plantData.DataForGrowthStages.Length <= (int)Stage)
 		{
@@ -204,7 +205,6 @@ public partial class Plant : Area2D
 			_logger.Error("Water requirement not found.");
 			return;
 		}
-
 		var waterAbsorbed = Tile.WithdrawHydration(_absorptionRate) + waterReq.CurrentLevel;
 
 		waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
@@ -292,28 +292,17 @@ public partial class Plant : Area2D
 		};
 	}
 
-	private bool CheckForRootRot()
+	private void CheckForRootRot()
 	{
-		var waterReq = _currentRequirements.FirstOrDefault(r => r.Type == RequirementType.water);
-		if (waterReq == null)
+		if (!Tile.IsDrowning())
 		{
-			_logger.Error("Water requirement not found.");
-			return false;
+			return;
 		}
 
-		if (waterReq.CurrentLevel < waterReq.MaxLevel)
+		_rootHealth--;
+		if (_rootHealth <= 0)
 		{
-			return false;
+			SetUnalive();
 		}
-
-		_rootRotCounter++;
-		_logger.Debug("Too much water in the soil, root rot counter: " + _rootRotCounter);
-		if (_rootRotCounter < _rootRotThreshold)
-		{
-			return false;
-		}
-
-		SetUnalive();
-		return true;
 	}
 }
