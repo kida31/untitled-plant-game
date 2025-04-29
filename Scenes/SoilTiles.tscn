@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://js6xll5oktc4"]
+[gd_scene load_steps=17 format=4 uid="uid://js6xll5oktc4"]
 
 [ext_resource type="Script" uid="uid://djwk8jom6hmvw" path="res://Features/Plants/PlantController.cs" id="2_wxa00"]
 [ext_resource type="PackedScene" uid="uid://c8bgqaiuddybx" path="res://Features/Plants/soil.tscn" id="3_y13yj"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://f7it4seve2en" path="res://Features/Plants/PlantPrefab.tscn" id="4_kxbuo"]
 [ext_resource type="Texture2D" uid="uid://5d8yf6rhn855" path="res://Assets/Overworld/Garden/planters_tileset_rgb.png" id="5_jgccg"]
 [ext_resource type="Resource" uid="uid://k7qdc7vl1f6q" path="res://Resources/Plants/Chuberry/Chuberry_Ripening.tres" id="5_ru285"]
+[ext_resource type="Resource" uid="uid://d1sdvh2y0s1j1" path="res://Resources/Plants/Licary/Licary_Vegetating.tres" id="6_pc6ei"]
+[ext_resource type="Resource" uid="uid://7egnae4gqyc0" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Budding.tres" id="7_k6rmg"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_dj6ds"]
 tile_data = PackedInt32Array(0, 2, 0, 65536, 2, 1)
@@ -98,6 +100,7 @@ position = Vector2(630, 214)
 PlantName = "Licary"
 Stage = 3
 Tile = NodePath("..")
+_currentRequirements = ExtResource("6_pc6ei")
 
 [node name="DrupoSoil" parent="." instance=ExtResource("3_y13yj")]
 position = Vector2(776, 310)
@@ -106,6 +109,7 @@ position = Vector2(776, 310)
 PlantName = "Drupoleaum"
 Stage = 4
 Tile = NodePath("..")
+_currentRequirements = ExtResource("7_k6rmg")
 
 [node name="Soil10" parent="." instance=ExtResource("3_y13yj")]
 position = Vector2(753, 535)

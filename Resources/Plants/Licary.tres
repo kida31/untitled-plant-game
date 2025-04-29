@@ -13,15 +13,15 @@
 [sub_resource type="Resource" id="Resource_o37bq"]
 script = ExtResource("4_5s4a1")
 Type = 1
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+ConsumptionRate = 45.0
+AbsorptionRate = 80.0
 metadata/_custom_type_script = "uid://j7hsbwklgf2h"
 
 [sub_resource type="Resource" id="Resource_mwqrm"]
 script = ExtResource("4_5s4a1")
 Type = 0
-ConsumptionRate = 0.0
-AbsorptionRate = 0.0
+ConsumptionRate = 30.0
+AbsorptionRate = 55.0
 metadata/_custom_type_script = "uid://j7hsbwklgf2h"
 
 [resource]

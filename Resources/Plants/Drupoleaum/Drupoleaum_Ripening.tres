@@ -6,16 +6,16 @@
 [sub_resource type="Resource" id="Resource_yuobv"]
 script = ExtResource("1_b5oy8")
 Type = 1
-MaxLevel = 0.0
-MinimumLevelToGrow = 0.0
+MaxLevel = 80.0
+MinimumLevelToGrow = 20.0
 CurrentLevel = 0.0
 metadata/_custom_type_script = "uid://b155ro423c8u6"
 
 [sub_resource type="Resource" id="Resource_3hu8b"]
 script = ExtResource("1_b5oy8")
 Type = 0
-MaxLevel = 0.0
-MinimumLevelToGrow = 0.0
+MaxLevel = 160.0
+MinimumLevelToGrow = 100.0
 CurrentLevel = 0.0
 metadata/_custom_type_script = "uid://b155ro423c8u6"
 
