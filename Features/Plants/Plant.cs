@@ -41,11 +41,11 @@ public partial class Plant : Area2D
 	public event Action<Plant> PlantDied;
 
 	private readonly Logger _logger;
-	
+
 	private bool _isHarvestable;
 	private PlantData _plantData;
 	private PlantDemand GetDemand(RequirementType requirementType) => _plantData.GetDemand(requirementType);
-	
+
 	private int _rootHealth;
 
 	public Plant()
@@ -67,6 +67,10 @@ public partial class Plant : Area2D
 	{
 		_logger.Debug($"Plant {PlantName} is ready.");
 		if (_currentRequirements == null) SetRequirements();
+		else
+		{
+			_isHarvestable = _currentRequirements.IsHarvestable;
+		}
 	}
 
 
@@ -94,6 +98,7 @@ public partial class Plant : Area2D
 	/// </summary>
 	public IItemStack Harvest()
 	{
+		_logger.Debug($"Plant {PlantName} harvest attempt. Currently harvestable is {_isHarvestable}");
 		if (!_isHarvestable) return null;
 
 		_logger.Debug($"Plant {PlantName} has been harvested.");
@@ -133,10 +138,11 @@ public partial class Plant : Area2D
 				QueueFree();
 				return;
 			}
+
 			_plantData = plantData;
 			_rootHealth = plantData.MaxRootHealth;
 		}
-		
+
 		if (_plantData.DataForGrowthStages.Length <= (int)Stage)
 		{
 			_logger.Error("Plant data does not contain data for the current stage.");
@@ -204,6 +210,7 @@ public partial class Plant : Area2D
 			_logger.Error("Water requirement not found.");
 			return;
 		}
+
 		var waterAbsorbed = Tile.WithdrawHydration(GetDemand(RequirementType.water).AbsorptionRate) + waterReq.CurrentLevel;
 
 		waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
