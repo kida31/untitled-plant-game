@@ -45,7 +45,6 @@ public partial class Plant : Area2D
 	private bool _isHarvestable;
 	private PlantData _plantData;
 	private PlantDemand GetDemand(RequirementType requirementType) => _plantData.GetDemand(requirementType);
-
 	private int _rootHealth;
 
 	public Plant()
@@ -69,6 +68,7 @@ public partial class Plant : Area2D
 		if (_currentRequirements == null) SetRequirements();
 		else
 		{
+			SetPlantData();
 			_isHarvestable = _currentRequirements.IsHarvestable;
 		}
 	}
@@ -129,20 +129,6 @@ public partial class Plant : Area2D
 	private void SetRequirements()
 	{
 		_logger.Debug($"Setting requirements for plant {PlantName} with stage {Stage}.");
-		if (_plantData == null)
-		{
-			var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
-			if (plantData == null)
-			{
-				_logger.Error($"Plant data for {PlantName} not found.");
-				QueueFree();
-				return;
-			}
-
-			_plantData = plantData;
-			_rootHealth = plantData.MaxRootHealth;
-		}
-
 		if (_plantData.DataForGrowthStages.Length <= (int)Stage)
 		{
 			_logger.Error("Plant data does not contain data for the current stage.");
@@ -152,6 +138,20 @@ public partial class Plant : Area2D
 		_isHarvestable = _plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
 		_currentRequirements = _plantData.DataForGrowthStages[(int)Stage];
 		PlantName = _plantData.PlantName;
+	}
+
+	private void SetPlantData()
+	{
+		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
+		if (plantData == null)
+		{
+			_logger.Error($"Plant data for {PlantName} not found.");
+			QueueFree();
+			return;
+		}
+
+		_plantData = plantData;
+		_rootHealth = _plantData.MaxRootHealth;
 	}
 
 	/// <summary>
