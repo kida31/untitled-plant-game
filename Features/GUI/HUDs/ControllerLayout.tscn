@@ -75,7 +75,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_type_variation = &"whiteText"
-text = "switch tabs/tools"
+text = "NAVIGATION_LABEL_SWITCH_T_O_T "
 
 [node name="Trigger" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -104,7 +104,7 @@ Button = 7
 [node name="Description" type="Label" parent="Trigger"]
 layout_mode = 2
 theme_type_variation = &"whiteText"
-text = "switch categories"
+text = "NAVIGATION_LABEL_SWITCH_CATEGORY"
 
 [node name="BumperLines" type="Node2D" parent="."]
 position = Vector2(-48, -13)
@@ -190,7 +190,7 @@ Button = 3
 layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"whiteText"
-text = "Open Book"
+text = "NAVIGATION_LABEL_OPEN_BOOK"
 
 [node name="West" type="HBoxContainer" parent="Buttons/Buttons"]
 layout_mode = 2
@@ -204,7 +204,7 @@ Button = 2
 layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"whiteText"
-text = "Take Single Item"
+text = "NAVIGATION_LABEL_TAKE_SINGLE_ITEM"
 
 [node name="East" type="HBoxContainer" parent="Buttons/Buttons"]
 layout_mode = 2
@@ -218,7 +218,7 @@ Button = 1
 layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"whiteText"
-text = "Back"
+text = "MENU_LABEL_BACK"
 
 [node name="South" type="HBoxContainer" parent="Buttons/Buttons"]
 layout_mode = 2
@@ -231,7 +231,7 @@ size_flags_horizontal = 0
 layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"whiteText"
-text = "Interact/Talk/Move Item"
+text = "GAME_ACTION_INTERACT/GAME_ACTION_TALK/NAVIGATION_LABEL_MOVE_ITEM"
 
 [node name="Walk" type="Node2D" parent="."]
 position = Vector2(-48, -13)
@@ -245,10 +245,10 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Walk"]
-offset_left = 103.0
-offset_top = 331.0
-offset_right = 147.0
-offset_bottom = 349.0
+offset_left = 95.0
+offset_top = 332.0
+offset_right = 206.0
+offset_bottom = 350.0
 metadata/_edit_use_anchors_ = true
 
 [node name="InputIndicator" parent="Walk/HBoxContainer" instance=ExtResource("2_apx0r")]
@@ -261,11 +261,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_type_variation = &"whiteText"
-text = "Walk"
+text = "GAME_ACTION_WALK"
 
 [node name="Line2D2" type="Line2D" parent="Walk"]
 position = Vector2(112, 193)
-points = PackedVector2Array(21, 148, 160, 148, 160, 58)
+points = PackedVector2Array(101, 148, 160, 148, 160, 58)
 width = 2.0
 joint_mode = 2
 begin_cap_mode = 2
