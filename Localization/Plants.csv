@@ -26,3 +26,12 @@ LICARYFRUIT_DESCRIPTION_WIKI;The fruits of a licary plant. The small but bright 
 LICARYFLOWER_NAME;Licary Flower;Licaryblüte
 LICARYFLOWER_DESCRIPTION_TOOLTIP;The flowers of a licary plant.;Die Blüten einer Licary Pflanze.
 LICARYFLOWER_DESCRIPTION_WIKI;The flowers of a licary plant. Their four bright yellow leaves are often associated with the power of the sun, so a tea made out of these flowers is a popular morning drink. Whenever the colder days arrive, people stock up on these flowers to always have the sun around.;Die Blüten einer Licarypflanze. Ihre vier leuchtend gelben Blätter werden oft mit der Kraft der Sonne in Verbindung gebracht, daher ist ein Tee aus diesen Blüten ein beliebtes Morgengetränk. Sobald der Winter vor der Tür steht, decken sich die Menschen mit diesen Blüten ein, um die Sonne immer bei sich zu haben.
+DRIEDFRUIT_NAME;Dried Fruit;
+DRIEDFRUIT_DESCRIPTION_TOOLTIP;A dried fruit. I wonder what it tastes like.;
+DRIEDFRUIT_DESCRIPTION_WIKI;A dried fruit. Drying fruits in the dehydrator will make them last longer and amplify their properties.;
+DRIEDFLOWER_NAME;Dried Flower;
+DRIEDFLOWER_DESCRIPTION_TOOLTIP;A dried flower. Still looks very pretty.;
+DRIEDFLOWER_DESCRIPTION_WIKI;A dried flower. Drying flowers in the dehydrator will make them last longer and amplify their properties.;
+DRIEDFLEAVES_NAME;Dried Leaf;
+DRIEDLEAVES_DESCRIPTION_TOOLTIP;Dried leaves. They seem very delicate.;
+DRIEDLEAVES_DESCRIPTION_WIKI;Dried leaves. Drying leaves in the dehydrator will make them last longer and amplify their properties.;

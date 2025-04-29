@@ -372,9 +372,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "dried_fruit",
-				Name = "Dried Fruit",
-				ToolTipDescription = "A dried fruit. I wonder what it tastes like.",
-				WikiDescription = "A dried fruit. Drying fruits in the dehydrator will make them last longer and amplify their properties.",
+				Name = "DRIEDFRUIT_NAME",
+				ToolTipDescription = "DRIEDFRUIT_DESCRIPTION_TOOLTIP",
+				WikiDescription = "DRIEDFRUIT_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/dried_chubery.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 0,
@@ -386,9 +386,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "dried_flower",
-				Name = "Dried Flower",
-				ToolTipDescription = "A dried flower. Still looks very pretty.",
-				WikiDescription = "A dried flower. Drying flowers in the dehydrator will make them last longer and amplify their properties.",
+				Name = "DRIEDFLOWER_NAME",
+				ToolTipDescription = "DRIEDFLOWER_DESCRIPTION_TOOLTIP",
+				WikiDescription = "DRIEDFLOWER_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Plants/dried_drupoleaum.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 0,
@@ -400,9 +400,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "dried_leaves",
-				Name = "Dried Leaf",
-				ToolTipDescription = "Dried leaves. They seem very delicate.",
-				WikiDescription = "Dried leaves. Drying leaves in the dehydrator will make them last longer and amplify their properties.",
+				Name = "DRIEDFLEAVES_NAME",
+				ToolTipDescription = "DRIEDLEAVES_DESCRIPTION_TOOLTIP",
+				WikiDescription = "DRIEDLEAVES_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Tilesets/Plant/DeadPlant.png"),
 				Category = ItemCategory.Medicine,
 				BaseValue = 0,
