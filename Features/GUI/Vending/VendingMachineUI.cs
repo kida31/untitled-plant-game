@@ -64,6 +64,9 @@ public partial class VendingMachineUI : Control
 		}
 
 		_moneyLabel.Text = $"[center]{_vendingMachine.Gold}{BbImage.Coin}[/center]";
+
+		_slider.FocusMode = CursorInventory.Instance.Content == null ? FocusModeEnum.All : FocusModeEnum.None;
+		_withdrawButton.FocusMode = CursorInventory.Instance.Content == null ? FocusModeEnum.All : FocusModeEnum.None;
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
