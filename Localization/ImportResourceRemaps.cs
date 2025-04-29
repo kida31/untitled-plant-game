@@ -26,22 +26,27 @@ public partial class ImportResourceRemaps : Control
         }
         else
         {
-            var dialog = new AcceptDialog()
-            {
-                Title = "Overwrite Remaps",
-                DialogText = "This process will remove existing remaps. Continue?"
-            };
-            dialog.Confirmed += ImportRemaps;
-
-            AddChild(dialog);
-            dialog.PopupCentered();
-            dialog.Show();
+            PromptAccept("Overwrite Remaps", "This process will remove existing remaps. Continue?", ImportRemaps);
         }
+    }
+
+    private void PromptAccept(string title, string text, Action callback)
+    {
+        var dialog = new AcceptDialog()
+        {
+            Title = title,
+            DialogText = text,
+        };
+        dialog.Confirmed += callback;
+
+        AddChild(dialog);
+        dialog.PopupCentered();
+        dialog.Show();
     }
 
     private void ImportRemaps()
     {
-        GD.Print("Importing...");
+        GD.Print("Preparing...");
         var resources = GetFilesRecursively("res://")
             .Where(fileName => fileName.EndsWith(".tres"))
             .ToList();
@@ -66,16 +71,31 @@ public partial class ImportResourceRemaps : Control
             }
         }
 
-        // Godot-ify
-        var godotRemaps = new Godot.Collections.Dictionary<string, string[]>();
-        foreach (var (en, de) in resourceMap)
+        void SaveStuff_()
         {
-            var deFormatted = de + ":de";
-            godotRemaps.Add(en, [deFormatted]);
+            GD.Print("Persisting...");
+
+            // Godot-ify
+            var godotRemaps = new Godot.Collections.Dictionary<string, string[]>();
+            foreach (var (en, de) in resourceMap)
+            {
+                var deFormatted = de + ":de";
+                godotRemaps.Add(en, [deFormatted]);
+            }
+
+            SetRemaps(godotRemaps);
+            ProjectSettings.Save();
+            GD.Print("Saved.");
         }
 
-        SetRemaps(godotRemaps);
-        ProjectSettings.Save();
+        if (resourceMap.Count == deResources.Count)
+        {
+            SaveStuff_();
+        }
+        else
+        {
+            PromptAccept("Confirm Missing", $"Found {deResources.Count} DE resources, but only {resourceMap.Count} EN resources. Continue?", SaveStuff_);
+        }
     }
 
     private List<string> GetFilesRecursively(string dirPath)
