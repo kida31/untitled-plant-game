@@ -645,11 +645,17 @@ MENU_VR_HMD_ORIENT_RESET;HMD orientation reset;HMD-Orientierung zurücksetzen;Re
 MENU_VR_VIRTUAL_REALITY;Virtual Reality;Virtuelle Realität;Réalité virtuelle;Realidad Virtual;Realtà Virtuale;Realidade Virtual;Realidade Virtual;Виртуальная реальность;Εικονική πραγματικότητα;Sanal Gerçeklik;Virtual Reality;Virtuell virkelighet;Virtuell verklighet;Virtuele Realiteit;Wirtualna Rzeczywistość;Virtuaalitodellisuus;バーチャルリアリティ;虚拟现实;虛擬現實;가상현실;Virtuální realita;Virtuális valóság;Realitate Virtuala;ภาพเสมือน;Виртуална реалност;מציאות-מדומה;الواقع الافتراضي VR;VR
 NAVIGATION_LABEL_MOVE_ONE;Move 1;Bewege 1;;;;;;;;;;;;;;;;;;;;;;;;;;
 NAVIGATION_LABEL_MOVE_STACK;Move Stack;Stapel bewegen;;;;;;;;;;;;;;;;;;;;;;;;;;
+NAVIGATION_LABEL_MOVE_ITEM;Move Item;Item bewegen;;;;;;;;;;;;;;;;;;;;;;;;;;
+NAVIGATION_LABEL_TAKE_SINGLE_ITEM;Take Single Item;Ein Item nehmen;;;;;;;;;;;;;;;;;;;;;;;;;;
 NAVIGATION_LABEL_FLIP_PAGE;Flip Page;Seite umblättern;;;;;;;;;;;;;;;;;;;;;;;;;;
 NAVIGATION_LABEL_SWITCH_CATEGORY;Switch Category;Kategorie ändern;;;;;;;;;;;;;;;;;;;;;;;;;;
+NAVIGATION_LABEL_SWITCH_T_O_T;Switch Tab/Tool;Tab/Werkzeug wechseln;;;;;;;;;;;;;;;;;;;;;;;;;;
 NAVIGATION_LABEL_TOGGLE_INFO;Toggle Info;Info umschalten;;;;;;;;;;;;;;;;;;;;;;;;;;
+NAVIGATION_LABEL_OPEN_BOOK;Open Book;Buch öffnen;;;;;;;;;;;;;;;;;;;;;;;;;;
 CONTEXT_ITEM_DEHYDRATOR;Dehydrator;Dörrgerät;;;;;;;;;;;;;;;;;;;;;;;;;;
+CONTEXT_ITEM_VM;Vending Machine;Automat;;;;;;;;;;;;;;;;;;;;;;;;;;
 CONTEXT_LABEL_SEEDSHOP;Seed Shop;Saatgutladen;;;;;;;;;;;;;;;;;;;;;;;;;;
 MENU_CATEG_LABEL_MEDICINE;Medicine;Medizin;;;;;;;;;;;;;;;;;;;;;;;;;;
-MENU_CATEG_LABEL_MEDICINE;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-MENU_CATEG_LABEL_MEDICINE;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+MENU_CATEG_LABEL_MATERIAL;Material;Materialien;;;;;;;;;;;;;;;;;;;;;;;;;;
+MENU_CATEG_LABEL_SEED;Seed;Saatgut;;;;;;;;;;;;;;;;;;;;;;;;;;
+GAME_ACTION_INTERACT;Interact;Interagieren;;;;;;;;;;;;;;;;;;;;;;;;;;
