@@ -299,7 +299,14 @@ public partial class Plant : Area2D
 
 	private float GetSunAbsorptionRateBasedOnWeather()
 	{
-		var absorptionRate = GetDemand(RequirementType.sun).AbsorptionRate;
+		var sunDemand = GetDemand(RequirementType.sun);
+		if (sunDemand == null)
+		{
+			_logger.Error("Sun demand not found. Returning default absorption rate of 0.0.");
+			return 0.0f;
+		}
+
+		var absorptionRate = sunDemand.AbsorptionRate;
 		return WeatherCycle.Instance.CurrentWeather switch
 		{
 			Weather.Sunny => absorptionRate * 1.5f,
