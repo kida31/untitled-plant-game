@@ -13,7 +13,6 @@ public partial class ImportResourceRemaps : Control
     [Export(PropertyHint.Dir)] private string _dir;
     public override void _Ready()
     {
-        Assert.AssertNotNull(DirAccess.Open("/"));
         GetNode<Button>("Button").Pressed += OnButtonPressed;
     }
 
