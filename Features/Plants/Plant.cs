@@ -215,8 +215,14 @@ public partial class Plant : Area2D
 			return;
 		}
 
-		var waterAbsorbed = Tile.WithdrawHydration(GetDemand(RequirementType.water).AbsorptionRate) + waterReq.CurrentLevel;
+		var waterDemand = GetDemand(RequirementType.water);
+		if (waterDemand == null)
+		{
+			_logger.Error("Water demand not found.");
+			return;
+		}
 
+		var waterAbsorbed = Tile.WithdrawHydration(waterDemand.AbsorptionRate) + waterReq.CurrentLevel;
 		waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
 		ConsumeWater();
 
