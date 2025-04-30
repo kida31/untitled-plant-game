@@ -413,11 +413,11 @@ public class ItemDatabase
 			},
 			new ItemStack
 			{
-				Id = "rubber_duck",
+				Id = "RUBBERDUCK_NAME",
 				Name = "Rubber Duck",
-				ToolTipDescription = "A rubber duck. It squeaks when you squeeze it.",
+				ToolTipDescription = "RUBBERDUCK_DESCRIPTION_TOOLTIP",
 				WikiDescription =
-					"A random rubber duck, found in the wild. It’s a mystery how it got here. You can squeeze it and it will make a squeaky sound. Maybe it's a relic of the past?",
+					"RUBBERDUCK_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/Duck.png"),
 				Category = ItemCategory.Material,
 				BaseValue = 420,
@@ -429,10 +429,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "blue_fish",
-				Name = "Blue Fish",
-				ToolTipDescription = "A blue fish. It smells like the ocean.",
-				WikiDescription =
-					"A fish with pretty blue scales. It smells like the ocean. It’s a popular ingredient in many dishes, but unfortunately, I can’t cook.",
+				Name = "BLUEFISH_NAME",
+				ToolTipDescription = "BLUEFISH_DESCRIPTION_TOOLTIP",
+				WikiDescription = "BLUEFISH_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish1.png"),
 				Category = ItemCategory.Material,
 				BaseValue = 0,
@@ -444,10 +443,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "purple_fish",
-				Name = "Purple Fish",
-				ToolTipDescription = "A purple fish. It smells like the ocean.",
-				WikiDescription =
-					"A fish with pretty purple scales. It smells like the ocean. It’s a popular ingredient in many dishes, but unfortunately, I can’t cook.",
+				Name = "PURPLEFISH_NAME",
+				ToolTipDescription = "PURPLEFISH_DESCRIPTION_TOOLTIP",
+				WikiDescription = "PURPLEFISH_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish2.png"),
 				Category = ItemCategory.Material,
 				BaseValue = 0,
@@ -459,10 +457,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "lightblue_fish",
-				Name = "Light Blue Fish",
-				ToolTipDescription = "A light blue fish. It smells like the ocean.",
-				WikiDescription =
-					"A fish with scales like ice. It smells like the ocean. It’s a popular ingredient in many dishes, but unfortunately, I can’t cook.",
+				Name = "LIGHTBLUEFISH_NAME",
+				ToolTipDescription = "LIGHTBLUEFISH_DESCRIPTION_TOOLTIP",
+				WikiDescription = "LIGHTBLUEFISH_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish3.png"),
 				Category = ItemCategory.Material,
 				BaseValue = 0,
@@ -474,10 +471,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "pink_fish",
-				Name = "Pink Fish",
-				ToolTipDescription = "A pink fish. It smells like the ocean.",
-				WikiDescription =
-					"A fish with pinkish scales. It smells like the ocean. It’s a popular ingredient in many dishes, but unfortunately, I can’t cook.",
+				Name = "PINKFISH_NAME",
+				ToolTipDescription = "PINKFISH_DESCRIPTION_TOOLTIP",
+				WikiDescription = "PINKFISH_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish4.png"),
 				Category = ItemCategory.Material,
 				BaseValue = 0,
@@ -489,10 +485,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "green_fish",
-				Name = "Green Fish",
-				ToolTipDescription = "A green fish. It smells like the ocean.",
-				WikiDescription =
-					"A fish with light green scales. It smells like the ocean. It’s a popular ingredient in many dishes, but unfortunately, I can’t cook.",
+				Name = "GREENFISH_NAME",
+				ToolTipDescription = "GREENFISH_DESCRIPTION_TOOLTIP",
+				WikiDescription = "GREENFISH_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish6.png"),
 				Category = ItemCategory.Material,
 				BaseValue = 0,
@@ -504,10 +499,9 @@ public class ItemDatabase
 			new ItemStack
 			{
 				Id = "redspot_fish",
-				Name = "Red Fish with Spots",
-				ToolTipDescription = "A red fish. It has dark spots.",
-				WikiDescription =
-					"A red fish with spots. It looks a little curious. It must be a rarity! I want to keep it as a pet, I wonder where I could find an aquarium.",
+				Name = "REDSPOTFISH_NAME",
+				ToolTipDescription = "REDSPOTFISH_DESCRIPTION_TOOLTIP",
+				WikiDescription = "REDSPOTFISH_DESCRIPTION_WIKI",
 				Icon = GD.Load<Texture2D>("res://Assets/Items/FishingMyFishies/Fish10.png"),
 				Category = ItemCategory.Material,
 				BaseValue = 0,
