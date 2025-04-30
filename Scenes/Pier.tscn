@@ -485,7 +485,7 @@ tile_set = SubResource("TileSet_brcih")
 position = Vector2(112, -399)
 script = ExtResource("10_x0jq1")
 _name = "Sign"
-_dialog = "Tawas in 1km."
+_dialog = "SIGN_TAWAS_1KM"
 
 [node name="InteractionArea" type="CollisionShape2D" parent="Sign 1km"]
 position = Vector2(0, -13)
@@ -505,7 +505,7 @@ shape = SubResource("RectangleShape2D_qcj7u")
 position = Vector2(112, 113)
 script = ExtResource("10_x0jq1")
 _name = "Sign"
-_dialog = "Tawas in 500m."
+_dialog = "SIGN_TAWAS_500M"
 
 [node name="InteractionArea" type="CollisionShape2D" parent="Sign 500m"]
 position = Vector2(0, -13)
@@ -525,11 +525,7 @@ shape = SubResource("RectangleShape2D_qcj7u")
 position = Vector2(101, 996)
 script = ExtResource("10_x0jq1")
 _name = "Sign"
-_dialog = "The true Tawas was in our hearts all along...
-
-...
-
-Just kidding. Keep going."
+_dialog = "SIGN_TAWAS_TRUE"
 
 [node name="InteractionArea" type="CollisionShape2D" parent="TrueTawasSignLol"]
 position = Vector2(0, -13)
@@ -549,9 +545,7 @@ shape = SubResource("RectangleShape2D_qcj7u")
 position = Vector2(16, 922)
 script = ExtResource("10_x0jq1")
 _name = "Tree"
-_dialog = "A tree.
-It looks majestic.
-Some day I should grow one like this in the garden.."
+_dialog = "INSPECT_TREE_1"
 
 [node name="InteractionArea" type="CollisionShape2D" parent="InspectTree"]
 position = Vector2(0, -13)
@@ -561,11 +555,7 @@ shape = SubResource("CircleShape2D_8ocpc")
 position = Vector2(-143, 728)
 script = ExtResource("10_x0jq1")
 _name = "Tree"
-_dialog = "This tree seems to have fruits.
-I will try shaking it.
-...
-...
-Nothing."
+_dialog = "INSPECT_TREE_2"
 
 [node name="InteractionArea" type="CollisionShape2D" parent="InspectTree2"]
 position = Vector2(0, -13)

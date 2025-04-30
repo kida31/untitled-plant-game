@@ -1,0 +1,15 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ks2welu5vbwb"
+valid=false
+
+[deps]
+
+source_file="res://Localization/InteractableWorldObjects.csv"
+
+[params]
+
+compress=true
+delimiter=0
