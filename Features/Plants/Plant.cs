@@ -241,14 +241,22 @@ public partial class Plant : Area2D
 			_logger.Error("Water requirement not found.");
 			return;
 		}
-
-		waterReq.CurrentLevel -= GetDemand(RequirementType.water).ConsumptionRate;
-
-		if (waterReq.CurrentLevel < 0)
+		var waterDemand = GetDemand(RequirementType.water);
+		if (waterDemand == null)
 		{
-			SetUnalive();
-			_logger.Debug($"Plant {PlantName} has died due to lack of water.");
+			_logger.Error("Water demand not found.");
+			return;
 		}
+
+		waterReq.CurrentLevel -= waterDemand.ConsumptionRate;
+
+		if (!(waterReq.CurrentLevel < 0))
+		{
+			return;
+		}
+
+		SetUnalive();
+		_logger.Debug($"Plant {PlantName} has died due to lack of water.");
 	}
 
 	/// <summary>
@@ -262,15 +270,23 @@ public partial class Plant : Area2D
 			_logger.Error("Sun requirement not found.");
 			return;
 		}
+		var sunDemand = GetDemand(RequirementType.sun);
+		if (sunDemand == null)
+		{
+			_logger.Error("Sun demand not found.");
+			return;
+		}
 
 		sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + GetSunAbsorptionRateBasedOnWeather(), sunReq.MaxLevel);
-		sunReq.CurrentLevel -= GetDemand(RequirementType.sun).ConsumptionRate;
+		sunReq.CurrentLevel -= sunDemand.ConsumptionRate;
 
-		if (sunReq.CurrentLevel < 0)
+		if (!(sunReq.CurrentLevel < 0))
 		{
-			SetUnalive();
-			_logger.Debug($"Plant {PlantName} has died due to lack of sun.");
+			return;
 		}
+
+		SetUnalive();
+		_logger.Debug($"Plant {PlantName} has died due to lack of sun.");
 	}
 
 	private void SetUnalive()
