@@ -3,13 +3,15 @@
 importer="csv_translation"
 type="Translation"
 uid="uid://bgmhyaxfjinmg"
-valid=false
 
 [deps]
 
+files=["res://Localization/ItemDatabase.en.translation", "res://Localization/ItemDatabase.de.translation"]
+
 source_file="res://Localization/ItemDatabase.csv"
+dest_files=["res://Localization/ItemDatabase.en.translation", "res://Localization/ItemDatabase.de.translation"]
 
 [params]
 
 compress=true
-delimiter=0
+delimiter=1
