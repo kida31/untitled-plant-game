@@ -11,7 +11,7 @@
 
 [sub_resource type="Animation" id="Animation_knlbm"]
 resource_name = "OpeningScene"
-length = 25.0
+length = 27.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -31,10 +31,10 @@ tracks/1/path = NodePath("ColorRectBlack:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(5, 6.5, 8, 11, 11.57, 13.0667, 15.1333),
-"transitions": PackedFloat32Array(0.267943, 5.65685, 147.033, 10.556, 29.8572, 1, 1),
+"times": PackedFloat32Array(5, 6.5, 8, 11, 11.57, 13.0667, 15.1333, 24.0333, 26.9333),
+"transitions": PackedFloat32Array(0.267943, 5.65685, 147.033, 10.556, 29.8572, 1, 1, 1, 0.25),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -67,8 +67,8 @@ tracks/4/path = NodePath("NormalVillage:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 8, 10),
-"transitions": PackedFloat32Array(1, 1, 0.267943),
+"times": PackedFloat32Array(0, 9.43333, 10),
+"transitions": PackedFloat32Array(1, 12, 11.3137),
 "update": 0,
 "values": [Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(1, 1)]
 }
@@ -91,8 +91,8 @@ tracks/6/path = NodePath("NormalVillage:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(8, 10),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(9.43333, 10),
+"transitions": PackedFloat32Array(12, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-464, -360)]
 }
@@ -295,7 +295,7 @@ tracks/23/path = NodePath("LayaOpen:modulate")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
-"times": PackedFloat32Array(22.2, 23),
+"times": PackedFloat32Array(22.5, 23),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
