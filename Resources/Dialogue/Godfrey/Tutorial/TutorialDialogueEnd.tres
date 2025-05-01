@@ -32,13 +32,13 @@ dialogueText = "It always contains the first seed item of your inventory."
 script = ExtResource("2_uewdi")
 speakerName = "Shovel"
 DialogueExpression = ExtResource("5_8ircu")
-dialogueText = "You can use this to dig out dead plants. Just be careful, because it can also dig up your live plants."
+dialogueText = "You can use this to dig out dead plants. Be careful not to dig out any living plants!"
 
 [sub_resource type="Resource" id="Resource_i3e76"]
 script = ExtResource("2_uewdi")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("4_t887m")
-dialogueText = "Use your [color=red]shovel[/color] to do this. Be careful not to dig out any living plants! // To do that, use your [color=red]shovel[/color]."
+dialogueText = "Use your [color=red]shovel[/color] to do this."
 
 [sub_resource type="Resource" id="Resource_8febt"]
 script = ExtResource("2_uewdi")
