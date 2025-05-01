@@ -21,7 +21,7 @@ public partial class LanguageOption : OptionButton
 		if (OS.IsDebugBuild())
 		{
 			// For testing purposes
-			AddMoreLanguages();
+			//AddMoreLanguages();
 		}
 
 		var currentLocale = TranslationServer.GetLocale();

@@ -253,6 +253,7 @@ locale/translation_remaps=Dictionary[String, PackedStringArray]({
 "res://Resources/Dialogue/VendingMachine/VM_init_6.tres": PackedStringArray("res://Resources/Dialogue/VendingMachine/VM_init_6_DE.tres:de"),
 "res://Resources/Dialogue/VendingMachine/VM_init_7.tres": PackedStringArray("res://Resources/Dialogue/VendingMachine/VM_init_7_DE.tres:de"),
 "res://Resources/Dialogue/VendingMachine/VM_init_8.tres": PackedStringArray("res://Resources/Dialogue/VendingMachine/VM_init_8_DE.tres:de"),
+"res://Resources/Dialogue/monologue.tres": PackedStringArray("res://Resources/Dialogue/monologue_DE.tres:de_DE"),
 "res://Resources/Dialogue/saka.tres": PackedStringArray("res://Resources/Dialogue/saka_DE.tres:de"),
 "res://Resources/Dialogue/tiredness.tres": PackedStringArray("res://Resources/Dialogue/tiredness_DE.tres:de"),
 "res://Resources/Quest/IntroQuest.tres": PackedStringArray("res://Resources/Quest/IntroQuest_DE.tres:de"),
