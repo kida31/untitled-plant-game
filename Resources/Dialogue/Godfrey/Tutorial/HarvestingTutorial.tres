@@ -31,7 +31,7 @@ dialogueText = "No worries, it all grows back. Only if you take good care of you
 script = ExtResource("2_tpxgh")
 speakerName = "Chuberry"
 DialogueExpression = ExtResource("4_6kj1a")
-dialogueText = "Over there in the tub you can see an already ripe Chuberry."
+dialogueText = "Over there in the tub you can see a ripe Chuberry."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_pamod"]
