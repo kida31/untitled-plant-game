@@ -95,22 +95,22 @@ public partial class StateUseTool : State
 		var tool = Player?.Toolbelt?.CurrentTool;
 		var tType = tool.GetType();
 
-		AudioStreamWav sfx;
+		AudioStream sfx;
 		if (tType == typeof(WateringCan))
 		{
-			sfx = GD.Load<AudioStreamWav>("res://Assets/SFX/Tools/WaterPlants.wav");
+			sfx = GD.Load<AudioStream>("res://Assets/SFX/Tools/WaterPlants.wav");
 		}
 		else if (tType == typeof(Shears))
 		{
-			sfx = GD.Load<AudioStreamWav>("res://Assets/SFX/Tools/CuttingPlants.wav");
+			sfx = GD.Load<AudioStream>("res://Assets/SFX/Tools/CuttingPlants.wav");
 		}
 		else if (tType == typeof(SeedBag))
 		{
-			sfx = GD.Load<AudioStreamWav>("res://Assets/SFX/Tools/SowSeeds.wav");
+			sfx = GD.Load<AudioStream>("res://Assets/SFX/Tools/SowSeeds.wav");
 		}
 		else if (tType == typeof(Shovel))
 		{
-			sfx = GD.Load<AudioStreamWav>("res://Assets/SFX/Tools/DiggingSounds.wav");
+			sfx = GD.Load<AudioStream>("res://Assets/SFX/Tools/DiggingSounds.wav");
 		} else 
 		{
 			_logger.Error("Failed to load Tool SFX");

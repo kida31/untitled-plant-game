@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamPlaylist" load_steps=2 format=3 uid="uid://bcbc5mc74y1cs"]
+
+[ext_resource type="AudioStream" uid="uid://dcntm45miuxbx" path="res://Assets/SFX/Tools/SowSeeds.wav" id="1_7yg7y"]
+
+[resource]
+loop = false
+stream_count = 4
+stream_0 = ExtResource("1_7yg7y")
+stream_1 = ExtResource("1_7yg7y")
+stream_2 = ExtResource("1_7yg7y")
+stream_3 = ExtResource("1_7yg7y")
