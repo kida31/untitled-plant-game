@@ -250,7 +250,7 @@ public partial class Plant : Area2D
 
 		waterReq.CurrentLevel -= waterDemand.ConsumptionRate;
 
-		if (!(waterReq.CurrentLevel < 0))
+		if (waterReq.CurrentLevel > 0)
 		{
 			return;
 		}
@@ -280,7 +280,7 @@ public partial class Plant : Area2D
 		sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + GetSunAbsorptionRateBasedOnWeather(), sunReq.MaxLevel);
 		sunReq.CurrentLevel -= sunDemand.ConsumptionRate;
 
-		if (!(sunReq.CurrentLevel < 0))
+		if (sunReq.CurrentLevel > 0)
 		{
 			return;
 		}
