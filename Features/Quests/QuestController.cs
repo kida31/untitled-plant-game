@@ -70,6 +70,7 @@ public partial class QuestController : Node
 			{
 				CurrentQuest = CurrentQuestLine.Quests[currentQuestIndex + 1];
 				StartQuest(CurrentQuest);
+				_logger.Debug("Quest line progressed: " + CurrentQuest?.Description);
 			}
 			else
 			{
