@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://darsx73t4n6d3"]
+[gd_scene load_steps=17 format=3 uid="uid://darsx73t4n6d3"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_b0v61"]
 [ext_resource type="Texture2D" uid="uid://2t2gd0drc1hl" path="res://Assets/Overworld/Garden/vendingMachine_empty.png" id="2_gjf2v"]
@@ -11,8 +11,7 @@
 [ext_resource type="Resource" uid="uid://c714ii64jw17x" path="res://Resources/Dialogue/VendingMachine/VM_init_4.tres" id="9_i62r7"]
 [ext_resource type="Resource" uid="uid://bc52bpnicwkvs" path="res://Resources/Dialogue/VendingMachine/VM_init_5.tres" id="10_mwtd7"]
 [ext_resource type="Resource" uid="uid://ce1uy8nqlg03w" path="res://Resources/Dialogue/VendingMachine/VM_init_6.tres" id="11_35lgs"]
-[ext_resource type="Resource" uid="uid://xlolghbobiln" path="res://Resources/Dialogue/VendingMachine/VM_init_7.tres" id="13_ngwwb"]
-[ext_resource type="Resource" uid="uid://bk2yfpied0u88" path="res://Resources/Dialogue/VendingMachine/VM_init_8.tres" id="13_pcsbe"]
+[ext_resource type="Resource" uid="uid://xlolghbobiln" path="res://Resources/Dialogue/VendingMachine/VM_init_8.tres" id="13_pcsbe"]
 [ext_resource type="Texture2D" uid="uid://wgdrgbhg43yi" path="res://Assets/SpeechBubbles/Speechbubble_VendingMachine.png" id="15_lqtto"]
 [ext_resource type="Script" uid="uid://ctvwp85ad5ufx" path="res://Features/ProximityCollision/SpeechBubble.cs" id="16_tewov"]
 
@@ -50,7 +49,7 @@ RoutineTrigger = 1
 
 [node name="Dialogue" type="Node" parent="RoutinePlanner/TalkAndOpenVendingMachineRoutine" index="0"]
 script = ExtResource("5_a0n3g")
-_dialogueResourceObjects = Array[Object]([ExtResource("6_ki0ac"), ExtResource("7_4qfl7"), ExtResource("8_xftjp"), ExtResource("9_i62r7"), ExtResource("10_mwtd7"), ExtResource("11_35lgs"), ExtResource("13_ngwwb"), ExtResource("13_pcsbe")])
+_dialogueResourceObjects = Array[Object]([ExtResource("6_ki0ac"), ExtResource("7_4qfl7"), ExtResource("8_xftjp"), ExtResource("9_i62r7"), ExtResource("10_mwtd7"), ExtResource("11_35lgs"), ExtResource("13_pcsbe"), ExtResource("13_pcsbe")])
 _randomOrderOfDialogueLines = true
 
 [node name="SpeechBubble" type="Sprite2D" parent="." index="7"]
