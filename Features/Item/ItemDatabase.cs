@@ -413,8 +413,8 @@ public class ItemDatabase
 			},
 			new ItemStack
 			{
-				Id = "RUBBERDUCK_NAME",
-				Name = "Rubber Duck",
+				Id = "rubber_duck",
+				Name = "RUBBERDUCK_NAME",
 				ToolTipDescription = "RUBBERDUCK_DESCRIPTION_TOOLTIP",
 				WikiDescription =
 					"RUBBERDUCK_DESCRIPTION_WIKI",
