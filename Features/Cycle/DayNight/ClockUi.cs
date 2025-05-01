@@ -22,9 +22,9 @@ public partial class ClockUi : Control
 
 	private void SetDaytime(int day, int hour, int minute)
 	{
-		_dayLabel.Text = Tr("DAYTIME_DAY") + Convert.ToString(day + 1);
+		_dayLabel.Text = Tr("DAYTIME_DAY") + " " + Convert.ToString(day + 1);
 
-		_timeLabel.Text = AmFm(hour) + ":" + SingleOrDoubleDigitMinute(minute) + " " + AmPm(hour);
+		_timeLabel.Text = AmFm(hour) + ":" + SingleOrDoubleDigitMinute(minute) + AmPm(hour);
 
 		if (hour <= 12)
 		{
