@@ -85,10 +85,10 @@ public partial class Godfrey : CharacterBody2D
 
 		_currentDialogue = questIndex switch
 		{
-			0 => LoadDialogue("WateringTaskInProgress", "DE"),
-			2 => LoadDialogue("HarvestingTaskInProgress", "DE"),
-			4 or 5 => LoadDialogue("SellingTaskInProgress", "DE"),
-			7 => LoadDialogue("TalkToPanDanTaskInProgress", "DE"),
+			0 => LoadDialogue("WateringTaskInProgress"),
+			2 => LoadDialogue("HarvestingTaskInProgress"),
+			4 or 5 => LoadDialogue("SellingTaskInProgress"),
+			7 => LoadDialogue("TalkToPanDanTaskInProgress"),
 			1 or 3 or 6 or 8 => dialogueTask!.Dialogue,
 			_ => CreateOneLiner("Go do your thing.")
 		};
