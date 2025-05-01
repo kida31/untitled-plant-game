@@ -13,7 +13,7 @@ dialogueText = "Ey Laya, hast du schonmal solche Samen gesehen?"
 
 [sub_resource type="Resource" id="Resource_sige0"]
 script = ExtResource("3_quefl")
-_responseButton = "Nee, lass mal sehen."
+_responseButton = "Nein, lass mal sehen."
 _responseDialogue = ExtResource("2_s43wm")
 
 [sub_resource type="Resource" id="Resource_2rnp0"]
