@@ -472,7 +472,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_pp6wx")
+&"": SubResource("AnimationLibrary_pp6wx")
 }
 
 [node name="Left" parent="." instance=ExtResource("1_x7d1f")]
@@ -509,7 +509,7 @@ anchors_preset = -1
 anchor_left = 0.311765
 anchor_right = 0.688235
 anchor_bottom = 1.0
-offset_right = 0.0
+offset_right = 9.91821e-05
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -536,3 +536,14 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 3
 Button = 5
+
+[node name="InputIndicatorUseTool" parent="." instance=ExtResource("3_sqscx")]
+layout_mode = 1
+anchor_left = 0.547059
+anchor_top = 0.625
+anchor_right = 0.735294
+anchor_bottom = 1.125
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+Button = 2

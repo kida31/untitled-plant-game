@@ -109,7 +109,7 @@ public partial class WikiArticleView : Control
 	private void UpdateView()
 	{
 		_iconTextureRect.Texture = _itemStack?.Icon ?? null;
-		_itemNameAndCategory.Text = _itemStack != null ? $"{_itemStack.Name} - {_itemStack.Category.Name}" : "";
+		_itemNameAndCategory.Text = _itemStack != null ? $"{Tr(_itemStack.Name)} - {Tr(_itemStack.Category.Name)}" : "";
 		_itemDescription.Text = _itemStack?.WikiDescription ?? "";
 		_itemStats.SetItem(_itemStack);
 

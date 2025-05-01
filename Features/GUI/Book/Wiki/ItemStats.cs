@@ -29,13 +29,13 @@ public partial class ItemStats : Control
 
 		// Name
 		_name.PushParagraph(HorizontalAlignment.Left);
-		_name.AppendText(item.Name);
+		_name.AppendText(Tr(item.Name));
 		_name.Pop();
 
 		// Category
 		_category.PushParagraph(HorizontalAlignment.Right);
 		_category.PushColor(Colors.Brown);
-		_category.AppendText(item.Category.Name);
+		_category.AppendText(Tr(item.Category.Name));
 		_category.Pop();
 		_category.Pop();
 

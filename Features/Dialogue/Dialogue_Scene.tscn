@@ -128,6 +128,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ChubbyArrow" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 553.0
 offset_top = 309.0
 offset_right = 569.0
