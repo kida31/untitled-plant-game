@@ -1,0 +1,121 @@
+[gd_scene load_steps=10 format=3 uid="uid://cpbqp5dl5k0px"]
+
+[ext_resource type="Texture2D" uid="uid://wx16vw3he115" path="res://Assets/Cutscenes/starry_night_scene_1.png" id="1_oaa57"]
+[ext_resource type="Texture2D" uid="uid://epr6tg6vimny" path="res://Assets/Cutscenes/village_doodle_not_shook.png" id="2_kl3rj"]
+[ext_resource type="Texture2D" uid="uid://blbg65x4hpkmm" path="res://Assets/Cutscenes/village_doodle.png" id="3_yog1p"]
+[ext_resource type="Texture2D" uid="uid://cs86lmc8vl0vp" path="res://Assets/Cutscenes/big_wave_doodle.png" id="4_32rpw"]
+[ext_resource type="Texture2D" uid="uid://cl6pgaqktvis3" path="res://Assets/Cutscenes/village_broken_doodle.png" id="5_2c3j4"]
+[ext_resource type="Texture2D" uid="uid://cs7vgheyhcogo" path="res://Assets/Cutscenes/praying_villager_doodle.png" id="6_47qxs"]
+
+[sub_resource type="Animation" id="Animation_knlbm"]
+resource_name = "OpeningScene"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -100), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRectBlack:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 6.03333, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lc28n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stars:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRectBlack:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flyju"]
+_data = {
+&"OpeningScene": SubResource("Animation_knlbm"),
+&"RESET": SubResource("Animation_lc28n")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Stars" type="TextureRect" parent="."]
+offset_right = 640.0
+offset_bottom = 460.0
+texture = ExtResource("1_oaa57")
+
+[node name="NormalVillage" type="TextureRect" parent="."]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_kl3rj")
+
+[node name="NormalVillageShook" type="TextureRect" parent="."]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("3_yog1p")
+
+[node name="BigWave" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_32rpw")
+
+[node name="FloodedVillage" type="TextureRect" parent="."]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("5_2c3j4")
+
+[node name="PrayingVillager" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_47qxs")
+
+[node name="ColorRectBlack" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRectWhite" type="ColorRect" parent="."]
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_flyju")
+}
