@@ -16,17 +16,13 @@ public partial class DebugOverlay : Control
 
 	private Logger _logger;
 
-	private readonly Control _container;
-
-	public DebugOverlay()
-	{
-		_container = this; // Replace this if node tree structure changes
-	}
+	[Export] private Control _container;
 
 	public override void _Ready()
 	{
 		_logger = new Logger(this);
 		Visible = ProjectSettings.GetSetting(DebugSettingKey, false).AsBool(); // default is false
+		Assert.AssertNotNull(_container);
 	}
 
 	public override void _Input(InputEvent @event)
@@ -59,12 +55,17 @@ public partial class DebugOverlay : Control
 	/// </summary>
 	private void ToggleAll()
 	{
-		var children = _container.GetChildren().OfType<Control>().Select(c => c.Visible).ToList();
-		var majority = children.Count(v => v) > children.Count(v => !v);
+		var children = _container.GetChildren().OfType<Control>()
+			.Concat(GetChildren().OfType<Control>())
+			.ToList();
+			
+		var childrenVisibility =children.Select(c => c.Visible);
+		var majority = childrenVisibility.Count(v => v) > childrenVisibility.Count(v => !v);
+
 		var newVisibility = !majority || !Visible; // If self is hidden, show all. If self is shown, use majority
 
 		_logger.Debug(newVisibility ? "Show all" : "Hide all");
-		foreach (var control in _container.GetChildren().OfType<Control>())
+		foreach (var control in children)
 		{
 			control.Visible = newVisibility;
 		}
