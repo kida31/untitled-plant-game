@@ -16,7 +16,7 @@ public partial class MainMenu : Control
 	// The player shouldn't be able to change that (unless we want our game to look weird)
 	public override void _Ready()
 	{
-		_startButton.Pressed += () => { GetTree().ChangeSceneToFile(_skipIntro ? StartScene : GameScene); };
+		_startButton.Pressed += () => { GetTree().ChangeSceneToFile(_skipIntro ? GameScene : StartScene); };
 		_settingsButton.Pressed += OpenSettings;
 		_exitButton.Pressed += () => GetTree().Quit();
 
