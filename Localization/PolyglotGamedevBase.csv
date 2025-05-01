@@ -662,3 +662,4 @@ GAME_ACTION_INTERACT;Interact;Interagieren;;;;;;;;;;;;;;;;;;;;;;;;;;
 GAME_ACTION_INSPECT;Inspect;Untersuchen;;;;;;;;;;;;;;;;;;;;;;;;;;
 GAME_ACTION_USE;Use;Benutzen;;;;;;;;;;;;;;;;;;;;;;;;;;
 GAME_ACTION_PICK_UP2;Pick up;Aufheben;;;;;;;;;;;;;;;;;;;;;;;;;;
+NAVIGATION_LABEL_A;Interact/Inspect/Move Stack;Interagieren/Untersuchen/Stapel Bewegen;;;;;;;;;;;;;;;;;;;;;;;;;;

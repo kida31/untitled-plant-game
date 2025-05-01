@@ -231,7 +231,7 @@ size_flags_horizontal = 0
 layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"whiteText"
-text = "GAME_ACTION_INTERACT/GAME_ACTION_TALK/NAVIGATION_LABEL_MOVE_ITEM"
+text = "NAVIGATION_LABEL_A"
 
 [node name="Walk" type="Node2D" parent="."]
 position = Vector2(-48, -13)
