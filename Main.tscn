@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dm5a6g8s6k21w" path="res://Features/Player/GameInitialised.cs" id="3_fos0i"]
 [ext_resource type="PackedScene" uid="uid://cv1fhyjs170lk" path="res://Scenes/GameWorldContainer.tscn" id="3_m582q"]
 [ext_resource type="Resource" uid="uid://fde6fy6jals2" path="res://Resources/Dialogue/monologue.tres" id="4_3dxm6"]
-[ext_resource type="Resource" uid="uid://btcepquojxrdw" path="res://Resources/Quest/IntroQuest.tres" id="5_lgr22"]
+[ext_resource type="Resource" uid="uid://d1b5aase6ugci" path="res://Resources/Quest/IntroQuest.tres" id="5_lgr22"]
 
 [node name="Main" type="Node"]
 
