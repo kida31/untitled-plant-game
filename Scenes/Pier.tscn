@@ -563,6 +563,7 @@ shape = SubResource("CircleShape2D_8ocpc")
 
 [node name="Door" parent="." instance=ExtResource("10_x262s")]
 position = Vector2(250, -470)
+_actionName = "GAME_ACTION_CLIMB"
 entryDoorName = "PierLadder"
 
 [node name="Sprite2D" type="Sprite2D" parent="Door"]
