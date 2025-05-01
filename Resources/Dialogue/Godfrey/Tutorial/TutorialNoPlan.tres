@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://d1eu7aeje75r2" path="res://Resources/Dialogue/Godfrey/Tutorial/WateringTutorial.tres" id="4_hfik4"]
 [ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="5_4tdus"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="6_5ywie"]
+[ext_resource type="Resource" uid="uid://dge1dvy2d2v0k" path="res://Resources/Dialogue/Godfrey/Tutorial/SkipTutorial.tres" id="6_xsfax"]
 
 [sub_resource type="Resource" id="Resource_dp0i3"]
 script = ExtResource("2_xsfax")
@@ -34,14 +35,9 @@ _responseButton = "Yes, please!"
 _responseDialogue = ExtResource("4_hfik4")
 metadata/_custom_type_script = "uid://crnclevrmchav"
 
-[sub_resource type="Resource" id="Resource_ek1jy"]
-script = ExtResource("5_4tdus")
-_responseButton = "No, I will manage."
-metadata/_custom_type_script = "uid://crnclevrmchav"
-
 [resource]
 script = ExtResource("6_5ywie")
 _dialogueId = "no_plan"
 _dialogueText = Array[Object]([SubResource("Resource_dp0i3"), SubResource("Resource_akuhn"), SubResource("Resource_vv6pi")])
-_responses = Array[Object]([SubResource("Resource_1p0lu"), SubResource("Resource_ek1jy")])
+_responses = Array[Object]([SubResource("Resource_1p0lu"), ExtResource("6_xsfax")])
 metadata/_custom_type_script = "uid://c5x800n31tvgq"

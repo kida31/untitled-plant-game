@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="3_wkj4m"]
 [ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/Godfrey/Tutorial/WateringTutorial_DE.tres" id="4_5cvvs"]
 [ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="5_p3jrq"]
+[ext_resource type="Resource" uid="uid://cuniduin6082y" path="res://Resources/Dialogue/Godfrey/Tutorial/SkipTutorial_DE.tres" id="6_hcdby"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="6_s3ch7"]
 
 [sub_resource type="Resource" id="Resource_dp0i3"]
@@ -34,14 +35,9 @@ _responseButton = "Ja, bitte!"
 _responseDialogue = ExtResource("4_5cvvs")
 metadata/_custom_type_script = "uid://crnclevrmchav"
 
-[sub_resource type="Resource" id="Resource_ek1jy"]
-script = ExtResource("5_p3jrq")
-_responseButton = "Nein, ich kann das."
-metadata/_custom_type_script = "uid://crnclevrmchav"
-
 [resource]
 script = ExtResource("6_s3ch7")
 _dialogueId = "no_plan_DE"
 _dialogueText = Array[Object]([SubResource("Resource_dp0i3"), SubResource("Resource_akuhn"), SubResource("Resource_vv6pi")])
-_responses = Array[Object]([SubResource("Resource_1p0lu"), SubResource("Resource_ek1jy")])
+_responses = Array[Object]([SubResource("Resource_1p0lu"), ExtResource("6_hcdby")])
 metadata/_custom_type_script = "uid://c5x800n31tvgq"
