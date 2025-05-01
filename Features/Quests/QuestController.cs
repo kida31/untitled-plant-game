@@ -39,7 +39,7 @@ public partial class QuestController : Node
 		_logger.Debug("Initialised.");
 		
 		//TODO make this workaround cleaner
-		var resource = GD.Load<QuestLine>("res://Resources/Quest/IntroQuest.tres");
+		var resource = ResourceLoader.Load<QuestLine>("res://Resources/Quest/IntroQuest.tres");
 		StartQuestLine(resource);
 	}
 	
