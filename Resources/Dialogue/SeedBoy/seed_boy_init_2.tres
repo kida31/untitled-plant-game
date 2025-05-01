@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://c2iqy0wa6mgf4"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://c2iqy0wa6mgf4"]
 
+[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="1_fpam1"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_xhb2i"]
 [ext_resource type="Resource" uid="uid://deudtr6qo8ekp" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes.tres" id="2_3njf1"]
 [ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_qqrjk"]
@@ -9,6 +10,7 @@
 [sub_resource type="Resource" id="Resource_m4ye3"]
 script = ExtResource("1_xhb2i")
 speakerName = "Pan Dan"
+DialogueExpression = ExtResource("1_fpam1")
 dialogueText = "Yo, Laya have you ever seen these seeds?"
 
 [sub_resource type="Resource" id="Resource_sige0"]

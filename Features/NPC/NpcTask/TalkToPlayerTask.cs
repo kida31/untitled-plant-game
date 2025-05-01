@@ -18,6 +18,7 @@ namespace untitledplantgame.NPC.NpcTask;
 public partial class TalkToPlayerTask :  Node, INpcTask
 {
 	[Export] private Array<DialogueResourceObject> _dialogueResourceObjects;
+	[Export] private DialogueResourceObject _introDialogue;
 	[Export] private bool _randomOrderOfDialogueLines;
 	
 	private bool DialogueFinished { get; set; }
@@ -27,6 +28,8 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 	private Npc _npcExecutingThisTasks;
 	private NpcPlayerInteraction _npcInteraction;
 	private IDialogueSystem _dialogueSystem;
+
+	private bool _firstTimeInteracted = true;
 	
 	private Logger _logger;
 
@@ -47,6 +50,15 @@ public partial class TalkToPlayerTask :  Node, INpcTask
 	public void StartTask()
 	{
 		EventBus.Instance.InitialiseDialogue += ConnectDialogue;
+		if (_firstTimeInteracted)
+		{
+			_firstTimeInteracted = false;
+			if (_introDialogue != null)
+			{
+				EventBus.Instance.InvokeStartingDialogue(_introDialogue);
+				return;
+			}
+		}
 			
 		if (_randomOrderOfDialogueLines)
 		{

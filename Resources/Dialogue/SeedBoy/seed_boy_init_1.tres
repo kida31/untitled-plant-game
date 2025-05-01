@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://rue2vg1j66lx"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://rue2vg1j66lx"]
 
+[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="1_m7jlg"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_xhb2i"]
 [ext_resource type="Resource" uid="uid://deudtr6qo8ekp" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes.tres" id="2_3njf1"]
 [ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_qqrjk"]
@@ -9,8 +10,8 @@
 [sub_resource type="Resource" id="Resource_m4ye3"]
 script = ExtResource("1_xhb2i")
 speakerName = "Pan Dan"
-dialogueText = "Hey, ummm...
-I found these seeds, wanna take a look?"
+DialogueExpression = ExtResource("1_m7jlg")
+dialogueText = "Hey ummm… I found these seeds if you’re interested in them…?"
 
 [sub_resource type="Resource" id="Resource_sige0"]
 script = ExtResource("3_qqrjk")
@@ -19,7 +20,7 @@ _responseDialogue = ExtResource("2_3njf1")
 
 [sub_resource type="Resource" id="Resource_2rnp0"]
 script = ExtResource("3_qqrjk")
-_responseButton = "Umm, maybe not now."
+_responseButton = "Umm maybe not now."
 _responseDialogue = ExtResource("4_je3vt")
 
 [resource]

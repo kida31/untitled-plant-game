@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://co7as52g6sdw3"]
+
+[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="1_dqx0s"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_5onl7"]
+[ext_resource type="Resource" uid="uid://deudtr6qo8ekp" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes.tres" id="3_5onl7"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_8ggj2"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_ktjv5"]
+
+[sub_resource type="Resource" id="Resource_ong1m"]
+script = ExtResource("2_5onl7")
+speakerName = "Pan Dan"
+DialogueExpression = ExtResource("1_dqx0s")
+dialogueText = "Cool! I am called Pan Dan!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_0e1jb"]
+script = ExtResource("2_5onl7")
+speakerName = "Pan Dan"
+DialogueExpression = ExtResource("1_dqx0s")
+dialogueText = "I always find seeds and other things in the forest. Perhaps you would like to buy them?"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_tik31"]
+script = ExtResource("3_8ggj2")
+_responseButton = "Sure, let me see them."
+_responseDialogue = ExtResource("3_5onl7")
+metadata/_custom_type_script = "uid://crnclevrmchav"
+
+[resource]
+script = ExtResource("4_ktjv5")
+_dialogueId = ""
+_dialogueText = Array[Object]([SubResource("Resource_ong1m"), SubResource("Resource_0e1jb")])
+_responses = Array[Object]([SubResource("Resource_tik31")])
+metadata/_custom_type_script = "uid://c5x800n31tvgq"

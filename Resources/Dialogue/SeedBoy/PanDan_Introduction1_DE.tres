@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://bh2gi0lkll4tt"]
+
+[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="1_3mh1h"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="1_uvinf"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_pabi2"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_pabi2"]
+[ext_resource type="Resource" uid="uid://d23n6oecbn26v" path="res://Resources/Dialogue/SeedBoy/PanDan_Introduction2_DE.tres" id="3_w6ydh"]
+
+[sub_resource type="Resource" id="Resource_w6ydh"]
+script = ExtResource("2_pabi2")
+speakerName = "Pan Dan"
+DialogueExpression = ExtResource("1_3mh1h")
+dialogueText = "Oh! Eine neue Person?!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_kp81p"]
+script = ExtResource("2_pabi2")
+speakerName = "Pan Dan"
+DialogueExpression = ExtResource("1_3mh1h")
+dialogueText = "Uhh... Wer bist du?"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_jlhvj"]
+script = ExtResource("3_pabi2")
+_responseButton = "Hi, ich bin Laya."
+_responseDialogue = ExtResource("3_w6ydh")
+metadata/_custom_type_script = "uid://crnclevrmchav"
+
+[sub_resource type="Resource" id="Resource_l5okj"]
+script = ExtResource("3_pabi2")
+_responseButton = "Mein Name ist Laya."
+_responseDialogue = ExtResource("3_w6ydh")
+metadata/_custom_type_script = "uid://crnclevrmchav"
+
+[resource]
+script = ExtResource("1_uvinf")
+_dialogueId = ""
+_dialogueText = Array[Object]([SubResource("Resource_w6ydh"), SubResource("Resource_kp81p")])
+_responses = Array[Object]([SubResource("Resource_jlhvj"), SubResource("Resource_l5okj")])
+metadata/_custom_type_script = "uid://c5x800n31tvgq"
