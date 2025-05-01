@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_04miq")
-_wateringAmount = 50.0
+_wateringAmount = 100.0
 _waterCapacity = 1000.0
 _isBottomless = true
 Name = "Basic Watering Can"
-Description = "This watering can is a can with water to water waterable plants via splashing water on said plants."
+Description = "With this watering can you can water your plants. It's magical so it never runs out of water."
 Icon = ExtResource("1_urvbc")
 ChannelingTime = 1.0
 Radius = 12.0

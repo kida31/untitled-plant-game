@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=20 format=3 uid="uid://d1eu7aeje75r2"]
+
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_gv8x3"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_5ceaj"]
+[ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="3_s85du"]
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="4_b56kd"]
+[ext_resource type="Resource" uid="uid://cvii1m2ambji1" path="res://Resources/Quest/TutorialQuest.tres" id="5_s85du"]
+[ext_resource type="Script" uid="uid://wieplhq747d3" path="res://Features/Dialogue/Events/StartQuestLine.cs" id="6_dovhh"]
+[ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="7_wm4i4"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="8_le4br"]
+[ext_resource type="Resource" uid="uid://beagdq1bqk3ul" path="res://Resources/Tools/WateringCan.tres" id="8_s85du"]
+[ext_resource type="Script" uid="uid://pits4f4cyiww" path="res://Features/Dialogue/Events/AddTool.cs" id="9_b56kd"]
+
+[sub_resource type="Resource" id="Resource_5fiqd"]
+script = ExtResource("2_5ceaj")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("1_gv8x3")
+dialogueText = "Alright, first things first."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_hhqf7"]
+script = ExtResource("2_5ceaj")
+speakerName = "Watering Can"
+DialogueExpression = ExtResource("3_s85du")
+dialogueText = "This right here is a [color=red]watering can[/color]. You can... well, water plants with it."
+
+[sub_resource type="Resource" id="Resource_wfp6x"]
+script = ExtResource("2_5ceaj")
+speakerName = "Watering Can"
+DialogueExpression = ExtResource("3_s85du")
+dialogueText = "The can is magical and has unlimited water!"
+
+[sub_resource type="Resource" id="Resource_6v888"]
+script = ExtResource("2_5ceaj")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("4_b56kd")
+dialogueText = "But be careful not to overwater the plants!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_esj0x"]
+script = ExtResource("2_5ceaj")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("1_gv8x3")
+dialogueText = "How about you just try using it?"
+
+[sub_resource type="Resource" id="Resource_rmg08"]
+script = ExtResource("2_5ceaj")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("4_b56kd")
+dialogueText = "There are still some plants in the tubs over there. I bet they could use some water!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_4o3rp"]
+script = ExtResource("6_dovhh")
+QuestLine = ExtResource("5_s85du")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://wieplhq747d3"
+
+[sub_resource type="Resource" id="Resource_ebqr8"]
+script = ExtResource("7_wm4i4")
+_cameraPosition = Vector2(477, 344)
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://bc35ywlebpmy1"
+
+[sub_resource type="Resource" id="Resource_ouyt2"]
+script = ExtResource("9_b56kd")
+_tool = ExtResource("8_s85du")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://pits4f4cyiww"
+
+[resource]
+script = ExtResource("8_le4br")
+_dialogueId = "WateringTutorial"
+_dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_esj0x"), SubResource("Resource_rmg08"), SubResource("Resource_4o3rp"), SubResource("Resource_ebqr8"), SubResource("Resource_ouyt2")])
+_responses = null

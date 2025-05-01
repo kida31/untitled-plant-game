@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://duxkc2whc5lx3"]
+[gd_scene load_steps=27 format=3 uid="uid://duxkc2whc5lx3"]
 
 [ext_resource type="Script" uid="uid://b2fd4sqkbflvo" path="res://Features/Player/Player.cs" id="1_ypuiu"]
 [ext_resource type="SpriteFrames" uid="uid://upqodpbedg8s" path="res://Features/Player/PlayerSpriteFrames.tres" id="2_3hfoe"]
@@ -9,12 +9,118 @@
 [ext_resource type="Script" uid="uid://shyb717ekee2" path="res://Features/Player/StateUseTool.cs" id="7_lrvm3"]
 [ext_resource type="Script" uid="uid://bmestbmfn35at" path="res://Features/ProximityCollision/NpcProximityTrigger.cs" id="8_pu3c2"]
 [ext_resource type="Script" uid="uid://casy8txnj6tho" path="res://Features/Player/PlayerCamera.cs" id="9_o4yob"]
+[ext_resource type="Texture2D" uid="uid://cybfjnbld1w7n" path="res://Assets/Emotes/Angry-Sheet.png" id="10_80ucd"]
+[ext_resource type="Texture2D" uid="uid://cjqcdj3vldfpd" path="res://Assets/Emotes/Exclamation-Sheet.png" id="11_nnhxp"]
+[ext_resource type="Texture2D" uid="uid://bsytxjetn2peb" path="res://Assets/Emotes/SweatDrop-Sheet.png" id="12_e61br"]
+[ext_resource type="Texture2D" uid="uid://g05boy1l7462" path="res://Assets/Emotes/tired.png" id="13_theba"]
+[ext_resource type="Script" uid="uid://n5fxvmvxee0" path="res://Features/Player/Emotes.cs" id="14_nnhxp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ryxll"]
 radius = 34.0147
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e721"]
+atlas = ExtResource("10_80ucd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv2n7"]
+atlas = ExtResource("10_80ucd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lns10"]
+atlas = ExtResource("11_nnhxp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63ru7"]
+atlas = ExtResource("11_nnhxp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_symwq"]
+atlas = ExtResource("12_e61br")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b36j"]
+atlas = ExtResource("12_e61br")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xghb"]
+atlas = ExtResource("13_theba")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwv8h"]
+atlas = ExtResource("13_theba")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ndi6"]
+atlas = ExtResource("13_theba")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5rlu4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e721")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cv2n7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e721")
+}],
+"loop": false,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lns10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63ru7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lns10")
+}],
+"loop": false,
+"name": &"shook",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_symwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b36j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_symwq")
+}],
+"loop": false,
+"name": &"sweaty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xghb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwv8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ndi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwv8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xghb")
+}],
+"loop": false,
+"name": &"tired",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_playerAnimatedSprite") groups=["player"]]
 script = ExtResource("1_ypuiu")
@@ -59,3 +165,11 @@ position_smoothing_speed = 2.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("9_o4yob")
+
+[node name="Emotes" type="AnimatedSprite2D" parent="."]
+position = Vector2(22, -60)
+sprite_frames = SubResource("SpriteFrames_5rlu4")
+animation = &"tired"
+frame = 4
+frame_progress = 1.0
+script = ExtResource("14_nnhxp")

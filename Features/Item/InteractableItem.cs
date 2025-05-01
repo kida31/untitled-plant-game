@@ -7,7 +7,7 @@ namespace untitledplantgame.Item;
 
 public partial class InteractableItem : AInteractable
 {
-	public override string ActionName => "Pickup";
+	public override string GetActionName() => "GAME_ACTION_PICK_UP2";
 
 	public IItemStack ItemStack { get; private set; }
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://f7it4seve2en"]
+[gd_scene load_steps=4 format=3 uid="uid://f7it4seve2en"]
 
 [ext_resource type="Script" uid="uid://d0sk2reqqt3k5" path="res://Features/Plants/Plant.cs" id="1_ixu4t"]
+[ext_resource type="Resource" uid="uid://b5djcvgnblad2" path="res://Resources/Plants/Chuberry.tres" id="2_kc3qm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l17x"]
 size = Vector2(48, 48)
@@ -10,6 +11,7 @@ z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_ixu4t")
 PlantName = "Chuberry"
+PlantData = ExtResource("2_kc3qm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6l17x")

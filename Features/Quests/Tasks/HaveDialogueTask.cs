@@ -8,28 +8,31 @@ namespace untitledplantgame.Quests;
 [GlobalClass]
 public partial class HaveDialogueTask : QuestTask
 {
-	[Export] private DialogueResourceObject _dialogue;
+	[Export] public DialogueResourceObject Dialogue { get; private set; }
 	public override bool IsCompleted => _isCompleted;
 	public override event Action<QuestTask> TaskCompleted;
 	private bool _isCompleted = false;
-	private readonly Logger _logger = new ("QuestTask");
 
-	public HaveDialogueTask()
+	public override void StartTask()
 	{
 		EventBus.Instance.EndDialogue += DialogueEnded;
+	}
+	
+	protected override void StopTask()
+	{
+		EventBus.Instance.EndDialogue -= DialogueEnded;
+		TaskCompleted?.Invoke(this);
 	}
 
 	private void DialogueEnded(DialogueResourceObject obj)
 	{
-		if (obj != _dialogue)
+		if (obj != Dialogue)
 		{
 			return;
 		}
 
 		_isCompleted = true;
-		
-		EventBus.Instance.EndDialogue -= DialogueEnded;
-		_logger.Debug("Dialogue ended. Quest is completed");
-		TaskCompleted?.Invoke(this);
+
+		StopTask();
 	}
 }

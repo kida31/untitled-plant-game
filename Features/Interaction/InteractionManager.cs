@@ -19,7 +19,7 @@ public partial class InteractionManager : Node2D
 	private const float InteractionCooldown = 1.0f;
 	public static InteractionManager Instance { get; private set; }
 
-	[Export] private InteractHint _label;
+	[Export] private GenericTextControl _label;
 	[Export] private Vector2 _hintOffset = Vector2.Zero;
 
 	private int AreaCount => _activeAreas.Count;
@@ -70,7 +70,7 @@ public partial class InteractionManager : Node2D
 		{
 			_activeAreas.Sort(SortByDistanceToPlayer);
 
-			_label.Text = _activeAreas[0].ActionName;
+			_label.Text = _activeAreas[0].GetActionName();
 			_label.GlobalPosition = _activeAreas[0].GetGlobalInteractablePosition() + _hintOffset;
 			_label.FadeIn(0.1f);
 		}

@@ -1,11 +1,13 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using Godot;
+using Godot.Collections;
 using untitledplantgame.Common;
 using untitledplantgame.Cycle.Weather;
 using untitledplantgame.Inventory;
 using untitledplantgame.Item;
 using untitledplantgame.Item.Components;
+using Array = System.Array;
 
 namespace untitledplantgame.Plants;
 
@@ -31,17 +33,19 @@ public partial class Plant : Area2D
 
 	[Export] public GrowthStage Stage { get; private set; }
 	[Export] public SoilTile Tile { get; set; }
+
+	[Export] private RequirementDataForGrowthStage _currentRequirements;
+
 	public event Action<Plant> BeforePlantRemoved;
 	public event Action<Plant> PlantGrown;
-
 	public event Action<Plant> PlantDied;
 
-	private Dictionary<RequirementType, Requirement> _currentRequirements;
 	private readonly Logger _logger;
 
 	private bool _isHarvestable;
-	private float _absorptionRate;
-	private float _consumptionRate;
+	private PlantData _plantData;
+	private PlantDemand GetDemand(RequirementType requirementType) => _plantData.GetDemand(requirementType);
+	private int _rootHealth;
 
 	public Plant()
 	{
@@ -61,7 +65,16 @@ public partial class Plant : Area2D
 	public override void _Ready()
 	{
 		_logger.Debug($"Plant {PlantName} is ready.");
-		SetRequirements();
+		SetPlantData();
+		if (_currentRequirements == null)
+		{
+			_logger.Debug($"Plant {PlantName} has no current requirements. Setting Requirements.");
+			SetRequirements();
+		}
+		else
+		{
+			_isHarvestable = _currentRequirements.IsHarvestable;
+		}
 	}
 
 
@@ -76,6 +89,7 @@ public partial class Plant : Area2D
 
 		AbsorbWaterFromTile();
 		AbsorbSun();
+		CheckForRootRot();
 
 		if (CheckRequirements())
 		{
@@ -88,6 +102,7 @@ public partial class Plant : Area2D
 	/// </summary>
 	public IItemStack Harvest()
 	{
+		_logger.Debug($"Plant {PlantName} harvest attempt at Stage {Stage}. Currently harvestable is {_isHarvestable}");
 		if (!_isHarvestable) return null;
 
 		_logger.Debug($"Plant {PlantName} has been harvested.");
@@ -118,29 +133,29 @@ public partial class Plant : Area2D
 	private void SetRequirements()
 	{
 		_logger.Debug($"Setting requirements for plant {PlantName} with stage {Stage}.");
-
-		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
-		var plantRequirements = new Dictionary<RequirementType, Requirement>();
-		_absorptionRate = plantData.AbsorptionRate;
-		_consumptionRate = plantData.ConsumptionRate;
-
-		if (plantData.DataForGrowthStages.Length <= (int)Stage)
+		if (_plantData.DataForGrowthStages.Length <= (int)Stage)
 		{
 			_logger.Error("Plant data does not contain data for the current stage.");
 			return;
 		}
 
-		var plantDataRequirementsForStage = plantData.DataForGrowthStages[(int)Stage].GrowthRequirements;
+		_isHarvestable = _plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
+		_currentRequirements = _plantData.DataForGrowthStages[(int)Stage];
+		PlantName = _plantData.PlantName;
+	}
 
-		foreach (var data in plantDataRequirementsForStage)
+	private void SetPlantData()
+	{
+		var plantData = PlantDatabase.Instance.GetResourceByName(PlantName);
+		if (plantData == null)
 		{
-			plantRequirements[data.Name] = new Requirement(data.MaxLevel, data.MinLevel);
+			_logger.Error($"Plant data for {PlantName} not found.");
+			QueueFree();
+			return;
 		}
 
-		_isHarvestable = plantData.DataForGrowthStages[(int)Stage].IsHarvestable;
-
-		_currentRequirements = plantRequirements;
-		PlantName = plantData.PlantName;
+		_plantData = plantData;
+		_rootHealth = _plantData.MaxRootHealth;
 	}
 
 	/// <summary>
@@ -151,9 +166,9 @@ public partial class Plant : Area2D
 		if (Stage is GrowthStage.Dead or GrowthStage.Ripening) return false;
 
 		var fulfilled = false;
-		foreach (var requirement in _currentRequirements)
+		foreach (var requirement in _currentRequirements.GrowthRequirements)
 		{
-			fulfilled = CheckRequirement(requirement.Key);
+			fulfilled = CheckRequirement(requirement.Type);
 			if (!fulfilled)
 				break;
 		}
@@ -170,7 +185,9 @@ public partial class Plant : Area2D
 	/// <returns></returns>
 	private bool CheckRequirement(RequirementType key)
 	{
-		var isFulfilled = _currentRequirements[key].IsFulfilled();
+		var requirement = _currentRequirements.GrowthRequirements.FirstOrDefault(r => r.Type == key);
+		if (requirement == null) return false;
+		var isFulfilled = requirement.IsFulfilled();
 		_logger.Debug($"Checking requirement {key}. Requirement is {isFulfilled}.");
 		return isFulfilled;
 	}
@@ -191,14 +208,26 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void AbsorbWaterFromTile()
 	{
-		var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water);
-		var waterAbsorbed = Tile.WithdrawHydration(_absorptionRate) + waterReq.CurrentLevel;
+		var waterReq = _currentRequirements.GrowthRequirements.FirstOrDefault(r => r.Type == RequirementType.water);
+		if (waterReq == null)
+		{
+			_logger.Error("Water requirement not found.");
+			return;
+		}
 
+		var waterDemand = GetDemand(RequirementType.water);
+		if (waterDemand == null)
+		{
+			_logger.Error("Water demand not found.");
+			return;
+		}
+
+		var waterAbsorbed = Tile.WithdrawHydration(waterDemand.AbsorptionRate) + waterReq.CurrentLevel;
 		waterReq.CurrentLevel = Math.Min(waterAbsorbed, waterReq.MaxLevel);
 		ConsumeWater();
 
 		_logger.Debug(
-			$"The requirement for {RequirementType.water.ToString()} is currently at level {_currentRequirements.GetValueOrDefault(RequirementType.water)}");
+			$"The requirement for {nameof(RequirementType.water)} is currently at level {waterReq.CurrentLevel}");
 	}
 
 	/// <summary>
@@ -206,14 +235,28 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void ConsumeWater()
 	{
-		var waterReq = _currentRequirements.GetValueOrDefault(RequirementType.water);
-		waterReq.CurrentLevel -= _consumptionRate;
-
-		if (waterReq.CurrentLevel < 0)
+		var waterReq = _currentRequirements.GrowthRequirements.FirstOrDefault(r => r.Type == RequirementType.water);
+		if (waterReq == null)
 		{
-			SetUnalive();
-			_logger.Debug($"Plant {PlantName} has died due to lack of water.");
+			_logger.Error("Water requirement not found.");
+			return;
 		}
+		var waterDemand = GetDemand(RequirementType.water);
+		if (waterDemand == null)
+		{
+			_logger.Error("Water demand not found.");
+			return;
+		}
+
+		waterReq.CurrentLevel -= waterDemand.ConsumptionRate;
+
+		if (waterReq.CurrentLevel > 0)
+		{
+			return;
+		}
+
+		SetUnalive();
+		_logger.Debug($"Plant {PlantName} has died due to lack of water.");
 	}
 
 	/// <summary>
@@ -221,16 +264,29 @@ public partial class Plant : Area2D
 	/// </summary>
 	private void AbsorbSun()
 	{
-		var sunReq = _currentRequirements.GetValueOrDefault(RequirementType.sun);
+		var sunReq = _currentRequirements.GrowthRequirements.FirstOrDefault(r => r.Type == RequirementType.sun);
+		if (sunReq == null)
+		{
+			_logger.Error("Sun requirement not found.");
+			return;
+		}
+		var sunDemand = GetDemand(RequirementType.sun);
+		if (sunDemand == null)
+		{
+			_logger.Error("Sun demand not found.");
+			return;
+		}
 
 		sunReq.CurrentLevel = Math.Min(sunReq.CurrentLevel + GetSunAbsorptionRateBasedOnWeather(), sunReq.MaxLevel);
-		sunReq.CurrentLevel -= _consumptionRate;
+		sunReq.CurrentLevel -= sunDemand.ConsumptionRate;
 
-		if (sunReq.CurrentLevel < 0)
+		if (sunReq.CurrentLevel > 0)
 		{
-			SetUnalive();
-			_logger.Debug($"Plant {PlantName} has died due to lack of sun.");
+			return;
 		}
+
+		SetUnalive();
+		_logger.Debug($"Plant {PlantName} has died due to lack of sun.");
 	}
 
 	private void SetUnalive()
@@ -259,12 +315,35 @@ public partial class Plant : Area2D
 
 	private float GetSunAbsorptionRateBasedOnWeather()
 	{
+		var sunDemand = GetDemand(RequirementType.sun);
+		if (sunDemand == null)
+		{
+			_logger.Error("Sun demand not found. Returning default absorption rate of 0.0.");
+			return 0.0f;
+		}
+
+		var absorptionRate = sunDemand.AbsorptionRate;
 		return WeatherCycle.Instance.CurrentWeather switch
 		{
-			Weather.Sunny => _absorptionRate * 1.5f,
-			Weather.Cloudy => _absorptionRate * 1.0f,
-			Weather.Rainy or Weather.Snowy => _absorptionRate * 0.5f,
-			_ => _absorptionRate
+			Weather.Sunny => absorptionRate * 1.0f,
+			Weather.Cloudy => absorptionRate * 0.75f,
+			Weather.Rainy or Weather.Snowy => absorptionRate * 0.5f,
+			_ => absorptionRate
 		};
+	}
+
+	private void CheckForRootRot()
+	{
+		if (_rootHealth <= 0)
+		{
+			SetUnalive();
+			return;
+		}
+		if (!Tile.IsDrowning())
+		{
+			return;
+		}
+
+		_rootHealth--;
 	}
 }

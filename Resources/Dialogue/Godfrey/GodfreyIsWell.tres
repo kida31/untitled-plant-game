@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=7 format=3 uid="uid://bj7eyi07ttgws"]
+
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_qcysc"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_wpkbl"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="3_dbjpn"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_l78ln"]
+
+[sub_resource type="Resource" id="Resource_rf3mk"]
+script = ExtResource("2_wpkbl")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("1_qcysc")
+dialogueText = "Oh, why thank you for asking!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_ai15l"]
+script = ExtResource("2_wpkbl")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("3_dbjpn")
+dialogueText = "I'm feeling very good. The sea is so calming."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[resource]
+script = ExtResource("4_l78ln")
+_dialogueId = "GodfreyIsWell"
+_dialogueText = Array[Object]([SubResource("Resource_rf3mk"), SubResource("Resource_ai15l")])
+_responses = null
+metadata/_custom_type_script = "uid://c5x800n31tvgq"

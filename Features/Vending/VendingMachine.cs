@@ -48,6 +48,7 @@ public class VendingMachine
 	{
 		_inventory = new(12, "Vending Machine");
 		_inventory.InventoryChanged += () => ContentChanged?.Invoke(_inventory);
+		_inventory.ItemAdded += item => EventBus.Instance.OnItemAddedToVendingMachine(item);
 
 		TimeController.Instance.MinuteTicked += OnMinuteTicked;
 		TimeController.Instance.DayChanged += OnEndOfDay;
@@ -124,6 +125,8 @@ public class VendingMachine
 			var soldItem = stack.Clone() as ItemStack;
 			soldItem!.Amount = itemSellCount;
 			_inventory.RemoveItem(soldItem);
+			
+			EventBus.Instance.OnItemSoldFromVendingMachine(soldItem);
 
 			_logger.Info($"Sold {stack.Name} x{itemSellCount} for {goldEarned}g");
 		}

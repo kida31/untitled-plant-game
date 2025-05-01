@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueResponse" load_steps=3 format=3 uid="uid://danuquwi17bey"]
+
+[ext_resource type="Resource" uid="uid://dnqf7qk2pblgv" path="res://Resources/Dialogue/Godfrey/Tutorial/TutorialNoPlan.tres" id="1_1vg75"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="5_p3202"]
+
+[resource]
+script = ExtResource("5_p3202")
+_responseButton = "I don't know anything about plants..."
+_responseDialogue = ExtResource("1_1vg75")
+metadata/_custom_type_script = "uid://crnclevrmchav"

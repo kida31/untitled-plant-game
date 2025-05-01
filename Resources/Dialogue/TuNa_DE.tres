@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=12 format=3 uid="uid://ceejkx1dkiuvw"]
+
+[ext_resource type="Texture2D" uid="uid://dgode5fji4jaf" path="res://Assets/Characters/NaFamily/Tu/Portrait.png" id="1_mj3ue"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_2m5kt"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="3_oaeom"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="4_ydmk7"]
+
+[sub_resource type="Resource" id="Resource_s023f"]
+script = ExtResource("2_2m5kt")
+speakerName = "Tu"
+DialogueExpression = ExtResource("1_mj3ue")
+dialogueText = "Magst du Angeln?"
+
+[sub_resource type="Resource" id="Resource_vmo4o"]
+script = ExtResource("2_2m5kt")
+speakerName = "Tu"
+DialogueExpression = ExtResource("1_mj3ue")
+dialogueText = "Das ist toll!"
+
+[sub_resource type="Resource" id="Resource_d55vo"]
+script = ExtResource("3_oaeom")
+_dialogueId = "tu"
+_dialogueText = Array[Object]([SubResource("Resource_vmo4o")])
+_responses = null
+
+[sub_resource type="Resource" id="Resource_2e7dc"]
+script = ExtResource("4_ydmk7")
+_responseButton = "Ja, es macht Spaß!"
+_responseDialogue = SubResource("Resource_d55vo")
+
+[sub_resource type="Resource" id="Resource_ml4ix"]
+script = ExtResource("2_2m5kt")
+speakerName = "Tu"
+DialogueExpression = ExtResource("1_mj3ue")
+dialogueText = "Oh, naja ich denke Angeln ist nicht Jedermanns Sache..."
+
+[sub_resource type="Resource" id="Resource_7i22y"]
+script = ExtResource("3_oaeom")
+_dialogueId = "tutu"
+_dialogueText = Array[Object]([SubResource("Resource_ml4ix")])
+_responses = null
+
+[sub_resource type="Resource" id="Resource_854yl"]
+script = ExtResource("4_ydmk7")
+_responseButton = "Nicht so sehr..."
+_responseDialogue = SubResource("Resource_7i22y")
+
+[resource]
+script = ExtResource("3_oaeom")
+_dialogueId = "Tu"
+_dialogueText = Array[Object]([SubResource("Resource_s023f")])
+_responses = Array[Object]([SubResource("Resource_2e7dc"), SubResource("Resource_854yl")])

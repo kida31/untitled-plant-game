@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=8 format=3 uid="uid://cqp5bn82bbgc0"]
+
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_a6vph"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_cvywm"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="3_md2fk"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="4_8qyoe"]
+
+[sub_resource type="Resource" id="Resource_4jkmo"]
+script = ExtResource("2_cvywm")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("1_a6vph")
+dialogueText = "Ah, you don't know where the village is?"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_3h2is"]
+script = ExtResource("2_cvywm")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("1_a6vph")
+dialogueText = "If you take the ladder down to the pier, just follow it and you will find the village."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_y07cc"]
+script = ExtResource("2_cvywm")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("3_md2fk")
+dialogueText = "Or maybe not, haha. Who knows?"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[resource]
+script = ExtResource("4_8qyoe")
+_dialogueId = "AskAboutVillage"
+_dialogueText = Array[Object]([SubResource("Resource_4jkmo"), SubResource("Resource_3h2is"), SubResource("Resource_y07cc")])
+_responses = null
+metadata/_custom_type_script = "uid://c5x800n31tvgq"

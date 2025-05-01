@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=12 format=3 uid="uid://bk4sh4tvfc244"]
+
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_35fs2"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_gnfsa"]
+[ext_resource type="Resource" uid="uid://d0bdfblxyvra5" path="res://Resources/Dialogue/Godfrey/ExplainTools_DE.tres" id="3_antkl"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="4_qpvhy"]
+[ext_resource type="Resource" uid="uid://1oj4hy0d8cwc" path="res://Resources/Dialogue/Godfrey/ExplainVM_DE.tres" id="5_0brtv"]
+[ext_resource type="Resource" uid="uid://mh3tmg3aiu7w" path="res://Resources/Dialogue/Godfrey/ExplainSeedBoy_DE.tres" id="6_qsmah"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="7_4dvw7"]
+
+[sub_resource type="Resource" id="Resource_vjc3q"]
+script = ExtResource("2_gnfsa")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("1_35fs2")
+dialogueText = "What would you like to know again?"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_ufww2"]
+script = ExtResource("4_qpvhy")
+_responseButton = "Tools"
+_responseDialogue = ExtResource("3_antkl")
+metadata/_custom_type_script = "uid://crnclevrmchav"
+
+[sub_resource type="Resource" id="Resource_gyyij"]
+script = ExtResource("4_qpvhy")
+_responseButton = "Vending machine"
+_responseDialogue = ExtResource("5_0brtv")
+metadata/_custom_type_script = "uid://crnclevrmchav"
+
+[sub_resource type="Resource" id="Resource_3fot6"]
+script = ExtResource("4_qpvhy")
+_responseButton = "Buying seeds"
+_responseDialogue = ExtResource("6_qsmah")
+metadata/_custom_type_script = "uid://crnclevrmchav"
+
+[resource]
+script = ExtResource("7_4dvw7")
+_dialogueId = "ExplainPlease"
+_dialogueText = Array[Object]([SubResource("Resource_vjc3q")])
+_responses = Array[Object]([SubResource("Resource_ufww2"), SubResource("Resource_gyyij"), SubResource("Resource_3fot6")])
+metadata/_custom_type_script = "uid://c5x800n31tvgq"

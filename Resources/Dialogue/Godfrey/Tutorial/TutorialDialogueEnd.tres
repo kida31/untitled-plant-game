@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=18 format=3 uid="uid://rlhuwy53js6f"]
+
+[ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_3iskg"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_uewdi"]
+[ext_resource type="Texture2D" uid="uid://cddp1h65h56vi" path="res://Assets/Tools/SeedBag.png" id="3_veb4x"]
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="4_t887m"]
+[ext_resource type="Texture2D" uid="uid://02tc6ooik52o" path="res://Assets/Tools/Shovel.png" id="5_8ircu"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="6_k3x02"]
+[ext_resource type="Resource" uid="uid://cylhqbpmmho6g" path="res://Resources/Tools/Shovel.tres" id="6_t887m"]
+[ext_resource type="Script" uid="uid://pits4f4cyiww" path="res://Features/Dialogue/Events/AddTool.cs" id="7_8ircu"]
+[ext_resource type="Resource" uid="uid://bpaygf61q330d" path="res://Resources/Tools/SeedBag.tres" id="8_k3x02"]
+
+[sub_resource type="Resource" id="Resource_acleb"]
+script = ExtResource("2_uewdi")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("1_3iskg")
+dialogueText = "Ah, there is two more tools I want to tell you about."
+
+[sub_resource type="Resource" id="Resource_tmh6s"]
+script = ExtResource("2_uewdi")
+speakerName = "Seed Bag"
+DialogueExpression = ExtResource("3_veb4x")
+dialogueText = "If you get more seeds you can plant them with your [color=red]seed bag[/color]."
+
+[sub_resource type="Resource" id="Resource_yg4ah"]
+script = ExtResource("2_uewdi")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("4_t887m")
+dialogueText = "It always contains the first seed item of your inventory."
+
+[sub_resource type="Resource" id="Resource_66we5"]
+script = ExtResource("2_uewdi")
+speakerName = "Shovel"
+DialogueExpression = ExtResource("5_8ircu")
+dialogueText = "You can use this to dig out dead plants. Be careful not to dig out any living plants!"
+
+[sub_resource type="Resource" id="Resource_i3e76"]
+script = ExtResource("2_uewdi")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("4_t887m")
+dialogueText = "Use your [color=red]shovel[/color] to do this."
+
+[sub_resource type="Resource" id="Resource_8febt"]
+script = ExtResource("2_uewdi")
+speakerName = "Godfrey"
+DialogueExpression = ExtResource("4_t887m")
+dialogueText = "Well, I have taught you everything I know. But come back every time you forget something!"
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_l65ia"]
+script = ExtResource("7_8ircu")
+_tool = ExtResource("6_t887m")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://pits4f4cyiww"
+
+[sub_resource type="Resource" id="Resource_pmx7i"]
+script = ExtResource("7_8ircu")
+_tool = ExtResource("8_k3x02")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://pits4f4cyiww"
+
+[resource]
+script = ExtResource("6_k3x02")
+_dialogueId = "TutorialDialogueEnd"
+_dialogueText = Array[Object]([SubResource("Resource_acleb"), SubResource("Resource_tmh6s"), SubResource("Resource_yg4ah"), SubResource("Resource_66we5"), SubResource("Resource_i3e76"), SubResource("Resource_8febt"), SubResource("Resource_l65ia"), SubResource("Resource_pmx7i")])
+_responses = null

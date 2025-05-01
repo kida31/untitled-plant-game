@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://coy3axj2k0vdn"]
+[gd_scene load_steps=8 format=3 uid="uid://coy3axj2k0vdn"]
 
 [ext_resource type="Script" uid="uid://itr60trn0p5p" path="res://Features/GUI/HUDs/SettingsMenu/SettingsMenu.cs" id="1_1el8a"]
 [ext_resource type="Texture2D" uid="uid://jitwrv3dmfn4" path="res://DefaultItemBackground_White.png" id="1_dfpnd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bpbp4aegeu3tb" path="res://Features/GUI/HUDs/SettingsMenu/ResolutionButton.cs" id="3_c8ql2"]
 [ext_resource type="Script" uid="uid://b5pow44kfvhn3" path="res://Features/GUI/HUDs/SettingsMenu/LabelForCheckButton.cs" id="4_nvt3e"]
 [ext_resource type="Script" uid="uid://c6eouhagluvlc" path="res://Features/GUI/HUDs/SettingsMenu/DebugButton.cs" id="5_mke2j"]
+[ext_resource type="Script" uid="uid://cib6jddu14b00" path="res://Features/GUI/HUDs/SettingsMenu/LanguageOption.cs" id="6_q7dx4"]
 
 [node name="Settings" type="Control" node_paths=PackedStringArray("_backButton", "_checkboxFullscreen", "_debugMode", "_resolutionButton", "_debugButton")]
 layout_mode = 3
@@ -59,7 +60,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
-text = "FullScreen"
+text = "MENU_OPTIONS_FULLSCREEN"
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(2, 0)
@@ -81,7 +82,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
-text = "Resolution"
+text = "MENU_OPTIONS_RESOLUTION"
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(2, 0)
@@ -128,6 +129,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 
 [node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer4"]
@@ -149,6 +151,30 @@ expand_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_mke2j")
+
+[node name="Language" type="PanelContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Language"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Language/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+text = "MENU_LABEL_LANGUAGE"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Language/HBoxContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+texture = ExtResource("1_dfpnd")
+expand_mode = 1
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Language/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+allow_reselect = true
+script = ExtResource("6_q7dx4")
 
 [node name="Control" type="Control" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 visible = false
@@ -183,4 +209,4 @@ autowrap_mode = 2
 [node name="Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Back"
+text = "MENU_LABEL_BACK"

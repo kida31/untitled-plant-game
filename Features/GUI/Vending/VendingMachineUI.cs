@@ -11,6 +11,7 @@ using untitledplantgame.Vending;
 
 namespace untitledplantgame.GUI.Vending;
 
+// EmoteBubble is automatically Show() on value changes. This may be unexpected if someone explicitly hides it in the scene. Oopsie.
 public partial class VendingMachineUI : Control
 {
 	[Export] private Node _itemStackContainer;
@@ -44,6 +45,7 @@ public partial class VendingMachineUI : Control
 		_emoteBubbleTimer.Timeout += OnEmoteBubbleTimeout;
 		AddChild(_emoteBubbleTimer);
 		_emoteBubble.FadeOut(0f);
+		
 
 		_itemSlots = _itemStackContainer.GetChildren().Cast<VendingItemView>().ToList();
 		_slider.ValueChanged += OnSliderValueChanged;
@@ -62,6 +64,9 @@ public partial class VendingMachineUI : Control
 		}
 
 		_moneyLabel.Text = $"[center]{_vendingMachine.Gold}{BbImage.Coin}[/center]";
+
+		_slider.FocusMode = CursorInventory.Instance.Content == null ? FocusModeEnum.All : FocusModeEnum.None;
+		_withdrawButton.FocusMode = CursorInventory.Instance.Content == null ? FocusModeEnum.All : FocusModeEnum.None;
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -72,6 +77,37 @@ public partial class VendingMachineUI : Control
 		{
 			CloseThis();
 		}
+	}
+
+	// -- Set focus manually
+	private void SetNavigationNoWithdraw()
+	{
+		// Dear future developer. Sorry.
+
+		var vendingSlots = _itemSlots;
+		var invSlots = _inventoryView.GetItemViews();
+
+		Assert.AssertEquals(vendingSlots.Count, 12, "Vending machine should have 12 slots. Found: " + vendingSlots.Count);
+		Assert.AssertEquals(invSlots.Count, 20, "Inventory should have 20 slots. Found: " + invSlots.Count);
+		
+		vendingSlots[11].FocusNeighborRight = invSlots[12].GetPath();
+		invSlots[12].FocusNeighborLeft = vendingSlots[11].GetPath();
+		
+		_logger.Debug("Set navigation without withdraw");
+	}
+
+	private void SetNavigationWithWithdraw()
+	{
+		var vendingSlots = _itemSlots;
+		var invSlots = _inventoryView.GetItemViews();
+
+		Assert.AssertEquals(vendingSlots.Count, 12, "Vending machine should have 12 slots. Found: " + vendingSlots.Count);
+		Assert.AssertEquals(invSlots.Count, 20, "Inventory should have 20 slots. Found: " + invSlots.Count);
+		
+		vendingSlots[11].FocusNeighborRight = _withdrawButton.GetPath();
+		invSlots[12].FocusNeighborLeft = _withdrawButton.GetPath();
+		
+		_logger.Debug("Set navigation with withdraw");
 	}
 
 	private void OpenThis(VendingMachine vendingMachine)
@@ -153,6 +189,14 @@ public partial class VendingMachineUI : Control
 		}
 
 		_withdrawButton.Visible = _vendingMachine.Gold > 0;
+		if (_withdrawButton.Visible)
+		{
+			SetNavigationWithWithdraw();
+		}
+		else
+		{
+			SetNavigationNoWithdraw();
+		}
 		
 		UpdateItemPriceVisuals();
 	}
@@ -183,6 +227,7 @@ public partial class VendingMachineUI : Control
 		_vendingMachine.SetPriceSlider((float) value);
 
 		// NOTE: This does not correspond to the actual price or faith, but simply the slider position.
+		_emoteBubble.Show();
 		_emoteBubble.Value = (float) (_slider.Value / _slider.MaxValue);
 		_emoteBubbleTween?.Stop();
 		_emoteBubbleTween = _emoteBubble.FadeIn(_fadeInDuration);

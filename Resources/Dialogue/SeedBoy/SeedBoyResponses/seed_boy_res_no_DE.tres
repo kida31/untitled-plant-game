@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=4 format=3 uid="uid://moqnjhtyhdp6"]
+
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_exgjc"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_irrfp"]
+
+[sub_resource type="Resource" id="Resource_fp6sf"]
+script = ExtResource("1_exgjc")
+speakerName = "Pan Dan"
+dialogueText = "Okay… Vielleicht kannst du ja bald wieder kommen??"
+
+[resource]
+script = ExtResource("2_irrfp")
+_dialogueId = "seed_boy_res_no_DE"
+_dialogueText = Array[Object]([SubResource("Resource_fp6sf")])
+_responses = null

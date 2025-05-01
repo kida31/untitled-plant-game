@@ -1,131 +1,19 @@
-[gd_resource type="Resource" load_steps=25 format=3 uid="uid://cb1aih8l73aw8"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=11 format=3 uid="uid://cb1aih8l73aw8"]
 
 [ext_resource type="Script" uid="uid://6wnc7h7hdx2j" path="res://Features/Plants/Models/PlantData.cs" id="1_40thf"]
-[ext_resource type="Script" uid="uid://bxpl8lti5sre" path="res://Features/Plants/Models/RequirementData.cs" id="1_yucea"]
-[ext_resource type="Script" uid="uid://ccdrb187l8mra" path="res://Features/Plants/Models/RequirementDataForGrowthStage.cs" id="2_dnou2"]
-
-[sub_resource type="Resource" id="Resource_dwqhs"]
-script = ExtResource("1_yucea")
-Name = 1
-MinLevel = 10.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_2jqe6"]
-script = ExtResource("1_yucea")
-Name = 0
-MinLevel = 70.0
-MaxLevel = 100.0
-
-[sub_resource type="Resource" id="Resource_325r3"]
-script = ExtResource("2_dnou2")
-GrowthRequirements = Array[Object]([SubResource("Resource_dwqhs"), SubResource("Resource_2jqe6")])
-IsHarvestable = false
-
-[sub_resource type="Resource" id="Resource_msfu7"]
-script = ExtResource("1_yucea")
-Name = 1
-MinLevel = 50.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_wahim"]
-script = ExtResource("1_yucea")
-Name = 0
-MinLevel = 100.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_p1qrr"]
-script = ExtResource("2_dnou2")
-GrowthRequirements = Array[Object]([SubResource("Resource_msfu7"), SubResource("Resource_wahim")])
-IsHarvestable = false
-
-[sub_resource type="Resource" id="Resource_llt00"]
-script = ExtResource("1_yucea")
-Name = 1
-MinLevel = 40.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_no7n7"]
-script = ExtResource("1_yucea")
-Name = 0
-MinLevel = 100.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_miew2"]
-script = ExtResource("2_dnou2")
-GrowthRequirements = Array[Object]([SubResource("Resource_llt00"), SubResource("Resource_no7n7")])
-IsHarvestable = false
-
-[sub_resource type="Resource" id="Resource_i1mbl"]
-script = ExtResource("1_yucea")
-Name = 1
-MinLevel = 50.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_dxjd5"]
-script = ExtResource("1_yucea")
-Name = 0
-MinLevel = 75.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_vprjf"]
-script = ExtResource("2_dnou2")
-GrowthRequirements = Array[Object]([SubResource("Resource_i1mbl"), SubResource("Resource_dxjd5")])
-IsHarvestable = false
-
-[sub_resource type="Resource" id="Resource_8xkew"]
-script = ExtResource("1_yucea")
-Name = 1
-MinLevel = 50.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_0ow42"]
-script = ExtResource("1_yucea")
-Name = 0
-MinLevel = 75.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_w7rc2"]
-script = ExtResource("2_dnou2")
-GrowthRequirements = Array[Object]([SubResource("Resource_8xkew"), SubResource("Resource_0ow42")])
-IsHarvestable = false
-
-[sub_resource type="Resource" id="Resource_qx4pm"]
-script = ExtResource("1_yucea")
-Name = 1
-MinLevel = 50.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_83m2e"]
-script = ExtResource("1_yucea")
-Name = 0
-MinLevel = 80.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_oef1i"]
-script = ExtResource("2_dnou2")
-GrowthRequirements = Array[Object]([SubResource("Resource_qx4pm"), SubResource("Resource_83m2e")])
-IsHarvestable = true
-
-[sub_resource type="Resource" id="Resource_jy44q"]
-script = ExtResource("1_yucea")
-Name = 0
-MinLevel = 80.0
-MaxLevel = 120.0
-
-[sub_resource type="Resource" id="Resource_1pdsk"]
-script = ExtResource("1_yucea")
-Name = 1
-MinLevel = 90.0
-MaxLevel = 150.0
-
-[sub_resource type="Resource" id="Resource_k3nmq"]
-script = ExtResource("2_dnou2")
-GrowthRequirements = Array[Object]([SubResource("Resource_jy44q"), SubResource("Resource_1pdsk")])
-IsHarvestable = true
+[ext_resource type="Resource" uid="uid://daf3u82mi7bjs" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Seed.tres" id="1_h4a6x"]
+[ext_resource type="Resource" uid="uid://bq8af13t2g7vu" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Sprouting.tres" id="2_xuedw"]
+[ext_resource type="Resource" uid="uid://dan7rr7aaci1n" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Seedling.tres" id="3_kxbq7"]
+[ext_resource type="Resource" uid="uid://0y41a7evs1wt" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Vegetating.tres" id="4_3olg7"]
+[ext_resource type="Resource" uid="uid://7egnae4gqyc0" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Budding.tres" id="5_0x3tq"]
+[ext_resource type="Resource" uid="uid://doax21mpgfew2" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Flowering.tres" id="6_k8mtp"]
+[ext_resource type="Resource" uid="uid://cl5xrplkeq48d" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Ripening.tres" id="7_cgvtq"]
+[ext_resource type="Resource" uid="uid://cj36o5jokp8lk" path="res://Resources/Plants/Drupoleaum/Drupoleaum_SunDemand.tres" id="8_xuedw"]
+[ext_resource type="Resource" uid="uid://dxveeeohht4o1" path="res://Resources/Plants/Drupoleaum/Drupoleaum_WaterDemand.tres" id="9_kxbq7"]
 
 [resource]
 script = ExtResource("1_40thf")
 PlantName = "Drupoleaum"
-ConsumptionRate = 40
-AbsorptionRate = 60
-DataForGrowthStages = Array[Object]([SubResource("Resource_325r3"), SubResource("Resource_p1qrr"), SubResource("Resource_miew2"), SubResource("Resource_vprjf"), SubResource("Resource_w7rc2"), SubResource("Resource_oef1i"), SubResource("Resource_k3nmq")])
+PlantDemands = Array[Object]([ExtResource("8_xuedw"), ExtResource("9_kxbq7")])
+MaxRootHealth = 3
+DataForGrowthStages = Array[Object]([ExtResource("1_h4a6x"), ExtResource("2_xuedw"), ExtResource("3_kxbq7"), ExtResource("4_3olg7"), ExtResource("5_0x3tq"), ExtResource("6_k8mtp"), ExtResource("7_cgvtq")])

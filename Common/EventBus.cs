@@ -23,7 +23,7 @@ namespace untitledplantgame.Common;
 public partial class EventBus : Node
 {
 	public static EventBus Instance { get; private set; }
-	
+
 	private readonly Logger _logger = new("EventBus");
 
 	public override void _Ready()
@@ -39,19 +39,8 @@ public partial class EventBus : Node
 		}
 	}
 
-	//---------------------------------------------Legacy Signals---------------------------------------------
-	[Signal]
-	[Obsolete]
-	public delegate void NPCInteractedEventHandler(Node npc); //Replace with C# Action
-	
-	[Obsolete]
-	public void NotifyNPCInteracted(Node npc)
-	{
-		EmitSignal(nameof(NPCInteracted), npc);
-	}
+	//SeedShop
 
-	//---------------------------------------------Legacy Signals---------------------------------------------
-	
 	public event Action OnSeedshopOpened;
 	public event Action OnInventoryOpen;
 
@@ -74,11 +63,25 @@ public partial class EventBus : Node
 		OnSeedshopClosed?.Invoke();
 	}
 
+	//VendingMachine
+
 	public event Action<VendingMachine> BeforeVendingMachineOpened;
+	public event Action<IItemStack> ItemAddedToVendingMachine;
+	public event Action<IItemStack> ItemSoldFromVendingMachine;
 
 	public void BeforeVendingMachineOpen(VendingMachine vendingMachine)
 	{
 		BeforeVendingMachineOpened?.Invoke(vendingMachine);
+	}
+
+	public void OnItemAddedToVendingMachine(IItemStack obj)
+	{
+		ItemAddedToVendingMachine?.Invoke(obj);
+	}
+
+	public void OnItemSoldFromVendingMachine(IItemStack obj)
+	{
+		ItemSoldFromVendingMachine?.Invoke(obj);
 	}
 
 	//Dialogue
@@ -92,7 +95,7 @@ public partial class EventBus : Node
 	///     Emitted when a dialogue is started, passes the dialogue system
 	/// </summary>
 	public event Action<IDialogueSystem> InitialiseDialogue;
-	
+
 	public event Action<DialogueResourceObject> EndDialogue;
 
 	public void InvokeStartingDialogue(DialogueResourceObject obj)
@@ -104,7 +107,7 @@ public partial class EventBus : Node
 	{
 		InitialiseDialogue?.Invoke(obj);
 	}
-	
+
 	public void OnEndDialogue(DialogueResourceObject obj)
 	{
 		EndDialogue?.Invoke(obj);
@@ -114,7 +117,7 @@ public partial class EventBus : Node
 	public event Action<Plant> PlantHarvested;
 
 	public event Action<Plant> OnSeedPlanted;
-	
+
 	public void OnPlantHarvested(Plant obj)
 	{
 		PlantHarvested?.Invoke(obj);
@@ -126,12 +129,12 @@ public partial class EventBus : Node
 	}
 
 	//HUD
-	
+
 	public event Action<int, int> GoldChanged;
-	
+
 	// An event to change the portrait! Shouldn't be hard. But I don't know how to translate them into emotions
 	public event Action<AnimatedSprite2D, string> OnNpcStartDialogue;
-	
+
 	public void InvokeGoldChanged(int deltaGold, int newGold)
 	{
 		GoldChanged?.Invoke(deltaGold, newGold);
@@ -142,8 +145,8 @@ public partial class EventBus : Node
 	{
 		OnNpcStartDialogue?.Invoke(portrait, npcName);
 	}
-	
-	
+
+
 	//Inventory
 
 	public event Action<int> OnFaithChange;
@@ -172,7 +175,7 @@ public partial class EventBus : Node
 
 	public event Action<Player.Player, IInventory> OnPlayerInventoryChanged;
 	public event Action<IItemStack> OnItemAddedToInventory;
-	
+
 	public void ItemAddedToInventory(IItemStack item)
 	{
 		OnItemAddedToInventory?.Invoke(item);
@@ -182,35 +185,23 @@ public partial class EventBus : Node
 	{
 		OnPlayerInventoryChanged?.Invoke(player, inventory);
 	}
-	
+
 	public event Action<ICraftingStation> BeforeCraftingStationUiOpened;
 
 	public void BeforeCraftingStationUiOpen(ICraftingStation craftingStation)
 	{
 		BeforeCraftingStationUiOpened?.Invoke(craftingStation);
 	}
-	
-	
-	
-	// Band-aid code for having actual things happening after selecting an answer.
-	
-	[Obsolete] // Now that's what I call a "WHAT DID I DO, WHERE DID MY STUFF GO?!?!?!?" panic moment
-	public event Action<string> OnResponseButtonPress;
-
-	[Obsolete] // Now that's what I call a "WHAT DID I DO, WHERE DID MY STUFF GO?!?!?!?" panic moment
-	public void ResponseButtonPressed(string message)
-	{
-		OnResponseButtonPress?.Invoke(message);
-	}
 
 	public event Action<IBgmArea> BgmAreaChanged;
+
 	public void InvokeBgmAreaChanged(IBgmArea area)
 	{
 		BgmAreaChanged?.Invoke(area);
 	}
-	
+
 	// Tool Events
-	
+
 	public event Action<SoilTile> WateredSoil;
 
 	public void OnWateredSoil(SoilTile obj)

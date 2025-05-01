@@ -63,6 +63,7 @@ texture = ExtResource("1_w1ixl")
 
 [node name="PlayerInteraction" type="Area2D" parent="."]
 script = ExtResource("4_5jcqf")
+_actionName = "GAME_ACTION_INSPECT"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteraction"]
 scale = Vector2(2, 2)

@@ -1,17 +1,19 @@
+using System.Linq;
 using Godot;
+using Godot.Collections;
 
-namespace untitledplantgame.Plants.Models;
+namespace untitledplantgame.Plants;
 
 [GlobalClass]
 public partial class PlantData : Resource
 {
 	[Export] public string PlantName;
 	
-	[Export] public int ConsumptionRate;
+	[Export] public Array<PlantDemand> PlantDemands;
 	
-	[Export] public int AbsorptionRate;
+	[Export] public int MaxRootHealth;
 
 	[Export] public RequirementDataForGrowthStage[] DataForGrowthStages;
 	
-	
+	public PlantDemand GetDemand(RequirementType requirementType) => PlantDemands.FirstOrDefault(demand => demand.Type == requirementType);
 }

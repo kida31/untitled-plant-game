@@ -10,13 +10,13 @@
 script = ExtResource("1_y57xb")
 speakerName = "Vending Machine"
 DialogueExpression = ExtResource("1_pbk71")
-dialogueText = "I think it’s good to have medicine available at all times."
+dialogueText = "Now that you’re here, I’m finally useful again."
 
 [sub_resource type="Resource" id="Resource_bf2ec"]
 script = ExtResource("1_y57xb")
 speakerName = "Vending Machine"
 DialogueExpression = ExtResource("1_pbk71")
-dialogueText = "Do you want to sell some?"
+dialogueText = "Do you want to sell some medicine?"
 
 [sub_resource type="Resource" id="Resource_g0300"]
 script = ExtResource("2_0h6f5")

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Godot;
 
 namespace untitledplantgame.Common;
@@ -96,7 +97,7 @@ public static class Assert
 	{
 		if (!a.Equals(b))
 		{
-			RaiseError(message);
+			RaiseError(message ?? ("Expected " + a + " to be equal to " + b + " but they are not."));
 		}
 	}
 
@@ -174,7 +175,7 @@ public static class Assert
 			throw new AssertionError("Assertion failed");
 		}
 
-		Logger.Error(message);
+		Logger.Error($"{message}\n{new StackTrace(2, true)}");
 		throw new AssertionError(message);
 	}
 

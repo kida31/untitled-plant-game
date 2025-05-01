@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=14 format=3 uid="uid://cvmvno2vfx4ch"]
+
+[ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="1_eoy4s"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_xthbd"]
+[ext_resource type="Texture2D" uid="uid://c044iw7or44e5" path="res://Assets/Tools/shers.png" id="3_y4a7a"]
+[ext_resource type="Texture2D" uid="uid://dkt14ugsh0y5v" path="res://Assets/Items/Plants/chubery_wholePlant.png" id="4_rw7ds"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_kcxt1"]
+[ext_resource type="Resource" uid="uid://chhf61aloiv17" path="res://Resources/Tools/Shears.tres" id="5_y4a7a"]
+[ext_resource type="Script" uid="uid://pits4f4cyiww" path="res://Features/Dialogue/Events/AddTool.cs" id="6_rw7ds"]
+
+[sub_resource type="Resource" id="Resource_5fiqd"]
+script = ExtResource("2_xthbd")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_eoy4s")
+dialogueText = "Perfekt! Du scheinst ein Naturtalent im Gießen zu sein."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_hhqf7"]
+script = ExtResource("2_xthbd")
+speakerName = "Gartenschere"
+DialogueExpression = ExtResource("3_y4a7a")
+dialogueText = "In deinem Werkzeuggürtel befindet sich auch eine [color=red]Gartenschere[/color]. Mit ihr kannst du ganz einfach Beeren und Blätter deiner Pflanzen ernten."
+
+[sub_resource type="Resource" id="Resource_wfp6x"]
+script = ExtResource("2_xthbd")
+speakerName = "Gartenschere"
+DialogueExpression = ExtResource("3_y4a7a")
+dialogueText = "Keine Sorge, es wächst alles nach. Aber natürlich nur, wenn du dich gut um deine Pflanzen kümmerst!"
+
+[sub_resource type="Resource" id="Resource_6v888"]
+script = ExtResource("2_xthbd")
+speakerName = "Chuberry"
+DialogueExpression = ExtResource("4_rw7ds")
+dialogueText = "In der Wanne links steht eine ausgewachsene Chuberry."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_pamod"]
+script = ExtResource("2_xthbd")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_eoy4s")
+dialogueText = "Ernte doch die Pflanze und komm wieder, wenn du fertig bist."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_kcxt1"]
+script = ExtResource("6_rw7ds")
+_tool = ExtResource("5_y4a7a")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://pits4f4cyiww"
+
+[resource]
+script = ExtResource("5_kcxt1")
+_dialogueId = "HarvestingTutorial_DE"
+_dialogueText = Array[Object]([SubResource("Resource_5fiqd"), SubResource("Resource_hhqf7"), SubResource("Resource_wfp6x"), SubResource("Resource_6v888"), SubResource("Resource_pamod"), SubResource("Resource_kcxt1")])
+_responses = null

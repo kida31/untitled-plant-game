@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="Resource_fp6sf"]
 script = ExtResource("1_url6t")
 speakerName = "Pan Dan"
-dialogueText = "Okay… Maybe come by again soon??"
+dialogueText = "Okay... Maybe come back soon?"
 
 [resource]
 script = ExtResource("2_7y045")
