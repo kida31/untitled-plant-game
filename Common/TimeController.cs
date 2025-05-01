@@ -28,9 +28,9 @@ public partial class TimeController : Node
 	/// <summary>
 	///		 Invoked when the time is noon.
 	/// </summary>
-	public event Action NoonOccured;
+	public event Action NoonOccurred;
 
-	public event Action NightOccured;
+	public event Action NightOccurred;
 
 	public delegate void MinuteTickedHandler(int day, int hour, int minute);
 
@@ -182,12 +182,12 @@ public partial class TimeController : Node
 		if (currentDayMinutes >= 12 * 60 && !_wasNoon)
 		{
 			_wasNoon = true;
-			NoonOccured?.Invoke();
+			NoonOccurred?.Invoke();
 		}
 
 		if (currentDayMinutes >= 22 * 60) //nighttime is at 22:00
 		{
-			NightOccured?.Invoke();
+			NightOccurred?.Invoke();
 		}
 	}
 }

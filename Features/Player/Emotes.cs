@@ -7,12 +7,12 @@ public partial class Emotes : AnimatedSprite2D
 {
 	public override void _Ready()
 	{
-		TimeController.Instance.NightOccured += OnNightOccured;
+		TimeController.Instance.NightOccurred += OnNightOccurred;
 		AnimationFinished += OnAnimationFinished;
 		Visible = false;
 	}
 
-	private void OnNightOccured()
+	private void OnNightOccurred()
 	{
 		Visible = true;
 		Play("tired");

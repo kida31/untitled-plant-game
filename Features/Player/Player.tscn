@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cybfjnbld1w7n" path="res://Assets/Emotes/Angry-Sheet.png" id="10_80ucd"]
 [ext_resource type="Texture2D" uid="uid://cjqcdj3vldfpd" path="res://Assets/Emotes/Exclamation-Sheet.png" id="11_nnhxp"]
 [ext_resource type="Texture2D" uid="uid://bsytxjetn2peb" path="res://Assets/Emotes/SweatDrop-Sheet.png" id="12_e61br"]
-[ext_resource type="Texture2D" uid="uid://g05boy1l7462" path="res://Assets/Emotes/tried.png" id="13_theba"]
+[ext_resource type="Texture2D" uid="uid://g05boy1l7462" path="res://Assets/Emotes/tired.png" id="13_theba"]
 [ext_resource type="Script" uid="uid://n5fxvmvxee0" path="res://Features/Player/Emotes.cs" id="14_nnhxp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
