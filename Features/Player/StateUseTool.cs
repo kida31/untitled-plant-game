@@ -44,6 +44,7 @@ public partial class StateUseTool : State
 		UpdateToolAnimation(toolName);
 		tool.StartChanneling(Player); // Should be a public method in player instead of property access
 		tool.FinishedCasting += OnFinishedCasting;
+		tool.HitRegistered += OnToolHit;
 	}
 
 	private void UpdateToolAnimation(Type toolType)
@@ -74,17 +75,49 @@ public partial class StateUseTool : State
 		return null;
 	}
 
-	private void OnFinishedCasting()
-	{
-		_queuingExit = true;
-	}
-
 	public override void Exit()
 	{
 		var tool = Player.Toolbelt.CurrentTool;
 		if (tool != null)
 		{
 			tool.FinishedCasting -= OnFinishedCasting;
+			tool.HitRegistered -= OnToolHit;
 		}
+	}
+
+	private void OnFinishedCasting()
+	{
+		_queuingExit = true;
+	}
+
+	private void OnToolHit()
+	{
+		var tool = Player?.Toolbelt?.CurrentTool;
+		var tType = tool.GetType();
+
+		AudioStream sfx;
+		if (tType == typeof(WateringCan))
+		{
+			sfx = GD.Load<AudioStream>("res://Assets/SFX/Tools/WaterPlants.wav");
+		}
+		else if (tType == typeof(Shears))
+		{
+			sfx = GD.Load<AudioStream>("res://Assets/SFX/Tools/CuttingPlants.wav");
+		}
+		else if (tType == typeof(SeedBag))
+		{
+			sfx = GD.Load<AudioStream>("res://Assets/SFX/Tools/SowSeeds.wav");
+		}
+		else if (tType == typeof(Shovel))
+		{
+			sfx = GD.Load<AudioStream>("res://Assets/SFX/Tools/DiggingSounds.wav");
+		} else 
+		{
+			_logger.Error("Failed to load Tool SFX");
+			return;
+		}
+
+
+		Player.PlaySfx(sfx);
 	}
 }
