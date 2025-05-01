@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QuestLine" load_steps=7 format=3 uid="uid://btcepquojxrdw"]
+[gd_resource type="Resource" script_class="QuestLine" load_steps=7 format=3 uid="uid://d1b5aase6ugci"]
 
 [ext_resource type="Resource" uid="uid://bs1pa43bvjal7" path="res://Resources/Dialogue/Godfrey/Introduction/Intro1.tres" id="1_6a3nh"]
 [ext_resource type="Script" uid="uid://cgb70arkej80e" path="res://Features/Quests/Tasks/HaveDialogueTask.cs" id="2_gaift"]
