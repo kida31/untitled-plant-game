@@ -59,11 +59,17 @@ horizontal_alignment = 1
 
 [node name="Arrow" type="TextureRect" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
-anchor_left = 0.653333
-anchor_top = 0.422222
-anchor_right = 0.92
-anchor_bottom = 0.577778
-pivot_offset = Vector2(8, 7)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.672
+anchor_top = 0.5
+anchor_right = 0.672
+anchor_bottom = 0.5
+offset_left = 1.59978
+offset_top = -3.5
+offset_right = 21.5998
+offset_bottom = 3.5
+grow_vertical = 2
+pivot_offset = Vector2(0, 3)
 texture = ExtResource("3_ewqxd")
 metadata/_edit_use_anchors_ = true

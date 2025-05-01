@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Godot;
 
 namespace untitledplantgame.Common;
@@ -27,7 +28,9 @@ public partial class TimeController : Node
 	/// <summary>
 	///		 Invoked when the time is noon.
 	/// </summary>
-	public event Action NoonOccured;
+	public event Action NoonOccurred;
+
+	public event Action NightOccurred;
 
 	public delegate void MinuteTickedHandler(int day, int hour, int minute);
 
@@ -65,10 +68,9 @@ public partial class TimeController : Node
 		_logger = new Logger(this);
 		_logger.Debug($"Time initialized with {CurrentSeconds}");
 	}
-	
+
 	public override void _Process(double delta)
 	{
-		
 		double dt;
 		if (_fastForwardDuration < 0)
 		{
@@ -86,14 +88,31 @@ public partial class TimeController : Node
 
 		RecalculateTimeEvents();
 	}
-	
+
 	/// <summary>
 	///		Skips to the next day.
 	/// </summary>
-	public void GoToNextDay()
+	public async Task GoToNextDay()
 	{
+		var wasPaused = false;
+		if (!_isRunning)
+		{
+			wasPaused = true;
+			Resume();
+		}
+
 		FastForwardTo(StartOfDaySeconds);
 		_currentTimeMultiplier = InGameToRealTimeFastForwardMultiplier;
+
+		while (_fastForwardDuration > 0)
+		{
+			await Task.Delay(100);
+		}
+
+		if (wasPaused)
+		{
+			Pause();
+		}
 	}
 
 	/// <summary>
@@ -115,14 +134,14 @@ public partial class TimeController : Node
 		Assert.AssertTrue(targetTime < SecondsPerDay, "Target time is greater than a day");
 		FastForwardFor((SecondsPerDay + targetTime - CurrentSeconds) % SecondsPerDay);
 	}
-	
+
 	public void Pause()
 	{
 		_logger.Debug("Pausing time");
 		_isRunning = false;
 		SetProcess(_isRunning);
 	}
-	
+
 	public void Resume()
 	{
 		_logger.Debug("Resuming time");
@@ -139,11 +158,11 @@ public partial class TimeController : Node
 		const double minutesPerDay = 24 * 60;
 		const double minutesPerHour = 60;
 
-		var totalMinutes = (int) (CurrentSeconds / 60);
+		var totalMinutes = (int)(CurrentSeconds / 60);
 
-		var currentDayMinutes = (int) (totalMinutes % minutesPerDay);
-		var hour = (int) (currentDayMinutes / minutesPerHour);
-		var minute = (int) (currentDayMinutes % minutesPerHour);
+		var currentDayMinutes = (int)(totalMinutes % minutesPerDay);
+		var hour = (int)(currentDayMinutes / minutesPerHour);
+		var minute = (int)(currentDayMinutes % minutesPerHour);
 
 		if (CurrentSeconds >= SecondsPerDay)
 		{
@@ -163,7 +182,12 @@ public partial class TimeController : Node
 		if (currentDayMinutes >= 12 * 60 && !_wasNoon)
 		{
 			_wasNoon = true;
-			NoonOccured?.Invoke();
+			NoonOccurred?.Invoke();
+		}
+
+		if (currentDayMinutes >= 22 * 60) //nighttime is at 22:00
+		{
+			NightOccurred?.Invoke();
 		}
 	}
 }

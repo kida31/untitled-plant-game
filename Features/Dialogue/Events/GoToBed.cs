@@ -12,11 +12,9 @@ namespace untitledplantgame.Dialogue.Events;
 [GlobalClass]
 public partial class GoToBed : DialogueEvent
 {
-	private const int TransitionDuration = 1000;
-	
 	public override void Execute()
 	{
-		DoAsyncStuff();
+		_ = DoAsyncStuff();
 	}
 
 	private async Task DoAsyncStuff()
@@ -24,8 +22,7 @@ public partial class GoToBed : DialogueEvent
 		// TODO: Cleanup placeholders
 		GameStateMachine.Instance.ChangeState(GameState.Config); // Placeholder for "do not move"
 		await SceneTransition.Instance.FadeIn();
-		TimeController.Instance.GoToNextDay();
-		await Task.Delay(TransitionDuration);
+		await TimeController.Instance.GoToNextDay();
 		await SceneTransition.Instance.FadeOut();
 		GameStateMachine.Instance.ChangeState(GameState.FreeRoam); // Placeholder for "do not move"
 	}
