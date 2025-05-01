@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 script = ExtResource("2_cvywm")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("1_a6vph")
-dialogueText = "If you take the ladder down to the pier, just follow it and you will find the village.."
+dialogueText = "If you take the ladder down to the pier, just follow it and you will find the village."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_y07cc"]

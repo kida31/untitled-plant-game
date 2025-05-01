@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://darc3x680x67b"]
+
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_3fams"]
+[ext_resource type="Resource" uid="uid://dars3krlbbl1y" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes_DE.tres" id="2_0hioe"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_wem25"]
+[ext_resource type="Resource" uid="uid://moqnjhtyhdp6" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_no_DE.tres" id="4_otaw3"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_dwy4r"]
+
+[sub_resource type="Resource" id="Resource_m4ye3"]
+script = ExtResource("1_3fams")
+speakerName = "Pan Dan"
+dialogueText = "Als ich dem Vogel gefolgt bin, der meine Hausaufgaben gestohlen hat, habe ich stattdessen diese Samen gefunden. Willst du sie sehen?"
+
+[sub_resource type="Resource" id="Resource_sige0"]
+script = ExtResource("3_wem25")
+_responseButton = "Klar, lass mal sehen."
+_responseDialogue = ExtResource("2_0hioe")
+
+[sub_resource type="Resource" id="Resource_2rnp0"]
+script = ExtResource("3_wem25")
+_responseButton = "Hm, gerade nicht."
+_responseDialogue = ExtResource("4_otaw3")
+
+[resource]
+script = ExtResource("5_dwy4r")
+_dialogueId = "seed_boy_init_5_DE"
+_dialogueText = Array[Object]([SubResource("Resource_m4ye3")])
+_responses = Array[Object]([SubResource("Resource_sige0"), SubResource("Resource_2rnp0")])

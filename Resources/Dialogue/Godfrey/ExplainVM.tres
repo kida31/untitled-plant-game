@@ -16,21 +16,21 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 script = ExtResource("2_fv24m")
 speakerName = "Vending machine"
 DialogueExpression = ExtResource("1_u1cka")
-dialogueText = "You can set it's price by yourself. Just don't get to greedy, will you?"
+dialogueText = "You can set the price yourself. Just don't get too greedy, okay?"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_p0lys"]
 script = ExtResource("2_fv24m")
 speakerName = "Vending machine"
 DialogueExpression = ExtResource("1_u1cka")
-dialogueText = "You will have to wait a little until someone buys it."
+dialogueText = "You will have to wait a while for someone to buy it."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_afqxg"]
 script = ExtResource("2_fv24m")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("3_v0kkg")
-dialogueText = "No worries, I'll tell the villagers that the vending machine is running again."
+dialogueText = "Don't worry, I'll tell the villagers that the machine is working again."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]

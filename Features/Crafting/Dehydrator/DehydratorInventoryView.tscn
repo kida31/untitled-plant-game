@@ -62,7 +62,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="DehydratorUi/MarginContainer/CenterContainer"]
 layout_mode = 2
-text = "Dehydrator"
+text = "CONTEXT_ITEM_DEHYDRATOR"
 
 [node name="MiniInventory" type="Control" parent="." node_paths=PackedStringArray("_itemViewContainer", "_itemNameLabel")]
 visible = false

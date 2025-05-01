@@ -1,4 +1,5 @@
 using System;
+using Godot;
 
 namespace untitledplantgame.NPC.NpcInteraction;
 
@@ -8,8 +9,11 @@ namespace untitledplantgame.NPC.NpcInteraction;
 /// </summary>
 public partial class NpcPlayerInteraction : AInteractable
 {
+	[Export]
+	private string _actionName = "GAME_ACTION_TALK";
+
 	public Action InteractionEvent;
-	public override string ActionName => "Talk";
+	public override string GetActionName() => _actionName;
 	
 	/// <summary>
 	///		Invokes the NpcPlayerInteraction Event. If no method was subscribed to the Action and this method is called, nothing happens.

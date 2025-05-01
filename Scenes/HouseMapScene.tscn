@@ -1773,6 +1773,7 @@ position = Vector2(0, -32)
 
 [node name="Door" parent="." instance=ExtResource("4_0j18u")]
 position = Vector2(400, 604)
+_actionName = "GAME_ACTION_CLIMB"
 entryDoorName = "RoofHouse"
 
 [node name="Bed" parent="." instance=ExtResource("5_t1uyc")]

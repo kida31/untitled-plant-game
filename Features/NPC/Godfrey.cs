@@ -112,14 +112,9 @@ public partial class Godfrey : CharacterBody2D
 		return dialogue;
 	}
 
-	private DialogueResourceObject LoadDialogue(string file, string language)
+	private DialogueResourceObject LoadDialogue(string file)
 	{
-		var filePath = $"res://Resources/Dialogue/Godfrey/Tutorial/TaskInProgress/{file}_{language}.tres";
-		if (!FileAccess.FileExists(filePath))
-		{
-			filePath = $"res://Resources/Dialogue/Godfrey/Tutorial/TaskInProgress/{file}.tres";
-		}
-
+		var filePath = $"res://Resources/Dialogue/Godfrey/Tutorial/TaskInProgress/{file}.tres";
 		var dialogue = ResourceLoader.Load<DialogueResourceObject>(filePath);
 		return dialogue;
 	}

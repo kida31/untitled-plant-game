@@ -8,6 +8,8 @@ public partial class DehydratorInteractable : AInteractable
 	private Dehydrator _dehydrator;
 	private readonly Logger _logger = new("DehydratorInteractable");
 
+	public override string GetActionName() => "GAME_ACTION_USE";
+
 	public override void _Ready()
 	{
 		base._Ready();

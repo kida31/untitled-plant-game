@@ -16,7 +16,7 @@ public partial class SimpleTalkingObject : AInteractable
 	/// </summary>
 	[Export(PropertyHint.MultilineText)] private string _dialog;
 
-	public override string ActionName => "Inspect";
+	public override string GetActionName() => "GAME_ACTION_INSPECT";
 
 	private DialogueResourceObject _dialogObject;
 
