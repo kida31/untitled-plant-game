@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=4 format=3 uid="uid://cuvp2yskrub5t"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=5 format=3 uid="uid://cuvp2yskrub5t"]
 
+[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="1_ua4r6"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_wgei7"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_gvsbu"]
 
 [sub_resource type="Resource" id="Resource_0mdii"]
 script = ExtResource("1_wgei7")
 speakerName = "PanDan"
+DialogueExpression = ExtResource("1_ua4r6")
 dialogueText = "Sorry! Out of stock!"
 
 [resource]

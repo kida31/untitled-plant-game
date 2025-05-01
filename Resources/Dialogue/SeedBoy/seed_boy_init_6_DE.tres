@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://ca6sec0w4e5ch"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://ca6sec0w4e5ch"]
 
+[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="1_b67nc"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_ystd7"]
 [ext_resource type="Resource" uid="uid://dars3krlbbl1y" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes_DE.tres" id="2_b67nc"]
 [ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_q5xoi"]
@@ -9,6 +10,7 @@
 [sub_resource type="Resource" id="Resource_m4ye3"]
 script = ExtResource("1_ystd7")
 speakerName = "Pan Dan"
+DialogueExpression = ExtResource("1_b67nc")
 dialogueText = "Ich hab ein Glas gefunden, aber da waren keine Süßigkeiten drin. Nur Samen. Vielleicht magst du sie mehr als ich?"
 
 [sub_resource type="Resource" id="Resource_sige0"]
