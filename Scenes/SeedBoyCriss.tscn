@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://crm2bb3s72gi8"]
+[gd_scene load_steps=20 format=3 uid="uid://crm2bb3s72gi8"]
 
 [ext_resource type="PackedScene" uid="uid://1wnuc03ll3y" path="res://Features/NPC/NpcType/StandardNpc.tscn" id="1_qjsqv"]
 [ext_resource type="Script" uid="uid://b3fhofujtjc6t" path="res://Features/NPC/RoutinePlanner/NpcRoutinePlanner.cs" id="2_e08ef"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://xf5xb3s6ksp4" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_6.tres" id="11_6clld"]
 [ext_resource type="Resource" uid="uid://bo66u5m63r7f1" path="res://Resources/Dialogue/SeedBoy/seed_boy_init_7.tres" id="12_13pfm"]
 [ext_resource type="Script" uid="uid://hbxc2embfa2s" path="res://Features/NPC/OutOfStock.cs" id="13_83ao0"]
+[ext_resource type="Resource" uid="uid://cmscbv31v8w4n" path="res://Resources/Dialogue/SeedBoy/PanDan_Introduction1.tres" id="13_a5lnu"]
 [ext_resource type="Resource" uid="uid://cuvp2yskrub5t" path="res://Resources/Dialogue/SeedBoy/OutOfStock/seed_boy_no_stock.tres" id="13_wxxgb"]
 [ext_resource type="Resource" uid="uid://deudtr6qo8ekp" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes.tres" id="15_4jya7"]
 [ext_resource type="Texture2D" uid="uid://60scb681f532" path="res://Assets/SpeechBubbles/Speechbubble_PanPan.png" id="16_5frxx"]
@@ -41,9 +42,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PanDan" node_paths=PackedStringArray("_routinePlanner") instance=ExtResource("1_qjsqv")]
+[node name="PanDan" node_paths=PackedStringArray("_routinePlanner", "_overWorldSprite") instance=ExtResource("1_qjsqv")]
 _name = "Pan Dan"
 _routinePlanner = NodePath("RoutinePlanner")
+_overWorldSprite = NodePath("CharacterSprite2D")
 
 [node name="CharacterSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_12fo5")
@@ -66,6 +68,7 @@ RoutineTrigger = 1
 [node name="Dialogue" type="Node" parent="RoutinePlanner/OnPlayerInteraction" index="0"]
 script = ExtResource("4_p27pq")
 _dialogueResourceObjects = Array[Object]([ExtResource("5_hojrx"), ExtResource("7_sumlp"), ExtResource("8_dvvuy"), ExtResource("9_ci5lp"), ExtResource("10_hifoa"), ExtResource("11_6clld"), ExtResource("12_13pfm")])
+_introDialogue = ExtResource("13_a5lnu")
 _randomOrderOfDialogueLines = true
 
 [node name="OutOfStockNode" type="Node" parent="." index="5" node_paths=PackedStringArray("_seedBoy")]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckpxuei42sa5c"]
+[gd_scene load_steps=6 format=3 uid="uid://ckpxuei42sa5c"]
 
 [ext_resource type="PackedScene" uid="uid://3ndp3em1fi7h" path="res://Scenes/GUIContainer.tscn" id="1_c43ed"]
-[ext_resource type="Script" uid="uid://dm5a6g8s6k21w" path="res://Features/Player/IntroMonologueTask.cs" id="3_3obcm"]
+[ext_resource type="Script" uid="uid://dm5a6g8s6k21w" path="res://Features/Player/GameInitialised.cs" id="3_fos0i"]
 [ext_resource type="PackedScene" uid="uid://cv1fhyjs170lk" path="res://Scenes/GameWorldContainer.tscn" id="3_m582q"]
-[ext_resource type="Resource" uid="uid://fde6fy6jals2" path="res://Resources/Dialogue/monologue.tres" id="4_3ynuj"]
+[ext_resource type="Resource" uid="uid://fde6fy6jals2" path="res://Resources/Dialogue/monologue.tres" id="4_3dxm6"]
+[ext_resource type="Resource" uid="uid://d1b5aase6ugci" path="res://Resources/Quest/IntroQuest.tres" id="5_lgr22"]
 
 [node name="Main" type="Node"]
 
@@ -11,7 +12,8 @@
 
 [node name="GameWorldContainer" parent="." instance=ExtResource("3_m582q")]
 
-[node name="Monologue" type="Node" parent="."]
-script = ExtResource("3_3obcm")
-_monologueResourceObject = ExtResource("4_3ynuj")
+[node name="Node" type="Node" parent="."]
+script = ExtResource("3_fos0i")
+_introMonologue = ExtResource("4_3dxm6")
+_introQuestLine = ExtResource("5_lgr22")
 _skipDialogue = true

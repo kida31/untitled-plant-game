@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_5ceaj"]
 [ext_resource type="Texture2D" uid="uid://bw5djyaf0how3" path="res://Assets/Tools/WateringCan.png" id="3_s85du"]
 [ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="4_b56kd"]
-[ext_resource type="Resource" uid="uid://c2t30hvhvqgx0" path="res://Resources/Quest/TutorialQuest_DE.tres" id="5_ouyt2"]
+[ext_resource type="Resource" uid="uid://cvii1m2ambji1" path="res://Resources/Quest/TutorialQuest.tres" id="5_s85du"]
 [ext_resource type="Script" uid="uid://wieplhq747d3" path="res://Features/Dialogue/Events/StartQuestLine.cs" id="6_dovhh"]
 [ext_resource type="Script" uid="uid://bc35ywlebpmy1" path="res://Features/Dialogue/Events/CameraPan.cs" id="7_wm4i4"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="8_le4br"]
@@ -47,12 +47,12 @@ dialogueText = "How about you just try using it?"
 script = ExtResource("2_5ceaj")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("4_b56kd")
-dialogueText = "There are still some plants in the tubs over there. I bet they would like some water!"
+dialogueText = "There are still some plants in the tubs over there. I bet they could use some water!"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_4o3rp"]
 script = ExtResource("6_dovhh")
-QuestLine = ExtResource("5_ouyt2")
+QuestLine = ExtResource("5_s85du")
 speakerName = ""
 dialogueText = ""
 metadata/_custom_type_script = "uid://wieplhq747d3"

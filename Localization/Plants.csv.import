@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dpwqopouqdvmh"
+
+[deps]
+
+files=["res://Localization/Plants.en.translation", "res://Localization/Plants.de.translation"]
+
+source_file="res://Localization/Plants.csv"
+dest_files=["res://Localization/Plants.en.translation", "res://Localization/Plants.de.translation"]
+
+[params]
+
+compress=true
+delimiter=1

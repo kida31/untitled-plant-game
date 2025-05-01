@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=5 format=3 uid="uid://ydfuqbhwfbau"]
+
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_7q0cf"]
+[ext_resource type="Texture2D" uid="uid://c1rci186jefrk" path="res://Assets/Characters/PanDan/PanDan.png" id="1_8rbxy"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_8rbxy"]
+
+[sub_resource type="Resource" id="Resource_456mm"]
+script = ExtResource("1_7q0cf")
+speakerName = "Pan Dan"
+DialogueExpression = ExtResource("1_8rbxy")
+dialogueText = "Dankeschön, ich komm' wieder wenn ich neue Samen finde."
+
+[resource]
+script = ExtResource("2_8rbxy")
+_dialogueId = "seed_boy_close_4_DE"
+_dialogueText = Array[Object]([SubResource("Resource_456mm")])
+_responses = null

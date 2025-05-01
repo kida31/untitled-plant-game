@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cu84g8klfnkml"]
+
+[ext_resource type="Script" uid="uid://dx5xtf1inha8q" path="res://Features/Tools/Shears.cs" id="1_0dqjs"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uvbao"]
+load_path = "res://.godot/imported/GardenScissors.png-e99ae96baef75052a088d6cd44155367.ctex"
+
+[resource]
+script = ExtResource("1_0dqjs")
+Name = "Garden Scissors_DE"
+Description = "Entfernt Blätter oder Früchte von deinen Pflanzen."
+Icon = SubResource("CompressedTexture2D_uvbao")
+ChannelingTime = 1.0
+Radius = 12.0
+Range = 24.0

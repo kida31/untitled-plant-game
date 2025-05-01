@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 script = ExtResource("2_edn87")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("1_rf3mk")
-dialogueText = "Do you happen to need some explanations?"
+dialogueText = "Do you happen to need any explanations?"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_70dy7"]

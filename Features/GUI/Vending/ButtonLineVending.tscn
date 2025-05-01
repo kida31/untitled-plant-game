@@ -5,16 +5,16 @@
 [node name="ButtonLineVending" instance=ExtResource("1_qc6hw")]
 
 [node name="Description" parent="MarginTopBottom/HBoxContainer/South" index="1"]
-text = "Move Stack"
+text = "NAVIGATION_LABEL_MOVE_STACK"
 
 [node name="Description" parent="MarginTopBottom/HBoxContainer/East" index="1"]
-text = "Back"
+text = "MENU_LABEL_BACK"
 
 [node name="North" parent="MarginTopBottom/HBoxContainer" index="2"]
 visible = false
 
 [node name="Description" parent="MarginTopBottom/HBoxContainer/West" index="1"]
-text = "Move 1"
+text = "NAVIGATION_LABEL_MOVE_ONE"
 
 [node name="LR1" parent="MarginTopBottom/HBoxContainer" index="4"]
 visible = false

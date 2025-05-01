@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2uogdsxjcvep"
-path="res://.godot/imported/Basic_Plants.png-b5a4fb104bfffe98b0ea396bfcc39f07.ctex"
+uid="uid://g05boy1l7462"
+path="res://.godot/imported/tired.png-a38c8826f089b12a313a9eccbfa8c8b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Features/Plants/Sprites/Basic_Plants.png"
-dest_files=["res://.godot/imported/Basic_Plants.png-b5a4fb104bfffe98b0ea396bfcc39f07.ctex"]
+source_file="res://Assets/Emotes/tired.png"
+dest_files=["res://.godot/imported/tired.png-a38c8826f089b12a313a9eccbfa8c8b4.ctex"]
 
 [params]
 
