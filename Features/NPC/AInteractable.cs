@@ -14,7 +14,7 @@ namespace untitledplantgame.NPC;
 /// </summary>
 public abstract partial class AInteractable : Area2D, IInteractable
 {
-	public virtual string ActionName => "Interact";
+	public virtual string GetActionName() => "GAME_ACTION_INTERACT";
 
 	public override void _Ready()
 	{

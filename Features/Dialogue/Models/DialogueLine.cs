@@ -11,6 +11,6 @@ public partial class DialogueLine : Resource //DO NOT rename variables or the re
 	[Export]
 	public CompressedTexture2D DialogueExpression;
 
-	[Export]
+	[Export(PropertyHint.MultilineText)]
 	public string dialogueText;
 }

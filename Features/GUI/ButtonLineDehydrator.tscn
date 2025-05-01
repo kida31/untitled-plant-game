@@ -5,10 +5,10 @@
 [node name="ButtonLineDehydrator" instance=ExtResource("1_b2w5e")]
 
 [node name="Description" parent="MarginTopBottom/HBoxContainer/South" index="1"]
-text = "Move 1"
+text = "NAVIGATION_LABEL_MOVE_ONE"
 
 [node name="Description" parent="MarginTopBottom/HBoxContainer/East" index="1"]
-text = "Back"
+text = "MENU_LABEL_BACK"
 
 [node name="North" parent="MarginTopBottom/HBoxContainer" index="2"]
 visible = false

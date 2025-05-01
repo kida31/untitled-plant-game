@@ -9,21 +9,21 @@
 script = ExtResource("2_q1tx3")
 speakerName = "Pan Dan"
 DialogueExpression = ExtResource("1_tc7v8")
-dialogueText = "Over there you can see Pan Dan. He's the son of the former market stall owner."
+dialogueText = "Over there is Pan Dan. He's the son of the former market stall owner."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_jlt76"]
 script = ExtResource("2_q1tx3")
 speakerName = "Pan Dan"
 DialogueExpression = ExtResource("1_tc7v8")
-dialogueText = "He collects all kinds of things. I am sure he will sell some seeds to you."
+dialogueText = "He collects all kinds of things. I am sure he will sell you some seeds."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_i05o8"]
 script = ExtResource("2_q1tx3")
 speakerName = "Gottfried"
 DialogueExpression = ExtResource("3_fs8cb")
-dialogueText = "His stock usually changes every other day. Visit him every day and I'm sure you'll find something you want."
+dialogueText = "His inventory usually changes every other day. Visit him every day and I'm sure you'll find something you want."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [resource]

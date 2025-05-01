@@ -117,6 +117,6 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 [resource]
 script = ExtResource("1_55fyv")
 Id = "TutorialQuest"
-Name = "Ein grüner Anfang"
+Name = "A greener beginning"
 Quests = Array[Object]([SubResource("Resource_rurbj"), SubResource("Resource_xoehh"), SubResource("Resource_jg8fa"), SubResource("Resource_t841y"), SubResource("Resource_lsuru"), SubResource("Resource_k8sdh"), SubResource("Resource_2j7df"), SubResource("Resource_3lprq"), SubResource("Resource_v6dy5")])
 metadata/_custom_type_script = "uid://bf7h6b05r58gu"

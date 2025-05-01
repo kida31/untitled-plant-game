@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_m4ye3"]
 script = ExtResource("1_uf7ff")
 speakerName = "Pan Dan"
-dialogueText = "I found a jar but there were no sweets, just these seeds so maybe you like them more than I do?"
+dialogueText = "I found a jar, but there were no sweets, just these seeds, so maybe you like them more than me?"
 
 [sub_resource type="Resource" id="Resource_sige0"]
 script = ExtResource("3_v1cxd")

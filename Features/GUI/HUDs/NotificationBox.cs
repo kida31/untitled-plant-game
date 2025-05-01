@@ -32,7 +32,10 @@ public partial class NotificationBox : Control
 
 		// I dont know where to put this. It seems silly to have class define the general behaviour of the class :/
 		// Good luck, next person.
-		EventBus.Instance.OnItemAddedToInventory += (item) => { AddNotification($"+{item.Amount} {item.Name}", item.Icon); };
+		EventBus.Instance.OnItemAddedToInventory += (item) =>
+		{
+			AddNotification($"+{item.Amount} {Tr(item.Name)}", item.Icon);
+		};
 	}
 	
 	private void AddNotification(string text, Texture2D texture = null)
