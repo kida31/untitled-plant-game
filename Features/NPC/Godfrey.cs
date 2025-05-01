@@ -23,6 +23,7 @@ public partial class Godfrey : CharacterBody2D
 
 	public override void _Ready()
 	{
+		_overWorldSprite.Play("idle");
 		_npcPlayerInteraction.InteractionEvent += () =>
 		{
 			if (_tutorialActive)
