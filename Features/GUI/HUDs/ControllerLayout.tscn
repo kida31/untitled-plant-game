@@ -75,7 +75,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_type_variation = &"whiteText"
-text = "NAVIGATION_LABEL_SWITCH_T_O_T "
+text = "NAVIGATION_LABEL_SWITCH_T_O_T"
 
 [node name="Trigger" type="HBoxContainer" parent="."]
 layout_mode = 0
