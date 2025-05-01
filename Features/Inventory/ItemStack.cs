@@ -36,9 +36,9 @@ public partial class ItemStack : Resource, IItemStack
 		{
 			return _category switch
 			{
-				"Seed" => ItemCategory.Seed,
-				"Material" => ItemCategory.Material,
-				"Medicine" => ItemCategory.Medicine,
+				"MENU_CATEG_LABEL_SEED" => ItemCategory.Seed,
+				"MENU_CATEG_LABEL_MATERIAL" => ItemCategory.Material,
+				"MENU_CATEG_LABEL_MEDICINE" => ItemCategory.Medicine,
 				_ => null
 			};
 		}

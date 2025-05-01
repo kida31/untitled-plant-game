@@ -7,9 +7,9 @@ namespace untitledplantgame.Inventory;
 /// </summary>
 public class ItemCategory
 {
-	public static readonly ItemCategory Seed = new("Seed");
-	public static readonly ItemCategory Material = new("Material");
-	public static readonly ItemCategory Medicine = new("Medicine");
+	public static readonly ItemCategory Seed = new("MENU_CATEG_LABEL_SEED");
+	public static readonly ItemCategory Material = new("MENU_CATEG_LABEL_MATERIAL");
+	public static readonly ItemCategory Medicine = new("MENU_CATEG_LABEL_MEDICINE");
 
 	private ItemCategory(string name)
 	{
