@@ -8,7 +8,7 @@
 script = ExtResource("2_3uca0")
 speakerName = "Schild"
 DialogueExpression = ExtResource("1_muwls")
-dialogueText = "Du betrittst jetzt Tawas, die Stadt der Fischersleut und der die an die Natur glauben."
+dialogueText = "Du betrittst Tawas, die Stadt der Fischer und derer, die an die Natur glauben."
 
 [sub_resource type="Resource" id="Resource_ere51"]
 script = ExtResource("2_3uca0")
