@@ -659,3 +659,6 @@ MENU_CATEG_LABEL_MEDICINE;Medicine;Medizin;;;;;;;;;;;;;;;;;;;;;;;;;;
 MENU_CATEG_LABEL_MATERIAL;Materials;Materialien;;;;;;;;;;;;;;;;;;;;;;;;;;
 MENU_CATEG_LABEL_SEED;Seeds;Saatgut;;;;;;;;;;;;;;;;;;;;;;;;;;
 GAME_ACTION_INTERACT;Interact;Interagieren;;;;;;;;;;;;;;;;;;;;;;;;;;
+GAME_ACTION_INSPECT;Inspect;Untersuchen;;;;;;;;;;;;;;;;;;;;;;;;;;
+GAME_ACTION_USE;Use;Benutzen;;;;;;;;;;;;;;;;;;;;;;;;;;
+GAME_ACTION_PICK_UP2;Pick up;Aufheben;;;;;;;;;;;;;;;;;;;;;;;;;;
