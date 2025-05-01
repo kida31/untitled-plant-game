@@ -334,15 +334,15 @@ public partial class Plant : Area2D
 
 	private void CheckForRootRot()
 	{
+		if (_rootHealth <= 0)
+		{
+			SetUnalive();
+		}
 		if (!Tile.IsDrowning())
 		{
 			return;
 		}
 
 		_rootHealth--;
-		if (_rootHealth <= 0)
-		{
-			SetUnalive();
-		}
 	}
 }
