@@ -656,6 +656,6 @@ CONTEXT_ITEM_DEHYDRATOR;Dehydrator;Dörrgerät;;;;;;;;;;;;;;;;;;;;;;;;;;
 CONTEXT_ITEM_VM;Vending Machine;Automat;;;;;;;;;;;;;;;;;;;;;;;;;;
 CONTEXT_LABEL_SEEDSHOP;Seed Shop;Saatgutladen;;;;;;;;;;;;;;;;;;;;;;;;;;
 MENU_CATEG_LABEL_MEDICINE;Medicine;Medizin;;;;;;;;;;;;;;;;;;;;;;;;;;
-MENU_CATEG_LABEL_MATERIAL;Material;Materialien;;;;;;;;;;;;;;;;;;;;;;;;;;
-MENU_CATEG_LABEL_SEED;Seed;Saatgut;;;;;;;;;;;;;;;;;;;;;;;;;;
+MENU_CATEG_LABEL_MATERIAL;Materials;Materialien;;;;;;;;;;;;;;;;;;;;;;;;;;
+MENU_CATEG_LABEL_SEED;Seeds;Saatgut;;;;;;;;;;;;;;;;;;;;;;;;;;
 GAME_ACTION_INTERACT;Interact;Interagieren;;;;;;;;;;;;;;;;;;;;;;;;;;
