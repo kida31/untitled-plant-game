@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://03lhwbdqrqqh"]
+
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_xygi2"]
+[ext_resource type="Resource" uid="uid://dars3krlbbl1y" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes_DE.tres" id="2_s43wm"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_quefl"]
+[ext_resource type="Resource" uid="uid://moqnjhtyhdp6" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_no_DE.tres" id="4_43keq"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_1d35n"]
+
+[sub_resource type="Resource" id="Resource_m4ye3"]
+script = ExtResource("1_xygi2")
+speakerName = "Pan Dan"
+dialogueText = "Ey Laya, hast du schonmal solche Samen gesehen?"
+
+[sub_resource type="Resource" id="Resource_sige0"]
+script = ExtResource("3_quefl")
+_responseButton = "Nein, lass mal sehen."
+_responseDialogue = ExtResource("2_s43wm")
+
+[sub_resource type="Resource" id="Resource_2rnp0"]
+script = ExtResource("3_quefl")
+_responseButton = "Hm, gerade nicht interessiert."
+_responseDialogue = ExtResource("4_43keq")
+
+[resource]
+script = ExtResource("5_1d35n")
+_dialogueId = "seed_boy_init_2_DE"
+_dialogueText = Array[Object]([SubResource("Resource_m4ye3")])
+_responses = Array[Object]([SubResource("Resource_sige0"), SubResource("Resource_2rnp0")])

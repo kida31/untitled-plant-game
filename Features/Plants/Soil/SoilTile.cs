@@ -25,11 +25,11 @@ public partial class SoilTile : Area2D, IWaterable
 		_logger = new Logger(this);
 		WeatherCycle.Instance.WeatherChanged += OnWeatherChanged;
 		TimeController.Instance.DayChanged += OnDayChanged;
-		TimeController.Instance.NoonOccured += OnNoonOccured;
+		TimeController.Instance.NoonOccurred += OnNoonOccurred;
 		_logger.Debug("SoilTile is ready.");
 	}
 
-	private void OnNoonOccured()
+	private void OnNoonOccurred()
 	{
 		var weather = WeatherCycle.Instance.CurrentWeather;
 		OnWeatherChanged(weather);

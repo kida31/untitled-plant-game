@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=9 format=3 uid="uid://ca6sec0w4e5ch"]
+
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_ystd7"]
+[ext_resource type="Resource" uid="uid://dars3krlbbl1y" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_yes_DE.tres" id="2_b67nc"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="3_q5xoi"]
+[ext_resource type="Resource" uid="uid://moqnjhtyhdp6" path="res://Resources/Dialogue/SeedBoy/SeedBoyResponses/seed_boy_res_no_DE.tres" id="4_mlc17"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_cht4d"]
+
+[sub_resource type="Resource" id="Resource_m4ye3"]
+script = ExtResource("1_ystd7")
+speakerName = "Pan Dan"
+dialogueText = "Ich hab ein Glas gefunden, aber da waren keine Süßigkeiten drin. Nur Samen. Vielleicht magst du sie mehr als ich?"
+
+[sub_resource type="Resource" id="Resource_sige0"]
+script = ExtResource("3_q5xoi")
+_responseButton = "Klar, lass mal sehen."
+_responseDialogue = ExtResource("2_b67nc")
+
+[sub_resource type="Resource" id="Resource_2rnp0"]
+script = ExtResource("3_q5xoi")
+_responseButton = "Hm, gerade nicht."
+_responseDialogue = ExtResource("4_mlc17")
+
+[resource]
+script = ExtResource("5_cht4d")
+_dialogueId = "seed_boy_init_6_DE"
+_dialogueText = Array[Object]([SubResource("Resource_m4ye3")])
+_responses = Array[Object]([SubResource("Resource_sige0"), SubResource("Resource_2rnp0")])

@@ -36,9 +36,9 @@ public class BigInventory : IInventory
 	{
 		_inventories = new Dictionary<ItemCategory, IInventory>
 		{
-			{ ItemCategory.Seed, new Inventory(size, "Seeds") },
-			{ ItemCategory.Material, new Inventory(size, "Materials") },
-			{ ItemCategory.Medicine, new Inventory(size, "Medicine") },
+			{ ItemCategory.Seed, new Inventory(size, "MENU_CATEG_LABEL_SEED") },
+			{ ItemCategory.Material, new Inventory(size, "MENU_CATEG_LABEL_MATERIAL") },
+			{ ItemCategory.Medicine, new Inventory(size, "MENU_CATEG_LABEL_MEDICINE") },
 		};
 		
 		foreach (var (_, inventory) in _inventories)

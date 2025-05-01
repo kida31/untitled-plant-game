@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bagvcggmrk01v"]
+
+[ext_resource type="Texture2D" uid="uid://bf73odxs6nikc" path="res://Assets/Tools/water.png" id="1_4x0qp"]
+[ext_resource type="Script" uid="uid://cu42b2f1ibxf6" path="res://Features/Tools/WateringCan.cs" id="2_1r506"]
+
+[resource]
+script = ExtResource("2_1r506")
+_wateringAmount = 50.0
+_waterCapacity = 1000.0
+_isBottomless = true
+Name = "Basic Watering Can_DE"
+Description = "Diese Gießkanne gießt Pflanzen mit Wasser. Sie ist magisch und geht nie leer."
+Icon = ExtResource("1_4x0qp")
+ChannelingTime = 1.0
+Radius = 12.0
+Range = 24.0

@@ -819,10 +819,12 @@ position = Vector2(458, 346)
 [node name="Door" parent="." instance=ExtResource("18_eh65c")]
 visible = false
 position = Vector2(400, 562)
+_actionName = "GAME_ACTION_CLIMB"
 entryDoorName = "RoofHouse"
 
 [node name="PierLadder" parent="." instance=ExtResource("18_eh65c")]
 position = Vector2(335, 242)
+_actionName = "GAME_ACTION_CLIMB"
 entryDoorName = "PierLadder"
 
 [node name="SoilTiles" parent="." instance=ExtResource("27_sla4y")]

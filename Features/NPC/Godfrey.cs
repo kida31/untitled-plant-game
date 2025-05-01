@@ -35,12 +35,11 @@ public partial class Godfrey : CharacterBody2D
 				// _logger.Debug("Dialogue task is active. Setting dialogue to: " + _currentDialogue._dialogueId);
 				_currentDialogue = questIndex switch
 				{
-					0 => LoadDialogue("WateringTaskInProgress", "DE"),
-					2 => LoadDialogue("HarvestingTaskInProgress", "DE"),
-					4 => LoadDialogue("SellingTaskInProgress", "DE"),
-					5 => LoadDialogue("SellingTaskInProgress", "DE"),
-					7 => LoadDialogue("TalkToPanDanTaskInProgress", "DE"),
-					// TODO verify correcctness
+					0 => LoadDialogue("WateringTaskInProgress"),
+					2 => LoadDialogue("HarvestingTaskInProgress"),
+					4 => LoadDialogue("SellingTaskInProgress"),
+					5 => LoadDialogue("SellingTaskInProgress"),
+					7 => LoadDialogue("TalkToPanDanTaskInProgress"),
 					1 or 3 or 6 or 8 => dialogueTask!.Dialogue,
 					_ => CreateOneLiner("Go do your thing."),
 				};
@@ -94,14 +93,9 @@ public partial class Godfrey : CharacterBody2D
 		return dialogue;
 	}
 
-	private DialogueResourceObject LoadDialogue(string file, string language)
+	private DialogueResourceObject LoadDialogue(string file)
 	{
-		var filePath = $"res://Resources/Dialogue/Godfrey/Tutorial/TaskInProgress/{file}_{language}.tres";
-		if (!FileAccess.FileExists(filePath))
-		{
-			filePath = $"res://Resources/Dialogue/Godfrey/Tutorial/TaskInProgress/{file}.tres";
-		}
-
+		var filePath = $"res://Resources/Dialogue/Godfrey/Tutorial/TaskInProgress/{file}.tres";
 		var dialogue = ResourceLoader.Load<DialogueResourceObject>(filePath);
 		return dialogue;
 	}

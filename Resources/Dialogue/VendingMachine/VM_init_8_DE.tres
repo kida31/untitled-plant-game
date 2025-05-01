@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=10 format=3 uid="uid://bppvbfyxg33x7"]
+
+[ext_resource type="Texture2D" uid="uid://bicv1fu7r5w4n" path="res://Assets/Characters/VMsan/vendingMachinePortrait.png" id="1_oco26"]
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_oh4ij"]
+[ext_resource type="Resource" uid="uid://clipa6tlu6er2" path="res://Resources/Dialogue/VendingMachine/VendingMachineResponses/vending_machine_res_yes.tres" id="3_meuv3"]
+[ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="4_861vy"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="5_6g3be"]
+
+[sub_resource type="Resource" id="Resource_i0uay"]
+script = ExtResource("2_oh4ij")
+speakerName = "Vending Machine"
+DialogueExpression = ExtResource("1_oco26")
+dialogueText = "Jetzt wo du da bist, bin ich endlich wieder nützlich."
+
+[sub_resource type="Resource" id="Resource_bf2ec"]
+script = ExtResource("2_oh4ij")
+speakerName = "Vending Machine"
+DialogueExpression = ExtResource("1_oco26")
+dialogueText = "Möchtest du Medizin verkaufen?"
+
+[sub_resource type="Resource" id="Resource_g0300"]
+script = ExtResource("4_861vy")
+_responseButton = "Ja"
+_responseDialogue = ExtResource("3_meuv3")
+
+[sub_resource type="Resource" id="Resource_yjfxv"]
+script = ExtResource("4_861vy")
+_responseButton = "Nein"
+
+[resource]
+script = ExtResource("5_6g3be")
+_dialogueId = "VM_init_8_DE"
+_dialogueText = Array[Object]([SubResource("Resource_i0uay"), SubResource("Resource_bf2ec")])
+_responses = Array[Object]([SubResource("Resource_g0300"), SubResource("Resource_yjfxv")])

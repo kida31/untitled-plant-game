@@ -33,14 +33,14 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 script = ExtResource("2_suh4f")
 speakerName = "Gardening scissors"
 DialogueExpression = ExtResource("3_kwtas")
-dialogueText = "No worries, it all grows back. Only if you take good care of your plants though!"
+dialogueText = "No worries, it will all grow back. But only if you take good care of your plants!"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_pv1xh"]
 script = ExtResource("2_suh4f")
 speakerName = "Seed bag"
 DialogueExpression = ExtResource("4_x5rlo")
-dialogueText = "If you get more seeds you can plant them with your [color=red]seed bag[/color]."
+dialogueText = "If you get more seeds, you can plant them with your [color=red]seed bag[/color]."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_1u344"]
@@ -54,14 +54,14 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 script = ExtResource("2_suh4f")
 speakerName = "Shhovel"
 DialogueExpression = ExtResource("5_dyff5")
-dialogueText = "And if your plants die, you can dig them out to make space for new ones."
+dialogueText = "And if your plants die, you can dig them up to make room for new ones."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_5cghs"]
 script = ExtResource("2_suh4f")
 speakerName = "Shovel"
 DialogueExpression = ExtResource("5_dyff5")
-dialogueText = "To do that, use your [color=red]shovel[/color]. Be careful not to dig out alive plants!"
+dialogueText = "Use your [color=red]shovel[/color] to do this. Be careful not to dig up any living plants!"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_g6fgr"]

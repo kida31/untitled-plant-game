@@ -47,6 +47,6 @@ public partial class DialogueDatabase : Node, IDatabase<DialogueResourceObject>
 	public DialogueResourceObject[] GetAllResources()
 	{
 		var subDirectories = DirAccess.GetFilesAt(DirPath);
-		return subDirectories.Select(s => GD.Load<DialogueResourceObject>(Path.Join(DirPath, s))).ToArray();
+		return subDirectories.Select(s => ResourceLoader.Load<DialogueResourceObject>(Path.Join(DirPath, s))).ToArray();
 	}
 }

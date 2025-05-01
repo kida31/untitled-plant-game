@@ -124,7 +124,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="SeedShopCarpet/MarginContainer/CenterContainer"]
 layout_mode = 2
-text = "Seed Shop"
+text = "CONTEXT_LABEL_SEEDSHOP"
 
 [node name="CategoryTabs" type="Control" parent="."]
 layout_mode = 3
@@ -188,7 +188,7 @@ offset_left = 86.0
 offset_top = -26.0
 offset_right = 132.0
 offset_bottom = -8.0
-text = "Medicine"
+text = "MENU_CATEG_LABEL_MEDICINE"
 
 [node name="SeedInventory" type="Control" parent="." node_paths=PackedStringArray("_itemViewContainer", "_itemNameLabel")]
 custom_minimum_size = Vector2(223, 235)

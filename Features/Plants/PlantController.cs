@@ -24,12 +24,12 @@ public partial class PlantController : Node
 		
 		_timeController = TimeController.Instance;
 		_timeController.DayChanged += DayPassed;
-		_timeController.NoonOccured += NoonOccured;
+		_timeController.NoonOccurred += NoonOccurred;
 
 		_logger.Debug("Ready");
 	}
 
-	private void NoonOccured()
+	private void NoonOccurred()
 	{
 		_logger.Debug("Noon occured. Updating plants.");
 		LetPlantsGrow();
