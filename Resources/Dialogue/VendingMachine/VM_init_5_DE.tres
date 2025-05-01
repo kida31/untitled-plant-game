@@ -10,7 +10,7 @@
 script = ExtResource("2_opawd")
 speakerName = "Vending Machine"
 DialogueExpression = ExtResource("1_62juk")
-dialogueText = "Manchmal wünschte ich, cih würde nicht nur Medizin verkaufen, aber es ist zumindest gesünder als Spaßgetränke."
+dialogueText = "Manchmal wünschte ich, ich würde nicht nur Medizin verkaufen, aber es ist zumindest gesünder als Spaßgetränke."
 
 [sub_resource type="Resource" id="Resource_bf2ec"]
 script = ExtResource("2_opawd")

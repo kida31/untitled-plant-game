@@ -9,7 +9,7 @@
 script = ExtResource("2_6e3lj")
 speakerName = "Saka"
 DialogueExpression = ExtResource("1_ip02y")
-dialogueText = "Moin! Guter Tag zum fisch'n nich'?"
+dialogueText = "Moin! Guter Tag zum Fisch'n nich'?"
 
 [sub_resource type="Resource" id="Resource_ul6p0"]
 script = ExtResource("2_6e3lj")

@@ -16,7 +16,7 @@ dialogueText = "Hast du dich jemals gefragt, wo mein Strom herkommt?"
 script = ExtResource("2_hbe7n")
 speakerName = "Vending Machine"
 DialogueExpression = ExtResource("1_4ox2h")
-dialogueText = "Vielleihct erzähle ich es dir nachdem du 1000000 Mal Medizin verkauft hast."
+dialogueText = "Vielleicht erzähle ich es dir nachdem du 1000000 Mal Medizin verkauft hast."
 
 [sub_resource type="Resource" id="Resource_k61xe"]
 script = ExtResource("2_hbe7n")
