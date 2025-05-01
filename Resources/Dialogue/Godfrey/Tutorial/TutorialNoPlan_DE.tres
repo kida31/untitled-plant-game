@@ -1,11 +1,16 @@
-[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=12 format=3 uid="uid://b50a4t4ysa7ax"]
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=24 format=3 uid="uid://b50a4t4ysa7ax"]
 
 [ext_resource type="Texture2D" uid="uid://bp83hgia0uh76" path="res://Assets/Characters/Godfrey/Godfrey_shocked.png" id="1_ee1qf"]
 [ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="2_hcdby"]
 [ext_resource type="Texture2D" uid="uid://c41d5jxsns321" path="res://Assets/Characters/Godfrey/Godfrey_happy.png" id="3_wkj4m"]
 [ext_resource type="Resource" uid="uid://doio1ea88264e" path="res://Resources/Dialogue/Godfrey/Tutorial/WateringTutorial_DE.tres" id="4_5cvvs"]
 [ext_resource type="Script" uid="uid://crnclevrmchav" path="res://Features/Dialogue/Models/DialogueResponse.cs" id="5_p3jrq"]
+[ext_resource type="Resource" uid="uid://beagdq1bqk3ul" path="res://Resources/Tools/WateringCan.tres" id="6_mhxdq"]
 [ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="6_s3ch7"]
+[ext_resource type="Script" uid="uid://pits4f4cyiww" path="res://Features/Dialogue/Events/AddTool.cs" id="7_skhdw"]
+[ext_resource type="Resource" uid="uid://chhf61aloiv17" path="res://Resources/Tools/Shears.tres" id="8_is3hp"]
+[ext_resource type="Resource" uid="uid://cylhqbpmmho6g" path="res://Resources/Tools/Shovel.tres" id="9_mjker"]
+[ext_resource type="Resource" uid="uid://bpaygf61q330d" path="res://Resources/Tools/SeedBag.tres" id="10_xiklu"]
 
 [sub_resource type="Resource" id="Resource_dp0i3"]
 script = ExtResource("2_hcdby")
@@ -34,9 +39,59 @@ _responseButton = "Ja, bitte!"
 _responseDialogue = ExtResource("4_5cvvs")
 metadata/_custom_type_script = "uid://crnclevrmchav"
 
+[sub_resource type="Resource" id="Resource_k2hi2"]
+script = ExtResource("7_skhdw")
+_tool = ExtResource("6_mhxdq")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://pits4f4cyiww"
+
+[sub_resource type="Resource" id="Resource_dtcq8"]
+script = ExtResource("7_skhdw")
+_tool = ExtResource("8_is3hp")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://pits4f4cyiww"
+
+[sub_resource type="Resource" id="Resource_8brvt"]
+script = ExtResource("7_skhdw")
+_tool = ExtResource("9_mjker")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://pits4f4cyiww"
+
+[sub_resource type="Resource" id="Resource_6lj82"]
+script = ExtResource("7_skhdw")
+_tool = ExtResource("10_xiklu")
+speakerName = ""
+dialogueText = ""
+metadata/_custom_type_script = "uid://pits4f4cyiww"
+
+[sub_resource type="Resource" id="Resource_th3d2"]
+script = ExtResource("2_hcdby")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("1_ee1qf")
+dialogueText = "Oh, wirklich? Dann nimm' doch diese Werkzeuge. Ich bin mir sicher, dass Sie hilfreich für deine Aufgaben sein werden."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_84sux"]
+script = ExtResource("2_hcdby")
+speakerName = "Gottfried"
+DialogueExpression = ExtResource("3_wkj4m")
+dialogueText = "Natürlich kannst du mich gerne auch immer ansprechen, falls dir Fragen einfallen."
+metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
+
+[sub_resource type="Resource" id="Resource_hrnw7"]
+script = ExtResource("6_s3ch7")
+_dialogueId = ""
+_dialogueText = Array[Object]([SubResource("Resource_k2hi2"), SubResource("Resource_dtcq8"), SubResource("Resource_8brvt"), SubResource("Resource_6lj82"), SubResource("Resource_th3d2"), SubResource("Resource_84sux")])
+_responses = null
+metadata/_custom_type_script = "uid://c5x800n31tvgq"
+
 [sub_resource type="Resource" id="Resource_ek1jy"]
 script = ExtResource("5_p3jrq")
 _responseButton = "Nein, ich kann das."
+_responseDialogue = SubResource("Resource_hrnw7")
 metadata/_custom_type_script = "uid://crnclevrmchav"
 
 [resource]
