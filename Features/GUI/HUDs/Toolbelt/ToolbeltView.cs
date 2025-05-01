@@ -63,6 +63,8 @@ public partial class ToolbeltView : Control
 
 	private void UpdateToolBlobs()
 	{
+		Visible = _player.Toolbelt.CurrentTool != null;
+		
 		_leftBlob.Tool = _player.Toolbelt.LeftTool;
 		_centerBlob.Tool = _player.Toolbelt.CurrentTool;
 		_rightBlob.Tool = _player.Toolbelt.RightTool;
