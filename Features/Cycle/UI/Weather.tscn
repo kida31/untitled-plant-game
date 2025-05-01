@@ -15,8 +15,9 @@ preprocess = 0.5
 process_material = ExtResource("2_m1v60")
 
 [node name="RainParticlesPier" type="GPUParticles2D" parent="."]
-position = Vector2(-1052, 2316)
+position = Vector2(-1095, 1931)
 amount = 3000
 lifetime = 0.5
 preprocess = 0.5
+visibility_rect = Rect2(-100, -100, 400, 1500)
 process_material = ExtResource("3_cmqf2")

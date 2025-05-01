@@ -36,8 +36,9 @@ curve_z = SubResource("Curve_7o5yb")
 
 [resource]
 particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 4, 1)
 emission_shape = 3
-emission_box_extents = Vector3(640, 1080, 1)
+emission_box_extents = Vector3(640, 360, 1)
 gravity = Vector3(0, 3000, 0)
 scale_min = 0.3
 scale_over_velocity_curve = SubResource("CurveXYZTexture_snr6y")
