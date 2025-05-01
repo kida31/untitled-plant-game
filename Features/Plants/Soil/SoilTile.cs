@@ -12,7 +12,7 @@ public partial class SoilTile : Area2D, IWaterable
 	private const float RainyHydrationRate = 100;
 	private const float SnowyHydrationRate = 50;
 
-	[Export] private float _maxHydration = 350;
+	[Export] private float _maxHydration = 400;
 	[Export] private float _tooMuchHydration = 300;
 	[Export] public float Hydration { get; private set; }
 	public event Action<float, SoilTile> HydrationChanged;

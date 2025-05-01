@@ -325,8 +325,8 @@ public partial class Plant : Area2D
 		var absorptionRate = sunDemand.AbsorptionRate;
 		return WeatherCycle.Instance.CurrentWeather switch
 		{
-			Weather.Sunny => absorptionRate * 1.5f,
-			Weather.Cloudy => absorptionRate * 1.0f,
+			Weather.Sunny => absorptionRate * 1.0f,
+			Weather.Cloudy => absorptionRate * 0.75f,
 			Weather.Rainy or Weather.Snowy => absorptionRate * 0.5f,
 			_ => absorptionRate
 		};
