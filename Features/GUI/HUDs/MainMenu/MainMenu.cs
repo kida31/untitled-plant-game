@@ -4,7 +4,7 @@ using untitledplantgame.Common;
 
 public partial class MainMenu : Control
 {
-	private const string StartScene = "res://Assets/Cutscenes/IntroCutscene.tscn";
+	private const string StartScene = "res://Scenes/OpeningScene.tscn";
 	
 	[Export] private TextureButton _startButton;
 	[Export] private TextureButton _settingsButton;

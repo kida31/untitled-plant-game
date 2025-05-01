@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf8ha2yy6x77r"]
+[gd_scene load_steps=13 format=3 uid="uid://bf8ha2yy6x77r"]
 
+[ext_resource type="Script" uid="uid://brwx3cs81t3em" path="res://Scenes/OpeningScene.cs" id="1_32rpw"]
 [ext_resource type="Texture2D" uid="uid://wx16vw3he115" path="res://Assets/Cutscenes/starry_night_scene_1.png" id="1_oaa57"]
 [ext_resource type="Texture2D" uid="uid://epr6tg6vimny" path="res://Assets/Cutscenes/village_doodle_not_shook.png" id="2_kl3rj"]
 [ext_resource type="Texture2D" uid="uid://blbg65x4hpkmm" path="res://Assets/Cutscenes/village_doodle.png" id="3_yog1p"]
@@ -598,7 +599,11 @@ _data = {
 &"RESET": SubResource("Animation_lc28n")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="OpeningScene" type="Control" node_paths=PackedStringArray("_animationPlayer")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_32rpw")
+_animationPlayer = NodePath("AnimationPlayer")
 
 [node name="Stars" type="TextureRect" parent="."]
 visible = false
