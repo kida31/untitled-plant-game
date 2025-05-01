@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QuestLine" load_steps=7 format=3 uid="uid://ciabjvyrai2sm"]
+[gd_resource type="Resource" script_class="QuestLine" load_steps=7 format=3 uid="uid://db2cwh5nvj2yk"]
 
 [ext_resource type="Resource" uid="uid://cu3shydt1lvsc" path="res://Resources/Dialogue/Godfrey/Introduction/Intro3_DE.tres" id="1_6a3nh"]
 [ext_resource type="Script" uid="uid://cgb70arkej80e" path="res://Features/Quests/Tasks/HaveDialogueTask.cs" id="2_gaift"]
@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 
 [resource]
 script = ExtResource("4_mhplf")
-Id = "IntroQuest"
+Id = "IntroQuest_DE"
 Name = "Erste Schritte"
 Quests = Array[Object]([SubResource("Resource_ofj7o")])
 metadata/_custom_type_script = "uid://bf7h6b05r58gu"

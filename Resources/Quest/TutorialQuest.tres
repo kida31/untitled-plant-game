@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QuestLine" load_steps=31 format=3 uid="uid://cvii1m2ambji1"]
+[gd_resource type="Resource" script_class="QuestLine" load_steps=31 format=3 uid="uid://c2t30hvhvqgx0"]
 
 [ext_resource type="Script" uid="uid://bf7h6b05r58gu" path="res://Features/Quests/QuestLine.cs" id="1_55fyv"]
 [ext_resource type="Script" uid="uid://cgb70arkej80e" path="res://Features/Quests/Tasks/HaveDialogueTask.cs" id="2_tp27u"]
@@ -117,6 +117,6 @@ metadata/_custom_type_script = "uid://d4amaf4u1kl81"
 [resource]
 script = ExtResource("1_55fyv")
 Id = "TutorialQuest"
-Name = "Ein grüner Anfang"
+Name = "A greener beginning"
 Quests = Array[Object]([SubResource("Resource_rurbj"), SubResource("Resource_xoehh"), SubResource("Resource_jg8fa"), SubResource("Resource_t841y"), SubResource("Resource_lsuru"), SubResource("Resource_k8sdh"), SubResource("Resource_2j7df"), SubResource("Resource_3lprq"), SubResource("Resource_v6dy5")])
 metadata/_custom_type_script = "uid://bf7h6b05r58gu"
