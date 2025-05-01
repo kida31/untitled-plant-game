@@ -337,6 +337,7 @@ public partial class Plant : Area2D
 		if (_rootHealth <= 0)
 		{
 			SetUnalive();
+			return;
 		}
 		if (!Tile.IsDrowning())
 		{
