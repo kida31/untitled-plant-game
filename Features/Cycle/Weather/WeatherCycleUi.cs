@@ -15,8 +15,8 @@ public partial class WeatherCycleUi : Node
 	{
 		_gardenRain = GetNode<GpuParticles2D>("RainParticlesGarden");
 		_pierRain = GetNode<GpuParticles2D>("RainParticlesPier");
-		_gardenRain.Visible = true;
-		_pierRain.Visible = true;
+		_gardenRain.Visible = false;
+		_pierRain.Visible = false;
 		_logger.Debug("Starting a rainy day 🌧️️"); //TODO: change back to start with sunny day
 
 		WeatherCycle.Instance.WeatherChanged += ChangeWeather;
