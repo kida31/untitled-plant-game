@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 script = ExtResource("2_gk4s4")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("3_3s5lk")
-dialogueText = "Do you come from afar? Might it be that your homeland was flooded too?"
+dialogueText = "Are you from far away? Could it be that your homeland was also flooded?"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_yno21"]
