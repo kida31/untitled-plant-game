@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://crnclevrmchav"
 
 [sub_resource type="Resource" id="Resource_wj1jo"]
 script = ExtResource("5_i44j5")
-_dialogueId = "has_plan"
+_dialogueId = "has_plan_DE"
 _dialogueText = Array[Object]([SubResource("Resource_7bruj"), SubResource("Resource_ipll5")])
 _responses = Array[Object]([ExtResource("3_rj6km"), SubResource("Resource_vn7iy")])
 metadata/_custom_type_script = "uid://c5x800n31tvgq"
