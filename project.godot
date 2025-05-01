@@ -57,6 +57,10 @@ window/stretch/scale_mode="integer"
 
 project/assembly_name="untitled-plant-game"
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/upg_utils/plugin.cfg")
