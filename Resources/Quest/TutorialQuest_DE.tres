@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QuestLine" load_steps=31 format=3 uid="uid://c2t30hvhvqgx0"]
+[gd_resource type="Resource" script_class="QuestLine" load_steps=31 format=3 uid="uid://clj3rjpuejwa3"]
 
 [ext_resource type="Script" uid="uid://bf7h6b05r58gu" path="res://Features/Quests/QuestLine.cs" id="1_55fyv"]
 [ext_resource type="Script" uid="uid://cgb70arkej80e" path="res://Features/Quests/Tasks/HaveDialogueTask.cs" id="2_tp27u"]
