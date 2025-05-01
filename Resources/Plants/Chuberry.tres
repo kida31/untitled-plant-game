@@ -10,23 +10,23 @@
 [ext_resource type="Resource" uid="uid://cvjax7d0m8ved" path="res://Resources/Plants/Chuberry/Chuberry_Flowering.tres" id="6_as88n"]
 [ext_resource type="Resource" uid="uid://k7qdc7vl1f6q" path="res://Resources/Plants/Chuberry/Chuberry_Ripening.tres" id="7_f7pva"]
 
-[sub_resource type="Resource" id="Resource_mbjhq"]
-script = ExtResource("3_bvca1")
-Type = 0
-ConsumptionRate = 10.0
-AbsorptionRate = 40.0
-metadata/_custom_type_script = "uid://j7hsbwklgf2h"
-
-[sub_resource type="Resource" id="Resource_xotj6"]
+[sub_resource type="Resource" id="Resource_3komg"]
 script = ExtResource("3_bvca1")
 Type = 1
-ConsumptionRate = 5.0
-AbsorptionRate = 15.0
+ConsumptionRate = 40.0
+AbsorptionRate = 80.0
+metadata/_custom_type_script = "uid://j7hsbwklgf2h"
+
+[sub_resource type="Resource" id="Resource_d2g48"]
+script = ExtResource("3_bvca1")
+Type = 0
+ConsumptionRate = 20.0
+AbsorptionRate = 40.0
 metadata/_custom_type_script = "uid://j7hsbwklgf2h"
 
 [resource]
 script = ExtResource("1_1enty")
 PlantName = "Chuberry"
-PlantDemands = Array[Resource]([SubResource("Resource_mbjhq"), SubResource("Resource_xotj6")])
-MaxRootHealth = 0
+PlantDemands = Array[Object]([SubResource("Resource_3komg"), SubResource("Resource_d2g48")])
+MaxRootHealth = 5
 DataForGrowthStages = Array[Object]([ExtResource("1_3komg"), ExtResource("2_d2g48"), ExtResource("3_hgucv"), ExtResource("4_40vmm"), ExtResource("5_plcbo"), ExtResource("6_as88n"), ExtResource("7_f7pva")])

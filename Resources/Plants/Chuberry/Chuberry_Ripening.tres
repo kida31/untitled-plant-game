@@ -15,7 +15,7 @@ metadata/_custom_type_script = "uid://b155ro423c8u6"
 script = ExtResource("1_ynlx5")
 Type = 0
 MaxLevel = 150.0
-MinimumLevelToGrow = 50.0
+MinimumLevelToGrow = 60.0
 CurrentLevel = 0.0
 metadata/_custom_type_script = "uid://b155ro423c8u6"
 

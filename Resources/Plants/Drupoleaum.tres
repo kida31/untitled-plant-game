@@ -1,32 +1,19 @@
-[gd_resource type="Resource" script_class="PlantData" load_steps=12 format=3 uid="uid://cb1aih8l73aw8"]
+[gd_resource type="Resource" script_class="PlantData" load_steps=11 format=3 uid="uid://cb1aih8l73aw8"]
 
 [ext_resource type="Script" uid="uid://6wnc7h7hdx2j" path="res://Features/Plants/Models/PlantData.cs" id="1_40thf"]
 [ext_resource type="Resource" uid="uid://daf3u82mi7bjs" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Seed.tres" id="1_h4a6x"]
 [ext_resource type="Resource" uid="uid://bq8af13t2g7vu" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Sprouting.tres" id="2_xuedw"]
 [ext_resource type="Resource" uid="uid://dan7rr7aaci1n" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Seedling.tres" id="3_kxbq7"]
 [ext_resource type="Resource" uid="uid://0y41a7evs1wt" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Vegetating.tres" id="4_3olg7"]
-[ext_resource type="Script" uid="uid://j7hsbwklgf2h" path="res://Features/Plants/Models/PlantDemand.cs" id="4_q4rt0"]
 [ext_resource type="Resource" uid="uid://7egnae4gqyc0" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Budding.tres" id="5_0x3tq"]
 [ext_resource type="Resource" uid="uid://doax21mpgfew2" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Flowering.tres" id="6_k8mtp"]
 [ext_resource type="Resource" uid="uid://cl5xrplkeq48d" path="res://Resources/Plants/Drupoleaum/Drupoleaum_Ripening.tres" id="7_cgvtq"]
-
-[sub_resource type="Resource" id="Resource_bi4g7"]
-script = ExtResource("4_q4rt0")
-Type = 1
-ConsumptionRate = 22.0
-AbsorptionRate = 40.0
-metadata/_custom_type_script = "uid://j7hsbwklgf2h"
-
-[sub_resource type="Resource" id="Resource_akgdq"]
-script = ExtResource("4_q4rt0")
-Type = 0
-ConsumptionRate = 40.0
-AbsorptionRate = 60.0
-metadata/_custom_type_script = "uid://j7hsbwklgf2h"
+[ext_resource type="Resource" uid="uid://cj36o5jokp8lk" path="res://Resources/Plants/Drupoleaum/Drupoleaum_SunDemand.tres" id="8_xuedw"]
+[ext_resource type="Resource" uid="uid://dxveeeohht4o1" path="res://Resources/Plants/Drupoleaum/Drupoleaum_WaterDemand.tres" id="9_kxbq7"]
 
 [resource]
 script = ExtResource("1_40thf")
 PlantName = "Drupoleaum"
-PlantDemands = Array[Object]([SubResource("Resource_bi4g7"), SubResource("Resource_akgdq")])
-MaxRootHealth = 0
+PlantDemands = Array[Object]([ExtResource("8_xuedw"), ExtResource("9_kxbq7")])
+MaxRootHealth = 3
 DataForGrowthStages = Array[Object]([ExtResource("1_h4a6x"), ExtResource("2_xuedw"), ExtResource("3_kxbq7"), ExtResource("4_3olg7"), ExtResource("5_0x3tq"), ExtResource("6_k8mtp"), ExtResource("7_cgvtq")])
