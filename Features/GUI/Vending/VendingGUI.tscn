@@ -320,7 +320,6 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 
 [node name="EmoteBubble" parent="." instance=ExtResource("12_5lmun")]
-visible = false
 layout_mode = 1
 anchor_left = 0.31875
 anchor_top = 0.688889
