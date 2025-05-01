@@ -2,7 +2,6 @@ using System.IO;
 using System.Linq;
 using Godot;
 using untitledplantgame.Common;
-using untitledplantgame.Plants.Models;
 
 namespace untitledplantgame.Plants;
 

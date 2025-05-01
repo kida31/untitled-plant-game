@@ -24,6 +24,8 @@ public partial class WikiItemList : Control
 	[Export] private Button _materialButton;
 
 	public event Action<IItemStack> ItemStackPressed; // TODO: Use local events instead of event bus where possible
+	public event Action<WikiItemView> ItemViewPressed;
+
 
 	public override void _Ready()
 	{
@@ -38,6 +40,21 @@ public partial class WikiItemList : Control
 		_plantButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Seed);
 		_medicineButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Medicine);
 		_materialButton.Pressed += () => ScrollToFirstItemOf(ItemCategory.Material);
+
+		// We use most recent
+		var vp = GetViewport();
+		vp.GuiFocusChanged += (ctrl) =>
+		{
+			if (ctrl is not WikiItemView iv)
+			{
+				return;
+			}
+
+			_plantButton.FocusNeighborBottom = iv.GetPath();
+			_plantButton.FocusNeighborLeft = iv.GetPath();
+			_medicineButton.FocusNeighborBottom = iv.GetPath();
+			_materialButton.FocusNeighborBottom = iv.GetPath();
+		};
 	}
 
 	public void SetItems(List<IItemStack> items)
@@ -83,6 +100,8 @@ public partial class WikiItemList : Control
 			var item = items[index];
 			_itemViews[index].ItemStack = item; // keep this in two lines for debugging
 		}
+
+		UpdateNavigation();
 	}
 
 	public new void GrabFocus()
@@ -109,8 +128,13 @@ public partial class WikiItemList : Control
 
 	private void ConnectItemView(WikiItemView itemView)
 	{
-		itemView.FocusEntered += () => ItemStackPressed?.Invoke(itemView.ItemStack);
-		itemView.Pressed += () => ItemStackPressed?.Invoke(itemView.ItemStack);
+		itemView.FocusEntered += () => {
+			ItemStackPressed?.Invoke(itemView.ItemStack);
+		};
+		itemView.Pressed += () => {
+			// ItemStackPressed?.Invoke(itemView.ItemStack);
+			ItemViewPressed?.Invoke(itemView);
+		};
 		_itemViewContainer.AddChild(itemView);
 	}
 
@@ -119,5 +143,38 @@ public partial class WikiItemList : Control
 		// Do not need to unsubscribe since object is being removed
 		RemoveChild(itemView);
 		itemView.QueueFree();
+	}
+
+	private void UpdateNavigation()
+	{
+		for (int i = 0; i < _itemViews.Count; i++)
+		{
+			var iv = _itemViews[i];
+
+			iv.FocusNeighborRight = _plantButton.GetPath();
+			iv.FocusNeighborLeft = null; //_plantButton.GetPath();
+
+			if (i > 0)
+			{
+				iv.FocusNeighborTop = _itemViews[i - 1].GetPath();
+			}
+			else
+			{
+				iv.FocusNeighborTop = _plantButton.GetPath();
+			}
+
+			if (i < _itemViews.Count - 1)
+			{
+				iv.FocusNeighborBottom = _itemViews[i + 1].GetPath();
+			}
+		}
+
+		if (_itemViews.Count > 0)
+		{
+			_plantButton.FocusNeighborBottom = _itemViews[0].GetPath();
+			_plantButton.FocusNeighborLeft = _itemViews[0].GetPath();
+			_medicineButton.FocusNeighborBottom = _itemViews[0].GetPath();
+			_materialButton.FocusNeighborBottom = _itemViews[0].GetPath();
+		}
 	}
 }

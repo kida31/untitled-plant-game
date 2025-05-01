@@ -20,6 +20,9 @@ public partial class WikiPage : Control
 	public override void _Ready()
 	{
 		_wikiItemList.ItemStackPressed += i => ItemStackPressed?.Invoke(i);
+
+		_wikiItemList.ItemViewPressed += (_) => _wikiArticle.GrabFocus(); // Jump to article page
+
 		_wikiArticle.RelatedItemClicked += OnRelatedItemClicked;
 
 		VisibilityChanged += OnVisibilityChanged;

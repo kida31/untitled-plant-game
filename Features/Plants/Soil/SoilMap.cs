@@ -17,7 +17,7 @@ public partial class SoilMap : TileMapLayer
 	{
 		Dry = 50,
 		Moist = 150,
-		Wet = 250,
+		Wet = 300,
 		Flooded
 	}
 	

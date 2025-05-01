@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlantDemand" load_steps=2 format=3 uid="uid://co0pym5snmjse"]
+
+[ext_resource type="Script" uid="uid://j7hsbwklgf2h" path="res://Features/Plants/Models/PlantDemand.cs" id="1_hccor"]
+
+[resource]
+script = ExtResource("1_hccor")
+Type = 0
+ConsumptionRate = 30.0
+AbsorptionRate = 50.0
+metadata/_custom_type_script = "uid://j7hsbwklgf2h"

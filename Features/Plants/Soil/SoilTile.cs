@@ -7,12 +7,13 @@ namespace untitledplantgame.Plants;
 
 public partial class SoilTile : Area2D, IWaterable
 {
-	private const float MaxHydration = 350;
 	private const float SunnyEvaporationRate = 50;
 	private const float CloudyEvaporationRate = 50;
 	private const float RainyHydrationRate = 100;
 	private const float SnowyHydrationRate = 50;
 
+	[Export] private float _maxHydration = 400;
+	[Export] private float _tooMuchHydration = 300;
 	[Export] public float Hydration { get; private set; }
 	public event Action<float, SoilTile> HydrationChanged;
 	private float Fertilization { get; set; }
@@ -75,7 +76,7 @@ public partial class SoilTile : Area2D, IWaterable
 	public void AddWater(float addedWater)
 	{
 		var currentWater = Hydration;
-		var newWater = Math.Min(Hydration + addedWater, MaxHydration);
+		var newWater = Math.Min(Hydration + addedWater, _maxHydration);
 		if(Math.Abs(currentWater - newWater) < 1f) return;
 		
 		Hydration = newWater;
@@ -88,5 +89,10 @@ public partial class SoilTile : Area2D, IWaterable
 		AddChild(plant);
 		
 		EventBus.Instance.SeedPlanted(plant);
+	}
+	
+	public bool IsDrowning()
+	{
+		return Hydration > _tooMuchHydration;
 	}
 }
