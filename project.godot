@@ -249,12 +249,12 @@ locale/translation_remaps=Dictionary[String, PackedStringArray]({
 "res://Resources/Dialogue/VendingMachine/VM_init_8.tres": PackedStringArray("res://Resources/Dialogue/VendingMachine/VM_init_8_DE.tres:de"),
 "res://Resources/Dialogue/saka.tres": PackedStringArray("res://Resources/Dialogue/saka_DE.tres:de"),
 "res://Resources/Dialogue/tiredness.tres": PackedStringArray("res://Resources/Dialogue/tiredness_DE.tres:de"),
-"res://Resources/Quest/IntroQuest.tres": PackedStringArray("res://Resources/Quest/IntroQuest_DE.tres:de_DE"),
-"res://Resources/Quest/TutorialQuest.tres": PackedStringArray("res://Resources/Quest/TutorialQuest_DE.tres:de_DE"),
+"res://Resources/Quest/IntroQuest.tres": PackedStringArray("res://Resources/Quest/IntroQuest_DE.tres:de"),
+"res://Resources/Quest/TutorialQuest.tres": PackedStringArray("res://Resources/Quest/TutorialQuest_DE.tres:de"),
 "res://Resources/Tools/SeedBag.tres": PackedStringArray("res://Resources/Tools/SeedBag_DE.tres:de"),
 "res://Resources/Tools/Shears.tres": PackedStringArray("res://Resources/Tools/Shears_DE.tres:de"),
 "res://Resources/Tools/Shovel.tres": PackedStringArray("res://Resources/Tools/Shovel_DE.tres:de"),
-"res://Resources/Tools/WateringCan.tres": PackedStringArray("res://Resources/Tools/WateringCan_DE.tres:de_DE")
+"res://Resources/Tools/WateringCan.tres": PackedStringArray("res://Resources/Tools/WateringCan_DE.tres:de")
 })
 locale/translations=PackedStringArray("res://Localization/Plants.de.translation", "res://Localization/Plants.en.translation", "res://Localization/PolyglotGamedevBase.ar.translation", "res://Localization/PolyglotGamedevBase.bg.translation", "res://Localization/PolyglotGamedevBase.bs.translation", "res://Localization/PolyglotGamedevBase.cs.translation", "res://Localization/PolyglotGamedevBase.da.translation", "res://Localization/PolyglotGamedevBase.de.translation", "res://Localization/PolyglotGamedevBase.el.translation", "res://Localization/PolyglotGamedevBase.en.translation", "res://Localization/PolyglotGamedevBase.es.translation", "res://Localization/PolyglotGamedevBase.fi.translation", "res://Localization/PolyglotGamedevBase.fr.translation", "res://Localization/PolyglotGamedevBase.he.translation", "res://Localization/PolyglotGamedevBase.hu.translation", "res://Localization/PolyglotGamedevBase.it.translation", "res://Localization/PolyglotGamedevBase.ja.translation", "res://Localization/PolyglotGamedevBase.ko.translation", "res://Localization/PolyglotGamedevBase.nb.translation", "res://Localization/PolyglotGamedevBase.nl.translation", "res://Localization/PolyglotGamedevBase.pl.translation", "res://Localization/PolyglotGamedevBase.pt.translation", "res://Localization/PolyglotGamedevBase.pt_BR.translation", "res://Localization/PolyglotGamedevBase.ro.translation", "res://Localization/PolyglotGamedevBase.ru.translation", "res://Localization/PolyglotGamedevBase.sv.translation", "res://Localization/PolyglotGamedevBase.th.translation", "res://Localization/PolyglotGamedevBase.tr.translation", "res://Localization/PolyglotGamedevBase.zh_CN.translation", "res://Localization/PolyglotGamedevBase.zh_TW.translation")
 locale/country_filter=["DE"]
