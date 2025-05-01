@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogueResourceObject" load_steps=6 format=3 uid="uid://dtmf85idor0bp"]
+
+[ext_resource type="Script" uid="uid://6j4mbe1m3l1x" path="res://Features/Dialogue/Models/DialogueLine.cs" id="1_wt53v"]
+[ext_resource type="Script" uid="uid://c5x800n31tvgq" path="res://Features/Dialogue/Models/DialogueResourceObject.cs" id="2_g5vt4"]
+
+[sub_resource type="Resource" id="Resource_yfdhw"]
+script = ExtResource("1_wt53v")
+speakerName = "Laya"
+dialogueText = "Huch... Wo bin ich? Was ist das für ein Ort?"
+
+[sub_resource type="Resource" id="Resource_a8n2g"]
+script = ExtResource("1_wt53v")
+speakerName = "Laya"
+dialogueText = "Ich habe das Gefühl als wäre ich schonmal hier gewesen..."
+
+[sub_resource type="Resource" id="Resource_g4jrr"]
+script = ExtResource("1_wt53v")
+speakerName = "Laya"
+dialogueText = "Vielleicht kann mir der [color=red]alte Mann[/color] da drüben weiter helfen."
+
+[resource]
+script = ExtResource("2_g5vt4")
+_dialogueId = "monologue_DE"
+_dialogueText = Array[Object]([SubResource("Resource_yfdhw"), SubResource("Resource_a8n2g"), SubResource("Resource_g4jrr")])
+_responses = null
