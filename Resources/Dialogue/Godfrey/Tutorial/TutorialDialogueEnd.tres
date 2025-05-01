@@ -38,13 +38,13 @@ dialogueText = "And if your plants die, you can dig them out to make space for n
 script = ExtResource("2_uewdi")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("4_t887m")
-dialogueText = "To do that, use your [color=red]shovel[/color]. Be careful not to dig out alive plants!"
+dialogueText = "Use your [color=red]shovel[/color] to do this. Be careful not to dig out any living plants!"
 
 [sub_resource type="Resource" id="Resource_8febt"]
 script = ExtResource("2_uewdi")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("4_t887m")
-dialogueText = "Well, I taught you everything I know. But come again everytime you forget something!"
+dialogueText = "Well, I have taught you everything I know. But come back every time you forget something!"
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_l65ia"]

@@ -16,7 +16,7 @@
 script = ExtResource("2_xsfax")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("1_hfik4")
-dialogueText = "Oh? Well thats a surprise."
+dialogueText = "Oh? Well that is a surprise."
 metadata/_custom_type_script = "uid://6j4mbe1m3l1x"
 
 [sub_resource type="Resource" id="Resource_akuhn"]

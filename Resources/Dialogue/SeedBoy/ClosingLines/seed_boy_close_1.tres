@@ -7,7 +7,7 @@
 script = ExtResource("1_m6hbs")
 speakerName = "Pan Dan"
 DialogueExpression = 1
-dialogueText = "Danke! Ich bringe bald neue Samen!"
+dialogueText = "Thanks! I will bring new seeds soon."
 
 [resource]
 script = ExtResource("1_x70p1")
