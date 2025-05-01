@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using Godot;
 using untitledplantgame.Common;
 using untitledplantgame.Common.GameStates;
@@ -37,8 +36,17 @@ public partial class Player : CharacterBody2D
 		//starting with empty Toolbelt
 	]);
 
+	private AudioStreamPlayer2D _sfxPlayer;
+
 	public override void _Ready()
 	{
+		_sfxPlayer = new AudioStreamPlayer2D();
+		_sfxPlayer.Bus = "SFX";
+		_sfxPlayer.MaxPolyphony = 20;
+		_sfxPlayer.Stream = new AudioStreamPolyphonic();
+		AddChild(_sfxPlayer);
+		_sfxPlayer.Play();
+
 		_logger.Info("! Ready !");
 
 		Game.Instance.Provide(this);
@@ -127,4 +135,14 @@ public partial class Player : CharacterBody2D
 	{
 		_playerAnimatedSprite?.UpdateAnimation(animationName);
 	}
+
+	public void PlaySfx(AudioStream sfx) {
+		if (!_sfxPlayer.HasStreamPlayback()) {
+			_logger.Error("Has not initialized Stream Playback");
+			return;
+		}
+
+		var playback = (AudioStreamPlaybackPolyphonic) _sfxPlayer.GetStreamPlayback();
+		playback.PlayStream(sfx, 0);
+	} 
 }

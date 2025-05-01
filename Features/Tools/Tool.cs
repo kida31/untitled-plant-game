@@ -17,6 +17,8 @@ namespace untitledplantgame.Tools;
 public abstract partial class Tool : Resource, IDisplayData, IToolUseData
 {
 	public event Action FinishedCasting;
+	public event Action HitRegistered;
+
 	[Export] public virtual string Name { get; protected set; }
 	[Export(PropertyHint.MultilineText)] public virtual string Description { get; protected set; }
 	[Export] public virtual Texture2D Icon { get; protected set; }
@@ -147,7 +149,8 @@ public abstract partial class Tool : Resource, IDisplayData, IToolUseData
 			_OnMiss(user);
 			return;
 		}
-
+		
+		HitRegistered?.Invoke();
 		_OnFinishCast(user);
 	}
 
