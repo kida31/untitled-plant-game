@@ -28,7 +28,7 @@ dialogueText = "He supplied the city with medicine and took good care of us."
 script = ExtResource("2_2yo75")
 speakerName = "Godfrey"
 DialogueExpression = ExtResource("1_m0tyj")
-dialogueText = "I'm sure, you can stay in his house if you're taking on his legacy."
+dialogueText = "I'm sure, you can stay in his house if you take over his legacy."
 
 [resource]
 script = ExtResource("5_qws0w")
