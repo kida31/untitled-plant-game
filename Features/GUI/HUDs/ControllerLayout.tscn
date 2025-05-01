@@ -232,6 +232,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_type_variation = &"whiteText"
 text = "NAVIGATION_LABEL_A"
+autowrap_mode = 2
 
 [node name="Walk" type="Node2D" parent="."]
 position = Vector2(-48, -13)
