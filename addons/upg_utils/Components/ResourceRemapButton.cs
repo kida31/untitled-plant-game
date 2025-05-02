@@ -41,7 +41,7 @@ public partial class ResourceRemapButton : Button
         processWindow.DialogText = "Log:";
         AddChild(processWindow);
         processWindow.GetOkButton().Disabled = true;
-        processWindow.PopupCentered(new(360, 240));
+        processWindow.PopupCentered(new(720, 480));
         processWindow.Show();
 
         // Collect .tres

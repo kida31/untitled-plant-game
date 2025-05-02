@@ -11,8 +11,8 @@ public partial class ProcessWindow : AcceptDialog
         {
             SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
             SizeFlagsVertical = Control.SizeFlags.ExpandFill,
-            WrapMode = TextEdit.LineWrappingMode.Boundary,
-            AutowrapMode = TextServer.AutowrapMode.Arbitrary,
+            // WrapMode = TextEdit.LineWrappingMode.Boundary,
+            // AutowrapMode = TextServer.AutowrapMode.Arbitrary,
             IndentWrappedLines = true,
             ScrollSmooth = true,
             Editable = false,
