@@ -9,8 +9,9 @@ using Godot;
 [Tool]
 public partial class ResourceRemapButton : Button
 {
-    public ResourceRemapButton() {
-        // Pressed += OnPressed;
+    public ResourceRemapButton()
+    {
+        Pressed += OnPressed;
     }
 
     private void OnPressed()
@@ -32,6 +33,7 @@ public partial class ResourceRemapButton : Button
         dialog.Show();
     }
 
+    // There are multiple Task.Delay() to give GUI time to render. LF> alternative
     private async void ImportRemaps()
     {
         var processWindow = new ProcessWindow();
@@ -89,6 +91,7 @@ public partial class ResourceRemapButton : Button
                 var deFormatted = de + ":de";
                 godotRemaps.Add(en, [deFormatted]);
                 processWindow.PrintLine($"  {en} -> {deFormatted}");
+                await Task.Delay(1); // idk how to wait
             }
 
             SetRemaps(godotRemaps);
