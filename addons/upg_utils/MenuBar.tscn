@@ -29,8 +29,3 @@ popup/item_3/id = 3
 layout_mode = 2
 text = "Update Remaps"
 script = ExtResource("2_dk3da")
-
-[node name="TextEdit" type="TextEdit" parent="ResourceRemapButton"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
