@@ -46,7 +46,7 @@ public partial class ResourceRemapButton : Button
 
         // Collect .tres
         processWindow.PrintLine("Collecting '.tres' files...");
-        await Task.Delay(1); // idk how to wait
+        await WaitFrame();
         var resources = GetFilesRecursively("res://")
             .Where(fileName => fileName.EndsWith(".tres"))
             .ToList();
@@ -82,7 +82,7 @@ public partial class ResourceRemapButton : Button
         async Task SaveStuff_()
         {
             processWindow.PrintLine("Preparing remap dictionary...");
-            await Task.Delay(1); // idk how to wait
+            await WaitFrame();
 
             // Godot-ify
             var godotRemaps = new Godot.Collections.Dictionary<string, string[]>();
@@ -91,7 +91,7 @@ public partial class ResourceRemapButton : Button
                 var deFormatted = de + ":de";
                 godotRemaps.Add(en, [deFormatted]);
                 processWindow.PrintLine($"  {en} -> {deFormatted}");
-                await Task.Delay(1); // idk how to wait
+                await WaitFrame();
             }
 
             SetRemaps(godotRemaps);
@@ -139,5 +139,13 @@ public partial class ResourceRemapButton : Button
     private static void SetRemaps(Godot.Collections.Dictionary<string, string[]> remaps)
     {
         ProjectSettings.SetSetting("internationalization/locale/translation_remaps", remaps);
+    }
+
+    /// <summary>
+    ///     Wait for next free frame. e.g. Give UI some room to update.
+    /// </summary>
+    /// <returns></returns>
+    private async Task WaitFrame() {
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
 }
