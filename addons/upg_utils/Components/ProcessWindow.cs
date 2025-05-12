@@ -9,7 +9,7 @@ public partial class ProcessWindow : AcceptDialog
     }
     
     private bool _autoScroll =  true;
-    private string _log;
+    private string _log = "";
     private TextEdit _textEdit;
 
 
