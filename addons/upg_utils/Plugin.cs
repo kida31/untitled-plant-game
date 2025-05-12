@@ -8,16 +8,16 @@ namespace untitledplantgame.addons.upg_utils;
 [Tool]
 public partial class Plugin : EditorPlugin
 {
-	private const string LogLevelDropdownPath = "res://addons/upg_utils/LogLevelDropdown.tscn";
-	private const CustomControlContainer LogLevelDropdownContainer = CustomControlContainer.Toolbar;
+	private const string MenuBar = "res://addons/upg_utils/MenuBar.tscn";
+	private const CustomControlContainer MenuBarContainer = CustomControlContainer.Toolbar;
 
-	private Control _logLevelDropdown;
+	private Control _menuBar;
 
 	public override void _EnterTree()
 	{
 		// Log Level Thingy in toolbar
-		_logLevelDropdown = ResourceLoader.Load<PackedScene>(LogLevelDropdownPath).Instantiate<Control>();
-		AddControlToContainer(LogLevelDropdownContainer, _logLevelDropdown);
+		_menuBar = ResourceLoader.Load<PackedScene>(MenuBar).Instantiate<Control>();
+		AddControlToContainer(MenuBarContainer, _menuBar);
 
 		// Consider moving script to addon
 		var autoScrollScript = GD.Load<Script>("res://Features/GUI/Components/Scrollable/AutoScrollRichTextLabel.cs");
@@ -32,8 +32,9 @@ public partial class Plugin : EditorPlugin
 
 	public override void _ExitTree()
 	{
-		RemoveControlFromContainer(LogLevelDropdownContainer, _logLevelDropdown);
-		_logLevelDropdown.QueueFree();
+		RemoveControlFromContainer(MenuBarContainer, _menuBar);
+		_menuBar.QueueFree();
+		
 		RemoveCustomType("AutoScrollRichTextLabel");
 	}
 }

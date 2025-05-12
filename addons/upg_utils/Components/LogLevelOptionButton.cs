@@ -13,6 +13,7 @@ public partial class LogLevelOptionButton : OptionButton
 		VisibilityChanged += OnVisibilityChanged;
 		ItemSelected += OnItemSelected;
 		ProjectSettings.SettingsChanged += UpdateItems;
+		UpdateItems();
 	}
 	
 	public override void _ExitTree()
@@ -28,6 +29,7 @@ public partial class LogLevelOptionButton : OptionButton
 
 		// Add log levels
 		var levels = Enum.GetValues<LogLevel>().ToList();
+		if (levels.Count == 0) throw new InvalidOperationException("No log levels found.");
 		levels.ForEach(l => AddItem(l.ToString()));
 
 		// Set current value
