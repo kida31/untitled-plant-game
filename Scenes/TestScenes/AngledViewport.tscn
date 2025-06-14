@@ -1,0 +1,190 @@
+[gd_scene load_steps=28 format=3 uid="uid://dqkwehispckae"]
+
+[ext_resource type="Texture2D" uid="uid://huaek2xtt1k1" path="res://Assets/Overworld/ -10.jpg" id="1_3kptr"]
+[ext_resource type="Script" uid="uid://b2fd4sqkbflvo" path="res://Features/Player/Player.cs" id="2_jstm2"]
+[ext_resource type="SpriteFrames" uid="uid://upqodpbedg8s" path="res://Features/Player/PlayerSpriteFrames.tres" id="3_00h3w"]
+[ext_resource type="Script" uid="uid://c4ftp6peyjj44" path="res://Features/Player/PlayerAnimatedSprite.cs" id="4_y44cw"]
+[ext_resource type="Script" uid="uid://bwilg3ax43c4d" path="res://Features/Player/PlayerStateMachine.cs" id="5_jgbm3"]
+[ext_resource type="Script" uid="uid://db0soguwcor22" path="res://Features/Player/StateIdle.cs" id="6_st0mo"]
+[ext_resource type="Script" uid="uid://cfd8146wdhmao" path="res://Features/Player/StateWalk.cs" id="7_p6p87"]
+[ext_resource type="Script" uid="uid://shyb717ekee2" path="res://Features/Player/StateUseTool.cs" id="8_grsdw"]
+[ext_resource type="Script" uid="uid://bmestbmfn35at" path="res://Features/ProximityCollision/NpcProximityTrigger.cs" id="9_eewex"]
+[ext_resource type="Script" uid="uid://casy8txnj6tho" path="res://Features/Player/PlayerCamera.cs" id="10_sysbl"]
+[ext_resource type="Texture2D" uid="uid://cybfjnbld1w7n" path="res://Assets/Emotes/Angry-Sheet.png" id="11_otv1f"]
+[ext_resource type="Texture2D" uid="uid://cjqcdj3vldfpd" path="res://Assets/Emotes/Exclamation-Sheet.png" id="12_v4cmm"]
+[ext_resource type="Texture2D" uid="uid://bsytxjetn2peb" path="res://Assets/Emotes/SweatDrop-Sheet.png" id="13_i6h8s"]
+[ext_resource type="Texture2D" uid="uid://g05boy1l7462" path="res://Assets/Emotes/tired.png" id="14_01duw"]
+[ext_resource type="Script" uid="uid://n5fxvmvxee0" path="res://Features/Player/Emotes.cs" id="15_6b3fg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bkgeg"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryxll"]
+radius = 34.0147
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e721"]
+atlas = ExtResource("11_otv1f")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv2n7"]
+atlas = ExtResource("11_otv1f")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lns10"]
+atlas = ExtResource("12_v4cmm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63ru7"]
+atlas = ExtResource("12_v4cmm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_symwq"]
+atlas = ExtResource("13_i6h8s")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b36j"]
+atlas = ExtResource("13_i6h8s")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xghb"]
+atlas = ExtResource("14_01duw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwv8h"]
+atlas = ExtResource("14_01duw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ndi6"]
+atlas = ExtResource("14_01duw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5rlu4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e721")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cv2n7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e721")
+}],
+"loop": false,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lns10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63ru7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lns10")
+}],
+"loop": false,
+"name": &"shook",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_symwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b36j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_symwq")
+}],
+"loop": false,
+"name": &"sweaty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xghb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwv8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ndi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwv8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xghb")
+}],
+"loop": false,
+"name": &"tired",
+"speed": 5.0
+}]
+
+[node name="AngledViewport" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -77.0
+offset_top = 225.502
+offset_right = 658.0
+offset_bottom = 1010.5
+rotation = -0.855211
+scale = Vector2(0.657103, 0.657103)
+texture = ExtResource("1_3kptr")
+
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("_playerAnimatedSprite") groups=["player"]]
+position = Vector2(264, 349)
+rotation = -0.855211
+script = ExtResource("2_jstm2")
+_playerAnimatedSprite = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_bkgeg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" node_paths=PackedStringArray("_player")]
+position = Vector2(0, -31)
+sprite_frames = ExtResource("3_00h3w")
+animation = &"idle_down"
+frame_progress = 0.560667
+script = ExtResource("4_y44cw")
+_player = NodePath("..")
+
+[node name="StateMachine" type="Node" parent="Player"]
+script = ExtResource("5_jgbm3")
+
+[node name="Idle" type="Node" parent="Player/StateMachine"]
+script = ExtResource("6_st0mo")
+
+[node name="Walk" type="Node" parent="Player/StateMachine"]
+script = ExtResource("7_p6p87")
+
+[node name="UseTool" type="Node" parent="Player/StateMachine"]
+script = ExtResource("8_grsdw")
+
+[node name="NpcProximityTrigger" type="Area2D" parent="Player"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("9_eewex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/NpcProximityTrigger"]
+shape = SubResource("CircleShape2D_ryxll")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(68, -82.4976)
+ignore_rotation = false
+position_smoothing_speed = 2.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("10_sysbl")
+
+[node name="Emotes" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(22, -60)
+sprite_frames = SubResource("SpriteFrames_5rlu4")
+animation = &"tired"
+frame = 4
+frame_progress = 1.0
+script = ExtResource("15_6b3fg")
