@@ -135,7 +135,7 @@ scale = Vector2(0.657103, 0.657103)
 texture = ExtResource("1_3kptr")
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("_playerAnimatedSprite") groups=["player"]]
-position = Vector2(264, 349)
+position = Vector2(268, 324)
 rotation = -0.855211
 script = ExtResource("2_jstm2")
 _playerAnimatedSprite = NodePath("AnimatedSprite2D")
@@ -188,3 +188,11 @@ animation = &"tired"
 frame = 4
 frame_progress = 1.0
 script = ExtResource("15_6b3fg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(569, 269, 411, 300, 66, 290, 33, 320, -77, 226, 240, -138, 629, 200)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(311, 564, 575, 283, 569, 269, 513, 332, 153, 342, 46, 308, 32, 320)
